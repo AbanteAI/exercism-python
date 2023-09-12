@@ -4,8 +4,8 @@ class BufferFullException(BufferError):
     message: explanation of the error.
 
     """
-    def __init__(self, message):
-        pass
+        self.message = message
+        super().__init__(self.message)
 
 
 class BufferEmptyException(BufferError):
@@ -14,22 +14,33 @@ class BufferEmptyException(BufferError):
     message: explanation of the error.
 
     """
-    def __init__(self, message):
-        pass
+        self.message = message
+        super().__init__(self.message)
 
 
 class CircularBuffer:
-    def __init__(self, capacity):
-        pass
+        self.capacity = capacity
+        self.buffer = [None] * capacity
+        self.read_pos = 0
+        self.write_pos = 0
 
-    def read(self):
-        pass
+        if self.buffer[self.read_pos] is None:
+            raise BufferEmptyException("Circular buffer is empty")
+        data = self.buffer[self.read_pos]
+        self.buffer[self.read_pos] = None
+        self.read_pos = (self.read_pos + 1) % self.capacity
+        return data
 
-    def write(self, data):
-        pass
+        if self.buffer[self.write_pos] is not None:
+            raise BufferFullException("Circular buffer is full")
+        self.buffer[self.write_pos] = data
+        self.write_pos = (self.write_pos + 1) % self.capacity
 
-    def overwrite(self, data):
-        pass
+        self.buffer[self.write_pos] = data
+        self.write_pos = (self.write_pos + 1) % self.capacity
+        if self.buffer[self.read_pos] is not None:
+            self.read_pos = (self.read_pos + 1) % self.capacity
 
-    def clear(self):
-        pass
+        self.buffer = [None] * self.capacity
+        self.read_pos = 0
+        self.write_pos = 0

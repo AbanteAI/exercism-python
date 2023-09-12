@@ -1,2 +1,3 @@
+import math
 def square_root(number):
-    pass
+    return int(math.sqrt(number))

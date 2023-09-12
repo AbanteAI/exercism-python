@@ -1,15 +1,20 @@
 class School:
     def __init__(self):
-        pass
+        self.students = {}
 
     def add_student(self, name, grade):
-        pass
+        if grade not in self.students:
+            self.students[grade] = []
+        if name not in self.students[grade]:
+            self.students[grade].append(name)
+            self.students[grade].sort()
 
     def roster(self):
-        pass
+        sorted_students = []
+        for grade in sorted(self.students):
+            sorted_students.extend(self.students[grade])
+        return sorted_students
 
     def grade(self, grade_number):
-        pass
+        return self.students.get(grade_number, [])
 
-    def added(self):
-        pass

@@ -9,12 +9,24 @@ class Hangman:
     def __init__(self, word):
         self.remaining_guesses = 9
         self.status = STATUS_ONGOING
-
+        self.word = word
+        self.guessed_letters = set()
     def guess(self, char):
-        pass
+        if self.status != STATUS_ONGOING:
+            raise ValueError("The game has already ended.")
+
+        if char not in self.guessed_letters and char in self.word:
+            self.guessed_letters.add(char)
+        else:
+            self.remaining_guesses -= 1
+
+        if self.get_masked_word() == self.word:
+            self.status = STATUS_WIN
+        elif self.remaining_guesses < 0:
+            self.status = STATUS_LOSE
 
     def get_masked_word(self):
-        pass
+        return ''.join([char if char in self.guessed_letters else '_' for char in self.word])
 
     def get_status(self):
-        pass
+        return self.status
