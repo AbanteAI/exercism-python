@@ -1,0 +1,69 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 14 items
+
+atbash-cipher/atbash_cipher_test.py ......FF..F.F.                       [100%]
+
+=================================== FAILURES ===================================
+_________________ AtbashCipherTest.test_encode_all_the_letters _________________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_encode_all_the_letters>
+
+    def test_encode_all_the_letters(self):
+>       self.assertEqual(
+            encode("The quick brown fox jumps over the lazy dog."),
+            "gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt",
+        )
+E       AssertionError: 'gsv j frxp  yildm  ulc  qfnkh  levi  gsv  ozab  wlt.' != 'gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt'
+E       - gsv j frxp  yildm  ulc  qfnkh  levi  gsv  ozab  wlt.
+E       ?    - -    --     --   --     --     -   --    --   -
+E       + gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt
+E       ?      +     +     +     +           +
+
+atbash-cipher/atbash_cipher_test.py:36: AssertionError
+__________________ AtbashCipherTest.test_encode_deep_thought ___________________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_encode_deep_thought>
+
+    def test_encode_deep_thought(self):
+>       self.assertEqual(encode("Truth is fiction."), "gifgs rhurx grlm")
+E       AssertionError: 'gifgs  rh u rxgrl m.' != 'gifgs rhurx grlm'
+E       - gifgs  rh u rxgrl m.
+E       ?       -  - -     - -
+E       + gifgs rhurx grlm
+E       ?            +
+
+atbash-cipher/atbash_cipher_test.py:33: AssertionError
+_____________________ AtbashCipherTest.test_encode_numbers _____________________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_encode_numbers>
+
+    def test_encode_numbers(self):
+>       self.assertEqual(encode("Testing,1 2 3, testing."), "gvhgr mt123 gvhgr mt")
+E       AssertionError: 'gvhgr mt,1  2 3,  gvhgr mt.' != 'gvhgr mt123 gvhgr mt'
+E       - gvhgr mt,1  2 3,  gvhgr mt.
+E       ?         - -- - --         -
+E       + gvhgr mt123 gvhgr mt
+
+atbash-cipher/atbash_cipher_test.py:30: AssertionError
+_____________________ AtbashCipherTest.test_encode_spaces ______________________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_encode_spaces>
+
+    def test_encode_spaces(self):
+>       self.assertEqual(encode("O M G"), "lnt")
+E       AssertionError: 'l n t' != 'lnt'
+E       - l n t
+E       ?  - -
+E       + lnt
+
+atbash-cipher/atbash_cipher_test.py:24: AssertionError
+=========================== short test summary info ============================
+FAILED atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_encode_all_the_letters
+FAILED atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_encode_deep_thought
+FAILED atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_encode_numbers
+FAILED atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_encode_spaces
+========================= 4 failed, 10 passed in 0.04s =========================

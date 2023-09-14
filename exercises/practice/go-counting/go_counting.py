@@ -1,3 +1,6 @@
+WHITE = "W"
+BLACK = "B"
+NONE = ""
 
 class Board:
     """Count territories of each player in a Go game
@@ -7,7 +10,7 @@ class Board:
     """
 
     def __init__(self, board):
-        pass
+        self.board = board
 
     def territory(self, x, y):
         """Find the owner and the territories given a coordinate on
@@ -23,6 +26,7 @@ class Board:
                         second being a set of coordinates, representing
                         the owner's territories.
         """
+        # Implement territory method here
         pass
 
     def territories(self):
@@ -36,4 +40,5 @@ class Board:
                         , i.e. "W", "B", "".  The value being a set
                         of coordinates owned by the owner.
         """
+        # Implement territories method here
         pass

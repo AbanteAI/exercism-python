@@ -1,0 +1,81 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 25 items
+
+wordy/wordy_test.py .....F.........F....F...F                            [100%]
+
+=================================== FAILURES ===================================
+_________________________ WordyTest.test_just_a_number _________________________
+
+self = <wordy_test.WordyTest testMethod=test_just_a_number>
+
+    def test_just_a_number(self):
+>       self.assertEqual(answer("What is 5?"), 5)
+
+wordy/wordy_test.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = 'What is 5'
+
+    def answer(question):
+        operations = {
+            "plus": lambda x, y: x + y,
+            "minus": lambda x, y: x - y,
+            "multiplied by": lambda x, y: x * y,
+            "divided by": lambda x, y: x // y,
+        }
+    
+        question = question.replace("?", "")
+        tokens = re.findall(r"(-?\d+|plus|minus|multiplied by|divided by)", question)
+    
+        if len(tokens) < 3 or not tokens[0].lstrip('-').isdigit():
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+wordy/wordy.py:14: ValueError
+_______________________ WordyTest.test_non_math_question _______________________
+
+self = <wordy_test.WordyTest testMethod=test_non_math_question>
+
+    def test_non_math_question(self):
+        with self.assertRaises(ValueError) as err:
+            answer("Who is the President of the United States?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "unknown operation")
+E       AssertionError: 'syntax error' != 'unknown operation'
+E       - syntax error
+E       + unknown operation
+
+wordy/wordy_test.py:68: AssertionError
+__________________ WordyTest.test_reject_two_numbers_in_a_row __________________
+
+self = <wordy_test.WordyTest testMethod=test_reject_two_numbers_in_a_row>
+
+    def test_reject_two_numbers_in_a_row(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+wordy/wordy_test.py:89: AssertionError
+_______________________ WordyTest.test_unknown_operation _______________________
+
+self = <wordy_test.WordyTest testMethod=test_unknown_operation>
+
+    def test_unknown_operation(self):
+        with self.assertRaises(ValueError) as err:
+            answer("What is 52 cubed?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "unknown operation")
+E       AssertionError: 'syntax error' != 'unknown operation'
+E       - syntax error
+E       + unknown operation
+
+wordy/wordy_test.py:62: AssertionError
+=========================== short test summary info ============================
+FAILED wordy/wordy_test.py::WordyTest::test_just_a_number - ValueError: synta...
+FAILED wordy/wordy_test.py::WordyTest::test_non_math_question - AssertionErro...
+FAILED wordy/wordy_test.py::WordyTest::test_reject_two_numbers_in_a_row - Ass...
+FAILED wordy/wordy_test.py::WordyTest::test_unknown_operation - AssertionErro...
+========================= 4 failed, 21 passed in 0.06s =========================

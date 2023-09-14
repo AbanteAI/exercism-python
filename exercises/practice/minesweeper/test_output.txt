@@ -1,0 +1,138 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 15 items
+
+minesweeper/minesweeper_test.py FF..F.F...F...F                          [100%]
+
+=================================== FAILURES ===================================
+_______________________ MinesweeperTest.test_annotate_9 ________________________
+
+self = <minesweeper_test.MinesweeperTest testMethod=test_annotate_9>
+
+    def test_annotate_9(self):
+>       self.assertEqual(
+            annotate(["     ", "   * ", "     ", "     ", " *   "]),
+            ["  111", "  1*1", "  111", "111  ", "1*1  "],
+        )
+E       AssertionError: Lists differ: ['00111', '001*1', '00111', '11100', '1*100'] != ['  111', '  1*1', '  111', '111  ', '1*1  ']
+E       
+E       First differing element 0:
+E       '00111'
+E       '  111'
+E       
+E       - ['00111', '001*1', '00111', '11100', '1*100']
+E       ?   ^^       ^^       ^^          ^^       ^^
+E       
+E       + ['  111', '  1*1', '  111', '111  ', '1*1  ']
+E       ?   ^^       ^^       ^^          ^^       ^^
+
+minesweeper/minesweeper_test.py:57: AssertionError
+__________________________ MinesweeperTest.test_cross __________________________
+
+self = <minesweeper_test.MinesweeperTest testMethod=test_cross>
+
+    def test_cross(self):
+>       self.assertEqual(
+            annotate(["  *  ", "  *  ", "*****", "  *  ", "  *  "]),
+            [" 2*2 ", "25*52", "*****", "25*52", " 2*2 "],
+        )
+E       AssertionError: Lists differ: ['02*20', '25*52', '*****', '25*52', '02*20'] != [' 2*2 ', '25*52', '*****', '25*52', ' 2*2 ']
+E       
+E       First differing element 0:
+E       '02*20'
+E       ' 2*2 '
+E       
+E       - ['02*20', '25*52', '*****', '25*52', '02*20']
+E       ?   ^   ^                               ^   ^
+E       
+E       + [' 2*2 ', '25*52', '*****', '25*52', ' 2*2 ']
+E       ?   ^   ^                               ^   ^
+
+minesweeper/minesweeper_test.py:44: AssertionError
+_____________ MinesweeperTest.test_horizontal_line_mines_at_edges ______________
+
+self = <minesweeper_test.MinesweeperTest testMethod=test_horizontal_line_mines_at_edges>
+
+    def test_horizontal_line_mines_at_edges(self):
+>       self.assertEqual(annotate(["*   *"]), ["*1 1*"])
+E       AssertionError: Lists differ: ['*101*'] != ['*1 1*']
+E       
+E       First differing element 0:
+E       '*101*'
+E       '*1 1*'
+E       
+E       - ['*101*']
+E       ?     ^
+E       
+E       + ['*1 1*']
+E       ?     ^
+
+minesweeper/minesweeper_test.py:35: AssertionError
+_____________________ MinesweeperTest.test_large_minefield _____________________
+
+self = <minesweeper_test.MinesweeperTest testMethod=test_large_minefield>
+
+    def test_large_minefield(self):
+>       self.assertEqual(
+            annotate([" *  * ", "  *   ", "    * ", "   * *", " *  * ", "      "]),
+            ["1*22*1", "12*322", " 123*2", "112*4*", "1*22*2", "111111"],
+        )
+E       AssertionError: Lists differ: ['1*22*1', '12*322', '0123*2', '112*4*', '1*22*2', '111111'] != ['1*22*1', '12*322', ' 123*2', '112*4*', '1*22*2', '111111']
+E       
+E       First differing element 2:
+E       '0123*2'
+E       ' 123*2'
+E       
+E       - ['1*22*1', '12*322', '0123*2', '112*4*', '1*22*2', '111111']
+E       ?                       ^
+E       
+E       + ['1*22*1', '12*322', ' 123*2', '112*4*', '1*22*2', '111111']
+E       ?                       ^
+
+minesweeper/minesweeper_test.py:50: AssertionError
+________________________ MinesweeperTest.test_no_mines _________________________
+
+self = <minesweeper_test.MinesweeperTest testMethod=test_no_mines>
+
+    def test_no_mines(self):
+>       self.assertEqual(annotate(["   ", "   ", "   "]), ["   ", "   ", "   "])
+E       AssertionError: Lists differ: ['000', '000', '000'] != ['   ', '   ', '   ']
+E       
+E       First differing element 0:
+E       '000'
+E       '   '
+E       
+E       - ['000', '000', '000']
+E       + ['   ', '   ', '   ']
+
+minesweeper/minesweeper_test.py:20: AssertionError
+______________ MinesweeperTest.test_vertical_line_mines_at_edges _______________
+
+self = <minesweeper_test.MinesweeperTest testMethod=test_vertical_line_mines_at_edges>
+
+    def test_vertical_line_mines_at_edges(self):
+>       self.assertEqual(annotate(["*", " ", " ", " ", "*"]), ["*", "1", " ", "1", "*"])
+E       AssertionError: Lists differ: ['*', '1', '0', '1', '*'] != ['*', '1', ' ', '1', '*']
+E       
+E       First differing element 2:
+E       '0'
+E       ' '
+E       
+E       - ['*', '1', '0', '1', '*']
+E       ?             ^
+E       
+E       + ['*', '1', ' ', '1', '*']
+E       ?             ^
+
+minesweeper/minesweeper_test.py:41: AssertionError
+=========================== short test summary info ============================
+FAILED minesweeper/minesweeper_test.py::MinesweeperTest::test_annotate_9 - As...
+FAILED minesweeper/minesweeper_test.py::MinesweeperTest::test_cross - Asserti...
+FAILED minesweeper/minesweeper_test.py::MinesweeperTest::test_horizontal_line_mines_at_edges
+FAILED minesweeper/minesweeper_test.py::MinesweeperTest::test_large_minefield
+FAILED minesweeper/minesweeper_test.py::MinesweeperTest::test_no_mines - Asse...
+FAILED minesweeper/minesweeper_test.py::MinesweeperTest::test_vertical_line_mines_at_edges
+========================= 6 failed, 9 passed in 0.05s ==========================

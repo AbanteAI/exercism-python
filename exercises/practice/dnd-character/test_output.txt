@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 19 items
+
+dnd-character/dnd_character_test.py .................F.                  [100%]
+
+=================================== FAILURES ===================================
+_____________ DndCharacterTest.test_random_ability_is_within_range _____________
+
+self = <dnd_character_test.DndCharacterTest testMethod=test_random_ability_is_within_range>
+
+    def test_random_ability_is_within_range(self):
+>       score = Character().ability()
+E       AttributeError: 'Character' object has no attribute 'ability'
+
+dnd-character/dnd_character_test.py:63: AttributeError
+=========================== short test summary info ============================
+FAILED dnd-character/dnd_character_test.py::DndCharacterTest::test_random_ability_is_within_range
+========================= 1 failed, 18 passed in 0.04s =========================

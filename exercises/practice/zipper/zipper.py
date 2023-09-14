@@ -1,28 +1,35 @@
 class Zipper:
+    def __init__(self, node, parent=None):
+        self.node = node
+        self.parent = parent
+
     @staticmethod
     def from_tree(tree):
-        pass
+        return Zipper(tree) if tree else None
 
     def value(self):
-        pass
+        return self.node["value"]
 
-    def set_value(self):
-        pass
+    def set_value(self, value):
+        self.node["value"] = value
+        return self
 
     def left(self):
-        pass
+        return Zipper(self.node["left"], self) if self.node["left"] else None
 
-    def set_left(self):
-        pass
+    def set_left(self, left_node):
+        self.node["left"] = left_node
+        return self
 
     def right(self):
-        pass
+        return Zipper(self.node["right"], self) if self.node["right"] else None
 
-    def set_right(self):
-        pass
+    def set_right(self, right_node):
+        self.node["right"] = right_node
+        return self
 
     def up(self):
-        pass
+        return self.parent
 
     def to_tree(self):
-        pass
+        return self.node

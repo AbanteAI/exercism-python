@@ -1,0 +1,127 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 20 items
+
+simple-linked-list/simple_linked_list_test.py F.F...FF.F.F.FFFF...       [100%]
+
+=================================== FAILURES ===================================
+____________ SimpleLinkedListTest.test_can_pop_from_non_empty_list _____________
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_can_pop_from_non_empty_list>
+
+    def test_can_pop_from_non_empty_list(self):
+        sut = LinkedList([3, 4, 5])
+>       self.assertEqual(sut.pop(), 5)
+E       AssertionError: 3 != 5
+
+simple-linked-list/simple_linked_list_test.py:49: AssertionError
+_________ SimpleLinkedListTest.test_empty_linked_list_to_list_is_empty _________
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_empty_linked_list_to_list_is_empty>
+
+    def test_empty_linked_list_to_list_is_empty(self):
+        sut = LinkedList()
+>       self.assertEqual(list(sut), [])
+E       TypeError: 'LinkedList' object is not iterable
+
+simple-linked-list/simple_linked_list_test.py:94: TypeError
+_ SimpleLinkedListTest.test_non_empty_linked_list_to_list_is_list_with_all_elements _
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_non_empty_linked_list_to_list_is_list_with_all_elements>
+
+    def test_non_empty_linked_list_to_list_is_list_with_all_elements(self):
+        sut = LinkedList([1, 2, 3])
+>       self.assertEqual(list(sut), [3, 2, 1])
+E       TypeError: 'LinkedList' object is not iterable
+
+simple-linked-list/simple_linked_list_test.py:102: TypeError
+__________ SimpleLinkedListTest.test_non_empty_list_has_correct_head ___________
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_non_empty_list_has_correct_head>
+
+    def test_non_empty_list_has_correct_head(self):
+        sut = LinkedList([1, 2])
+>       self.assertEqual(sut.head().value(), 2)
+E       AssertionError: 1 != 2
+
+simple-linked-list/simple_linked_list_test.py:34: AssertionError
+______________ SimpleLinkedListTest.test_non_empty_list_traverse _______________
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_non_empty_list_traverse>
+
+    def test_non_empty_list_traverse(self):
+        sut = LinkedList(range(10))
+        current = sut.head()
+        for i in range(10):
+>           self.assertEqual(current.value(), 9 - i)
+E           AssertionError: 0 != 9
+
+simple-linked-list/simple_linked_list_test.py:88: AssertionError
+____________________ SimpleLinkedListTest.test_push_and_pop ____________________
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_push_and_pop>
+
+    def test_push_and_pop(self):
+        sut = LinkedList([1, 2])
+        sut.push(3)
+        self.assertEqual(len(sut), 3)
+        self.assertEqual(sut.pop(), 3)
+>       self.assertEqual(sut.pop(), 2)
+E       AssertionError: 1 != 2
+
+simple-linked-list/simple_linked_list_test.py:73: AssertionError
+_______________ SimpleLinkedListTest.test_reverse_non_empty_list _______________
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_reverse_non_empty_list>
+
+    def test_reverse_non_empty_list(self):
+        sut = LinkedList([1, 2, 3])
+>       self.assertEqual(list(sut.reversed()), [1, 2, 3])
+E       TypeError: 'LinkedList' object is not iterable
+
+simple-linked-list/simple_linked_list_test.py:114: TypeError
+_________ SimpleLinkedListTest.test_reversed_empty_list_is_empty_list __________
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_reversed_empty_list_is_empty_list>
+
+    def test_reversed_empty_list_is_empty_list(self):
+        sut = LinkedList([])
+>       self.assertEqual(list(sut.reversed()), [])
+E       TypeError: 'LinkedList' object is not iterable
+
+simple-linked-list/simple_linked_list_test.py:106: TypeError
+________ SimpleLinkedListTest.test_reversed_singleton_list_is_same_list ________
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_reversed_singleton_list_is_same_list>
+
+    def test_reversed_singleton_list_is_same_list(self):
+        sut = LinkedList([1])
+>       self.assertEqual(list(sut.reversed()), [1])
+E       TypeError: 'LinkedList' object is not iterable
+
+simple-linked-list/simple_linked_list_test.py:110: TypeError
+_ SimpleLinkedListTest.test_singleton_linked_list_to_list_list_with_singular_element _
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_singleton_linked_list_to_list_list_with_singular_element>
+
+    def test_singleton_linked_list_to_list_list_with_singular_element(self):
+        sut = LinkedList([1])
+>       self.assertEqual(list(sut), [1])
+E       TypeError: 'LinkedList' object is not iterable
+
+simple-linked-list/simple_linked_list_test.py:98: TypeError
+=========================== short test summary info ============================
+FAILED simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_can_pop_from_non_empty_list
+FAILED simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_empty_linked_list_to_list_is_empty
+FAILED simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_non_empty_linked_list_to_list_is_list_with_all_elements
+FAILED simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_non_empty_list_has_correct_head
+FAILED simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_non_empty_list_traverse
+FAILED simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_push_and_pop
+FAILED simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_reverse_non_empty_list
+FAILED simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_reversed_empty_list_is_empty_list
+FAILED simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_reversed_singleton_list_is_same_list
+FAILED simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_singleton_linked_list_to_list_list_with_singular_element
+======================== 10 failed, 10 passed in 0.07s =========================

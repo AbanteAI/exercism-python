@@ -1,0 +1,355 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 15 items
+
+twelve-days/twelve_days_test.py FFF.FF...FFFFFF                          [100%]
+
+=================================== FAILURES ===================================
+_____________ TwelveDaysTest.test_eighth_day_eight_maids_a_milking _____________
+
+self = <twelve_days_test.TwelveDaysTest testMethod=test_eighth_day_eight_maids_a_milking>
+
+    def test_eighth_day_eight_maids_a_milking(self):
+        expected = [
+            "On the eighth day of Christmas my true love gave to me: "
+            "eight Maids-a-Milking, "
+            "seven Swans-a-Swimming, "
+            "six Geese-a-Laying, "
+            "five Gold Rings, "
+            "four Calling Birds, "
+            "three French Hens, "
+            "two Turtle Doves, "
+            "and a Partridge in a Pear Tree."
+        ]
+>       self.assertEqual(recite(8, 8), expected)
+E       AssertionError: Lists differ: ['On [48 chars] me: and eight Maids-a-Milking, seven Swans-a-[128 chars]ee.'] != ['On [48 chars] me: eight Maids-a-Milking, seven Swans-a-Swim[128 chars]ee.']
+E       
+E       First differing element 0:
+E       'On t[47 chars] me: and eight Maids-a-Milking, seven Swans-a-[127 chars]ree.'
+E       'On t[47 chars] me: eight Maids-a-Milking, seven Swans-a-Swim[127 chars]ree.'
+E       
+E       Diff is 665 characters long. Set self.maxDiff to None to see it.
+
+twelve-days/twelve_days_test.py:99: AssertionError
+____________ TwelveDaysTest.test_eleventh_day_eleven_pipers_piping _____________
+
+self = <twelve_days_test.TwelveDaysTest testMethod=test_eleventh_day_eleven_pipers_piping>
+
+    def test_eleventh_day_eleven_pipers_piping(self):
+        expected = [
+            "On the eleventh day of Christmas my true love gave to me: "
+            "eleven Pipers Piping, "
+            "ten Lords-a-Leaping, "
+            "nine Ladies Dancing, "
+            "eight Maids-a-Milking, "
+            "seven Swans-a-Swimming, "
+            "six Geese-a-Laying, "
+            "five Gold Rings, "
+            "four Calling Birds, "
+            "three French Hens, "
+            "two Turtle Doves, "
+            "and a Partridge in a Pear Tree."
+        ]
+>       self.assertEqual(recite(11, 11), expected)
+E       AssertionError: Lists differ: ['On [50 chars] me: and eleven Pipers Piping, ten Lords-a-Lea[192 chars]ee.'] != ['On [50 chars] me: eleven Pipers Piping, ten Lords-a-Leaping[192 chars]ee.']
+E       
+E       First differing element 0:
+E       'On t[49 chars] me: and eleven Pipers Piping, ten Lords-a-Lea[191 chars]ree.'
+E       'On t[49 chars] me: eleven Pipers Piping, ten Lords-a-Leaping[191 chars]ree.'
+E       
+E       - ['On the eleventh day of Christmas my true love gave to me: and eleven Pipers '
+E       ?                                                            ----
+E       
+E       + ['On the eleventh day of Christmas my true love gave to me: eleven Pipers '
+E          'Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, '
+E          'seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling '
+E       -  'Birds, three French Hens, two Turtle Doves, a Partridge in a Pear Tree.']
+E       +  'Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.']
+E       ?                                                ++++
+
+twelve-days/twelve_days_test.py:147: AssertionError
+________________ TwelveDaysTest.test_fifth_day_five_gold_rings _________________
+
+self = <twelve_days_test.TwelveDaysTest testMethod=test_fifth_day_five_gold_rings>
+
+    def test_fifth_day_five_gold_rings(self):
+        expected = [
+            "On the fifth day of Christmas my true love gave to me: "
+            "five Gold Rings, "
+            "four Calling Birds, "
+            "three French Hens, "
+            "two Turtle Doves, "
+            "and a Partridge in a Pear Tree."
+        ]
+>       self.assertEqual(recite(5, 5), expected)
+E       AssertionError: Lists differ: ['On [47 chars] me: and five Gold Rings, four Calling Birds, [61 chars]ee.'] != ['On [47 chars] me: five Gold Rings, four Calling Birds, thre[61 chars]ee.']
+E       
+E       First differing element 0:
+E       'On t[46 chars] me: and five Gold Rings, four Calling Birds, [60 chars]ree.'
+E       'On t[46 chars] me: five Gold Rings, four Calling Birds, thre[60 chars]ree.'
+E       
+E       - ['On the fifth day of Christmas my true love gave to me: and five Gold Rings, '
+E       ?                                                         ----
+E       
+E       + ['On the fifth day of Christmas my true love gave to me: five Gold Rings, four '
+E       ?                                                                           +++++
+E       
+E       -  'four Calling Birds, three French Hens, two Turtle Doves, a Partridge in a '
+E       ?   -----
+E       
+E       +  'Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a '
+E       ?                                                        ++++
+E       
+E          'Pear Tree.']
+
+twelve-days/twelve_days_test.py:60: AssertionError
+______________ TwelveDaysTest.test_fourth_day_four_calling_birds _______________
+
+self = <twelve_days_test.TwelveDaysTest testMethod=test_fourth_day_four_calling_birds>
+
+    def test_fourth_day_four_calling_birds(self):
+        expected = [
+            "On the fourth day of Christmas my true love gave to me: "
+            "four Calling Birds, "
+            "three French Hens, "
+            "two Turtle Doves, "
+            "and a Partridge in a Pear Tree."
+        ]
+>       self.assertEqual(recite(4, 4), expected)
+E       AssertionError: Lists differ: ['On [48 chars] me: and four Calling Birds, three French Hens[44 chars]ee.'] != ['On [48 chars] me: four Calling Birds, three French Hens, tw[44 chars]ee.']
+E       
+E       First differing element 0:
+E       'On t[47 chars] me: and four Calling Birds, three French Hens[43 chars]ree.'
+E       'On t[47 chars] me: four Calling Birds, three French Hens, tw[43 chars]ree.'
+E       
+E       - ['On the fourth day of Christmas my true love gave to me: and four Calling '
+E       ?                                                          ----
+E       
+E       + ['On the fourth day of Christmas my true love gave to me: four Calling Birds, '
+E       ?                                                                        +++++++
+E       
+E       -  'Birds, three French Hens, two Turtle Doves, a Partridge in a Pear Tree.']
+E       ?   -------
+E       
+E       +  'three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.']
+E       ?                                         ++++
+
+twelve-days/twelve_days_test.py:49: AssertionError
+______________ TwelveDaysTest.test_ninth_day_nine_ladies_dancing _______________
+
+self = <twelve_days_test.TwelveDaysTest testMethod=test_ninth_day_nine_ladies_dancing>
+
+    def test_ninth_day_nine_ladies_dancing(self):
+        expected = [
+            "On the ninth day of Christmas my true love gave to me: "
+            "nine Ladies Dancing, "
+            "eight Maids-a-Milking, "
+            "seven Swans-a-Swimming, "
+            "six Geese-a-Laying, "
+            "five Gold Rings, "
+            "four Calling Birds, "
+            "three French Hens, "
+            "two Turtle Doves, "
+            "and a Partridge in a Pear Tree."
+        ]
+>       self.assertEqual(recite(9, 9), expected)
+E       AssertionError: Lists differ: ['On [47 chars] me: and nine Ladies Dancing, eight Maids-a-Mi[149 chars]ee.'] != ['On [47 chars] me: nine Ladies Dancing, eight Maids-a-Milkin[149 chars]ee.']
+E       
+E       First differing element 0:
+E       'On t[46 chars] me: and nine Ladies Dancing, eight Maids-a-Mi[148 chars]ree.'
+E       'On t[46 chars] me: nine Ladies Dancing, eight Maids-a-Milkin[148 chars]ree.'
+E       
+E       Diff is 849 characters long. Set self.maxDiff to None to see it.
+
+twelve-days/twelve_days_test.py:114: AssertionError
+_______________ TwelveDaysTest.test_second_day_two_turtle_doves ________________
+
+self = <twelve_days_test.TwelveDaysTest testMethod=test_second_day_two_turtle_doves>
+
+    def test_second_day_two_turtle_doves(self):
+        expected = [
+            "On the second day of Christmas my true love gave to me: "
+            "two Turtle Doves, "
+            "and a Partridge in a Pear Tree."
+        ]
+>       self.assertEqual(recite(2, 2), expected)
+E       AssertionError: Lists differ: ['On [41 chars]gave to me: and two Turtle Doves, a Partridge in a Pear Tree.'] != ['On [41 chars]gave to me: two Turtle Doves, and a Partridge in a Pear Tree.']
+E       
+E       First differing element 0:
+E       'On t[39 chars] gave to me: and two Turtle Doves, a Partridge in a Pear Tree.'
+E       'On t[39 chars] gave to me: two Turtle Doves, and a Partridge in a Pear Tree.'
+E       
+E       - ['On the second day of Christmas my true love gave to me: and two Turtle '
+E       ?                                                           ----
+E       
+E       + ['On the second day of Christmas my true love gave to me: two Turtle Doves, '
+E       ?                                                                      +++++++
+E       
+E       -  'Doves, a Partridge in a Pear Tree.']
+E       ?   -------
+E       
+E       +  'and a Partridge in a Pear Tree.']
+E       ?    ++++
+
+twelve-days/twelve_days_test.py:30: AssertionError
+____________ TwelveDaysTest.test_seventh_day_seven_swans_a_swimming ____________
+
+self = <twelve_days_test.TwelveDaysTest testMethod=test_seventh_day_seven_swans_a_swimming>
+
+    def test_seventh_day_seven_swans_a_swimming(self):
+        expected = [
+            "On the seventh day of Christmas my true love gave to me: "
+            "seven Swans-a-Swimming, "
+            "six Geese-a-Laying, "
+            "five Gold Rings, "
+            "four Calling Birds, "
+            "three French Hens, "
+            "two Turtle Doves, "
+            "and a Partridge in a Pear Tree."
+        ]
+>       self.assertEqual(recite(7, 7), expected)
+E       AssertionError: Lists differ: ['On [49 chars] me: and seven Swans-a-Swimming, six Geese-a-L[105 chars]ee.'] != ['On [49 chars] me: seven Swans-a-Swimming, six Geese-a-Layin[105 chars]ee.']
+E       
+E       First differing element 0:
+E       'On t[48 chars] me: and seven Swans-a-Swimming, six Geese-a-L[104 chars]ree.'
+E       'On t[48 chars] me: seven Swans-a-Swimming, six Geese-a-Layin[104 chars]ree.'
+E       
+E       - ['On the seventh day of Christmas my true love gave to me: and seven '
+E       ?                                                           ----
+E       
+E       + ['On the seventh day of Christmas my true love gave to me: seven '
+E          'Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, '
+E       -  'three French Hens, two Turtle Doves, a Partridge in a Pear Tree.']
+E       +  'three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.']
+E       ?                                         ++++
+
+twelve-days/twelve_days_test.py:85: AssertionError
+_______________ TwelveDaysTest.test_sixth_day_six_geese_a_laying _______________
+
+self = <twelve_days_test.TwelveDaysTest testMethod=test_sixth_day_six_geese_a_laying>
+
+    def test_sixth_day_six_geese_a_laying(self):
+        expected = [
+            "On the sixth day of Christmas my true love gave to me: "
+            "six Geese-a-Laying, "
+            "five Gold Rings, "
+            "four Calling Birds, "
+            "three French Hens, "
+            "two Turtle Doves, "
+            "and a Partridge in a Pear Tree."
+        ]
+>       self.assertEqual(recite(6, 6), expected)
+E       AssertionError: Lists differ: ['On [47 chars] me: and six Geese-a-Laying, five Gold Rings, [81 chars]ee.'] != ['On [47 chars] me: six Geese-a-Laying, five Gold Rings, four[81 chars]ee.']
+E       
+E       First differing element 0:
+E       'On t[46 chars] me: and six Geese-a-Laying, five Gold Rings, [80 chars]ree.'
+E       'On t[46 chars] me: six Geese-a-Laying, five Gold Rings, four[80 chars]ree.'
+E       
+E       Diff is 677 characters long. Set self.maxDiff to None to see it.
+
+twelve-days/twelve_days_test.py:72: AssertionError
+______________ TwelveDaysTest.test_tenth_day_ten_lords_a_leaping _______________
+
+self = <twelve_days_test.TwelveDaysTest testMethod=test_tenth_day_ten_lords_a_leaping>
+
+    def test_tenth_day_ten_lords_a_leaping(self):
+        expected = [
+            "On the tenth day of Christmas my true love gave to me: "
+            "ten Lords-a-Leaping, "
+            "nine Ladies Dancing, "
+            "eight Maids-a-Milking, "
+            "seven Swans-a-Swimming, "
+            "six Geese-a-Laying, "
+            "five Gold Rings, "
+            "four Calling Birds, "
+            "three French Hens, "
+            "two Turtle Doves, "
+            "and a Partridge in a Pear Tree."
+        ]
+>       self.assertEqual(recite(10, 10), expected)
+E       AssertionError: Lists differ: ['On [47 chars] me: and ten Lords-a-Leaping, nine Ladies Danc[170 chars]ee.'] != ['On [47 chars] me: ten Lords-a-Leaping, nine Ladies Dancing,[170 chars]ee.']
+E       
+E       First differing element 0:
+E       'On t[46 chars] me: and ten Lords-a-Leaping, nine Ladies Danc[169 chars]ree.'
+E       'On t[46 chars] me: ten Lords-a-Leaping, nine Ladies Dancing,[169 chars]ree.'
+E       
+E       Diff is 789 characters long. Set self.maxDiff to None to see it.
+
+twelve-days/twelve_days_test.py:130: AssertionError
+_______________ TwelveDaysTest.test_third_day_three_french_hens ________________
+
+self = <twelve_days_test.TwelveDaysTest testMethod=test_third_day_three_french_hens>
+
+    def test_third_day_three_french_hens(self):
+        expected = [
+            "On the third day of Christmas my true love gave to me: "
+            "three French Hens, "
+            "two Turtle Doves, "
+            "and a Partridge in a Pear Tree."
+        ]
+>       self.assertEqual(recite(3, 3), expected)
+E       AssertionError: Lists differ: ['On [47 chars] me: and three French Hens, two Turtle Doves, [24 chars]ee.'] != ['On [47 chars] me: three French Hens, two Turtle Doves, and [24 chars]ee.']
+E       
+E       First differing element 0:
+E       'On t[46 chars] me: and three French Hens, two Turtle Doves, [23 chars]ree.'
+E       'On t[46 chars] me: three French Hens, two Turtle Doves, and [23 chars]ree.'
+E       
+E       - ['On the third day of Christmas my true love gave to me: and three French '
+E       ?                                                         ----
+E       
+E       + ['On the third day of Christmas my true love gave to me: three French Hens, '
+E       ?                                                                       ++++++
+E       
+E       -  'Hens, two Turtle Doves, a Partridge in a Pear Tree.']
+E       ?   ------
+E       
+E       +  'two Turtle Doves, and a Partridge in a Pear Tree.']
+E       ?                      ++++
+
+twelve-days/twelve_days_test.py:39: AssertionError
+___________ TwelveDaysTest.test_twelfth_day_twelve_drummers_drumming ___________
+
+self = <twelve_days_test.TwelveDaysTest testMethod=test_twelfth_day_twelve_drummers_drumming>
+
+    def test_twelfth_day_twelve_drummers_drumming(self):
+        expected = [
+            "On the twelfth day of Christmas my true love gave to me: "
+            "twelve Drummers Drumming, "
+            "eleven Pipers Piping, "
+            "ten Lords-a-Leaping, "
+            "nine Ladies Dancing, "
+            "eight Maids-a-Milking, "
+            "seven Swans-a-Swimming, "
+            "six Geese-a-Laying, "
+            "five Gold Rings, "
+            "four Calling Birds, "
+            "three French Hens, "
+            "two Turtle Doves, "
+            "and a Partridge in a Pear Tree."
+        ]
+>       self.assertEqual(recite(12, 12), expected)
+E       AssertionError: Lists differ: ['On [49 chars] me: and twelve Drummers Drumming, eleven Pipe[218 chars]ee.'] != ['On [49 chars] me: twelve Drummers Drumming, eleven Pipers P[218 chars]ee.']
+E       
+E       First differing element 0:
+E       'On t[48 chars] me: and twelve Drummers Drumming, eleven Pipe[217 chars]ree.'
+E       'On t[48 chars] me: twelve Drummers Drumming, eleven Pipers P[217 chars]ree.'
+E       
+E       Diff is 774 characters long. Set self.maxDiff to None to see it.
+
+twelve-days/twelve_days_test.py:165: AssertionError
+=========================== short test summary info ============================
+FAILED twelve-days/twelve_days_test.py::TwelveDaysTest::test_eighth_day_eight_maids_a_milking
+FAILED twelve-days/twelve_days_test.py::TwelveDaysTest::test_eleventh_day_eleven_pipers_piping
+FAILED twelve-days/twelve_days_test.py::TwelveDaysTest::test_fifth_day_five_gold_rings
+FAILED twelve-days/twelve_days_test.py::TwelveDaysTest::test_fourth_day_four_calling_birds
+FAILED twelve-days/twelve_days_test.py::TwelveDaysTest::test_ninth_day_nine_ladies_dancing
+FAILED twelve-days/twelve_days_test.py::TwelveDaysTest::test_second_day_two_turtle_doves
+FAILED twelve-days/twelve_days_test.py::TwelveDaysTest::test_seventh_day_seven_swans_a_swimming
+FAILED twelve-days/twelve_days_test.py::TwelveDaysTest::test_sixth_day_six_geese_a_laying
+FAILED twelve-days/twelve_days_test.py::TwelveDaysTest::test_tenth_day_ten_lords_a_leaping
+FAILED twelve-days/twelve_days_test.py::TwelveDaysTest::test_third_day_three_french_hens
+FAILED twelve-days/twelve_days_test.py::TwelveDaysTest::test_twelfth_day_twelve_drummers_drumming
+========================= 11 failed, 4 passed in 0.08s =========================

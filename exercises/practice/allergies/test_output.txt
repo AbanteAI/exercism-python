@@ -1,0 +1,139 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 50 items
+
+allergies/allergies_test.py .............................F.FFFFFFFFF.... [ 88%]
+......                                                                   [100%]
+
+=================================== FAILURES ===================================
+_____________________ AllergiesTest.test_eggs_and_peanuts ______________________
+
+self = <allergies_test.AllergiesTest testMethod=test_eggs_and_peanuts>
+
+    def test_eggs_and_peanuts(self):
+>       self.assertCountEqual(Allergies(3).lst, ["eggs", "peanuts"])
+E       TypeError: 'property' object is not callable
+
+allergies/allergies_test.py:146: TypeError
+________________________ AllergiesTest.test_everything _________________________
+
+self = <allergies_test.AllergiesTest testMethod=test_everything>
+
+    def test_everything(self):
+        self.assertCountEqual(
+>           Allergies(255).lst,
+            [
+                "eggs",
+                "peanuts",
+                "shellfish",
+                "strawberries",
+                "tomatoes",
+                "chocolate",
+                "pollen",
+                "cats",
+            ],
+        )
+E       TypeError: 'property' object is not callable
+
+allergies/allergies_test.py:159: TypeError
+_________________________ AllergiesTest.test_just_eggs _________________________
+
+self = <allergies_test.AllergiesTest testMethod=test_just_eggs>
+
+    def test_just_eggs(self):
+>       self.assertEqual(Allergies(1).lst, ["eggs"])
+E       TypeError: 'property' object is not callable
+
+allergies/allergies_test.py:137: TypeError
+_______________________ AllergiesTest.test_just_peanuts ________________________
+
+self = <allergies_test.AllergiesTest testMethod=test_just_peanuts>
+
+    def test_just_peanuts(self):
+>       self.assertEqual(Allergies(2).lst, ["peanuts"])
+E       TypeError: 'property' object is not callable
+
+allergies/allergies_test.py:140: TypeError
+_____________________ AllergiesTest.test_just_strawberries _____________________
+
+self = <allergies_test.AllergiesTest testMethod=test_just_strawberries>
+
+    def test_just_strawberries(self):
+>       self.assertEqual(Allergies(8).lst, ["strawberries"])
+E       TypeError: 'property' object is not callable
+
+allergies/allergies_test.py:143: TypeError
+_______________________ AllergiesTest.test_lots_of_stuff _______________________
+
+self = <allergies_test.AllergiesTest testMethod=test_lots_of_stuff>
+
+    def test_lots_of_stuff(self):
+        self.assertCountEqual(
+>           Allergies(248).lst,
+            ["strawberries", "tomatoes", "chocolate", "pollen", "cats"],
+        )
+E       TypeError: 'property' object is not callable
+
+allergies/allergies_test.py:153: TypeError
+______________ AllergiesTest.test_more_than_eggs_but_not_peanuts _______________
+
+self = <allergies_test.AllergiesTest testMethod=test_more_than_eggs_but_not_peanuts>
+
+    def test_more_than_eggs_but_not_peanuts(self):
+>       self.assertCountEqual(Allergies(5).lst, ["eggs", "shellfish"])
+E       TypeError: 'property' object is not callable
+
+allergies/allergies_test.py:149: TypeError
+__________________ AllergiesTest.test_no_allergen_score_parts __________________
+
+self = <allergies_test.AllergiesTest testMethod=test_no_allergen_score_parts>
+
+    def test_no_allergen_score_parts(self):
+        self.assertCountEqual(
+>           Allergies(509).lst,
+            [
+                "eggs",
+                "shellfish",
+                "strawberries",
+                "tomatoes",
+                "chocolate",
+                "pollen",
+                "cats",
+            ],
+        )
+E       TypeError: 'property' object is not callable
+
+allergies/allergies_test.py:174: TypeError
+____ AllergiesTest.test_no_allergen_score_parts_without_highest_valid_score ____
+
+self = <allergies_test.AllergiesTest testMethod=test_no_allergen_score_parts_without_highest_valid_score>
+
+    def test_no_allergen_score_parts_without_highest_valid_score(self):
+>       self.assertEqual(Allergies(257).lst, ["eggs"])
+E       TypeError: 'property' object is not callable
+
+allergies/allergies_test.py:187: TypeError
+_______________________ AllergiesTest.test_no_allergies ________________________
+
+self = <allergies_test.AllergiesTest testMethod=test_no_allergies>
+
+    def test_no_allergies(self):
+>       self.assertEqual(Allergies(0).lst, [])
+E       TypeError: 'property' object is not callable
+
+allergies/allergies_test.py:134: TypeError
+=========================== short test summary info ============================
+FAILED allergies/allergies_test.py::AllergiesTest::test_eggs_and_peanuts - Ty...
+FAILED allergies/allergies_test.py::AllergiesTest::test_everything - TypeErro...
+FAILED allergies/allergies_test.py::AllergiesTest::test_just_eggs - TypeError...
+FAILED allergies/allergies_test.py::AllergiesTest::test_just_peanuts - TypeEr...
+FAILED allergies/allergies_test.py::AllergiesTest::test_just_strawberries - T...
+FAILED allergies/allergies_test.py::AllergiesTest::test_lots_of_stuff - TypeE...
+FAILED allergies/allergies_test.py::AllergiesTest::test_more_than_eggs_but_not_peanuts
+FAILED allergies/allergies_test.py::AllergiesTest::test_no_allergen_score_parts
+FAILED allergies/allergies_test.py::AllergiesTest::test_no_allergen_score_parts_without_highest_valid_score
+FAILED allergies/allergies_test.py::AllergiesTest::test_no_allergies - TypeEr...
+======================== 10 failed, 40 passed in 0.28s =========================

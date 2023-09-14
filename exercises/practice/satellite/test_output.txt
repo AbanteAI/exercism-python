@@ -1,0 +1,25 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 6 items
+
+satellite/satellite_test.py ...F..                                       [100%]
+
+=================================== FAILURES ===================================
+___________ SatelliteTest.test_reject_traversals_with_repeated_items ___________
+
+self = <satellite_test.SatelliteTest testMethod=test_reject_traversals_with_repeated_items>
+
+    def test_reject_traversals_with_repeated_items(self):
+        preorder = ["a", "b", "a"]
+        inorder = ["b", "a", "a"]
+    
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+satellite/satellite_test.py:66: AssertionError
+=========================== short test summary info ============================
+FAILED satellite/satellite_test.py::SatelliteTest::test_reject_traversals_with_repeated_items
+========================= 1 failed, 5 passed in 0.03s ==========================

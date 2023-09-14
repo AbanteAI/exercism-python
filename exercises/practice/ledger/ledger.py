@@ -297,3 +297,23 @@ def format_entries(currency, locale, entries):
                 table += change_str
         return table
 
+
+def main():
+    currency = input("Enter the currency (USD or EUR): ")
+    locale = input("Enter the locale (en_US or nl_NL): ")
+
+    entries = []
+    while True:
+        date_input = input("Enter a date (YYYY-MM-DD) or type 'done' to finish: ")
+        if date_input.lower() == 'done':
+            break
+        description = input("Enter the description: ")
+        change = int(input("Enter the change (in cents): "))
+        entry = create_entry(date_input, description, change)
+        entries.append(entry)
+
+    formatted_entries = format_entries(currency, locale, entries)
+    print(formatted_entries)
+
+if __name__ == "__main__":
+    main()

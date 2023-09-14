@@ -1,0 +1,460 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 15 items
+
+pov/pov_test.py FFFFFFFFFFFF...                                          [100%]
+
+=================================== FAILURES ===================================
+______________ PovTest.test_can_find_path_from_nodes_other_than_x ______________
+
+self = <pov_test.PovTest testMethod=test_can_find_path_from_nodes_other_than_x>
+
+    def test_can_find_path_from_nodes_other_than_x(self):
+        tree = Tree("parent", [Tree("a"), Tree("x"), Tree("b"), Tree("c")])
+        expected = ["a", "parent", "c"]
+>       self.assertEqual(tree.path_to("a", "c"), expected)
+
+pov/pov_test.py:139: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pov/pov.py:39: in path_to
+    return self._path_to(None, self.path_to(None, from_node), to_node)
+pov/pov.py:38: in path_to
+    return self._path_to(None, [self], to_node)
+pov/pov.py:50: in _path_to
+    path = self._path_to(node, children, to_node)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pov.Tree object at 0x7f302609e590>
+parent = <pov.Tree object at 0x7f302609e590>
+nodes = [<pov.Tree object at 0x7f302609e320>, <pov.Tree object at 0x7f302609e410>, <pov.Tree object at 0x7f302609e2f0>]
+to_node = 'a'
+
+    def _path_to(self, parent, nodes, to_node):
+        if not nodes:
+            return None
+        node = nodes.pop()
+        if node.label == to_node:
+            return [node]
+        children = node.children[:]
+        if parent:
+>           children.remove(parent)
+E           ValueError: list.remove(x): x not in list
+
+pov/pov.py:49: ValueError
+________________ PovTest.test_can_find_path_not_involving_root _________________
+
+self = <pov_test.PovTest testMethod=test_can_find_path_not_involving_root>
+
+    def test_can_find_path_not_involving_root(self):
+        tree = Tree(
+            "grandparent",
+            [Tree("parent", [Tree("x"), Tree("sibling-0"), Tree("sibling-1")])],
+        )
+        expected = ["x", "parent", "sibling-1"]
+>       self.assertEqual(tree.path_to("x", "sibling-1"), expected)
+
+pov/pov_test.py:134: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pov/pov.py:39: in path_to
+    return self._path_to(None, self.path_to(None, from_node), to_node)
+pov/pov.py:38: in path_to
+    return self._path_to(None, [self], to_node)
+pov/pov.py:50: in _path_to
+    path = self._path_to(node, children, to_node)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pov.Tree object at 0x7f3025f0e860>
+parent = <pov.Tree object at 0x7f3025f0e860>, nodes = [], to_node = 'x'
+
+    def _path_to(self, parent, nodes, to_node):
+        if not nodes:
+            return None
+        node = nodes.pop()
+        if node.label == to_node:
+            return [node]
+        children = node.children[:]
+        if parent:
+>           children.remove(parent)
+E           ValueError: list.remove(x): x not in list
+
+pov/pov.py:49: ValueError
+_____________________ PovTest.test_can_find_path_to_cousin _____________________
+
+self = <pov_test.PovTest testMethod=test_can_find_path_to_cousin>
+
+    def test_can_find_path_to_cousin(self):
+        tree = Tree(
+            "grandparent",
+            [
+                Tree(
+                    "parent",
+                    [
+                        Tree("x", [Tree("kid-0"), Tree("kid-1")]),
+                        Tree("sibling-0"),
+                        Tree("sibling-1"),
+                    ],
+                ),
+                Tree("uncle", [Tree("cousin-0"), Tree("cousin-1")]),
+            ],
+        )
+        expected = ["x", "parent", "grandparent", "uncle", "cousin-1"]
+>       self.assertEqual(tree.path_to("x", "cousin-1"), expected)
+
+pov/pov_test.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pov/pov.py:39: in path_to
+    return self._path_to(None, self.path_to(None, from_node), to_node)
+pov/pov.py:38: in path_to
+    return self._path_to(None, [self], to_node)
+pov/pov.py:50: in _path_to
+    path = self._path_to(node, children, to_node)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pov.Tree object at 0x7f3025efac80>
+parent = <pov.Tree object at 0x7f3025efac80>
+nodes = [<pov.Tree object at 0x7f3025efab60>], to_node = 'x'
+
+    def _path_to(self, parent, nodes, to_node):
+        if not nodes:
+            return None
+        node = nodes.pop()
+        if node.label == to_node:
+            return [node]
+        children = node.children[:]
+        if parent:
+>           children.remove(parent)
+E           ValueError: list.remove(x): x not in list
+
+pov/pov.py:49: ValueError
+_____________________ PovTest.test_can_find_path_to_parent _____________________
+
+self = <pov_test.PovTest testMethod=test_can_find_path_to_parent>
+
+    def test_can_find_path_to_parent(self):
+        tree = Tree("parent", [Tree("x"), Tree("sibling")])
+        expected = ["x", "parent"]
+>       self.assertEqual(tree.path_to("x", "parent"), expected)
+
+pov/pov_test.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pov/pov.py:39: in path_to
+    return self._path_to(None, self.path_to(None, from_node), to_node)
+pov/pov.py:38: in path_to
+    return self._path_to(None, [self], to_node)
+pov/pov.py:50: in _path_to
+    path = self._path_to(node, children, to_node)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pov.Tree object at 0x7f302609f010>
+parent = <pov.Tree object at 0x7f302609f010>
+nodes = [<pov.Tree object at 0x7f302609ee90>], to_node = 'x'
+
+    def _path_to(self, parent, nodes, to_node):
+        if not nodes:
+            return None
+        node = nodes.pop()
+        if node.label == to_node:
+            return [node]
+        children = node.children[:]
+        if parent:
+>           children.remove(parent)
+E           ValueError: list.remove(x): x not in list
+
+pov/pov.py:49: ValueError
+____________________ PovTest.test_can_find_path_to_sibling _____________________
+
+self = <pov_test.PovTest testMethod=test_can_find_path_to_sibling>
+
+    def test_can_find_path_to_sibling(self):
+        tree = Tree("parent", [Tree("a"), Tree("x"), Tree("b"), Tree("c")])
+        expected = ["x", "parent", "b"]
+>       self.assertEqual(tree.path_to("x", "b"), expected)
+
+pov/pov_test.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pov/pov.py:39: in path_to
+    return self._path_to(None, self.path_to(None, from_node), to_node)
+pov/pov.py:38: in path_to
+    return self._path_to(None, [self], to_node)
+pov/pov.py:50: in _path_to
+    path = self._path_to(node, children, to_node)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pov.Tree object at 0x7f3025f02170>
+parent = <pov.Tree object at 0x7f3025f02170>
+nodes = [<pov.Tree object at 0x7f3025f016f0>, <pov.Tree object at 0x7f3025f016c0>, <pov.Tree object at 0x7f3025f00ee0>]
+to_node = 'x'
+
+    def _path_to(self, parent, nodes, to_node):
+        if not nodes:
+            return None
+        node = nodes.pop()
+        if node.label == to_node:
+            return [node]
+        children = node.children[:]
+        if parent:
+>           children.remove(parent)
+E           ValueError: list.remove(x): x not in list
+
+pov/pov.py:49: ValueError
+_____________ PovTest.test_can_reroot_a_complex_tree_with_cousins ______________
+
+self = <pov_test.PovTest testMethod=test_can_reroot_a_complex_tree_with_cousins>
+
+    def test_can_reroot_a_complex_tree_with_cousins(self):
+        tree = Tree(
+            "grandparent",
+            [
+                Tree(
+                    "parent",
+                    [
+                        Tree("x", [Tree("kid-0"), Tree("kid-1")]),
+                        Tree("sibling-0"),
+                        Tree("sibling-1"),
+                    ],
+                ),
+                Tree("uncle", [Tree("cousin-0"), Tree("cousin-1")]),
+            ],
+        )
+        expected = Tree(
+            "x",
+            [
+                Tree("kid-1"),
+                Tree("kid-0"),
+                Tree(
+                    "parent",
+                    [
+                        Tree("sibling-0"),
+                        Tree("sibling-1"),
+                        Tree(
+                            "grandparent",
+                            [Tree("uncle", [Tree("cousin-0"), Tree("cousin-1")])],
+                        ),
+                    ],
+                ),
+            ],
+        )
+>       self.assertTreeEquals(tree.from_pov("x"), expected)
+
+pov/pov_test.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pov/pov.py:22: in from_pov
+    path = self.path_to(None, from_node)
+pov/pov.py:38: in path_to
+    return self._path_to(None, [self], to_node)
+pov/pov.py:50: in _path_to
+    path = self._path_to(node, children, to_node)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pov.Tree object at 0x7f302609f940>
+parent = <pov.Tree object at 0x7f302609f940>
+nodes = [<pov.Tree object at 0x7f302609f7f0>], to_node = 'x'
+
+    def _path_to(self, parent, nodes, to_node):
+        if not nodes:
+            return None
+        node = nodes.pop()
+        if node.label == to_node:
+            return [node]
+        children = node.children[:]
+        if parent:
+>           children.remove(parent)
+E           ValueError: list.remove(x): x not in list
+
+pov/pov.py:49: ValueError
+________ PovTest.test_can_reroot_a_tree_with_a_parent_and_many_siblings ________
+
+self = <pov_test.PovTest testMethod=test_can_reroot_a_tree_with_a_parent_and_many_siblings>
+
+    def test_can_reroot_a_tree_with_a_parent_and_many_siblings(self):
+        tree = Tree("parent", [Tree("a"), Tree("x"), Tree("b"), Tree("c")])
+        expected = Tree("x", [Tree("parent", [Tree("a"), Tree("b"), Tree("c")])])
+>       self.assertTreeEquals(tree.from_pov("x"), expected)
+
+pov/pov_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pov/pov.py:22: in from_pov
+    path = self.path_to(None, from_node)
+pov/pov.py:38: in path_to
+    return self._path_to(None, [self], to_node)
+pov/pov.py:50: in _path_to
+    path = self._path_to(node, children, to_node)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pov.Tree object at 0x7f3025f03cd0>
+parent = <pov.Tree object at 0x7f3025f03cd0>
+nodes = [<pov.Tree object at 0x7f3025f01ae0>, <pov.Tree object at 0x7f3025f03df0>, <pov.Tree object at 0x7f3025f036a0>]
+to_node = 'x'
+
+    def _path_to(self, parent, nodes, to_node):
+        if not nodes:
+            return None
+        node = nodes.pop()
+        if node.label == to_node:
+            return [node]
+        children = node.children[:]
+        if parent:
+>           children.remove(parent)
+E           ValueError: list.remove(x): x not in list
+
+pov/pov.py:49: ValueError
+_________ PovTest.test_can_reroot_a_tree_with_a_parent_and_one_sibling _________
+
+self = <pov_test.PovTest testMethod=test_can_reroot_a_tree_with_a_parent_and_one_sibling>
+
+    def test_can_reroot_a_tree_with_a_parent_and_one_sibling(self):
+        tree = Tree("parent", [Tree("x"), Tree("sibling")])
+        expected = Tree("x", [Tree("parent", [Tree("sibling")])])
+>       self.assertTreeEquals(tree.from_pov("x"), expected)
+
+pov/pov_test.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pov/pov.py:22: in from_pov
+    path = self.path_to(None, from_node)
+pov/pov.py:38: in path_to
+    return self._path_to(None, [self], to_node)
+pov/pov.py:50: in _path_to
+    path = self._path_to(node, children, to_node)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pov.Tree object at 0x7f302609dea0>
+parent = <pov.Tree object at 0x7f302609dea0>
+nodes = [<pov.Tree object at 0x7f302609e2f0>], to_node = 'x'
+
+    def _path_to(self, parent, nodes, to_node):
+        if not nodes:
+            return None
+        node = nodes.pop()
+        if node.label == to_node:
+            return [node]
+        children = node.children[:]
+        if parent:
+>           children.remove(parent)
+E           ValueError: list.remove(x): x not in list
+
+pov/pov.py:49: ValueError
+______ PovTest.test_can_reroot_a_tree_with_new_root_deeply_nested_in_tree ______
+
+self = <pov_test.PovTest testMethod=test_can_reroot_a_tree_with_new_root_deeply_nested_in_tree>
+
+    def test_can_reroot_a_tree_with_new_root_deeply_nested_in_tree(self):
+        tree = Tree(
+            "level-0",
+            [Tree("level-1", [Tree("level-2", [Tree("level-3", [Tree("x")])])])],
+        )
+        expected = Tree(
+            "x",
+            [Tree("level-3", [Tree("level-2", [Tree("level-1", [Tree("level-0")])])])],
+        )
+>       self.assertTreeEquals(tree.from_pov("x"), expected)
+
+pov/pov_test.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pov/pov.py:22: in from_pov
+    path = self.path_to(None, from_node)
+pov/pov.py:38: in path_to
+    return self._path_to(None, [self], to_node)
+pov/pov.py:50: in _path_to
+    path = self._path_to(node, children, to_node)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pov.Tree object at 0x7f3025f63400>
+parent = <pov.Tree object at 0x7f3025f63400>, nodes = [], to_node = 'x'
+
+    def _path_to(self, parent, nodes, to_node):
+        if not nodes:
+            return None
+        node = nodes.pop()
+        if node.label == to_node:
+            return [node]
+        children = node.children[:]
+        if parent:
+>           children.remove(parent)
+E           ValueError: list.remove(x): x not in list
+
+pov/pov.py:49: ValueError
+______________ PovTest.test_errors_if_destination_does_not_exist _______________
+
+self = <pov_test.PovTest testMethod=test_errors_if_destination_does_not_exist>
+
+    def test_errors_if_destination_does_not_exist(self):
+        tree = Tree(
+            "parent",
+            [
+                Tree("x", [Tree("kid-0"), Tree("kid-1")]),
+                Tree("sibling-0"),
+                Tree("sibling-1"),
+            ],
+        )
+        with self.assertRaises(ValueError) as err:
+            tree.path_to("x", "nonexistent")
+        self.assertEqual(type(err.exception), ValueError)
+    
+>       self.assertEqual(err.exception.args[0], "No path found")
+E       AssertionError: 'list.remove(x): x not in list' != 'No path found'
+E       - list.remove(x): x not in list
+E       + No path found
+
+pov/pov_test.py:154: AssertionError
+_________________ PovTest.test_errors_if_source_does_not_exist _________________
+
+self = <pov_test.PovTest testMethod=test_errors_if_source_does_not_exist>
+
+    def test_errors_if_source_does_not_exist(self):
+        tree = Tree(
+            "parent",
+            [
+                Tree("x", [Tree("kid-0"), Tree("kid-1")]),
+                Tree("sibling-0"),
+                Tree("sibling-1"),
+            ],
+        )
+        with self.assertRaises(ValueError) as err:
+            tree.path_to("nonexistent", "x")
+        self.assertEqual(type(err.exception), ValueError)
+    
+>       self.assertEqual(err.exception.args[0], "Tree could not be reoriented")
+E       AssertionError: 'list.remove(x): x not in list' != 'Tree could not be reoriented'
+E       - list.remove(x): x not in list
+E       + Tree could not be reoriented
+
+pov/pov_test.py:169: AssertionError
+_________ PovTest.test_errors_if_target_does_not_exist_in_a_large_tree _________
+
+self = <pov_test.PovTest testMethod=test_errors_if_target_does_not_exist_in_a_large_tree>
+
+    def test_errors_if_target_does_not_exist_in_a_large_tree(self):
+        tree = Tree(
+            "parent",
+            [
+                Tree("x", [Tree("kid-0"), Tree("kid-1")]),
+                Tree("sibling-0"),
+                Tree("sibling-1"),
+            ],
+        )
+        with self.assertRaises(ValueError) as err:
+            tree.from_pov("nonexistent")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "Tree could not be reoriented")
+E       AssertionError: 'list.remove(x): x not in list' != 'Tree could not be reoriented'
+E       - list.remove(x): x not in list
+E       + Tree could not be reoriented
+
+pov/pov_test.py:98: AssertionError
+=========================== short test summary info ============================
+FAILED pov/pov_test.py::PovTest::test_can_find_path_from_nodes_other_than_x
+FAILED pov/pov_test.py::PovTest::test_can_find_path_not_involving_root - Valu...
+FAILED pov/pov_test.py::PovTest::test_can_find_path_to_cousin - ValueError: l...
+FAILED pov/pov_test.py::PovTest::test_can_find_path_to_parent - ValueError: l...
+FAILED pov/pov_test.py::PovTest::test_can_find_path_to_sibling - ValueError: ...
+FAILED pov/pov_test.py::PovTest::test_can_reroot_a_complex_tree_with_cousins
+FAILED pov/pov_test.py::PovTest::test_can_reroot_a_tree_with_a_parent_and_many_siblings
+FAILED pov/pov_test.py::PovTest::test_can_reroot_a_tree_with_a_parent_and_one_sibling
+FAILED pov/pov_test.py::PovTest::test_can_reroot_a_tree_with_new_root_deeply_nested_in_tree
+FAILED pov/pov_test.py::PovTest::test_errors_if_destination_does_not_exist - ...
+FAILED pov/pov_test.py::PovTest::test_errors_if_source_does_not_exist - Asser...
+FAILED pov/pov_test.py::PovTest::test_errors_if_target_does_not_exist_in_a_large_tree
+========================= 12 failed, 3 passed in 0.11s =========================

@@ -1,0 +1,66 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 14 items
+
+rectangles/rectangles_test.py F..F.....FF...                             [100%]
+
+=================================== FAILURES ===================================
+__________________ RectanglesTest.test_1x1_square_is_counted ___________________
+
+self = <rectangles_test.RectanglesTest testMethod=test_1x1_square_is_counted>
+
+    def test_1x1_square_is_counted(self):
+>       self.assertEqual(rectangles(["++", "++"]), 1)
+E       AssertionError: 0 != 1
+
+rectangles/rectangles_test.py:38: AssertionError
+_____________ RectanglesTest.test_large_input_with_many_rectangles _____________
+
+self = <rectangles_test.RectanglesTest testMethod=test_large_input_with_many_rectangles>
+
+    def test_large_input_with_many_rectangles(self):
+>       self.assertEqual(
+            rectangles(
+                [
+                    "+---+--+----+",
+                    "|   +--+----+",
+                    "+---+--+    |",
+                    "|   +--+----+",
+                    "+---+--+--+-+",
+                    "+---+--+--+-+",
+                    "+------+  | |",
+                    "          +-+",
+                ]
+            ),
+            60,
+        )
+E       AssertionError: 48 != 60
+
+rectangles/rectangles_test.py:72: AssertionError
+_____________ RectanglesTest.test_rectangle_of_height_1_is_counted _____________
+
+self = <rectangles_test.RectanglesTest testMethod=test_rectangle_of_height_1_is_counted>
+
+    def test_rectangle_of_height_1_is_counted(self):
+>       self.assertEqual(rectangles(["+--+", "+--+"]), 1)
+E       AssertionError: 0 != 1
+
+rectangles/rectangles_test.py:32: AssertionError
+_____________ RectanglesTest.test_rectangle_of_width_1_is_counted ______________
+
+self = <rectangles_test.RectanglesTest testMethod=test_rectangle_of_width_1_is_counted>
+
+    def test_rectangle_of_width_1_is_counted(self):
+>       self.assertEqual(rectangles(["++", "||", "++"]), 1)
+E       AssertionError: 0 != 1
+
+rectangles/rectangles_test.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED rectangles/rectangles_test.py::RectanglesTest::test_1x1_square_is_counted
+FAILED rectangles/rectangles_test.py::RectanglesTest::test_large_input_with_many_rectangles
+FAILED rectangles/rectangles_test.py::RectanglesTest::test_rectangle_of_height_1_is_counted
+FAILED rectangles/rectangles_test.py::RectanglesTest::test_rectangle_of_width_1_is_counted
+========================= 4 failed, 10 passed in 0.04s =========================

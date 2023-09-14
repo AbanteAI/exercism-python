@@ -1,0 +1,34 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 7 items
+
+pythagorean-triplet/pythagorean_triplet_test.py .F....F                  [100%]
+
+=================================== FAILURES ===================================
+__________ PythagoreanTripletTest.test_returns_all_matching_triplets ___________
+
+self = <pythagorean_triplet_test.PythagoreanTripletTest testMethod=test_returns_all_matching_triplets>
+
+    def test_returns_all_matching_triplets(self):
+>       self.assertCountEqual(triplets_with_sum(90), [[9, 40, 41], [15, 36, 39]])
+E       AssertionError: Element counts were not equal:
+E       First has 0, Second has 1:  [9, 40, 41]
+
+pythagorean-triplet/pythagorean_triplet_test.py:26: AssertionError
+_____________ PythagoreanTripletTest.test_triplets_whose_sum_is_12 _____________
+
+self = <pythagorean_triplet_test.PythagoreanTripletTest testMethod=test_triplets_whose_sum_is_12>
+
+    def test_triplets_whose_sum_is_12(self):
+>       self.assertCountEqual(triplets_with_sum(12), [[3, 4, 5]])
+E       AssertionError: Element counts were not equal:
+E       First has 0, Second has 1:  [3, 4, 5]
+
+pythagorean-triplet/pythagorean_triplet_test.py:14: AssertionError
+=========================== short test summary info ============================
+FAILED pythagorean-triplet/pythagorean_triplet_test.py::PythagoreanTripletTest::test_returns_all_matching_triplets
+FAILED pythagorean-triplet/pythagorean_triplet_test.py::PythagoreanTripletTest::test_triplets_whose_sum_is_12
+========================= 2 failed, 5 passed in 13.93s =========================

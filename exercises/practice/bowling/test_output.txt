@@ -1,0 +1,140 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 31 items
+
+bowling/bowling_test.py F........F...FFF......FF...F.FF                  [100%]
+
+=================================== FAILURES ===================================
+___________ BowlingTest.test_a_roll_cannot_score_more_than_10_points ___________
+
+self = <bowling_test.BowlingTest testMethod=test_a_roll_cannot_score_more_than_10_points>
+
+    def test_a_roll_cannot_score_more_than_10_points(self):
+        rolls = []
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+bowling/bowling_test.py:109: AssertionError
+_ BowlingTest.test_bonus_roll_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points _
+
+self = <bowling_test.BowlingTest testMethod=test_bonus_roll_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points>
+
+    def test_bonus_roll_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+bowling/bowling_test.py:123: AssertionError
+___________ BowlingTest.test_cannot_roll_after_bonus_roll_for_spare ____________
+
+self = <bowling_test.BowlingTest testMethod=test_cannot_roll_after_bonus_roll_for_spare>
+
+    def test_cannot_roll_after_bonus_roll_for_spare(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 3, 2]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+bowling/bowling_test.py:202: AssertionError
+__________ BowlingTest.test_cannot_roll_after_bonus_rolls_for_strike ___________
+
+self = <bowling_test.BowlingTest testMethod=test_cannot_roll_after_bonus_rolls_for_strike>
+
+    def test_cannot_roll_after_bonus_rolls_for_strike(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 3, 2]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+bowling/bowling_test.py:208: AssertionError
+_________ BowlingTest.test_cannot_roll_if_game_already_has_ten_frames __________
+
+self = <bowling_test.BowlingTest testMethod=test_cannot_roll_if_game_already_has_ten_frames>
+
+    def test_cannot_roll_if_game_already_has_ten_frames(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+bowling/bowling_test.py:172: AssertionError
+_____________ BowlingTest.test_rolls_cannot_score_negative_points ______________
+
+self = <bowling_test.BowlingTest testMethod=test_rolls_cannot_score_negative_points>
+
+    def test_rolls_cannot_score_negative_points(self):
+        rolls = []
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+bowling/bowling_test.py:103: AssertionError
+_ BowlingTest.test_second_bonus_roll_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points _
+
+self = <bowling_test.BowlingTest testMethod=test_second_bonus_roll_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points>
+
+    def test_second_bonus_roll_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+bowling/bowling_test.py:154: AssertionError
+_ BowlingTest.test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike _
+
+self = <bowling_test.BowlingTest testMethod=test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike>
+
+    def test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 6]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+bowling/bowling_test.py:146: AssertionError
+_ BowlingTest.test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points _
+
+self = <bowling_test.BowlingTest testMethod=test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points>
+
+    def test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 5]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+bowling/bowling_test.py:131: AssertionError
+____ BowlingTest.test_two_rolls_in_a_frame_cannot_score_more_than_10_points ____
+
+self = <bowling_test.BowlingTest testMethod=test_two_rolls_in_a_frame_cannot_score_more_than_10_points>
+
+    def test_two_rolls_in_a_frame_cannot_score_more_than_10_points(self):
+        rolls = [5]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+bowling/bowling_test.py:115: AssertionError
+=========================== short test summary info ============================
+FAILED bowling/bowling_test.py::BowlingTest::test_a_roll_cannot_score_more_than_10_points
+FAILED bowling/bowling_test.py::BowlingTest::test_bonus_roll_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points
+FAILED bowling/bowling_test.py::BowlingTest::test_cannot_roll_after_bonus_roll_for_spare
+FAILED bowling/bowling_test.py::BowlingTest::test_cannot_roll_after_bonus_rolls_for_strike
+FAILED bowling/bowling_test.py::BowlingTest::test_cannot_roll_if_game_already_has_ten_frames
+FAILED bowling/bowling_test.py::BowlingTest::test_rolls_cannot_score_negative_points
+FAILED bowling/bowling_test.py::BowlingTest::test_second_bonus_roll_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points
+FAILED bowling/bowling_test.py::BowlingTest::test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike
+FAILED bowling/bowling_test.py::BowlingTest::test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points
+FAILED bowling/bowling_test.py::BowlingTest::test_two_rolls_in_a_frame_cannot_score_more_than_10_points
+======================== 10 failed, 21 passed in 0.09s =========================

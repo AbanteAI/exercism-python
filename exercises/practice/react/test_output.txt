@@ -1,0 +1,386 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 14 items
+
+react/react_test.py .FFFFFFFFFFFFF                                       [100%]
+
+=================================== FAILURES ===================================
+______________ ReactTest.test_callback_cells_only_fire_on_change _______________
+
+self = <react_test.ReactTest testMethod=test_callback_cells_only_fire_on_change>
+
+    def test_callback_cells_only_fire_on_change(self):
+        input = InputCell(1)
+>       output = ComputeCell([input], lambda inputs: 111 if inputs[0] < 3 else 222)
+
+react/react_test.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+react/react.py:16: in __init__
+    self.value = None
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <react.ComputeCell object at 0x7f9a55f06530>, new_value = None
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+    
+>       self.inputs = inputs
+E       NameError: name 'inputs' is not defined
+
+react/react.py:25: NameError
+______________ ReactTest.test_callbacks_can_be_added_and_removed _______________
+
+self = <react_test.ReactTest testMethod=test_callbacks_can_be_added_and_removed>
+
+    def test_callbacks_can_be_added_and_removed(self):
+        input = InputCell(11)
+>       output = ComputeCell(
+            [
+                input,
+            ],
+            lambda inputs: inputs[0] + 1,
+        )
+
+react/react_test.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+react/react.py:16: in __init__
+    self.value = None
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <react.ComputeCell object at 0x7f9a55d6a5f0>, new_value = None
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+    
+>       self.inputs = inputs
+E       NameError: name 'inputs' is not defined
+
+react/react.py:25: NameError
+____________ ReactTest.test_callbacks_can_fire_from_multiple_cells _____________
+
+self = <react_test.ReactTest testMethod=test_callbacks_can_fire_from_multiple_cells>
+
+    def test_callbacks_can_fire_from_multiple_cells(self):
+        input = InputCell(1)
+>       plus_one = ComputeCell(
+            [
+                input,
+            ],
+            lambda inputs: inputs[0] + 1,
+        )
+
+react/react_test.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+react/react.py:16: in __init__
+    self.value = None
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <react.ComputeCell object at 0x7f9a55d5f7c0>, new_value = None
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+    
+>       self.inputs = inputs
+E       NameError: name 'inputs' is not defined
+
+react/react.py:25: NameError
+________ ReactTest.test_callbacks_do_not_report_already_reported_values ________
+
+self = <react_test.ReactTest testMethod=test_callbacks_do_not_report_already_reported_values>
+
+    def test_callbacks_do_not_report_already_reported_values(self):
+        input = InputCell(1)
+>       output = ComputeCell(
+            [
+                input,
+            ],
+            lambda inputs: inputs[0] + 1,
+        )
+
+react/react_test.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+react/react.py:16: in __init__
+    self.value = None
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <react.ComputeCell object at 0x7f9a55d69090>, new_value = None
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+    
+>       self.inputs = inputs
+E       NameError: name 'inputs' is not defined
+
+react/react.py:25: NameError
+_ ReactTest.test_callbacks_should_not_be_called_if_dependencies_change_but_output_value_doesn_t_change _
+
+self = <react_test.ReactTest testMethod=test_callbacks_should_not_be_called_if_dependencies_change_but_output_value_doesn_t_change>
+
+    def test_callbacks_should_not_be_called_if_dependencies_change_but_output_value_doesn_t_change(
+        self,
+    ):
+        input = InputCell(1)
+>       plus_one = ComputeCell(
+            [
+                input,
+            ],
+            lambda inputs: inputs[0] + 1,
+        )
+
+react/react_test.py:235: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+react/react.py:16: in __init__
+    self.value = None
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <react.ComputeCell object at 0x7f9a55f05b70>, new_value = None
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+    
+>       self.inputs = inputs
+E       NameError: name 'inputs' is not defined
+
+react/react.py:25: NameError
+_ ReactTest.test_callbacks_should_only_be_called_once_even_if_multiple_dependencies_change _
+
+self = <react_test.ReactTest testMethod=test_callbacks_should_only_be_called_once_even_if_multiple_dependencies_change>
+
+    def test_callbacks_should_only_be_called_once_even_if_multiple_dependencies_change(
+        self,
+    ):
+        input = InputCell(1)
+>       plus_one = ComputeCell(
+            [
+                input,
+            ],
+            lambda inputs: inputs[0] + 1,
+        )
+
+react/react_test.py:200: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+react/react.py:16: in __init__
+    self.value = None
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <react.ComputeCell object at 0x7f9a55d62b00>, new_value = None
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+    
+>       self.inputs = inputs
+E       NameError: name 'inputs' is not defined
+
+react/react.py:25: NameError
+_____________ ReactTest.test_compute_cells_calculate_initial_value _____________
+
+self = <react_test.ReactTest testMethod=test_compute_cells_calculate_initial_value>
+
+    def test_compute_cells_calculate_initial_value(self):
+        input = InputCell(1)
+>       output = ComputeCell(
+            [
+                input,
+            ],
+            lambda inputs: inputs[0] + 1,
+        )
+
+react/react_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+react/react.py:16: in __init__
+    self.value = None
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <react.ComputeCell object at 0x7f9a55d77820>, new_value = None
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+    
+>       self.inputs = inputs
+E       NameError: name 'inputs' is not defined
+
+react/react.py:25: NameError
+________ ReactTest.test_compute_cells_can_depend_on_other_compute_cells ________
+
+self = <react_test.ReactTest testMethod=test_compute_cells_can_depend_on_other_compute_cells>
+
+    def test_compute_cells_can_depend_on_other_compute_cells(self):
+        input = InputCell(1)
+>       times_two = ComputeCell(
+            [
+                input,
+            ],
+            lambda inputs: inputs[0] * 2,
+        )
+
+react/react_test.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+react/react.py:16: in __init__
+    self.value = None
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <react.ComputeCell object at 0x7f9a55d64d60>, new_value = None
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+    
+>       self.inputs = inputs
+E       NameError: name 'inputs' is not defined
+
+react/react.py:25: NameError
+_________________ ReactTest.test_compute_cells_fire_callbacks __________________
+
+self = <react_test.ReactTest testMethod=test_compute_cells_fire_callbacks>
+
+    def test_compute_cells_fire_callbacks(self):
+        input = InputCell(1)
+>       output = ComputeCell(
+            [
+                input,
+            ],
+            lambda inputs: inputs[0] + 1,
+        )
+
+react/react_test.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+react/react.py:16: in __init__
+    self.value = None
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <react.ComputeCell object at 0x7f9a55f07c40>, new_value = None
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+    
+>       self.inputs = inputs
+E       NameError: name 'inputs' is not defined
+
+react/react.py:25: NameError
+_________ ReactTest.test_compute_cells_take_inputs_in_the_right_order __________
+
+self = <react_test.ReactTest testMethod=test_compute_cells_take_inputs_in_the_right_order>
+
+    def test_compute_cells_take_inputs_in_the_right_order(self):
+        one = InputCell(1)
+        two = InputCell(2)
+>       output = ComputeCell(
+            [
+                one,
+                two,
+            ],
+            lambda inputs: inputs[0] + inputs[1] * 10,
+        )
+
+react/react_test.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+react/react.py:16: in __init__
+    self.value = None
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <react.ComputeCell object at 0x7f9a55d602b0>, new_value = None
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+    
+>       self.inputs = inputs
+E       NameError: name 'inputs' is not defined
+
+react/react.py:25: NameError
+___ ReactTest.test_compute_cells_update_value_when_dependencies_are_changed ____
+
+self = <react_test.ReactTest testMethod=test_compute_cells_update_value_when_dependencies_are_changed>
+
+    def test_compute_cells_update_value_when_dependencies_are_changed(self):
+        input = InputCell(1)
+>       output = ComputeCell(
+            [
+                input,
+            ],
+            lambda inputs: inputs[0] + 1,
+        )
+
+react/react_test.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+react/react.py:16: in __init__
+    self.value = None
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <react.ComputeCell object at 0x7f9a55f067d0>, new_value = None
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+    
+>       self.inputs = inputs
+E       NameError: name 'inputs' is not defined
+
+react/react.py:25: NameError
+___________________ ReactTest.test_input_cells_have_a_value ____________________
+
+self = <react_test.ReactTest testMethod=test_input_cells_have_a_value>
+
+    def test_input_cells_have_a_value(self):
+        input = InputCell(10)
+>       self.assertEqual(input.value, 10)
+E       AssertionError: None != 10
+
+react/react_test.py:17: AssertionError
+_ ReactTest.test_removing_a_callback_multiple_times_doesn_t_interfere_with_other_callbacks _
+
+self = <react_test.ReactTest testMethod=test_removing_a_callback_multiple_times_doesn_t_interfere_with_other_callbacks>
+
+    def test_removing_a_callback_multiple_times_doesn_t_interfere_with_other_callbacks(
+        self,
+    ):
+        input = InputCell(1)
+>       output = ComputeCell(
+            [
+                input,
+            ],
+            lambda inputs: inputs[0] + 1,
+        )
+
+react/react_test.py:177: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+react/react.py:16: in __init__
+    self.value = None
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <react.ComputeCell object at 0x7f9a55d5c1f0>, new_value = None
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+    
+>       self.inputs = inputs
+E       NameError: name 'inputs' is not defined
+
+react/react.py:25: NameError
+=========================== short test summary info ============================
+FAILED react/react_test.py::ReactTest::test_callback_cells_only_fire_on_change
+FAILED react/react_test.py::ReactTest::test_callbacks_can_be_added_and_removed
+FAILED react/react_test.py::ReactTest::test_callbacks_can_fire_from_multiple_cells
+FAILED react/react_test.py::ReactTest::test_callbacks_do_not_report_already_reported_values
+FAILED react/react_test.py::ReactTest::test_callbacks_should_not_be_called_if_dependencies_change_but_output_value_doesn_t_change
+FAILED react/react_test.py::ReactTest::test_callbacks_should_only_be_called_once_even_if_multiple_dependencies_change
+FAILED react/react_test.py::ReactTest::test_compute_cells_calculate_initial_value
+FAILED react/react_test.py::ReactTest::test_compute_cells_can_depend_on_other_compute_cells
+FAILED react/react_test.py::ReactTest::test_compute_cells_fire_callbacks - Na...
+FAILED react/react_test.py::ReactTest::test_compute_cells_take_inputs_in_the_right_order
+FAILED react/react_test.py::ReactTest::test_compute_cells_update_value_when_dependencies_are_changed
+FAILED react/react_test.py::ReactTest::test_input_cells_have_a_value - Assert...
+FAILED react/react_test.py::ReactTest::test_removing_a_callback_multiple_times_doesn_t_interfere_with_other_callbacks
+========================= 13 failed, 1 passed in 0.10s =========================

@@ -1,0 +1,223 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 13 items
+
+palindrome-products/palindrome_products_test.py FF..FFFFFFFFF            [100%]
+
+=================================== FAILURES ===================================
+_ PalindromeProductsTest.test_empty_result_for_largest_if_no_palindrome_in_the_range _
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_empty_result_for_largest_if_no_palindrome_in_the_range>
+
+    def test_empty_result_for_largest_if_no_palindrome_in_the_range(self):
+        value, factors = largest(min_factor=15, max_factor=15)
+>       self.assertIsNone(value)
+E       AssertionError: 0 is not None
+
+palindrome-products/palindrome_products_test.py:61: AssertionError
+_ PalindromeProductsTest.test_empty_result_for_smallest_if_no_palindrome_in_the_range _
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_empty_result_for_smallest_if_no_palindrome_in_the_range>
+
+    def test_empty_result_for_smallest_if_no_palindrome_in_the_range(self):
+        value, factors = smallest(min_factor=1002, max_factor=1003)
+>       self.assertIsNone(value)
+E       AssertionError: inf is not None
+
+palindrome-products/palindrome_products_test.py:56: AssertionError
+_ PalindromeProductsTest.test_find_the_largest_palindrome_from_double_digit_factors _
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_largest_palindrome_from_double_digit_factors>
+
+    def test_find_the_largest_palindrome_from_double_digit_factors(self):
+        value, factors = largest(min_factor=10, max_factor=99)
+        self.assertEqual(value, 9009)
+>       self.assertFactorsEqual(factors, [[91, 99]])
+
+palindrome-products/palindrome_products_test.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_largest_palindrome_from_double_digit_factors>
+actual = [91, 99], expected = [[91, 99]]
+
+    def assertFactorsEqual(self, actual, expected):
+>       self.assertEqual(set(map(frozenset, actual)), set(map(frozenset, expected)))
+E       TypeError: 'int' object is not iterable
+
+palindrome-products/palindrome_products_test.py:82: TypeError
+_ PalindromeProductsTest.test_find_the_largest_palindrome_from_four_digit_factors _
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_largest_palindrome_from_four_digit_factors>
+
+    def test_find_the_largest_palindrome_from_four_digit_factors(self):
+        value, factors = largest(min_factor=1000, max_factor=9999)
+        self.assertEqual(value, 99000099)
+>       self.assertFactorsEqual(factors, [[9901, 9999]])
+
+palindrome-products/palindrome_products_test.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_largest_palindrome_from_four_digit_factors>
+actual = [9901, 9999], expected = [[9901, 9999]]
+
+    def assertFactorsEqual(self, actual, expected):
+>       self.assertEqual(set(map(frozenset, actual)), set(map(frozenset, expected)))
+E       TypeError: 'int' object is not iterable
+
+palindrome-products/palindrome_products_test.py:82: TypeError
+_ PalindromeProductsTest.test_find_the_largest_palindrome_from_single_digit_factors _
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_largest_palindrome_from_single_digit_factors>
+
+    def test_find_the_largest_palindrome_from_single_digit_factors(self):
+        value, factors = largest(min_factor=1, max_factor=9)
+        self.assertEqual(value, 9)
+>       self.assertFactorsEqual(factors, [[1, 9], [3, 3]])
+
+palindrome-products/palindrome_products_test.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_largest_palindrome_from_single_digit_factors>
+actual = [3, 3], expected = [[1, 9], [3, 3]]
+
+    def assertFactorsEqual(self, actual, expected):
+>       self.assertEqual(set(map(frozenset, actual)), set(map(frozenset, expected)))
+E       TypeError: 'int' object is not iterable
+
+palindrome-products/palindrome_products_test.py:82: TypeError
+_ PalindromeProductsTest.test_find_the_largest_palindrome_from_triple_digit_factors _
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_largest_palindrome_from_triple_digit_factors>
+
+    def test_find_the_largest_palindrome_from_triple_digit_factors(self):
+        value, factors = largest(min_factor=100, max_factor=999)
+        self.assertEqual(value, 906609)
+>       self.assertFactorsEqual(factors, [[913, 993]])
+
+palindrome-products/palindrome_products_test.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_largest_palindrome_from_triple_digit_factors>
+actual = [913, 993], expected = [[913, 993]]
+
+    def assertFactorsEqual(self, actual, expected):
+>       self.assertEqual(set(map(frozenset, actual)), set(map(frozenset, expected)))
+E       TypeError: 'int' object is not iterable
+
+palindrome-products/palindrome_products_test.py:82: TypeError
+_ PalindromeProductsTest.test_find_the_smallest_palindrome_from_double_digit_factors _
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_smallest_palindrome_from_double_digit_factors>
+
+    def test_find_the_smallest_palindrome_from_double_digit_factors(self):
+        value, factors = smallest(min_factor=10, max_factor=99)
+        self.assertEqual(value, 121)
+>       self.assertFactorsEqual(factors, [[11, 11]])
+
+palindrome-products/palindrome_products_test.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_smallest_palindrome_from_double_digit_factors>
+actual = [11, 11], expected = [[11, 11]]
+
+    def assertFactorsEqual(self, actual, expected):
+>       self.assertEqual(set(map(frozenset, actual)), set(map(frozenset, expected)))
+E       TypeError: 'int' object is not iterable
+
+palindrome-products/palindrome_products_test.py:82: TypeError
+_ PalindromeProductsTest.test_find_the_smallest_palindrome_from_four_digit_factors _
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_smallest_palindrome_from_four_digit_factors>
+
+    def test_find_the_smallest_palindrome_from_four_digit_factors(self):
+        value, factors = smallest(min_factor=1000, max_factor=9999)
+        self.assertEqual(value, 1002001)
+>       self.assertFactorsEqual(factors, [[1001, 1001]])
+
+palindrome-products/palindrome_products_test.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_smallest_palindrome_from_four_digit_factors>
+actual = [1001, 1001], expected = [[1001, 1001]]
+
+    def assertFactorsEqual(self, actual, expected):
+>       self.assertEqual(set(map(frozenset, actual)), set(map(frozenset, expected)))
+E       TypeError: 'int' object is not iterable
+
+palindrome-products/palindrome_products_test.py:82: TypeError
+_ PalindromeProductsTest.test_find_the_smallest_palindrome_from_single_digit_factors _
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_smallest_palindrome_from_single_digit_factors>
+
+    def test_find_the_smallest_palindrome_from_single_digit_factors(self):
+        value, factors = smallest(min_factor=1, max_factor=9)
+        self.assertEqual(value, 1)
+>       self.assertFactorsEqual(factors, [[1, 1]])
+
+palindrome-products/palindrome_products_test.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_smallest_palindrome_from_single_digit_factors>
+actual = [1, 1], expected = [[1, 1]]
+
+    def assertFactorsEqual(self, actual, expected):
+>       self.assertEqual(set(map(frozenset, actual)), set(map(frozenset, expected)))
+E       TypeError: 'int' object is not iterable
+
+palindrome-products/palindrome_products_test.py:82: TypeError
+_ PalindromeProductsTest.test_find_the_smallest_palindrome_from_triple_digit_factors _
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_smallest_palindrome_from_triple_digit_factors>
+
+    def test_find_the_smallest_palindrome_from_triple_digit_factors(self):
+        value, factors = smallest(min_factor=100, max_factor=999)
+        self.assertEqual(value, 10201)
+>       self.assertFactorsEqual(factors, [[101, 101]])
+
+palindrome-products/palindrome_products_test.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_find_the_smallest_palindrome_from_triple_digit_factors>
+actual = [101, 101], expected = [[101, 101]]
+
+    def assertFactorsEqual(self, actual, expected):
+>       self.assertEqual(set(map(frozenset, actual)), set(map(frozenset, expected)))
+E       TypeError: 'int' object is not iterable
+
+palindrome-products/palindrome_products_test.py:82: TypeError
+_ PalindromeProductsTest.test_smallest_product_does_not_use_the_smallest_factor _
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_smallest_product_does_not_use_the_smallest_factor>
+
+    def test_smallest_product_does_not_use_the_smallest_factor(self):
+        value, factors = smallest(min_factor=3215, max_factor=4000)
+        self.assertEqual(value, 10988901)
+>       self.assertFactorsEqual(factors, [[3297, 3333]])
+
+palindrome-products/palindrome_products_test.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <palindrome_products_test.PalindromeProductsTest testMethod=test_smallest_product_does_not_use_the_smallest_factor>
+actual = [3297, 3333], expected = [[3297, 3333]]
+
+    def assertFactorsEqual(self, actual, expected):
+>       self.assertEqual(set(map(frozenset, actual)), set(map(frozenset, expected)))
+E       TypeError: 'int' object is not iterable
+
+palindrome-products/palindrome_products_test.py:82: TypeError
+=========================== short test summary info ============================
+FAILED palindrome-products/palindrome_products_test.py::PalindromeProductsTest::test_empty_result_for_largest_if_no_palindrome_in_the_range
+FAILED palindrome-products/palindrome_products_test.py::PalindromeProductsTest::test_empty_result_for_smallest_if_no_palindrome_in_the_range
+FAILED palindrome-products/palindrome_products_test.py::PalindromeProductsTest::test_find_the_largest_palindrome_from_double_digit_factors
+FAILED palindrome-products/palindrome_products_test.py::PalindromeProductsTest::test_find_the_largest_palindrome_from_four_digit_factors
+FAILED palindrome-products/palindrome_products_test.py::PalindromeProductsTest::test_find_the_largest_palindrome_from_single_digit_factors
+FAILED palindrome-products/palindrome_products_test.py::PalindromeProductsTest::test_find_the_largest_palindrome_from_triple_digit_factors
+FAILED palindrome-products/palindrome_products_test.py::PalindromeProductsTest::test_find_the_smallest_palindrome_from_double_digit_factors
+FAILED palindrome-products/palindrome_products_test.py::PalindromeProductsTest::test_find_the_smallest_palindrome_from_four_digit_factors
+FAILED palindrome-products/palindrome_products_test.py::PalindromeProductsTest::test_find_the_smallest_palindrome_from_single_digit_factors
+FAILED palindrome-products/palindrome_products_test.py::PalindromeProductsTest::test_find_the_smallest_palindrome_from_triple_digit_factors
+FAILED palindrome-products/palindrome_products_test.py::PalindromeProductsTest::test_smallest_product_does_not_use_the_smallest_factor
+========================= 11 failed, 2 passed in 0.11s =========================

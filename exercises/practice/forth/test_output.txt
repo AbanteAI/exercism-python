@@ -1,0 +1,735 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 48 items
+
+forth/forth_test.py ...F....F...F.........................FFFFFFFF.F     [100%]
+
+=================================== FAILURES ===================================
+______ ForthTest.test_case_insensitivity_definitions_are_case_insensitive ______
+
+self = <forth_test.ForthTest testMethod=test_case_insensitivity_definitions_are_case_insensitive>
+
+    def test_case_insensitivity_definitions_are_case_insensitive(self):
+>       self.assertEqual(evaluate([": SWAP DUP Dup dup ;", "1 swap"]), [1, 1, 1, 1])
+
+forth/forth_test.py:245: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': SWAP DUP Dup dup ;', '1 swap']
+
+    def evaluate(input_data):
+        stack = []
+        words = {}
+    
+        def apply_operator(operator):
+            if len(stack) < 2:
+                raise StackUnderflowError("Insufficient number of items in stack")
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(operator(a, b))
+    
+        def parse_number(token):
+            try:
+                return int(token)
+            except ValueError:
+                return None
+    
+        def parse_word_definition(tokens):
+            if not tokens:
+                return None
+            if tokens[0].startswith(':'):
+                name = tokens.pop(0)[1:].upper()
+                definition = []
+                while tokens and not tokens[0].startswith(';'):
+                    definition.append(tokens.pop(0))
+                if tokens:
+                    tokens.pop(0)  # Remove ';'
+                return name, definition
+            return None
+    
+        for line in input_data:
+            tokens = line.split()
+            while tokens:
+                word_def = parse_word_definition(tokens)
+                if word_def:
+                    name, definition = word_def
+                    words[name.upper()] = definition
+                    continue
+    
+                token = tokens.pop(0).upper()
+                number = parse_number(token)
+                if number is not None:
+                    stack.append(number)
+                elif token in words:
+                    tokens = words[token] + tokens
+                elif token == "DUP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.append(stack[-1])
+                elif token == "DROP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.pop()
+                elif token == "SWAP":
+                    if len(stack) < 2:
+>                       raise StackUnderflowError("Insufficient number of items in stack")
+E                       forth.StackUnderflowError: Insufficient number of items in stack
+
+forth/forth.py:60: StackUnderflowError
+__ ForthTest.test_case_insensitivity_user_defined_words_are_case_insensitive ___
+
+self = <forth_test.ForthTest testMethod=test_case_insensitivity_user_defined_words_are_case_insensitive>
+
+    def test_case_insensitivity_user_defined_words_are_case_insensitive(self):
+>       self.assertEqual(evaluate([": foo dup ;", "1 FOO Foo foo"]), [1, 1, 1, 1])
+
+forth/forth_test.py:242: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': foo dup ;', '1 FOO Foo foo']
+
+    def evaluate(input_data):
+        stack = []
+        words = {}
+    
+        def apply_operator(operator):
+            if len(stack) < 2:
+                raise StackUnderflowError("Insufficient number of items in stack")
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(operator(a, b))
+    
+        def parse_number(token):
+            try:
+                return int(token)
+            except ValueError:
+                return None
+    
+        def parse_word_definition(tokens):
+            if not tokens:
+                return None
+            if tokens[0].startswith(':'):
+                name = tokens.pop(0)[1:].upper()
+                definition = []
+                while tokens and not tokens[0].startswith(';'):
+                    definition.append(tokens.pop(0))
+                if tokens:
+                    tokens.pop(0)  # Remove ';'
+                return name, definition
+            return None
+    
+        for line in input_data:
+            tokens = line.split()
+            while tokens:
+                word_def = parse_word_definition(tokens)
+                if word_def:
+                    name, definition = word_def
+                    words[name.upper()] = definition
+                    continue
+    
+                token = tokens.pop(0).upper()
+                number = parse_number(token)
+                if number is not None:
+                    stack.append(number)
+                elif token in words:
+                    tokens = words[token] + tokens
+                elif token == "DUP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.append(stack[-1])
+                elif token == "DROP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.pop()
+                elif token == "SWAP":
+                    if len(stack) < 2:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack[-1], stack[-2] = stack[-2], stack[-1]
+                elif token == "OVER":
+                    if len(stack) < 2:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.append(stack[-2])
+                elif token == "+":
+                    apply_operator(lambda a, b: a + b)
+                elif token == "-":
+                    apply_operator(lambda a, b: a - b)
+                elif token == "*":
+                    apply_operator(lambda a, b: a * b)
+                elif token == "/":
+                    apply_operator(lambda a, b: a // b)
+                else:
+>                   raise ValueError("undefined operation")
+E                   ValueError: undefined operation
+
+forth/forth.py:75: ValueError
+______________ ForthTest.test_division_errors_if_dividing_by_zero ______________
+
+self = <forth_test.ForthTest testMethod=test_division_errors_if_dividing_by_zero>
+
+    def test_division_errors_if_dividing_by_zero(self):
+        # divide by zero
+        with self.assertRaises(ZeroDivisionError) as err:
+            evaluate(["4 0 /"])
+        self.assertEqual(type(err.exception), ZeroDivisionError)
+>       self.assertEqual(str(err.exception.args[0]), "divide by zero")
+E       AssertionError: 'integer division or modulo by zero' != 'divide by zero'
+E       - integer division or modulo by zero
+E       + divide by zero
+
+forth/forth_test.py:88: AssertionError
+_______ ForthTest.test_user_defined_words_can_consist_of_built_in_words ________
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_consist_of_built_in_words>
+
+    def test_user_defined_words_can_consist_of_built_in_words(self):
+>       self.assertEqual(evaluate([": dup-twice dup dup ;", "1 dup-twice"]), [1, 1, 1])
+
+forth/forth_test.py:187: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': dup-twice dup dup ;', '1 dup-twice']
+
+    def evaluate(input_data):
+        stack = []
+        words = {}
+    
+        def apply_operator(operator):
+            if len(stack) < 2:
+                raise StackUnderflowError("Insufficient number of items in stack")
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(operator(a, b))
+    
+        def parse_number(token):
+            try:
+                return int(token)
+            except ValueError:
+                return None
+    
+        def parse_word_definition(tokens):
+            if not tokens:
+                return None
+            if tokens[0].startswith(':'):
+                name = tokens.pop(0)[1:].upper()
+                definition = []
+                while tokens and not tokens[0].startswith(';'):
+                    definition.append(tokens.pop(0))
+                if tokens:
+                    tokens.pop(0)  # Remove ';'
+                return name, definition
+            return None
+    
+        for line in input_data:
+            tokens = line.split()
+            while tokens:
+                word_def = parse_word_definition(tokens)
+                if word_def:
+                    name, definition = word_def
+                    words[name.upper()] = definition
+                    continue
+    
+                token = tokens.pop(0).upper()
+                number = parse_number(token)
+                if number is not None:
+                    stack.append(number)
+                elif token in words:
+                    tokens = words[token] + tokens
+                elif token == "DUP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.append(stack[-1])
+                elif token == "DROP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.pop()
+                elif token == "SWAP":
+                    if len(stack) < 2:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack[-1], stack[-2] = stack[-2], stack[-1]
+                elif token == "OVER":
+                    if len(stack) < 2:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.append(stack[-2])
+                elif token == "+":
+                    apply_operator(lambda a, b: a + b)
+                elif token == "-":
+                    apply_operator(lambda a, b: a - b)
+                elif token == "*":
+                    apply_operator(lambda a, b: a * b)
+                elif token == "/":
+                    apply_operator(lambda a, b: a // b)
+                else:
+>                   raise ValueError("undefined operation")
+E                   ValueError: undefined operation
+
+forth/forth.py:75: ValueError
+_ ForthTest.test_user_defined_words_can_define_word_that_uses_word_with_the_same_name _
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_define_word_that_uses_word_with_the_same_name>
+
+    def test_user_defined_words_can_define_word_that_uses_word_with_the_same_name(self):
+>       self.assertEqual(evaluate([": foo 10 ;", ": foo foo 1 + ;", "foo"]), [11])
+
+forth/forth_test.py:209: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': foo 10 ;', ': foo foo 1 + ;', 'foo']
+
+    def evaluate(input_data):
+        stack = []
+        words = {}
+    
+        def apply_operator(operator):
+            if len(stack) < 2:
+                raise StackUnderflowError("Insufficient number of items in stack")
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(operator(a, b))
+    
+        def parse_number(token):
+            try:
+                return int(token)
+            except ValueError:
+                return None
+    
+        def parse_word_definition(tokens):
+            if not tokens:
+                return None
+            if tokens[0].startswith(':'):
+                name = tokens.pop(0)[1:].upper()
+                definition = []
+                while tokens and not tokens[0].startswith(';'):
+                    definition.append(tokens.pop(0))
+                if tokens:
+                    tokens.pop(0)  # Remove ';'
+                return name, definition
+            return None
+    
+        for line in input_data:
+            tokens = line.split()
+            while tokens:
+                word_def = parse_word_definition(tokens)
+                if word_def:
+                    name, definition = word_def
+                    words[name.upper()] = definition
+                    continue
+    
+                token = tokens.pop(0).upper()
+                number = parse_number(token)
+                if number is not None:
+                    stack.append(number)
+                elif token in words:
+                    tokens = words[token] + tokens
+                elif token == "DUP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.append(stack[-1])
+                elif token == "DROP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.pop()
+                elif token == "SWAP":
+                    if len(stack) < 2:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack[-1], stack[-2] = stack[-2], stack[-1]
+                elif token == "OVER":
+                    if len(stack) < 2:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.append(stack[-2])
+                elif token == "+":
+                    apply_operator(lambda a, b: a + b)
+                elif token == "-":
+                    apply_operator(lambda a, b: a - b)
+                elif token == "*":
+                    apply_operator(lambda a, b: a * b)
+                elif token == "/":
+                    apply_operator(lambda a, b: a // b)
+                else:
+>                   raise ValueError("undefined operation")
+E                   ValueError: undefined operation
+
+forth/forth.py:75: ValueError
+______ ForthTest.test_user_defined_words_can_override_built_in_operators _______
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_override_built_in_operators>
+
+    def test_user_defined_words_can_override_built_in_operators(self):
+>       self.assertEqual(evaluate([": + * ;", "3 4 +"]), [12])
+E       AssertionError: Lists differ: [7] != [12]
+E       
+E       First differing element 0:
+E       7
+E       12
+E       
+E       - [7]
+E       + [12]
+
+forth/forth_test.py:201: AssertionError
+________ ForthTest.test_user_defined_words_can_override_built_in_words _________
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_override_built_in_words>
+
+    def test_user_defined_words_can_override_built_in_words(self):
+>       self.assertEqual(evaluate([": swap dup ;", "1 swap"]), [1, 1])
+
+forth/forth_test.py:198: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': swap dup ;', '1 swap']
+
+    def evaluate(input_data):
+        stack = []
+        words = {}
+    
+        def apply_operator(operator):
+            if len(stack) < 2:
+                raise StackUnderflowError("Insufficient number of items in stack")
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(operator(a, b))
+    
+        def parse_number(token):
+            try:
+                return int(token)
+            except ValueError:
+                return None
+    
+        def parse_word_definition(tokens):
+            if not tokens:
+                return None
+            if tokens[0].startswith(':'):
+                name = tokens.pop(0)[1:].upper()
+                definition = []
+                while tokens and not tokens[0].startswith(';'):
+                    definition.append(tokens.pop(0))
+                if tokens:
+                    tokens.pop(0)  # Remove ';'
+                return name, definition
+            return None
+    
+        for line in input_data:
+            tokens = line.split()
+            while tokens:
+                word_def = parse_word_definition(tokens)
+                if word_def:
+                    name, definition = word_def
+                    words[name.upper()] = definition
+                    continue
+    
+                token = tokens.pop(0).upper()
+                number = parse_number(token)
+                if number is not None:
+                    stack.append(number)
+                elif token in words:
+                    tokens = words[token] + tokens
+                elif token == "DUP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.append(stack[-1])
+                elif token == "DROP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.pop()
+                elif token == "SWAP":
+                    if len(stack) < 2:
+>                       raise StackUnderflowError("Insufficient number of items in stack")
+E                       forth.StackUnderflowError: Insufficient number of items in stack
+
+forth/forth.py:60: StackUnderflowError
+___ ForthTest.test_user_defined_words_can_override_other_user_defined_words ____
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_override_other_user_defined_words>
+
+    def test_user_defined_words_can_override_other_user_defined_words(self):
+        self.assertEqual(
+>           evaluate([": foo dup ;", ": foo dup dup ;", "1 foo"]), [1, 1, 1]
+        )
+
+forth/forth_test.py:194: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': foo dup ;', ': foo dup dup ;', '1 foo']
+
+    def evaluate(input_data):
+        stack = []
+        words = {}
+    
+        def apply_operator(operator):
+            if len(stack) < 2:
+                raise StackUnderflowError("Insufficient number of items in stack")
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(operator(a, b))
+    
+        def parse_number(token):
+            try:
+                return int(token)
+            except ValueError:
+                return None
+    
+        def parse_word_definition(tokens):
+            if not tokens:
+                return None
+            if tokens[0].startswith(':'):
+                name = tokens.pop(0)[1:].upper()
+                definition = []
+                while tokens and not tokens[0].startswith(';'):
+                    definition.append(tokens.pop(0))
+                if tokens:
+                    tokens.pop(0)  # Remove ';'
+                return name, definition
+            return None
+    
+        for line in input_data:
+            tokens = line.split()
+            while tokens:
+                word_def = parse_word_definition(tokens)
+                if word_def:
+                    name, definition = word_def
+                    words[name.upper()] = definition
+                    continue
+    
+                token = tokens.pop(0).upper()
+                number = parse_number(token)
+                if number is not None:
+                    stack.append(number)
+                elif token in words:
+                    tokens = words[token] + tokens
+                elif token == "DUP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.append(stack[-1])
+                elif token == "DROP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.pop()
+                elif token == "SWAP":
+                    if len(stack) < 2:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack[-1], stack[-2] = stack[-2], stack[-1]
+                elif token == "OVER":
+                    if len(stack) < 2:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.append(stack[-2])
+                elif token == "+":
+                    apply_operator(lambda a, b: a + b)
+                elif token == "-":
+                    apply_operator(lambda a, b: a - b)
+                elif token == "*":
+                    apply_operator(lambda a, b: a * b)
+                elif token == "/":
+                    apply_operator(lambda a, b: a // b)
+                else:
+>                   raise ValueError("undefined operation")
+E                   ValueError: undefined operation
+
+forth/forth.py:75: ValueError
+_ ForthTest.test_user_defined_words_can_use_different_words_with_the_same_name _
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_use_different_words_with_the_same_name>
+
+    def test_user_defined_words_can_use_different_words_with_the_same_name(self):
+        self.assertEqual(
+>           evaluate([": foo 5 ;", ": bar foo ;", ": foo 6 ;", "bar foo"]), [5, 6]
+        )
+
+forth/forth_test.py:205: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': foo 5 ;', ': bar foo ;', ': foo 6 ;', 'bar foo']
+
+    def evaluate(input_data):
+        stack = []
+        words = {}
+    
+        def apply_operator(operator):
+            if len(stack) < 2:
+                raise StackUnderflowError("Insufficient number of items in stack")
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(operator(a, b))
+    
+        def parse_number(token):
+            try:
+                return int(token)
+            except ValueError:
+                return None
+    
+        def parse_word_definition(tokens):
+            if not tokens:
+                return None
+            if tokens[0].startswith(':'):
+                name = tokens.pop(0)[1:].upper()
+                definition = []
+                while tokens and not tokens[0].startswith(';'):
+                    definition.append(tokens.pop(0))
+                if tokens:
+                    tokens.pop(0)  # Remove ';'
+                return name, definition
+            return None
+    
+        for line in input_data:
+            tokens = line.split()
+            while tokens:
+                word_def = parse_word_definition(tokens)
+                if word_def:
+                    name, definition = word_def
+                    words[name.upper()] = definition
+                    continue
+    
+                token = tokens.pop(0).upper()
+                number = parse_number(token)
+                if number is not None:
+                    stack.append(number)
+                elif token in words:
+                    tokens = words[token] + tokens
+                elif token == "DUP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.append(stack[-1])
+                elif token == "DROP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.pop()
+                elif token == "SWAP":
+                    if len(stack) < 2:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack[-1], stack[-2] = stack[-2], stack[-1]
+                elif token == "OVER":
+                    if len(stack) < 2:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.append(stack[-2])
+                elif token == "+":
+                    apply_operator(lambda a, b: a + b)
+                elif token == "-":
+                    apply_operator(lambda a, b: a - b)
+                elif token == "*":
+                    apply_operator(lambda a, b: a * b)
+                elif token == "/":
+                    apply_operator(lambda a, b: a // b)
+                else:
+>                   raise ValueError("undefined operation")
+E                   ValueError: undefined operation
+
+forth/forth.py:75: ValueError
+______ ForthTest.test_user_defined_words_cannot_redefine_negative_numbers ______
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_cannot_redefine_negative_numbers>
+
+    def test_user_defined_words_cannot_redefine_negative_numbers(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+forth/forth_test.py:218: AssertionError
+____ ForthTest.test_user_defined_words_cannot_redefine_non_negative_numbers ____
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_cannot_redefine_non_negative_numbers>
+
+    def test_user_defined_words_cannot_redefine_non_negative_numbers(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+forth/forth_test.py:212: AssertionError
+_________ ForthTest.test_user_defined_words_execute_in_the_right_order _________
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_execute_in_the_right_order>
+
+    def test_user_defined_words_execute_in_the_right_order(self):
+>       self.assertEqual(evaluate([": countup 1 2 3 ;", "countup"]), [1, 2, 3])
+
+forth/forth_test.py:190: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': countup 1 2 3 ;', 'countup']
+
+    def evaluate(input_data):
+        stack = []
+        words = {}
+    
+        def apply_operator(operator):
+            if len(stack) < 2:
+                raise StackUnderflowError("Insufficient number of items in stack")
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(operator(a, b))
+    
+        def parse_number(token):
+            try:
+                return int(token)
+            except ValueError:
+                return None
+    
+        def parse_word_definition(tokens):
+            if not tokens:
+                return None
+            if tokens[0].startswith(':'):
+                name = tokens.pop(0)[1:].upper()
+                definition = []
+                while tokens and not tokens[0].startswith(';'):
+                    definition.append(tokens.pop(0))
+                if tokens:
+                    tokens.pop(0)  # Remove ';'
+                return name, definition
+            return None
+    
+        for line in input_data:
+            tokens = line.split()
+            while tokens:
+                word_def = parse_word_definition(tokens)
+                if word_def:
+                    name, definition = word_def
+                    words[name.upper()] = definition
+                    continue
+    
+                token = tokens.pop(0).upper()
+                number = parse_number(token)
+                if number is not None:
+                    stack.append(number)
+                elif token in words:
+                    tokens = words[token] + tokens
+                elif token == "DUP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.append(stack[-1])
+                elif token == "DROP":
+                    if not stack:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.pop()
+                elif token == "SWAP":
+                    if len(stack) < 2:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack[-1], stack[-2] = stack[-2], stack[-1]
+                elif token == "OVER":
+                    if len(stack) < 2:
+                        raise StackUnderflowError("Insufficient number of items in stack")
+                    stack.append(stack[-2])
+                elif token == "+":
+                    apply_operator(lambda a, b: a + b)
+                elif token == "-":
+                    apply_operator(lambda a, b: a - b)
+                elif token == "*":
+                    apply_operator(lambda a, b: a * b)
+                elif token == "/":
+                    apply_operator(lambda a, b: a // b)
+                else:
+>                   raise ValueError("undefined operation")
+E                   ValueError: undefined operation
+
+forth/forth.py:75: ValueError
+=========================== short test summary info ============================
+FAILED forth/forth_test.py::ForthTest::test_case_insensitivity_definitions_are_case_insensitive
+FAILED forth/forth_test.py::ForthTest::test_case_insensitivity_user_defined_words_are_case_insensitive
+FAILED forth/forth_test.py::ForthTest::test_division_errors_if_dividing_by_zero
+FAILED forth/forth_test.py::ForthTest::test_user_defined_words_can_consist_of_built_in_words
+FAILED forth/forth_test.py::ForthTest::test_user_defined_words_can_define_word_that_uses_word_with_the_same_name
+FAILED forth/forth_test.py::ForthTest::test_user_defined_words_can_override_built_in_operators
+FAILED forth/forth_test.py::ForthTest::test_user_defined_words_can_override_built_in_words
+FAILED forth/forth_test.py::ForthTest::test_user_defined_words_can_override_other_user_defined_words
+FAILED forth/forth_test.py::ForthTest::test_user_defined_words_can_use_different_words_with_the_same_name
+FAILED forth/forth_test.py::ForthTest::test_user_defined_words_cannot_redefine_negative_numbers
+FAILED forth/forth_test.py::ForthTest::test_user_defined_words_cannot_redefine_non_negative_numbers
+FAILED forth/forth_test.py::ForthTest::test_user_defined_words_execute_in_the_right_order
+======================== 12 failed, 36 passed in 0.15s =========================

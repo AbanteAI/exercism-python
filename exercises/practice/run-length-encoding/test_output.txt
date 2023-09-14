@@ -1,0 +1,63 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 13 items
+
+run-length-encoding/run_length_encoding_test.py ........FFF.F            [100%]
+
+=================================== FAILURES ===================================
+____________ RunLengthEncodingTest.test_encode_lowercase_characters ____________
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_lowercase_characters>
+
+    def test_encode_lowercase_characters(self):
+>       self.assertMultiLineEqual(encode("aabbbcccc"), "2a3b4c")
+E       AssertionError: 'aabbbcccc' != '2a3b4c'
+E       - aabbbcccc
+E       + 2a3b4c
+
+run-length-encoding/run_length_encoding_test.py:33: AssertionError
+____ RunLengthEncodingTest.test_encode_multiple_whitespace_mixed_in_string _____
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_multiple_whitespace_mixed_in_string>
+
+    def test_encode_multiple_whitespace_mixed_in_string(self):
+>       self.assertMultiLineEqual(encode("  hsqq qww  "), "2 hs2q q2w2 ")
+E       AssertionError: '  hsqq qww  ' != '2 hs2q q2w2 '
+E       -   hsqq qww  
+E       + 2 hs2q q2w2
+
+run-length-encoding/run_length_encoding_test.py:30: AssertionError
+_ RunLengthEncodingTest.test_encode_single_characters_mixed_with_repeated_characters _
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_single_characters_mixed_with_repeated_characters>
+
+    def test_encode_single_characters_mixed_with_repeated_characters(self):
+>       self.assertMultiLineEqual(
+            encode("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB"),
+            "12WB12W3B24WB",
+        )
+E       AssertionError: 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB' != '12WB12W3B24WB'
+E       - WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB
+E       + 12WB12W3B24WB
+
+run-length-encoding/run_length_encoding_test.py:24: AssertionError
+______ RunLengthEncodingTest.test_encode_string_with_no_single_characters ______
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_string_with_no_single_characters>
+
+    def test_encode_string_with_no_single_characters(self):
+>       self.assertMultiLineEqual(encode("AABBBCCCC"), "2A3B4C")
+E       AssertionError: 'AABBBCCCC' != '2A3B4C'
+E       - AABBBCCCC
+E       + 2A3B4C
+
+run-length-encoding/run_length_encoding_test.py:21: AssertionError
+=========================== short test summary info ============================
+FAILED run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_lowercase_characters
+FAILED run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_multiple_whitespace_mixed_in_string
+FAILED run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_single_characters_mixed_with_repeated_characters
+FAILED run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_string_with_no_single_characters
+========================= 4 failed, 9 passed in 0.04s ==========================

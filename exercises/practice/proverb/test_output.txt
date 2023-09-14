@@ -1,0 +1,37 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 8 items
+
+proverb/proverb_test.py .......F                                         [100%]
+
+=================================== FAILURES ===================================
+_________________________ ProverbTest.test_zero_pieces _________________________
+
+self = <proverb_test.ProverbTest testMethod=test_zero_pieces>
+
+    def test_zero_pieces(self):
+        input_data = []
+>       self.assertEqual(proverb(*input_data, qualifier=None), [])
+
+proverb/proverb_test.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+qualifier = None, items = (), lines = []
+
+    def proverb(*items, qualifier=None):
+        lines = []
+        for i in range(len(items) - 1):
+            lines.append(f"For want of a {items[i]} the {items[i + 1]} was lost.")
+        if qualifier:
+            final_line = f"And all for the want of a {qualifier} {items[0]}."
+        else:
+>           final_line = f"And all for the want of a {items[0]}."
+E           IndexError: tuple index out of range
+
+proverb/proverb.py:8: IndexError
+=========================== short test summary info ============================
+FAILED proverb/proverb_test.py::ProverbTest::test_zero_pieces - IndexError: t...
+========================= 1 failed, 7 passed in 0.03s ==========================

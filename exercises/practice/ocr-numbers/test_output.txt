@@ -1,0 +1,120 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 17 items
+
+ocr-numbers/ocr_numbers_test.py .FFF...F.......F.                        [100%]
+
+=================================== FAILURES ===================================
+_ OcrNumbersTest.test_input_with_a_number_of_columns_that_is_not_a_multiple_of_three_raises_an_error _
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_input_with_a_number_of_columns_that_is_not_a_multiple_of_three_raises_an_error>
+
+    def test_input_with_a_number_of_columns_that_is_not_a_multiple_of_three_raises_an_error(
+        self,
+    ):
+        with self.assertRaises(ValueError) as err:
+            convert(["    ", "   |", "   |", "    "])
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0], "Number of input columns is not a multiple of three"
+        )
+E       AssertionError: 'Invalid grid size' != 'Number of input columns is not a multiple of three'
+E       - Invalid grid size
+E       + Number of input columns is not a multiple of three
+
+ocr-numbers/ocr_numbers_test.py:38: AssertionError
+_ OcrNumbersTest.test_input_with_a_number_of_lines_that_is_not_a_multiple_of_four_raises_an_error _
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_input_with_a_number_of_lines_that_is_not_a_multiple_of_four_raises_an_error>
+
+    def test_input_with_a_number_of_lines_that_is_not_a_multiple_of_four_raises_an_error(
+        self,
+    ):
+        with self.assertRaises(ValueError) as err:
+            convert([" _ ", "| |", "   "])
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0], "Number of input lines is not a multiple of four"
+        )
+E       AssertionError: 'Invalid grid size' != 'Number of input lines is not a multiple of four'
+E       - Invalid grid size
+E       + Number of input lines is not a multiple of four
+
+ocr-numbers/ocr_numbers_test.py:28: AssertionError
+_ OcrNumbersTest.test_numbers_separated_by_empty_lines_are_recognized_lines_are_joined_by_commas _
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_numbers_separated_by_empty_lines_are_recognized_lines_are_joined_by_commas>
+
+    def test_numbers_separated_by_empty_lines_are_recognized_lines_are_joined_by_commas(
+        self,
+    ):
+>       self.assertEqual(
+            convert(
+                [
+                    "    _  _ ",
+                    "  | _| _|",
+                    "  ||_  _|",
+                    "         ",
+                    "    _  _ ",
+                    "|_||_ |_ ",
+                    "  | _||_|",
+                    "         ",
+                    " _  _  _ ",
+                    "  ||_||_|",
+                    "  ||_| _|",
+                    "         ",
+                ]
+            ),
+            "123,456,789",
+        )
+E       AssertionError: '1?3,456,789' != '123,456,789'
+E       - 1?3,456,789
+E       ?  ^
+E       + 123,456,789
+E       ?  ^
+
+ocr-numbers/ocr_numbers_test.py:108: AssertionError
+_______________________ OcrNumbersTest.test_recognizes_2 _______________________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_2>
+
+    def test_recognizes_2(self):
+>       self.assertEqual(convert([" _ ", " _|", "|_ ", "   "]), "2")
+E       AssertionError: '?' != '2'
+E       - ?
+E       + 2
+
+ocr-numbers/ocr_numbers_test.py:69: AssertionError
+___________ OcrNumbersTest.test_recognizes_string_of_decimal_numbers ___________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_string_of_decimal_numbers>
+
+    def test_recognizes_string_of_decimal_numbers(self):
+>       self.assertEqual(
+            convert(
+                [
+                    "    _  _     _  _  _  _  _  _ ",
+                    "  | _| _||_||_ |_   ||_||_|| |",
+                    "  ||_  _|  | _||_|  ||_| _||_|",
+                    "                              ",
+                ]
+            ),
+            "1234567890",
+        )
+E       AssertionError: '1?34567890' != '1234567890'
+E       - 1?34567890
+E       ?  ^
+E       + 1234567890
+E       ?  ^
+
+ocr-numbers/ocr_numbers_test.py:93: AssertionError
+=========================== short test summary info ============================
+FAILED ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_input_with_a_number_of_columns_that_is_not_a_multiple_of_three_raises_an_error
+FAILED ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_input_with_a_number_of_lines_that_is_not_a_multiple_of_four_raises_an_error
+FAILED ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_numbers_separated_by_empty_lines_are_recognized_lines_are_joined_by_commas
+FAILED ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_2 - A...
+FAILED ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_string_of_decimal_numbers
+========================= 5 failed, 12 passed in 0.06s =========================

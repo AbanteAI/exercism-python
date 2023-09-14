@@ -1,0 +1,23 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 26 items
+
+variable-length-quantity/variable_length_quantity_test.py .......F...... [ 53%]
+............                                                             [100%]
+
+=================================== FAILURES ===================================
+_ VariableLengthQuantityTest.test_incomplete_sequence_causes_error_even_if_value_is_zero _
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_incomplete_sequence_causes_error_even_if_value_is_zero>
+
+    def test_incomplete_sequence_causes_error_even_if_value_is_zero(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+variable-length-quantity/variable_length_quantity_test.py:111: AssertionError
+=========================== short test summary info ============================
+FAILED variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_incomplete_sequence_causes_error_even_if_value_is_zero
+========================= 1 failed, 25 passed in 0.04s =========================

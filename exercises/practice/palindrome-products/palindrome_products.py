@@ -8,7 +8,26 @@ def largest(min_factor, max_factor):
              Iterable should contain both factors of the palindrome in an arbitrary order.
     """
 
-    pass
+def is_palindrome(n):
+    return str(n) == str(n)[::-1]
+
+def largest(min_factor, max_factor):
+    if min_factor > max_factor:
+        raise ValueError("min must be <= max")
+
+    max_palindrome = 0
+    factors = []
+
+    for i in range(max_factor, min_factor - 1, -1):
+        for j in range(max_factor, i - 1, -1):
+            product = i * j
+            if product <= max_palindrome:
+                break
+            if is_palindrome(product):
+                max_palindrome = product
+                factors = [i, j]
+
+    return max_palindrome, factors
 
 
 def smallest(min_factor, max_factor):
@@ -21,4 +40,20 @@ def smallest(min_factor, max_factor):
     Iterable should contain both factors of the palindrome in an arbitrary order.
     """
 
-    pass
+def smallest(min_factor, max_factor):
+    if min_factor > max_factor:
+        raise ValueError("min must be <= max")
+
+    min_palindrome = float('inf')
+    factors = []
+
+    for i in range(min_factor, max_factor + 1):
+        for j in range(i, max_factor + 1):
+            product = i * j
+            if product >= min_palindrome:
+                break
+            if is_palindrome(product):
+                min_palindrome = product
+                factors = [i, j]
+
+    return min_palindrome, factors

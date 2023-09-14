@@ -1,0 +1,1178 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 43 items
+
+rational-numbers/rational_numbers_test.py FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 69%]
+FFFFFFFFFFFFF                                                            [100%]
+
+=================================== FAILURES ===================================
+____ RationalNumbersTest.test_absolute_value_of_a_negative_rational_number _____
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_absolute_value_of_a_negative_rational_number>
+
+    def test_absolute_value_of_a_negative_rational_number(self):
+>       self.assertEqual(abs(Rational(-1, 2)), Rational(1, 2))
+
+rational-numbers/rational_numbers_test.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_absolute_value_of_a_negative_rational_number_with_negative_denominator _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_absolute_value_of_a_negative_rational_number_with_negative_denominator>
+
+    def test_absolute_value_of_a_negative_rational_number_with_negative_denominator(
+        self,
+    ):
+>       self.assertEqual(abs(Rational(1, -2)), Rational(1, 2))
+
+rational-numbers/rational_numbers_test.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+____ RationalNumbersTest.test_absolute_value_of_a_positive_rational_number _____
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_absolute_value_of_a_positive_rational_number>
+
+    def test_absolute_value_of_a_positive_rational_number(self):
+>       self.assertEqual(abs(Rational(1, 2)), Rational(1, 2))
+
+rational-numbers/rational_numbers_test.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_absolute_value_of_a_positive_rational_number_with_negative_numerator_and_denominator _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_absolute_value_of_a_positive_rational_number_with_negative_numerator_and_denominator>
+
+    def test_absolute_value_of_a_positive_rational_number_with_negative_numerator_and_denominator(
+        self,
+    ):
+>       self.assertEqual(abs(Rational(-1, -2)), Rational(1, 2))
+
+rational-numbers/rational_numbers_test.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_absolute_value_of_a_rational_number_is_reduced_to_lowest_terms _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_absolute_value_of_a_rational_number_is_reduced_to_lowest_terms>
+
+    def test_absolute_value_of_a_rational_number_is_reduced_to_lowest_terms(self):
+>       self.assertEqual(abs(Rational(2, 4)), Rational(1, 2))
+
+rational-numbers/rational_numbers_test.py:100: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_______________ RationalNumbersTest.test_absolute_value_of_zero ________________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_absolute_value_of_zero>
+
+    def test_absolute_value_of_zero(self):
+>       self.assertEqual(abs(Rational(0, 1)), Rational(0, 1))
+
+rational-numbers/rational_numbers_test.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_add_a_positive_rational_number_and_a_negative_rational_number _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_add_a_positive_rational_number_and_a_negative_rational_number>
+
+    def test_add_a_positive_rational_number_and_a_negative_rational_number(self):
+>       self.assertEqual(Rational(1, 2) + Rational(-2, 3), Rational(-1, 6))
+
+rational-numbers/rational_numbers_test.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+____ RationalNumbersTest.test_add_a_rational_number_to_its_additive_inverse ____
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_add_a_rational_number_to_its_additive_inverse>
+
+    def test_add_a_rational_number_to_its_additive_inverse(self):
+>       self.assertEqual(Rational(1, 2) + Rational(-1, 2), Rational(0, 1))
+
+rational-numbers/rational_numbers_test.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+__________ RationalNumbersTest.test_add_two_negative_rational_numbers __________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_add_two_negative_rational_numbers>
+
+    def test_add_two_negative_rational_numbers(self):
+>       self.assertEqual(Rational(-1, 2) + Rational(-2, 3), Rational(-7, 6))
+
+rational-numbers/rational_numbers_test.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+__________ RationalNumbersTest.test_add_two_positive_rational_numbers __________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_add_two_positive_rational_numbers>
+
+    def test_add_two_positive_rational_numbers(self):
+>       self.assertEqual(Rational(1, 2) + Rational(2, 3), Rational(7, 6))
+
+rational-numbers/rational_numbers_test.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_divide_a_positive_rational_number_by_a_negative_rational_number _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_divide_a_positive_rational_number_by_a_negative_rational_number>
+
+    def test_divide_a_positive_rational_number_by_a_negative_rational_number(self):
+>       self.assertEqual(Rational(1, 2) / Rational(-2, 3), Rational(-3, 4))
+
+rational-numbers/rational_numbers_test.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+____________ RationalNumbersTest.test_divide_a_rational_number_by_1 ____________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_divide_a_rational_number_by_1>
+
+    def test_divide_a_rational_number_by_1(self):
+>       self.assertEqual(Rational(1, 2) / Rational(1, 1), Rational(1, 2))
+
+rational-numbers/rational_numbers_test.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+________ RationalNumbersTest.test_divide_two_negative_rational_numbers _________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_divide_two_negative_rational_numbers>
+
+    def test_divide_two_negative_rational_numbers(self):
+>       self.assertEqual(Rational(-1, 2) / Rational(-2, 3), Rational(3, 4))
+
+rational-numbers/rational_numbers_test.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+________ RationalNumbersTest.test_divide_two_positive_rational_numbers _________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_divide_two_positive_rational_numbers>
+
+    def test_divide_two_positive_rational_numbers(self):
+>       self.assertEqual(Rational(1, 2) / Rational(2, 3), Rational(3, 4))
+
+rational-numbers/rational_numbers_test.py:67: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_multiply_a_negative_rational_number_by_a_positive_rational_number _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_multiply_a_negative_rational_number_by_a_positive_rational_number>
+
+    def test_multiply_a_negative_rational_number_by_a_positive_rational_number(self):
+>       self.assertEqual(Rational(-1, 2) * Rational(2, 3), Rational(-1, 3))
+
+rational-numbers/rational_numbers_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+___________ RationalNumbersTest.test_multiply_a_rational_number_by_0 ___________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_multiply_a_rational_number_by_0>
+
+    def test_multiply_a_rational_number_by_0(self):
+>       self.assertEqual(Rational(1, 2) * Rational(0, 1), Rational(0, 1))
+
+rational-numbers/rational_numbers_test.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+___________ RationalNumbersTest.test_multiply_a_rational_number_by_1 ___________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_multiply_a_rational_number_by_1>
+
+    def test_multiply_a_rational_number_by_1(self):
+>       self.assertEqual(Rational(1, 2) * Rational(1, 1), Rational(1, 2))
+
+rational-numbers/rational_numbers_test.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+____ RationalNumbersTest.test_multiply_a_rational_number_by_its_reciprocal _____
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_multiply_a_rational_number_by_its_reciprocal>
+
+    def test_multiply_a_rational_number_by_its_reciprocal(self):
+>       self.assertEqual(Rational(1, 2) * Rational(2, 1), Rational(1, 1))
+
+rational-numbers/rational_numbers_test.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_______ RationalNumbersTest.test_multiply_two_negative_rational_numbers ________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_multiply_two_negative_rational_numbers>
+
+    def test_multiply_two_negative_rational_numbers(self):
+>       self.assertEqual(Rational(-1, 2) * Rational(-2, 3), Rational(1, 3))
+
+rational-numbers/rational_numbers_test.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_______ RationalNumbersTest.test_multiply_two_positive_rational_numbers ________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_multiply_two_positive_rational_numbers>
+
+    def test_multiply_two_positive_rational_numbers(self):
+>       self.assertEqual(Rational(1, 2) * Rational(2, 3), Rational(1, 3))
+
+rational-numbers/rational_numbers_test.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_raise_a_negative_rational_number_to_a_positive_integer_power _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_negative_rational_number_to_a_positive_integer_power>
+
+    def test_raise_a_negative_rational_number_to_a_positive_integer_power(self):
+>       self.assertEqual(Rational(-1, 2) ** 3, Rational(-1, 8))
+
+rational-numbers/rational_numbers_test.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_raise_a_negative_rational_number_to_an_even_negative_integer_power _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_negative_rational_number_to_an_even_negative_integer_power>
+
+    def test_raise_a_negative_rational_number_to_an_even_negative_integer_power(self):
+>       self.assertEqual(Rational(-3, 5) ** -2, Rational(25, 9))
+
+rational-numbers/rational_numbers_test.py:114: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_raise_a_negative_rational_number_to_an_odd_negative_integer_power _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_negative_rational_number_to_an_odd_negative_integer_power>
+
+    def test_raise_a_negative_rational_number_to_an_odd_negative_integer_power(self):
+>       self.assertEqual(Rational(-3, 5) ** -3, Rational(-125, 27))
+
+rational-numbers/rational_numbers_test.py:117: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_raise_a_negative_rational_number_to_the_power_of_zero _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_negative_rational_number_to_the_power_of_zero>
+
+    def test_raise_a_negative_rational_number_to_the_power_of_zero(self):
+>       self.assertEqual(Rational(-1, 2) ** 0, Rational(1, 1))
+
+rational-numbers/rational_numbers_test.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_raise_a_positive_rational_number_to_a_negative_integer_power _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_positive_rational_number_to_a_negative_integer_power>
+
+    def test_raise_a_positive_rational_number_to_a_negative_integer_power(self):
+>       self.assertEqual(Rational(3, 5) ** -2, Rational(25, 9))
+
+rational-numbers/rational_numbers_test.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_raise_a_positive_rational_number_to_a_positive_integer_power _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_positive_rational_number_to_a_positive_integer_power>
+
+    def test_raise_a_positive_rational_number_to_a_positive_integer_power(self):
+>       self.assertEqual(Rational(1, 2) ** 3, Rational(1, 8))
+
+rational-numbers/rational_numbers_test.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_raise_a_positive_rational_number_to_the_power_of_zero _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_positive_rational_number_to_the_power_of_zero>
+
+    def test_raise_a_positive_rational_number_to_the_power_of_zero(self):
+>       self.assertEqual(Rational(1, 2) ** 0, Rational(1, 1))
+
+rational-numbers/rational_numbers_test.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+__ RationalNumbersTest.test_raise_a_real_number_to_a_negative_rational_number __
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_real_number_to_a_negative_rational_number>
+
+    def test_raise_a_real_number_to_a_negative_rational_number(self):
+>       self.assertAlmostEqual(9 ** Rational(-1, 2), 0.3333333333333333, places=8)
+
+rational-numbers/rational_numbers_test.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+__ RationalNumbersTest.test_raise_a_real_number_to_a_positive_rational_number __
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_real_number_to_a_positive_rational_number>
+
+    def test_raise_a_real_number_to_a_positive_rational_number(self):
+>       self.assertAlmostEqual(8 ** Rational(4, 3), 16.0, places=8)
+
+rational-numbers/rational_numbers_test.py:134: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+____ RationalNumbersTest.test_raise_a_real_number_to_a_zero_rational_number ____
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_real_number_to_a_zero_rational_number>
+
+    def test_raise_a_real_number_to_a_zero_rational_number(self):
+>       self.assertAlmostEqual(2 ** Rational(0, 1), 1.0, places=8)
+
+rational-numbers/rational_numbers_test.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+____________ RationalNumbersTest.test_raise_one_to_an_integer_power ____________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_one_to_an_integer_power>
+
+    def test_raise_one_to_an_integer_power(self):
+>       self.assertEqual(Rational(1, 1) ** 4, Rational(1, 1))
+
+rational-numbers/rational_numbers_test.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+___________ RationalNumbersTest.test_raise_zero_to_an_integer_power ____________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_zero_to_an_integer_power>
+
+    def test_raise_zero_to_an_integer_power(self):
+>       self.assertEqual(Rational(0, 1) ** 5, Rational(0, 1))
+
+rational-numbers/rational_numbers_test.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+__ RationalNumbersTest.test_reduce_a_negative_rational_number_to_lowest_terms __
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_reduce_a_negative_rational_number_to_lowest_terms>
+
+    def test_reduce_a_negative_rational_number_to_lowest_terms(self):
+>       self.assertEqual(Rational(-4, 6), Rational(-2, 3))
+
+rational-numbers/rational_numbers_test.py:151: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+__ RationalNumbersTest.test_reduce_a_positive_rational_number_to_lowest_terms __
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_reduce_a_positive_rational_number_to_lowest_terms>
+
+    def test_reduce_a_positive_rational_number_to_lowest_terms(self):
+>       self.assertEqual(Rational(2, 4), Rational(1, 2))
+
+rational-numbers/rational_numbers_test.py:145: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_reduce_a_rational_number_with_a_negative_denominator_to_lowest_terms _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_reduce_a_rational_number_with_a_negative_denominator_to_lowest_terms>
+
+    def test_reduce_a_rational_number_with_a_negative_denominator_to_lowest_terms(self):
+>       self.assertEqual(Rational(3, -9), Rational(-1, 3))
+
+rational-numbers/rational_numbers_test.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+__________ RationalNumbersTest.test_reduce_an_integer_to_lowest_terms __________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_reduce_an_integer_to_lowest_terms>
+
+    def test_reduce_an_integer_to_lowest_terms(self):
+>       self.assertEqual(Rational(-14, 7), Rational(-2, 1))
+
+rational-numbers/rational_numbers_test.py:160: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_____________ RationalNumbersTest.test_reduce_one_to_lowest_terms ______________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_reduce_one_to_lowest_terms>
+
+    def test_reduce_one_to_lowest_terms(self):
+>       self.assertEqual(Rational(13, 13), Rational(1, 1))
+
+rational-numbers/rational_numbers_test.py:163: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+____ RationalNumbersTest.test_reduce_places_the_minus_sign_on_the_numerator ____
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_reduce_places_the_minus_sign_on_the_numerator>
+
+    def test_reduce_places_the_minus_sign_on_the_numerator(self):
+>       self.assertEqual(Rational(3, -4), Rational(-3, 4))
+
+rational-numbers/rational_numbers_test.py:148: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_____________ RationalNumbersTest.test_reduce_zero_to_lowest_terms _____________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_reduce_zero_to_lowest_terms>
+
+    def test_reduce_zero_to_lowest_terms(self):
+>       self.assertEqual(Rational(0, 6), Rational(0, 1))
+
+rational-numbers/rational_numbers_test.py:157: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_ RationalNumbersTest.test_subtract_a_positive_rational_number_and_a_negative_rational_number _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_subtract_a_positive_rational_number_and_a_negative_rational_number>
+
+    def test_subtract_a_positive_rational_number_and_a_negative_rational_number(self):
+>       self.assertEqual(Rational(1, 2) - Rational(-2, 3), Rational(7, 6))
+
+rational-numbers/rational_numbers_test.py:36: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_______ RationalNumbersTest.test_subtract_a_rational_number_from_itself ________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_subtract_a_rational_number_from_itself>
+
+    def test_subtract_a_rational_number_from_itself(self):
+>       self.assertEqual(Rational(1, 2) - Rational(1, 2), Rational(0, 1))
+
+rational-numbers/rational_numbers_test.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_______ RationalNumbersTest.test_subtract_two_negative_rational_numbers ________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_subtract_two_negative_rational_numbers>
+
+    def test_subtract_two_negative_rational_numbers(self):
+>       self.assertEqual(Rational(-1, 2) - Rational(-2, 3), Rational(1, 6))
+
+rational-numbers/rational_numbers_test.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+_______ RationalNumbersTest.test_subtract_two_positive_rational_numbers ________
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_subtract_two_positive_rational_numbers>
+
+    def test_subtract_two_positive_rational_numbers(self):
+>       self.assertEqual(Rational(1, 2) - Rational(2, 3), Rational(-1, 6))
+
+rational-numbers/rational_numbers_test.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rational-numbers/rational_numbers.py:5: in __init__
+    self._reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = None/None
+
+    def _reduce(self):
+        def gcd(a, b):
+            while b:
+                a, b = b, a % b
+            return a
+    
+        g = gcd(self.numer, self.denom)
+>       self.numer //= g
+E       TypeError: unsupported operand type(s) for //=: 'NoneType' and 'NoneType'
+
+rational-numbers/rational_numbers.py:40: TypeError
+=========================== short test summary info ============================
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_absolute_value_of_a_negative_rational_number
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_absolute_value_of_a_negative_rational_number_with_negative_denominator
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_absolute_value_of_a_positive_rational_number
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_absolute_value_of_a_positive_rational_number_with_negative_numerator_and_denominator
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_absolute_value_of_a_rational_number_is_reduced_to_lowest_terms
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_absolute_value_of_zero
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_add_a_positive_rational_number_and_a_negative_rational_number
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_add_a_rational_number_to_its_additive_inverse
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_add_two_negative_rational_numbers
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_add_two_positive_rational_numbers
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_divide_a_positive_rational_number_by_a_negative_rational_number
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_divide_a_rational_number_by_1
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_divide_two_negative_rational_numbers
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_divide_two_positive_rational_numbers
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_multiply_a_negative_rational_number_by_a_positive_rational_number
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_multiply_a_rational_number_by_0
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_multiply_a_rational_number_by_1
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_multiply_a_rational_number_by_its_reciprocal
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_multiply_two_negative_rational_numbers
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_multiply_two_positive_rational_numbers
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_negative_rational_number_to_a_positive_integer_power
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_negative_rational_number_to_an_even_negative_integer_power
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_negative_rational_number_to_an_odd_negative_integer_power
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_negative_rational_number_to_the_power_of_zero
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_positive_rational_number_to_a_negative_integer_power
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_positive_rational_number_to_a_positive_integer_power
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_positive_rational_number_to_the_power_of_zero
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_real_number_to_a_negative_rational_number
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_real_number_to_a_positive_rational_number
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_real_number_to_a_zero_rational_number
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_one_to_an_integer_power
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_zero_to_an_integer_power
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_reduce_a_negative_rational_number_to_lowest_terms
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_reduce_a_positive_rational_number_to_lowest_terms
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_reduce_a_rational_number_with_a_negative_denominator_to_lowest_terms
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_reduce_an_integer_to_lowest_terms
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_reduce_one_to_lowest_terms
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_reduce_places_the_minus_sign_on_the_numerator
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_reduce_zero_to_lowest_terms
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_subtract_a_positive_rational_number_and_a_negative_rational_number
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_subtract_a_rational_number_from_itself
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_subtract_two_negative_rational_numbers
+FAILED rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_subtract_two_positive_rational_numbers
+============================== 43 failed in 0.28s ==============================

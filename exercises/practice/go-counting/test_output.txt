@@ -1,0 +1,136 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 11 items
+
+go-counting/go_counting_test.py FFFFFFFFFFF                              [100%]
+
+=================================== FAILURES ===================================
+_________ GoCountingTest.test_a_stone_and_not_a_territory_on_5x5_board _________
+
+self = <go_counting_test.GoCountingTest testMethod=test_a_stone_and_not_a_territory_on_5x5_board>
+
+    def test_a_stone_and_not_a_territory_on_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       stone, territory = board.territory(x=1, y=1)
+E       TypeError: cannot unpack non-iterable NoneType object
+
+go-counting/go_counting_test.py:36: TypeError
+___________ GoCountingTest.test_black_corner_territory_on_5x5_board ____________
+
+self = <go_counting_test.GoCountingTest testMethod=test_black_corner_territory_on_5x5_board>
+
+    def test_black_corner_territory_on_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       stone, territory = board.territory(x=0, y=1)
+E       TypeError: cannot unpack non-iterable NoneType object
+
+go-counting/go_counting_test.py:18: TypeError
+_______ GoCountingTest.test_invalid_because_x_is_too_high_for_5x5_board ________
+
+self = <go_counting_test.GoCountingTest testMethod=test_invalid_because_x_is_too_high_for_5x5_board>
+
+    def test_invalid_because_x_is_too_high_for_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+go-counting/go_counting_test.py:49: AssertionError
+________ GoCountingTest.test_invalid_because_x_is_too_low_for_5x5_board ________
+
+self = <go_counting_test.GoCountingTest testMethod=test_invalid_because_x_is_too_low_for_5x5_board>
+
+    def test_invalid_because_x_is_too_low_for_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+go-counting/go_counting_test.py:42: AssertionError
+_______ GoCountingTest.test_invalid_because_y_is_too_high_for_5x5_board ________
+
+self = <go_counting_test.GoCountingTest testMethod=test_invalid_because_y_is_too_high_for_5x5_board>
+
+    def test_invalid_because_y_is_too_high_for_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+go-counting/go_counting_test.py:63: AssertionError
+________ GoCountingTest.test_invalid_because_y_is_too_low_for_5x5_board ________
+
+self = <go_counting_test.GoCountingTest testMethod=test_invalid_because_y_is_too_low_for_5x5_board>
+
+    def test_invalid_because_y_is_too_low_for_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+go-counting/go_counting_test.py:56: AssertionError
+_____________ GoCountingTest.test_one_territory_is_the_whole_board _____________
+
+self = <go_counting_test.GoCountingTest testMethod=test_one_territory_is_the_whole_board>
+
+    def test_one_territory_is_the_whole_board(self):
+        board = Board([" "])
+        territories = board.territories()
+>       self.assertSetEqual(territories[BLACK], set())
+E       TypeError: 'NoneType' object is not subscriptable
+
+go-counting/go_counting_test.py:71: TypeError
+____________ GoCountingTest.test_open_corner_territory_on_5x5_board ____________
+
+self = <go_counting_test.GoCountingTest testMethod=test_open_corner_territory_on_5x5_board>
+
+    def test_open_corner_territory_on_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       stone, territory = board.territory(x=1, y=4)
+E       TypeError: cannot unpack non-iterable NoneType object
+
+go-counting/go_counting_test.py:30: TypeError
+_______________ GoCountingTest.test_two_region_rectangular_board _______________
+
+self = <go_counting_test.GoCountingTest testMethod=test_two_region_rectangular_board>
+
+    def test_two_region_rectangular_board(self):
+        board = Board([" B "])
+        territories = board.territories()
+>       self.assertSetEqual(territories[BLACK], {(0, 0), (2, 0)})
+E       TypeError: 'NoneType' object is not subscriptable
+
+go-counting/go_counting_test.py:85: TypeError
+_____________ GoCountingTest.test_two_territory_rectangular_board ______________
+
+self = <go_counting_test.GoCountingTest testMethod=test_two_territory_rectangular_board>
+
+    def test_two_territory_rectangular_board(self):
+        board = Board([" BW ", " BW "])
+        territories = board.territories()
+>       self.assertSetEqual(territories[BLACK], {(0, 0), (0, 1)})
+E       TypeError: 'NoneType' object is not subscriptable
+
+go-counting/go_counting_test.py:78: TypeError
+___________ GoCountingTest.test_white_center_territory_on_5x5_board ____________
+
+self = <go_counting_test.GoCountingTest testMethod=test_white_center_territory_on_5x5_board>
+
+    def test_white_center_territory_on_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       stone, territory = board.territory(x=2, y=3)
+E       TypeError: cannot unpack non-iterable NoneType object
+
+go-counting/go_counting_test.py:24: TypeError
+=========================== short test summary info ============================
+FAILED go-counting/go_counting_test.py::GoCountingTest::test_a_stone_and_not_a_territory_on_5x5_board
+FAILED go-counting/go_counting_test.py::GoCountingTest::test_black_corner_territory_on_5x5_board
+FAILED go-counting/go_counting_test.py::GoCountingTest::test_invalid_because_x_is_too_high_for_5x5_board
+FAILED go-counting/go_counting_test.py::GoCountingTest::test_invalid_because_x_is_too_low_for_5x5_board
+FAILED go-counting/go_counting_test.py::GoCountingTest::test_invalid_because_y_is_too_high_for_5x5_board
+FAILED go-counting/go_counting_test.py::GoCountingTest::test_invalid_because_y_is_too_low_for_5x5_board
+FAILED go-counting/go_counting_test.py::GoCountingTest::test_one_territory_is_the_whole_board
+FAILED go-counting/go_counting_test.py::GoCountingTest::test_open_corner_territory_on_5x5_board
+FAILED go-counting/go_counting_test.py::GoCountingTest::test_two_region_rectangular_board
+FAILED go-counting/go_counting_test.py::GoCountingTest::test_two_territory_rectangular_board
+FAILED go-counting/go_counting_test.py::GoCountingTest::test_white_center_territory_on_5x5_board
+============================== 11 failed in 0.06s ==============================

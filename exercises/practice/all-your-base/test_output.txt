@@ -1,0 +1,124 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 21 items
+
+all-your-base/all_your_base_test.py ...F...FFF....FFF....                [100%]
+
+=================================== FAILURES ===================================
+_________________ AllYourBaseTest.test_both_bases_are_negative _________________
+
+self = <all_your_base_test.AllYourBaseTest testMethod=test_both_bases_are_negative>
+
+    def test_both_bases_are_negative(self):
+        with self.assertRaises(ValueError) as err:
+            rebase(-2, [1], -7)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "input base must be >= 2")
+E       AssertionError: 'input base and output base must be >= 2' != 'input base must be >= 2'
+E       - input base and output base must be >= 2
+E       ?            ----------------
+E       + input base must be >= 2
+
+all-your-base/all_your_base_test.py:105: AssertionError
+_________________ AllYourBaseTest.test_input_base_is_negative __________________
+
+self = <all_your_base_test.AllYourBaseTest testMethod=test_input_base_is_negative>
+
+    def test_input_base_is_negative(self):
+        with self.assertRaises(ValueError) as err:
+            rebase(-2, [1], 10)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "input base must be >= 2")
+E       AssertionError: 'input base and output base must be >= 2' != 'input base must be >= 2'
+E       - input base and output base must be >= 2
+E       ?            ----------------
+E       + input base must be >= 2
+
+all-your-base/all_your_base_test.py:65: AssertionError
+____________________ AllYourBaseTest.test_input_base_is_one ____________________
+
+self = <all_your_base_test.AllYourBaseTest testMethod=test_input_base_is_one>
+
+    def test_input_base_is_one(self):
+        with self.assertRaises(ValueError) as err:
+            rebase(1, [0], 10)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "input base must be >= 2")
+E       AssertionError: 'input base and output base must be >= 2' != 'input base must be >= 2'
+E       - input base and output base must be >= 2
+E       ?            ----------------
+E       + input base must be >= 2
+
+all-your-base/all_your_base_test.py:53: AssertionError
+___________________ AllYourBaseTest.test_input_base_is_zero ____________________
+
+self = <all_your_base_test.AllYourBaseTest testMethod=test_input_base_is_zero>
+
+    def test_input_base_is_zero(self):
+        with self.assertRaises(ValueError) as err:
+            rebase(0, [], 10)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "input base must be >= 2")
+E       AssertionError: 'input base and output base must be >= 2' != 'input base must be >= 2'
+E       - input base and output base must be >= 2
+E       ?            ----------------
+E       + input base must be >= 2
+
+all-your-base/all_your_base_test.py:59: AssertionError
+_________________ AllYourBaseTest.test_output_base_is_negative _________________
+
+self = <all_your_base_test.AllYourBaseTest testMethod=test_output_base_is_negative>
+
+    def test_output_base_is_negative(self):
+        with self.assertRaises(ValueError) as err:
+            rebase(2, [1], -7)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "output base must be >= 2")
+E       AssertionError: 'input base and output base must be >= 2' != 'output base must be >= 2'
+E       - input base and output base must be >= 2
+E       ? ---------------
+E       + output base must be >= 2
+
+all-your-base/all_your_base_test.py:99: AssertionError
+___________________ AllYourBaseTest.test_output_base_is_one ____________________
+
+self = <all_your_base_test.AllYourBaseTest testMethod=test_output_base_is_one>
+
+    def test_output_base_is_one(self):
+        with self.assertRaises(ValueError) as err:
+            rebase(2, [1, 0, 1, 0, 1, 0], 1)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "output base must be >= 2")
+E       AssertionError: 'input base and output base must be >= 2' != 'output base must be >= 2'
+E       - input base and output base must be >= 2
+E       ? ---------------
+E       + output base must be >= 2
+
+all-your-base/all_your_base_test.py:87: AssertionError
+___________________ AllYourBaseTest.test_output_base_is_zero ___________________
+
+self = <all_your_base_test.AllYourBaseTest testMethod=test_output_base_is_zero>
+
+    def test_output_base_is_zero(self):
+        with self.assertRaises(ValueError) as err:
+            rebase(10, [7], 0)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "output base must be >= 2")
+E       AssertionError: 'input base and output base must be >= 2' != 'output base must be >= 2'
+E       - input base and output base must be >= 2
+E       ? ---------------
+E       + output base must be >= 2
+
+all-your-base/all_your_base_test.py:93: AssertionError
+=========================== short test summary info ============================
+FAILED all-your-base/all_your_base_test.py::AllYourBaseTest::test_both_bases_are_negative
+FAILED all-your-base/all_your_base_test.py::AllYourBaseTest::test_input_base_is_negative
+FAILED all-your-base/all_your_base_test.py::AllYourBaseTest::test_input_base_is_one
+FAILED all-your-base/all_your_base_test.py::AllYourBaseTest::test_input_base_is_zero
+FAILED all-your-base/all_your_base_test.py::AllYourBaseTest::test_output_base_is_negative
+FAILED all-your-base/all_your_base_test.py::AllYourBaseTest::test_output_base_is_one
+FAILED all-your-base/all_your_base_test.py::AllYourBaseTest::test_output_base_is_zero
+========================= 7 failed, 14 passed in 0.08s =========================

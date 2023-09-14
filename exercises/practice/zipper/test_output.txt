@@ -1,0 +1,257 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 14 items
+
+zipper/zipper_test.py .....FF.FFF..F                                     [100%]
+
+=================================== FAILURES ===================================
+______________________ ZipperTest.test_set_left_with_leaf ______________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_left_with_leaf>
+
+    def test_set_left_with_leaf(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": {"value": 5, "left": None, "right": None},
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+        result = (
+            zipper.left().set_left({"value": 5, "left": None, "right": None}).to_tree()
+        )
+>       self.assertEqual(result, expected)
+E       AssertionError: {'value': 2, 'left': {'value': 5, 'left': None, 'ri[59 chars]one}} != {'value': 1, 'left': {'value': 2, 'left': {'value':[133 chars]one}}
+E       - {'left': {'left': None, 'right': None, 'value': 5},
+E       + {'left': {'left': {'left': None, 'right': None, 'value': 5},
+E       ?                   +++++++++
+E       
+E       +           'right': {'left': None, 'right': None, 'value': 3},
+E       +           'value': 2},
+E       -  'right': {'left': None, 'right': None, 'value': 3},
+E       ?                                                  ^
+E       
+E       +  'right': {'left': None, 'right': None, 'value': 4},
+E       ?                                                  ^
+E       
+E       -  'value': 2}
+E       ?           ^
+E       
+E       +  'value': 1}
+E       ?           ^
+
+zipper/zipper_test.py:213: AssertionError
+_____________________ ZipperTest.test_set_right_with_null ______________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_right_with_null>
+
+    def test_set_right_with_null(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {"value": 2, "left": None, "right": None},
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+        result = zipper.left().set_right(None).to_tree()
+>       self.assertEqual(result, expected)
+E       AssertionError: {'value': 2, 'left': None, 'right': None} != {'value': 1, 'left': {'value': 2, 'left': None, 'ri[59 chars]one}}
+E       - {'left': None, 'right': None, 'value': 2}
+E       + {'left': {'left': None, 'right': None, 'value': 2},
+E       ?          +++++++++                                +
+E       
+E       +  'right': {'left': None, 'right': None, 'value': 4},
+E       +  'value': 1}
+
+zipper/zipper_test.py:234: AssertionError
+__________________________ ZipperTest.test_set_value ___________________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_value>
+
+    def test_set_value(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 5,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+        result = zipper.left().set_value(5).to_tree()
+>       self.assertEqual(result, expected)
+E       AssertionError: {'value': 5, 'left': None, 'right': {'value': 3, 'l[22 chars]one}} != {'value': 1, 'left': {'value': 5, 'left': None, 'ri[96 chars]one}}
+E       - {'left': None, 'right': {'left': None, 'right': None, 'value': 3}, 'value': 5}
+E       + {'left': {'left': None,
+E       +           'right': {'left': None, 'right': None, 'value': 3},
+E       +           'value': 5},
+E       +  'right': {'left': None, 'right': None, 'value': 4},
+E       +  'value': 1}
+
+zipper/zipper_test.py:161: AssertionError
+________________ ZipperTest.test_set_value_after_traversing_up _________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_value_after_traversing_up>
+
+    def test_set_value_after_traversing_up(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 5,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+        result = zipper.left().right().up().set_value(5).to_tree()
+>       self.assertEqual(result, expected)
+E       AssertionError: {'value': 5, 'left': None, 'right': {'value': 3, 'l[22 chars]one}} != {'value': 1, 'left': {'value': 5, 'left': None, 'ri[96 chars]one}}
+E       - {'left': None, 'right': {'left': None, 'right': None, 'value': 3}, 'value': 5}
+E       + {'left': {'left': None,
+E       +           'right': {'left': None, 'right': None, 'value': 3},
+E       +           'value': 5},
+E       +  'right': {'left': None, 'right': None, 'value': 4},
+E       +  'value': 1}
+
+zipper/zipper_test.py:186: AssertionError
+___________________ ZipperTest.test_set_value_on_deep_focus ____________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_value_on_deep_focus>
+
+    def test_set_value_on_deep_focus(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 5, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+        result = zipper.left().right().set_value(5).to_tree()
+>       self.assertEqual(result, expected)
+E       AssertionError: {'value': 5, 'left': None, 'right': None} != {'value': 1, 'left': {'value': 2, 'left': None, 'ri[96 chars]one}}
+E       + {'left': {'left': None,
+E       +           'right': {'left': None, 'right': None, 'value': 5},
+E       +           'value': 2},
+E       - {'left': None, 'right': None, 'value': 5}
+E       ?                                        ^
+E       
+E       +  'right': {'left': None, 'right': None, 'value': 4},
+E       ? ++++++++++                                       ^ +
+E       
+E       +  'value': 1}
+
+zipper/zipper_test.py:294: AssertionError
+_____________________ ZipperTest.test_tree_from_deep_focus _____________________
+
+self = <zipper_test.ZipperTest testMethod=test_tree_from_deep_focus>
+
+    def test_tree_from_deep_focus(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+        result = zipper.left().right().to_tree()
+>       self.assertEqual(result, expected)
+E       AssertionError: {'value': 3, 'left': None, 'right': None} != {'value': 1, 'left': {'value': 2, 'left': None, 'ri[96 chars]one}}
+E       + {'left': {'left': None,
+E       +           'right': {'left': None, 'right': None, 'value': 3},
+E       +           'value': 2},
+E       - {'left': None, 'right': None, 'value': 3}
+E       ?                                        ^
+E       
+E       +  'right': {'left': None, 'right': None, 'value': 4},
+E       ? ++++++++++                                       ^ +
+E       
+E       +  'value': 1}
+
+zipper/zipper_test.py:91: AssertionError
+=========================== short test summary info ============================
+FAILED zipper/zipper_test.py::ZipperTest::test_set_left_with_leaf - Assertion...
+FAILED zipper/zipper_test.py::ZipperTest::test_set_right_with_null - Assertio...
+FAILED zipper/zipper_test.py::ZipperTest::test_set_value - AssertionError: {'...
+FAILED zipper/zipper_test.py::ZipperTest::test_set_value_after_traversing_up
+FAILED zipper/zipper_test.py::ZipperTest::test_set_value_on_deep_focus - Asse...
+FAILED zipper/zipper_test.py::ZipperTest::test_tree_from_deep_focus - Asserti...
+========================= 6 failed, 8 passed in 0.06s ==========================

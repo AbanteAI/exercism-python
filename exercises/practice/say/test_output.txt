@@ -1,0 +1,169 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 20 items
+
+say/say_test.py FFF......FF.F.F.....                                     [100%]
+
+=================================== FAILURES ===================================
+__________________________ SayTest.test_a_big_number ___________________________
+
+self = <say_test.SayTest testMethod=test_a_big_number>
+
+    def test_a_big_number(self):
+        self.assertEqual(
+>           say(987654321123),
+            "nine hundred eighty-seven billion six hundred fifty-four million three hundred twenty-one thousand one hundred twenty-three",
+        )
+
+say/say_test.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+say/say.py:46: in say
+    return f"{say(billions)} billion {say(remainder)}"
+say/say.py:31: in say
+    return f"{_convert_hundreds(hundreds)} {_convert_tens(remainder)}"
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 87
+
+    def _convert_tens(number):
+        tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+>       return tens[number]
+E       IndexError: list index out of range
+
+say/say.py:10: IndexError
+____________________________ SayTest.test_fourteen _____________________________
+
+self = <say_test.SayTest testMethod=test_fourteen>
+
+    def test_fourteen(self):
+>       self.assertEqual(say(14), "fourteen")
+E       AssertionError: '-four' != 'fourteen'
+E       - -four
+E       + fourteen
+
+say/say_test.py:20: AssertionError
+____________________ SayTest.test_nine_hundred_ninety_nine _____________________
+
+self = <say_test.SayTest testMethod=test_nine_hundred_ninety_nine>
+
+    def test_nine_hundred_ninety_nine(self):
+>       self.assertEqual(say(999), "nine hundred ninety-nine")
+
+say/say_test.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+say/say.py:31: in say
+    return f"{_convert_hundreds(hundreds)} {_convert_tens(remainder)}"
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 99
+
+    def _convert_tens(number):
+        tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+>       return tens[number]
+E       IndexError: list index out of range
+
+say/say.py:10: IndexError
+_______________________ SayTest.test_one_hundred_seventy _______________________
+
+self = <say_test.SayTest testMethod=test_one_hundred_seventy>
+
+    def test_one_hundred_seventy(self):
+>       self.assertEqual(say(170), "one hundred seventy")
+
+say/say_test.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+say/say.py:31: in say
+    return f"{_convert_hundreds(hundreds)} {_convert_tens(remainder)}"
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 70
+
+    def _convert_tens(number):
+        tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+>       return tens[number]
+E       IndexError: list index out of range
+
+say/say.py:10: IndexError
+____________________ SayTest.test_one_hundred_twenty_three _____________________
+
+self = <say_test.SayTest testMethod=test_one_hundred_twenty_three>
+
+    def test_one_hundred_twenty_three(self):
+>       self.assertEqual(say(123), "one hundred twenty-three")
+
+say/say_test.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+say/say.py:31: in say
+    return f"{_convert_hundreds(hundreds)} {_convert_tens(remainder)}"
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 23
+
+    def _convert_tens(number):
+        tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+>       return tens[number]
+E       IndexError: list index out of range
+
+say/say.py:10: IndexError
+________ SayTest.test_one_million_two_thousand_three_hundred_forty_five ________
+
+self = <say_test.SayTest testMethod=test_one_million_two_thousand_three_hundred_forty_five>
+
+    def test_one_million_two_thousand_three_hundred_forty_five(self):
+        self.assertEqual(
+>           say(1002345), "one million two thousand three hundred forty-five"
+        )
+
+say/say_test.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+say/say.py:41: in say
+    return f"{say(millions)} million {say(remainder)}"
+say/say.py:36: in say
+    return f"{say(thousands)} thousand {say(remainder)}"
+say/say.py:31: in say
+    return f"{_convert_hundreds(hundreds)} {_convert_tens(remainder)}"
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 45
+
+    def _convert_tens(number):
+        tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+>       return tens[number]
+E       IndexError: list index out of range
+
+say/say.py:10: IndexError
+______________ SayTest.test_one_thousand_two_hundred_thirty_four _______________
+
+self = <say_test.SayTest testMethod=test_one_thousand_two_hundred_thirty_four>
+
+    def test_one_thousand_two_hundred_thirty_four(self):
+>       self.assertEqual(say(1234), "one thousand two hundred thirty-four")
+
+say/say_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+say/say.py:36: in say
+    return f"{say(thousands)} thousand {say(remainder)}"
+say/say.py:31: in say
+    return f"{_convert_hundreds(hundreds)} {_convert_tens(remainder)}"
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 34
+
+    def _convert_tens(number):
+        tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+>       return tens[number]
+E       IndexError: list index out of range
+
+say/say.py:10: IndexError
+=========================== short test summary info ============================
+FAILED say/say_test.py::SayTest::test_a_big_number - IndexError: list index o...
+FAILED say/say_test.py::SayTest::test_fourteen - AssertionError: '-four' != '...
+FAILED say/say_test.py::SayTest::test_nine_hundred_ninety_nine - IndexError: ...
+FAILED say/say_test.py::SayTest::test_one_hundred_seventy - IndexError: list ...
+FAILED say/say_test.py::SayTest::test_one_hundred_twenty_three - IndexError: ...
+FAILED say/say_test.py::SayTest::test_one_million_two_thousand_three_hundred_forty_five
+FAILED say/say_test.py::SayTest::test_one_thousand_two_hundred_thirty_four - ...
+========================= 7 failed, 13 passed in 0.07s =========================

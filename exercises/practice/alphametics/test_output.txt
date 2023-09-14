@@ -1,0 +1,149 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 10 items
+
+alphametics/alphametics_test.py .FFFFFsFF.                               [100%]
+
+=================================== FAILURES ===================================
+________________ AlphameticsTest.test_puzzle_with_eight_letters ________________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_puzzle_with_eight_letters>
+
+    def test_puzzle_with_eight_letters(self):
+>       self.assertEqual(
+            solve("SEND + MORE == MONEY"),
+            {"S": 9, "E": 5, "N": 6, "D": 7, "M": 1, "O": 0, "R": 8, "Y": 2},
+        )
+E       AssertionError: {'M': 49, 'S': 57, 'N': 54, 'D': 55, 'E': 53, 'Y': 50, 'O': 48, 'R': 56} != {'S': 9, 'E': 5, 'N': 6, 'D': 7, 'M': 1, 'O': 0, 'R': 8, 'Y': 2}
+E       - {'D': 55, 'E': 53, 'M': 49, 'N': 54, 'O': 48, 'R': 56, 'S': 57, 'Y': 50}
+E       ?       ^^        -       ^^       ^^       ^^       ^^       ^^       ^^
+E       
+E       + {'D': 7, 'E': 5, 'M': 1, 'N': 6, 'O': 0, 'R': 8, 'S': 9, 'Y': 2}
+E       ?       ^               ^       ^       ^       ^       ^       ^
+
+alphametics/alphametics_test.py:44: AssertionError
+________________ AlphameticsTest.test_puzzle_with_four_letters _________________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_puzzle_with_four_letters>
+
+    def test_puzzle_with_four_letters(self):
+>       self.assertEqual(solve("AS + A == MOM"), {"A": 9, "S": 2, "M": 1, "O": 0})
+E       AssertionError: {'M': 49, 'A': 57, 'S': 50, 'O': 48} != {'A': 9, 'S': 2, 'M': 1, 'O': 0}
+E       - {'A': 57, 'M': 49, 'O': 48, 'S': 50}
+E       ?       ^^       ^^       ^^       ^^
+E       
+E       + {'A': 9, 'M': 1, 'O': 0, 'S': 2}
+E       ?       ^       ^       ^       ^
+
+alphametics/alphametics_test.py:29: AssertionError
+________________ AlphameticsTest.test_puzzle_with_seven_letters ________________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_puzzle_with_seven_letters>
+
+    def test_puzzle_with_seven_letters(self):
+>       self.assertEqual(
+            solve("HE + SEES + THE == LIGHT"),
+            {"E": 4, "G": 2, "H": 5, "I": 0, "L": 1, "S": 9, "T": 7},
+        )
+E       AssertionError: {'L': 49, 'H': 53, 'S': 57, 'T': 55, 'E': 52, 'I': 48, 'G': 50} != {'E': 4, 'G': 2, 'H': 5, 'I': 0, 'L': 1, 'S': 9, 'T': 7}
+E       - {'E': 52, 'G': 50, 'H': 53, 'I': 48, 'L': 49, 'S': 57, 'T': 55}
+E       ?       ^^       ^^        -       ^^       ^^       ^^       ^^
+E       
+E       + {'E': 4, 'G': 2, 'H': 5, 'I': 0, 'L': 1, 'S': 9, 'T': 7}
+E       ?       ^       ^               ^       ^       ^       ^
+
+alphametics/alphametics_test.py:38: AssertionError
+_________________ AlphameticsTest.test_puzzle_with_six_letters _________________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_puzzle_with_six_letters>
+
+    def test_puzzle_with_six_letters(self):
+>       self.assertEqual(
+            solve("NO + NO + TOO == LATE"),
+            {"N": 7, "O": 4, "T": 9, "L": 1, "A": 0, "E": 2},
+        )
+E       AssertionError: {'L': 49, 'N': 55, 'T': 57, 'E': 50, 'O': 52, 'A': 48} != {'N': 7, 'O': 4, 'T': 9, 'L': 1, 'A': 0, 'E': 2}
+E       - {'A': 48, 'E': 50, 'L': 49, 'N': 55, 'O': 52, 'T': 57}
+E       ?       ^^       ^^       ^^       ^^       ^^       ^^
+E       
+E       + {'A': 0, 'E': 2, 'L': 1, 'N': 7, 'O': 4, 'T': 9}
+E       ?       ^       ^       ^       ^       ^       ^
+
+alphametics/alphametics_test.py:32: AssertionError
+_________________ AlphameticsTest.test_puzzle_with_ten_letters _________________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_puzzle_with_ten_letters>
+
+    def test_puzzle_with_ten_letters(self):
+>       self.assertEqual(
+            solve("AND + A + STRONG + OFFENSE + AS + A + GOOD == DEFENSE"),
+            {
+                "A": 5,
+                "D": 3,
+                "E": 4,
+                "F": 7,
+                "G": 8,
+                "N": 0,
+                "O": 2,
+                "R": 1,
+                "S": 6,
+                "T": 9,
+            },
+        )
+E       AssertionError: {'S': 54, 'D': 51, 'G': 56, 'A': 53, 'O': 5[42 chars]: 57} != {'A': 5, 'D': 3, 'E': 4, 'F': 7, 'G': 8, 'N[32 chars]': 9}
+E       + {'A': 5, 'D': 3, 'E': 4, 'F': 7, 'G': 8, 'N': 0, 'O': 2, 'R': 1, 'S': 6, 'T': 9}
+E       - {'A': 53,
+E       -  'D': 51,
+E       -  'E': 52,
+E       -  'F': 55,
+E       -  'G': 56,
+E       -  'N': 48,
+E       -  'O': 50,
+E       -  'R': 49,
+E       -  'S': 54,
+E       -  'T': 57}
+
+alphametics/alphametics_test.py:50: AssertionError
+________________ AlphameticsTest.test_puzzle_with_three_letters ________________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_puzzle_with_three_letters>
+
+    def test_puzzle_with_three_letters(self):
+>       self.assertEqual(solve("I + BB == ILL"), {"I": 1, "B": 9, "L": 0})
+E       AssertionError: {'I': 49, 'B': 57, 'L': 48} != {'I': 1, 'B': 9, 'L': 0}
+E       - {'B': 57, 'I': 49, 'L': 48}
+E       ?       ^^       ^^       ^^
+E       
+E       + {'B': 9, 'I': 1, 'L': 0}
+E       ?       ^       ^       ^
+
+alphametics/alphametics_test.py:14: AssertionError
+___________ AlphameticsTest.test_puzzle_with_two_digits_final_carry ____________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_puzzle_with_two_digits_final_carry>
+
+    def test_puzzle_with_two_digits_final_carry(self):
+>       self.assertEqual(
+            solve("A + A + A + A + A + A + A + A + A + A + A + B == BCC"),
+            {"A": 9, "B": 1, "C": 0},
+        )
+E       AssertionError: {'B': 49, 'A': 57, 'C': 48} != {'A': 9, 'B': 1, 'C': 0}
+E       - {'A': 57, 'B': 49, 'C': 48}
+E       ?       ^^       ^^       ^^
+E       
+E       + {'A': 9, 'B': 1, 'C': 0}
+E       ?       ^       ^       ^
+
+alphametics/alphametics_test.py:23: AssertionError
+=========================== short test summary info ============================
+FAILED alphametics/alphametics_test.py::AlphameticsTest::test_puzzle_with_eight_letters
+FAILED alphametics/alphametics_test.py::AlphameticsTest::test_puzzle_with_four_letters
+FAILED alphametics/alphametics_test.py::AlphameticsTest::test_puzzle_with_seven_letters
+FAILED alphametics/alphametics_test.py::AlphameticsTest::test_puzzle_with_six_letters
+FAILED alphametics/alphametics_test.py::AlphameticsTest::test_puzzle_with_ten_letters
+FAILED alphametics/alphametics_test.py::AlphameticsTest::test_puzzle_with_three_letters
+FAILED alphametics/alphametics_test.py::AlphameticsTest::test_puzzle_with_two_digits_final_carry
+=================== 7 failed, 2 passed, 1 skipped in 12.12s ====================
