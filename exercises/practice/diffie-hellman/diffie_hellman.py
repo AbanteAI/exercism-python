@@ -1,10 +1,11 @@
+import random
 def private_key(p):
-    pass
+    return random.randint(2, p - 2)
 
 
 def public_key(p, g, private):
-    pass
+    return pow(g, private, p)
 
 
 def secret(p, public, private):
-    pass
+    return pow(public, private, p)

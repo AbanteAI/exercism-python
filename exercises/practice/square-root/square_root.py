@@ -1,2 +1,2 @@
 def square_root(number):
-    pass
+    return number ** 0.5

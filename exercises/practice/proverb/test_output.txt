@@ -1,0 +1,148 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 8 items
+
+exercises/practice/proverb/proverb_test.py FFFFFFFF                      [100%]
+
+=================================== FAILURES ===================================
+_____________ ProverbTest.test_an_optional_qualifier_can_be_added ______________
+
+self = <proverb_test.ProverbTest testMethod=test_an_optional_qualifier_can_be_added>
+
+    def test_an_optional_qualifier_can_be_added(self):
+        input_data = ["nail"]
+>       self.assertEqual(
+            proverb(*input_data, qualifier="horseshoe"),
+            ["And all for the want of a horseshoe nail."],
+        )
+E       AssertionError: '' != ['And all for the want of a horseshoe nail.']
+
+exercises/practice/proverb/proverb_test.py:79: AssertionError
+_______ ProverbTest.test_an_optional_qualifier_in_the_final_consequences _______
+
+self = <proverb_test.ProverbTest testMethod=test_an_optional_qualifier_in_the_final_consequences>
+
+    def test_an_optional_qualifier_in_the_final_consequences(self):
+        input_data = ["nail", "shoe", "horse", "rider", "message", "battle", "kingdom"]
+        self.assertEqual(
+>           proverb(*input_data, qualifier="horseshoe"),
+            [
+                "For want of a nail the shoe was lost.",
+                "For want of a shoe the horse was lost.",
+                "For want of a horse the rider was lost.",
+                "For want of a rider the message was lost.",
+                "For want of a message the battle was lost.",
+                "For want of a battle the kingdom was lost.",
+                "And all for the want of a horseshoe nail.",
+            ],
+        )
+E       TypeError: proverb() got multiple values for argument 'qualifier'
+
+exercises/practice/proverb/proverb_test.py:87: TypeError
+___________________ ProverbTest.test_four_pieces_modernized ____________________
+
+self = <proverb_test.ProverbTest testMethod=test_four_pieces_modernized>
+
+    def test_four_pieces_modernized(self):
+        input_data = ["pin", "gun", "soldier", "battle"]
+        self.assertEqual(
+>           proverb(*input_data, qualifier=None),
+            [
+                "For want of a pin the gun was lost.",
+                "For want of a gun the soldier was lost.",
+                "For want of a soldier the battle was lost.",
+                "And all for the want of a pin.",
+            ],
+        )
+E       TypeError: proverb() got multiple values for argument 'qualifier'
+
+exercises/practice/proverb/proverb_test.py:66: TypeError
+________________________ ProverbTest.test_full_proverb _________________________
+
+self = <proverb_test.ProverbTest testMethod=test_full_proverb>
+
+    def test_full_proverb(self):
+        input_data = ["nail", "shoe", "horse", "rider", "message", "battle", "kingdom"]
+        self.assertEqual(
+>           proverb(*input_data, qualifier=None),
+            [
+                "For want of a nail the shoe was lost.",
+                "For want of a shoe the horse was lost.",
+                "For want of a horse the rider was lost.",
+                "For want of a rider the message was lost.",
+                "For want of a message the battle was lost.",
+                "For want of a battle the kingdom was lost.",
+                "And all for the want of a nail.",
+            ],
+        )
+E       TypeError: proverb() got multiple values for argument 'qualifier'
+
+exercises/practice/proverb/proverb_test.py:51: TypeError
+__________________________ ProverbTest.test_one_piece __________________________
+
+self = <proverb_test.ProverbTest testMethod=test_one_piece>
+
+    def test_one_piece(self):
+        input_data = ["nail"]
+>       self.assertEqual(
+            proverb(*input_data, qualifier=None), ["And all for the want of a nail."]
+        )
+E       AssertionError: '' != ['And all for the want of a nail.']
+
+exercises/practice/proverb/proverb_test.py:23: AssertionError
+________________________ ProverbTest.test_three_pieces _________________________
+
+self = <proverb_test.ProverbTest testMethod=test_three_pieces>
+
+    def test_three_pieces(self):
+        input_data = ["nail", "shoe", "horse"]
+        self.assertEqual(
+>           proverb(*input_data, qualifier=None),
+            [
+                "For want of a nail the shoe was lost.",
+                "For want of a shoe the horse was lost.",
+                "And all for the want of a nail.",
+            ],
+        )
+E       TypeError: proverb() got multiple values for argument 'qualifier'
+
+exercises/practice/proverb/proverb_test.py:40: TypeError
+_________________________ ProverbTest.test_two_pieces __________________________
+
+self = <proverb_test.ProverbTest testMethod=test_two_pieces>
+
+    def test_two_pieces(self):
+        input_data = ["nail", "shoe"]
+        self.assertEqual(
+>           proverb(*input_data, qualifier=None),
+            [
+                "For want of a nail the shoe was lost.",
+                "And all for the want of a nail.",
+            ],
+        )
+E       TypeError: proverb() got multiple values for argument 'qualifier'
+
+exercises/practice/proverb/proverb_test.py:30: TypeError
+_________________________ ProverbTest.test_zero_pieces _________________________
+
+self = <proverb_test.ProverbTest testMethod=test_zero_pieces>
+
+    def test_zero_pieces(self):
+        input_data = []
+>       self.assertEqual(proverb(*input_data, qualifier=None), [])
+E       TypeError: proverb() missing 1 required positional argument: 'words'
+
+exercises/practice/proverb/proverb_test.py:19: TypeError
+=========================== short test summary info ============================
+FAILED exercises/practice/proverb/proverb_test.py::ProverbTest::test_an_optional_qualifier_can_be_added
+FAILED exercises/practice/proverb/proverb_test.py::ProverbTest::test_an_optional_qualifier_in_the_final_consequences
+FAILED exercises/practice/proverb/proverb_test.py::ProverbTest::test_four_pieces_modernized
+FAILED exercises/practice/proverb/proverb_test.py::ProverbTest::test_full_proverb
+FAILED exercises/practice/proverb/proverb_test.py::ProverbTest::test_one_piece
+FAILED exercises/practice/proverb/proverb_test.py::ProverbTest::test_three_pieces
+FAILED exercises/practice/proverb/proverb_test.py::ProverbTest::test_two_pieces
+FAILED exercises/practice/proverb/proverb_test.py::ProverbTest::test_zero_pieces
+============================== 8 failed in 0.06s ===============================

@@ -1,0 +1,62 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 29 items
+
+exercises/practice/yacht/yacht_test.py ...F...F............F.F...F..     [100%]
+
+=================================== FAILURES ===================================
+_____________________________ YachtTest.test_fives _____________________________
+
+self = <yacht_test.YachtTest testMethod=test_fives>
+
+    def test_fives(self):
+>       self.assertEqual(yacht.score([1, 5, 3, 5, 3], yacht.FIVES), 10)
+E       AssertionError: 50 != 10
+
+exercises/practice/yacht/yacht_test.py:38: AssertionError
+_____________________________ YachtTest.test_fours _____________________________
+
+self = <yacht_test.YachtTest testMethod=test_fours>
+
+    def test_fours(self):
+>       self.assertEqual(yacht.score([1, 4, 1, 4, 1], yacht.FOURS), 8)
+E       AssertionError: 32 != 8
+
+exercises/practice/yacht/yacht_test.py:29: AssertionError
+_____________________________ YachtTest.test_sixes _____________________________
+
+self = <yacht_test.YachtTest testMethod=test_sixes>
+
+    def test_sixes(self):
+>       self.assertEqual(yacht.score([2, 3, 4, 5, 6], yacht.SIXES), 6)
+E       AssertionError: 36 != 6
+
+exercises/practice/yacht/yacht_test.py:41: AssertionError
+_____________________________ YachtTest.test_twos ______________________________
+
+self = <yacht_test.YachtTest testMethod=test_twos>
+
+    def test_twos(self):
+>       self.assertEqual(yacht.score([2, 3, 4, 5, 6], yacht.TWOS), 2)
+E       AssertionError: 4 != 2
+
+exercises/practice/yacht/yacht_test.py:26: AssertionError
+____________________ YachtTest.test_yacht_counted_as_threes ____________________
+
+self = <yacht_test.YachtTest testMethod=test_yacht_counted_as_threes>
+
+    def test_yacht_counted_as_threes(self):
+>       self.assertEqual(yacht.score([3, 3, 3, 3, 3], yacht.THREES), 15)
+E       AssertionError: 45 != 15
+
+exercises/practice/yacht/yacht_test.py:32: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_fives - Assert...
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_fours - Assert...
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_sixes - Assert...
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_twos - Asserti...
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_yacht_counted_as_threes
+========================= 5 failed, 24 passed in 0.06s =========================

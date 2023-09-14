@@ -1,4 +1,7 @@
 
+WHITE = "W"
+BLACK = "B"
+NONE = ""
 class Board:
     """Count territories of each player in a Go game
 
@@ -7,7 +10,7 @@ class Board:
     """
 
     def __init__(self, board):
-        pass
+        self.board = board
 
     def territory(self, x, y):
         """Find the owner and the territories given a coordinate on
@@ -23,7 +26,33 @@ class Board:
                         second being a set of coordinates, representing
                         the owner's territories.
         """
-        pass
+        owner = self.board[y][x]
+        if owner in ('W', 'B'):
+            return owner, set()
+
+        visited = set()
+        stack = [(x, y)]
+        territories = set()
+
+        while stack:
+            cx, cy = stack.pop()
+            visited.add((cx, cy))
+            territories.add((cx, cy))
+
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                nx, ny = cx + dx, cy + dy
+
+                if (0 <= nx < len(self.board[0]) and
+                        0 <= ny < len(self.board) and
+                        (nx, ny) not in visited):
+
+                    neighbor = self.board[ny][nx]
+                    if neighbor == owner:
+                        stack.append((nx, ny))
+                    elif neighbor in ('W', 'B'):
+                        owner = neighbor
+
+        return owner, territories
 
     def territories(self):
         """Find the owners and the territories of the whole board
@@ -36,4 +65,10 @@ class Board:
                         , i.e. "W", "B", "".  The value being a set
                         of coordinates owned by the owner.
         """
-        pass
+        result = {'W': set(), 'B': set(), '': set()}
+        for y in range(len(self.board)):
+            for x in range(len(self.board[y])):
+                if (x, y) not in (result['W'] | result['B'] | result['']):
+                    owner, territories = self.territory(x, y)
+                    result[owner].update(territories)
+        return result

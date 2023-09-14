@@ -1,0 +1,260 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 16 items
+
+exercises/practice/affine-cipher/affine_cipher_test.py FFFFFFFFFF.F..F.  [100%]
+
+=================================== FAILURES ===================================
+___________________ AffineCipherTest.test_decode_a_sentence ____________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_a_sentence>
+
+    def test_decode_a_sentence(self):
+        self.assertEqual(
+>           decode("qdwju nqcro muwhn odqun oppmd aunwd o", 19, 16),
+            "anobstacleisoftenasteppingstone",
+        )
+
+exercises/practice/affine-cipher/affine_cipher_test.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/affine-cipher/affine_cipher.py:38: in decode
+    return affine_cipher(ciphered_text, a, b, 'decode')
+exercises/practice/affine-cipher/affine_cipher.py:19: in affine_cipher
+    a_inv = mod_inverse(a, 26)
+exercises/practice/affine-cipher/affine_cipher.py:12: in mod_inverse
+    g, x, _ = reduce(lambda prev, _: (prev[0] % prev[2], prev[2], prev[1] - prev[3] * (prev[0] // prev[2])), range(m), (a, m, 1, 0))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+prev = (0, 1, 26), _ = 1
+
+>   g, x, _ = reduce(lambda prev, _: (prev[0] % prev[2], prev[2], prev[1] - prev[3] * (prev[0] // prev[2])), range(m), (a, m, 1, 0))
+E   IndexError: tuple index out of range
+
+exercises/practice/affine-cipher/affine_cipher.py:12: IndexError
+_________________ AffineCipherTest.test_decode_all_the_letters _________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_all_the_letters>
+
+    def test_decode_all_the_letters(self):
+        self.assertEqual(
+>           decode("swxtj npvyk lruol iejdc blaxk swxmh qzglf", 17, 33),
+            "thequickbrownfoxjumpsoverthelazydog",
+        )
+
+exercises/practice/affine-cipher/affine_cipher_test.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/affine-cipher/affine_cipher.py:38: in decode
+    return affine_cipher(ciphered_text, a, b, 'decode')
+exercises/practice/affine-cipher/affine_cipher.py:19: in affine_cipher
+    a_inv = mod_inverse(a, 26)
+exercises/practice/affine-cipher/affine_cipher.py:12: in mod_inverse
+    g, x, _ = reduce(lambda prev, _: (prev[0] % prev[2], prev[2], prev[1] - prev[3] * (prev[0] // prev[2])), range(m), (a, m, 1, 0))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+prev = (0, 1, 26), _ = 1
+
+>   g, x, _ = reduce(lambda prev, _: (prev[0] % prev[2], prev[2], prev[1] - prev[3] * (prev[0] // prev[2])), range(m), (a, m, 1, 0))
+E   IndexError: tuple index out of range
+
+exercises/practice/affine-cipher/affine_cipher.py:12: IndexError
+____________________ AffineCipherTest.test_decode_exercism _____________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_exercism>
+
+    def test_decode_exercism(self):
+>       self.assertEqual(decode("tytgn fjr", 3, 7), "exercism")
+
+exercises/practice/affine-cipher/affine_cipher_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/affine-cipher/affine_cipher.py:38: in decode
+    return affine_cipher(ciphered_text, a, b, 'decode')
+exercises/practice/affine-cipher/affine_cipher.py:19: in affine_cipher
+    a_inv = mod_inverse(a, 26)
+exercises/practice/affine-cipher/affine_cipher.py:12: in mod_inverse
+    g, x, _ = reduce(lambda prev, _: (prev[0] % prev[2], prev[2], prev[1] - prev[3] * (prev[0] // prev[2])), range(m), (a, m, 1, 0))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+prev = (0, 1, 26), _ = 1
+
+>   g, x, _ = reduce(lambda prev, _: (prev[0] % prev[2], prev[2], prev[1] - prev[3] * (prev[0] // prev[2])), range(m), (a, m, 1, 0))
+E   IndexError: tuple index out of range
+
+exercises/practice/affine-cipher/affine_cipher.py:12: IndexError
+_____________________ AffineCipherTest.test_decode_numbers _____________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_numbers>
+
+    def test_decode_numbers(self):
+>       self.assertEqual(decode("odpoz ub123 odpoz ub", 25, 7), "testing123testing")
+
+exercises/practice/affine-cipher/affine_cipher_test.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/affine-cipher/affine_cipher.py:38: in decode
+    return affine_cipher(ciphered_text, a, b, 'decode')
+exercises/practice/affine-cipher/affine_cipher.py:19: in affine_cipher
+    a_inv = mod_inverse(a, 26)
+exercises/practice/affine-cipher/affine_cipher.py:12: in mod_inverse
+    g, x, _ = reduce(lambda prev, _: (prev[0] % prev[2], prev[2], prev[1] - prev[3] * (prev[0] // prev[2])), range(m), (a, m, 1, 0))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+prev = (0, 1, 26), _ = 1
+
+>   g, x, _ = reduce(lambda prev, _: (prev[0] % prev[2], prev[2], prev[1] - prev[3] * (prev[0] // prev[2])), range(m), (a, m, 1, 0))
+E   IndexError: tuple index out of range
+
+exercises/practice/affine-cipher/affine_cipher.py:12: IndexError
+_____________ AffineCipherTest.test_decode_with_a_not_coprime_to_m _____________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_with_a_not_coprime_to_m>
+
+    def test_decode_with_a_not_coprime_to_m(self):
+        with self.assertRaises(ValueError) as err:
+>           decode("Test", 13, 5)
+
+exercises/practice/affine-cipher/affine_cipher_test.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/affine-cipher/affine_cipher.py:38: in decode
+    return affine_cipher(ciphered_text, a, b, 'decode')
+exercises/practice/affine-cipher/affine_cipher.py:19: in affine_cipher
+    a_inv = mod_inverse(a, 26)
+exercises/practice/affine-cipher/affine_cipher.py:12: in mod_inverse
+    g, x, _ = reduce(lambda prev, _: (prev[0] % prev[2], prev[2], prev[1] - prev[3] * (prev[0] // prev[2])), range(m), (a, m, 1, 0))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   g, x, _ = reduce(lambda prev, _: (prev[0] % prev[2], prev[2], prev[1] - prev[3] * (prev[0] // prev[2])), range(m), (a, m, 1, 0))
+E   IndexError: tuple index out of range
+
+exercises/practice/affine-cipher/affine_cipher.py:12: IndexError
+_____________ AffineCipherTest.test_decode_with_no_spaces_in_input _____________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_with_no_spaces_in_input>
+
+    def test_decode_with_no_spaces_in_input(self):
+        self.assertEqual(
+>           decode("swxtjnpvyklruoliejdcblaxkswxmhqzglf", 17, 33),
+            "thequickbrownfoxjumpsoverthelazydog",
+        )
+
+exercises/practice/affine-cipher/affine_cipher_test.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/affine-cipher/affine_cipher.py:38: in decode
+    return affine_cipher(ciphered_text, a, b, 'decode')
+exercises/practice/affine-cipher/affine_cipher.py:19: in affine_cipher
+    a_inv = mod_inverse(a, 26)
+exercises/practice/affine-cipher/affine_cipher.py:12: in mod_inverse
+    g, x, _ = reduce(lambda prev, _: (prev[0] % prev[2], prev[2], prev[1] - prev[3] * (prev[0] // prev[2])), range(m), (a, m, 1, 0))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+prev = (0, 1, 26), _ = 1
+
+>   g, x, _ = reduce(lambda prev, _: (prev[0] % prev[2], prev[2], prev[1] - prev[3] * (prev[0] // prev[2])), range(m), (a, m, 1, 0))
+E   IndexError: tuple index out of range
+
+exercises/practice/affine-cipher/affine_cipher.py:12: IndexError
+______________ AffineCipherTest.test_decode_with_too_many_spaces _______________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_with_too_many_spaces>
+
+    def test_decode_with_too_many_spaces(self):
+        self.assertEqual(
+>           decode("vszzm    cly   yd cg    qdp", 15, 16), "jollygreengiant"
+        )
+
+exercises/practice/affine-cipher/affine_cipher_test.py:75: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/affine-cipher/affine_cipher.py:38: in decode
+    return affine_cipher(ciphered_text, a, b, 'decode')
+exercises/practice/affine-cipher/affine_cipher.py:19: in affine_cipher
+    a_inv = mod_inverse(a, 26)
+exercises/practice/affine-cipher/affine_cipher.py:12: in mod_inverse
+    g, x, _ = reduce(lambda prev, _: (prev[0] % prev[2], prev[2], prev[1] - prev[3] * (prev[0] // prev[2])), range(m), (a, m, 1, 0))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+prev = (0, 1, 26), _ = 1
+
+>   g, x, _ = reduce(lambda prev, _: (prev[0] % prev[2], prev[2], prev[1] - prev[3] * (prev[0] // prev[2])), range(m), (a, m, 1, 0))
+E   IndexError: tuple index out of range
+
+exercises/practice/affine-cipher/affine_cipher.py:12: IndexError
+_________________ AffineCipherTest.test_encode_all_the_letters _________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_encode_all_the_letters>
+
+    def test_encode_all_the_letters(self):
+>       self.assertEqual(
+            encode("The quick brown fox jumps over the lazy dog.", 17, 33),
+            "swxtj npvyk lruol iejdc blaxk swxmh qzglf",
+        )
+E       AssertionError: 'swxtjnpvyklruoliejdcblaxkswxmhqzglf.' != 'swxtj npvyk lruol iejdc blaxk swxmh qzglf'
+E       - swxtjnpvyklruoliejdcblaxkswxmhqzglf.
+E       ?                                    -
+E       + swxtj npvyk lruol iejdc blaxk swxmh qzglf
+E       ?      +     +     +     +     +     +
+
+exercises/practice/affine-cipher/affine_cipher_test.py:38: AssertionError
+__________________ AffineCipherTest.test_encode_deep_thought ___________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_encode_deep_thought>
+
+    def test_encode_deep_thought(self):
+>       self.assertEqual(encode("Truth is fiction.", 5, 17), "iynia fdqfb ifje")
+E       AssertionError: 'iyniafdqfbifje.' != 'iynia fdqfb ifje'
+E       - iyniafdqfbifje.
+E       ?               -
+E       + iynia fdqfb ifje
+E       ?      +     +
+
+exercises/practice/affine-cipher/affine_cipher_test.py:35: AssertionError
+__________________ AffineCipherTest.test_encode_mindblowingly __________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_encode_mindblowingly>
+
+    def test_encode_mindblowingly(self):
+>       self.assertEqual(encode("mindblowingly", 11, 15), "rzcwa gnxzc dgt")
+E       AssertionError: 'rzcwagnxzcdgt' != 'rzcwa gnxzc dgt'
+E       - rzcwagnxzcdgt
+E       + rzcwa gnxzc dgt
+E       ?      +     +
+
+exercises/practice/affine-cipher/affine_cipher_test.py:27: AssertionError
+_____________________ AffineCipherTest.test_encode_numbers _____________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_encode_numbers>
+
+    def test_encode_numbers(self):
+>       self.assertEqual(
+            encode("Testing,1 2 3, testing.", 3, 4), "jqgjc rw123 jqgjc rw"
+        )
+E       AssertionError: 'jqgjcrw,123,jqgjcrw.' != 'jqgjc rw123 jqgjc rw'
+E       - jqgjcrw,123,jqgjcrw.
+E       ?        -   ^       -
+E       + jqgjc rw123 jqgjc rw
+E       ?      +     ^     +
+
+exercises/practice/affine-cipher/affine_cipher_test.py:30: AssertionError
+_____________ AffineCipherTest.test_encode_with_a_not_coprime_to_m _____________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_encode_with_a_not_coprime_to_m>
+
+    def test_encode_with_a_not_coprime_to_m(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/affine-cipher/affine_cipher_test.py:44: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_a_sentence
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_all_the_letters
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_exercism
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_numbers
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_with_a_not_coprime_to_m
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_with_no_spaces_in_input
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_with_too_many_spaces
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_encode_all_the_letters
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_encode_deep_thought
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_encode_mindblowingly
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_encode_numbers
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_encode_with_a_not_coprime_to_m
+========================= 12 failed, 4 passed in 0.09s =========================

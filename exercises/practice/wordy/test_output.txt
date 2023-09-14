@@ -1,0 +1,373 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 25 items
+
+exercises/practice/wordy/wordy_test.py .FFFF..FF..FF.FFFFFFFFF.F         [100%]
+
+=================================== FAILURES ===================================
+__________________ WordyTest.test_addition_and_multiplication __________________
+
+self = <wordy_test.WordyTest testMethod=test_addition_and_multiplication>
+
+    def test_addition_and_multiplication(self):
+>       self.assertEqual(answer("What is -3 plus 7 multiplied by -2?"), -8)
+
+exercises/practice/wordy/wordy_test.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/wordy/wordy.py:31: in answer
+    numbers, operations = parse_question(question)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = 'What is -3 plus 7 multiplied by -2'
+
+    def parse_question(question):
+        question = question[:-1]  # Remove the question mark
+        words = question.split()
+        if len(words) < 3:
+            raise ValueError("Invalid question")
+        numbers = [int(word) for word in words if word.isdigit()]
+        operations = [word for word in words if word in ["plus", "minus", "multiplied", "divided"]]
+        if len(operations) != len(numbers) - 1:
+>           raise ValueError("Unknown operation")
+E           ValueError: Unknown operation
+
+exercises/practice/wordy/wordy.py:11: ValueError
+___________________ WordyTest.test_addition_and_subtraction ____________________
+
+self = <wordy_test.WordyTest testMethod=test_addition_and_subtraction>
+
+    def test_addition_and_subtraction(self):
+>       self.assertEqual(answer("What is 1 plus 5 minus -2?"), 8)
+
+exercises/practice/wordy/wordy_test.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/wordy/wordy.py:31: in answer
+    numbers, operations = parse_question(question)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = 'What is 1 plus 5 minus -2'
+
+    def parse_question(question):
+        question = question[:-1]  # Remove the question mark
+        words = question.split()
+        if len(words) < 3:
+            raise ValueError("Invalid question")
+        numbers = [int(word) for word in words if word.isdigit()]
+        operations = [word for word in words if word in ["plus", "minus", "multiplied", "divided"]]
+        if len(operations) != len(numbers) - 1:
+>           raise ValueError("Unknown operation")
+E           ValueError: Unknown operation
+
+exercises/practice/wordy/wordy.py:11: ValueError
+________________ WordyTest.test_addition_with_negative_numbers _________________
+
+self = <wordy_test.WordyTest testMethod=test_addition_with_negative_numbers>
+
+    def test_addition_with_negative_numbers(self):
+>       self.assertEqual(answer("What is -1 plus -10?"), -11)
+
+exercises/practice/wordy/wordy_test.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/wordy/wordy.py:31: in answer
+    numbers, operations = parse_question(question)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = 'What is -1 plus -10'
+
+    def parse_question(question):
+        question = question[:-1]  # Remove the question mark
+        words = question.split()
+        if len(words) < 3:
+            raise ValueError("Invalid question")
+        numbers = [int(word) for word in words if word.isdigit()]
+        operations = [word for word in words if word in ["plus", "minus", "multiplied", "divided"]]
+        if len(operations) != len(numbers) - 1:
+>           raise ValueError("Unknown operation")
+E           ValueError: Unknown operation
+
+exercises/practice/wordy/wordy.py:11: ValueError
+___________________________ WordyTest.test_division ____________________________
+
+self = <wordy_test.WordyTest testMethod=test_division>
+
+    def test_division(self):
+>       self.assertEqual(answer("What is 33 divided by -3?"), -11)
+
+exercises/practice/wordy/wordy_test.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/wordy/wordy.py:31: in answer
+    numbers, operations = parse_question(question)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = 'What is 33 divided by -3'
+
+    def parse_question(question):
+        question = question[:-1]  # Remove the question mark
+        words = question.split()
+        if len(words) < 3:
+            raise ValueError("Invalid question")
+        numbers = [int(word) for word in words if word.isdigit()]
+        operations = [word for word in words if word in ["plus", "minus", "multiplied", "divided"]]
+        if len(operations) != len(numbers) - 1:
+>           raise ValueError("Unknown operation")
+E           ValueError: Unknown operation
+
+exercises/practice/wordy/wordy.py:11: ValueError
+________________________ WordyTest.test_missing_number _________________________
+
+self = <wordy_test.WordyTest testMethod=test_missing_number>
+
+    def test_missing_number(self):
+        with self.assertRaises(ValueError) as err:
+            answer("What is 7 plus multiplied by -2?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "syntax error")
+E       AssertionError: 'Unknown operation' != 'syntax error'
+E       - Unknown operation
+E       + syntax error
+
+exercises/practice/wordy/wordy_test.py:118: AssertionError
+_______________________ WordyTest.test_missing_operation _______________________
+
+self = <wordy_test.WordyTest testMethod=test_missing_operation>
+
+    def test_missing_operation(self):
+        with self.assertRaises(ValueError) as err:
+            answer("What is 2 2 minus 3?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "syntax error")
+E       AssertionError: 'Unknown operation' != 'syntax error'
+E       - Unknown operation
+E       + syntax error
+
+exercises/practice/wordy/wordy_test.py:112: AssertionError
+_______________________ WordyTest.test_multiple_division _______________________
+
+self = <wordy_test.WordyTest testMethod=test_multiple_division>
+
+    def test_multiple_division(self):
+>       self.assertEqual(answer("What is -12 divided by 2 divided by -3?"), 2)
+
+exercises/practice/wordy/wordy_test.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/wordy/wordy.py:31: in answer
+    numbers, operations = parse_question(question)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = 'What is -12 divided by 2 divided by -3'
+
+    def parse_question(question):
+        question = question[:-1]  # Remove the question mark
+        words = question.split()
+        if len(words) < 3:
+            raise ValueError("Invalid question")
+        numbers = [int(word) for word in words if word.isdigit()]
+        operations = [word for word in words if word in ["plus", "minus", "multiplied", "divided"]]
+        if len(operations) != len(numbers) - 1:
+>           raise ValueError("Unknown operation")
+E           ValueError: Unknown operation
+
+exercises/practice/wordy/wordy.py:11: ValueError
+____________________ WordyTest.test_multiple_multiplication ____________________
+
+self = <wordy_test.WordyTest testMethod=test_multiple_multiplication>
+
+    def test_multiple_multiplication(self):
+>       self.assertEqual(answer("What is 2 multiplied by -2 multiplied by 3?"), -12)
+
+exercises/practice/wordy/wordy_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/wordy/wordy.py:31: in answer
+    numbers, operations = parse_question(question)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = 'What is 2 multiplied by -2 multiplied by 3'
+
+    def parse_question(question):
+        question = question[:-1]  # Remove the question mark
+        words = question.split()
+        if len(words) < 3:
+            raise ValueError("Invalid question")
+        numbers = [int(word) for word in words if word.isdigit()]
+        operations = [word for word in words if word in ["plus", "minus", "multiplied", "divided"]]
+        if len(operations) != len(numbers) - 1:
+>           raise ValueError("Unknown operation")
+E           ValueError: Unknown operation
+
+exercises/practice/wordy/wordy.py:11: ValueError
+________________________ WordyTest.test_multiplication _________________________
+
+self = <wordy_test.WordyTest testMethod=test_multiplication>
+
+    def test_multiplication(self):
+>       self.assertEqual(answer("What is -3 multiplied by 25?"), -75)
+
+exercises/practice/wordy/wordy_test.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/wordy/wordy.py:31: in answer
+    numbers, operations = parse_question(question)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = 'What is -3 multiplied by 25'
+
+    def parse_question(question):
+        question = question[:-1]  # Remove the question mark
+        words = question.split()
+        if len(words) < 3:
+            raise ValueError("Invalid question")
+        numbers = [int(word) for word in words if word.isdigit()]
+        operations = [word for word in words if word in ["plus", "minus", "multiplied", "divided"]]
+        if len(operations) != len(numbers) - 1:
+>           raise ValueError("Unknown operation")
+E           ValueError: Unknown operation
+
+exercises/practice/wordy/wordy.py:11: ValueError
+_______________________ WordyTest.test_non_math_question _______________________
+
+self = <wordy_test.WordyTest testMethod=test_non_math_question>
+
+    def test_non_math_question(self):
+        with self.assertRaises(ValueError) as err:
+            answer("Who is the President of the United States?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "unknown operation")
+E       AssertionError: 'Unknown operation' != 'unknown operation'
+E       - Unknown operation
+E       ? ^
+E       + unknown operation
+E       ? ^
+
+exercises/practice/wordy/wordy_test.py:68: AssertionError
+____________________ WordyTest.test_reject_postfix_notation ____________________
+
+self = <wordy_test.WordyTest testMethod=test_reject_postfix_notation>
+
+    def test_reject_postfix_notation(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/wordy/wordy_test.py:95: AssertionError
+____________________ WordyTest.test_reject_prefix_notation _____________________
+
+self = <wordy_test.WordyTest testMethod=test_reject_prefix_notation>
+
+    def test_reject_prefix_notation(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/wordy/wordy_test.py:101: AssertionError
+_______________ WordyTest.test_reject_problem_missing_an_operand _______________
+
+self = <wordy_test.WordyTest testMethod=test_reject_problem_missing_an_operand>
+
+    def test_reject_problem_missing_an_operand(self):
+        with self.assertRaises(ValueError) as err:
+            answer("What is 1 plus?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "syntax error")
+E       AssertionError: 'Unknown operation' != 'syntax error'
+E       - Unknown operation
+E       + syntax error
+
+exercises/practice/wordy/wordy_test.py:74: AssertionError
+_________ WordyTest.test_reject_problem_with_no_operands_or_operators __________
+
+self = <wordy_test.WordyTest testMethod=test_reject_problem_with_no_operands_or_operators>
+
+    def test_reject_problem_with_no_operands_or_operators(self):
+        with self.assertRaises(ValueError) as err:
+            answer("What is?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "syntax error")
+E       AssertionError: 'Invalid question' != 'syntax error'
+E       - Invalid question
+E       + syntax error
+
+exercises/practice/wordy/wordy_test.py:80: AssertionError
+__________________ WordyTest.test_reject_two_numbers_in_a_row __________________
+
+self = <wordy_test.WordyTest testMethod=test_reject_two_numbers_in_a_row>
+
+    def test_reject_two_numbers_in_a_row(self):
+        with self.assertRaises(ValueError) as err:
+            answer("What is 1 plus 2 1?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "syntax error")
+E       AssertionError: 'Unknown operation' != 'syntax error'
+E       - Unknown operation
+E       + syntax error
+
+exercises/practice/wordy/wordy_test.py:92: AssertionError
+________________ WordyTest.test_reject_two_operations_in_a_row _________________
+
+self = <wordy_test.WordyTest testMethod=test_reject_two_operations_in_a_row>
+
+    def test_reject_two_operations_in_a_row(self):
+        with self.assertRaises(ValueError) as err:
+            answer("What is 1 plus plus 2?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "syntax error")
+E       AssertionError: 'Unknown operation' != 'syntax error'
+E       - Unknown operation
+E       + syntax error
+
+exercises/practice/wordy/wordy_test.py:86: AssertionError
+__________________________ WordyTest.test_subtraction __________________________
+
+self = <wordy_test.WordyTest testMethod=test_subtraction>
+
+    def test_subtraction(self):
+>       self.assertEqual(answer("What is 4 minus -12?"), 16)
+
+exercises/practice/wordy/wordy_test.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/wordy/wordy.py:31: in answer
+    numbers, operations = parse_question(question)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = 'What is 4 minus -12'
+
+    def parse_question(question):
+        question = question[:-1]  # Remove the question mark
+        words = question.split()
+        if len(words) < 3:
+            raise ValueError("Invalid question")
+        numbers = [int(word) for word in words if word.isdigit()]
+        operations = [word for word in words if word in ["plus", "minus", "multiplied", "divided"]]
+        if len(operations) != len(numbers) - 1:
+>           raise ValueError("Unknown operation")
+E           ValueError: Unknown operation
+
+exercises/practice/wordy/wordy.py:11: ValueError
+_______________________ WordyTest.test_unknown_operation _______________________
+
+self = <wordy_test.WordyTest testMethod=test_unknown_operation>
+
+    def test_unknown_operation(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/wordy/wordy_test.py:59: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_addition_and_multiplication
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_addition_and_subtraction
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_addition_with_negative_numbers
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_division - Val...
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_missing_number
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_missing_operation
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_multiple_division
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_multiple_multiplication
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_multiplication
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_non_math_question
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_reject_postfix_notation
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_reject_prefix_notation
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_reject_problem_missing_an_operand
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_reject_problem_with_no_operands_or_operators
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_reject_two_numbers_in_a_row
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_reject_two_operations_in_a_row
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_subtraction - ...
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_unknown_operation
+========================= 18 failed, 7 passed in 0.10s =========================

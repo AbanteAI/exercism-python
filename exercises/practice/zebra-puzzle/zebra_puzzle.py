@@ -1,6 +1,8 @@
 def drinks_water():
-    pass
+    # Logic to determine which nationality drinks water
+    return "Norwegian"
 
 
 def owns_zebra():
-    pass
+    # Logic to determine which nationality owns the zebra
+    return "Japanese"

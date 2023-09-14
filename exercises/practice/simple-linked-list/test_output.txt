@@ -1,0 +1,65 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 20 items
+
+exercises/practice/simple-linked-list/simple_linked_list_test.py ....FF. [ 35%]
+...F.........                                                            [100%]
+
+=================================== FAILURES ===================================
+______________ SimpleLinkedListTest.test_error_on_empty_list_head ______________
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_error_on_empty_list_head>
+
+    def test_error_on_empty_list_head(self):
+        sut = LinkedList()
+        with self.assertRaises(EmptyListException) as err:
+            sut.head()
+        self.assertEqual(type(err.exception), EmptyListException)
+>       self.assertEqual(err.exception.args[0], "The list is empty.")
+E       AssertionError: 'The list is empty' != 'The list is empty.'
+E       - The list is empty
+E       + The list is empty.
+E       ?                  +
+
+exercises/practice/simple-linked-list/simple_linked_list_test.py:26: AssertionError
+______________ SimpleLinkedListTest.test_error_on_empty_list_pop _______________
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_error_on_empty_list_pop>
+
+    def test_error_on_empty_list_pop(self):
+        sut = LinkedList()
+        with self.assertRaises(EmptyListException) as err:
+            sut.pop()
+        self.assertEqual(type(err.exception), EmptyListException)
+>       self.assertEqual(err.exception.args[0], "The list is empty.")
+E       AssertionError: 'The list is empty' != 'The list is empty.'
+E       - The list is empty
+E       + The list is empty.
+E       ?                  +
+
+exercises/practice/simple-linked-list/simple_linked_list_test.py:66: AssertionError
+________ SimpleLinkedListTest.test_pop_from_singleton_list_removes_head ________
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_pop_from_singleton_list_removes_head>
+
+    def test_pop_from_singleton_list_removes_head(self):
+        sut = LinkedList([1])
+        self.assertEqual(sut.pop(), 1)
+        with self.assertRaises(EmptyListException) as err:
+            sut.head()
+        self.assertEqual(type(err.exception), EmptyListException)
+>       self.assertEqual(err.exception.args[0], "The list is empty.")
+E       AssertionError: 'The list is empty' != 'The list is empty.'
+E       - The list is empty
+E       + The list is empty.
+E       ?                  +
+
+exercises/practice/simple-linked-list/simple_linked_list_test.py:59: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_error_on_empty_list_head
+FAILED exercises/practice/simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_error_on_empty_list_pop
+FAILED exercises/practice/simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_pop_from_singleton_list_removes_head
+========================= 3 failed, 17 passed in 0.06s =========================

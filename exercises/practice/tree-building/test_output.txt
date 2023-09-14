@@ -1,0 +1,37 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 13 items
+
+exercises/practice/tree-building/tree_building_test.py .F...........     [100%]
+
+=================================== FAILURES ===================================
+_____________________ TreeBuildingTest.test_cycle_directly _____________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_cycle_directly>
+
+    def test_cycle_directly(self):
+        records = [
+            Record(5, 2),
+            Record(3, 2),
+            Record(2, 2),
+            Record(4, 1),
+            Record(1, 0),
+            Record(0, 0),
+            Record(6, 3)
+        ]
+        # Cycle caused by Record 2 with parent_id pointing to itself
+        with self.assertRaises(ValueError) as err:
+            BuildTree(records)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "Only root should have equal record and parent id.")
+E       AssertionError: 'error!' != 'Only root should have equal record and parent id.'
+E       - error!
+E       + Only root should have equal record and parent id.
+
+exercises/practice/tree-building/tree_building_test.py:154: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_cycle_directly
+========================= 1 failed, 12 passed in 0.04s =========================

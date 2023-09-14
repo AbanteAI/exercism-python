@@ -1,0 +1,1990 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 12 items
+
+exercises/practice/change/change_test.py .F...FFF....                    [100%]
+
+=================================== FAILURES ===================================
+______________ ChangeTest.test_cannot_find_negative_change_values ______________
+
+self = <change_test.ChangeTest testMethod=test_cannot_find_negative_change_values>
+
+    def test_cannot_find_negative_change_values(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/change/change_test.py:56: AssertionError
+_________ ChangeTest.test_error_if_no_combination_can_add_up_to_target _________
+
+self = <change_test.ChangeTest testMethod=test_error_if_no_combination_can_add_up_to_target>
+
+    def test_error_if_no_combination_can_add_up_to_target(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/change/change_test.py:50: AssertionError
+_ ChangeTest.test_error_testing_for_change_smaller_than_the_smallest_of_coins __
+
+self = <change_test.ChangeTest testMethod=test_error_testing_for_change_smaller_than_the_smallest_of_coins>
+
+    def test_error_testing_for_change_smaller_than_the_smallest_of_coins(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/change/change_test.py:44: AssertionError
+_____________________ ChangeTest.test_large_target_values ______________________
+
+self = <change_test.ChangeTest testMethod=test_large_target_values>
+
+    def test_large_target_values(self):
+        self.assertEqual(
+>           find_fewest_coins([1, 2, 5, 10, 20, 50, 100], 999),
+            [2, 2, 5, 20, 20, 50, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+        )
+
+exercises/practice/change/change_test.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/change/change.py:24: in find_fewest_coins
+    result = find_fewest_coins_helper(coins, target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+exercises/practice/change/change.py:14: in find_fewest_coins_helper
+    coins_list = find_fewest_coins_helper(coins, remaining_target, memo)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+coins = [1, 2, 5, 10, 20, 50, ...], target = 37, memo = {}
+
+    def find_fewest_coins_helper(coins, target, memo):
+>       if target == 0:
+E       RecursionError: maximum recursion depth exceeded in comparison
+
+exercises/practice/change/change.py:4: RecursionError
+=========================== short test summary info ============================
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_cannot_find_negative_change_values
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_error_if_no_combination_can_add_up_to_target
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_error_testing_for_change_smaller_than_the_smallest_of_coins
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_large_target_values
+========================= 4 failed, 8 passed in 0.43s ==========================

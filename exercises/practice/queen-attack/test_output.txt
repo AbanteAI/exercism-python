@@ -1,0 +1,60 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 14 items
+
+exercises/practice/queen-attack/queen_attack_test.py .........FF..F      [100%]
+
+=================================== FAILURES ===================================
+_____________ QueenAttackTest.test_queen_must_have_positive_column _____________
+
+self = <queen_attack_test.QueenAttackTest testMethod=test_queen_must_have_positive_column>
+
+    def test_queen_must_have_positive_column(self):
+        with self.assertRaises(ValueError) as err:
+            Queen(2, -2)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "column not positive")
+E       AssertionError: 'column not on board' != 'column not positive'
+E       - column not on board
+E       + column not positive
+
+exercises/practice/queen-attack/queen_attack_test.py:33: AssertionError
+______________ QueenAttackTest.test_queen_must_have_positive_row _______________
+
+self = <queen_attack_test.QueenAttackTest testMethod=test_queen_must_have_positive_row>
+
+    def test_queen_must_have_positive_row(self):
+        with self.assertRaises(ValueError) as err:
+            Queen(-2, 2)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "row not positive")
+E       AssertionError: 'row not on board' != 'row not positive'
+E       - row not on board
+E       + row not positive
+
+exercises/practice/queen-attack/queen_attack_test.py:21: AssertionError
+_____________ QueenAttackTest.test_queens_same_position_can_attack _____________
+
+self = <queen_attack_test.QueenAttackTest testMethod=test_queens_same_position_can_attack>
+
+    def test_queens_same_position_can_attack(self):
+        with self.assertRaises(ValueError) as err:
+            Queen(2, 2).can_attack(Queen(2, 2))
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0],
+            "Invalid queen position: both queens in the same square",
+        )
+E       AssertionError: 'Queens cannot be in the same position' != 'Invalid queen position: both queens in the same square'
+E       - Queens cannot be in the same position
+E       + Invalid queen position: both queens in the same square
+
+exercises/practice/queen-attack/queen_attack_test.py:73: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/queen-attack/queen_attack_test.py::QueenAttackTest::test_queen_must_have_positive_column
+FAILED exercises/practice/queen-attack/queen_attack_test.py::QueenAttackTest::test_queen_must_have_positive_row
+FAILED exercises/practice/queen-attack/queen_attack_test.py::QueenAttackTest::test_queens_same_position_can_attack
+========================= 3 failed, 11 passed in 0.04s =========================

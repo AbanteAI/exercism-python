@@ -1,7 +1,11 @@
+from math import gcd
 class Rational:
     def __init__(self, numer, denom):
-        self.numer = None
-        self.denom = None
+        g = gcd(numer, denom)
+        if denom < 0:
+            numer, denom = -numer, -denom
+        self.numer = numer // g
+        self.denom = denom // g
 
     def __eq__(self, other):
         return self.numer == other.numer and self.denom == other.denom
@@ -10,22 +14,22 @@ class Rational:
         return f'{self.numer}/{self.denom}'
 
     def __add__(self, other):
-        pass
+        return Rational(self.numer * other.denom + self.denom * other.numer, self.denom * other.denom)
 
     def __sub__(self, other):
-        pass
+        return Rational(self.numer * other.denom - self.denom * other.numer, self.denom * other.denom)
 
     def __mul__(self, other):
-        pass
+        return Rational(self.numer * other.numer, self.denom * other.denom)
 
     def __truediv__(self, other):
-        pass
+        return Rational(self.numer * other.denom, self.denom * other.numer)
 
     def __abs__(self):
-        pass
+        return Rational(abs(self.numer), abs(self.denom))
 
     def __pow__(self, power):
-        pass
+        return Rational(self.numer ** power, self.denom ** power)
 
     def __rpow__(self, base):
-        pass
+        return base ** (self.numer / self.denom)

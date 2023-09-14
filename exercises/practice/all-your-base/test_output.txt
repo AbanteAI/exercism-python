@@ -1,0 +1,47 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 21 items
+
+exercises/practice/all-your-base/all_your_base_test.py ..........F..F... [ 80%]
+....                                                                     [100%]
+
+=================================== FAILURES ===================================
+_________________ AllYourBaseTest.test_invalid_positive_digit __________________
+
+self = <all_your_base_test.AllYourBaseTest testMethod=test_invalid_positive_digit>
+
+    def test_invalid_positive_digit(self):
+        with self.assertRaises(ValueError) as err:
+            rebase(2, [1, 2, 1, 0, 1, 0], 10)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0], "all digits must satisfy 0 <= d < input base"
+        )
+E       AssertionError: 'Invalid digits' != 'all digits must satisfy 0 <= d < input base'
+E       - Invalid digits
+E       + all digits must satisfy 0 <= d < input base
+
+exercises/practice/all-your-base/all_your_base_test.py:79: AssertionError
+_____________________ AllYourBaseTest.test_negative_digit ______________________
+
+self = <all_your_base_test.AllYourBaseTest testMethod=test_negative_digit>
+
+    def test_negative_digit(self):
+        with self.assertRaises(ValueError) as err:
+            rebase(2, [1, -1, 1, 0, 1, 0], 10)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0], "all digits must satisfy 0 <= d < input base"
+        )
+E       AssertionError: 'Invalid digits' != 'all digits must satisfy 0 <= d < input base'
+E       - Invalid digits
+E       + all digits must satisfy 0 <= d < input base
+
+exercises/practice/all-your-base/all_your_base_test.py:71: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/all-your-base/all_your_base_test.py::AllYourBaseTest::test_invalid_positive_digit
+FAILED exercises/practice/all-your-base/all_your_base_test.py::AllYourBaseTest::test_negative_digit
+========================= 2 failed, 19 passed in 0.05s =========================

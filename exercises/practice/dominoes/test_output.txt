@@ -1,0 +1,256 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 13 items
+
+exercises/practice/dominoes/dominoes_test.py FFFFF.FFFFFFF               [100%]
+
+=================================== FAILURES ===================================
+____________________ DominoesTest.test_can_reverse_dominoes ____________________
+
+self = <dominoes_test.DominoesTest testMethod=test_can_reverse_dominoes>
+
+    def test_can_reverse_dominoes(self):
+        input_dominoes = [(1, 2), (1, 3), (2, 3)]
+        output_chain = can_chain(input_dominoes)
+>       self.assert_correct_chain(input_dominoes, output_chain)
+
+exercises/practice/dominoes/dominoes_test.py:36: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dominoes/dominoes_test.py:124: in assert_correct_chain
+    self.assert_same_dominoes(input_dominoes, output_chain)
+exercises/practice/dominoes/dominoes_test.py:100: in assert_same_dominoes
+    self.assertEqual(input_normal, output_normal, msg)
+E   AssertionError: Lists differ: [(1, 2), (1, 3), (2, 3)] != []
+E   
+E   First list contains 3 additional elements.
+E   First extra element 0:
+E   (1, 2)
+E   
+E   - [(1, 2), (1, 3), (2, 3)]
+E   + [] : Dominoes used in the output must be the same as the ones given in the input
+______________________ DominoesTest.test_can_t_be_chained ______________________
+
+self = <dominoes_test.DominoesTest testMethod=test_can_t_be_chained>
+
+    def test_can_t_be_chained(self):
+        input_dominoes = [(1, 2), (4, 1), (2, 3)]
+        output_chain = can_chain(input_dominoes)
+>       self.refute_correct_chain(input_dominoes, output_chain)
+
+exercises/practice/dominoes/dominoes_test.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dominoes/dominoes_test.py:132: in refute_correct_chain
+    self.assertIsNone(output_chain, msg)
+E   AssertionError: [] is not None : There should be no valid chain for [(1, 2), (4, 1), (2, 3)]
+__________________ DominoesTest.test_disconnected_double_loop __________________
+
+self = <dominoes_test.DominoesTest testMethod=test_disconnected_double_loop>
+
+    def test_disconnected_double_loop(self):
+        input_dominoes = [(1, 2), (2, 1), (3, 4), (4, 3)]
+        output_chain = can_chain(input_dominoes)
+>       self.refute_correct_chain(input_dominoes, output_chain)
+
+exercises/practice/dominoes/dominoes_test.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dominoes/dominoes_test.py:132: in refute_correct_chain
+    self.assertIsNone(output_chain, msg)
+E   AssertionError: [] is not None : There should be no valid chain for [(1, 2), (2, 1), (3, 4), (4, 3)]
+____________________ DominoesTest.test_disconnected_simple _____________________
+
+self = <dominoes_test.DominoesTest testMethod=test_disconnected_simple>
+
+    def test_disconnected_simple(self):
+        input_dominoes = [(1, 1), (2, 2)]
+        output_chain = can_chain(input_dominoes)
+>       self.refute_correct_chain(input_dominoes, output_chain)
+
+exercises/practice/dominoes/dominoes_test.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dominoes/dominoes_test.py:132: in refute_correct_chain
+    self.assertIsNone(output_chain, msg)
+E   AssertionError: [] is not None : There should be no valid chain for [(1, 1), (2, 2)]
+________________ DominoesTest.test_disconnected_single_isolated ________________
+
+self = <dominoes_test.DominoesTest testMethod=test_disconnected_single_isolated>
+
+    def test_disconnected_single_isolated(self):
+        input_dominoes = [(1, 2), (2, 3), (3, 1), (4, 4)]
+        output_chain = can_chain(input_dominoes)
+>       self.refute_correct_chain(input_dominoes, output_chain)
+
+exercises/practice/dominoes/dominoes_test.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dominoes/dominoes_test.py:132: in refute_correct_chain
+    self.assertIsNone(output_chain, msg)
+E   AssertionError: [] is not None : There should be no valid chain for [(1, 2), (2, 3), (3, 1), (4, 4)]
+_______________________ DominoesTest.test_need_backtrack _______________________
+
+self = <dominoes_test.DominoesTest testMethod=test_need_backtrack>
+
+    def test_need_backtrack(self):
+        input_dominoes = [(1, 2), (2, 3), (3, 1), (2, 4), (2, 4)]
+        output_chain = can_chain(input_dominoes)
+>       self.assert_correct_chain(input_dominoes, output_chain)
+
+exercises/practice/dominoes/dominoes_test.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dominoes/dominoes_test.py:124: in assert_correct_chain
+    self.assert_same_dominoes(input_dominoes, output_chain)
+exercises/practice/dominoes/dominoes_test.py:100: in assert_same_dominoes
+    self.assertEqual(input_normal, output_normal, msg)
+E   AssertionError: Lists differ: [(1, 2), (1, 3), (2, 3), (2, 4), (2, 4)] != []
+E   
+E   First list contains 5 additional elements.
+E   First extra element 0:
+E   (1, 2)
+E   
+E   - [(1, 2), (1, 3), (2, 3), (2, 4), (2, 4)]
+E   + [] : Dominoes used in the output must be the same as the ones given in the input
+_______________________ DominoesTest.test_nine_elements ________________________
+
+self = <dominoes_test.DominoesTest testMethod=test_nine_elements>
+
+    def test_nine_elements(self):
+        input_dominoes = [
+            (1, 2),
+            (5, 3),
+            (3, 1),
+            (1, 2),
+            (2, 4),
+            (1, 6),
+            (2, 3),
+            (3, 4),
+            (5, 6),
+        ]
+        output_chain = can_chain(input_dominoes)
+>       self.assert_correct_chain(input_dominoes, output_chain)
+
+exercises/practice/dominoes/dominoes_test.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dominoes/dominoes_test.py:124: in assert_correct_chain
+    self.assert_same_dominoes(input_dominoes, output_chain)
+exercises/practice/dominoes/dominoes_test.py:100: in assert_same_dominoes
+    self.assertEqual(input_normal, output_normal, msg)
+E   AssertionError: Lists differ: [(1, 2), (1, 2), (1, 3), (1, 6), (2, 3), (2, 4), (3, 4), (3, 5), (5, 6)] != []
+E   
+E   First list contains 9 additional elements.
+E   First extra element 0:
+E   (1, 2)
+E   
+E   - [(1, 2), (1, 2), (1, 3), (1, 6), (2, 3), (2, 4), (3, 4), (3, 5), (5, 6)]
+E   + [] : Dominoes used in the output must be the same as the ones given in the input
+_______________________ DominoesTest.test_separate_loops _______________________
+
+self = <dominoes_test.DominoesTest testMethod=test_separate_loops>
+
+    def test_separate_loops(self):
+        input_dominoes = [(1, 2), (2, 3), (3, 1), (1, 1), (2, 2), (3, 3)]
+        output_chain = can_chain(input_dominoes)
+>       self.assert_correct_chain(input_dominoes, output_chain)
+
+exercises/practice/dominoes/dominoes_test.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dominoes/dominoes_test.py:124: in assert_correct_chain
+    self.assert_same_dominoes(input_dominoes, output_chain)
+exercises/practice/dominoes/dominoes_test.py:100: in assert_same_dominoes
+    self.assertEqual(input_normal, output_normal, msg)
+E   AssertionError: Lists differ: [(1, 1), (1, 2), (1, 3), (2, 2), (2, 3), (3, 3)] != []
+E   
+E   First list contains 6 additional elements.
+E   First extra element 0:
+E   (1, 1)
+E   
+E   - [(1, 1), (1, 2), (1, 3), (2, 2), (2, 3), (3, 3)]
+E   + [] : Dominoes used in the output must be the same as the ones given in the input
+________________ DominoesTest.test_separate_three_domino_loops _________________
+
+self = <dominoes_test.DominoesTest testMethod=test_separate_three_domino_loops>
+
+    def test_separate_three_domino_loops(self):
+        input_dominoes = [(1, 2), (2, 3), (3, 1), (4, 5), (5, 6), (6, 4)]
+        output_chain = can_chain(input_dominoes)
+>       self.refute_correct_chain(input_dominoes, output_chain)
+
+exercises/practice/dominoes/dominoes_test.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dominoes/dominoes_test.py:132: in refute_correct_chain
+    self.assertIsNone(output_chain, msg)
+E   AssertionError: [] is not None : There should be no valid chain for [(1, 2), (2, 3), (3, 1), (4, 5), (5, 6), (6, 4)]
+______________ DominoesTest.test_singleton_input_singleton_output ______________
+
+self = <dominoes_test.DominoesTest testMethod=test_singleton_input_singleton_output>
+
+    def test_singleton_input_singleton_output(self):
+        input_dominoes = [(1, 1)]
+        output_chain = can_chain(input_dominoes)
+>       self.assert_correct_chain(input_dominoes, output_chain)
+
+exercises/practice/dominoes/dominoes_test.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dominoes/dominoes_test.py:124: in assert_correct_chain
+    self.assert_same_dominoes(input_dominoes, output_chain)
+exercises/practice/dominoes/dominoes_test.py:100: in assert_same_dominoes
+    self.assertEqual(input_normal, output_normal, msg)
+E   AssertionError: Lists differ: [(1, 1)] != []
+E   
+E   First list contains 1 additional elements.
+E   First extra element 0:
+E   (1, 1)
+E   
+E   - [(1, 1)]
+E   + [] : Dominoes used in the output must be the same as the ones given in the input
+______________ DominoesTest.test_singleton_that_can_t_be_chained _______________
+
+self = <dominoes_test.DominoesTest testMethod=test_singleton_that_can_t_be_chained>
+
+    def test_singleton_that_can_t_be_chained(self):
+        input_dominoes = [(1, 2)]
+        output_chain = can_chain(input_dominoes)
+>       self.refute_correct_chain(input_dominoes, output_chain)
+
+exercises/practice/dominoes/dominoes_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dominoes/dominoes_test.py:132: in refute_correct_chain
+    self.assertIsNone(output_chain, msg)
+E   AssertionError: [(1, 2)] is not None : There should be no valid chain for [(1, 2)]
+_______________________ DominoesTest.test_three_elements _______________________
+
+self = <dominoes_test.DominoesTest testMethod=test_three_elements>
+
+    def test_three_elements(self):
+        input_dominoes = [(1, 2), (3, 1), (2, 3)]
+        output_chain = can_chain(input_dominoes)
+>       self.assert_correct_chain(input_dominoes, output_chain)
+
+exercises/practice/dominoes/dominoes_test.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dominoes/dominoes_test.py:124: in assert_correct_chain
+    self.assert_same_dominoes(input_dominoes, output_chain)
+exercises/practice/dominoes/dominoes_test.py:100: in assert_same_dominoes
+    self.assertEqual(input_normal, output_normal, msg)
+E   AssertionError: Lists differ: [(1, 2), (1, 3), (2, 3)] != []
+E   
+E   First list contains 3 additional elements.
+E   First extra element 0:
+E   (1, 2)
+E   
+E   - [(1, 2), (1, 3), (2, 3)]
+E   + [] : Dominoes used in the output must be the same as the ones given in the input
+=========================== short test summary info ============================
+FAILED exercises/practice/dominoes/dominoes_test.py::DominoesTest::test_can_reverse_dominoes
+FAILED exercises/practice/dominoes/dominoes_test.py::DominoesTest::test_can_t_be_chained
+FAILED exercises/practice/dominoes/dominoes_test.py::DominoesTest::test_disconnected_double_loop
+FAILED exercises/practice/dominoes/dominoes_test.py::DominoesTest::test_disconnected_simple
+FAILED exercises/practice/dominoes/dominoes_test.py::DominoesTest::test_disconnected_single_isolated
+FAILED exercises/practice/dominoes/dominoes_test.py::DominoesTest::test_need_backtrack
+FAILED exercises/practice/dominoes/dominoes_test.py::DominoesTest::test_nine_elements
+FAILED exercises/practice/dominoes/dominoes_test.py::DominoesTest::test_separate_loops
+FAILED exercises/practice/dominoes/dominoes_test.py::DominoesTest::test_separate_three_domino_loops
+FAILED exercises/practice/dominoes/dominoes_test.py::DominoesTest::test_singleton_input_singleton_output
+FAILED exercises/practice/dominoes/dominoes_test.py::DominoesTest::test_singleton_that_can_t_be_chained
+FAILED exercises/practice/dominoes/dominoes_test.py::DominoesTest::test_three_elements
+========================= 12 failed, 1 passed in 0.16s =========================

@@ -1,0 +1,326 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 14 items
+
+exercises/practice/house/house_test.py FFFFFFFFF.FFFF                    [100%]
+
+=================================== FAILURES ===================================
+__________________________ HouseTest.test_full_rhyme ___________________________
+
+self = <house_test.HouseTest testMethod=test_full_rhyme>
+
+    def test_full_rhyme(self):
+>       self.assertEqual(
+            recite(1, 12),
+            [
+                "This is the house that Jack built.",
+                "This is the malt that lay in the house that Jack built.",
+                "This is the rat that ate the malt that lay in the house that Jack built.",
+                "This is the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the horse and the hound and the horn that belonged to the farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+            ],
+        )
+E       AssertionError: Lists differ: ['Thi[30 chars].', 'that lay in the house that Jack built. th[3811 chars]lt.'] != ['Thi[30 chars].', 'This is the malt that lay in the house th[2286 chars]lt.']
+E       
+E       First differing element 1:
+E       'that lay in the house that Jack built. th[42 chars]ilt.'
+E       'This is the malt that lay in the house that Jack built.'
+E       
+E       Diff is 7687 characters long. Set self.maxDiff to None to see it.
+
+exercises/practice/house/house_test.py:114: AssertionError
+________________________ HouseTest.test_multiple_verses ________________________
+
+self = <house_test.HouseTest testMethod=test_multiple_verses>
+
+    def test_multiple_verses(self):
+>       self.assertEqual(
+            recite(4, 8),
+            [
+                "This is the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+            ],
+        )
+E       AssertionError: Lists differ: ['that killed the rat that the cat that ate[1243 chars]lt.'] != ['This is the cat that killed the rat that [757 chars]lt.']
+E       
+E       First differing element 0:
+E       'that killed the rat that the cat that ate[106 chars]ilt.'
+E       'This is the cat that killed the rat that [47 chars]ilt.'
+E       
+E       Diff is 2432 characters long. Set self.maxDiff to None to see it.
+
+exercises/practice/house/house_test.py:102: AssertionError
+_________ HouseTest.test_verse_10_the_rooster_that_crowed_in_the_morn __________
+
+self = <house_test.HouseTest testMethod=test_verse_10_the_rooster_that_crowed_in_the_morn>
+
+    def test_verse_10_the_rooster_that_crowed_in_the_morn(self):
+>       self.assertEqual(
+            recite(10, 10),
+            [
+                "This is the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: Lists differ: ['that woke the priest all shaven and shorn[501 chars]lt.'] != ['This is the rooster that crowed in the mo[280 chars]lt.']
+E       
+E       First differing element 0:
+E       'that woke the priest all shaven and shorn[500 chars]ilt.'
+E       'This is the rooster that crowed in the mo[279 chars]ilt.'
+E       
+E       Diff is 1434 characters long. Set self.maxDiff to None to see it.
+
+exercises/practice/house/house_test.py:78: AssertionError
+______________ HouseTest.test_verse_11_the_farmer_sowing_his_corn ______________
+
+self = <house_test.HouseTest testMethod=test_verse_11_the_farmer_sowing_his_corn>
+
+    def test_verse_11_the_farmer_sowing_his_corn(self):
+>       self.assertEqual(
+            recite(11, 11),
+            [
+                "This is the farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: Lists differ: ['that kept the rooster that crowed in the [579 chars]lt.'] != ['This is the farmer sowing his corn that k[317 chars]lt.']
+E       
+E       First differing element 0:
+E       'that kept the rooster that crowed in the [578 chars]ilt.'
+E       'This is the farmer sowing his corn that k[316 chars]ilt.'
+E       
+E       Diff is 1380 characters long. Set self.maxDiff to None to see it.
+
+exercises/practice/house/house_test.py:86: AssertionError
+_________ HouseTest.test_verse_12_the_horse_and_the_hound_and_the_horn _________
+
+self = <house_test.HouseTest testMethod=test_verse_12_the_horse_and_the_hound_and_the_horn>
+
+    def test_verse_12_the_horse_and_the_hound_and_the_horn(self):
+>       self.assertEqual(
+            recite(12, 12),
+            [
+                "This is the horse and the hound and the horn that belonged to the farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: Lists differ: ['that belonged to the farmer sowing his co[665 chars]lt.'] != ['This is the horse and the hound and the h[371 chars]lt.']
+E       
+E       First differing element 0:
+E       'that belonged to the farmer sowing his co[664 chars]ilt.'
+E       'This is the horse and the hound and the h[370 chars]ilt.'
+E       
+E       Diff is 1666 characters long. Set self.maxDiff to None to see it.
+
+exercises/practice/house/house_test.py:94: AssertionError
+___________ HouseTest.test_verse_eight_the_man_all_tattered_and_torn ___________
+
+self = <house_test.HouseTest testMethod=test_verse_eight_the_man_all_tattered_and_torn>
+
+    def test_verse_eight_the_man_all_tattered_and_torn(self):
+>       self.assertEqual(
+            recite(8, 8),
+            [
+                "This is the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: Lists differ: ['that kissed the maiden all forlorn that t[338 chars]lt.'] != ['This is the man all tattered and torn tha[189 chars]lt.']
+E       
+E       First differing element 0:
+E       'that kissed the maiden all forlorn that t[337 chars]ilt.'
+E       'This is the man all tattered and torn tha[188 chars]ilt.'
+E       
+E       Diff is 841 characters long. Set self.maxDiff to None to see it.
+
+exercises/practice/house/house_test.py:62: AssertionError
+________________ HouseTest.test_verse_five_the_dog_that_worried ________________
+
+self = <house_test.HouseTest testMethod=test_verse_five_the_dog_that_worried>
+
+    def test_verse_five_the_dog_that_worried(self):
+>       self.assertEqual(
+            recite(5, 5),
+            [
+                "This is the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: Lists differ: ['that worried the cat that the dog that ki[141 chars]lt.'] != ['This is the dog that worried the cat that[69 chars]lt.']
+E       
+E       First differing element 0:
+E       'that worried the cat that the dog that ki[140 chars]ilt.'
+E       'This is the dog that worried the cat that[68 chars]ilt.'
+E       
+E       + ['This is the dog that worried the cat that killed the rat that ate the malt '
+E       - ['that worried the cat that the dog that killed the rat that the cat that ate '
+E       -  'the malt that the rat that lay in the house that Jack built. that the malt '
+E       -  'This is the house that Jack built.']
+E       ?   ^  ^^^^
+E       
+E       +  'that lay in the house that Jack built.']
+E       ?   ^ +++++++ ^
+
+exercises/practice/house/house_test.py:38: AssertionError
+________________ HouseTest.test_verse_four_the_cat_that_killed _________________
+
+self = <house_test.HouseTest testMethod=test_verse_four_the_cat_that_killed>
+
+    def test_verse_four_the_cat_that_killed(self):
+>       self.assertEqual(
+            recite(4, 4),
+            [
+                "This is the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: Lists differ: ['that killed the rat that the cat that ate[107 chars]lt.'] != ['This is the cat that killed the rat that [48 chars]lt.']
+E       
+E       First differing element 0:
+E       'that killed the rat that the cat that ate[106 chars]ilt.'
+E       'This is the cat that killed the rat that [47 chars]ilt.'
+E       
+E       - ['that killed the rat that the cat that ate the malt that the rat that lay in '
+E       -  'the house that Jack built. that the malt This is the house that Jack built.']
+E       + ['This is the cat that killed the rat that ate the malt that lay in the house '
+E       +  'that Jack built.']
+
+exercises/practice/house/house_test.py:30: AssertionError
+__________ HouseTest.test_verse_nine_the_priest_all_shaven_and_shorn ___________
+
+self = <house_test.HouseTest testMethod=test_verse_nine_the_priest_all_shaven_and_shorn>
+
+    def test_verse_nine_the_priest_all_shaven_and_shorn(self):
+>       self.assertEqual(
+            recite(9, 9),
+            [
+                "This is the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: Lists differ: ['that married the man all tattered and tor[418 chars]lt.'] != ['This is the priest all shaven and shorn t[234 chars]lt.']
+E       
+E       First differing element 0:
+E       'that married the man all tattered and tor[417 chars]ilt.'
+E       'This is the priest all shaven and shorn t[233 chars]ilt.'
+E       
+E       Diff is 808 characters long. Set self.maxDiff to None to see it.
+
+exercises/practice/house/house_test.py:70: AssertionError
+______________ HouseTest.test_verse_seven_the_maiden_all_forlorn _______________
+
+self = <house_test.HouseTest testMethod=test_verse_seven_the_maiden_all_forlorn>
+
+    def test_verse_seven_the_maiden_all_forlorn(self):
+>       self.assertEqual(
+            recite(7, 7),
+            [
+                "This is the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: Lists differ: ['that milked the cow with the crumpled hor[268 chars]lt.'] != ['This is the maiden all forlorn that milke[147 chars]lt.']
+E       
+E       First differing element 0:
+E       'that milked the cow with the crumpled hor[267 chars]ilt.'
+E       'This is the maiden all forlorn that milke[146 chars]ilt.'
+E       
+E       + ['This is the maiden all forlorn that milked the cow with the crumpled horn '
+E       +  'that tossed the dog that worried the cat that killed the rat that ate the '
+E       +  'malt that lay in the house that Jack built.']
+E       - ['that milked the cow with the crumpled horn that the maiden all forlorn that '
+E       -  'tossed the dog that the cow with the crumpled horn that worried the cat that '
+E       -  'the dog that killed the rat that the cat that ate the malt that the rat that '
+E       -  'lay in the house that Jack built. that the malt This is the house that Jack '
+E       -  'built.']
+
+exercises/practice/house/house_test.py:54: AssertionError
+___________ HouseTest.test_verse_six_the_cow_with_the_crumpled_horn ____________
+
+self = <house_test.HouseTest testMethod=test_verse_six_the_cow_with_the_crumpled_horn>
+
+    def test_verse_six_the_cow_with_the_crumpled_horn(self):
+>       self.assertEqual(
+            recite(6, 6),
+            [
+                "This is the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: Lists differ: ['that tossed the dog that the cow with the[197 chars]lt.'] != ['This is the cow with the crumpled horn th[112 chars]lt.']
+E       
+E       First differing element 0:
+E       'that tossed the dog that the cow with the[196 chars]ilt.'
+E       'This is the cow with the crumpled horn th[111 chars]ilt.'
+E       
+E       + ['This is the cow with the crumpled horn that tossed the dog that worried the '
+E       +  'cat that killed the rat that ate the malt that lay in the house that Jack '
+E       - ['that tossed the dog that the cow with the crumpled horn that worried the cat '
+E       -  'that the dog that killed the rat that the cat that ate the malt that the rat '
+E       -  'that lay in the house that Jack built. that the malt This is the house that '
+E       -  'Jack built.']
+E       ?   -----
+E       
+E       +  'built.']
+
+exercises/practice/house/house_test.py:46: AssertionError
+_________________ HouseTest.test_verse_three_the_rat_that_ate __________________
+
+self = <house_test.HouseTest testMethod=test_verse_three_the_rat_that_ate>
+
+    def test_verse_three_the_rat_that_ate(self):
+>       self.assertEqual(
+            recite(3, 3),
+            [
+                "This is the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: Lists differ: ['that ate the malt that the rat that lay i[74 chars]lt.'] != ['This is the rat that ate the malt that la[28 chars]lt.']
+E       
+E       First differing element 0:
+E       'that ate the malt that the rat that lay i[73 chars]ilt.'
+E       'This is the rat that ate the malt that la[27 chars]ilt.'
+E       
+E       + ['This is the rat that ate the malt that lay in the house that Jack built.']
+E       - ['that ate the malt that the rat that lay in the house that Jack built. that '
+E       -  'the malt This is the house that Jack built.']
+
+exercises/practice/house/house_test.py:22: AssertionError
+__________________ HouseTest.test_verse_two_the_malt_that_lay __________________
+
+self = <house_test.HouseTest testMethod=test_verse_two_the_malt_that_lay>
+
+    def test_verse_two_the_malt_that_lay(self):
+>       self.assertEqual(
+            recite(2, 2), ["This is the malt that lay in the house that Jack built."]
+        )
+E       AssertionError: Lists differ: ['that lay in the house that Jack built. th[43 chars]lt.'] != ['This is the malt that lay in the house that Jack built.']
+E       
+E       First differing element 0:
+E       'that lay in the house that Jack built. th[42 chars]ilt.'
+E       'This is the malt that lay in the house that Jack built.'
+E       
+E       + ['This is the malt that lay in the house that Jack built.']
+E       - ['that lay in the house that Jack built. that the malt This is the house that '
+E       -  'Jack built.']
+
+exercises/practice/house/house_test.py:17: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/house/house_test.py::HouseTest::test_full_rhyme - A...
+FAILED exercises/practice/house/house_test.py::HouseTest::test_multiple_verses
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_10_the_rooster_that_crowed_in_the_morn
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_11_the_farmer_sowing_his_corn
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_12_the_horse_and_the_hound_and_the_horn
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_eight_the_man_all_tattered_and_torn
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_five_the_dog_that_worried
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_four_the_cat_that_killed
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_nine_the_priest_all_shaven_and_shorn
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_seven_the_maiden_all_forlorn
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_six_the_cow_with_the_crumpled_horn
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_three_the_rat_that_ate
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_two_the_malt_that_lay
+========================= 13 failed, 1 passed in 0.29s =========================

@@ -1,0 +1,79 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 43 items
+
+exercises/practice/rational-numbers/rational_numbers_test.py ........... [ 25%]
+..........FF.F..................                                         [100%]
+
+=================================== FAILURES ===================================
+_ RationalNumbersTest.test_raise_a_negative_rational_number_to_an_even_negative_integer_power _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_negative_rational_number_to_an_even_negative_integer_power>
+
+    def test_raise_a_negative_rational_number_to_an_even_negative_integer_power(self):
+>       self.assertEqual(Rational(-3, 5) ** -2, Rational(25, 9))
+
+exercises/practice/rational-numbers/rational_numbers_test.py:114: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rational-numbers/rational_numbers.py:32: in __pow__
+    return Rational(self.numer ** power, self.denom ** power)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[AttributeError("'Rational' object has no attribute 'numer'") raised in repr()] Rational object at 0x7fbde54e5150>
+numer = 0.1111111111111111, denom = 0.04
+
+    def __init__(self, numer, denom):
+>       g = gcd(numer, denom)
+E       TypeError: 'float' object cannot be interpreted as an integer
+
+exercises/practice/rational-numbers/rational_numbers.py:4: TypeError
+_ RationalNumbersTest.test_raise_a_negative_rational_number_to_an_odd_negative_integer_power _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_negative_rational_number_to_an_odd_negative_integer_power>
+
+    def test_raise_a_negative_rational_number_to_an_odd_negative_integer_power(self):
+>       self.assertEqual(Rational(-3, 5) ** -3, Rational(-125, 27))
+
+exercises/practice/rational-numbers/rational_numbers_test.py:117: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rational-numbers/rational_numbers.py:32: in __pow__
+    return Rational(self.numer ** power, self.denom ** power)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[AttributeError("'Rational' object has no attribute 'numer'") raised in repr()] Rational object at 0x7fbde55044f0>
+numer = -0.037037037037037035, denom = 0.008
+
+    def __init__(self, numer, denom):
+>       g = gcd(numer, denom)
+E       TypeError: 'float' object cannot be interpreted as an integer
+
+exercises/practice/rational-numbers/rational_numbers.py:4: TypeError
+_ RationalNumbersTest.test_raise_a_positive_rational_number_to_a_negative_integer_power _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_positive_rational_number_to_a_negative_integer_power>
+
+    def test_raise_a_positive_rational_number_to_a_negative_integer_power(self):
+>       self.assertEqual(Rational(3, 5) ** -2, Rational(25, 9))
+
+exercises/practice/rational-numbers/rational_numbers_test.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rational-numbers/rational_numbers.py:32: in __pow__
+    return Rational(self.numer ** power, self.denom ** power)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[AttributeError("'Rational' object has no attribute 'numer'") raised in repr()] Rational object at 0x7fbde55010f0>
+numer = 0.1111111111111111, denom = 0.04
+
+    def __init__(self, numer, denom):
+>       g = gcd(numer, denom)
+E       TypeError: 'float' object cannot be interpreted as an integer
+
+exercises/practice/rational-numbers/rational_numbers.py:4: TypeError
+=========================== short test summary info ============================
+FAILED exercises/practice/rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_negative_rational_number_to_an_even_negative_integer_power
+FAILED exercises/practice/rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_negative_rational_number_to_an_odd_negative_integer_power
+FAILED exercises/practice/rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_positive_rational_number_to_a_negative_integer_power
+========================= 3 failed, 40 passed in 0.08s =========================
