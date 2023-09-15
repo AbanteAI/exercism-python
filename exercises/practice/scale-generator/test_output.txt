@@ -1,0 +1,172 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 17 items
+
+exercises/practice/scale-generator/scale_generator_test.py F...FFF.F.F.F [ 76%]
+....                                                                     [100%]
+
+=================================== FAILURES ===================================
+______________ ScaleGeneratorTest.test_chromatic_scale_with_flats ______________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_chromatic_scale_with_flats>
+
+    def test_chromatic_scale_with_flats(self):
+        expected = ["F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E"]
+>       self.assertEqual(Scale("F").chromatic(), expected)
+E       AssertionError: Lists differ: ['F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E'] != ['F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E']
+E       
+E       First differing element 1:
+E       'F#'
+E       'Gb'
+E       
+E       - ['F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E']
+E       ?        ^^         ^^         ^^              ^^         ^^
+E       
+E       + ['F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E']
+E       ?        ^^         ^^         ^^              ^^         ^^
+
+exercises/practice/scale-generator/scale_generator_test.py:21: AssertionError
+____________________ ScaleGeneratorTest.test_harmonic_minor ____________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_harmonic_minor>
+
+    def test_harmonic_minor(self):
+        expected = ["D", "E", "F", "G", "A", "Bb", "Db", "D"]
+>       self.assertEqual(Scale("d").interval("MmMMmAm"), expected)
+E       AssertionError: Lists differ: ['D', 'E', 'F', 'G', 'A', 'A#', 'C#', 'D'] != ['D', 'E', 'F', 'G', 'A', 'Bb', 'Db', 'D']
+E       
+E       First differing element 5:
+E       'A#'
+E       'Bb'
+E       
+E       - ['D', 'E', 'F', 'G', 'A', 'A#', 'C#', 'D']
+E       ?                            ^^    ^^
+E       
+E       + ['D', 'E', 'F', 'G', 'A', 'Bb', 'Db', 'D']
+E       ?                            ^^    ^^
+
+exercises/practice/scale-generator/scale_generator_test.py:66: AssertionError
+______________________ ScaleGeneratorTest.test_hexatonic _______________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_hexatonic>
+
+    def test_hexatonic(self):
+        expected = ["Db", "Eb", "F", "G", "A", "B", "Db"]
+>       self.assertEqual(Scale("Db").interval("MMMMMM"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/scale-generator/scale_generator.py:20: in interval
+    chromatic_scale = self.chromatic()
+exercises/practice/scale-generator/scale_generator.py:17: in chromatic
+    return self._shift(scale, self.tonic)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f73a3bbc430>
+scale = ['A', 'Bb', 'B', 'C', 'Db', 'D', ...], tonic = 'DB'
+
+    def _shift(self, scale, tonic):
+>       idx = scale.index(tonic)
+E       ValueError: 'DB' is not in list
+
+exercises/practice/scale-generator/scale_generator.py:5: ValueError
+_____________________ ScaleGeneratorTest.test_locrian_mode _____________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_locrian_mode>
+
+    def test_locrian_mode(self):
+        expected = ["G", "Ab", "Bb", "C", "Db", "Eb", "F", "G"]
+>       self.assertEqual(Scale("g").interval("mMMmMMM"), expected)
+E       AssertionError: Lists differ: ['G', 'G#', 'A#', 'C', 'C#', 'D#', 'F', 'G'] != ['G', 'Ab', 'Bb', 'C', 'Db', 'Eb', 'F', 'G']
+E       
+E       First differing element 1:
+E       'G#'
+E       'Ab'
+E       
+E       - ['G', 'G#', 'A#', 'C', 'C#', 'D#', 'F', 'G']
+E       ?        ^^    ^^         ^^    ^^
+E       
+E       + ['G', 'Ab', 'Bb', 'C', 'Db', 'Eb', 'F', 'G']
+E       ?        ^^    ^^         ^^    ^^
+
+exercises/practice/scale-generator/scale_generator_test.py:62: AssertionError
+________________ ScaleGeneratorTest.test_major_scale_with_flats ________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_major_scale_with_flats>
+
+    def test_major_scale_with_flats(self):
+        expected = ["F", "G", "A", "Bb", "C", "D", "E", "F"]
+>       self.assertEqual(Scale("F").interval("MMmMMMm"), expected)
+E       AssertionError: Lists differ: ['F', 'G', 'A', 'A#', 'C', 'D', 'E', 'F'] != ['F', 'G', 'A', 'Bb', 'C', 'D', 'E', 'F']
+E       
+E       First differing element 3:
+E       'A#'
+E       'Bb'
+E       
+E       - ['F', 'G', 'A', 'A#', 'C', 'D', 'E', 'F']
+E       ?                  ^^
+E       
+E       + ['F', 'G', 'A', 'Bb', 'C', 'D', 'E', 'F']
+E       ?                  ^^
+
+exercises/practice/scale-generator/scale_generator_test.py:34: AssertionError
+________________ ScaleGeneratorTest.test_minor_scale_with_flats ________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_minor_scale_with_flats>
+
+    def test_minor_scale_with_flats(self):
+        expected = ["Bb", "C", "Db", "Eb", "F", "Gb", "Ab", "Bb"]
+>       self.assertEqual(Scale("bb").interval("MmMMmMM"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/scale-generator/scale_generator.py:20: in interval
+    chromatic_scale = self.chromatic()
+exercises/practice/scale-generator/scale_generator.py:17: in chromatic
+    return self._shift(scale, self.tonic)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f73a3b7ee00>
+scale = ['A', 'Bb', 'B', 'C', 'Db', 'D', ...], tonic = 'BB'
+
+    def _shift(self, scale, tonic):
+>       idx = scale.index(tonic)
+E       ValueError: 'BB' is not in list
+
+exercises/practice/scale-generator/scale_generator.py:5: ValueError
+___________________ ScaleGeneratorTest.test_mixolydian_mode ____________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_mixolydian_mode>
+
+    def test_mixolydian_mode(self):
+        expected = ["Eb", "F", "G", "Ab", "Bb", "C", "Db", "Eb"]
+>       self.assertEqual(Scale("Eb").interval("MMmMMmM"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/scale-generator/scale_generator.py:20: in interval
+    chromatic_scale = self.chromatic()
+exercises/practice/scale-generator/scale_generator.py:17: in chromatic
+    return self._shift(scale, self.tonic)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f73a3c20ee0>
+scale = ['A', 'Bb', 'B', 'C', 'Db', 'D', ...], tonic = 'EB'
+
+    def _shift(self, scale, tonic):
+>       idx = scale.index(tonic)
+E       ValueError: 'EB' is not in list
+
+exercises/practice/scale-generator/scale_generator.py:5: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_chromatic_scale_with_flats
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_harmonic_minor
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_hexatonic
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_locrian_mode
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_major_scale_with_flats
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_minor_scale_with_flats
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_mixolydian_mode
+========================= 7 failed, 10 passed in 0.07s =========================

@@ -1,0 +1,66 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 22 items
+
+exercises/practice/pig-latin/pig_latin_test.py F.........FF.........F    [100%]
+
+=================================== FAILURES ===================================
+_______________________ PigLatinTest.test_a_whole_phrase _______________________
+
+self = <pig_latin_test.PigLatinTest testMethod=test_a_whole_phrase>
+
+    def test_a_whole_phrase(self):
+>       self.assertEqual(translate("quick fast run"), "ickquay astfay unray")
+E       AssertionError: 'ckqquay astfay unray' != 'ickquay astfay unray'
+E       - ckqquay astfay unray
+E       ?   -
+E       + ickquay astfay unray
+E       ? +
+
+exercises/practice/pig-latin/pig_latin_test.py:77: AssertionError
+___________________ PigLatinTest.test_word_beginning_with_qu ___________________
+
+self = <pig_latin_test.PigLatinTest testMethod=test_word_beginning_with_qu>
+
+    def test_word_beginning_with_qu(self):
+>       self.assertEqual(translate("queen"), "eenquay")
+E       AssertionError: 'enqquay' != 'eenquay'
+E       - enqquay
+E       ?   -
+E       + eenquay
+E       ? +
+
+exercises/practice/pig-latin/pig_latin_test.py:47: AssertionError
+______ PigLatinTest.test_word_beginning_with_qu_and_a_preceding_consonant ______
+
+self = <pig_latin_test.PigLatinTest testMethod=test_word_beginning_with_qu_and_a_preceding_consonant>
+
+    def test_word_beginning_with_qu_and_a_preceding_consonant(self):
+>       self.assertEqual(translate("square"), "aresquay")
+E       AssertionError: 'resqquay' != 'aresquay'
+E       - resqquay
+E       ?    -
+E       + aresquay
+E       ? +
+
+exercises/practice/pig-latin/pig_latin_test.py:50: AssertionError
+_ PigLatinTest.test_y_is_treated_like_a_vowel_at_the_end_of_a_consonant_cluster _
+
+self = <pig_latin_test.PigLatinTest testMethod=test_y_is_treated_like_a_vowel_at_the_end_of_a_consonant_cluster>
+
+    def test_y_is_treated_like_a_vowel_at_the_end_of_a_consonant_cluster(self):
+>       self.assertEqual(translate("rhythm"), "ythmrhay")
+E       AssertionError: 'mrhythay' != 'ythmrhay'
+E       - mrhythay
+E       + ythmrhay
+
+exercises/practice/pig-latin/pig_latin_test.py:71: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/pig-latin/pig_latin_test.py::PigLatinTest::test_a_whole_phrase
+FAILED exercises/practice/pig-latin/pig_latin_test.py::PigLatinTest::test_word_beginning_with_qu
+FAILED exercises/practice/pig-latin/pig_latin_test.py::PigLatinTest::test_word_beginning_with_qu_and_a_preceding_consonant
+FAILED exercises/practice/pig-latin/pig_latin_test.py::PigLatinTest::test_y_is_treated_like_a_vowel_at_the_end_of_a_consonant_cluster
+========================= 4 failed, 18 passed in 0.05s =========================

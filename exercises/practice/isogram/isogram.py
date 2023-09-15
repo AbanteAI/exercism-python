@@ -1,2 +1,3 @@
 def is_isogram(string):
-    pass
+    string = string.replace(" ", "").replace("-", "").lower()
+    return len(string) == len(set(string))

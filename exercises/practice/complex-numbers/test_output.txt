@@ -1,0 +1,87 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 43 items
+
+exercises/practice/complex-numbers/complex_numbers_test.py .....F....... [ 30%]
+....F.FFFFF...................                                           [100%]
+
+=================================== FAILURES ===================================
+__________ ComplexNumbersTest.test_add_complex_number_to_real_number ___________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_add_complex_number_to_real_number>
+
+    def test_add_complex_number_to_real_number(self):
+>       self.assertEqual(5 + ComplexNumber(1, 2), ComplexNumber(6, 2))
+E       TypeError: unsupported operand type(s) for +: 'int' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:163: TypeError
+_________ ComplexNumbersTest.test_divide_real_number_by_complex_number _________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_divide_real_number_by_complex_number>
+
+    def test_divide_real_number_by_complex_number(self):
+>       self.assertAlmostEqual(5 / ComplexNumber(1, 1), ComplexNumber(2.5, -2.5))
+E       TypeError: unsupported operand type(s) for /: 'int' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:181: TypeError
+_______________ ComplexNumbersTest.test_euler_s_identity_formula _______________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_euler_s_identity_formula>
+
+    def test_euler_s_identity_formula(self):
+>       self.assertAlmostEqual(ComplexNumber(0, math.pi).exp(), ComplexNumber(-1, 0))
+E       AttributeError: 'ComplexNumber' object has no attribute 'exp'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:139: AttributeError
+___________________ ComplexNumbersTest.test_exponential_of_0 ___________________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_exponential_of_0>
+
+    def test_exponential_of_0(self):
+>       self.assertAlmostEqual(ComplexNumber(0, 0).exp(), ComplexNumber(1, 0))
+E       AttributeError: 'ComplexNumber' object has no attribute 'exp'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:142: AttributeError
+_ ComplexNumbersTest.test_exponential_of_a_number_with_real_and_imaginary_part _
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_exponential_of_a_number_with_real_and_imaginary_part>
+
+    def test_exponential_of_a_number_with_real_and_imaginary_part(self):
+        self.assertAlmostEqual(
+>           ComplexNumber(math.log(2), math.pi).exp(), ComplexNumber(-2, 0)
+        )
+E       AttributeError: 'ComplexNumber' object has no attribute 'exp'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:149: AttributeError
+_________ ComplexNumbersTest.test_exponential_of_a_purely_real_number __________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_exponential_of_a_purely_real_number>
+
+    def test_exponential_of_a_purely_real_number(self):
+>       self.assertAlmostEqual(ComplexNumber(1, 0).exp(), ComplexNumber(math.e, 0))
+E       AttributeError: 'ComplexNumber' object has no attribute 'exp'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:145: AttributeError
+_ ComplexNumbersTest.test_exponential_resulting_in_a_number_with_real_and_imaginary_part _
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_exponential_resulting_in_a_number_with_real_and_imaginary_part>
+
+    def test_exponential_resulting_in_a_number_with_real_and_imaginary_part(self):
+        self.assertAlmostEqual(
+>           ComplexNumber(math.log(2) / 2, math.pi / 4).exp(), ComplexNumber(1, 1)
+        )
+E       AttributeError: 'ComplexNumber' object has no attribute 'exp'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:154: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_add_complex_number_to_real_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_divide_real_number_by_complex_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_euler_s_identity_formula
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_exponential_of_0
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_exponential_of_a_number_with_real_and_imaginary_part
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_exponential_of_a_purely_real_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_exponential_resulting_in_a_number_with_real_and_imaginary_part
+========================= 7 failed, 36 passed in 0.15s =========================

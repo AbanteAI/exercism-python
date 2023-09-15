@@ -1,0 +1,172 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 103 items
+
+exercises/practice/meetup/meetup_test.py FFF................FFF......... [ 30%]
+........................................................................ [100%]
+
+=================================== FAILURES ===================================
+__________________ MeetupTest.test_fifth_monday_of_march_2015 __________________
+
+self = <meetup_test.MeetupTest testMethod=test_fifth_monday_of_march_2015>
+
+    def test_fifth_monday_of_march_2015(self):
+>       self.assertEqual(meetup(2015, 3, "fifth", "Monday"), date(2015, 3, 30))
+
+exercises/practice/meetup/meetup_test.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2015, month = 3, week = 'fifth', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {"Monday": 0, "Tuesday": 1, "Wednesday": 2, "Thursday": 3, "Friday": 4, "Saturday": 5, "Sunday": 6}
+        first_day = first_day_of_month(year, month)
+        last_day = last_day_of_month(year, month)
+        current_day = first_day + datetime.timedelta(days=(days[day_of_week] - first_day.weekday()) % 7)
+    
+        if week == "teenth":
+            while current_day.day < 13:
+                current_day += datetime.timedelta(days=7)
+            return current_day
+        elif week in ["first", "second", "third", "fourth"]:
+            week_number = {"first": 1, "second": 2, "third": 3, "fourth": 4}
+            current_day += datetime.timedelta(days=7 * (week_number[week] - 1))
+            if current_day > last_day:
+                raise MeetupDayException("That day does not exist.")
+            return current_day
+        elif week == "last":
+            while current_day + datetime.timedelta(days=7) <= last_day:
+                current_day += datetime.timedelta(days=7)
+            return current_day
+        else:
+>           raise MeetupDayException("Invalid week descriptor.")
+E           meetup.MeetupDayException: Invalid week descriptor.
+
+exercises/practice/meetup/meetup.py:46: MeetupDayException
+_______________ MeetupTest.test_fifth_saturday_of_february_2020 ________________
+
+self = <meetup_test.MeetupTest testMethod=test_fifth_saturday_of_february_2020>
+
+    def test_fifth_saturday_of_february_2020(self):
+>       self.assertEqual(meetup(2020, 2, "fifth", "Saturday"), date(2020, 2, 29))
+
+exercises/practice/meetup/meetup_test.py:309: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2020, month = 2, week = 'fifth', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {"Monday": 0, "Tuesday": 1, "Wednesday": 2, "Thursday": 3, "Friday": 4, "Saturday": 5, "Sunday": 6}
+        first_day = first_day_of_month(year, month)
+        last_day = last_day_of_month(year, month)
+        current_day = first_day + datetime.timedelta(days=(days[day_of_week] - first_day.weekday()) % 7)
+    
+        if week == "teenth":
+            while current_day.day < 13:
+                current_day += datetime.timedelta(days=7)
+            return current_day
+        elif week in ["first", "second", "third", "fourth"]:
+            week_number = {"first": 1, "second": 2, "third": 3, "fourth": 4}
+            current_day += datetime.timedelta(days=7 * (week_number[week] - 1))
+            if current_day > last_day:
+                raise MeetupDayException("That day does not exist.")
+            return current_day
+        elif week == "last":
+            while current_day + datetime.timedelta(days=7) <= last_day:
+                current_day += datetime.timedelta(days=7)
+            return current_day
+        else:
+>           raise MeetupDayException("Invalid week descriptor.")
+E           meetup.MeetupDayException: Invalid week descriptor.
+
+exercises/practice/meetup/meetup.py:46: MeetupDayException
+_______________ MeetupTest.test_fifth_thursday_of_february_2024 ________________
+
+self = <meetup_test.MeetupTest testMethod=test_fifth_thursday_of_february_2024>
+
+    def test_fifth_thursday_of_february_2024(self):
+>       self.assertEqual(meetup(2024, 2, "fifth", "Thursday"), date(2024, 2, 29))
+
+exercises/practice/meetup/meetup_test.py:306: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2024, month = 2, week = 'fifth', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {"Monday": 0, "Tuesday": 1, "Wednesday": 2, "Thursday": 3, "Friday": 4, "Saturday": 5, "Sunday": 6}
+        first_day = first_day_of_month(year, month)
+        last_day = last_day_of_month(year, month)
+        current_day = first_day + datetime.timedelta(days=(days[day_of_week] - first_day.weekday()) % 7)
+    
+        if week == "teenth":
+            while current_day.day < 13:
+                current_day += datetime.timedelta(days=7)
+            return current_day
+        elif week in ["first", "second", "third", "fourth"]:
+            week_number = {"first": 1, "second": 2, "third": 3, "fourth": 4}
+            current_day += datetime.timedelta(days=7 * (week_number[week] - 1))
+            if current_day > last_day:
+                raise MeetupDayException("That day does not exist.")
+            return current_day
+        elif week == "last":
+            while current_day + datetime.timedelta(days=7) <= last_day:
+                current_day += datetime.timedelta(days=7)
+            return current_day
+        else:
+>           raise MeetupDayException("Invalid week descriptor.")
+E           meetup.MeetupDayException: Invalid week descriptor.
+
+exercises/practice/meetup/meetup.py:46: MeetupDayException
+___________ MeetupTest.test_nonexistent_fifth_friday_of_august_2022 ____________
+
+self = <meetup_test.MeetupTest testMethod=test_nonexistent_fifth_friday_of_august_2022>
+
+    def test_nonexistent_fifth_friday_of_august_2022(self):
+        with self.assertRaises(MeetupDayException) as err:
+            meetup(2022, 8, "fifth", "Friday")
+        self.assertEqual(type(err.exception), MeetupDayException)
+>       self.assertEqual(err.exception.args[0], "That day does not exist.")
+E       AssertionError: 'Invalid week descriptor.' != 'That day does not exist.'
+E       - Invalid week descriptor.
+E       + That day does not exist.
+
+exercises/practice/meetup/meetup_test.py:327: AssertionError
+__________ MeetupTest.test_nonexistent_fifth_monday_of_february_2022 ___________
+
+self = <meetup_test.MeetupTest testMethod=test_nonexistent_fifth_monday_of_february_2022>
+
+    def test_nonexistent_fifth_monday_of_february_2022(self):
+        with self.assertRaises(MeetupDayException) as err:
+            meetup(2022, 2, "fifth", "Monday")
+        self.assertEqual(type(err.exception), MeetupDayException)
+>       self.assertEqual(err.exception.args[0], "That day does not exist.")
+E       AssertionError: 'Invalid week descriptor.' != 'That day does not exist.'
+E       - Invalid week descriptor.
+E       + That day does not exist.
+
+exercises/practice/meetup/meetup_test.py:321: AssertionError
+____________ MeetupTest.test_nonexistent_fifth_thursday_of_may_2023 ____________
+
+self = <meetup_test.MeetupTest testMethod=test_nonexistent_fifth_thursday_of_may_2023>
+
+    def test_nonexistent_fifth_thursday_of_may_2023(self):
+        with self.assertRaises(MeetupDayException) as err:
+            meetup(2023, 5, "fifth", "Thursday")
+        self.assertEqual(type(err.exception), MeetupDayException)
+>       self.assertEqual(err.exception.args[0], "That day does not exist.")
+E       AssertionError: 'Invalid week descriptor.' != 'That day does not exist.'
+E       - Invalid week descriptor.
+E       + That day does not exist.
+
+exercises/practice/meetup/meetup_test.py:333: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_fifth_monday_of_march_2015
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_fifth_saturday_of_february_2020
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_fifth_thursday_of_february_2024
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_nonexistent_fifth_friday_of_august_2022
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_nonexistent_fifth_monday_of_february_2022
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_nonexistent_fifth_thursday_of_may_2023
+========================= 6 failed, 97 passed in 0.16s =========================

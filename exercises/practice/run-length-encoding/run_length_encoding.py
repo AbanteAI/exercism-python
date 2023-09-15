@@ -1,6 +1,33 @@
 def decode(string):
-    pass
+    decoded = ""
+    count = ""
+    for char in string:
+        if char.isdigit():
+            count += char
+        else:
+            if count == "":
+                count = 1
+            decoded += char * int(count)
+            count = ""
+    return decoded
 
 
 def encode(string):
-    pass
+    if not string:
+        return ""
+    encoded = ""
+    prev_char = string[0]
+    count = 1
+    for char in string[1:]:
+        if char == prev_char:
+            count += 1
+        else:
+            if count > 1:
+                encoded += str(count)
+            encoded += prev_char
+            prev_char = char
+            count = 1
+    if count > 1:
+        encoded += str(count)
+    encoded += prev_char
+    return encoded

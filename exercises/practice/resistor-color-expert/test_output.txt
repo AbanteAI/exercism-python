@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 10 items
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py . [ 10%]
+...F.....                                                                [100%]
+
+=================================== FAILURES ===================================
+_________________ ResistorColorExpertTest.test_one_black_band __________________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_one_black_band>
+
+    def test_one_black_band(self):
+>       self.assertEqual(resistor_label(["black"]), "0 ohms")
+E       AssertionError: '0 ohms ±%' != '0 ohms'
+E       - 0 ohms ±%
+E       ?       ---
+E       + 0 ohms
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:26: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_one_black_band
+========================= 1 failed, 9 passed in 0.04s ==========================

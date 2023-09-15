@@ -1,0 +1,155 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 31 items
+
+exercises/practice/bowling/bowling_test.py ......F........F.FF.F......F. [ 93%]
+F.                                                                       [100%]
+
+=================================== FAILURES ===================================
+________________ BowlingTest.test_all_strikes_is_a_perfect_game ________________
+
+self = <bowling_test.BowlingTest testMethod=test_all_strikes_is_a_perfect_game>
+
+    def test_all_strikes_is_a_perfect_game(self):
+        rolls = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+>       game = self.roll_new_game(rolls)
+
+exercises/practice/bowling/bowling_test.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/bowling/bowling_test.py:16: in roll_new_game
+    game.roll(roll)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f484534ff40>, pins = 10
+
+    def roll(self, pins):
+        if pins < 0 or pins > 10:
+            raise ValueError("Pins must be between 0 and 10")
+        if len(self.rolls) < 18 and len(self.rolls) % 2 == 1 and self.rolls[-1] + pins > 10:
+>           raise ValueError("Frame score cannot exceed 10")
+E           ValueError: Frame score cannot exceed 10
+
+exercises/practice/bowling/bowling.py:9: ValueError
+_________ BowlingTest.test_cannot_roll_if_game_already_has_ten_frames __________
+
+self = <bowling_test.BowlingTest testMethod=test_cannot_roll_if_game_already_has_ten_frames>
+
+    def test_cannot_roll_if_game_already_has_ten_frames(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+exercises/practice/bowling/bowling_test.py:172: AssertionError
+_______ BowlingTest.test_consecutive_strikes_each_get_the_two_roll_bonus _______
+
+self = <bowling_test.BowlingTest testMethod=test_consecutive_strikes_each_get_the_two_roll_bonus>
+
+    def test_consecutive_strikes_each_get_the_two_roll_bonus(self):
+        rolls = [10, 10, 10, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+>       game = self.roll_new_game(rolls)
+
+exercises/practice/bowling/bowling_test.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/bowling/bowling_test.py:16: in roll_new_game
+    game.roll(roll)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f4845216b30>, pins = 10
+
+    def roll(self, pins):
+        if pins < 0 or pins > 10:
+            raise ValueError("Pins must be between 0 and 10")
+        if len(self.rolls) < 18 and len(self.rolls) % 2 == 1 and self.rolls[-1] + pins > 10:
+>           raise ValueError("Frame score cannot exceed 10")
+E           ValueError: Frame score cannot exceed 10
+
+exercises/practice/bowling/bowling.py:9: ValueError
+_ BowlingTest.test_last_two_strikes_followed_by_only_last_bonus_with_non_strike_points _
+
+self = <bowling_test.BowlingTest testMethod=test_last_two_strikes_followed_by_only_last_bonus_with_non_strike_points>
+
+    def test_last_two_strikes_followed_by_only_last_bonus_with_non_strike_points(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 1]
+>       game = self.roll_new_game(rolls)
+
+exercises/practice/bowling/bowling_test.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/bowling/bowling_test.py:16: in roll_new_game
+    game.roll(roll)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f4845210310>, pins = 10
+
+    def roll(self, pins):
+        if pins < 0 or pins > 10:
+            raise ValueError("Pins must be between 0 and 10")
+        if len(self.rolls) < 18 and len(self.rolls) % 2 == 1 and self.rolls[-1] + pins > 10:
+>           raise ValueError("Frame score cannot exceed 10")
+E           ValueError: Frame score cannot exceed 10
+
+exercises/practice/bowling/bowling.py:9: ValueError
+_ BowlingTest.test_points_scored_in_the_two_rolls_after_a_strike_are_counted_twice_as_a_bonus _
+
+self = <bowling_test.BowlingTest testMethod=test_points_scored_in_the_two_rolls_after_a_strike_are_counted_twice_as_a_bonus>
+
+    def test_points_scored_in_the_two_rolls_after_a_strike_are_counted_twice_as_a_bonus(
+        self,
+    ):
+        rolls = [10, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+>       game = self.roll_new_game(rolls)
+
+exercises/practice/bowling/bowling_test.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/bowling/bowling_test.py:16: in roll_new_game
+    game.roll(roll)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f484522f5b0>, pins = 5
+
+    def roll(self, pins):
+        if pins < 0 or pins > 10:
+            raise ValueError("Pins must be between 0 and 10")
+        if len(self.rolls) < 18 and len(self.rolls) % 2 == 1 and self.rolls[-1] + pins > 10:
+>           raise ValueError("Frame score cannot exceed 10")
+E           ValueError: Frame score cannot exceed 10
+
+exercises/practice/bowling/bowling.py:9: ValueError
+_ BowlingTest.test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike _
+
+self = <bowling_test.BowlingTest testMethod=test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike>
+
+    def test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 6]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+exercises/practice/bowling/bowling_test.py:146: AssertionError
+_ BowlingTest.test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points _
+
+self = <bowling_test.BowlingTest testMethod=test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points>
+
+    def test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 5]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+exercises/practice/bowling/bowling_test.py:131: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_all_strikes_is_a_perfect_game
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_cannot_roll_if_game_already_has_ten_frames
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_consecutive_strikes_each_get_the_two_roll_bonus
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_last_two_strikes_followed_by_only_last_bonus_with_non_strike_points
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_points_scored_in_the_two_rolls_after_a_strike_are_counted_twice_as_a_bonus
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points
+========================= 7 failed, 24 passed in 0.11s =========================

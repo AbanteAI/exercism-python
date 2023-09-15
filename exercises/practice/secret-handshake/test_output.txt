@@ -1,0 +1,261 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 11 items
+
+exercises/practice/secret-handshake/secret_handshake_test.py FFF.FFFFFF. [100%]
+
+=================================== FAILURES ===================================
+________________ SecretHandshakeTest.test_all_possible_actions _________________
+
+self = <secret_handshake_test.SecretHandshakeTest testMethod=test_all_possible_actions>
+
+    def test_all_possible_actions(self):
+        self.assertEqual(
+>           commands("01111"), ["wink", "double blink", "close your eyes", "jump"]
+        )
+
+exercises/practice/secret-handshake/secret_handshake_test.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+binary_str = '10001010111'
+
+    def commands(binary_str):
+        actions = [
+            ("wink", "00001"),
+            ("double blink", "00010"),
+            ("close your eyes", "00100"),
+            ("jump", "01000"),
+            ("reverse", "10000")
+        ]
+    
+        binary_str = format(int(binary_str), '05b')
+        result = []
+    
+        for i in range(len(binary_str) - 1, -1, -1):
+            if binary_str[i] == "1":
+>               action, _ = actions[-i - 1]
+E               IndexError: list index out of range
+
+exercises/practice/secret-handshake/secret_handshake.py:15: IndexError
+_______________ SecretHandshakeTest.test_close_your_eyes_for_100 _______________
+
+self = <secret_handshake_test.SecretHandshakeTest testMethod=test_close_your_eyes_for_100>
+
+    def test_close_your_eyes_for_100(self):
+>       self.assertEqual(commands("00100"), ["close your eyes"])
+E       AssertionError: Lists differ: ['jump', 'wink'] != ['close your eyes']
+E       
+E       First differing element 0:
+E       'jump'
+E       'close your eyes'
+E       
+E       First list contains 1 additional elements.
+E       First extra element 1:
+E       'wink'
+E       
+E       - ['jump', 'wink']
+E       + ['close your eyes']
+
+exercises/practice/secret-handshake/secret_handshake_test.py:20: AssertionError
+_________________ SecretHandshakeTest.test_combine_two_actions _________________
+
+self = <secret_handshake_test.SecretHandshakeTest testMethod=test_combine_two_actions>
+
+    def test_combine_two_actions(self):
+>       self.assertEqual(commands("00011"), ["wink", "double blink"])
+E       AssertionError: Lists differ: ['wink', 'double blink', 'jump'] != ['wink', 'double blink']
+E       
+E       First list contains 1 additional elements.
+E       First extra element 2:
+E       'jump'
+E       
+E       - ['wink', 'double blink', 'jump']
+E       ?                        --------
+E       
+E       + ['wink', 'double blink']
+
+exercises/practice/secret-handshake/secret_handshake_test.py:26: AssertionError
+_________________ SecretHandshakeTest.test_double_blink_for_10 _________________
+
+self = <secret_handshake_test.SecretHandshakeTest testMethod=test_double_blink_for_10>
+
+    def test_double_blink_for_10(self):
+>       self.assertEqual(commands("00010"), ["double blink"])
+E       AssertionError: Lists differ: ['double blink', 'jump'] != ['double blink']
+E       
+E       First list contains 1 additional elements.
+E       First extra element 1:
+E       'jump'
+E       
+E       - ['double blink', 'jump']
+E       ?                --------
+E       
+E       + ['double blink']
+
+exercises/practice/secret-handshake/secret_handshake_test.py:17: AssertionError
+____________________ SecretHandshakeTest.test_jump_for_1000 ____________________
+
+self = <secret_handshake_test.SecretHandshakeTest testMethod=test_jump_for_1000>
+
+    def test_jump_for_1000(self):
+>       self.assertEqual(commands("01000"), ["jump"])
+
+exercises/practice/secret-handshake/secret_handshake_test.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+binary_str = '1111101000'
+
+    def commands(binary_str):
+        actions = [
+            ("wink", "00001"),
+            ("double blink", "00010"),
+            ("close your eyes", "00100"),
+            ("jump", "01000"),
+            ("reverse", "10000")
+        ]
+    
+        binary_str = format(int(binary_str), '05b')
+        result = []
+    
+        for i in range(len(binary_str) - 1, -1, -1):
+            if binary_str[i] == "1":
+>               action, _ = actions[-i - 1]
+E               IndexError: list index out of range
+
+exercises/practice/secret-handshake/secret_handshake.py:15: IndexError
+____________ SecretHandshakeTest.test_reverse_all_possible_actions _____________
+
+self = <secret_handshake_test.SecretHandshakeTest testMethod=test_reverse_all_possible_actions>
+
+    def test_reverse_all_possible_actions(self):
+        self.assertEqual(
+>           commands("11111"), ["jump", "close your eyes", "double blink", "wink"]
+        )
+
+exercises/practice/secret-handshake/secret_handshake_test.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+binary_str = '10101101100111'
+
+    def commands(binary_str):
+        actions = [
+            ("wink", "00001"),
+            ("double blink", "00010"),
+            ("close your eyes", "00100"),
+            ("jump", "01000"),
+            ("reverse", "10000")
+        ]
+    
+        binary_str = format(int(binary_str), '05b')
+        result = []
+    
+        for i in range(len(binary_str) - 1, -1, -1):
+            if binary_str[i] == "1":
+>               action, _ = actions[-i - 1]
+E               IndexError: list index out of range
+
+exercises/practice/secret-handshake/secret_handshake.py:15: IndexError
+_________________ SecretHandshakeTest.test_reverse_two_actions _________________
+
+self = <secret_handshake_test.SecretHandshakeTest testMethod=test_reverse_two_actions>
+
+    def test_reverse_two_actions(self):
+>       self.assertEqual(commands("10011"), ["double blink", "wink"])
+
+exercises/practice/secret-handshake/secret_handshake_test.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+binary_str = '10011100011011'
+
+    def commands(binary_str):
+        actions = [
+            ("wink", "00001"),
+            ("double blink", "00010"),
+            ("close your eyes", "00100"),
+            ("jump", "01000"),
+            ("reverse", "10000")
+        ]
+    
+        binary_str = format(int(binary_str), '05b')
+        result = []
+    
+        for i in range(len(binary_str) - 1, -1, -1):
+            if binary_str[i] == "1":
+>               action, _ = actions[-i - 1]
+E               IndexError: list index out of range
+
+exercises/practice/secret-handshake/secret_handshake.py:15: IndexError
+_____ SecretHandshakeTest.test_reversing_no_actions_still_gives_no_actions _____
+
+self = <secret_handshake_test.SecretHandshakeTest testMethod=test_reversing_no_actions_still_gives_no_actions>
+
+    def test_reversing_no_actions_still_gives_no_actions(self):
+>       self.assertEqual(commands("10000"), [])
+
+exercises/practice/secret-handshake/secret_handshake_test.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+binary_str = '10011100010000'
+
+    def commands(binary_str):
+        actions = [
+            ("wink", "00001"),
+            ("double blink", "00010"),
+            ("close your eyes", "00100"),
+            ("jump", "01000"),
+            ("reverse", "10000")
+        ]
+    
+        binary_str = format(int(binary_str), '05b')
+        result = []
+    
+        for i in range(len(binary_str) - 1, -1, -1):
+            if binary_str[i] == "1":
+>               action, _ = actions[-i - 1]
+E               IndexError: list index out of range
+
+exercises/practice/secret-handshake/secret_handshake.py:15: IndexError
+_____ SecretHandshakeTest.test_reversing_one_action_gives_the_same_action ______
+
+self = <secret_handshake_test.SecretHandshakeTest testMethod=test_reversing_one_action_gives_the_same_action>
+
+    def test_reversing_one_action_gives_the_same_action(self):
+>       self.assertEqual(commands("11000"), ["jump"])
+
+exercises/practice/secret-handshake/secret_handshake_test.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+binary_str = '10101011111000'
+
+    def commands(binary_str):
+        actions = [
+            ("wink", "00001"),
+            ("double blink", "00010"),
+            ("close your eyes", "00100"),
+            ("jump", "01000"),
+            ("reverse", "10000")
+        ]
+    
+        binary_str = format(int(binary_str), '05b')
+        result = []
+    
+        for i in range(len(binary_str) - 1, -1, -1):
+            if binary_str[i] == "1":
+>               action, _ = actions[-i - 1]
+E               IndexError: list index out of range
+
+exercises/practice/secret-handshake/secret_handshake.py:15: IndexError
+=========================== short test summary info ============================
+FAILED exercises/practice/secret-handshake/secret_handshake_test.py::SecretHandshakeTest::test_all_possible_actions
+FAILED exercises/practice/secret-handshake/secret_handshake_test.py::SecretHandshakeTest::test_close_your_eyes_for_100
+FAILED exercises/practice/secret-handshake/secret_handshake_test.py::SecretHandshakeTest::test_combine_two_actions
+FAILED exercises/practice/secret-handshake/secret_handshake_test.py::SecretHandshakeTest::test_double_blink_for_10
+FAILED exercises/practice/secret-handshake/secret_handshake_test.py::SecretHandshakeTest::test_jump_for_1000
+FAILED exercises/practice/secret-handshake/secret_handshake_test.py::SecretHandshakeTest::test_reverse_all_possible_actions
+FAILED exercises/practice/secret-handshake/secret_handshake_test.py::SecretHandshakeTest::test_reverse_two_actions
+FAILED exercises/practice/secret-handshake/secret_handshake_test.py::SecretHandshakeTest::test_reversing_no_actions_still_gives_no_actions
+FAILED exercises/practice/secret-handshake/secret_handshake_test.py::SecretHandshakeTest::test_reversing_one_action_gives_the_same_action
+========================= 9 failed, 2 passed in 0.05s ==========================

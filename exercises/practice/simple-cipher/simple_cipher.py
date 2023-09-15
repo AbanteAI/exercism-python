@@ -1,9 +1,22 @@
+import string
+import random
 class Cipher:
     def __init__(self, key=None):
-        pass
+        if key is None:
+            self.key = ''.join(random.choice(string.ascii_lowercase) for _ in range(100))
+        else:
+            self.key = key
 
     def encode(self, text):
-        pass
+        encoded = []
+        for i, char in enumerate(text):
+            key_char = self.key[i % len(self.key)]
+            encoded.append(chr(((ord(char) - ord('a') + ord(key_char) - ord('a')) % 26) + ord('a')))
+        return ''.join(encoded)
 
     def decode(self, text):
-        pass
+        decoded = []
+        for i, char in enumerate(text):
+            key_char = self.key[i % len(self.key)]
+            decoded.append(chr(((ord(char) - ord('a') - (ord(key_char) - ord('a')) + 26) % 26) + ord('a')))
+        return ''.join(decoded)

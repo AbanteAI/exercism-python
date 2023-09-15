@@ -1,0 +1,86 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 26 items
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py . [  3%]
+....F.........F..........                                                [100%]
+
+=================================== FAILURES ===================================
+__________________ VariableLengthQuantityTest.test_four_bytes __________________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_four_bytes>
+
+    def test_four_bytes(self):
+>       self.assertEqual(decode([0x81, 0x80, 0x80, 0x0]), [0x200000])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bytes_ = [129, 128, 128, 0]
+
+    def decode(bytes_):
+        result = []
+        number = 0
+        for byte in bytes_:
+            number = (number << 7) | (byte & 0x7F)
+            if not (byte & 0x80):
+                result.append(number)
+                number = 0
+            elif byte == 0x80:
+>               raise ValueError("incomplete sequence")
+E               ValueError: incomplete sequence
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:24: ValueError
+_______________ VariableLengthQuantityTest.test_multiple_values ________________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_multiple_values>
+
+    def test_multiple_values(self):
+        self.assertEqual(
+>           decode(
+                [
+                    0xC0,
+                    0x0,
+                    0xC8,
+                    0xE8,
+                    0x56,
+                    0xFF,
+                    0xFF,
+                    0xFF,
+                    0x7F,
+                    0x0,
+                    0xFF,
+                    0x7F,
+                    0x81,
+                    0x80,
+                    0x0,
+                ]
+            ),
+            [0x2000, 0x123456, 0xFFFFFFF, 0x0, 0x3FFF, 0x4000],
+        )
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:118: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bytes_ = [192, 0, 200, 232, 86, 255, ...]
+
+    def decode(bytes_):
+        result = []
+        number = 0
+        for byte in bytes_:
+            number = (number << 7) | (byte & 0x7F)
+            if not (byte & 0x80):
+                result.append(number)
+                number = 0
+            elif byte == 0x80:
+>               raise ValueError("incomplete sequence")
+E               ValueError: incomplete sequence
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:24: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_four_bytes
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_multiple_values
+========================= 2 failed, 24 passed in 0.06s =========================

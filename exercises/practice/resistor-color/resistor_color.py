@@ -1,6 +1,8 @@
+COLOR_MAPPING = ["black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"]
+
 def color_code(color):
-    pass
+    return COLOR_MAPPING.index(color)
 
 
 def colors():
-    pass
+    return COLOR_MAPPING

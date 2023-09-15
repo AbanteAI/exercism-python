@@ -1,0 +1,514 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 24 items
+
+exercises/practice/word-search/word_search_test.py .F.FFFFFFFFFFFFFFFFFF [ 87%]
+...                                                                      [100%]
+
+=================================== FAILURES ===================================
+__ WordSearchTest.test_should_fail_to_locate_a_word_that_is_not_in_the_puzzle __
+
+self = <word_search_test.WordSearchTest testMethod=test_should_fail_to_locate_a_word_that_is_not_in_the_puzzle>
+
+    def test_should_fail_to_locate_a_word_that_is_not_in_the_puzzle(self):
+        puzzle = WordSearch(
+            [
+                "jefblpepre",
+                "camdcimgtc",
+                "oivokprjsm",
+                "pbwasqroua",
+                "rixilelhrs",
+                "wolcqlirpc",
+                "screeaumgr",
+                "alxhpburyi",
+                "jalaycalmp",
+                "clojurermt",
+            ]
+        )
+>       self.assertEqual(puzzle.search("clojure"), (Point(0, 9), Point(6, 9)))
+E       AssertionError: Tuples differ: ((9, 0), (9, 6)) != ((0, 9), (6, 9))
+E       
+E       First differing element 0:
+E       (9, 0)
+E       (0, 9)
+E       
+E       - ((9, 0), (9, 6))
+E       + ((0, 9), (6, 9))
+
+exercises/practice/word-search/word_search_test.py:285: AssertionError
+_______ WordSearchTest.test_should_locate_a_different_left_to_right_word _______
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_a_different_left_to_right_word>
+
+    def test_should_locate_a_different_left_to_right_word(self):
+        puzzle = WordSearch(["coffeelplx"])
+>       self.assertEqual(puzzle.search("coffee"), (Point(0, 0), Point(5, 0)))
+E       AssertionError: Tuples differ: ((0, 0), (0, 5)) != ((0, 0), (5, 0))
+E       
+E       First differing element 1:
+E       (0, 5)
+E       (5, 0)
+E       
+E       - ((0, 0), (0, 5))
+E       ?            ---
+E       
+E       + ((0, 0), (5, 0))
+E       ?           +++
+
+exercises/practice/word-search/word_search_test.py:30: AssertionError
+_ WordSearchTest.test_should_locate_a_different_left_to_right_word_in_a_ten_line_grid _
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_a_different_left_to_right_word_in_a_ten_line_grid>
+
+    def test_should_locate_a_different_left_to_right_word_in_a_ten_line_grid(self):
+        puzzle = WordSearch(
+            [
+                "jefblpepre",
+                "camdcimgtc",
+                "oivokprjsm",
+                "pbwasqroua",
+                "rixilelhrs",
+                "wolcqlirpc",
+                "fortranftw",
+                "alxhpburyi",
+                "clojurermt",
+                "jalaycalmp",
+            ]
+        )
+>       self.assertEqual(puzzle.search("fortran"), (Point(0, 6), Point(6, 6)))
+E       AssertionError: Tuples differ: ((6, 0), (6, 6)) != ((0, 6), (6, 6))
+E       
+E       First differing element 0:
+E       (6, 0)
+E       (0, 6)
+E       
+E       - ((6, 0), (6, 6))
+E       + ((0, 6), (6, 6))
+
+exercises/practice/word-search/word_search_test.py:97: AssertionError
+___ WordSearchTest.test_should_locate_a_left_to_right_word_in_ten_line_grid ____
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_a_left_to_right_word_in_ten_line_grid>
+
+    def test_should_locate_a_left_to_right_word_in_ten_line_grid(self):
+        puzzle = WordSearch(
+            [
+                "jefblpepre",
+                "camdcimgtc",
+                "oivokprjsm",
+                "pbwasqroua",
+                "rixilelhrs",
+                "wolcqlirpc",
+                "screeaumgr",
+                "alxhpburyi",
+                "jalaycalmp",
+                "clojurermt",
+            ]
+        )
+>       self.assertEqual(puzzle.search("clojure"), (Point(0, 9), Point(6, 9)))
+E       AssertionError: Tuples differ: ((9, 0), (9, 6)) != ((0, 9), (6, 9))
+E       
+E       First differing element 0:
+E       (9, 0)
+E       (0, 9)
+E       
+E       - ((9, 0), (9, 6))
+E       + ((0, 9), (6, 9))
+
+exercises/practice/word-search/word_search_test.py:61: AssertionError
+__ WordSearchTest.test_should_locate_a_left_to_right_word_in_three_line_grid ___
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_a_left_to_right_word_in_three_line_grid>
+
+    def test_should_locate_a_left_to_right_word_in_three_line_grid(self):
+        puzzle = WordSearch(["camdcimgtc", "jefblpepre", "clojurermt"])
+>       self.assertEqual(puzzle.search("clojure"), (Point(0, 2), Point(6, 2)))
+E       AssertionError: Tuples differ: ((2, 0), (2, 6)) != ((0, 2), (6, 2))
+E       
+E       First differing element 0:
+E       (2, 0)
+E       (0, 2)
+E       
+E       - ((2, 0), (2, 6))
+E       + ((0, 2), (6, 2))
+
+exercises/practice/word-search/word_search_test.py:44: AssertionError
+___ WordSearchTest.test_should_locate_a_left_to_right_word_in_two_line_grid ____
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_a_left_to_right_word_in_two_line_grid>
+
+    def test_should_locate_a_left_to_right_word_in_two_line_grid(self):
+        puzzle = WordSearch(["jefblpepre", "tclojurerm"])
+>       self.assertEqual(puzzle.search("clojure"), (Point(1, 1), Point(7, 1)))
+E       AssertionError: Tuples differ: ((1, 1), (1, 7)) != ((1, 1), (7, 1))
+E       
+E       First differing element 1:
+E       (1, 7)
+E       (7, 1)
+E       
+E       - ((1, 1), (1, 7))
+E       ?            ---
+E       
+E       + ((1, 1), (7, 1))
+E       ?           +++
+
+exercises/practice/word-search/word_search_test.py:40: AssertionError
+____ WordSearchTest.test_should_locate_a_single_word_written_right_to_left _____
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_a_single_word_written_right_to_left>
+
+    def test_should_locate_a_single_word_written_right_to_left(self):
+        puzzle = WordSearch(["rixilelhrs"])
+>       self.assertEqual(puzzle.search("elixir"), (Point(5, 0), Point(0, 0)))
+E       AssertionError: None != ((5, 0), (0, 0))
+
+exercises/practice/word-search/word_search_test.py:119: AssertionError
+_______________ WordSearchTest.test_should_locate_multiple_words _______________
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_multiple_words>
+
+    def test_should_locate_multiple_words(self):
+        puzzle = WordSearch(
+            [
+                "jefblpepre",
+                "camdcimgtc",
+                "oivokprjsm",
+                "pbwasqroua",
+                "rixilelhrs",
+                "wolcqlirpc",
+                "fortranftw",
+                "alxhpburyi",
+                "jalaycalmp",
+                "clojurermt",
+            ]
+        )
+>       self.assertEqual(puzzle.search("fortran"), (Point(0, 6), Point(6, 6)))
+E       AssertionError: Tuples differ: ((6, 0), (6, 6)) != ((0, 6), (6, 6))
+E       
+E       First differing element 0:
+E       (6, 0)
+E       (0, 6)
+E       
+E       - ((6, 0), (6, 6))
+E       + ((0, 6), (6, 6))
+
+exercises/practice/word-search/word_search_test.py:114: AssertionError
+_ WordSearchTest.test_should_locate_multiple_words_written_in_different_horizontal_directions _
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_multiple_words_written_in_different_horizontal_directions>
+
+    def test_should_locate_multiple_words_written_in_different_horizontal_directions(
+        self,
+    ):
+        puzzle = WordSearch(
+            [
+                "jefblpepre",
+                "camdcimgtc",
+                "oivokprjsm",
+                "pbwasqroua",
+                "rixilelhrs",
+                "wolcqlirpc",
+                "screeaumgr",
+                "alxhpburyi",
+                "jalaycalmp",
+                "clojurermt",
+            ]
+        )
+>       self.assertEqual(puzzle.search("elixir"), (Point(5, 4), Point(0, 4)))
+E       AssertionError: None != ((5, 4), (0, 4))
+
+exercises/practice/word-search/word_search_test.py:138: AssertionError
+_______ WordSearchTest.test_should_locate_one_word_written_left_to_right _______
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_one_word_written_left_to_right>
+
+    def test_should_locate_one_word_written_left_to_right(self):
+        puzzle = WordSearch(["clojurermt"])
+>       self.assertEqual(puzzle.search("clojure"), (Point(0, 0), Point(6, 0)))
+E       AssertionError: Tuples differ: ((0, 0), (0, 6)) != ((0, 0), (6, 0))
+E       
+E       First differing element 1:
+E       (0, 6)
+E       (6, 0)
+E       
+E       - ((0, 0), (0, 6))
+E       ?            ---
+E       
+E       + ((0, 0), (6, 0))
+E       ?           +++
+
+exercises/practice/word-search/word_search_test.py:20: AssertionError
+_ WordSearchTest.test_should_locate_that_different_left_to_right_word_in_a_different_position _
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_that_different_left_to_right_word_in_a_different_position>
+
+    def test_should_locate_that_different_left_to_right_word_in_a_different_position(
+        self,
+    ):
+        puzzle = WordSearch(["xcoffeezlp"])
+>       self.assertEqual(puzzle.search("coffee"), (Point(1, 0), Point(6, 0)))
+E       AssertionError: Tuples differ: ((0, 1), (0, 6)) != ((1, 0), (6, 0))
+E       
+E       First differing element 0:
+E       (0, 1)
+E       (1, 0)
+E       
+E       - ((0, 1), (0, 6))
+E       + ((1, 0), (6, 0))
+
+exercises/practice/word-search/word_search_test.py:36: AssertionError
+_ WordSearchTest.test_should_locate_that_left_to_right_word_in_a_different_position_in_a_ten_line_grid _
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_that_left_to_right_word_in_a_different_position_in_a_ten_line_grid>
+
+    def test_should_locate_that_left_to_right_word_in_a_different_position_in_a_ten_line_grid(
+        self,
+    ):
+        puzzle = WordSearch(
+            [
+                "jefblpepre",
+                "camdcimgtc",
+                "oivokprjsm",
+                "pbwasqroua",
+                "rixilelhrs",
+                "wolcqlirpc",
+                "screeaumgr",
+                "alxhpburyi",
+                "clojurermt",
+                "jalaycalmp",
+            ]
+        )
+>       self.assertEqual(puzzle.search("clojure"), (Point(0, 8), Point(6, 8)))
+E       AssertionError: Tuples differ: ((8, 0), (8, 6)) != ((0, 8), (6, 8))
+E       
+E       First differing element 0:
+E       (8, 0)
+E       (0, 8)
+E       
+E       - ((8, 0), (8, 6))
+E       + ((0, 8), (6, 8))
+
+exercises/practice/word-search/word_search_test.py:80: AssertionError
+_ WordSearchTest.test_should_locate_the_same_word_written_left_to_right_in_a_different_position _
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_the_same_word_written_left_to_right_in_a_different_position>
+
+    def test_should_locate_the_same_word_written_left_to_right_in_a_different_position(
+        self,
+    ):
+        puzzle = WordSearch(["mtclojurer"])
+>       self.assertEqual(puzzle.search("clojure"), (Point(2, 0), Point(8, 0)))
+E       AssertionError: Tuples differ: ((0, 2), (0, 8)) != ((2, 0), (8, 0))
+E       
+E       First differing element 0:
+E       (0, 2)
+E       (2, 0)
+E       
+E       - ((0, 2), (0, 8))
+E       + ((2, 0), (8, 0))
+
+exercises/practice/word-search/word_search_test.py:26: AssertionError
+___ WordSearchTest.test_should_locate_words_written_bottom_left_to_top_right ___
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_words_written_bottom_left_to_top_right>
+
+    def test_should_locate_words_written_bottom_left_to_top_right(self):
+        puzzle = WordSearch(
+            [
+                "jefblpepre",
+                "camdcimgtc",
+                "oivokprjsm",
+                "pbwasqroua",
+                "rixilelhrs",
+                "wolcqlirpc",
+                "screeaumgr",
+                "alxhpburyi",
+                "jalaycalmp",
+                "clojurermt",
+            ]
+        )
+>       self.assertEqual(puzzle.search("clojure"), (Point(0, 9), Point(6, 9)))
+E       AssertionError: Tuples differ: ((9, 0), (9, 6)) != ((0, 9), (6, 9))
+E       
+E       First differing element 0:
+E       (9, 0)
+E       (0, 9)
+E       
+E       - ((9, 0), (9, 6))
+E       + ((0, 9), (6, 9))
+
+exercises/practice/word-search/word_search_test.py:238: AssertionError
+___ WordSearchTest.test_should_locate_words_written_bottom_right_to_top_left ___
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_words_written_bottom_right_to_top_left>
+
+    def test_should_locate_words_written_bottom_right_to_top_left(self):
+        puzzle = WordSearch(
+            [
+                "jefblpepre",
+                "camdcimgtc",
+                "oivokprjsm",
+                "pbwasqroua",
+                "rixilelhrs",
+                "wolcqlirpc",
+                "screeaumgr",
+                "alxhpburyi",
+                "jalaycalmp",
+                "clojurermt",
+            ]
+        )
+>       self.assertEqual(puzzle.search("clojure"), (Point(0, 9), Point(6, 9)))
+E       AssertionError: Tuples differ: ((9, 0), (9, 6)) != ((0, 9), (6, 9))
+E       
+E       First differing element 0:
+E       (9, 0)
+E       (0, 9)
+E       
+E       - ((9, 0), (9, 6))
+E       + ((0, 9), (6, 9))
+
+exercises/practice/word-search/word_search_test.py:216: AssertionError
+________ WordSearchTest.test_should_locate_words_written_bottom_to_top _________
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_words_written_bottom_to_top>
+
+    def test_should_locate_words_written_bottom_to_top(self):
+        puzzle = WordSearch(
+            [
+                "jefblpepre",
+                "camdcimgtc",
+                "oivokprjsm",
+                "pbwasqroua",
+                "rixilelhrs",
+                "wolcqlirpc",
+                "screeaumgr",
+                "alxhpburyi",
+                "jalaycalmp",
+                "clojurermt",
+            ]
+        )
+>       self.assertEqual(puzzle.search("clojure"), (Point(0, 9), Point(6, 9)))
+E       AssertionError: Tuples differ: ((9, 0), (9, 6)) != ((0, 9), (6, 9))
+E       
+E       First differing element 0:
+E       (9, 0)
+E       (0, 9)
+E       
+E       - ((9, 0), (9, 6))
+E       + ((0, 9), (6, 9))
+
+exercises/practice/word-search/word_search_test.py:175: AssertionError
+___ WordSearchTest.test_should_locate_words_written_top_left_to_bottom_right ___
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_words_written_top_left_to_bottom_right>
+
+    def test_should_locate_words_written_top_left_to_bottom_right(self):
+        puzzle = WordSearch(
+            [
+                "jefblpepre",
+                "camdcimgtc",
+                "oivokprjsm",
+                "pbwasqroua",
+                "rixilelhrs",
+                "wolcqlirpc",
+                "screeaumgr",
+                "alxhpburyi",
+                "jalaycalmp",
+                "clojurermt",
+            ]
+        )
+>       self.assertEqual(puzzle.search("clojure"), (Point(0, 9), Point(6, 9)))
+E       AssertionError: Tuples differ: ((9, 0), (9, 6)) != ((0, 9), (6, 9))
+E       
+E       First differing element 0:
+E       (9, 0)
+E       (0, 9)
+E       
+E       - ((9, 0), (9, 6))
+E       + ((0, 9), (6, 9))
+
+exercises/practice/word-search/word_search_test.py:195: AssertionError
+___ WordSearchTest.test_should_locate_words_written_top_right_to_bottom_left ___
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_words_written_top_right_to_bottom_left>
+
+    def test_should_locate_words_written_top_right_to_bottom_left(self):
+        puzzle = WordSearch(
+            [
+                "jefblpepre",
+                "camdcimgtc",
+                "oivokprjsm",
+                "pbwasqroua",
+                "rixilelhrs",
+                "wolcqlirpc",
+                "screeaumgr",
+                "alxhpburyi",
+                "jalaycalmp",
+                "clojurermt",
+            ]
+        )
+>       self.assertEqual(puzzle.search("clojure"), (Point(0, 9), Point(6, 9)))
+E       AssertionError: Tuples differ: ((9, 0), (9, 6)) != ((0, 9), (6, 9))
+E       
+E       First differing element 0:
+E       (9, 0)
+E       (0, 9)
+E       
+E       - ((9, 0), (9, 6))
+E       + ((0, 9), (6, 9))
+
+exercises/practice/word-search/word_search_test.py:261: AssertionError
+________ WordSearchTest.test_should_locate_words_written_top_to_bottom _________
+
+self = <word_search_test.WordSearchTest testMethod=test_should_locate_words_written_top_to_bottom>
+
+    def test_should_locate_words_written_top_to_bottom(self):
+        puzzle = WordSearch(
+            [
+                "jefblpepre",
+                "camdcimgtc",
+                "oivokprjsm",
+                "pbwasqroua",
+                "rixilelhrs",
+                "wolcqlirpc",
+                "screeaumgr",
+                "alxhpburyi",
+                "jalaycalmp",
+                "clojurermt",
+            ]
+        )
+>       self.assertEqual(puzzle.search("clojure"), (Point(0, 9), Point(6, 9)))
+E       AssertionError: Tuples differ: ((9, 0), (9, 6)) != ((0, 9), (6, 9))
+E       
+E       First differing element 0:
+E       (9, 0)
+E       (0, 9)
+E       
+E       - ((9, 0), (9, 6))
+E       + ((0, 9), (6, 9))
+
+exercises/practice/word-search/word_search_test.py:156: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_fail_to_locate_a_word_that_is_not_in_the_puzzle
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_a_different_left_to_right_word
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_a_different_left_to_right_word_in_a_ten_line_grid
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_a_left_to_right_word_in_ten_line_grid
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_a_left_to_right_word_in_three_line_grid
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_a_left_to_right_word_in_two_line_grid
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_a_single_word_written_right_to_left
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_multiple_words
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_multiple_words_written_in_different_horizontal_directions
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_one_word_written_left_to_right
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_that_different_left_to_right_word_in_a_different_position
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_that_left_to_right_word_in_a_different_position_in_a_ten_line_grid
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_the_same_word_written_left_to_right_in_a_different_position
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_words_written_bottom_left_to_top_right
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_words_written_bottom_right_to_top_left
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_words_written_bottom_to_top
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_words_written_top_left_to_bottom_right
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_words_written_top_right_to_bottom_left
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_locate_words_written_top_to_bottom
+========================= 19 failed, 5 passed in 0.17s =========================

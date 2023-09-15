@@ -1,0 +1,57 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 14 items
+
+exercises/practice/rectangles/rectangles_test.py .F.F..........          [100%]
+
+=================================== FAILURES ===================================
+____ RectanglesTest.test_corner_is_required_for_a_rectangle_to_be_complete _____
+
+self = <rectangles_test.RectanglesTest testMethod=test_corner_is_required_for_a_rectangle_to_be_complete>
+
+    def test_corner_is_required_for_a_rectangle_to_be_complete(self):
+>       self.assertEqual(
+            rectangles(
+                [
+                    "+------+----+",
+                    "|      |    |",
+                    "+------+    |",
+                    "|   |       |",
+                    "+---+-------+",
+                ]
+            ),
+            2,
+        )
+E       AssertionError: 3 != 2
+
+exercises/practice/rectangles/rectangles_test.py:58: AssertionError
+_____________ RectanglesTest.test_large_input_with_many_rectangles _____________
+
+self = <rectangles_test.RectanglesTest testMethod=test_large_input_with_many_rectangles>
+
+    def test_large_input_with_many_rectangles(self):
+>       self.assertEqual(
+            rectangles(
+                [
+                    "+---+--+----+",
+                    "|   +--+----+",
+                    "+---+--+    |",
+                    "|   +--+----+",
+                    "+---+--+--+-+",
+                    "+---+--+--+-+",
+                    "+------+  | |",
+                    "          +-+",
+                ]
+            ),
+            60,
+        )
+E       AssertionError: 70 != 60
+
+exercises/practice/rectangles/rectangles_test.py:72: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/rectangles/rectangles_test.py::RectanglesTest::test_corner_is_required_for_a_rectangle_to_be_complete
+FAILED exercises/practice/rectangles/rectangles_test.py::RectanglesTest::test_large_input_with_many_rectangles
+========================= 2 failed, 12 passed in 0.05s =========================

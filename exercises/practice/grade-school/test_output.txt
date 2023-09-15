@@ -1,0 +1,574 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 20 items
+
+exercises/practice/grade-school/grade_school_test.py FFFFFF.F.FFFFFFFFFF [ 95%]
+F                                                                        [100%]
+
+=================================== FAILURES ===================================
+______________________ GradeSchoolTest.test_add_a_student ______________________
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_add_a_student>
+
+    def test_add_a_student(self):
+        school = School()
+>       school.add_student(name="Aimee", grade=2)
+
+exercises/practice/grade-school/grade_school_test.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb966126740>, name = 'Aimee', grade = 2
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Aimee is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+_ GradeSchoolTest.test_adding_multiple_students_in_the_same_grade_in_the_roster _
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_adding_multiple_students_in_the_same_grade_in_the_roster>
+
+    def test_adding_multiple_students_in_the_same_grade_in_the_roster(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+
+exercises/practice/grade-school/grade_school_test.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb965f839a0>, name = 'Blair', grade = 2
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Blair is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+___________ GradeSchoolTest.test_adding_students_in_multiple_grades ____________
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_adding_students_in_multiple_grades>
+
+    def test_adding_students_in_multiple_grades(self):
+        school = School()
+>       school.add_student(name="Chelsea", grade=3)
+
+exercises/practice/grade-school/grade_school_test.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb965f8d600>, name = 'Chelsea'
+grade = 3
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Chelsea is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+_ GradeSchoolTest.test_cannot_add_same_student_to_multiple_grades_in_the_roster _
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_cannot_add_same_student_to_multiple_grades_in_the_roster>
+
+    def test_cannot_add_same_student_to_multiple_grades_in_the_roster(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+
+exercises/practice/grade-school/grade_school_test.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb965f87250>, name = 'Blair', grade = 2
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Blair is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+_ GradeSchoolTest.test_cannot_add_student_to_same_grade_in_the_roster_more_than_once _
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_cannot_add_student_to_same_grade_in_the_roster_more_than_once>
+
+    def test_cannot_add_student_to_same_grade_in_the_roster_more_than_once(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+
+exercises/practice/grade-school/grade_school_test.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb966127670>, name = 'Blair', grade = 2
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Blair is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+_______ GradeSchoolTest.test_grade_is_empty_if_no_students_in_that_grade _______
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_grade_is_empty_if_no_students_in_that_grade>
+
+    def test_grade_is_empty_if_no_students_in_that_grade(self):
+        school = School()
+>       school.add_student(name="Peter", grade=2)
+
+exercises/practice/grade-school/grade_school_test.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb965f83a90>, name = 'Peter', grade = 2
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Peter is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+_ GradeSchoolTest.test_multiple_students_in_the_same_grade_are_added_to_the_roster _
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_multiple_students_in_the_same_grade_are_added_to_the_roster>
+
+    def test_multiple_students_in_the_same_grade_are_added_to_the_roster(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+
+exercises/practice/grade-school/grade_school_test.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb965f9cca0>, name = 'Blair', grade = 2
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Blair is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+_____________ GradeSchoolTest.test_student_is_added_to_the_roster ______________
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_student_is_added_to_the_roster>
+
+    def test_student_is_added_to_the_roster(self):
+        school = School()
+>       school.add_student(name="Aimee", grade=2)
+
+exercises/practice/grade-school/grade_school_test.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb965f8cc70>, name = 'Aimee', grade = 2
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Aimee is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+__________ GradeSchoolTest.test_student_not_added_to_multiple_grades ___________
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_student_not_added_to_multiple_grades>
+
+    def test_student_not_added_to_multiple_grades(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+
+exercises/practice/grade-school/grade_school_test.py:158: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb966127760>, name = 'Blair', grade = 2
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Blair is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+___ GradeSchoolTest.test_student_not_added_to_multiple_grades_in_the_roster ____
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_student_not_added_to_multiple_grades_in_the_roster>
+
+    def test_student_not_added_to_multiple_grades_in_the_roster(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+
+exercises/practice/grade-school/grade_school_test.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb965f8dd20>, name = 'Blair', grade = 2
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Blair is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+__ GradeSchoolTest.test_student_not_added_to_other_grade_for_multiple_grades ___
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_student_not_added_to_other_grade_for_multiple_grades>
+
+    def test_student_not_added_to_other_grade_for_multiple_grades(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+
+exercises/practice/grade-school/grade_school_test.py:167: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb9661274f0>, name = 'Blair', grade = 2
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Blair is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+_ GradeSchoolTest.test_student_not_added_to_same_grade_in_the_roster_more_than_once _
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_student_not_added_to_same_grade_in_the_roster_more_than_once>
+
+    def test_student_not_added_to_same_grade_in_the_roster_more_than_once(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+
+exercises/practice/grade-school/grade_school_test.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb965feb700>, name = 'Blair', grade = 2
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Blair is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+_____ GradeSchoolTest.test_student_not_added_to_same_grade_more_than_once ______
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_student_not_added_to_same_grade_more_than_once>
+
+    def test_student_not_added_to_same_grade_more_than_once(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+
+exercises/practice/grade-school/grade_school_test.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb965fd29b0>, name = 'Blair', grade = 2
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Blair is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+_ GradeSchoolTest.test_students_are_sorted_by_grades_and_then_by_name_in_the_roster _
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_students_are_sorted_by_grades_and_then_by_name_in_the_roster>
+
+    def test_students_are_sorted_by_grades_and_then_by_name_in_the_roster(self):
+        school = School()
+>       school.add_student(name="Peter", grade=2)
+
+exercises/practice/grade-school/grade_school_test.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb965f9e4a0>, name = 'Peter', grade = 2
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Peter is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+_______ GradeSchoolTest.test_students_are_sorted_by_grades_in_the_roster _______
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_students_are_sorted_by_grades_in_the_roster>
+
+    def test_students_are_sorted_by_grades_in_the_roster(self):
+        school = School()
+>       school.add_student(name="Jim", grade=3)
+
+exercises/practice/grade-school/grade_school_test.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb966124be0>, name = 'Jim', grade = 3
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Jim is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+_________ GradeSchoolTest.test_students_are_sorted_by_name_in_a_grade __________
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_students_are_sorted_by_name_in_a_grade>
+
+    def test_students_are_sorted_by_name_in_a_grade(self):
+        school = School()
+>       school.add_student(name="Franklin", grade=5)
+
+exercises/practice/grade-school/grade_school_test.py:176: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb965f8d5a0>, name = 'Franklin'
+grade = 5
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Franklin is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+________ GradeSchoolTest.test_students_are_sorted_by_name_in_the_roster ________
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_students_are_sorted_by_name_in_the_roster>
+
+    def test_students_are_sorted_by_name_in_the_roster(self):
+        school = School()
+>       school.add_student(name="Peter", grade=2)
+
+exercises/practice/grade-school/grade_school_test.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb965f85870>, name = 'Peter', grade = 2
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Peter is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+___ GradeSchoolTest.test_students_in_multiple_grades_are_added_to_the_roster ___
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_students_in_multiple_grades_are_added_to_the_roster>
+
+    def test_students_in_multiple_grades_are_added_to_the_roster(self):
+        school = School()
+>       school.add_student(name="Chelsea", grade=3)
+
+exercises/practice/grade-school/grade_school_test.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <grade_school.School object at 0x7fb965feaef0>, name = 'Chelsea'
+grade = 3
+
+    def add_student(self, name, grade):
+        if grade not in self._roster:
+            self._roster[grade] = []
+    
+        # Check if the student is already in any grade
+        for grade_number, students in self._roster.items():
+            if name in students and grade_number != grade:
+                raise ValueError(f"{name} is already in a grade.")
+    
+        if name not in self._roster[grade]:
+            self._roster[grade].append(name)
+            self._roster[grade].sort()
+            if name in students:
+>               raise ValueError(f"{name} is already in a grade.")
+E               ValueError: Chelsea is already in a grade.
+
+exercises/practice/grade-school/grade_school.py:18: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_add_a_student
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_adding_multiple_students_in_the_same_grade_in_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_adding_students_in_multiple_grades
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_cannot_add_same_student_to_multiple_grades_in_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_cannot_add_student_to_same_grade_in_the_roster_more_than_once
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_grade_is_empty_if_no_students_in_that_grade
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_multiple_students_in_the_same_grade_are_added_to_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_student_is_added_to_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_student_not_added_to_multiple_grades
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_student_not_added_to_multiple_grades_in_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_student_not_added_to_other_grade_for_multiple_grades
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_student_not_added_to_same_grade_in_the_roster_more_than_once
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_student_not_added_to_same_grade_more_than_once
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_students_are_sorted_by_grades_and_then_by_name_in_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_students_are_sorted_by_grades_in_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_students_are_sorted_by_name_in_a_grade
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_students_are_sorted_by_name_in_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_students_in_multiple_grades_are_added_to_the_roster
+========================= 18 failed, 2 passed in 0.13s =========================

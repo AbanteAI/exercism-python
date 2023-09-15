@@ -1,0 +1,334 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 11 items
+
+exercises/practice/go-counting/go_counting_test.py FFFFFFFFFFF           [100%]
+
+=================================== FAILURES ===================================
+_________ GoCountingTest.test_a_stone_and_not_a_territory_on_5x5_board _________
+
+self = <go_counting_test.GoCountingTest testMethod=test_a_stone_and_not_a_territory_on_5x5_board>
+
+    def test_a_stone_and_not_a_territory_on_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       stone, territory = board.territory(x=1, y=1)
+
+exercises/practice/go-counting/go_counting_test.py:36: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <go_counting.Board object at 0x7efe10bb5690>, x = 1, y = 1
+
+    def territory(self, x, y):
+        """Find the owner and the territories given a coordinate on
+           the board
+    
+        Args:
+            x (int): Column on the board
+            y (int): Row on the board
+    
+        Returns:
+            (str, set): A tuple, the first element being the owner
+                        of that area.  One of "W", "B", "".  The
+                        second being a set of coordinates, representing
+                        the owner's territories.
+        """
+>       if not (0 <= x < len(self.board[0]) and 0 <= y < len(self.board)):
+E       AttributeError: 'Board' object has no attribute 'board'
+
+exercises/practice/go-counting/go_counting.py:29: AttributeError
+___________ GoCountingTest.test_black_corner_territory_on_5x5_board ____________
+
+self = <go_counting_test.GoCountingTest testMethod=test_black_corner_territory_on_5x5_board>
+
+    def test_black_corner_territory_on_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       stone, territory = board.territory(x=0, y=1)
+
+exercises/practice/go-counting/go_counting_test.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <go_counting.Board object at 0x7efe10a2b970>, x = 0, y = 1
+
+    def territory(self, x, y):
+        """Find the owner and the territories given a coordinate on
+           the board
+    
+        Args:
+            x (int): Column on the board
+            y (int): Row on the board
+    
+        Returns:
+            (str, set): A tuple, the first element being the owner
+                        of that area.  One of "W", "B", "".  The
+                        second being a set of coordinates, representing
+                        the owner's territories.
+        """
+>       if not (0 <= x < len(self.board[0]) and 0 <= y < len(self.board)):
+E       AttributeError: 'Board' object has no attribute 'board'
+
+exercises/practice/go-counting/go_counting.py:29: AttributeError
+_______ GoCountingTest.test_invalid_because_x_is_too_high_for_5x5_board ________
+
+self = <go_counting_test.GoCountingTest testMethod=test_invalid_because_x_is_too_high_for_5x5_board>
+
+    def test_invalid_because_x_is_too_high_for_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+        with self.assertRaises(ValueError) as err:
+>           board.territory(x=5, y=1)
+
+exercises/practice/go-counting/go_counting_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def territory(self, x, y):
+        """Find the owner and the territories given a coordinate on
+           the board
+    
+        Args:
+            x (int): Column on the board
+            y (int): Row on the board
+    
+        Returns:
+            (str, set): A tuple, the first element being the owner
+                        of that area.  One of "W", "B", "".  The
+                        second being a set of coordinates, representing
+                        the owner's territories.
+        """
+>       if not (0 <= x < len(self.board[0]) and 0 <= y < len(self.board)):
+E       AttributeError: 'Board' object has no attribute 'board'
+
+exercises/practice/go-counting/go_counting.py:29: AttributeError
+________ GoCountingTest.test_invalid_because_x_is_too_low_for_5x5_board ________
+
+self = <go_counting_test.GoCountingTest testMethod=test_invalid_because_x_is_too_low_for_5x5_board>
+
+    def test_invalid_because_x_is_too_low_for_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/go-counting/go_counting_test.py:42: AssertionError
+_______ GoCountingTest.test_invalid_because_y_is_too_high_for_5x5_board ________
+
+self = <go_counting_test.GoCountingTest testMethod=test_invalid_because_y_is_too_high_for_5x5_board>
+
+    def test_invalid_because_y_is_too_high_for_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+        with self.assertRaises(ValueError) as err:
+>           board.territory(x=1, y=5)
+
+exercises/practice/go-counting/go_counting_test.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def territory(self, x, y):
+        """Find the owner and the territories given a coordinate on
+           the board
+    
+        Args:
+            x (int): Column on the board
+            y (int): Row on the board
+    
+        Returns:
+            (str, set): A tuple, the first element being the owner
+                        of that area.  One of "W", "B", "".  The
+                        second being a set of coordinates, representing
+                        the owner's territories.
+        """
+>       if not (0 <= x < len(self.board[0]) and 0 <= y < len(self.board)):
+E       AttributeError: 'Board' object has no attribute 'board'
+
+exercises/practice/go-counting/go_counting.py:29: AttributeError
+________ GoCountingTest.test_invalid_because_y_is_too_low_for_5x5_board ________
+
+self = <go_counting_test.GoCountingTest testMethod=test_invalid_because_y_is_too_low_for_5x5_board>
+
+    def test_invalid_because_y_is_too_low_for_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+        with self.assertRaises(ValueError) as err:
+>           board.territory(x=1, y=-1)
+
+exercises/practice/go-counting/go_counting_test.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def territory(self, x, y):
+        """Find the owner and the territories given a coordinate on
+           the board
+    
+        Args:
+            x (int): Column on the board
+            y (int): Row on the board
+    
+        Returns:
+            (str, set): A tuple, the first element being the owner
+                        of that area.  One of "W", "B", "".  The
+                        second being a set of coordinates, representing
+                        the owner's territories.
+        """
+>       if not (0 <= x < len(self.board[0]) and 0 <= y < len(self.board)):
+E       AttributeError: 'Board' object has no attribute 'board'
+
+exercises/practice/go-counting/go_counting.py:29: AttributeError
+_____________ GoCountingTest.test_one_territory_is_the_whole_board _____________
+
+self = <go_counting_test.GoCountingTest testMethod=test_one_territory_is_the_whole_board>
+
+    def test_one_territory_is_the_whole_board(self):
+        board = Board([" "])
+>       territories = board.territories()
+
+exercises/practice/go-counting/go_counting_test.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <go_counting.Board object at 0x7efe10bb5c60>
+
+    def territories(self):
+        """Find the owners and the territories of the whole board
+    
+        Args:
+            none
+    
+        Returns:
+            dict(str, set): A dictionary whose key being the owner
+                        , i.e. "W", "B", "".  The value being a set
+                        of coordinates owned by the owner.
+        """
+        result = {"B": set(), "W": set(), "": set()}
+>       for y in range(len(self.board)):
+E       AttributeError: 'Board' object has no attribute 'board'
+
+exercises/practice/go-counting/go_counting.py:65: AttributeError
+____________ GoCountingTest.test_open_corner_territory_on_5x5_board ____________
+
+self = <go_counting_test.GoCountingTest testMethod=test_open_corner_territory_on_5x5_board>
+
+    def test_open_corner_territory_on_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       stone, territory = board.territory(x=1, y=4)
+
+exercises/practice/go-counting/go_counting_test.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <go_counting.Board object at 0x7efe10b83790>, x = 1, y = 4
+
+    def territory(self, x, y):
+        """Find the owner and the territories given a coordinate on
+           the board
+    
+        Args:
+            x (int): Column on the board
+            y (int): Row on the board
+    
+        Returns:
+            (str, set): A tuple, the first element being the owner
+                        of that area.  One of "W", "B", "".  The
+                        second being a set of coordinates, representing
+                        the owner's territories.
+        """
+>       if not (0 <= x < len(self.board[0]) and 0 <= y < len(self.board)):
+E       AttributeError: 'Board' object has no attribute 'board'
+
+exercises/practice/go-counting/go_counting.py:29: AttributeError
+_______________ GoCountingTest.test_two_region_rectangular_board _______________
+
+self = <go_counting_test.GoCountingTest testMethod=test_two_region_rectangular_board>
+
+    def test_two_region_rectangular_board(self):
+        board = Board([" B "])
+>       territories = board.territories()
+
+exercises/practice/go-counting/go_counting_test.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <go_counting.Board object at 0x7efe10a42920>
+
+    def territories(self):
+        """Find the owners and the territories of the whole board
+    
+        Args:
+            none
+    
+        Returns:
+            dict(str, set): A dictionary whose key being the owner
+                        , i.e. "W", "B", "".  The value being a set
+                        of coordinates owned by the owner.
+        """
+        result = {"B": set(), "W": set(), "": set()}
+>       for y in range(len(self.board)):
+E       AttributeError: 'Board' object has no attribute 'board'
+
+exercises/practice/go-counting/go_counting.py:65: AttributeError
+_____________ GoCountingTest.test_two_territory_rectangular_board ______________
+
+self = <go_counting_test.GoCountingTest testMethod=test_two_territory_rectangular_board>
+
+    def test_two_territory_rectangular_board(self):
+        board = Board([" BW ", " BW "])
+>       territories = board.territories()
+
+exercises/practice/go-counting/go_counting_test.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <go_counting.Board object at 0x7efe10a22740>
+
+    def territories(self):
+        """Find the owners and the territories of the whole board
+    
+        Args:
+            none
+    
+        Returns:
+            dict(str, set): A dictionary whose key being the owner
+                        , i.e. "W", "B", "".  The value being a set
+                        of coordinates owned by the owner.
+        """
+        result = {"B": set(), "W": set(), "": set()}
+>       for y in range(len(self.board)):
+E       AttributeError: 'Board' object has no attribute 'board'
+
+exercises/practice/go-counting/go_counting.py:65: AttributeError
+___________ GoCountingTest.test_white_center_territory_on_5x5_board ____________
+
+self = <go_counting_test.GoCountingTest testMethod=test_white_center_territory_on_5x5_board>
+
+    def test_white_center_territory_on_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       stone, territory = board.territory(x=2, y=3)
+
+exercises/practice/go-counting/go_counting_test.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <go_counting.Board object at 0x7efe10b82c50>, x = 2, y = 3
+
+    def territory(self, x, y):
+        """Find the owner and the territories given a coordinate on
+           the board
+    
+        Args:
+            x (int): Column on the board
+            y (int): Row on the board
+    
+        Returns:
+            (str, set): A tuple, the first element being the owner
+                        of that area.  One of "W", "B", "".  The
+                        second being a set of coordinates, representing
+                        the owner's territories.
+        """
+>       if not (0 <= x < len(self.board[0]) and 0 <= y < len(self.board)):
+E       AttributeError: 'Board' object has no attribute 'board'
+
+exercises/practice/go-counting/go_counting.py:29: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_a_stone_and_not_a_territory_on_5x5_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_black_corner_territory_on_5x5_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_invalid_because_x_is_too_high_for_5x5_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_invalid_because_x_is_too_low_for_5x5_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_invalid_because_y_is_too_high_for_5x5_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_invalid_because_y_is_too_low_for_5x5_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_one_territory_is_the_whole_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_open_corner_territory_on_5x5_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_two_region_rectangular_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_two_territory_rectangular_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_white_center_territory_on_5x5_board
+============================== 11 failed in 0.07s ==============================

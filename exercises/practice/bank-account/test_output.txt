@@ -1,0 +1,158 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 16 items
+
+exercises/practice/bank-account/bank_account_test.py .FFFFFFFFF......    [100%]
+
+=================================== FAILURES ===================================
+_________ BankAccountTest.test_cannot_check_balance_of_closed_account __________
+
+self = <bank_account_test.BankAccountTest testMethod=test_cannot_check_balance_of_closed_account>
+
+    def test_cannot_check_balance_of_closed_account(self):
+        account = BankAccount()
+        account.open()
+        account.close()
+        with self.assertRaises(ValueError) as err:
+            account.get_balance()
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "account not open")
+E       AssertionError: 'Account is closed.' != 'account not open'
+E       - Account is closed.
+E       + account not open
+
+exercises/practice/bank-account/bank_account_test.py:63: AssertionError
+_______ BankAccountTest.test_cannot_close_an_account_that_was_not_opened _______
+
+self = <bank_account_test.BankAccountTest testMethod=test_cannot_close_an_account_that_was_not_opened>
+
+    def test_cannot_close_an_account_that_was_not_opened(self):
+        account = BankAccount()
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/bank-account/bank_account_test.py:92: AssertionError
+___________ BankAccountTest.test_cannot_deposit_into_closed_account ____________
+
+self = <bank_account_test.BankAccountTest testMethod=test_cannot_deposit_into_closed_account>
+
+    def test_cannot_deposit_into_closed_account(self):
+        account = BankAccount()
+        account.open()
+        account.close()
+        with self.assertRaises(ValueError) as err:
+            account.deposit(50)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "account not open")
+E       AssertionError: 'Invalid deposit amount or account is closed.' != 'account not open'
+E       - Invalid deposit amount or account is closed.
+E       + account not open
+
+exercises/practice/bank-account/bank_account_test.py:72: AssertionError
+__________ BankAccountTest.test_cannot_deposit_into_unopened_account ___________
+
+self = <bank_account_test.BankAccountTest testMethod=test_cannot_deposit_into_unopened_account>
+
+    def test_cannot_deposit_into_unopened_account(self):
+        account = BankAccount()
+        with self.assertRaises(ValueError) as err:
+            account.deposit(50)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "account not open")
+E       AssertionError: 'Invalid deposit amount or account is closed.' != 'account not open'
+E       - Invalid deposit amount or account is closed.
+E       + account not open
+
+exercises/practice/bank-account/bank_account_test.py:79: AssertionError
+_________________ BankAccountTest.test_cannot_deposit_negative _________________
+
+self = <bank_account_test.BankAccountTest testMethod=test_cannot_deposit_negative>
+
+    def test_cannot_deposit_negative(self):
+        account = BankAccount()
+        account.open()
+        with self.assertRaises(ValueError) as err:
+            account.deposit(-50)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "amount must be greater than 0")
+E       AssertionError: 'Invalid deposit amount or account is closed.' != 'amount must be greater than 0'
+E       - Invalid deposit amount or account is closed.
+E       + amount must be greater than 0
+
+exercises/practice/bank-account/bank_account_test.py:137: AssertionError
+__________ BankAccountTest.test_cannot_open_an_already_opened_account __________
+
+self = <bank_account_test.BankAccountTest testMethod=test_cannot_open_an_already_opened_account>
+
+    def test_cannot_open_an_already_opened_account(self):
+        account = BankAccount()
+        account.open()
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/bank-account/bank_account_test.py:100: AssertionError
+___________ BankAccountTest.test_cannot_withdraw_from_closed_account ___________
+
+self = <bank_account_test.BankAccountTest testMethod=test_cannot_withdraw_from_closed_account>
+
+    def test_cannot_withdraw_from_closed_account(self):
+        account = BankAccount()
+        account.open()
+        account.close()
+        with self.assertRaises(ValueError) as err:
+            account.withdraw(50)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "account not open")
+E       AssertionError: 'Amount must be greater than 0, insufficient balance, or account is closed.' != 'account not open'
+E       - Amount must be greater than 0, insufficient balance, or account is closed.
+E       + account not open
+
+exercises/practice/bank-account/bank_account_test.py:88: AssertionError
+___________ BankAccountTest.test_cannot_withdraw_more_than_deposited ___________
+
+self = <bank_account_test.BankAccountTest testMethod=test_cannot_withdraw_more_than_deposited>
+
+    def test_cannot_withdraw_more_than_deposited(self):
+        account = BankAccount()
+        account.open()
+        account.deposit(25)
+        with self.assertRaises(ValueError) as err:
+            account.withdraw(50)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "amount must be less than balance")
+E       AssertionError: 'Amount must be greater than 0, insufficient balance, or account is closed.' != 'amount must be less than balance'
+E       - Amount must be greater than 0, insufficient balance, or account is closed.
+E       + amount must be less than balance
+
+exercises/practice/bank-account/bank_account_test.py:120: AssertionError
+________________ BankAccountTest.test_cannot_withdraw_negative _________________
+
+self = <bank_account_test.BankAccountTest testMethod=test_cannot_withdraw_negative>
+
+    def test_cannot_withdraw_negative(self):
+        account = BankAccount()
+        account.open()
+        account.deposit(100)
+        with self.assertRaises(ValueError) as err:
+            account.withdraw(-50)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "amount must be greater than 0")
+E       AssertionError: 'Amount must be greater than 0, insufficient balance, or account is closed.' != 'amount must be greater than 0'
+E       - Amount must be greater than 0, insufficient balance, or account is closed.
+E       + amount must be greater than 0
+
+exercises/practice/bank-account/bank_account_test.py:129: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/bank-account/bank_account_test.py::BankAccountTest::test_cannot_check_balance_of_closed_account
+FAILED exercises/practice/bank-account/bank_account_test.py::BankAccountTest::test_cannot_close_an_account_that_was_not_opened
+FAILED exercises/practice/bank-account/bank_account_test.py::BankAccountTest::test_cannot_deposit_into_closed_account
+FAILED exercises/practice/bank-account/bank_account_test.py::BankAccountTest::test_cannot_deposit_into_unopened_account
+FAILED exercises/practice/bank-account/bank_account_test.py::BankAccountTest::test_cannot_deposit_negative
+FAILED exercises/practice/bank-account/bank_account_test.py::BankAccountTest::test_cannot_open_an_already_opened_account
+FAILED exercises/practice/bank-account/bank_account_test.py::BankAccountTest::test_cannot_withdraw_from_closed_account
+FAILED exercises/practice/bank-account/bank_account_test.py::BankAccountTest::test_cannot_withdraw_more_than_deposited
+FAILED exercises/practice/bank-account/bank_account_test.py::BankAccountTest::test_cannot_withdraw_negative
+========================= 9 failed, 7 passed in 0.06s ==========================
