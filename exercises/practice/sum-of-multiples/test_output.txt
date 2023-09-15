@@ -1,0 +1,53 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 16 items
+
+exercises/practice/sum-of-multiples/sum_of_multiples_test.py ........... [ 68%]
+..FF.                                                                    [100%]
+
+=================================== FAILURES ===================================
+_ SumOfMultiplesTest.test_the_factor_0_does_not_affect_the_sum_of_multiples_of_other_factors _
+
+self = <sum_of_multiples_test.SumOfMultiplesTest testMethod=test_the_factor_0_does_not_affect_the_sum_of_multiples_of_other_factors>
+
+    def test_the_factor_0_does_not_affect_the_sum_of_multiples_of_other_factors(self):
+>       self.assertEqual(sum_of_multiples(4, [3, 0]), 3)
+
+exercises/practice/sum-of-multiples/sum_of_multiples_test.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+limit = 4, multiples = [3, 0]
+
+    def sum_of_multiples(limit, multiples):
+        unique_multiples = set()
+        for base_value in multiples:
+>           for i in range(base_value, limit, base_value):
+E           ValueError: range() arg 3 must not be zero
+
+exercises/practice/sum-of-multiples/sum_of_multiples.py:4: ValueError
+_____________ SumOfMultiplesTest.test_the_only_multiple_of_0_is_0 ______________
+
+self = <sum_of_multiples_test.SumOfMultiplesTest testMethod=test_the_only_multiple_of_0_is_0>
+
+    def test_the_only_multiple_of_0_is_0(self):
+>       self.assertEqual(sum_of_multiples(1, [0]), 0)
+
+exercises/practice/sum-of-multiples/sum_of_multiples_test.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+limit = 1, multiples = [0]
+
+    def sum_of_multiples(limit, multiples):
+        unique_multiples = set()
+        for base_value in multiples:
+>           for i in range(base_value, limit, base_value):
+E           ValueError: range() arg 3 must not be zero
+
+exercises/practice/sum-of-multiples/sum_of_multiples.py:4: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/sum-of-multiples/sum_of_multiples_test.py::SumOfMultiplesTest::test_the_factor_0_does_not_affect_the_sum_of_multiples_of_other_factors
+FAILED exercises/practice/sum-of-multiples/sum_of_multiples_test.py::SumOfMultiplesTest::test_the_only_multiple_of_0_is_0
+========================= 2 failed, 14 passed in 0.06s =========================

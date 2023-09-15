@@ -11,7 +11,6 @@ class Node:
 
 
 def BuildTree(records):
-    root = None
     records.sort(key=lambda x: x.record_id)
     ordered_id = [i.record_id for i in records]
     if records:

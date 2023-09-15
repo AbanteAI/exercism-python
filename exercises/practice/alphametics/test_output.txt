@@ -1,0 +1,218 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 10 items
+
+exercises/practice/alphametics/alphametics_test.py FFFFFFsFFF            [100%]
+
+=================================== FAILURES ===================================
+____________ AlphameticsTest.test_leading_zero_solution_is_invalid _____________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_leading_zero_solution_is_invalid>
+
+    def test_leading_zero_solution_is_invalid(self):
+>       self.assertEqual(solve("ACA + DD == BD"), None)
+
+exercises/practice/alphametics/alphametics_test.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+puzzle = 'ACA + DD == BD'
+
+    def solve(puzzle):
+        # Implement the logic to solve alphametics puzzles here
+        # Iterate through all possible digit assignments for the letters
+>       for assignment in get_assignments(puzzle):
+E       NameError: name 'get_assignments' is not defined
+
+exercises/practice/alphametics/alphametics.py:4: NameError
+________________ AlphameticsTest.test_puzzle_with_eight_letters ________________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_puzzle_with_eight_letters>
+
+    def test_puzzle_with_eight_letters(self):
+        self.assertEqual(
+>           solve("SEND + MORE == MONEY"),
+            {"S": 9, "E": 5, "N": 6, "D": 7, "M": 1, "O": 0, "R": 8, "Y": 2},
+        )
+
+exercises/practice/alphametics/alphametics_test.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+puzzle = 'SEND + MORE == MONEY'
+
+    def solve(puzzle):
+        # Implement the logic to solve alphametics puzzles here
+        # Iterate through all possible digit assignments for the letters
+>       for assignment in get_assignments(puzzle):
+E       NameError: name 'get_assignments' is not defined
+
+exercises/practice/alphametics/alphametics.py:4: NameError
+________________ AlphameticsTest.test_puzzle_with_four_letters _________________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_puzzle_with_four_letters>
+
+    def test_puzzle_with_four_letters(self):
+>       self.assertEqual(solve("AS + A == MOM"), {"A": 9, "S": 2, "M": 1, "O": 0})
+
+exercises/practice/alphametics/alphametics_test.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+puzzle = 'AS + A == MOM'
+
+    def solve(puzzle):
+        # Implement the logic to solve alphametics puzzles here
+        # Iterate through all possible digit assignments for the letters
+>       for assignment in get_assignments(puzzle):
+E       NameError: name 'get_assignments' is not defined
+
+exercises/practice/alphametics/alphametics.py:4: NameError
+________________ AlphameticsTest.test_puzzle_with_seven_letters ________________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_puzzle_with_seven_letters>
+
+    def test_puzzle_with_seven_letters(self):
+        self.assertEqual(
+>           solve("HE + SEES + THE == LIGHT"),
+            {"E": 4, "G": 2, "H": 5, "I": 0, "L": 1, "S": 9, "T": 7},
+        )
+
+exercises/practice/alphametics/alphametics_test.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+puzzle = 'HE + SEES + THE == LIGHT'
+
+    def solve(puzzle):
+        # Implement the logic to solve alphametics puzzles here
+        # Iterate through all possible digit assignments for the letters
+>       for assignment in get_assignments(puzzle):
+E       NameError: name 'get_assignments' is not defined
+
+exercises/practice/alphametics/alphametics.py:4: NameError
+_________________ AlphameticsTest.test_puzzle_with_six_letters _________________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_puzzle_with_six_letters>
+
+    def test_puzzle_with_six_letters(self):
+        self.assertEqual(
+>           solve("NO + NO + TOO == LATE"),
+            {"N": 7, "O": 4, "T": 9, "L": 1, "A": 0, "E": 2},
+        )
+
+exercises/practice/alphametics/alphametics_test.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+puzzle = 'NO + NO + TOO == LATE'
+
+    def solve(puzzle):
+        # Implement the logic to solve alphametics puzzles here
+        # Iterate through all possible digit assignments for the letters
+>       for assignment in get_assignments(puzzle):
+E       NameError: name 'get_assignments' is not defined
+
+exercises/practice/alphametics/alphametics.py:4: NameError
+_________________ AlphameticsTest.test_puzzle_with_ten_letters _________________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_puzzle_with_ten_letters>
+
+    def test_puzzle_with_ten_letters(self):
+        self.assertEqual(
+>           solve("AND + A + STRONG + OFFENSE + AS + A + GOOD == DEFENSE"),
+            {
+                "A": 5,
+                "D": 3,
+                "E": 4,
+                "F": 7,
+                "G": 8,
+                "N": 0,
+                "O": 2,
+                "R": 1,
+                "S": 6,
+                "T": 9,
+            },
+        )
+
+exercises/practice/alphametics/alphametics_test.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+puzzle = 'AND + A + STRONG + OFFENSE + AS + A + GOOD == DEFENSE'
+
+    def solve(puzzle):
+        # Implement the logic to solve alphametics puzzles here
+        # Iterate through all possible digit assignments for the letters
+>       for assignment in get_assignments(puzzle):
+E       NameError: name 'get_assignments' is not defined
+
+exercises/practice/alphametics/alphametics.py:4: NameError
+________________ AlphameticsTest.test_puzzle_with_three_letters ________________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_puzzle_with_three_letters>
+
+    def test_puzzle_with_three_letters(self):
+>       self.assertEqual(solve("I + BB == ILL"), {"I": 1, "B": 9, "L": 0})
+
+exercises/practice/alphametics/alphametics_test.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+puzzle = 'I + BB == ILL'
+
+    def solve(puzzle):
+        # Implement the logic to solve alphametics puzzles here
+        # Iterate through all possible digit assignments for the letters
+>       for assignment in get_assignments(puzzle):
+E       NameError: name 'get_assignments' is not defined
+
+exercises/practice/alphametics/alphametics.py:4: NameError
+___________ AlphameticsTest.test_puzzle_with_two_digits_final_carry ____________
+
+self = <alphametics_test.AlphameticsTest testMethod=test_puzzle_with_two_digits_final_carry>
+
+    def test_puzzle_with_two_digits_final_carry(self):
+        self.assertEqual(
+>           solve("A + A + A + A + A + A + A + A + A + A + A + B == BCC"),
+            {"A": 9, "B": 1, "C": 0},
+        )
+
+exercises/practice/alphametics/alphametics_test.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+puzzle = 'A + A + A + A + A + A + A + A + A + A + A + B == BCC'
+
+    def solve(puzzle):
+        # Implement the logic to solve alphametics puzzles here
+        # Iterate through all possible digit assignments for the letters
+>       for assignment in get_assignments(puzzle):
+E       NameError: name 'get_assignments' is not defined
+
+exercises/practice/alphametics/alphametics.py:4: NameError
+_____ AlphameticsTest.test_solution_must_have_unique_value_for_each_letter _____
+
+self = <alphametics_test.AlphameticsTest testMethod=test_solution_must_have_unique_value_for_each_letter>
+
+    def test_solution_must_have_unique_value_for_each_letter(self):
+>       self.assertEqual(solve("A == B"), None)
+
+exercises/practice/alphametics/alphametics_test.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+puzzle = 'A == B'
+
+    def solve(puzzle):
+        # Implement the logic to solve alphametics puzzles here
+        # Iterate through all possible digit assignments for the letters
+>       for assignment in get_assignments(puzzle):
+E       NameError: name 'get_assignments' is not defined
+
+exercises/practice/alphametics/alphametics.py:4: NameError
+=========================== short test summary info ============================
+FAILED exercises/practice/alphametics/alphametics_test.py::AlphameticsTest::test_leading_zero_solution_is_invalid
+FAILED exercises/practice/alphametics/alphametics_test.py::AlphameticsTest::test_puzzle_with_eight_letters
+FAILED exercises/practice/alphametics/alphametics_test.py::AlphameticsTest::test_puzzle_with_four_letters
+FAILED exercises/practice/alphametics/alphametics_test.py::AlphameticsTest::test_puzzle_with_seven_letters
+FAILED exercises/practice/alphametics/alphametics_test.py::AlphameticsTest::test_puzzle_with_six_letters
+FAILED exercises/practice/alphametics/alphametics_test.py::AlphameticsTest::test_puzzle_with_ten_letters
+FAILED exercises/practice/alphametics/alphametics_test.py::AlphameticsTest::test_puzzle_with_three_letters
+FAILED exercises/practice/alphametics/alphametics_test.py::AlphameticsTest::test_puzzle_with_two_digits_final_carry
+FAILED exercises/practice/alphametics/alphametics_test.py::AlphameticsTest::test_solution_must_have_unique_value_for_each_letter
+========================= 9 failed, 1 skipped in 0.07s =========================

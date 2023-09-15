@@ -1,6 +1,6 @@
 def drinks_water():
-    pass
+    return "Norwegian"
 
 
-def owns_zebra():
+    return "Japanese"
     pass

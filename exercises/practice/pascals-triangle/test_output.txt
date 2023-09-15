@@ -1,0 +1,36 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 10 items
+
+exercises/practice/pascals-triangle/pascals_triangle_test.py ..F..F....  [100%]
+
+=================================== FAILURES ===================================
+______________ PascalsTriangleTest.test_negative_rows_are_invalid ______________
+
+self = <pascals_triangle_test.PascalsTriangleTest testMethod=test_negative_rows_are_invalid>
+
+    def test_negative_rows_are_invalid(self):
+        with self.assertRaises(ValueError) as err:
+            rows(-1)
+>           self.assertEqual(type(err.exception), ValueError)
+E           AttributeError: '_AssertRaisesContext' object has no attribute 'exception'
+
+exercises/practice/pascals-triangle/pascals_triangle_test.py:55: AttributeError
+________________ PascalsTriangleTest.test_solution_is_recursive ________________
+
+self = <pascals_triangle_test.PascalsTriangleTest testMethod=test_solution_is_recursive>
+
+    def test_solution_is_recursive(self):
+        with self.assertRaises(RecursionError) as err:
+            rows(sys.getrecursionlimit() + 10)
+>           self.assertEqual(type(err.exception), RecursionError)
+E           AttributeError: '_AssertRaisesContext' object has no attribute 'exception'
+
+exercises/practice/pascals-triangle/pascals_triangle_test.py:61: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/pascals-triangle/pascals_triangle_test.py::PascalsTriangleTest::test_negative_rows_are_invalid
+FAILED exercises/practice/pascals-triangle/pascals_triangle_test.py::PascalsTriangleTest::test_solution_is_recursive
+========================= 2 failed, 8 passed in 0.15s ==========================

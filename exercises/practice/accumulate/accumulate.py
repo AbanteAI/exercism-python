@@ -1,2 +1,2 @@
 def accumulate(collection, operation):
-    pass
+    return [operation(x) for x in collection]

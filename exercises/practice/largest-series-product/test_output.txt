@@ -1,0 +1,58 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 14 items
+
+exercises/practice/largest-series-product/largest_series_product_test.py . [  7%]
+.......FFFF..                                                            [100%]
+
+=================================== FAILURES ===================================
+_____ LargestSeriesProductTest.test_rejects_empty_string_and_nonzero_span ______
+
+self = <largest_series_product_test.LargestSeriesProductTest testMethod=test_rejects_empty_string_and_nonzero_span>
+
+    def test_rejects_empty_string_and_nonzero_span(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/largest-series-product/largest_series_product_test.py:52: AssertionError
+______ LargestSeriesProductTest.test_rejects_invalid_character_in_digits _______
+
+self = <largest_series_product_test.LargestSeriesProductTest testMethod=test_rejects_invalid_character_in_digits>
+
+    def test_rejects_invalid_character_in_digits(self):
+        with self.assertRaises(ValueError) as err:
+            largest_product("1234a5", 2)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "digits input must only contain digits")
+E       AssertionError: "invalid literal for int() with base 10: 'a'" != 'digits input must only contain digits'
+E       - invalid literal for int() with base 10: 'a'
+E       + digits input must only contain digits
+
+exercises/practice/largest-series-product/largest_series_product_test.py:63: AssertionError
+_____________ LargestSeriesProductTest.test_rejects_negative_span ______________
+
+self = <largest_series_product_test.LargestSeriesProductTest testMethod=test_rejects_negative_span>
+
+    def test_rejects_negative_span(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/largest-series-product/largest_series_product_test.py:66: AssertionError
+_____ LargestSeriesProductTest.test_rejects_span_longer_than_string_length _____
+
+self = <largest_series_product_test.LargestSeriesProductTest testMethod=test_rejects_span_longer_than_string_length>
+
+    def test_rejects_span_longer_than_string_length(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/largest-series-product/largest_series_product_test.py:44: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/largest-series-product/largest_series_product_test.py::LargestSeriesProductTest::test_rejects_empty_string_and_nonzero_span
+FAILED exercises/practice/largest-series-product/largest_series_product_test.py::LargestSeriesProductTest::test_rejects_invalid_character_in_digits
+FAILED exercises/practice/largest-series-product/largest_series_product_test.py::LargestSeriesProductTest::test_rejects_negative_span
+FAILED exercises/practice/largest-series-product/largest_series_product_test.py::LargestSeriesProductTest::test_rejects_span_longer_than_string_length
+========================= 4 failed, 10 passed in 0.05s =========================

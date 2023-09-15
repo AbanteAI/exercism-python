@@ -1,0 +1,91 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 11 items
+
+exercises/practice/series/series_test.py FFFFF......                     [100%]
+
+=================================== FAILURES ===================================
+___________________ SeriesTest.test_empty_series_is_invalid ____________________
+
+self = <series_test.SeriesTest testMethod=test_empty_series_is_invalid>
+
+    def test_empty_series_is_invalid(self):
+        with self.assertRaises(ValueError) as err:
+            slices("", 1)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "series cannot be empty")
+E       AssertionError: 'Series length is less than the specified length.' != 'series cannot be empty'
+E       - Series length is less than the specified length.
+E       + series cannot be empty
+
+exercises/practice/series/series_test.py:66: AssertionError
+_______________ SeriesTest.test_slice_length_cannot_be_negative ________________
+
+self = <series_test.SeriesTest testMethod=test_slice_length_cannot_be_negative>
+
+    def test_slice_length_cannot_be_negative(self):
+        with self.assertRaises(ValueError) as err:
+            slices("123", -1)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "slice length cannot be negative")
+E       AssertionError: 'Length must be a positive integer.' != 'slice length cannot be negative'
+E       - Length must be a positive integer.
+E       + slice length cannot be negative
+
+exercises/practice/series/series_test.py:60: AssertionError
+_________________ SeriesTest.test_slice_length_cannot_be_zero __________________
+
+self = <series_test.SeriesTest testMethod=test_slice_length_cannot_be_zero>
+
+    def test_slice_length_cannot_be_zero(self):
+        with self.assertRaises(ValueError) as err:
+            slices("12345", 0)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "slice length cannot be zero")
+E       AssertionError: 'Length must be a positive integer.' != 'slice length cannot be zero'
+E       - Length must be a positive integer.
+E       + slice length cannot be zero
+
+exercises/practice/series/series_test.py:54: AssertionError
+__________________ SeriesTest.test_slice_length_is_too_large ___________________
+
+self = <series_test.SeriesTest testMethod=test_slice_length_is_too_large>
+
+    def test_slice_length_is_too_large(self):
+        with self.assertRaises(ValueError) as err:
+            slices("12345", 6)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0], "slice length cannot be greater than series length"
+        )
+E       AssertionError: 'Series length is less than the specified length.' != 'slice length cannot be greater than series length'
+E       - Series length is less than the specified length.
+E       + slice length cannot be greater than series length
+
+exercises/practice/series/series_test.py:38: AssertionError
+________________ SeriesTest.test_slice_length_is_way_too_large _________________
+
+self = <series_test.SeriesTest testMethod=test_slice_length_is_way_too_large>
+
+    def test_slice_length_is_way_too_large(self):
+        with self.assertRaises(ValueError) as err:
+            slices("12345", 42)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0], "slice length cannot be greater than series length"
+        )
+E       AssertionError: 'Series length is less than the specified length.' != 'slice length cannot be greater than series length'
+E       - Series length is less than the specified length.
+E       + slice length cannot be greater than series length
+
+exercises/practice/series/series_test.py:46: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_empty_series_is_invalid
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_slice_length_cannot_be_negative
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_slice_length_cannot_be_zero
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_slice_length_is_too_large
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_slice_length_is_way_too_large
+========================= 5 failed, 6 passed in 0.05s ==========================

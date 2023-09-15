@@ -1,0 +1,183 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 19 items
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py FFFFF [ 26%]
+FFFFFFFFFFFF..                                                           [100%]
+
+=================================== FAILURES ===================================
+___ KindergartenGardenTest.test_full_garden_for_alice_first_student_s_garden ___
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_alice_first_student_s_garden>
+
+    def test_full_garden_for_alice_first_student_s_garden(self):
+>       garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:40: TypeError
+___ KindergartenGardenTest.test_full_garden_for_bob_second_student_s_garden ____
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_bob_second_student_s_garden>
+
+    def test_full_garden_for_bob_second_student_s_garden(self):
+>       garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:46: TypeError
+_____________ KindergartenGardenTest.test_full_garden_for_charlie ______________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_charlie>
+
+    def test_full_garden_for_charlie(self):
+>       garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:50: TypeError
+______________ KindergartenGardenTest.test_full_garden_for_david _______________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_david>
+
+    def test_full_garden_for_david(self):
+>       garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:56: TypeError
+_______________ KindergartenGardenTest.test_full_garden_for_eve ________________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_eve>
+
+    def test_full_garden_for_eve(self):
+>       garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:62: TypeError
+_______________ KindergartenGardenTest.test_full_garden_for_fred _______________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_fred>
+
+    def test_full_garden_for_fred(self):
+>       garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:66: TypeError
+______________ KindergartenGardenTest.test_full_garden_for_ginny _______________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_ginny>
+
+    def test_full_garden_for_ginny(self):
+>       garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:72: TypeError
+_____________ KindergartenGardenTest.test_full_garden_for_harriet ______________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_harriet>
+
+    def test_full_garden_for_harriet(self):
+>       garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:76: TypeError
+______________ KindergartenGardenTest.test_full_garden_for_ileana ______________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_ileana>
+
+    def test_full_garden_for_ileana(self):
+>       garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:82: TypeError
+______________ KindergartenGardenTest.test_full_garden_for_joseph ______________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_joseph>
+
+    def test_full_garden_for_joseph(self):
+>       garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:88: TypeError
+_ KindergartenGardenTest.test_full_garden_for_kincaid_second_to_last_student_s_garden _
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_kincaid_second_to_last_student_s_garden>
+
+    def test_full_garden_for_kincaid_second_to_last_student_s_garden(self):
+>       garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:94: TypeError
+___ KindergartenGardenTest.test_full_garden_for_larry_last_student_s_garden ____
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_larry_last_student_s_garden>
+
+    def test_full_garden_for_larry_last_student_s_garden(self):
+>       garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:100: TypeError
+_ KindergartenGardenTest.test_partial_garden_different_garden_with_single_student _
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_partial_garden_different_garden_with_single_student>
+
+    def test_partial_garden_different_garden_with_single_student(self):
+>       garden = Garden("VC\nRC")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:20: TypeError
+____ KindergartenGardenTest.test_partial_garden_garden_with_single_student _____
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_partial_garden_garden_with_single_student>
+
+    def test_partial_garden_garden_with_single_student(self):
+>       garden = Garden("RC\nGG")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:14: TypeError
+_____ KindergartenGardenTest.test_partial_garden_garden_with_two_students ______
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_partial_garden_garden_with_two_students>
+
+    def test_partial_garden_garden_with_two_students(self):
+>       garden = Garden("VVCG\nVVRC")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:26: TypeError
+______ KindergartenGardenTest.test_partial_garden_second_student_s_garden ______
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_partial_garden_second_student_s_garden>
+
+    def test_partial_garden_second_student_s_garden(self):
+>       garden = Garden("VVCCGG\nVVCCGG")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:32: TypeError
+______ KindergartenGardenTest.test_partial_garden_third_student_s_garden _______
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_partial_garden_third_student_s_garden>
+
+    def test_partial_garden_third_student_s_garden(self):
+>       garden = Garden("VVCCGG\nVVCCGG")
+E       TypeError: Garden.__init__() missing 1 required positional argument: 'students'
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:36: TypeError
+=========================== short test summary info ============================
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_alice_first_student_s_garden
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_bob_second_student_s_garden
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_charlie
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_david
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_eve
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_fred
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_ginny
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_harriet
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_ileana
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_joseph
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_kincaid_second_to_last_student_s_garden
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_larry_last_student_s_garden
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_partial_garden_different_garden_with_single_student
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_partial_garden_garden_with_single_student
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_partial_garden_garden_with_two_students
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_partial_garden_second_student_s_garden
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_partial_garden_third_student_s_garden
+========================= 17 failed, 2 passed in 0.08s =========================

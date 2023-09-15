@@ -1,0 +1,48 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 17 items
+
+exercises/practice/markdown/markdown_test.py F.............F..           [100%]
+
+=================================== FAILURES ===================================
+_______________ MarkdownTest.test_h7_header_level_is_a_paragraph _______________
+
+self = <markdown_test.MarkdownTest testMethod=test_h7_header_level_is_a_paragraph>
+
+    def test_h7_header_level_is_a_paragraph(self):
+>       self.assertEqual(
+            parse("####### This will not be an h7"),
+            "<p>####### This will not be an h7</p>",
+        )
+E       AssertionError: '<h7>This will not be an h7</h7>' != '<p>####### This will not be an h7</p>'
+E       - <h7>This will not be an h7</h7>
+E       ?  ^^                         ^^
+E       + <p>####### This will not be an h7</p>
+E       ?  ^ ++++++++                        ^
+
+exercises/practice/markdown/markdown_test.py:59: AssertionError
+_ MarkdownTest.test_with_markdown_symbols_in_the_header_text_that_should_not_be_interpreted _
+
+self = <markdown_test.MarkdownTest testMethod=test_with_markdown_symbols_in_the_header_text_that_should_not_be_interpreted>
+
+    def test_with_markdown_symbols_in_the_header_text_that_should_not_be_interpreted(
+        self,
+    ):
+>       self.assertEqual(
+            parse("# This is a header with # and * in the text"),
+            "<h1>This is a header with # and * in the text</h1>",
+        )
+E       AssertionError: '<h2>This is a header with # and * in the text</h2>' != '<h1>This is a header with # and * in the text</h1>'
+E       - <h2>This is a header with # and * in the text</h2>
+E       ?   ^                                             ^
+E       + <h1>This is a header with # and * in the text</h1>
+E       ?   ^                                             ^
+
+exercises/practice/markdown/markdown_test.py:78: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/markdown/markdown_test.py::MarkdownTest::test_h7_header_level_is_a_paragraph
+FAILED exercises/practice/markdown/markdown_test.py::MarkdownTest::test_with_markdown_symbols_in_the_header_text_that_should_not_be_interpreted
+========================= 2 failed, 15 passed in 0.04s =========================

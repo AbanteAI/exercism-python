@@ -1,0 +1,233 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 17 items
+
+exercises/practice/word-count/word_count_test.py F..FFFFF..F.FF.FF       [100%]
+
+=================================== FAILURES ===================================
+____ WordCountTest.test_alternating_word_separators_not_detected_as_a_word _____
+
+self = <word_count_test.WordCountTest testMethod=test_alternating_word_separators_not_detected_as_a_word>
+
+    def test_alternating_word_separators_not_detected_as_a_word(self):
+>       self.assertEqual(
+            count_words(",\n,one,\n ,two \n 'three'"), {"one": 1, "two": 1, "three": 1}
+        )
+E       AssertionError: {',': 1, ',one,': 1, ',two': 1, "'three'": 1} != {'one': 1, 'two': 1, 'three': 1}
+E       - {"'three'": 1, ',': 1, ',one,': 1, ',two': 1}
+E       + {'one': 1, 'three': 1, 'two': 1}
+
+exercises/practice/word-count/word_count_test.py:89: AssertionError
+___________________ WordCountTest.test_handles_cramped_lists ___________________
+
+self = <word_count_test.WordCountTest testMethod=test_handles_cramped_lists>
+
+    def test_handles_cramped_lists(self):
+>       self.assertEqual(count_words("one,two,three"), {"one": 1, "two": 1, "three": 1})
+E       AssertionError: {'one,two,three': 1} != {'one': 1, 'two': 1, 'three': 1}
+E       - {'one,two,three': 1}
+E       + {'one': 1, 'three': 1, 'two': 1}
+
+exercises/practice/word-count/word_count_test.py:26: AssertionError
+__________________ WordCountTest.test_handles_expanded_lists ___________________
+
+self = <word_count_test.WordCountTest testMethod=test_handles_expanded_lists>
+
+    def test_handles_expanded_lists(self):
+>       self.assertEqual(
+            count_words("one,\ntwo,\nthree"), {"one": 1, "two": 1, "three": 1}
+        )
+E       AssertionError: {'one,': 1, 'two,': 1, 'three': 1} != {'one': 1, 'two': 1, 'three': 1}
+E       - {'one,': 1, 'three': 1, 'two,': 1}
+E       ?      -                      -
+E       
+E       + {'one': 1, 'three': 1, 'two': 1}
+
+exercises/practice/word-count/word_count_test.py:29: AssertionError
+____________________ WordCountTest.test_ignore_punctuation _____________________
+
+self = <word_count_test.WordCountTest testMethod=test_ignore_punctuation>
+
+    def test_ignore_punctuation(self):
+>       self.assertEqual(
+            count_words("car: carpet as java: javascript!!&@$%^&"),
+            {"car": 1, "carpet": 1, "as": 1, "java": 1, "javascript": 1},
+        )
+E       AssertionError: {'car:': 1, 'carpet': 1, 'as': 1, 'java:': 1, 'javascript!!&@$%^&': 1} != {'car': 1, 'carpet': 1, 'as': 1, 'java': 1, 'javascript': 1}
+E       - {'as': 1, 'car:': 1, 'carpet': 1, 'java:': 1, 'javascript!!&@$%^&': 1}
+E       ?               -                        -                 --------
+E       
+E       + {'as': 1, 'car': 1, 'carpet': 1, 'java': 1, 'javascript': 1}
+
+exercises/practice/word-count/word_count_test.py:34: AssertionError
+______________________ WordCountTest.test_include_numbers ______________________
+
+self = <word_count_test.WordCountTest testMethod=test_include_numbers>
+
+    def test_include_numbers(self):
+>       self.assertEqual(
+            count_words("testing, 1, 2 testing"), {"testing": 2, "1": 1, "2": 1}
+        )
+E       AssertionError: {'testing,': 1, '1,': 1, '2': 1, 'testing': 1} != {'testing': 2, '1': 1, '2': 1}
+E       - {'1,': 1, '2': 1, 'testing': 1, 'testing,': 1}
+E       ?    -                         ^^^^^^^^^^^^^^^^
+E       
+E       + {'1': 1, '2': 1, 'testing': 2}
+E       ?                             ^
+
+exercises/practice/word-count/word_count_test.py:40: AssertionError
+_______________ WordCountTest.test_multiple_apostrophes_ignored ________________
+
+self = <word_count_test.WordCountTest testMethod=test_multiple_apostrophes_ignored>
+
+    def test_multiple_apostrophes_ignored(self):
+>       self.assertEqual(count_words("''hey''"), {"hey": 1})
+E       AssertionError: {"''hey''": 1} != {'hey': 1}
+E       - {"''hey''": 1}
+E       ?  --     --
+E       
+E       + {'hey': 1}
+
+exercises/practice/word-count/word_count_test.py:125: AssertionError
+_____________________ WordCountTest.test_non_alphanumeric ______________________
+
+self = <word_count_test.WordCountTest testMethod=test_non_alphanumeric>
+
+    def test_non_alphanumeric(self):
+>       self.assertEqual(
+            count_words("hey,my_spacebar_is_broken"),
+            {"hey": 1, "my": 1, "spacebar": 1, "is": 1, "broken": 1},
+        )
+E       AssertionError: {'hey,my_spacebar_is_broken': 1} != {'hey': 1, 'my': 1, 'spacebar': 1, 'is': 1, 'broken': 1}
+E       - {'hey,my_spacebar_is_broken': 1}
+E       + {'broken': 1, 'hey': 1, 'is': 1, 'my': 1, 'spacebar': 1}
+
+exercises/practice/word-count/word_count_test.py:119: AssertionError
+____________ WordCountTest.test_quotation_for_word_with_apostrophe _____________
+
+self = <word_count_test.WordCountTest testMethod=test_quotation_for_word_with_apostrophe>
+
+    def test_quotation_for_word_with_apostrophe(self):
+>       self.assertEqual(count_words("can, can't, 'can't'"), {"can": 1, "can't": 2})
+E       AssertionError: {'can,': 1, "can't,": 1, "'can't'": 1} != {'can': 1, "can't": 2}
+E       - {"'can't'": 1, "can't,": 1, 'can,': 1}
+E       + {'can': 1, "can't": 2}
+
+exercises/practice/word-count/word_count_test.py:94: AssertionError
+_______________ WordCountTest.test_substrings_from_the_beginning _______________
+
+self = <word_count_test.WordCountTest testMethod=test_substrings_from_the_beginning>
+
+    def test_substrings_from_the_beginning(self):
+>       self.assertEqual(
+            count_words("Joe can't tell between app, apple and a."),
+            {
+                "joe": 1,
+                "can't": 1,
+                "tell": 1,
+                "between": 1,
+                "app": 1,
+                "apple": 1,
+                "and": 1,
+                "a": 1,
+            },
+        )
+E       AssertionError: {'joe[21 chars]ll': 1, 'between': 1, 'app,': 1, 'apple': 1, 'and': 1, 'a.': 1} != {'joe[21 chars]ll': 1, 'between': 1, 'app': 1, 'apple': 1, 'and': 1, 'a': 1}
+E       - {'a.': 1,
+E       ?    -
+E       
+E       + {'a': 1,
+E          'and': 1,
+E       -  'app,': 1,
+E       ?      -
+E       
+E       +  'app': 1,
+E          'apple': 1,
+E          'between': 1,
+E          "can't": 1,
+E          'joe': 1,
+E          'tell': 1}
+
+exercises/practice/word-count/word_count_test.py:69: AssertionError
+_____________________ WordCountTest.test_with_apostrophes ______________________
+
+self = <word_count_test.WordCountTest testMethod=test_with_apostrophes>
+
+    def test_with_apostrophes(self):
+>       self.assertEqual(
+            count_words("'First: don't laugh. Then: don't cry. You're getting it.'"),
+            {
+                "first": 1,
+                "don't": 2,
+                "laugh": 1,
+                "then": 1,
+                "cry": 1,
+                "you're": 1,
+                "getting": 1,
+                "it": 1,
+            },
+        )
+E       AssertionError: {"'first:": 1, "don't": 2, 'laugh.': 1, 't[53 chars]": 1} != {'first': 1, "don't": 2, 'laugh': 1, 'then[46 chars]': 1}
+E       - {"'first:": 1,
+E       -  'cry.': 1,
+E       ? ^    -
+E       
+E       + {'cry': 1,
+E       ? ^
+E       
+E          "don't": 2,
+E       +  'first': 1,
+E          'getting': 1,
+E       -  "it.'": 1,
+E       ?  ^  - -
+E       
+E       +  'it': 1,
+E       ?  ^
+E       
+E       -  'laugh.': 1,
+E       ?        -
+E       
+E       +  'laugh': 1,
+E       -  'then:': 1,
+E       ?       -
+E       
+E       +  'then': 1,
+E          "you're": 1}
+
+exercises/practice/word-count/word_count_test.py:48: AssertionError
+______________________ WordCountTest.test_with_quotations ______________________
+
+self = <word_count_test.WordCountTest testMethod=test_with_quotations>
+
+    def test_with_quotations(self):
+>       self.assertEqual(
+            count_words("Joe can't tell between 'large' and large."),
+            {"joe": 1, "can't": 1, "tell": 1, "between": 1, "large": 2, "and": 1},
+        )
+E       AssertionError: {'joe[16 chars], 'tell': 1, 'between': 1, "'large'": 1, 'and': 1, 'large.': 1} != {'joe[16 chars], 'tell': 1, 'between': 1, 'large': 2, 'and': 1}
+E       + {'and': 1, 'between': 1, "can't": 1, 'joe': 1, 'large': 2, 'tell': 1}
+E       - {"'large'": 1,
+E       -  'and': 1,
+E       -  'between': 1,
+E       -  "can't": 1,
+E       -  'joe': 1,
+E       -  'large.': 1,
+E       -  'tell': 1}
+
+exercises/practice/word-count/word_count_test.py:63: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_alternating_word_separators_not_detected_as_a_word
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_handles_cramped_lists
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_handles_expanded_lists
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_ignore_punctuation
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_include_numbers
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_multiple_apostrophes_ignored
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_non_alphanumeric
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_quotation_for_word_with_apostrophe
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_substrings_from_the_beginning
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_with_apostrophes
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_with_quotations
+========================= 11 failed, 6 passed in 0.08s =========================

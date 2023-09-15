@@ -1,0 +1,185 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 18 items
+
+exercises/practice/robot-simulator/robot_simulator_test.py ..........FFF [ 72%]
+FFFFF                                                                    [100%]
+
+=================================== FAILURES ===================================
+_______________ RobotSimulatorTest.test_facing_east_increments_x _______________
+
+self = <robot_simulator_test.RobotSimulatorTest testMethod=test_facing_east_increments_x>
+
+    def test_facing_east_increments_x(self):
+        robot = Robot(EAST, 0, 0)
+        robot.move("A")
+    
+>       self.assertEqual(robot.coordinates, (1, 0))
+E       AssertionError: Tuples differ: (0, 0) != (1, 0)
+E       
+E       First differing element 0:
+E       0
+E       1
+E       
+E       - (0, 0)
+E       ?  ^
+E       
+E       + (1, 0)
+E       ?  ^
+
+exercises/practice/robot-simulator/robot_simulator_test.py:108: AssertionError
+______________ RobotSimulatorTest.test_facing_north_increments_y _______________
+
+self = <robot_simulator_test.RobotSimulatorTest testMethod=test_facing_north_increments_y>
+
+    def test_facing_north_increments_y(self):
+        robot = Robot(NORTH, 0, 0)
+        robot.move("A")
+    
+>       self.assertEqual(robot.coordinates, (0, 1))
+E       AssertionError: Tuples differ: (0, 0) != (0, 1)
+E       
+E       First differing element 1:
+E       0
+E       1
+E       
+E       - (0, 0)
+E       ?     ^
+E       
+E       + (0, 1)
+E       ?     ^
+
+exercises/practice/robot-simulator/robot_simulator_test.py:94: AssertionError
+______________ RobotSimulatorTest.test_facing_south_decrements_y _______________
+
+self = <robot_simulator_test.RobotSimulatorTest testMethod=test_facing_south_decrements_y>
+
+    def test_facing_south_decrements_y(self):
+        robot = Robot(SOUTH, 0, 0)
+        robot.move("A")
+    
+>       self.assertEqual(robot.coordinates, (0, -1))
+E       AssertionError: Tuples differ: (0, 0) != (0, -1)
+E       
+E       First differing element 1:
+E       0
+E       -1
+E       
+E       - (0, 0)
+E       ?     ^
+E       
+E       + (0, -1)
+E       ?     ^^
+
+exercises/practice/robot-simulator/robot_simulator_test.py:101: AssertionError
+_______________ RobotSimulatorTest.test_facing_west_decrements_x _______________
+
+self = <robot_simulator_test.RobotSimulatorTest testMethod=test_facing_west_decrements_x>
+
+    def test_facing_west_decrements_x(self):
+        robot = Robot(WEST, 0, 0)
+        robot.move("A")
+    
+>       self.assertEqual(robot.coordinates, (-1, 0))
+E       AssertionError: Tuples differ: (0, 0) != (-1, 0)
+E       
+E       First differing element 0:
+E       0
+E       -1
+E       
+E       - (0, 0)
+E       ?  ^
+E       
+E       + (-1, 0)
+E       ?  ^^
+
+exercises/practice/robot-simulator/robot_simulator_test.py:115: AssertionError
+________________ RobotSimulatorTest.test_moving_east_and_north _________________
+
+self = <robot_simulator_test.RobotSimulatorTest testMethod=test_moving_east_and_north>
+
+    def test_moving_east_and_north(self):
+        robot = Robot(SOUTH, 8, 4)
+        robot.move("LAAARRRALLLL")
+    
+>       self.assertEqual(robot.coordinates, (11, 5))
+E       AssertionError: Tuples differ: (8, 4) != (11, 5)
+E       
+E       First differing element 0:
+E       8
+E       11
+E       
+E       - (8, 4)
+E       + (11, 5)
+
+exercises/practice/robot-simulator/robot_simulator_test.py:144: AssertionError
+__________ RobotSimulatorTest.test_moving_east_and_north_from_readme ___________
+
+self = <robot_simulator_test.RobotSimulatorTest testMethod=test_moving_east_and_north_from_readme>
+
+    def test_moving_east_and_north_from_readme(self):
+        robot = Robot(NORTH, 7, 3)
+        robot.move("RAALAL")
+    
+>       self.assertEqual(robot.coordinates, (9, 4))
+E       AssertionError: Tuples differ: (7, 3) != (9, 4)
+E       
+E       First differing element 0:
+E       7
+E       9
+E       
+E       - (7, 3)
+E       + (9, 4)
+
+exercises/practice/robot-simulator/robot_simulator_test.py:123: AssertionError
+________________ RobotSimulatorTest.test_moving_west_and_north _________________
+
+self = <robot_simulator_test.RobotSimulatorTest testMethod=test_moving_west_and_north>
+
+    def test_moving_west_and_north(self):
+        robot = Robot(NORTH, 0, 0)
+        robot.move("LAAARALA")
+    
+>       self.assertEqual(robot.coordinates, (-4, 1))
+E       AssertionError: Tuples differ: (0, 0) != (-4, 1)
+E       
+E       First differing element 0:
+E       0
+E       -4
+E       
+E       - (0, 0)
+E       + (-4, 1)
+
+exercises/practice/robot-simulator/robot_simulator_test.py:130: AssertionError
+________________ RobotSimulatorTest.test_moving_west_and_south _________________
+
+self = <robot_simulator_test.RobotSimulatorTest testMethod=test_moving_west_and_south>
+
+    def test_moving_west_and_south(self):
+        robot = Robot(EAST, 2, -7)
+        robot.move("RRAAAAALA")
+    
+>       self.assertEqual(robot.coordinates, (-3, -8))
+E       AssertionError: Tuples differ: (2, -7) != (-3, -8)
+E       
+E       First differing element 0:
+E       2
+E       -3
+E       
+E       - (2, -7)
+E       + (-3, -8)
+
+exercises/practice/robot-simulator/robot_simulator_test.py:137: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/robot-simulator/robot_simulator_test.py::RobotSimulatorTest::test_facing_east_increments_x
+FAILED exercises/practice/robot-simulator/robot_simulator_test.py::RobotSimulatorTest::test_facing_north_increments_y
+FAILED exercises/practice/robot-simulator/robot_simulator_test.py::RobotSimulatorTest::test_facing_south_decrements_y
+FAILED exercises/practice/robot-simulator/robot_simulator_test.py::RobotSimulatorTest::test_facing_west_decrements_x
+FAILED exercises/practice/robot-simulator/robot_simulator_test.py::RobotSimulatorTest::test_moving_east_and_north
+FAILED exercises/practice/robot-simulator/robot_simulator_test.py::RobotSimulatorTest::test_moving_east_and_north_from_readme
+FAILED exercises/practice/robot-simulator/robot_simulator_test.py::RobotSimulatorTest::test_moving_west_and_north
+FAILED exercises/practice/robot-simulator/robot_simulator_test.py::RobotSimulatorTest::test_moving_west_and_south
+========================= 8 failed, 10 passed in 0.06s =========================

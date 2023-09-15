@@ -1,0 +1,52 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 11 items
+
+exercises/practice/binary/binary_test.py .......FFFF                     [100%]
+
+=================================== FAILURES ===================================
+_______________ BinaryTest.test_invalid_binary_number_not_base2 ________________
+
+self = <binary_test.BinaryTest testMethod=test_invalid_binary_number_not_base2>
+
+    def test_invalid_binary_number_not_base2(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/binary/binary_test.py:41: AssertionError
+_______________ BinaryTest.test_invalid_binary_numbers_with_text _______________
+
+self = <binary_test.BinaryTest testMethod=test_invalid_binary_numbers_with_text>
+
+    def test_invalid_binary_numbers_with_text(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/binary/binary_test.py:47: AssertionError
+___________________ BinaryTest.test_invalid_binary_text_only ___________________
+
+self = <binary_test.BinaryTest testMethod=test_invalid_binary_text_only>
+
+    def test_invalid_binary_text_only(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/binary/binary_test.py:35: AssertionError
+_______________ BinaryTest.test_invalid_binary_text_with_numbers _______________
+
+self = <binary_test.BinaryTest testMethod=test_invalid_binary_text_with_numbers>
+
+    def test_invalid_binary_text_with_numbers(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/binary/binary_test.py:53: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_invalid_binary_number_not_base2
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_invalid_binary_numbers_with_text
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_invalid_binary_text_only
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_invalid_binary_text_with_numbers
+========================= 4 failed, 7 passed in 0.38s ==========================

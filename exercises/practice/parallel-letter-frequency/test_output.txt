@@ -1,0 +1,258 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 7 items
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py F [ 14%]
+FFFFFF                                                                   [100%]
+
+=================================== FAILURES ===================================
+_____________ ParallelLetterFrequencyTest.test_case_insensitivity ______________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_case_insensitivity>
+
+    def test_case_insensitivity(self):
+>       actual = calculate(['aA'])
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:15: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency.py:9: in calculate
+    results = pool.map(count_letters, text_input)
+/usr/lib/python3.10/multiprocessing/pool.py:367: in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+/usr/lib/python3.10/multiprocessing/pool.py:774: in get
+    raise self._value
+/usr/lib/python3.10/multiprocessing/pool.py:540: in _handle_tasks
+    put(task)
+/usr/lib/python3.10/multiprocessing/connection.py:206: in send
+    self._send_bytes(_ForkingPickler.dumps(obj))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'multiprocessing.reduction.ForkingPickler'>
+obj = (0, 0, <function mapstar at 0x7f4dc073a3b0>, ((<function calculate.<locals>.count_letters at 0x7f4dc0896680>, ('aA',)),), {})
+protocol = None
+
+    @classmethod
+    def dumps(cls, obj, protocol=None):
+        buf = io.BytesIO()
+>       cls(buf, protocol).dump(obj)
+E       AttributeError: Can't pickle local object 'calculate.<locals>.count_letters'
+
+/usr/lib/python3.10/multiprocessing/reduction.py:51: AttributeError
+_______________ ParallelLetterFrequencyTest.test_multiline_text ________________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_multiline_text>
+
+    def test_multiline_text(self):
+        text_input = "3 Quotes from Excerism Homepage:\n" + \
+                     "\tOne moment you feel like you're\n" + \
+                     "getting it. The next moment you're\n" + \
+                     "stuck.\n" + \
+                     "\tYou know what it’s like to be fluent.\n" + \
+                     "Suddenly you’re feeling incompetent\n" + \
+                     "and clumsy.\n" + \
+                     "\tHaphazard, convoluted code is\n" + \
+                     "infuriating, not to mention costly. That\n" + \
+                     "slapdash explosion of complexity is an\n" + \
+                     "expensive yak shave waiting to\n" + \
+                     "happen."
+>       actual = calculate(text_input.split('\n'))
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency.py:9: in calculate
+    results = pool.map(count_letters, text_input)
+/usr/lib/python3.10/multiprocessing/pool.py:367: in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+/usr/lib/python3.10/multiprocessing/pool.py:774: in get
+    raise self._value
+/usr/lib/python3.10/multiprocessing/pool.py:540: in _handle_tasks
+    put(task)
+/usr/lib/python3.10/multiprocessing/connection.py:206: in send
+    self._send_bytes(_ForkingPickler.dumps(obj))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'multiprocessing.reduction.ForkingPickler'>
+obj = (1, 0, <function mapstar at 0x7f4dc073a3b0>, ((<function calculate.<locals>.count_letters at 0x7f4dbedf85e0>, ('3 Quotes from Excerism Homepage:',)),), {})
+protocol = None
+
+    @classmethod
+    def dumps(cls, obj, protocol=None):
+        buf = io.BytesIO()
+>       cls(buf, protocol).dump(obj)
+E       AttributeError: Can't pickle local object 'calculate.<locals>.count_letters'
+
+/usr/lib/python3.10/multiprocessing/reduction.py:51: AttributeError
+___________________ ParallelLetterFrequencyTest.test_numbers ___________________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_numbers>
+
+    def test_numbers(self):
+>       actual = calculate(['012', '345', '6789'])
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency.py:9: in calculate
+    results = pool.map(count_letters, text_input)
+/usr/lib/python3.10/multiprocessing/pool.py:367: in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+/usr/lib/python3.10/multiprocessing/pool.py:774: in get
+    raise self._value
+/usr/lib/python3.10/multiprocessing/pool.py:540: in _handle_tasks
+    put(task)
+/usr/lib/python3.10/multiprocessing/connection.py:206: in send
+    self._send_bytes(_ForkingPickler.dumps(obj))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'multiprocessing.reduction.ForkingPickler'>
+obj = (2, 0, <function mapstar at 0x7f4dc073a3b0>, ((<function calculate.<locals>.count_letters at 0x7f4dc0774f70>, ('012',)),), {})
+protocol = None
+
+    @classmethod
+    def dumps(cls, obj, protocol=None):
+        buf = io.BytesIO()
+>       cls(buf, protocol).dump(obj)
+E       AttributeError: Can't pickle local object 'calculate.<locals>.count_letters'
+
+/usr/lib/python3.10/multiprocessing/reduction.py:51: AttributeError
+_________________ ParallelLetterFrequencyTest.test_one_letter __________________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_one_letter>
+
+    def test_one_letter(self):
+>       actual = calculate(['a'])
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency.py:9: in calculate
+    results = pool.map(count_letters, text_input)
+/usr/lib/python3.10/multiprocessing/pool.py:367: in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+/usr/lib/python3.10/multiprocessing/pool.py:774: in get
+    raise self._value
+/usr/lib/python3.10/multiprocessing/pool.py:540: in _handle_tasks
+    put(task)
+/usr/lib/python3.10/multiprocessing/connection.py:206: in send
+    self._send_bytes(_ForkingPickler.dumps(obj))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'multiprocessing.reduction.ForkingPickler'>
+obj = (3, 0, <function mapstar at 0x7f4dc073a3b0>, ((<function calculate.<locals>.count_letters at 0x7f4dbedf9d80>, ('a',)),), {})
+protocol = None
+
+    @classmethod
+    def dumps(cls, obj, protocol=None):
+        buf = io.BytesIO()
+>       cls(buf, protocol).dump(obj)
+E       AttributeError: Can't pickle local object 'calculate.<locals>.count_letters'
+
+/usr/lib/python3.10/multiprocessing/reduction.py:51: AttributeError
+________________ ParallelLetterFrequencyTest.test_punctuations _________________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_punctuations>
+
+    def test_punctuations(self):
+>       actual = calculate([r'[]\;,', './{}|', ':"<>?'])
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency.py:9: in calculate
+    results = pool.map(count_letters, text_input)
+/usr/lib/python3.10/multiprocessing/pool.py:367: in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+/usr/lib/python3.10/multiprocessing/pool.py:774: in get
+    raise self._value
+/usr/lib/python3.10/multiprocessing/pool.py:540: in _handle_tasks
+    put(task)
+/usr/lib/python3.10/multiprocessing/connection.py:206: in send
+    self._send_bytes(_ForkingPickler.dumps(obj))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'multiprocessing.reduction.ForkingPickler'>
+obj = (4, 0, <function mapstar at 0x7f4dc073a3b0>, ((<function calculate.<locals>.count_letters at 0x7f4dbedfa4d0>, ('[]\\;,',)),), {})
+protocol = None
+
+    @classmethod
+    def dumps(cls, obj, protocol=None):
+        buf = io.BytesIO()
+>       cls(buf, protocol).dump(obj)
+E       AttributeError: Can't pickle local object 'calculate.<locals>.count_letters'
+
+/usr/lib/python3.10/multiprocessing/reduction.py:51: AttributeError
+___ ParallelLetterFrequencyTest.test_repeated_string_with_known_frequencies ____
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_repeated_string_with_known_frequencies>
+
+    def test_repeated_string_with_known_frequencies(self):
+        letter_frequency = 3
+        text_input = 'abc\n' * letter_frequency
+>       actual = calculate(text_input.split('\n'))
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency.py:9: in calculate
+    results = pool.map(count_letters, text_input)
+/usr/lib/python3.10/multiprocessing/pool.py:367: in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+/usr/lib/python3.10/multiprocessing/pool.py:774: in get
+    raise self._value
+/usr/lib/python3.10/multiprocessing/pool.py:540: in _handle_tasks
+    put(task)
+/usr/lib/python3.10/multiprocessing/connection.py:206: in send
+    self._send_bytes(_ForkingPickler.dumps(obj))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'multiprocessing.reduction.ForkingPickler'>
+obj = (5, 0, <function mapstar at 0x7f4dc073a3b0>, ((<function calculate.<locals>.count_letters at 0x7f4dbedfac20>, ('abc',)),), {})
+protocol = None
+
+    @classmethod
+    def dumps(cls, obj, protocol=None):
+        buf = io.BytesIO()
+>       cls(buf, protocol).dump(obj)
+E       AttributeError: Can't pickle local object 'calculate.<locals>.count_letters'
+
+/usr/lib/python3.10/multiprocessing/reduction.py:51: AttributeError
+_________________ ParallelLetterFrequencyTest.test_whitespaces _________________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_whitespaces>
+
+    def test_whitespaces(self):
+>       actual = calculate(['  ', '\t ', '\n\n'])
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency.py:9: in calculate
+    results = pool.map(count_letters, text_input)
+/usr/lib/python3.10/multiprocessing/pool.py:367: in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+/usr/lib/python3.10/multiprocessing/pool.py:774: in get
+    raise self._value
+/usr/lib/python3.10/multiprocessing/pool.py:540: in _handle_tasks
+    put(task)
+/usr/lib/python3.10/multiprocessing/connection.py:206: in send
+    self._send_bytes(_ForkingPickler.dumps(obj))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'multiprocessing.reduction.ForkingPickler'>
+obj = (6, 0, <function mapstar at 0x7f4dc073a3b0>, ((<function calculate.<locals>.count_letters at 0x7f4dbedfb370>, ('  ',)),), {})
+protocol = None
+
+    @classmethod
+    def dumps(cls, obj, protocol=None):
+        buf = io.BytesIO()
+>       cls(buf, protocol).dump(obj)
+E       AttributeError: Can't pickle local object 'calculate.<locals>.count_letters'
+
+/usr/lib/python3.10/multiprocessing/reduction.py:51: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_case_insensitivity
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_multiline_text
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_numbers
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_one_letter
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_punctuations
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_repeated_string_with_known_frequencies
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_whitespaces
+============================== 7 failed in 0.44s ===============================

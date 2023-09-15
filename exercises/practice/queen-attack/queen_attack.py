@@ -1,6 +1,10 @@
 class Queen:
-    def __init__(self, row, column):
-        pass
+        self.row = row
+        self.column = column
 
     def can_attack(self, another_queen):
-        pass
+        if self.row == another_queen.row or self.column == another_queen.column:
+            return True
+        if abs(self.row - another_queen.row) == abs(self.column - another_queen.column):
+            return True
+        return False

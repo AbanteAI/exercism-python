@@ -1,0 +1,40 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 25 items
+
+exercises/practice/bob/bob_test.py ....FF...................             [100%]
+
+=================================== FAILURES ===================================
+_____________________ BobTest.test_ending_with_whitespace ______________________
+
+self = <bob_test.BobTest testMethod=test_ending_with_whitespace>
+
+    def test_ending_with_whitespace(self):
+>       self.assertEqual(
+            response("Okay if like my  spacebar  quite a bit?   "), "Sure."
+        )
+E       AssertionError: 'Whatever.' != 'Sure.'
+E       - Whatever.
+E       + Sure.
+
+exercises/practice/bob/bob_test.py:92: AssertionError
+________________________ BobTest.test_forceful_question ________________________
+
+self = <bob_test.BobTest testMethod=test_forceful_question>
+
+    def test_forceful_question(self):
+>       self.assertEqual(
+            response("WHAT'S GOING ON?"), "Calm down, I know what I'm doing!"
+        )
+E       AssertionError: 'Sure.' != "Calm down, I know what I'm doing!"
+E       - Sure.
+E       + Calm down, I know what I'm doing!
+
+exercises/practice/bob/bob_test.py:42: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_ending_with_whitespace
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_forceful_question - ...
+========================= 2 failed, 23 passed in 0.05s =========================

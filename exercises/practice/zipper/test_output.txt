@@ -1,0 +1,450 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 14 items
+
+exercises/practice/zipper/zipper_test.py .FFFFFFFFFFF.F                  [100%]
+
+=================================== FAILURES ===================================
+___________________________ ZipperTest.test_dead_end ___________________________
+
+self = <zipper_test.ZipperTest testMethod=test_dead_end>
+
+    def test_dead_end(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+>       result = zipper.left().left()
+
+exercises/practice/zipper/zipper_test.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <zipper.Zipper object at 0x7f49f534d450>
+
+    def left(self):
+        if len(self.tree) < 2:
+            return None
+>       return Zipper(self.tree[1], self.path + [0])
+E       KeyError: 1
+
+exercises/practice/zipper/zipper.py:60: KeyError
+________________ ZipperTest.test_different_paths_to_same_zipper ________________
+
+self = <zipper_test.ZipperTest testMethod=test_different_paths_to_same_zipper>
+
+    def test_different_paths_to_same_zipper(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+>       result = Zipper.from_tree(initial).left().up().right().to_tree()
+
+exercises/practice/zipper/zipper_test.py:306: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <zipper.Zipper object at 0x7f49f53af9d0>
+
+    def left(self):
+        if len(self.tree) < 2:
+            return None
+>       return Zipper(self.tree[1], self.path + [0])
+E       KeyError: 1
+
+exercises/practice/zipper/zipper.py:60: KeyError
+______________________ ZipperTest.test_left_right_and_up _______________________
+
+self = <zipper_test.ZipperTest testMethod=test_left_right_and_up>
+
+    def test_left_right_and_up(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+>       result = zipper.left().up().right().up().left().right().value()
+
+exercises/practice/zipper/zipper_test.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <zipper.Zipper object at 0x7f49f539a1d0>
+
+    def left(self):
+        if len(self.tree) < 2:
+            return None
+>       return Zipper(self.tree[1], self.path + [0])
+E       KeyError: 1
+
+exercises/practice/zipper/zipper.py:60: KeyError
+_____________________ ZipperTest.test_left_right_and_value _____________________
+
+self = <zipper_test.ZipperTest testMethod=test_left_right_and_value>
+
+    def test_left_right_and_value(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+>       result = zipper.left().right().value()
+
+exercises/practice/zipper/zipper_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <zipper.Zipper object at 0x7f49f5348820>
+
+    def left(self):
+        if len(self.tree) < 2:
+            return None
+>       return Zipper(self.tree[1], self.path + [0])
+E       KeyError: 1
+
+exercises/practice/zipper/zipper.py:60: KeyError
+______________________ ZipperTest.test_set_left_with_leaf ______________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_left_with_leaf>
+
+    def test_set_left_with_leaf(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": {"value": 5, "left": None, "right": None},
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+        result = (
+>           zipper.left().set_left({"value": 5, "left": None, "right": None}).to_tree()
+        )
+
+exercises/practice/zipper/zipper_test.py:211: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <zipper.Zipper object at 0x7f49f534e320>
+
+    def left(self):
+        if len(self.tree) < 2:
+            return None
+>       return Zipper(self.tree[1], self.path + [0])
+E       KeyError: 1
+
+exercises/practice/zipper/zipper.py:60: KeyError
+_____________________ ZipperTest.test_set_right_with_null ______________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_right_with_null>
+
+    def test_set_right_with_null(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {"value": 2, "left": None, "right": None},
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+>       result = zipper.left().set_right(None).to_tree()
+
+exercises/practice/zipper/zipper_test.py:233: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <zipper.Zipper object at 0x7f49f5349e40>
+
+    def left(self):
+        if len(self.tree) < 2:
+            return None
+>       return Zipper(self.tree[1], self.path + [0])
+E       KeyError: 1
+
+exercises/practice/zipper/zipper.py:60: KeyError
+____________________ ZipperTest.test_set_right_with_subtree ____________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_right_with_subtree>
+
+    def test_set_right_with_subtree(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {
+                "value": 6,
+                "left": {"value": 7, "left": None, "right": None},
+                "right": {"value": 8, "left": None, "right": None},
+            },
+        }
+    
+        zipper = Zipper.from_tree(initial)
+        result = zipper.set_right(
+            {
+                "value": 6,
+                "left": {"value": 7, "left": None, "right": None},
+                "right": {"value": 8, "left": None, "right": None},
+            }
+>       ).to_tree()
+E       AttributeError: 'NoneType' object has no attribute 'to_tree'
+
+exercises/practice/zipper/zipper_test.py:268: AttributeError
+__________________________ ZipperTest.test_set_value ___________________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_value>
+
+    def test_set_value(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 5,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+>       result = zipper.left().set_value(5).to_tree()
+
+exercises/practice/zipper/zipper_test.py:160: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <zipper.Zipper object at 0x7f49f53acee0>
+
+    def left(self):
+        if len(self.tree) < 2:
+            return None
+>       return Zipper(self.tree[1], self.path + [0])
+E       KeyError: 1
+
+exercises/practice/zipper/zipper.py:60: KeyError
+________________ ZipperTest.test_set_value_after_traversing_up _________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_value_after_traversing_up>
+
+    def test_set_value_after_traversing_up(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 5,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+>       result = zipper.left().right().up().set_value(5).to_tree()
+
+exercises/practice/zipper/zipper_test.py:185: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <zipper.Zipper object at 0x7f49f5398dc0>
+
+    def left(self):
+        if len(self.tree) < 2:
+            return None
+>       return Zipper(self.tree[1], self.path + [0])
+E       KeyError: 1
+
+exercises/practice/zipper/zipper.py:60: KeyError
+___________________ ZipperTest.test_set_value_on_deep_focus ____________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_value_on_deep_focus>
+
+    def test_set_value_on_deep_focus(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 5, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+>       result = zipper.left().right().set_value(5).to_tree()
+
+exercises/practice/zipper/zipper_test.py:293: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <zipper.Zipper object at 0x7f49f5349cc0>
+
+    def left(self):
+        if len(self.tree) < 2:
+            return None
+>       return Zipper(self.tree[1], self.path + [0])
+E       KeyError: 1
+
+exercises/practice/zipper/zipper.py:60: KeyError
+______ ZipperTest.test_test_ability_to_descend_multiple_levels_and_return ______
+
+self = <zipper_test.ZipperTest testMethod=test_test_ability_to_descend_multiple_levels_and_return>
+
+    def test_test_ability_to_descend_multiple_levels_and_return(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+>       result = zipper.left().right().up().up().value()
+
+exercises/practice/zipper/zipper_test.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <zipper.Zipper object at 0x7f49f539ed10>
+
+    def left(self):
+        if len(self.tree) < 2:
+            return None
+>       return Zipper(self.tree[1], self.path + [0])
+E       KeyError: 1
+
+exercises/practice/zipper/zipper.py:60: KeyError
+_____________________ ZipperTest.test_tree_from_deep_focus _____________________
+
+self = <zipper_test.ZipperTest testMethod=test_tree_from_deep_focus>
+
+    def test_tree_from_deep_focus(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        zipper = Zipper.from_tree(initial)
+>       result = zipper.left().right().to_tree()
+
+exercises/practice/zipper/zipper_test.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <zipper.Zipper object at 0x7f49f5390970>
+
+    def left(self):
+        if len(self.tree) < 2:
+            return None
+>       return Zipper(self.tree[1], self.path + [0])
+E       KeyError: 1
+
+exercises/practice/zipper/zipper.py:60: KeyError
+=========================== short test summary info ============================
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_dead_end - ...
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_different_paths_to_same_zipper
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_left_right_and_up
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_left_right_and_value
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_set_left_with_leaf
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_set_right_with_null
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_set_right_with_subtree
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_set_value
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_set_value_after_traversing_up
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_set_value_on_deep_focus
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_test_ability_to_descend_multiple_levels_and_return
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_tree_from_deep_focus
+========================= 12 failed, 2 passed in 0.11s =========================

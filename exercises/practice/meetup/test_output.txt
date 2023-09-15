@@ -1,0 +1,3610 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 103 items
+
+exercises/practice/meetup/meetup_test.py FFFFFFFFFFFFFFFFFFFFFF.FFFFFFFF [ 30%]
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.....................FFFFFFFFFFFFFF [100%]
+
+=================================== FAILURES ===================================
+__________________ MeetupTest.test_fifth_monday_of_march_2015 __________________
+
+self = <meetup_test.MeetupTest testMethod=test_fifth_monday_of_march_2015>
+
+    def test_fifth_monday_of_march_2015(self):
+>       self.assertEqual(meetup(2015, 3, "fifth", "Monday"), date(2015, 3, 30))
+
+exercises/practice/meetup/meetup_test.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2015, month = 3, week = 'fifth', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_______________ MeetupTest.test_fifth_saturday_of_february_2020 ________________
+
+self = <meetup_test.MeetupTest testMethod=test_fifth_saturday_of_february_2020>
+
+    def test_fifth_saturday_of_february_2020(self):
+>       self.assertEqual(meetup(2020, 2, "fifth", "Saturday"), date(2020, 2, 29))
+
+exercises/practice/meetup/meetup_test.py:309: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2020, month = 2, week = 'fifth', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_______________ MeetupTest.test_fifth_thursday_of_february_2024 ________________
+
+self = <meetup_test.MeetupTest testMethod=test_fifth_thursday_of_february_2024>
+
+    def test_fifth_thursday_of_february_2024(self):
+>       self.assertEqual(meetup(2024, 2, "fifth", "Thursday"), date(2024, 2, 29))
+
+exercises/practice/meetup/meetup_test.py:306: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2024, month = 2, week = 'fifth', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+___________ MeetupTest.test_last_friday_in_a_month_with_five_fridays ___________
+
+self = <meetup_test.MeetupTest testMethod=test_last_friday_in_a_month_with_five_fridays>
+
+    def test_last_friday_in_a_month_with_five_fridays(self):
+>       self.assertEqual(meetup(2013, 11, "last", "Friday"), date(2013, 11, 29))
+
+exercises/practice/meetup/meetup_test.py:271: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 11, week = 'last', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+___________ MeetupTest.test_last_friday_in_a_month_with_four_fridays ___________
+
+self = <meetup_test.MeetupTest testMethod=test_last_friday_in_a_month_with_four_fridays>
+
+    def test_last_friday_in_a_month_with_four_fridays(self):
+>       self.assertEqual(meetup(2013, 12, "last", "Friday"), date(2013, 12, 27))
+
+exercises/practice/meetup/meetup_test.py:274: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 12, week = 'last', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           ValueError: month must be in 1..12
+
+exercises/practice/meetup/meetup.py:36: ValueError
+___________ MeetupTest.test_last_monday_in_a_month_with_five_mondays ___________
+
+self = <meetup_test.MeetupTest testMethod=test_last_monday_in_a_month_with_five_mondays>
+
+    def test_last_monday_in_a_month_with_five_mondays(self):
+>       self.assertEqual(meetup(2013, 4, "last", "Monday"), date(2013, 4, 29))
+
+exercises/practice/meetup/meetup_test.py:250: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, week = 'last', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+___________ MeetupTest.test_last_monday_in_a_month_with_four_mondays ___________
+
+self = <meetup_test.MeetupTest testMethod=test_last_monday_in_a_month_with_four_mondays>
+
+    def test_last_monday_in_a_month_with_four_mondays(self):
+>       self.assertEqual(meetup(2013, 3, "last", "Monday"), date(2013, 3, 25))
+
+exercises/practice/meetup/meetup_test.py:247: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 3, week = 'last', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+_________ MeetupTest.test_last_saturday_in_a_month_with_four_saturdays _________
+
+self = <meetup_test.MeetupTest testMethod=test_last_saturday_in_a_month_with_four_saturdays>
+
+    def test_last_saturday_in_a_month_with_four_saturdays(self):
+>       self.assertEqual(meetup(2013, 1, "last", "Saturday"), date(2013, 1, 26))
+
+exercises/practice/meetup/meetup_test.py:277: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 1, week = 'last', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+______ MeetupTest.test_last_saturday_in_another_month_with_four_saturdays ______
+
+self = <meetup_test.MeetupTest testMethod=test_last_saturday_in_another_month_with_four_saturdays>
+
+    def test_last_saturday_in_another_month_with_four_saturdays(self):
+>       self.assertEqual(meetup(2013, 2, "last", "Saturday"), date(2013, 2, 23))
+
+exercises/practice/meetup/meetup_test.py:280: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 2, week = 'last', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+___________ MeetupTest.test_last_sunday_in_a_month_with_five_sundays ___________
+
+self = <meetup_test.MeetupTest testMethod=test_last_sunday_in_a_month_with_five_sundays>
+
+    def test_last_sunday_in_a_month_with_five_sundays(self):
+>       self.assertEqual(meetup(2013, 3, "last", "Sunday"), date(2013, 3, 31))
+
+exercises/practice/meetup/meetup_test.py:283: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 3, week = 'last', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+___________ MeetupTest.test_last_sunday_in_a_month_with_four_sundays ___________
+
+self = <meetup_test.MeetupTest testMethod=test_last_sunday_in_a_month_with_four_sundays>
+
+    def test_last_sunday_in_a_month_with_four_sundays(self):
+>       self.assertEqual(meetup(2013, 4, "last", "Sunday"), date(2013, 4, 28))
+
+exercises/practice/meetup/meetup_test.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, week = 'last', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+___________________ MeetupTest.test_last_sunday_of_june_2024 ___________________
+
+self = <meetup_test.MeetupTest testMethod=test_last_sunday_of_june_2024>
+
+    def test_last_sunday_of_june_2024(self):
+>       self.assertEqual(meetup(2024, 6, "last", "Sunday"), date(2024, 6, 30))
+
+exercises/practice/meetup/meetup_test.py:312: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2024, month = 6, week = 'last', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+_________ MeetupTest.test_last_thursday_in_a_month_with_five_thursdays _________
+
+self = <meetup_test.MeetupTest testMethod=test_last_thursday_in_a_month_with_five_thursdays>
+
+    def test_last_thursday_in_a_month_with_five_thursdays(self):
+>       self.assertEqual(meetup(2013, 10, "last", "Thursday"), date(2013, 10, 31))
+
+exercises/practice/meetup/meetup_test.py:268: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 10, week = 'last', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+_________ MeetupTest.test_last_thursday_in_a_month_with_four_thursdays _________
+
+self = <meetup_test.MeetupTest testMethod=test_last_thursday_in_a_month_with_four_thursdays>
+
+    def test_last_thursday_in_a_month_with_four_thursdays(self):
+>       self.assertEqual(meetup(2013, 9, "last", "Thursday"), date(2013, 9, 26))
+
+exercises/practice/meetup/meetup_test.py:265: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 9, week = 'last', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+__________ MeetupTest.test_last_tuesday_in_a_month_with_four_tuesdays __________
+
+self = <meetup_test.MeetupTest testMethod=test_last_tuesday_in_a_month_with_four_tuesdays>
+
+    def test_last_tuesday_in_a_month_with_four_tuesdays(self):
+>       self.assertEqual(meetup(2013, 5, "last", "Tuesday"), date(2013, 5, 28))
+
+exercises/practice/meetup/meetup_test.py:253: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 5, week = 'last', day_of_week = 'Tuesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+_______ MeetupTest.test_last_tuesday_in_another_month_with_four_tuesdays _______
+
+self = <meetup_test.MeetupTest testMethod=test_last_tuesday_in_another_month_with_four_tuesdays>
+
+    def test_last_tuesday_in_another_month_with_four_tuesdays(self):
+>       self.assertEqual(meetup(2013, 6, "last", "Tuesday"), date(2013, 6, 25))
+
+exercises/practice/meetup/meetup_test.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 6, week = 'last', day_of_week = 'Tuesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+________ MeetupTest.test_last_wednesday_in_a_month_with_five_wednesdays ________
+
+self = <meetup_test.MeetupTest testMethod=test_last_wednesday_in_a_month_with_five_wednesdays>
+
+    def test_last_wednesday_in_a_month_with_five_wednesdays(self):
+>       self.assertEqual(meetup(2013, 7, "last", "Wednesday"), date(2013, 7, 31))
+
+exercises/practice/meetup/meetup_test.py:259: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 7, week = 'last', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+________ MeetupTest.test_last_wednesday_in_a_month_with_four_wednesdays ________
+
+self = <meetup_test.MeetupTest testMethod=test_last_wednesday_in_a_month_with_four_wednesdays>
+
+    def test_last_wednesday_in_a_month_with_four_wednesdays(self):
+>       self.assertEqual(meetup(2013, 8, "last", "Wednesday"), date(2013, 8, 28))
+
+exercises/practice/meetup/meetup_test.py:262: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 8, week = 'last', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+_ MeetupTest.test_last_wednesday_in_december_that_is_also_the_last_day_of_the_year _
+
+self = <meetup_test.MeetupTest testMethod=test_last_wednesday_in_december_that_is_also_the_last_day_of_the_year>
+
+    def test_last_wednesday_in_december_that_is_also_the_last_day_of_the_year(self):
+>       self.assertEqual(meetup(2014, 12, "last", "Wednesday"), date(2014, 12, 31))
+
+exercises/practice/meetup/meetup_test.py:292: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2014, month = 12, week = 'last', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           ValueError: month must be in 1..12
+
+exercises/practice/meetup/meetup.py:36: ValueError
+___________ MeetupTest.test_nonexistent_fifth_friday_of_august_2022 ____________
+
+self = <meetup_test.MeetupTest testMethod=test_nonexistent_fifth_friday_of_august_2022>
+
+    def test_nonexistent_fifth_friday_of_august_2022(self):
+        with self.assertRaises(MeetupDayException) as err:
+>           meetup(2022, 8, "fifth", "Friday")
+
+exercises/practice/meetup/meetup_test.py:325: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+__________ MeetupTest.test_nonexistent_fifth_monday_of_february_2022 ___________
+
+self = <meetup_test.MeetupTest testMethod=test_nonexistent_fifth_monday_of_february_2022>
+
+    def test_nonexistent_fifth_monday_of_february_2022(self):
+        with self.assertRaises(MeetupDayException) as err:
+>           meetup(2022, 2, "fifth", "Monday")
+
+exercises/practice/meetup/meetup_test.py:319: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+____________ MeetupTest.test_nonexistent_fifth_thursday_of_may_2023 ____________
+
+self = <meetup_test.MeetupTest testMethod=test_nonexistent_fifth_thursday_of_may_2023>
+
+    def test_nonexistent_fifth_thursday_of_may_2023(self):
+        with self.assertRaises(MeetupDayException) as err:
+>           meetup(2023, 5, "fifth", "Thursday")
+
+exercises/practice/meetup/meetup_test.py:331: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_friday_is_some_day_in_the_middle_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_friday_is_some_day_in_the_middle_of_the_first_week>
+
+    def test_when_first_friday_is_some_day_in_the_middle_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 12, "first", "Friday"), date(2013, 12, 6))
+
+exercises/practice/meetup/meetup_test.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 12, week = 'first', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_friday_is_the_1st_the_first_day_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_friday_is_the_1st_the_first_day_of_the_first_week>
+
+    def test_when_first_friday_is_the_1st_the_first_day_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 11, "first", "Friday"), date(2013, 11, 1))
+
+exercises/practice/meetup/meetup_test.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 11, week = 'first', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_friday_is_the_7th_the_last_day_of_the_first_week __
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_friday_is_the_7th_the_last_day_of_the_first_week>
+
+    def test_when_first_friday_is_the_7th_the_last_day_of_the_first_week(self):
+>       self.assertEqual(meetup(2012, 12, "first", "Friday"), date(2012, 12, 7))
+
+exercises/practice/meetup/meetup_test.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2012, month = 12, week = 'first', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_monday_is_some_day_in_the_middle_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_monday_is_some_day_in_the_middle_of_the_first_week>
+
+    def test_when_first_monday_is_some_day_in_the_middle_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 3, "first", "Monday"), date(2013, 3, 4))
+
+exercises/practice/meetup/meetup_test.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 3, week = 'first', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_monday_is_the_1st_the_first_day_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_monday_is_the_1st_the_first_day_of_the_first_week>
+
+    def test_when_first_monday_is_the_1st_the_first_day_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 4, "first", "Monday"), date(2013, 4, 1))
+
+exercises/practice/meetup/meetup_test.py:82: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, week = 'first', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_saturday_is_another_day_in_the_middle_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_saturday_is_another_day_in_the_middle_of_the_first_week>
+
+    def test_when_first_saturday_is_another_day_in_the_middle_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 2, "first", "Saturday"), date(2013, 2, 2))
+
+exercises/practice/meetup/meetup_test.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 2, week = 'first', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_saturday_is_some_day_in_the_middle_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_saturday_is_some_day_in_the_middle_of_the_first_week>
+
+    def test_when_first_saturday_is_some_day_in_the_middle_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 1, "first", "Saturday"), date(2013, 1, 5))
+
+exercises/practice/meetup/meetup_test.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 1, week = 'first', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_sunday_is_some_day_in_the_middle_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_sunday_is_some_day_in_the_middle_of_the_first_week>
+
+    def test_when_first_sunday_is_some_day_in_the_middle_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 3, "first", "Sunday"), date(2013, 3, 3))
+
+exercises/practice/meetup/meetup_test.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 3, week = 'first', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_sunday_is_the_7th_the_last_day_of_the_first_week __
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_sunday_is_the_7th_the_last_day_of_the_first_week>
+
+    def test_when_first_sunday_is_the_7th_the_last_day_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 4, "first", "Sunday"), date(2013, 4, 7))
+
+exercises/practice/meetup/meetup_test.py:118: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, week = 'first', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_thursday_is_another_day_in_the_middle_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_thursday_is_another_day_in_the_middle_of_the_first_week>
+
+    def test_when_first_thursday_is_another_day_in_the_middle_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 10, "first", "Thursday"), date(2013, 10, 3))
+
+exercises/practice/meetup/meetup_test.py:100: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 10, week = 'first', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_thursday_is_some_day_in_the_middle_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_thursday_is_some_day_in_the_middle_of_the_first_week>
+
+    def test_when_first_thursday_is_some_day_in_the_middle_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 9, "first", "Thursday"), date(2013, 9, 5))
+
+exercises/practice/meetup/meetup_test.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 9, week = 'first', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_tuesday_is_some_day_in_the_middle_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_tuesday_is_some_day_in_the_middle_of_the_first_week>
+
+    def test_when_first_tuesday_is_some_day_in_the_middle_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 6, "first", "Tuesday"), date(2013, 6, 4))
+
+exercises/practice/meetup/meetup_test.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 6, week = 'first', day_of_week = 'Tuesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_tuesday_is_the_7th_the_last_day_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_tuesday_is_the_7th_the_last_day_of_the_first_week>
+
+    def test_when_first_tuesday_is_the_7th_the_last_day_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 5, "first", "Tuesday"), date(2013, 5, 7))
+
+exercises/practice/meetup/meetup_test.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 5, week = 'first', day_of_week = 'Tuesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_wednesday_is_some_day_in_the_middle_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_wednesday_is_some_day_in_the_middle_of_the_first_week>
+
+    def test_when_first_wednesday_is_some_day_in_the_middle_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 7, "first", "Wednesday"), date(2013, 7, 3))
+
+exercises/practice/meetup/meetup_test.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 7, week = 'first', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_first_wednesday_is_the_7th_the_last_day_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_wednesday_is_the_7th_the_last_day_of_the_first_week>
+
+    def test_when_first_wednesday_is_the_7th_the_last_day_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 8, "first", "Wednesday"), date(2013, 8, 7))
+
+exercises/practice/meetup/meetup_test.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 8, week = 'first', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_fourth_friday_is_some_day_in_the_middle_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_friday_is_some_day_in_the_middle_of_the_fourth_week>
+
+    def test_when_fourth_friday_is_some_day_in_the_middle_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 12, "fourth", "Friday"), date(2013, 12, 27))
+
+exercises/practice/meetup/meetup_test.py:232: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 12, week = 'fourth', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_fourth_friday_is_the_22nd_the_first_day_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_friday_is_the_22nd_the_first_day_of_the_fourth_week>
+
+    def test_when_fourth_friday_is_the_22nd_the_first_day_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 11, "fourth", "Friday"), date(2013, 11, 22))
+
+exercises/practice/meetup/meetup_test.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 11, week = 'fourth', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_fourth_monday_is_some_day_in_the_middle_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_monday_is_some_day_in_the_middle_of_the_fourth_week>
+
+    def test_when_fourth_monday_is_some_day_in_the_middle_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 3, "fourth", "Monday"), date(2013, 3, 25))
+
+exercises/practice/meetup/meetup_test.py:205: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 3, week = 'fourth', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_fourth_monday_is_the_22nd_the_first_day_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_monday_is_the_22nd_the_first_day_of_the_fourth_week>
+
+    def test_when_fourth_monday_is_the_22nd_the_first_day_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 4, "fourth", "Monday"), date(2013, 4, 22))
+
+exercises/practice/meetup/meetup_test.py:208: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, week = 'fourth', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_fourth_saturday_is_another_day_in_the_middle_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_saturday_is_another_day_in_the_middle_of_the_fourth_week>
+
+    def test_when_fourth_saturday_is_another_day_in_the_middle_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 2, "fourth", "Saturday"), date(2013, 2, 23))
+
+exercises/practice/meetup/meetup_test.py:238: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 2, week = 'fourth', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_fourth_saturday_is_some_day_in_the_middle_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_saturday_is_some_day_in_the_middle_of_the_fourth_week>
+
+    def test_when_fourth_saturday_is_some_day_in_the_middle_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 1, "fourth", "Saturday"), date(2013, 1, 26))
+
+exercises/practice/meetup/meetup_test.py:235: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 1, week = 'fourth', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_fourth_sunday_is_some_day_in_the_middle_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_sunday_is_some_day_in_the_middle_of_the_fourth_week>
+
+    def test_when_fourth_sunday_is_some_day_in_the_middle_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 3, "fourth", "Sunday"), date(2013, 3, 24))
+
+exercises/practice/meetup/meetup_test.py:241: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 3, week = 'fourth', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_fourth_sunday_is_the_28th_the_last_day_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_sunday_is_the_28th_the_last_day_of_the_fourth_week>
+
+    def test_when_fourth_sunday_is_the_28th_the_last_day_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 4, "fourth", "Sunday"), date(2013, 4, 28))
+
+exercises/practice/meetup/meetup_test.py:244: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, week = 'fourth', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_fourth_thursday_is_another_day_in_the_middle_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_thursday_is_another_day_in_the_middle_of_the_fourth_week>
+
+    def test_when_fourth_thursday_is_another_day_in_the_middle_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 10, "fourth", "Thursday"), date(2013, 10, 24))
+
+exercises/practice/meetup/meetup_test.py:226: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 10, week = 'fourth', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_fourth_thursday_is_some_day_in_the_middle_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_thursday_is_some_day_in_the_middle_of_the_fourth_week>
+
+    def test_when_fourth_thursday_is_some_day_in_the_middle_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 9, "fourth", "Thursday"), date(2013, 9, 26))
+
+exercises/practice/meetup/meetup_test.py:223: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 9, week = 'fourth', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_fourth_tuesday_is_some_day_in_the_middle_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_tuesday_is_some_day_in_the_middle_of_the_fourth_week>
+
+    def test_when_fourth_tuesday_is_some_day_in_the_middle_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 6, "fourth", "Tuesday"), date(2013, 6, 25))
+
+exercises/practice/meetup/meetup_test.py:214: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 6, week = 'fourth', day_of_week = 'Tuesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_fourth_tuesday_is_the_28th_the_last_day_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_tuesday_is_the_28th_the_last_day_of_the_fourth_week>
+
+    def test_when_fourth_tuesday_is_the_28th_the_last_day_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 5, "fourth", "Tuesday"), date(2013, 5, 28))
+
+exercises/practice/meetup/meetup_test.py:211: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 5, week = 'fourth', day_of_week = 'Tuesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_fourth_wednesday_is_some_day_in_the_middle_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_wednesday_is_some_day_in_the_middle_of_the_fourth_week>
+
+    def test_when_fourth_wednesday_is_some_day_in_the_middle_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 7, "fourth", "Wednesday"), date(2013, 7, 24))
+
+exercises/practice/meetup/meetup_test.py:217: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 7, week = 'fourth', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_fourth_wednesday_is_the_28th_the_last_day_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_wednesday_is_the_28th_the_last_day_of_the_fourth_week>
+
+    def test_when_fourth_wednesday_is_the_28th_the_last_day_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 8, "fourth", "Wednesday"), date(2013, 8, 28))
+
+exercises/practice/meetup/meetup_test.py:220: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 8, week = 'fourth', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 'f'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_last_sunday_in_february_in_a_non_leap_year_is_not_the_29th _
+
+self = <meetup_test.MeetupTest testMethod=test_when_last_sunday_in_february_in_a_non_leap_year_is_not_the_29th>
+
+    def test_when_last_sunday_in_february_in_a_non_leap_year_is_not_the_29th(self):
+>       self.assertEqual(meetup(2015, 2, "last", "Sunday"), date(2015, 2, 22))
+
+exercises/practice/meetup/meetup_test.py:295: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2015, month = 2, week = 'last', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+__ MeetupTest.test_when_last_wednesday_in_february_in_a_leap_year_is_the_29th __
+
+self = <meetup_test.MeetupTest testMethod=test_when_last_wednesday_in_february_in_a_leap_year_is_the_29th>
+
+    def test_when_last_wednesday_in_february_in_a_leap_year_is_the_29th(self):
+>       self.assertEqual(meetup(2012, 2, "last", "Wednesday"), date(2012, 2, 29))
+
+exercises/practice/meetup/meetup_test.py:289: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2012, month = 2, week = 'last', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+>           last_day = date(year, month+1, 1) - timedelta(days=1)
+E           NameError: name 'timedelta' is not defined
+
+exercises/practice/meetup/meetup.py:36: NameError
+_ MeetupTest.test_when_second_friday_is_some_day_in_the_middle_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_friday_is_some_day_in_the_middle_of_the_second_week>
+
+    def test_when_second_friday_is_some_day_in_the_middle_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 12, "second", "Friday"), date(2013, 12, 13))
+
+exercises/practice/meetup/meetup_test.py:148: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 12, week = 'second', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 's'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_second_friday_is_the_8th_the_first_day_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_friday_is_the_8th_the_first_day_of_the_second_week>
+
+    def test_when_second_friday_is_the_8th_the_first_day_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 11, "second", "Friday"), date(2013, 11, 8))
+
+exercises/practice/meetup/meetup_test.py:145: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 11, week = 'second', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 's'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_second_monday_is_some_day_in_the_middle_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_monday_is_some_day_in_the_middle_of_the_second_week>
+
+    def test_when_second_monday_is_some_day_in_the_middle_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 3, "second", "Monday"), date(2013, 3, 11))
+
+exercises/practice/meetup/meetup_test.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 3, week = 'second', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 's'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_second_monday_is_the_8th_the_first_day_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_monday_is_the_8th_the_first_day_of_the_second_week>
+
+    def test_when_second_monday_is_the_8th_the_first_day_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 4, "second", "Monday"), date(2013, 4, 8))
+
+exercises/practice/meetup/meetup_test.py:124: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, week = 'second', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 's'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_second_saturday_is_another_day_in_the_middle_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_saturday_is_another_day_in_the_middle_of_the_second_week>
+
+    def test_when_second_saturday_is_another_day_in_the_middle_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 2, "second", "Saturday"), date(2013, 2, 9))
+
+exercises/practice/meetup/meetup_test.py:154: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 2, week = 'second', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 's'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_second_saturday_is_some_day_in_the_middle_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_saturday_is_some_day_in_the_middle_of_the_second_week>
+
+    def test_when_second_saturday_is_some_day_in_the_middle_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 1, "second", "Saturday"), date(2013, 1, 12))
+
+exercises/practice/meetup/meetup_test.py:151: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 1, week = 'second', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 's'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_second_sunday_is_some_day_in_the_middle_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_sunday_is_some_day_in_the_middle_of_the_second_week>
+
+    def test_when_second_sunday_is_some_day_in_the_middle_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 3, "second", "Sunday"), date(2013, 3, 10))
+
+exercises/practice/meetup/meetup_test.py:157: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 3, week = 'second', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 's'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_second_sunday_is_the_14th_the_last_day_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_sunday_is_the_14th_the_last_day_of_the_second_week>
+
+    def test_when_second_sunday_is_the_14th_the_last_day_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 4, "second", "Sunday"), date(2013, 4, 14))
+
+exercises/practice/meetup/meetup_test.py:160: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, week = 'second', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 's'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_second_thursday_is_another_day_in_the_middle_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_thursday_is_another_day_in_the_middle_of_the_second_week>
+
+    def test_when_second_thursday_is_another_day_in_the_middle_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 10, "second", "Thursday"), date(2013, 10, 10))
+
+exercises/practice/meetup/meetup_test.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 10, week = 'second', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 's'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_second_thursday_is_some_day_in_the_middle_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_thursday_is_some_day_in_the_middle_of_the_second_week>
+
+    def test_when_second_thursday_is_some_day_in_the_middle_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 9, "second", "Thursday"), date(2013, 9, 12))
+
+exercises/practice/meetup/meetup_test.py:139: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 9, week = 'second', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 's'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_second_tuesday_is_some_day_in_the_middle_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_tuesday_is_some_day_in_the_middle_of_the_second_week>
+
+    def test_when_second_tuesday_is_some_day_in_the_middle_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 6, "second", "Tuesday"), date(2013, 6, 11))
+
+exercises/practice/meetup/meetup_test.py:130: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 6, week = 'second', day_of_week = 'Tuesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 's'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_second_tuesday_is_the_14th_the_last_day_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_tuesday_is_the_14th_the_last_day_of_the_second_week>
+
+    def test_when_second_tuesday_is_the_14th_the_last_day_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 5, "second", "Tuesday"), date(2013, 5, 14))
+
+exercises/practice/meetup/meetup_test.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 5, week = 'second', day_of_week = 'Tuesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 's'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_second_wednesday_is_some_day_in_the_middle_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_wednesday_is_some_day_in_the_middle_of_the_second_week>
+
+    def test_when_second_wednesday_is_some_day_in_the_middle_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 7, "second", "Wednesday"), date(2013, 7, 10))
+
+exercises/practice/meetup/meetup_test.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 7, week = 'second', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 's'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_second_wednesday_is_the_14th_the_last_day_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_wednesday_is_the_14th_the_last_day_of_the_second_week>
+
+    def test_when_second_wednesday_is_the_14th_the_last_day_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 8, "second", "Wednesday"), date(2013, 8, 14))
+
+exercises/practice/meetup/meetup_test.py:136: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 8, week = 'second', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 's'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_third_friday_is_some_day_in_the_middle_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_friday_is_some_day_in_the_middle_of_the_third_week>
+
+    def test_when_third_friday_is_some_day_in_the_middle_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 12, "third", "Friday"), date(2013, 12, 20))
+
+exercises/practice/meetup/meetup_test.py:190: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 12, week = 'third', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 't'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_third_friday_is_the_15th_the_first_day_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_friday_is_the_15th_the_first_day_of_the_third_week>
+
+    def test_when_third_friday_is_the_15th_the_first_day_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 11, "third", "Friday"), date(2013, 11, 15))
+
+exercises/practice/meetup/meetup_test.py:187: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 11, week = 'third', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 't'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_third_monday_is_some_day_in_the_middle_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_monday_is_some_day_in_the_middle_of_the_third_week>
+
+    def test_when_third_monday_is_some_day_in_the_middle_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 3, "third", "Monday"), date(2013, 3, 18))
+
+exercises/practice/meetup/meetup_test.py:163: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 3, week = 'third', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 't'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_third_monday_is_the_15th_the_first_day_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_monday_is_the_15th_the_first_day_of_the_third_week>
+
+    def test_when_third_monday_is_the_15th_the_first_day_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 4, "third", "Monday"), date(2013, 4, 15))
+
+exercises/practice/meetup/meetup_test.py:166: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, week = 'third', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 't'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_third_saturday_is_another_day_in_the_middle_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_saturday_is_another_day_in_the_middle_of_the_third_week>
+
+    def test_when_third_saturday_is_another_day_in_the_middle_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 2, "third", "Saturday"), date(2013, 2, 16))
+
+exercises/practice/meetup/meetup_test.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 2, week = 'third', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 't'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_third_saturday_is_some_day_in_the_middle_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_saturday_is_some_day_in_the_middle_of_the_third_week>
+
+    def test_when_third_saturday_is_some_day_in_the_middle_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 1, "third", "Saturday"), date(2013, 1, 19))
+
+exercises/practice/meetup/meetup_test.py:193: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 1, week = 'third', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 't'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_third_sunday_is_some_day_in_the_middle_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_sunday_is_some_day_in_the_middle_of_the_third_week>
+
+    def test_when_third_sunday_is_some_day_in_the_middle_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 3, "third", "Sunday"), date(2013, 3, 17))
+
+exercises/practice/meetup/meetup_test.py:199: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 3, week = 'third', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 't'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_third_sunday_is_the_21st_the_last_day_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_sunday_is_the_21st_the_last_day_of_the_third_week>
+
+    def test_when_third_sunday_is_the_21st_the_last_day_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 4, "third", "Sunday"), date(2013, 4, 21))
+
+exercises/practice/meetup/meetup_test.py:202: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, week = 'third', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 't'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_third_thursday_is_another_day_in_the_middle_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_thursday_is_another_day_in_the_middle_of_the_third_week>
+
+    def test_when_third_thursday_is_another_day_in_the_middle_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 10, "third", "Thursday"), date(2013, 10, 17))
+
+exercises/practice/meetup/meetup_test.py:184: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 10, week = 'third', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 't'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_third_thursday_is_some_day_in_the_middle_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_thursday_is_some_day_in_the_middle_of_the_third_week>
+
+    def test_when_third_thursday_is_some_day_in_the_middle_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 9, "third", "Thursday"), date(2013, 9, 19))
+
+exercises/practice/meetup/meetup_test.py:181: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 9, week = 'third', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 't'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_third_tuesday_is_some_day_in_the_middle_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_tuesday_is_some_day_in_the_middle_of_the_third_week>
+
+    def test_when_third_tuesday_is_some_day_in_the_middle_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 6, "third", "Tuesday"), date(2013, 6, 18))
+
+exercises/practice/meetup/meetup_test.py:172: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 6, week = 'third', day_of_week = 'Tuesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 't'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_third_tuesday_is_the_21st_the_last_day_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_tuesday_is_the_21st_the_last_day_of_the_third_week>
+
+    def test_when_third_tuesday_is_the_21st_the_last_day_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 5, "third", "Tuesday"), date(2013, 5, 21))
+
+exercises/practice/meetup/meetup_test.py:169: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 5, week = 'third', day_of_week = 'Tuesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 't'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_third_wednesday_is_some_day_in_the_middle_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_wednesday_is_some_day_in_the_middle_of_the_third_week>
+
+    def test_when_third_wednesday_is_some_day_in_the_middle_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 7, "third", "Wednesday"), date(2013, 7, 17))
+
+exercises/practice/meetup/meetup_test.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 7, week = 'third', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 't'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+_ MeetupTest.test_when_third_wednesday_is_the_21st_the_last_day_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_wednesday_is_the_21st_the_last_day_of_the_third_week>
+
+    def test_when_third_wednesday_is_the_21st_the_last_day_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 8, "third", "Wednesday"), date(2013, 8, 21))
+
+exercises/practice/meetup/meetup_test.py:178: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 8, week = 'third', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        # Calculate the first day of the month
+        first_day = date(year, month, 1)
+    
+        # Calculate the weekday of the first day
+        first_weekday = first_day.weekday()
+    
+        # Calculate the target weekday
+        target_weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
+    
+        # Calculate the offset for the target weekday
+        offset = (target_weekday - first_weekday) % 7
+    
+        # Calculate the date of the meetup based on the week descriptor
+        if week == "teenth":
+            # Find the first date in the range of "teenth" days
+            for day in range(13, 20):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        elif week == "last":
+            # Find the last date in the month with the target weekday
+            last_day = date(year, month+1, 1) - timedelta(days=1)
+            for day in range(last_day.day, last_day.day-7, -1):
+                meetup_date = date(year, month, day)
+                if meetup_date.weekday() == target_weekday:
+                    return meetup_date
+        else:
+            # Find the nth occurrence of the target weekday
+>           nth_occurrence = int(week[0])
+E           ValueError: invalid literal for int() with base 10: 't'
+
+exercises/practice/meetup/meetup.py:43: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_fifth_monday_of_march_2015
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_fifth_saturday_of_february_2020
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_fifth_thursday_of_february_2024
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_friday_in_a_month_with_five_fridays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_friday_in_a_month_with_four_fridays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_monday_in_a_month_with_five_mondays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_monday_in_a_month_with_four_mondays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_saturday_in_a_month_with_four_saturdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_saturday_in_another_month_with_four_saturdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_sunday_in_a_month_with_five_sundays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_sunday_in_a_month_with_four_sundays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_sunday_of_june_2024
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_thursday_in_a_month_with_five_thursdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_thursday_in_a_month_with_four_thursdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_tuesday_in_a_month_with_four_tuesdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_tuesday_in_another_month_with_four_tuesdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_wednesday_in_a_month_with_five_wednesdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_wednesday_in_a_month_with_four_wednesdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_wednesday_in_december_that_is_also_the_last_day_of_the_year
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_nonexistent_fifth_friday_of_august_2022
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_nonexistent_fifth_monday_of_february_2022
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_nonexistent_fifth_thursday_of_may_2023
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_friday_is_some_day_in_the_middle_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_friday_is_the_1st_the_first_day_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_friday_is_the_7th_the_last_day_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_monday_is_some_day_in_the_middle_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_monday_is_the_1st_the_first_day_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_saturday_is_another_day_in_the_middle_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_saturday_is_some_day_in_the_middle_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_sunday_is_some_day_in_the_middle_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_sunday_is_the_7th_the_last_day_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_thursday_is_another_day_in_the_middle_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_thursday_is_some_day_in_the_middle_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_tuesday_is_some_day_in_the_middle_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_tuesday_is_the_7th_the_last_day_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_wednesday_is_some_day_in_the_middle_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_wednesday_is_the_7th_the_last_day_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_friday_is_some_day_in_the_middle_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_friday_is_the_22nd_the_first_day_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_monday_is_some_day_in_the_middle_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_monday_is_the_22nd_the_first_day_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_saturday_is_another_day_in_the_middle_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_saturday_is_some_day_in_the_middle_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_sunday_is_some_day_in_the_middle_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_sunday_is_the_28th_the_last_day_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_thursday_is_another_day_in_the_middle_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_thursday_is_some_day_in_the_middle_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_tuesday_is_some_day_in_the_middle_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_tuesday_is_the_28th_the_last_day_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_wednesday_is_some_day_in_the_middle_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_wednesday_is_the_28th_the_last_day_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_last_sunday_in_february_in_a_non_leap_year_is_not_the_29th
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_last_wednesday_in_february_in_a_leap_year_is_the_29th
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_friday_is_some_day_in_the_middle_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_friday_is_the_8th_the_first_day_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_monday_is_some_day_in_the_middle_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_monday_is_the_8th_the_first_day_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_saturday_is_another_day_in_the_middle_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_saturday_is_some_day_in_the_middle_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_sunday_is_some_day_in_the_middle_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_sunday_is_the_14th_the_last_day_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_thursday_is_another_day_in_the_middle_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_thursday_is_some_day_in_the_middle_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_tuesday_is_some_day_in_the_middle_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_tuesday_is_the_14th_the_last_day_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_wednesday_is_some_day_in_the_middle_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_wednesday_is_the_14th_the_last_day_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_friday_is_some_day_in_the_middle_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_friday_is_the_15th_the_first_day_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_monday_is_some_day_in_the_middle_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_monday_is_the_15th_the_first_day_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_saturday_is_another_day_in_the_middle_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_saturday_is_some_day_in_the_middle_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_sunday_is_some_day_in_the_middle_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_sunday_is_the_21st_the_last_day_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_thursday_is_another_day_in_the_middle_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_thursday_is_some_day_in_the_middle_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_tuesday_is_some_day_in_the_middle_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_tuesday_is_the_21st_the_last_day_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_wednesday_is_some_day_in_the_middle_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_wednesday_is_the_21st_the_last_day_of_the_third_week
+======================== 81 failed, 22 passed in 0.84s =========================

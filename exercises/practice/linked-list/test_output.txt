@@ -1,0 +1,298 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 24 items
+
+exercises/practice/linked-list/linked_list_test.py FF..FFFFFFFFFFFFFFFFF [ 87%]
+FFF                                                                      [100%]
+
+=================================== FAILURES ===================================
+___ LinkedListTest.test_can_return_with_pop_and_then_raise_an_error_if_empty ___
+
+self = <linked_list_test.LinkedListTest testMethod=test_can_return_with_pop_and_then_raise_an_error_if_empty>
+
+    def test_can_return_with_pop_and_then_raise_an_error_if_empty(self):
+        lst = LinkedList()
+        lst.push(1)
+>       lst.unshift(5)
+E       AttributeError: 'LinkedList' object has no attribute 'unshift'
+
+exercises/practice/linked-list/linked_list_test.py:177: AttributeError
+__ LinkedListTest.test_can_return_with_shift_and_then_raise_an_error_if_empty __
+
+self = <linked_list_test.LinkedListTest testMethod=test_can_return_with_shift_and_then_raise_an_error_if_empty>
+
+    def test_can_return_with_shift_and_then_raise_an_error_if_empty(self):
+        lst = LinkedList()
+        lst.push(1)
+>       lst.unshift(5)
+E       AttributeError: 'LinkedList' object has no attribute 'unshift'
+
+exercises/practice/linked-list/linked_list_test.py:195: AttributeError
+_____________ LinkedListTest.test_count_is_correct_after_mutation ______________
+
+self = <linked_list_test.LinkedListTest testMethod=test_count_is_correct_after_mutation>
+
+    def test_count_is_correct_after_mutation(self):
+        lst = LinkedList()
+        lst.push(31)
+        self.assertEqual(len(lst), 1)
+>       lst.unshift(43)
+E       AttributeError: 'LinkedList' object has no attribute 'unshift'
+
+exercises/practice/linked-list/linked_list_test.py:71: AttributeError
+____________ LinkedListTest.test_deletes_only_the_first_occurrence _____________
+
+self = <linked_list_test.LinkedListTest testMethod=test_deletes_only_the_first_occurrence>
+
+    def test_deletes_only_the_first_occurrence(self):
+        lst = LinkedList()
+        lst.push(73)
+        lst.push(9)
+        lst.push(9)
+        lst.push(107)
+>       lst.delete(9)
+E       AttributeError: 'LinkedList' object has no attribute 'delete'
+
+exercises/practice/linked-list/linked_list_test.py:160: AttributeError
+_ LinkedListTest.test_deletes_the_element_with_the_specified_value_from_the_list _
+
+self = <linked_list_test.LinkedListTest testMethod=test_deletes_the_element_with_the_specified_value_from_the_list>
+
+    def test_deletes_the_element_with_the_specified_value_from_the_list(self):
+        lst = LinkedList()
+        lst.push(71)
+        lst.push(83)
+        lst.push(79)
+>       lst.delete(83)
+E       AttributeError: 'LinkedList' object has no attribute 'delete'
+
+exercises/practice/linked-list/linked_list_test.py:109: AttributeError
+_ LinkedListTest.test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_head _
+
+self = <linked_list_test.LinkedListTest testMethod=test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_head>
+
+    def test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_head(
+        self,
+    ):
+        lst = LinkedList()
+        lst.push(71)
+        lst.push(83)
+        lst.push(79)
+>       lst.delete(83)
+E       AttributeError: 'LinkedList' object has no attribute 'delete'
+
+exercises/practice/linked-list/linked_list_test.py:133: AttributeError
+_ LinkedListTest.test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_tail _
+
+self = <linked_list_test.LinkedListTest testMethod=test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_tail>
+
+    def test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_tail(
+        self,
+    ):
+        lst = LinkedList()
+        lst.push(71)
+        lst.push(83)
+        lst.push(79)
+>       lst.delete(83)
+E       AttributeError: 'LinkedList' object has no attribute 'delete'
+
+exercises/practice/linked-list/linked_list_test.py:121: AttributeError
+____________ LinkedListTest.test_deletes_the_first_of_two_elements _____________
+
+self = <linked_list_test.LinkedListTest testMethod=test_deletes_the_first_of_two_elements>
+
+    def test_deletes_the_first_of_two_elements(self):
+        lst = LinkedList()
+        lst.push(97)
+        lst.push(101)
+>       lst.delete(97)
+E       AttributeError: 'LinkedList' object has no attribute 'delete'
+
+exercises/practice/linked-list/linked_list_test.py:142: AttributeError
+_________________ LinkedListTest.test_deletes_the_only_element _________________
+
+self = <linked_list_test.LinkedListTest testMethod=test_deletes_the_only_element>
+
+    def test_deletes_the_only_element(self):
+        lst = LinkedList()
+        lst.push(61)
+>       lst.delete(61)
+E       AttributeError: 'LinkedList' object has no attribute 'delete'
+
+exercises/practice/linked-list/linked_list_test.py:101: AttributeError
+____________ LinkedListTest.test_deletes_the_second_of_two_elements ____________
+
+self = <linked_list_test.LinkedListTest testMethod=test_deletes_the_second_of_two_elements>
+
+    def test_deletes_the_second_of_two_elements(self):
+        lst = LinkedList()
+        lst.push(97)
+        lst.push(101)
+>       lst.delete(101)
+E       AttributeError: 'LinkedList' object has no attribute 'delete'
+
+exercises/practice/linked-list/linked_list_test.py:150: AttributeError
+______________ LinkedListTest.test_pop_gets_element_from_the_list ______________
+
+self = <linked_list_test.LinkedListTest testMethod=test_pop_gets_element_from_the_list>
+
+    def test_pop_gets_element_from_the_list(self):
+        lst = LinkedList()
+        lst.push(7)
+>       self.assertEqual(lst.pop(), 7)
+E       AttributeError: 'LinkedList' object has no attribute 'pop'
+
+exercises/practice/linked-list/linked_list_test.py:16: AttributeError
+___ LinkedListTest.test_pop_push_shift_and_unshift_can_be_used_in_any_order ____
+
+self = <linked_list_test.LinkedListTest testMethod=test_pop_push_shift_and_unshift_can_be_used_in_any_order>
+
+    def test_pop_push_shift_and_unshift_can_be_used_in_any_order(self):
+        lst = LinkedList()
+        lst.push(1)
+        lst.push(2)
+>       self.assertEqual(lst.pop(), 2)
+E       AttributeError: 'LinkedList' object has no attribute 'pop'
+
+exercises/practice/linked-list/linked_list_test.py:48: AttributeError
+_________ LinkedListTest.test_popping_to_empty_doesn_t_break_the_list __________
+
+self = <linked_list_test.LinkedListTest testMethod=test_popping_to_empty_doesn_t_break_the_list>
+
+    def test_popping_to_empty_doesn_t_break_the_list(self):
+        lst = LinkedList()
+        lst.push(41)
+        lst.push(59)
+>       lst.pop()
+E       AttributeError: 'LinkedList' object has no attribute 'pop'
+
+exercises/practice/linked-list/linked_list_test.py:82: AttributeError
+_ LinkedListTest.test_push_pop_respectively_add_remove_at_the_end_of_the_list __
+
+self = <linked_list_test.LinkedListTest testMethod=test_push_pop_respectively_add_remove_at_the_end_of_the_list>
+
+    def test_push_pop_respectively_add_remove_at_the_end_of_the_list(self):
+        lst = LinkedList()
+        lst.push(11)
+        lst.push(13)
+>       self.assertEqual(lst.pop(), 13)
+E       AttributeError: 'LinkedList' object has no attribute 'pop'
+
+exercises/practice/linked-list/linked_list_test.py:22: AttributeError
+___________ LinkedListTest.test_shift_gets_an_element_from_the_list ____________
+
+self = <linked_list_test.LinkedListTest testMethod=test_shift_gets_an_element_from_the_list>
+
+    def test_shift_gets_an_element_from_the_list(self):
+        lst = LinkedList()
+        lst.push(17)
+>       self.assertEqual(lst.shift(), 17)
+E       AttributeError: 'LinkedList' object has no attribute 'shift'
+
+exercises/practice/linked-list/linked_list_test.py:28: AttributeError
+__________ LinkedListTest.test_shift_gets_first_element_from_the_list __________
+
+self = <linked_list_test.LinkedListTest testMethod=test_shift_gets_first_element_from_the_list>
+
+    def test_shift_gets_first_element_from_the_list(self):
+        lst = LinkedList()
+        lst.push(23)
+        lst.push(5)
+>       self.assertEqual(lst.shift(), 23)
+E       AttributeError: 'LinkedList' object has no attribute 'shift'
+
+exercises/practice/linked-list/linked_list_test.py:34: AttributeError
+_________ LinkedListTest.test_shifting_to_empty_doesn_t_break_the_list _________
+
+self = <linked_list_test.LinkedListTest testMethod=test_shifting_to_empty_doesn_t_break_the_list>
+
+    def test_shifting_to_empty_doesn_t_break_the_list(self):
+        lst = LinkedList()
+        lst.push(41)
+        lst.push(59)
+>       lst.shift()
+E       AttributeError: 'LinkedList' object has no attribute 'shift'
+
+exercises/practice/linked-list/linked_list_test.py:92: AttributeError
+________ LinkedListTest.test_unshift_adds_element_at_start_of_the_list _________
+
+self = <linked_list_test.LinkedListTest testMethod=test_unshift_adds_element_at_start_of_the_list>
+
+    def test_unshift_adds_element_at_start_of_the_list(self):
+        lst = LinkedList()
+>       lst.unshift(23)
+E       AttributeError: 'LinkedList' object has no attribute 'unshift'
+
+exercises/practice/linked-list/linked_list_test.py:39: AttributeError
+____ LinkedListTest.test_using_delete_raises_an_error_if_the_list_is_empty _____
+
+self = <linked_list_test.LinkedListTest testMethod=test_using_delete_raises_an_error_if_the_list_is_empty>
+
+    def test_using_delete_raises_an_error_if_the_list_is_empty(self):
+        lst = LinkedList()
+        with self.assertRaises(ValueError) as err:
+>           lst.delete(0)
+E           AttributeError: 'LinkedList' object has no attribute 'delete'
+
+exercises/practice/linked-list/linked_list_test.py:206: AttributeError
+__ LinkedListTest.test_using_delete_raises_an_error_if_the_value_is_not_found __
+
+self = <linked_list_test.LinkedListTest testMethod=test_using_delete_raises_an_error_if_the_value_is_not_found>
+
+    def test_using_delete_raises_an_error_if_the_value_is_not_found(self):
+        lst = LinkedList()
+        lst.push(5)
+        lst.push(7)
+>       self.assertEqual(lst.pop(), 7)
+E       AttributeError: 'LinkedList' object has no attribute 'pop'
+
+exercises/practice/linked-list/linked_list_test.py:214: AttributeError
+______ LinkedListTest.test_using_pop_raises_an_error_if_the_list_is_empty ______
+
+self = <linked_list_test.LinkedListTest testMethod=test_using_pop_raises_an_error_if_the_list_is_empty>
+
+    def test_using_pop_raises_an_error_if_the_list_is_empty(self):
+        lst = LinkedList()
+        with self.assertRaises(IndexError) as err:
+>           lst.pop()
+E           AttributeError: 'LinkedList' object has no attribute 'pop'
+
+exercises/practice/linked-list/linked_list_test.py:170: AttributeError
+_____ LinkedListTest.test_using_shift_raises_an_error_if_the_list_is_empty _____
+
+self = <linked_list_test.LinkedListTest testMethod=test_using_shift_raises_an_error_if_the_list_is_empty>
+
+    def test_using_shift_raises_an_error_if_the_list_is_empty(self):
+        lst = LinkedList()
+        with self.assertRaises(IndexError) as err:
+>           lst.shift()
+E           AttributeError: 'LinkedList' object has no attribute 'shift'
+
+exercises/practice/linked-list/linked_list_test.py:188: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_can_return_with_pop_and_then_raise_an_error_if_empty
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_can_return_with_shift_and_then_raise_an_error_if_empty
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_count_is_correct_after_mutation
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_deletes_only_the_first_occurrence
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_deletes_the_element_with_the_specified_value_from_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_head
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_tail
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_deletes_the_first_of_two_elements
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_deletes_the_only_element
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_deletes_the_second_of_two_elements
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_pop_gets_element_from_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_pop_push_shift_and_unshift_can_be_used_in_any_order
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_popping_to_empty_doesn_t_break_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_push_pop_respectively_add_remove_at_the_end_of_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_shift_gets_an_element_from_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_shift_gets_first_element_from_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_shifting_to_empty_doesn_t_break_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_unshift_adds_element_at_start_of_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_using_delete_raises_an_error_if_the_list_is_empty
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_using_delete_raises_an_error_if_the_value_is_not_found
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_using_pop_raises_an_error_if_the_list_is_empty
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_using_shift_raises_an_error_if_the_list_is_empty
+========================= 22 failed, 2 passed in 0.16s =========================

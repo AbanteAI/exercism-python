@@ -1,0 +1,122 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 11 items
+
+exercises/practice/grains/grains_test.py FFFFFFFFFFF                     [100%]
+
+=================================== FAILURES ===================================
+______________________ GrainsTest.test_grains_on_square_1 ______________________
+
+self = <grains_test.GrainsTest testMethod=test_grains_on_square_1>
+
+    def test_grains_on_square_1(self):
+>       self.assertEqual(square(1), 1)
+E       AssertionError: None != 1
+
+exercises/practice/grains/grains_test.py:15: AssertionError
+_____________________ GrainsTest.test_grains_on_square_16 ______________________
+
+self = <grains_test.GrainsTest testMethod=test_grains_on_square_16>
+
+    def test_grains_on_square_16(self):
+>       self.assertEqual(square(16), 32768)
+E       AssertionError: None != 32768
+
+exercises/practice/grains/grains_test.py:27: AssertionError
+______________________ GrainsTest.test_grains_on_square_2 ______________________
+
+self = <grains_test.GrainsTest testMethod=test_grains_on_square_2>
+
+    def test_grains_on_square_2(self):
+>       self.assertEqual(square(2), 2)
+E       AssertionError: None != 2
+
+exercises/practice/grains/grains_test.py:18: AssertionError
+______________________ GrainsTest.test_grains_on_square_3 ______________________
+
+self = <grains_test.GrainsTest testMethod=test_grains_on_square_3>
+
+    def test_grains_on_square_3(self):
+>       self.assertEqual(square(3), 4)
+E       AssertionError: None != 4
+
+exercises/practice/grains/grains_test.py:21: AssertionError
+_____________________ GrainsTest.test_grains_on_square_32 ______________________
+
+self = <grains_test.GrainsTest testMethod=test_grains_on_square_32>
+
+    def test_grains_on_square_32(self):
+>       self.assertEqual(square(32), 2147483648)
+E       AssertionError: None != 2147483648
+
+exercises/practice/grains/grains_test.py:30: AssertionError
+______________________ GrainsTest.test_grains_on_square_4 ______________________
+
+self = <grains_test.GrainsTest testMethod=test_grains_on_square_4>
+
+    def test_grains_on_square_4(self):
+>       self.assertEqual(square(4), 8)
+E       AssertionError: None != 8
+
+exercises/practice/grains/grains_test.py:24: AssertionError
+_____________________ GrainsTest.test_grains_on_square_64 ______________________
+
+self = <grains_test.GrainsTest testMethod=test_grains_on_square_64>
+
+    def test_grains_on_square_64(self):
+>       self.assertEqual(square(64), 9223372036854775808)
+E       AssertionError: None != 9223372036854775808
+
+exercises/practice/grains/grains_test.py:33: AssertionError
+_____________ GrainsTest.test_negative_square_raises_an_exception ______________
+
+self = <grains_test.GrainsTest testMethod=test_negative_square_raises_an_exception>
+
+    def test_negative_square_raises_an_exception(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/grains/grains_test.py:42: AssertionError
+_______ GrainsTest.test_returns_the_total_number_of_grains_on_the_board ________
+
+self = <grains_test.GrainsTest testMethod=test_returns_the_total_number_of_grains_on_the_board>
+
+    def test_returns_the_total_number_of_grains_on_the_board(self):
+>       self.assertEqual(total(), 18446744073709551615)
+E       AssertionError: None != 18446744073709551615
+
+exercises/practice/grains/grains_test.py:54: AssertionError
+_________________ GrainsTest.test_square_0_raises_an_exception _________________
+
+self = <grains_test.GrainsTest testMethod=test_square_0_raises_an_exception>
+
+    def test_square_0_raises_an_exception(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/grains/grains_test.py:36: AssertionError
+__________ GrainsTest.test_square_greater_than_64_raises_an_exception __________
+
+self = <grains_test.GrainsTest testMethod=test_square_greater_than_64_raises_an_exception>
+
+    def test_square_greater_than_64_raises_an_exception(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/grains/grains_test.py:48: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/grains/grains_test.py::GrainsTest::test_grains_on_square_1
+FAILED exercises/practice/grains/grains_test.py::GrainsTest::test_grains_on_square_16
+FAILED exercises/practice/grains/grains_test.py::GrainsTest::test_grains_on_square_2
+FAILED exercises/practice/grains/grains_test.py::GrainsTest::test_grains_on_square_3
+FAILED exercises/practice/grains/grains_test.py::GrainsTest::test_grains_on_square_32
+FAILED exercises/practice/grains/grains_test.py::GrainsTest::test_grains_on_square_4
+FAILED exercises/practice/grains/grains_test.py::GrainsTest::test_grains_on_square_64
+FAILED exercises/practice/grains/grains_test.py::GrainsTest::test_negative_square_raises_an_exception
+FAILED exercises/practice/grains/grains_test.py::GrainsTest::test_returns_the_total_number_of_grains_on_the_board
+FAILED exercises/practice/grains/grains_test.py::GrainsTest::test_square_0_raises_an_exception
+FAILED exercises/practice/grains/grains_test.py::GrainsTest::test_square_greater_than_64_raises_an_exception
+============================== 11 failed in 0.07s ==============================

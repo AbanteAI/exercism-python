@@ -1,0 +1,102 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 24 items
+
+exercises/practice/word-search/word_search_test.py FFF.................. [ 87%]
+FFF                                                                      [100%]
+
+=================================== FAILURES ===================================
+_ WordSearchTest.test_should_accept_an_initial_game_grid_and_a_target_search_word _
+
+self = <word_search_test.WordSearchTest testMethod=test_should_accept_an_initial_game_grid_and_a_target_search_word>
+
+    def test_should_accept_an_initial_game_grid_and_a_target_search_word(self):
+        puzzle = WordSearch(["jefblpepre"])
+>       self.assertIsNone(puzzle.search("clojure"))
+E       AssertionError: (None, None) is not None
+
+exercises/practice/word-search/word_search_test.py:16: AssertionError
+__ WordSearchTest.test_should_fail_to_locate_a_word_that_is_not_in_the_puzzle __
+
+self = <word_search_test.WordSearchTest testMethod=test_should_fail_to_locate_a_word_that_is_not_in_the_puzzle>
+
+    def test_should_fail_to_locate_a_word_that_is_not_in_the_puzzle(self):
+        puzzle = WordSearch(
+            [
+                "jefblpepre",
+                "camdcimgtc",
+                "oivokprjsm",
+                "pbwasqroua",
+                "rixilelhrs",
+                "wolcqlirpc",
+                "screeaumgr",
+                "alxhpburyi",
+                "jalaycalmp",
+                "clojurermt",
+            ]
+        )
+        self.assertEqual(puzzle.search("clojure"), (Point(0, 9), Point(6, 9)))
+        self.assertEqual(puzzle.search("elixir"), (Point(5, 4), Point(0, 4)))
+        self.assertEqual(puzzle.search("ecmascript"), (Point(9, 0), Point(9, 9)))
+        self.assertEqual(puzzle.search("rust"), (Point(8, 4), Point(8, 1)))
+        self.assertEqual(puzzle.search("java"), (Point(0, 0), Point(3, 3)))
+        self.assertEqual(puzzle.search("lua"), (Point(7, 8), Point(5, 6)))
+        self.assertEqual(puzzle.search("lisp"), (Point(2, 5), Point(5, 2)))
+        self.assertEqual(puzzle.search("ruby"), (Point(7, 5), Point(4, 8)))
+>       self.assertIsNone(puzzle.search("haskell"))
+E       AssertionError: (None, None) is not None
+
+exercises/practice/word-search/word_search_test.py:293: AssertionError
+_ WordSearchTest.test_should_fail_to_locate_words_that_are_not_on_horizontal_vertical_or_diagonal_lines _
+
+self = <word_search_test.WordSearchTest testMethod=test_should_fail_to_locate_words_that_are_not_on_horizontal_vertical_or_diagonal_lines>
+
+    def test_should_fail_to_locate_words_that_are_not_on_horizontal_vertical_or_diagonal_lines(
+        self,
+    ):
+        puzzle = WordSearch(["abc", "def"])
+>       self.assertIsNone(puzzle.search("aef"))
+E       AssertionError: (None, None) is not None
+
+exercises/practice/word-search/word_search_test.py:299: AssertionError
+_ WordSearchTest.test_should_not_concatenate_different_lines_to_find_a_horizontal_word _
+
+self = <word_search_test.WordSearchTest testMethod=test_should_not_concatenate_different_lines_to_find_a_horizontal_word>
+
+    def test_should_not_concatenate_different_lines_to_find_a_horizontal_word(self):
+        puzzle = WordSearch(["abceli", "xirdfg"])
+>       self.assertIsNone(puzzle.search("elixir"))
+E       AssertionError: (None, None) is not None
+
+exercises/practice/word-search/word_search_test.py:306: AssertionError
+____ WordSearchTest.test_should_not_wrap_around_horizontally_to_find_a_word ____
+
+self = <word_search_test.WordSearchTest testMethod=test_should_not_wrap_around_horizontally_to_find_a_word>
+
+    def test_should_not_wrap_around_horizontally_to_find_a_word(self):
+        puzzle = WordSearch(["silabcdefp"])
+>       self.assertIsNone(puzzle.search("lisp"))
+E       AssertionError: (None, None) is not None
+
+exercises/practice/word-search/word_search_test.py:310: AssertionError
+_____ WordSearchTest.test_should_not_wrap_around_vertically_to_find_a_word _____
+
+self = <word_search_test.WordSearchTest testMethod=test_should_not_wrap_around_vertically_to_find_a_word>
+
+    def test_should_not_wrap_around_vertically_to_find_a_word(self):
+        puzzle = WordSearch(["s", "u", "r", "a", "b", "c", "t"])
+>       self.assertIsNone(puzzle.search("rust"))
+E       AssertionError: (None, None) is not None
+
+exercises/practice/word-search/word_search_test.py:314: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_accept_an_initial_game_grid_and_a_target_search_word
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_fail_to_locate_a_word_that_is_not_in_the_puzzle
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_fail_to_locate_words_that_are_not_on_horizontal_vertical_or_diagonal_lines
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_not_concatenate_different_lines_to_find_a_horizontal_word
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_not_wrap_around_horizontally_to_find_a_word
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_not_wrap_around_vertically_to_find_a_word
+========================= 6 failed, 18 passed in 0.08s =========================

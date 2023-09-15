@@ -1,7 +1,11 @@
 def classify(number):
-    """ A perfect number equals the sum of its positive divisors.
-
-    :param number: int a positive integer
-    :return: str the classification of the input integer
-    """
-    pass
+    aliquot_sum = sum([i for i in range(1, number) if number % i == 0])
+    
+    if aliquot_sum == number:
+        return "Perfect"
+    elif aliquot_sum > number:
+        return "Abundant"
+    else:
+        return "Deficient"
+    else:
+        return "Deficient"

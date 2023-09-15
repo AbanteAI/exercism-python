@@ -1,14 +1,24 @@
 def handle_error_by_throwing_exception():
-    pass
-
+    raise Exception
 
 def handle_error_by_returning_none(input_data):
-    pass
-
+    try:
+        # code that may raise an exception
+        pass
+    except:
+        return None
 
 def handle_error_by_returning_tuple(input_data):
-    pass
-
+    try:
+        # code that may raise an exception
+        pass
+    except Exception as e:
+        return (str(e), input_data)
 
 def filelike_objects_are_closed_on_exception(filelike_object):
-    pass
+    try:
+        # code that may raise an exception
+        pass
+    finally:
+        if filelike_object is not None:
+            filelike_object.close()

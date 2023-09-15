@@ -1,0 +1,42 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 10 items
+
+exercises/practice/octal/octal_test.py FFF.......                        [100%]
+
+=================================== FAILURES ===================================
+____________________ OctalTest.test_6789_is_seen_as_invalid ____________________
+
+self = <octal_test.OctalTest testMethod=test_6789_is_seen_as_invalid>
+
+    def test_6789_is_seen_as_invalid(self):
+>       with self.assertRaisesWithMessage(ValueError):
+E       AssertionError: ValueError not raised
+
+exercises/practice/octal/octal_test.py:40: AssertionError
+_____________________ OctalTest.test_8_is_seen_as_invalid ______________________
+
+self = <octal_test.OctalTest testMethod=test_8_is_seen_as_invalid>
+
+    def test_8_is_seen_as_invalid(self):
+>       with self.assertRaisesWithMessage(ValueError):
+E       AssertionError: ValueError not raised
+
+exercises/practice/octal/octal_test.py:32: AssertionError
+__________________ OctalTest.test_invalid_octal_is_recognized __________________
+
+self = <octal_test.OctalTest testMethod=test_invalid_octal_is_recognized>
+
+    def test_invalid_octal_is_recognized(self):
+>       with self.assertRaisesWithMessage(ValueError):
+E       AssertionError: ValueError not raised
+
+exercises/practice/octal/octal_test.py:36: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/octal/octal_test.py::OctalTest::test_6789_is_seen_as_invalid
+FAILED exercises/practice/octal/octal_test.py::OctalTest::test_8_is_seen_as_invalid
+FAILED exercises/practice/octal/octal_test.py::OctalTest::test_invalid_octal_is_recognized
+========================= 3 failed, 7 passed in 0.05s ==========================

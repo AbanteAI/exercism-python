@@ -1,0 +1,95 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 6 items
+
+exercises/practice/satellite/satellite_test.py .FFFFF                    [100%]
+
+=================================== FAILURES ===================================
+_______ SatelliteTest.test_reject_inconsistent_traversals_of_same_length _______
+
+self = <satellite_test.SatelliteTest testMethod=test_reject_inconsistent_traversals_of_same_length>
+
+    def test_reject_inconsistent_traversals_of_same_length(self):
+        preorder = ["x", "y", "z"]
+        inorder = ["a", "b", "c"]
+    
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/satellite/satellite_test.py:55: AssertionError
+___________ SatelliteTest.test_reject_traversals_of_different_length ___________
+
+self = <satellite_test.SatelliteTest testMethod=test_reject_traversals_of_different_length>
+
+    def test_reject_traversals_of_different_length(self):
+        preorder = ["a", "b"]
+        inorder = ["b", "a", "r"]
+    
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/satellite/satellite_test.py:46: AssertionError
+___________ SatelliteTest.test_reject_traversals_with_repeated_items ___________
+
+self = <satellite_test.SatelliteTest testMethod=test_reject_traversals_with_repeated_items>
+
+    def test_reject_traversals_with_repeated_items(self):
+        preorder = ["a", "b", "a"]
+        inorder = ["b", "a", "a"]
+    
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/satellite/satellite_test.py:66: AssertionError
+___________________ SatelliteTest.test_tree_with_many_items ____________________
+
+self = <satellite_test.SatelliteTest testMethod=test_tree_with_many_items>
+
+    def test_tree_with_many_items(self):
+        preorder = ["a", "i", "x", "f", "r"]
+        inorder = ["i", "a", "f", "x", "r"]
+    
+        expected = {
+            "v": "a",
+            "l": {"v": "i", "l": {}, "r": {}},
+            "r": {
+                "v": "x",
+                "l": {"v": "f", "l": {}, "r": {}},
+                "r": {"v": "r", "l": {}, "r": {}},
+            },
+        }
+>       self.assertEqual(tree_from_traversals(preorder, inorder), expected)
+E       AssertionError: {} != {'v': 'a', 'l': {'v': 'i', 'l': {}, 'r': {[85 chars]{}}}}
+E       - {}
+E       + {'l': {'l': {}, 'r': {}, 'v': 'i'},
+E       +  'r': {'l': {'l': {}, 'r': {}, 'v': 'f'},
+E       +        'r': {'l': {}, 'r': {}, 'v': 'r'},
+E       +        'v': 'x'},
+E       +  'v': 'a'}
+
+exercises/practice/satellite/satellite_test.py:40: AssertionError
+____________________ SatelliteTest.test_tree_with_one_item _____________________
+
+self = <satellite_test.SatelliteTest testMethod=test_tree_with_one_item>
+
+    def test_tree_with_one_item(self):
+        preorder = ["a"]
+        inorder = ["a"]
+    
+        expected = {"v": "a", "l": {}, "r": {}}
+>       self.assertEqual(tree_from_traversals(preorder, inorder), expected)
+E       AssertionError: {} != {'v': 'a', 'l': {}, 'r': {}}
+E       - {}
+E       + {'l': {}, 'r': {}, 'v': 'a'}
+
+exercises/practice/satellite/satellite_test.py:25: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/satellite/satellite_test.py::SatelliteTest::test_reject_inconsistent_traversals_of_same_length
+FAILED exercises/practice/satellite/satellite_test.py::SatelliteTest::test_reject_traversals_of_different_length
+FAILED exercises/practice/satellite/satellite_test.py::SatelliteTest::test_reject_traversals_with_repeated_items
+FAILED exercises/practice/satellite/satellite_test.py::SatelliteTest::test_tree_with_many_items
+FAILED exercises/practice/satellite/satellite_test.py::SatelliteTest::test_tree_with_one_item
+========================= 5 failed, 1 passed in 0.05s ==========================

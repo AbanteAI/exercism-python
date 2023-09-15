@@ -1,2 +1,8 @@
 def is_isogram(string):
-    pass
+    letters = []
+    for char in string.lower():
+        if char.isalpha() and char not in letters:
+            letters.append(char)
+        elif char.isalpha() and char in letters:
+            return False
+    return True

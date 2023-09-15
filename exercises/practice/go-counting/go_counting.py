@@ -1,5 +1,6 @@
 
 class Board:
+WHITE = "W"
     """Count territories of each player in a Go game
 
     Args:
@@ -23,7 +24,23 @@ class Board:
                         second being a set of coordinates, representing
                         the owner's territories.
         """
-        pass
+        owner = self.board[y][x]
+        territories = set()
+        visited = set()
+
+        def dfs(x, y):
+            if x < 0 or y < 0 or x >= len(self.board[0]) or y >= len(self.board) or (x, y) in visited:
+                return
+            visited.add((x, y))
+            if self.board[y][x] == owner:
+                territories.add((x, y))
+                dfs(x+1, y)
+                dfs(x-1, y)
+                dfs(x, y+1)
+                dfs(x, y-1)
+
+        dfs(x, y)
+        return owner, territories
 
     def territories(self):
         """Find the owners and the territories of the whole board
@@ -36,4 +53,23 @@ class Board:
                         , i.e. "W", "B", "".  The value being a set
                         of coordinates owned by the owner.
         """
-        pass
+        owners = {"W": set(), "B": set(), "": set()}
+        visited = set()
+
+        def dfs(x, y):
+            if x < 0 or y < 0 or x >= len(self.board[0]) or y >= len(self.board) or (x, y) in visited:
+                return
+            visited.add((x, y))
+            owner, territories = self.territory(x, y)
+            owners[owner].update(territories)
+            dfs(x+1, y)
+            dfs(x-1, y)
+            dfs(x, y+1)
+            dfs(x, y-1)
+
+        for y in range(len(self.board)):
+            for x in range(len(self.board[0])):
+                if (x, y) not in visited:
+                    dfs(x, y)
+
+        return owners

@@ -1,0 +1,122 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 6 items
+
+exercises/practice/nth-prime/nth_prime_test.py FFFFFF                    [100%]
+
+=================================== FAILURES ===================================
+_________________________ NthPrimeTest.test_big_prime __________________________
+
+self = <nth_prime_test.NthPrimeTest testMethod=test_big_prime>
+
+    def test_big_prime(self):
+>       self.assertEqual(prime(10001), 104743)
+E       AssertionError: False != 104743
+
+exercises/practice/nth-prime/nth_prime_test.py:28: AssertionError
+________________________ NthPrimeTest.test_first_prime _________________________
+
+self = <nth_prime_test.NthPrimeTest testMethod=test_first_prime>
+
+    def test_first_prime(self):
+>       self.assertEqual(prime(1), 2)
+E       AssertionError: False != 2
+
+exercises/practice/nth-prime/nth_prime_test.py:19: AssertionError
+____________________ NthPrimeTest.test_first_twenty_primes _____________________
+
+self = <nth_prime_test.NthPrimeTest testMethod=test_first_twenty_primes>
+
+    def test_first_twenty_primes(self):
+>       self.assertEqual(
+            prime_range(20),
+            [
+                2,
+                3,
+                5,
+                7,
+                11,
+                13,
+                17,
+                19,
+                23,
+                29,
+                31,
+                37,
+                41,
+                43,
+                47,
+                53,
+                59,
+                61,
+                67,
+                71,
+            ],
+        )
+E       AssertionError: Lists differ: [False, True, True, False, True, False, Tr[85 chars]alse] != [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 3[29 chars], 71]
+E       
+E       First differing element 0:
+E       False
+E       2
+E       
+E       + [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71]
+E       - [False,
+E       -  True,
+E       -  True,
+E       -  False,
+E       -  True,
+E       -  False,
+E       -  True,
+E       -  False,
+E       -  False,
+E       -  False,
+E       -  True,
+E       -  False,
+E       -  True,
+E       -  False,
+E       -  False,
+E       -  False,
+E       -  True,
+E       -  False,
+E       -  True,
+E       -  False]
+
+exercises/practice/nth-prime/nth_prime_test.py:39: AssertionError
+________________________ NthPrimeTest.test_second_prime ________________________
+
+self = <nth_prime_test.NthPrimeTest testMethod=test_second_prime>
+
+    def test_second_prime(self):
+>       self.assertEqual(prime(2), 3)
+E       AssertionError: True != 3
+
+exercises/practice/nth-prime/nth_prime_test.py:22: AssertionError
+________________________ NthPrimeTest.test_sixth_prime _________________________
+
+self = <nth_prime_test.NthPrimeTest testMethod=test_sixth_prime>
+
+    def test_sixth_prime(self):
+>       self.assertEqual(prime(6), 13)
+E       AssertionError: False != 13
+
+exercises/practice/nth-prime/nth_prime_test.py:25: AssertionError
+__________________ NthPrimeTest.test_there_is_no_zeroth_prime __________________
+
+self = <nth_prime_test.NthPrimeTest testMethod=test_there_is_no_zeroth_prime>
+
+    def test_there_is_no_zeroth_prime(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/nth-prime/nth_prime_test.py:31: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/nth-prime/nth_prime_test.py::NthPrimeTest::test_big_prime
+FAILED exercises/practice/nth-prime/nth_prime_test.py::NthPrimeTest::test_first_prime
+FAILED exercises/practice/nth-prime/nth_prime_test.py::NthPrimeTest::test_first_twenty_primes
+FAILED exercises/practice/nth-prime/nth_prime_test.py::NthPrimeTest::test_second_prime
+FAILED exercises/practice/nth-prime/nth_prime_test.py::NthPrimeTest::test_sixth_prime
+FAILED exercises/practice/nth-prime/nth_prime_test.py::NthPrimeTest::test_there_is_no_zeroth_prime
+============================== 6 failed in 0.06s ===============================

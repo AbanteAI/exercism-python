@@ -1,0 +1,302 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 29 items
+
+exercises/practice/yacht/yacht_test.py FFFFFFFFFFFFFFFFFFFFFFFFFFFFF     [100%]
+
+=================================== FAILURES ===================================
+_________________________ YachtTest.test_big_straight __________________________
+
+self = <yacht_test.YachtTest testMethod=test_big_straight>
+
+    def test_big_straight(self):
+>       self.assertEqual(yacht.score([4, 6, 2, 5, 3], yacht.BIG_STRAIGHT), 30)
+E       AssertionError: None != 30
+
+exercises/practice/yacht/yacht_test.py:83: AssertionError
+________________ YachtTest.test_big_straight_as_little_straight ________________
+
+self = <yacht_test.YachtTest testMethod=test_big_straight_as_little_straight>
+
+    def test_big_straight_as_little_straight(self):
+>       self.assertEqual(yacht.score([6, 5, 4, 3, 2], yacht.LITTLE_STRAIGHT), 0)
+E       AssertionError: None != 0
+
+exercises/practice/yacht/yacht_test.py:86: AssertionError
+____________________________ YachtTest.test_choice _____________________________
+
+self = <yacht_test.YachtTest testMethod=test_choice>
+
+    def test_choice(self):
+>       self.assertEqual(yacht.score([3, 3, 5, 6, 6], yacht.CHOICE), 23)
+E       AssertionError: None != 23
+
+exercises/practice/yacht/yacht_test.py:92: AssertionError
+_____________________________ YachtTest.test_fives _____________________________
+
+self = <yacht_test.YachtTest testMethod=test_fives>
+
+    def test_fives(self):
+>       self.assertEqual(yacht.score([1, 5, 3, 5, 3], yacht.FIVES), 10)
+E       AssertionError: None != 10
+
+exercises/practice/yacht/yacht_test.py:38: AssertionError
+____________ YachtTest.test_four_in_order_but_not_a_little_straight ____________
+
+self = <yacht_test.YachtTest testMethod=test_four_in_order_but_not_a_little_straight>
+
+    def test_four_in_order_but_not_a_little_straight(self):
+>       self.assertEqual(yacht.score([1, 1, 2, 3, 4], yacht.LITTLE_STRAIGHT), 0)
+E       AssertionError: None != 0
+
+exercises/practice/yacht/yacht_test.py:74: AssertionError
+________________________ YachtTest.test_four_of_a_kind _________________________
+
+self = <yacht_test.YachtTest testMethod=test_four_of_a_kind>
+
+    def test_four_of_a_kind(self):
+>       self.assertEqual(yacht.score([6, 6, 4, 6, 6], yacht.FOUR_OF_A_KIND), 24)
+E       AssertionError: None != 24
+
+exercises/practice/yacht/yacht_test.py:59: AssertionError
+______________ YachtTest.test_four_of_a_kind_is_not_a_full_house _______________
+
+self = <yacht_test.YachtTest testMethod=test_four_of_a_kind_is_not_a_full_house>
+
+    def test_four_of_a_kind_is_not_a_full_house(self):
+>       self.assertEqual(yacht.score([1, 4, 4, 4, 4], yacht.FULL_HOUSE), 0)
+E       AssertionError: None != 0
+
+exercises/practice/yacht/yacht_test.py:53: AssertionError
+_____________________________ YachtTest.test_fours _____________________________
+
+self = <yacht_test.YachtTest testMethod=test_fours>
+
+    def test_fours(self):
+>       self.assertEqual(yacht.score([1, 4, 1, 4, 1], yacht.FOURS), 8)
+E       AssertionError: None != 8
+
+exercises/practice/yacht/yacht_test.py:29: AssertionError
+_______________ YachtTest.test_full_house_is_not_four_of_a_kind ________________
+
+self = <yacht_test.YachtTest testMethod=test_full_house_is_not_four_of_a_kind>
+
+    def test_full_house_is_not_four_of_a_kind(self):
+>       self.assertEqual(yacht.score([3, 3, 3, 5, 5], yacht.FOUR_OF_A_KIND), 0)
+E       AssertionError: None != 0
+
+exercises/practice/yacht/yacht_test.py:65: AssertionError
+________________ YachtTest.test_full_house_three_small_two_big _________________
+
+self = <yacht_test.YachtTest testMethod=test_full_house_three_small_two_big>
+
+    def test_full_house_three_small_two_big(self):
+>       self.assertEqual(yacht.score([5, 3, 3, 5, 3], yacht.FULL_HOUSE), 19)
+E       AssertionError: None != 19
+
+exercises/practice/yacht/yacht_test.py:47: AssertionError
+________________ YachtTest.test_full_house_two_small_three_big _________________
+
+self = <yacht_test.YachtTest testMethod=test_full_house_two_small_three_big>
+
+    def test_full_house_two_small_three_big(self):
+>       self.assertEqual(yacht.score([2, 2, 4, 4, 4], yacht.FULL_HOUSE), 16)
+E       AssertionError: None != 16
+
+exercises/practice/yacht/yacht_test.py:44: AssertionError
+________________________ YachtTest.test_little_straight ________________________
+
+self = <yacht_test.YachtTest testMethod=test_little_straight>
+
+    def test_little_straight(self):
+>       self.assertEqual(yacht.score([3, 5, 4, 1, 2], yacht.LITTLE_STRAIGHT), 30)
+E       AssertionError: None != 30
+
+exercises/practice/yacht/yacht_test.py:68: AssertionError
+________________ YachtTest.test_little_straight_as_big_straight ________________
+
+self = <yacht_test.YachtTest testMethod=test_little_straight_as_big_straight>
+
+    def test_little_straight_as_big_straight(self):
+>       self.assertEqual(yacht.score([1, 2, 3, 4, 5], yacht.BIG_STRAIGHT), 0)
+E       AssertionError: None != 0
+
+exercises/practice/yacht/yacht_test.py:71: AssertionError
+______ YachtTest.test_minimum_is_1_maximum_is_5_but_not_a_little_straight ______
+
+self = <yacht_test.YachtTest testMethod=test_minimum_is_1_maximum_is_5_but_not_a_little_straight>
+
+    def test_minimum_is_1_maximum_is_5_but_not_a_little_straight(self):
+>       self.assertEqual(yacht.score([1, 1, 3, 4, 5], yacht.LITTLE_STRAIGHT), 0)
+E       AssertionError: None != 0
+
+exercises/practice/yacht/yacht_test.py:80: AssertionError
+____________________________ YachtTest.test_no_ones ____________________________
+
+self = <yacht_test.YachtTest testMethod=test_no_ones>
+
+    def test_no_ones(self):
+>       self.assertEqual(yacht.score([4, 3, 6, 5, 5], yacht.ONES), 0)
+E       AssertionError: None != 0
+
+exercises/practice/yacht/yacht_test.py:23: AssertionError
+________________ YachtTest.test_no_pairs_but_not_a_big_straight ________________
+
+self = <yacht_test.YachtTest testMethod=test_no_pairs_but_not_a_big_straight>
+
+    def test_no_pairs_but_not_a_big_straight(self):
+>       self.assertEqual(yacht.score([6, 5, 4, 3, 1], yacht.BIG_STRAIGHT), 0)
+E       AssertionError: None != 0
+
+exercises/practice/yacht/yacht_test.py:89: AssertionError
+______________ YachtTest.test_no_pairs_but_not_a_little_straight _______________
+
+self = <yacht_test.YachtTest testMethod=test_no_pairs_but_not_a_little_straight>
+
+    def test_no_pairs_but_not_a_little_straight(self):
+>       self.assertEqual(yacht.score([1, 2, 3, 4, 6], yacht.LITTLE_STRAIGHT), 0)
+E       AssertionError: None != 0
+
+exercises/practice/yacht/yacht_test.py:77: AssertionError
+___________________________ YachtTest.test_not_yacht ___________________________
+
+self = <yacht_test.YachtTest testMethod=test_not_yacht>
+
+    def test_not_yacht(self):
+>       self.assertEqual(yacht.score([1, 3, 3, 2, 5], yacht.YACHT), 0)
+E       AssertionError: None != 0
+
+exercises/practice/yacht/yacht_test.py:14: AssertionError
+_____________________________ YachtTest.test_ones ______________________________
+
+self = <yacht_test.YachtTest testMethod=test_ones>
+
+    def test_ones(self):
+>       self.assertEqual(yacht.score([1, 1, 1, 3, 5], yacht.ONES), 3)
+E       AssertionError: None != 3
+
+exercises/practice/yacht/yacht_test.py:17: AssertionError
+_______________________ YachtTest.test_ones_out_of_order _______________________
+
+self = <yacht_test.YachtTest testMethod=test_ones_out_of_order>
+
+    def test_ones_out_of_order(self):
+>       self.assertEqual(yacht.score([3, 1, 1, 5, 1], yacht.ONES), 3)
+E       AssertionError: None != 3
+
+exercises/practice/yacht/yacht_test.py:20: AssertionError
+_____________________________ YachtTest.test_sixes _____________________________
+
+self = <yacht_test.YachtTest testMethod=test_sixes>
+
+    def test_sixes(self):
+>       self.assertEqual(yacht.score([2, 3, 4, 5, 6], yacht.SIXES), 6)
+E       AssertionError: None != 6
+
+exercises/practice/yacht/yacht_test.py:41: AssertionError
+_________________ YachtTest.test_two_pair_is_not_a_full_house __________________
+
+self = <yacht_test.YachtTest testMethod=test_two_pair_is_not_a_full_house>
+
+    def test_two_pair_is_not_a_full_house(self):
+>       self.assertEqual(yacht.score([2, 2, 4, 4, 5], yacht.FULL_HOUSE), 0)
+E       AssertionError: None != 0
+
+exercises/practice/yacht/yacht_test.py:50: AssertionError
+_____________________________ YachtTest.test_twos ______________________________
+
+self = <yacht_test.YachtTest testMethod=test_twos>
+
+    def test_twos(self):
+>       self.assertEqual(yacht.score([2, 3, 4, 5, 6], yacht.TWOS), 2)
+E       AssertionError: None != 2
+
+exercises/practice/yacht/yacht_test.py:26: AssertionError
+_____________________________ YachtTest.test_yacht _____________________________
+
+self = <yacht_test.YachtTest testMethod=test_yacht>
+
+    def test_yacht(self):
+>       self.assertEqual(yacht.score([5, 5, 5, 5, 5], yacht.YACHT), 50)
+E       AssertionError: None != 50
+
+exercises/practice/yacht/yacht_test.py:11: AssertionError
+________________________ YachtTest.test_yacht_as_choice ________________________
+
+self = <yacht_test.YachtTest testMethod=test_yacht_as_choice>
+
+    def test_yacht_as_choice(self):
+>       self.assertEqual(yacht.score([2, 2, 2, 2, 2], yacht.CHOICE), 10)
+E       AssertionError: None != 10
+
+exercises/practice/yacht/yacht_test.py:95: AssertionError
+_____________ YachtTest.test_yacht_can_be_scored_as_four_of_a_kind _____________
+
+self = <yacht_test.YachtTest testMethod=test_yacht_can_be_scored_as_four_of_a_kind>
+
+    def test_yacht_can_be_scored_as_four_of_a_kind(self):
+>       self.assertEqual(yacht.score([3, 3, 3, 3, 3], yacht.FOUR_OF_A_KIND), 12)
+E       AssertionError: None != 12
+
+exercises/practice/yacht/yacht_test.py:62: AssertionError
+____________________ YachtTest.test_yacht_counted_as_threes ____________________
+
+self = <yacht_test.YachtTest testMethod=test_yacht_counted_as_threes>
+
+    def test_yacht_counted_as_threes(self):
+>       self.assertEqual(yacht.score([3, 3, 3, 3, 3], yacht.THREES), 15)
+E       AssertionError: None != 15
+
+exercises/practice/yacht/yacht_test.py:32: AssertionError
+___________________ YachtTest.test_yacht_is_not_a_full_house ___________________
+
+self = <yacht_test.YachtTest testMethod=test_yacht_is_not_a_full_house>
+
+    def test_yacht_is_not_a_full_house(self):
+>       self.assertEqual(yacht.score([2, 2, 2, 2, 2], yacht.FULL_HOUSE), 0)
+E       AssertionError: None != 0
+
+exercises/practice/yacht/yacht_test.py:56: AssertionError
+_________________ YachtTest.test_yacht_of_3s_counted_as_fives __________________
+
+self = <yacht_test.YachtTest testMethod=test_yacht_of_3s_counted_as_fives>
+
+    def test_yacht_of_3s_counted_as_fives(self):
+>       self.assertEqual(yacht.score([3, 3, 3, 3, 3], yacht.FIVES), 0)
+E       AssertionError: None != 0
+
+exercises/practice/yacht/yacht_test.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_big_straight
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_big_straight_as_little_straight
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_choice - Asser...
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_fives - Assert...
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_four_in_order_but_not_a_little_straight
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_four_of_a_kind
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_four_of_a_kind_is_not_a_full_house
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_fours - Assert...
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_full_house_is_not_four_of_a_kind
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_full_house_three_small_two_big
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_full_house_two_small_three_big
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_little_straight
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_little_straight_as_big_straight
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_minimum_is_1_maximum_is_5_but_not_a_little_straight
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_no_ones - Asse...
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_no_pairs_but_not_a_big_straight
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_no_pairs_but_not_a_little_straight
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_not_yacht - As...
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_ones - Asserti...
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_ones_out_of_order
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_sixes - Assert...
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_two_pair_is_not_a_full_house
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_twos - Asserti...
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_yacht - Assert...
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_yacht_as_choice
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_yacht_can_be_scored_as_four_of_a_kind
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_yacht_counted_as_threes
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_yacht_is_not_a_full_house
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_yacht_of_3s_counted_as_fives
+============================== 29 failed in 0.14s ==============================

@@ -1,0 +1,110 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 14 items
+
+exercises/practice/circular-buffer/circular_buffer_test.py ....FFF.F.... [ 92%]
+F                                                                        [100%]
+
+=================================== FAILURES ===================================
+___________ CircularBufferTest.test_each_item_may_only_be_read_once ____________
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_each_item_may_only_be_read_once>
+
+    def test_each_item_may_only_be_read_once(self):
+        buf = CircularBuffer(1)
+        buf.write("1")
+        self.assertEqual(buf.read(), "1")
+        with self.assertRaises(BufferError) as err:
+            buf.read()
+    
+        self.assertEqual(type(err.exception), BufferEmptyException)
+>       self.assertEqual(err.exception.args[0], "Circular buffer is empty")
+E       AssertionError: 'Buffer is empty' != 'Circular buffer is empty'
+E       - Buffer is empty
+E       + Circular buffer is empty
+
+exercises/practice/circular-buffer/circular_buffer_test.py:36: AssertionError
+___________ CircularBufferTest.test_full_buffer_can_t_be_written_to ____________
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_full_buffer_can_t_be_written_to>
+
+    def test_full_buffer_can_t_be_written_to(self):
+        buf = CircularBuffer(1)
+        buf.write("1")
+        with self.assertRaises(BufferError) as err:
+            buf.write("2")
+    
+        self.assertEqual(type(err.exception), BufferFullException)
+>       self.assertEqual(err.exception.args[0], "Circular buffer is full")
+E       AssertionError: 'Buffer is full' != 'Circular buffer is full'
+E       - Buffer is full
+E       + Circular buffer is full
+
+exercises/practice/circular-buffer/circular_buffer_test.py:52: AssertionError
+____ CircularBufferTest.test_initial_clear_does_not_affect_wrapping_around _____
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_initial_clear_does_not_affect_wrapping_around>
+
+    def test_initial_clear_does_not_affect_wrapping_around(self):
+        buf = CircularBuffer(2)
+        buf.clear()
+        buf.write("1")
+        buf.write("2")
+        buf.overwrite("3")
+        buf.overwrite("4")
+        self.assertEqual(buf.read(), "3")
+        self.assertEqual(buf.read(), "4")
+        with self.assertRaises(BufferError) as err:
+            buf.read()
+    
+        self.assertEqual(type(err.exception), BufferEmptyException)
+>       self.assertEqual(err.exception.args[0], "Circular buffer is empty")
+E       AssertionError: 'Buffer is empty' != 'Circular buffer is empty'
+E       - Buffer is empty
+E       + Circular buffer is empty
+
+exercises/practice/circular-buffer/circular_buffer_test.py:135: AssertionError
+______ CircularBufferTest.test_items_cleared_out_of_buffer_can_t_be_read _______
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_items_cleared_out_of_buffer_can_t_be_read>
+
+    def test_items_cleared_out_of_buffer_can_t_be_read(self):
+        buf = CircularBuffer(1)
+        buf.write("1")
+        buf.clear()
+        with self.assertRaises(BufferError) as err:
+            buf.read()
+    
+        self.assertEqual(type(err.exception), BufferEmptyException)
+>       self.assertEqual(err.exception.args[0], "Circular buffer is empty")
+E       AssertionError: 'Buffer is empty' != 'Circular buffer is empty'
+E       - Buffer is empty
+E       + Circular buffer is empty
+
+exercises/practice/circular-buffer/circular_buffer_test.py:78: AssertionError
+___________ CircularBufferTest.test_reading_empty_buffer_should_fail ___________
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_reading_empty_buffer_should_fail>
+
+    def test_reading_empty_buffer_should_fail(self):
+        buf = CircularBuffer(1)
+        with self.assertRaises(BufferError) as err:
+            buf.read()
+    
+        self.assertEqual(type(err.exception), BufferEmptyException)
+>       self.assertEqual(err.exception.args[0], "Circular buffer is empty")
+E       AssertionError: 'Buffer is empty' != 'Circular buffer is empty'
+E       - Buffer is empty
+E       + Circular buffer is empty
+
+exercises/practice/circular-buffer/circular_buffer_test.py:21: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_each_item_may_only_be_read_once
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_full_buffer_can_t_be_written_to
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_initial_clear_does_not_affect_wrapping_around
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_items_cleared_out_of_buffer_can_t_be_read
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_reading_empty_buffer_should_fail
+========================= 5 failed, 9 passed in 0.05s ==========================

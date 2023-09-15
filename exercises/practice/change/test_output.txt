@@ -1,0 +1,163 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 12 items
+
+exercises/practice/change/change_test.py FF.FFFFFF.F.                    [100%]
+
+=================================== FAILURES ===================================
+_____ ChangeTest.test_another_possible_change_without_unit_coins_available _____
+
+self = <change_test.ChangeTest testMethod=test_another_possible_change_without_unit_coins_available>
+
+    def test_another_possible_change_without_unit_coins_available(self):
+>       self.assertEqual(find_fewest_coins([4, 5], 27), [4, 4, 4, 5, 5, 5])
+E       AssertionError: Lists differ: [5, 5, 5, 5, 5] != [4, 4, 4, 5, 5, 5]
+E       
+E       First differing element 0:
+E       5
+E       4
+E       
+E       Second list contains 1 additional elements.
+E       First extra element 5:
+E       5
+E       
+E       - [5, 5, 5, 5, 5]
+E       + [4, 4, 4, 5, 5, 5]
+
+exercises/practice/change/change_test.py:38: AssertionError
+______________ ChangeTest.test_cannot_find_negative_change_values ______________
+
+self = <change_test.ChangeTest testMethod=test_cannot_find_negative_change_values>
+
+    def test_cannot_find_negative_change_values(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/change/change_test.py:56: AssertionError
+________________ ChangeTest.test_change_with_lilliputian_coins _________________
+
+self = <change_test.ChangeTest testMethod=test_change_with_lilliputian_coins>
+
+    def test_change_with_lilliputian_coins(self):
+>       self.assertEqual(find_fewest_coins([1, 4, 15, 20, 50], 23), [4, 4, 15])
+E       AssertionError: Lists differ: [20, 1, 1, 1] != [4, 4, 15]
+E       
+E       First differing element 0:
+E       20
+E       4
+E       
+E       First list contains 1 additional elements.
+E       First extra element 3:
+E       1
+E       
+E       - [20, 1, 1, 1]
+E       + [4, 4, 15]
+
+exercises/practice/change/change_test.py:23: AssertionError
+_______________ ChangeTest.test_change_with_lower_elbonia_coins ________________
+
+self = <change_test.ChangeTest testMethod=test_change_with_lower_elbonia_coins>
+
+    def test_change_with_lower_elbonia_coins(self):
+>       self.assertEqual(find_fewest_coins([1, 5, 10, 21, 25], 63), [21, 21, 21])
+E       AssertionError: Lists differ: [25, 25, 10, 1, 1, 1] != [21, 21, 21]
+E       
+E       First differing element 0:
+E       25
+E       21
+E       
+E       First list contains 3 additional elements.
+E       First extra element 3:
+E       1
+E       
+E       - [25, 25, 10, 1, 1, 1]
+E       + [21, 21, 21]
+
+exercises/practice/change/change_test.py:26: AssertionError
+_________ ChangeTest.test_error_if_no_combination_can_add_up_to_target _________
+
+self = <change_test.ChangeTest testMethod=test_error_if_no_combination_can_add_up_to_target>
+
+    def test_error_if_no_combination_can_add_up_to_target(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/change/change_test.py:50: AssertionError
+_ ChangeTest.test_error_testing_for_change_smaller_than_the_smallest_of_coins __
+
+self = <change_test.ChangeTest testMethod=test_error_testing_for_change_smaller_than_the_smallest_of_coins>
+
+    def test_error_testing_for_change_smaller_than_the_smallest_of_coins(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/change/change_test.py:44: AssertionError
+_____________________ ChangeTest.test_large_target_values ______________________
+
+self = <change_test.ChangeTest testMethod=test_large_target_values>
+
+    def test_large_target_values(self):
+>       self.assertEqual(
+            find_fewest_coins([1, 2, 5, 10, 20, 50, 100], 999),
+            [2, 2, 5, 20, 20, 50, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+        )
+E       AssertionError: Lists differ: [100, 100, 100, 100, 100, 100, 100, 100, 100, 50, 20, 20, 5, 2, 2] != [2, 2, 5, 20, 20, 50, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+E       
+E       First differing element 0:
+E       100
+E       2
+E       
+E       - [100, 100, 100, 100, 100, 100, 100, 100, 100, 50, 20, 20, 5, 2, 2]
+E       + [2, 2, 5, 20, 20, 50, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+
+exercises/practice/change/change_test.py:29: AssertionError
+_____________________ ChangeTest.test_multiple_coin_change _____________________
+
+self = <change_test.ChangeTest testMethod=test_multiple_coin_change>
+
+    def test_multiple_coin_change(self):
+>       self.assertEqual(find_fewest_coins([1, 5, 10, 25, 100], 15), [5, 10])
+E       AssertionError: Lists differ: [10, 5] != [5, 10]
+E       
+E       First differing element 0:
+E       10
+E       5
+E       
+E       - [10, 5]
+E       + [5, 10]
+
+exercises/practice/change/change_test.py:20: AssertionError
+_________ ChangeTest.test_possible_change_without_unit_coins_available _________
+
+self = <change_test.ChangeTest testMethod=test_possible_change_without_unit_coins_available>
+
+    def test_possible_change_without_unit_coins_available(self):
+>       self.assertEqual(find_fewest_coins([2, 5, 10, 20, 50], 21), [2, 2, 2, 5, 10])
+E       AssertionError: Lists differ: [20] != [2, 2, 2, 5, 10]
+E       
+E       First differing element 0:
+E       20
+E       2
+E       
+E       Second list contains 4 additional elements.
+E       First extra element 1:
+E       2
+E       
+E       - [20]
+E       + [2, 2, 2, 5, 10]
+
+exercises/practice/change/change_test.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_another_possible_change_without_unit_coins_available
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_cannot_find_negative_change_values
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_change_with_lilliputian_coins
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_change_with_lower_elbonia_coins
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_error_if_no_combination_can_add_up_to_target
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_error_testing_for_change_smaller_than_the_smallest_of_coins
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_large_target_values
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_multiple_coin_change
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_possible_change_without_unit_coins_available
+========================= 9 failed, 3 passed in 0.06s ==========================
