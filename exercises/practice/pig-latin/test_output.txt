@@ -1,0 +1,52 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 22 items
+
+exercises/practice/pig-latin/pig_latin_test.py ................F...FF    [100%]
+
+=================================== FAILURES ===================================
+___________________ PigLatinTest.test_word_beginning_with_x ____________________
+
+self = <pig_latin_test.PigLatinTest testMethod=test_word_beginning_with_x>
+
+    def test_word_beginning_with_x(self):
+>       self.assertEqual(translate("xenon"), "enonxay")
+E       AssertionError: 'xenonay' != 'enonxay'
+E       - xenonay
+E       ? -
+E       + enonxay
+E       ?     +
+
+exercises/practice/pig-latin/pig_latin_test.py:38: AssertionError
+__ PigLatinTest.test_y_is_treated_like_a_consonant_at_the_beginning_of_a_word __
+
+self = <pig_latin_test.PigLatinTest testMethod=test_y_is_treated_like_a_consonant_at_the_beginning_of_a_word>
+
+    def test_y_is_treated_like_a_consonant_at_the_beginning_of_a_word(self):
+>       self.assertEqual(translate("yellow"), "ellowyay")
+E       AssertionError: 'yelloway' != 'ellowyay'
+E       - yelloway
+E       ? -
+E       + ellowyay
+E       ?      +
+
+exercises/practice/pig-latin/pig_latin_test.py:68: AssertionError
+_ PigLatinTest.test_y_is_treated_like_a_vowel_at_the_end_of_a_consonant_cluster _
+
+self = <pig_latin_test.PigLatinTest testMethod=test_y_is_treated_like_a_vowel_at_the_end_of_a_consonant_cluster>
+
+    def test_y_is_treated_like_a_vowel_at_the_end_of_a_consonant_cluster(self):
+>       self.assertEqual(translate("rhythm"), "ythmrhay")
+E       AssertionError: 'rhythm' != 'ythmrhay'
+E       - rhythm
+E       + ythmrhay
+
+exercises/practice/pig-latin/pig_latin_test.py:71: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/pig-latin/pig_latin_test.py::PigLatinTest::test_word_beginning_with_x
+FAILED exercises/practice/pig-latin/pig_latin_test.py::PigLatinTest::test_y_is_treated_like_a_consonant_at_the_beginning_of_a_word
+FAILED exercises/practice/pig-latin/pig_latin_test.py::PigLatinTest::test_y_is_treated_like_a_vowel_at_the_end_of_a_consonant_cluster
+========================= 3 failed, 19 passed in 0.05s =========================

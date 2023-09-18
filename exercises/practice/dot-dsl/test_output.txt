@@ -1,0 +1,212 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 12 items
+
+exercises/practice/dot-dsl/dot_dsl_test.py FFFFFFFFFFFF                  [100%]
+
+=================================== FAILURES ===================================
+_________________________ DotDslTest.test_empty_graph __________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_empty_graph>
+
+    def test_empty_graph(self):
+        g = Graph()
+    
+        self.assertEqual(g.nodes, [])
+        self.assertEqual(g.edges, [])
+>       self.assertEqual(g.attrs, {})
+E       AssertionError: <bound method Graph.attrs of <dot_dsl.Graph object at 0x7ff7561cd810>> != {}
+
+exercises/practice/dot-dsl/dot_dsl_test.py:12: AssertionError
+____________________ DotDslTest.test_graph_with_attributes _____________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_graph_with_attributes>
+
+    def test_graph_with_attributes(self):
+        g = Graph([
+            (ATTR, "foo", "1"),
+            (ATTR, "title", "Testing Attrs"),
+            (NODE, "a", {"color": "green"}),
+            (NODE, "c", {}),
+            (NODE, "b", {"label": "Beta!"}),
+            (EDGE, "b", "c", {}),
+            (EDGE, "a", "b", {"color": "blue"}),
+            (ATTR, "bar", "true")
+        ])
+    
+        self.assertEqual(g.nodes, [Node("a", {"color": "green"}),
+                                   Node("c", {}),
+                                   Node("b", {"label": "Beta!"})])
+        self.assertEqual(g.edges, [Edge("b", "c", {}),
+                                   Edge("a", "b", {"color": "blue"})])
+>       self.assertEqual(g.attrs, {
+            "foo": "1",
+            "title": "Testing Attrs",
+            "bar": "true"
+        })
+E       AssertionError: <bound method Graph.attrs of <dot_dsl.Graph object at 0x7ff75603f8b0>> != {'foo': '1', 'title': 'Testing Attrs', 'bar': 'true'}
+
+exercises/practice/dot-dsl/dot_dsl_test.py:67: AssertionError
+___________________ DotDslTest.test_graph_with_one_attribute ___________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_graph_with_one_attribute>
+
+    def test_graph_with_one_attribute(self):
+        g = Graph([
+            (ATTR, "foo", "1")
+        ])
+    
+        self.assertEqual(g.nodes, [])
+        self.assertEqual(g.edges, [])
+>       self.assertEqual(g.attrs, {"foo": "1"})
+E       AssertionError: <bound method Graph.attrs of <dot_dsl.Graph object at 0x7ff756035cf0>> != {'foo': '1'}
+
+exercises/practice/dot-dsl/dot_dsl_test.py:48: AssertionError
+_____________________ DotDslTest.test_graph_with_one_edge ______________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_graph_with_one_edge>
+
+    def test_graph_with_one_edge(self):
+        g = Graph([
+            (EDGE, "a", "b", {})
+        ])
+    
+        self.assertEqual(g.nodes, [])
+        self.assertEqual(g.edges, [Edge("a", "b", {})])
+>       self.assertEqual(g.attrs, {})
+E       AssertionError: <bound method Graph.attrs of <dot_dsl.Graph object at 0x7ff756033ac0>> != {}
+
+exercises/practice/dot-dsl/dot_dsl_test.py:39: AssertionError
+_____________________ DotDslTest.test_graph_with_one_node ______________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_graph_with_one_node>
+
+    def test_graph_with_one_node(self):
+        g = Graph([
+            (NODE, "a", {})
+        ])
+    
+        self.assertEqual(g.nodes, [Node("a", {})])
+        self.assertEqual(g.edges, [])
+>       self.assertEqual(g.attrs, {})
+E       AssertionError: <bound method Graph.attrs of <dot_dsl.Graph object at 0x7ff7561cd6c0>> != {}
+
+exercises/practice/dot-dsl/dot_dsl_test.py:21: AssertionError
+______________ DotDslTest.test_graph_with_one_node_with_keywords _______________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_graph_with_one_node_with_keywords>
+
+    def test_graph_with_one_node_with_keywords(self):
+        g = Graph([
+            (NODE, "a", {"color": "green"})
+        ])
+    
+        self.assertEqual(g.nodes, [Node("a", {"color": "green"})])
+        self.assertEqual(g.edges, [])
+>       self.assertEqual(g.attrs, {})
+E       AssertionError: <bound method Graph.attrs of <dot_dsl.Graph object at 0x7ff756192020>> != {}
+
+exercises/practice/dot-dsl/dot_dsl_test.py:30: AssertionError
+________________________ DotDslTest.test_malformed_EDGE ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_EDGE>
+
+    def test_malformed_EDGE(self):
+        with self.assertRaises(ValueError) as err:
+>           Graph([(EDGE, 1, 2)])
+
+exercises/practice/dot-dsl/dot_dsl_test.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def __init__(self, data=None):
+        self.nodes = []
+        self.edges = []
+        self.graph_attrs = []
+        if data:
+            for item in data:
+                if item[0] == NODE:
+                    self.add_node(item[1], item[2])
+                elif item[0] == EDGE:
+>                   self.add_edge(item[1], item[2], item[3])
+E                   IndexError: tuple index out of range
+
+exercises/practice/dot-dsl/dot_dsl.py:35: IndexError
+________________________ DotDslTest.test_malformed_attr ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_attr>
+
+    def test_malformed_attr(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/dot-dsl/dot_dsl_test.py:98: AssertionError
+_______________________ DotDslTest.test_malformed_graph ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_graph>
+
+    def test_malformed_graph(self):
+        with self.assertRaises(TypeError) as err:
+            Graph(1)
+        self.assertEqual(type(err.exception), TypeError)
+>       self.assertEqual(err.exception.args[0], "Graph data malformed")
+E       AssertionError: "'int' object is not iterable" != 'Graph data malformed'
+E       - 'int' object is not iterable
+E       + Graph data malformed
+
+exercises/practice/dot-dsl/dot_dsl_test.py:77: AssertionError
+_____________________ DotDslTest.test_malformed_graph_item _____________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_graph_item>
+
+    def test_malformed_graph_item(self):
+        with self.assertRaises(TypeError) as err:
+>           Graph([()])
+
+exercises/practice/dot-dsl/dot_dsl_test.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def __init__(self, data=None):
+        self.nodes = []
+        self.edges = []
+        self.graph_attrs = []
+        if data:
+            for item in data:
+>               if item[0] == NODE:
+E               IndexError: tuple index out of range
+
+exercises/practice/dot-dsl/dot_dsl.py:32: IndexError
+________________________ DotDslTest.test_malformed_node ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_node>
+
+    def test_malformed_node(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/dot-dsl/dot_dsl_test.py:105: AssertionError
+_________________________ DotDslTest.test_unknown_item _________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_unknown_item>
+
+    def test_unknown_item(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/dot-dsl/dot_dsl_test.py:118: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_empty_graph
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_graph_with_attributes
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_graph_with_one_attribute
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_graph_with_one_edge
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_graph_with_one_node
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_graph_with_one_node_with_keywords
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_EDGE
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_attr
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_graph
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_graph_item
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_node
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_unknown_item
+============================== 12 failed in 0.07s ==============================

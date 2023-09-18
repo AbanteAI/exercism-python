@@ -1,0 +1,42 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 12 items
+
+exercises/practice/change/change_test.py .....FF.....                    [100%]
+
+=================================== FAILURES ===================================
+_________ ChangeTest.test_error_if_no_combination_can_add_up_to_target _________
+
+self = <change_test.ChangeTest testMethod=test_error_if_no_combination_can_add_up_to_target>
+
+    def test_error_if_no_combination_can_add_up_to_target(self):
+        with self.assertRaises(ValueError) as err:
+            find_fewest_coins([5, 10], 94)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "can't make target with given coins")
+E       AssertionError: 'No combination of coins can sum to the target value' != "can't make target with given coins"
+E       - No combination of coins can sum to the target value
+E       + can't make target with given coins
+
+exercises/practice/change/change_test.py:53: AssertionError
+_ ChangeTest.test_error_testing_for_change_smaller_than_the_smallest_of_coins __
+
+self = <change_test.ChangeTest testMethod=test_error_testing_for_change_smaller_than_the_smallest_of_coins>
+
+    def test_error_testing_for_change_smaller_than_the_smallest_of_coins(self):
+        with self.assertRaises(ValueError) as err:
+            find_fewest_coins([5, 10], 3)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "can't make target with given coins")
+E       AssertionError: 'No combination of coins can sum to the target value' != "can't make target with given coins"
+E       - No combination of coins can sum to the target value
+E       + can't make target with given coins
+
+exercises/practice/change/change_test.py:47: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_error_if_no_combination_can_add_up_to_target
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_error_testing_for_change_smaller_than_the_smallest_of_coins
+========================= 2 failed, 10 passed in 0.06s =========================

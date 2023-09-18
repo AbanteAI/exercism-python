@@ -1,0 +1,38 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 4 items
+
+exercises/practice/robot-name/robot_name_test.py ...F                    [100%]
+
+=================================== FAILURES ===================================
+________________________ RobotNameTest.test_reset_name _________________________
+
+self = <robot_name_test.RobotNameTest testMethod=test_reset_name>
+
+    def test_reset_name(self):
+        # Set a seed
+        seed = "Totally random."
+    
+        # Initialize RNG using the seed
+        random.seed(seed)
+    
+        # Call the generator
+        robot = Robot()
+        name = robot.name
+    
+        # Reinitialize RNG using seed
+        random.seed(seed)
+    
+        # Call the generator again
+        robot.reset()
+        name2 = robot.name
+>       self.assertNotEqual(name, name2)
+E       AssertionError: 'EJ348' == 'EJ348'
+
+exercises/practice/robot-name/robot_name_test.py:46: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/robot-name/robot_name_test.py::RobotNameTest::test_reset_name
+========================= 1 failed, 3 passed in 0.03s ==========================

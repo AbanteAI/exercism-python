@@ -1,0 +1,254 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 35 items
+
+exercises/practice/poker/poker_test.py .FFFFFF..F.F...........F....F.... [ 94%]
+..                                                                       [100%]
+
+=================================== FAILURES ===================================
+__________________ PokerTest.test_a_tie_has_multiple_winners ___________________
+
+self = <poker_test.PokerTest testMethod=test_a_tie_has_multiple_winners>
+
+    def test_a_tie_has_multiple_winners(self):
+        self.assertEqual(
+>           best_hands(
+                [
+                    "4D 5S 6S 8D 3C",
+                    "2S 4C 7S 9H 10H",
+                    "3S 4S 5D 6H JH",
+                    "3H 4H 5C 6C JD",
+                ]
+            ),
+            ["3S 4S 5D 6H JH", "3H 4H 5C 6C JD"],
+        )
+
+exercises/practice/poker/poker_test.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/poker/poker.py:32: in best_hands
+    ranked_hands = [(hand_rank(hand), hand) for hand in hands]
+exercises/practice/poker/poker.py:32: in <listcomp>
+    ranked_hands = [(hand_rank(hand), hand) for hand in hands]
+exercises/practice/poker/poker.py:6: in hand_rank
+    hand_ranks = sorted([rank_dict[c[0]] for c in hand.split()], reverse=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7f16d8b63e20>
+
+>   hand_ranks = sorted([rank_dict[c[0]] for c in hand.split()], reverse=True)
+E   KeyError: '1'
+
+exercises/practice/poker/poker.py:6: KeyError
+______________ PokerTest.test_aces_can_end_a_straight_10_j_q_k_a _______________
+
+self = <poker_test.PokerTest testMethod=test_aces_can_end_a_straight_10_j_q_k_a>
+
+    def test_aces_can_end_a_straight_10_j_q_k_a(self):
+        self.assertEqual(
+>           best_hands(["4S 5H 4C 8D 4H", "10D JH QS KD AC"]), ["10D JH QS KD AC"]
+        )
+
+exercises/practice/poker/poker_test.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/poker/poker.py:32: in best_hands
+    ranked_hands = [(hand_rank(hand), hand) for hand in hands]
+exercises/practice/poker/poker.py:32: in <listcomp>
+    ranked_hands = [(hand_rank(hand), hand) for hand in hands]
+exercises/practice/poker/poker.py:6: in hand_rank
+    hand_ranks = sorted([rank_dict[c[0]] for c in hand.split()], reverse=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7f16d8a3fa30>
+
+>   hand_ranks = sorted([rank_dict[c[0]] for c in hand.split()], reverse=True)
+E   KeyError: '1'
+
+exercises/practice/poker/poker.py:6: KeyError
+___________ PokerTest.test_aces_can_end_a_straight_flush_10_j_q_k_a ____________
+
+self = <poker_test.PokerTest testMethod=test_aces_can_end_a_straight_flush_10_j_q_k_a>
+
+    def test_aces_can_end_a_straight_flush_10_j_q_k_a(self):
+        self.assertEqual(
+>           best_hands(["KC AH AS AD AC", "10C JC QC KC AC"]), ["10C JC QC KC AC"]
+        )
+
+exercises/practice/poker/poker_test.py:190: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/poker/poker.py:32: in best_hands
+    ranked_hands = [(hand_rank(hand), hand) for hand in hands]
+exercises/practice/poker/poker.py:32: in <listcomp>
+    ranked_hands = [(hand_rank(hand), hand) for hand in hands]
+exercises/practice/poker/poker.py:6: in hand_rank
+    hand_ranks = sorted([rank_dict[c[0]] for c in hand.split()], reverse=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7f16d8ba77f0>
+
+>   hand_ranks = sorted([rank_dict[c[0]] for c in hand.split()], reverse=True)
+E   KeyError: '1'
+
+exercises/practice/poker/poker.py:6: KeyError
+______________ PokerTest.test_aces_can_start_a_straight_a_2_3_4_5 ______________
+
+self = <poker_test.PokerTest testMethod=test_aces_can_start_a_straight_a_2_3_4_5>
+
+    def test_aces_can_start_a_straight_a_2_3_4_5(self):
+>       self.assertEqual(
+            best_hands(["4S 5H 4C 8D 4H", "4D AH 3S 2D 5C"]), ["4D AH 3S 2D 5C"]
+        )
+E       AssertionError: Lists differ: ['4S 5H 4C 8D 4H'] != ['4D AH 3S 2D 5C']
+E       
+E       First differing element 0:
+E       '4S 5H 4C 8D 4H'
+E       '4D AH 3S 2D 5C'
+E       
+E       - ['4S 5H 4C 8D 4H']
+E       + ['4D AH 3S 2D 5C']
+
+exercises/practice/poker/poker_test.py:116: AssertionError
+___________ PokerTest.test_aces_can_start_a_straight_flush_a_2_3_4_5 ___________
+
+self = <poker_test.PokerTest testMethod=test_aces_can_start_a_straight_flush_a_2_3_4_5>
+
+    def test_aces_can_start_a_straight_flush_a_2_3_4_5(self):
+>       self.assertEqual(
+            best_hands(["KS AH AS AD AC", "4H AH 3H 2H 5H"]), ["4H AH 3H 2H 5H"]
+        )
+E       AssertionError: Lists differ: ['KS AH AS AD AC'] != ['4H AH 3H 2H 5H']
+E       
+E       First differing element 0:
+E       'KS AH AS AD AC'
+E       '4H AH 3H 2H 5H'
+E       
+E       - ['KS AH AS AD AC']
+E       + ['4H AH 3H 2H 5H']
+
+exercises/practice/poker/poker_test.py:194: AssertionError
+__ PokerTest.test_aces_cannot_be_in_the_middle_of_a_straight_flush_q_k_a_2_3 ___
+
+self = <poker_test.PokerTest testMethod=test_aces_cannot_be_in_the_middle_of_a_straight_flush_q_k_a_2_3>
+
+    def test_aces_cannot_be_in_the_middle_of_a_straight_flush_q_k_a_2_3(self):
+        self.assertEqual(
+>           best_hands(["2C AC QC 10C KC", "QH KH AH 2H 3H"]), ["2C AC QC 10C KC"]
+        )
+
+exercises/practice/poker/poker_test.py:200: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/poker/poker.py:32: in best_hands
+    ranked_hands = [(hand_rank(hand), hand) for hand in hands]
+exercises/practice/poker/poker.py:32: in <listcomp>
+    ranked_hands = [(hand_rank(hand), hand) for hand in hands]
+exercises/practice/poker/poker.py:6: in hand_rank
+    hand_ranks = sorted([rank_dict[c[0]] for c in hand.split()], reverse=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7f16d8a5f5e0>
+
+>   hand_ranks = sorted([rank_dict[c[0]] for c in hand.split()], reverse=True)
+E   KeyError: '1'
+
+exercises/practice/poker/poker.py:6: KeyError
+_ PokerTest.test_both_hands_have_a_full_house_tie_goes_to_highest_ranked_triplet _
+
+self = <poker_test.PokerTest testMethod=test_both_hands_have_a_full_house_tie_goes_to_highest_ranked_triplet>
+
+    def test_both_hands_have_a_full_house_tie_goes_to_highest_ranked_triplet(self):
+>       self.assertEqual(
+            best_hands(["4H 4S 4D 9S 9D", "5H 5S 5D 8S 8D"]), ["5H 5S 5D 8S 8D"]
+        )
+E       AssertionError: Lists differ: ['4H 4S 4D 9S 9D'] != ['5H 5S 5D 8S 8D']
+E       
+E       First differing element 0:
+E       '4H 4S 4D 9S 9D'
+E       '5H 5S 5D 8S 8D'
+E       
+E       - ['4H 4S 4D 9S 9D']
+E       + ['5H 5S 5D 8S 8D']
+
+exercises/practice/poker/poker_test.py:155: AssertionError
+_____ PokerTest.test_both_hands_have_four_of_a_kind_tie_goes_to_high_quad ______
+
+self = <poker_test.PokerTest testMethod=test_both_hands_have_four_of_a_kind_tie_goes_to_high_quad>
+
+    def test_both_hands_have_four_of_a_kind_tie_goes_to_high_quad(self):
+>       self.assertEqual(
+            best_hands(["2S 2H 2C 8D 2D", "4S 5H 5S 5D 5C"]), ["4S 5H 5S 5D 5C"]
+        )
+E       AssertionError: Lists differ: ['2S 2H 2C 8D 2D'] != ['4S 5H 5S 5D 5C']
+E       
+E       First differing element 0:
+E       '2S 2H 2C 8D 2D'
+E       '4S 5H 5S 5D 5C'
+E       
+E       - ['2S 2H 2C 8D 2D']
+E       + ['4S 5H 5S 5D 5C']
+
+exercises/practice/poker/poker_test.py:172: AssertionError
+______________ PokerTest.test_highest_card_out_of_all_hands_wins _______________
+
+self = <poker_test.PokerTest testMethod=test_highest_card_out_of_all_hands_wins>
+
+    def test_highest_card_out_of_all_hands_wins(self):
+        self.assertEqual(
+>           best_hands(["4D 5S 6S 8D 3C", "2S 4C 7S 9H 10H", "3S 4S 5D 6H JH"]),
+            ["3S 4S 5D 6H JH"],
+        )
+
+exercises/practice/poker/poker_test.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/poker/poker.py:32: in best_hands
+    ranked_hands = [(hand_rank(hand), hand) for hand in hands]
+exercises/practice/poker/poker.py:32: in <listcomp>
+    ranked_hands = [(hand_rank(hand), hand) for hand in hands]
+exercises/practice/poker/poker.py:6: in hand_rank
+    hand_ranks = sorted([rank_dict[c[0]] for c in hand.split()], reverse=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7f16d8a5c9a0>
+
+>   hand_ranks = sorted([rank_dict[c[0]] for c in hand.split()], reverse=True)
+E   KeyError: '1'
+
+exercises/practice/poker/poker.py:6: KeyError
+______________ PokerTest.test_straight_flush_beats_four_of_a_kind ______________
+
+self = <poker_test.PokerTest testMethod=test_straight_flush_beats_four_of_a_kind>
+
+    def test_straight_flush_beats_four_of_a_kind(self):
+        self.assertEqual(
+>           best_hands(["4S 5H 5S 5D 5C", "7S 8S 9S 6S 10S"]), ["7S 8S 9S 6S 10S"]
+        )
+
+exercises/practice/poker/poker_test.py:185: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/poker/poker.py:32: in best_hands
+    ranked_hands = [(hand_rank(hand), hand) for hand in hands]
+exercises/practice/poker/poker.py:32: in <listcomp>
+    ranked_hands = [(hand_rank(hand), hand) for hand in hands]
+exercises/practice/poker/poker.py:6: in hand_rank
+    hand_ranks = sorted([rank_dict[c[0]] for c in hand.split()], reverse=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7f16d8a3cc70>
+
+>   hand_ranks = sorted([rank_dict[c[0]] for c in hand.split()], reverse=True)
+E   KeyError: '1'
+
+exercises/practice/poker/poker.py:6: KeyError
+=========================== short test summary info ============================
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_a_tie_has_multiple_winners
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_aces_can_end_a_straight_10_j_q_k_a
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_aces_can_end_a_straight_flush_10_j_q_k_a
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_aces_can_start_a_straight_a_2_3_4_5
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_aces_can_start_a_straight_flush_a_2_3_4_5
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_aces_cannot_be_in_the_middle_of_a_straight_flush_q_k_a_2_3
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_both_hands_have_a_full_house_tie_goes_to_highest_ranked_triplet
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_both_hands_have_four_of_a_kind_tie_goes_to_high_quad
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_highest_card_out_of_all_hands_wins
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_straight_flush_beats_four_of_a_kind
+======================== 10 failed, 25 passed in 0.10s =========================

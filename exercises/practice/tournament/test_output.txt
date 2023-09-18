@@ -1,0 +1,45 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 12 items
+
+exercises/practice/tournament/tournament_test.py ....F.......            [100%]
+
+=================================== FAILURES ===================================
+_____________ TournamentTest.test_ensure_points_sorted_numerically _____________
+
+self = <tournament_test.TournamentTest testMethod=test_ensure_points_sorted_numerically>
+
+    def test_ensure_points_sorted_numerically(self):
+        results = [
+            "Devastating Donkeys;Blithering Badgers;win",
+            "Devastating Donkeys;Blithering Badgers;win",
+            "Devastating Donkeys;Blithering Badgers;win",
+            "Devastating Donkeys;Blithering Badgers;win",
+            "Blithering Badgers;Devastating Donkeys;win",
+        ]
+        table = [
+            "Team                           | MP |  W |  D |  L |  P",
+            "Devastating Donkeys            |  5 |  4 |  0 |  1 | 12",
+            "Blithering Badgers             |  5 |  1 |  0 |  4 |  3",
+        ]
+>       self.assertEqual(tally(results), table)
+E       AssertionError: Lists differ: ['Tea[104 chars] 1 |  12', 'Blithering Badgers             |  [18 chars]  3'] != ['Tea[104 chars] 1 | 12', 'Blithering Badgers             |  5[17 chars]  3']
+E       
+E       First differing element 1:
+E       'Devastating Donkeys            |  5 |  4 |  0 |  1 |  12'
+E       'Devastating Donkeys            |  5 |  4 |  0 |  1 | 12'
+E       
+E         ['Team                           | MP |  W |  D |  L |  P',
+E       -  'Devastating Donkeys            |  5 |  4 |  0 |  1 |  12',
+E       ?                                                       -
+E       
+E       +  'Devastating Donkeys            |  5 |  4 |  0 |  1 | 12',
+E          'Blithering Badgers             |  5 |  1 |  0 |  4 |  3']
+
+exercises/practice/tournament/tournament_test.py:157: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/tournament/tournament_test.py::TournamentTest::test_ensure_points_sorted_numerically
+========================= 1 failed, 11 passed in 0.04s =========================

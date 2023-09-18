@@ -2,76 +2,47 @@ import re
 
 
 def parse(markdown):
+    def parse_header(line):
+        level = 0
+        while line.startswith('#'):
+            level += 1
+            line = line[1:]
+        if level > 6:
+            return line.strip(), False
+        return f'<h{level}>{line.strip()}</h{level}>', True if level > 0 else False
+
+    def parse_list_item(line):
+        return f'<li>{line[2:].strip()}</li>', True if line.startswith('* ') else False
+
+    def parse_paragraph(line):
+        return f'<p>{line.strip()}</p>', True if line.strip() else False
+
+    def parse_bold(line):
+        while '__' in line:
+            start = line.find('__')
+            end = line.find('__', start + 2)
+            line = line[:start] + '<strong>' + line[start + 2:end] + '</strong>' + line[end + 2:]
+        return line
+
+    def parse_italic(line):
+        while '_' in line:
+            start = line.find('_')
+            end = line.find('_', start + 1)
+            line = line[:start] + '<em>' + line[start + 1:end] + '</em>' + line[end + 1:]
+        return line
+
     lines = markdown.split('\n')
     res = ''
     in_list = False
     in_list_append = False
-    for i in lines:
-        if re.match('###### (.*)', i) is not None:
-            i = '<h6>' + i[7:] + '</h6>'
-        elif re.match('##### (.*)', i) is not None:
-            i = '<h5>' + i[6:] + '</h5>'
-        elif re.match('#### (.*)', i) is not None:
-            i = '<h4>' + i[5:] + '</h4>'
-        elif re.match('### (.*)', i) is not None:
-            i = '<h3>' + i[4:] + '</h3>'
-        elif re.match('## (.*)', i) is not None:
-            i = '<h2>' + i[3:] + '</h2>'
-        elif re.match('# (.*)', i) is not None:
-            i = '<h1>' + i[2:] + '</h1>'
-        m = re.match(r'\* (.*)', i)
-        if m:
-            if not in_list:
-                in_list = True
-                is_bold = False
-                is_italic = False
-                curr = m.group(1)
-                m1 = re.match('(.*)__(.*)__(.*)', curr)
-                if m1:
-                    curr = m1.group(1) + '<strong>' + \
-                        m1.group(2) + '</strong>' + m1.group(3)
-                    is_bold = True
-                m1 = re.match('(.*)_(.*)_(.*)', curr)
-                if m1:
-                    curr = m1.group(1) + '<em>' + m1.group(2) + \
-                        '</em>' + m1.group(3)
-                    is_italic = True
-                i = '<ul><li>' + curr + '</li>'
-            else:
-                is_bold = False
-                is_italic = False
-                curr = m.group(1)
-                m1 = re.match('(.*)__(.*)__(.*)', curr)
-                if m1:
-                    is_bold = True
-                m1 = re.match('(.*)_(.*)_(.*)', curr)
-                if m1:
-                    is_italic = True
-                if is_bold:
-                    curr = m1.group(1) + '<strong>' + \
-                        m1.group(2) + '</strong>' + m1.group(3)
-                if is_italic:
-                    curr = m1.group(1) + '<em>' + m1.group(2) + \
-                        '</em>' + m1.group(3)
-                i = '<li>' + curr + '</li>'
-        else:
-            if in_list:
-                in_list_append = True
-                in_list = False
 
-        m = re.match('<h|<ul|<p|<li', i)
-        if not m:
-            i = '<p>' + i + '</p>'
-        m = re.match('(.*)__(.*)__(.*)', i)
-        if m:
-            i = m.group(1) + '<strong>' + m.group(2) + '</strong>' + m.group(3)
-        m = re.match('(.*)_(.*)_(.*)', i)
-        if m:
-            i = m.group(1) + '<em>' + m.group(2) + '</em>' + m.group(3)
-        if in_list_append:
-            i = '</ul>' + i
-            in_list_append = False
-        res += i
-    if in_list:
-        res += '</ul>'
-    return res
+    for line in lines:
+        parsed_line, matched = parse_header(line)
+        if not matched:
+            parsed_line, matched = parse_list_item(line)
+            if matched:
+                if not in_list:
+                    in_list = True
+                    parsed_line = '<ul>' + parsed_line
+                else:
+                    if

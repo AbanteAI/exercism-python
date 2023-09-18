@@ -1,0 +1,30 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 8 items
+
+exercises/practice/crypto-square/crypto_square_test.py F.......          [100%]
+
+=================================== FAILURES ===================================
+_ CryptoSquareTest.test_54_character_plaintext_results_in_7_chunks_the_last_two_with_trailing_spaces _
+
+self = <crypto_square_test.CryptoSquareTest testMethod=test_54_character_plaintext_results_in_7_chunks_the_last_two_with_trailing_spaces>
+
+    def test_54_character_plaintext_results_in_7_chunks_the_last_two_with_trailing_spaces(
+        self,
+    ):
+        value = "If man was meant to stay on the ground, god would have given us roots."
+        expected = "imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau "
+>       self.assertEqual(cipher_text(value), expected)
+E       AssertionError: 'imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghns seoau  ' != 'imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau '
+E       - imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghns seoau  
+E       ?                                                        -      -
+E       + imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau 
+E       ?                                                       ++
+
+exercises/practice/crypto-square/crypto_square_test.py:55: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/crypto-square/crypto_square_test.py::CryptoSquareTest::test_54_character_plaintext_results_in_7_chunks_the_last_two_with_trailing_spaces
+========================= 1 failed, 7 passed in 0.03s ==========================

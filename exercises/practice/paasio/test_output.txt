@@ -1,0 +1,363 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 25 items
+
+exercises/practice/paasio/paasio_test.py FFFFFFFFFFFFFFFFFFFFFFFFF       [100%]
+
+=================================== FAILURES ===================================
+_________________ PaasioTest.test_meteredfile_context_manager __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_context_manager>
+super_mock = <SuperMock at 0x7f9edf7004c0 with mock object: <NonCallableMagicMock id='140320330221168'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_context_manager(self, super_mock):
+        wrapped = MockFile(ZEN)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+E       TypeError: MeteredFile.__init__() missing 1 required positional argument: 'file'
+
+exercises/practice/paasio/paasio_test.py:221: TypeError
+_________ PaasioTest.test_meteredfile_context_manager_exception_raise __________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_context_manager_exception_raise>
+super_mock = <SuperMock at 0x7f9edf737460 with mock object: <NonCallableMagicMock id='140320330445824'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_context_manager_exception_raise(self, super_mock):
+        exception = MockException("Should raise")
+        wrapped = MockFile(ZEN, exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        super_mock.mock_object = mock
+        with self.assertRaisesRegex(MockException, "Should raise") as err:
+>           with MeteredFile() as file:
+E           TypeError: MeteredFile.__init__() missing 1 required positional argument: 'file'
+
+exercises/practice/paasio/paasio_test.py:241: TypeError
+________ PaasioTest.test_meteredfile_context_manager_exception_suppress ________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_context_manager_exception_suppress>
+super_mock = <SuperMock at 0x7f9edf73fb80 with mock object: <NonCallableMagicMock id='140320330479840'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_context_manager_exception_suppress(self, super_mock):
+        exception = MockException("Should suppress")
+        wrapped = MockFile(ZEN, exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+E       TypeError: MeteredFile.__init__() missing 1 required positional argument: 'file'
+
+exercises/practice/paasio/paasio_test.py:259: TypeError
+____________________ PaasioTest.test_meteredfile_iteration _____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_iteration>
+super_mock = <SuperMock at 0x7f9edf74c5b0 with mock object: <NonCallableMagicMock id='140320330532656'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_iteration(self, super_mock):
+        mock = NonCallableMagicMock(wraps=MockFile(ZEN), autospec=True)
+        super_mock.mock_object = mock
+        actual_reads = b""
+>       file = MeteredFile()
+E       TypeError: MeteredFile.__init__() missing 1 required positional argument: 'file'
+
+exercises/practice/paasio/paasio_test.py:274: TypeError
+__________________ PaasioTest.test_meteredfile_read_multiple ___________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_read_multiple>
+super_mock = <SuperMock at 0x7f9edf73e4d0 with mock object: <NonCallableMagicMock id='140320330472880'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_read_multiple(self, super_mock):
+        wrapped = MockFile(ZEN)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+        actual_read = b""
+>       with MeteredFile() as file:
+E       TypeError: MeteredFile.__init__() missing 1 required positional argument: 'file'
+
+exercises/practice/paasio/paasio_test.py:319: TypeError
+_______________ PaasioTest.test_meteredfile_read_multiple_chunk ________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_read_multiple_chunk>
+super_mock = <SuperMock at 0x7f9edf74fdf0 with mock object: <NonCallableMagicMock id='140320330541248'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_read_multiple_chunk(self, super_mock):
+        wrapped = MockFile(ZEN, chunk=20)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+        actual_read = b""
+>       with MeteredFile() as file:
+E       TypeError: MeteredFile.__init__() missing 1 required positional argument: 'file'
+
+exercises/practice/paasio/paasio_test.py:333: TypeError
+____________________ PaasioTest.test_meteredfile_read_once _____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_read_once>
+super_mock = <SuperMock at 0x7f9edf700790 with mock object: <NonCallableMagicMock id='140320330221984'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_read_once(self, super_mock):
+        mock = NonCallableMagicMock(wraps=MockFile(ZEN), autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+E       TypeError: MeteredFile.__init__() missing 1 required positional argument: 'file'
+
+exercises/practice/paasio/paasio_test.py:290: TypeError
+_________________ PaasioTest.test_meteredfile_read_under_size __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_read_under_size>
+super_mock = <SuperMock at 0x7f9edf73c580 with mock object: <NonCallableMagicMock id='140320330465728'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_read_under_size(self, super_mock):
+        wrapped = MockFile(ZEN, chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+E       TypeError: MeteredFile.__init__() missing 1 required positional argument: 'file'
+
+exercises/practice/paasio/paasio_test.py:359: TypeError
+_________________ PaasioTest.test_meteredfile_stats_read_only __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_stats_read_only>
+super_mock = <SuperMock at 0x7f9edf703160 with mock object: <NonCallableMagicMock id='140320330232496'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_stats_read_only(self, super_mock):
+        mock = NonCallableMagicMock(wraps=MockFile(ZEN), autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+E       TypeError: MeteredFile.__init__() missing 1 required positional argument: 'file'
+
+exercises/practice/paasio/paasio_test.py:414: TypeError
+__________________ PaasioTest.test_meteredfile_write_multiple __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_write_multiple>
+super_mock = <SuperMock at 0x7f9edf718760 with mock object: <NonCallableMagicMock id='140320330327968'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_write_multiple(self, super_mock):
+        wrapped = MockFile()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+        write_len = 0
+        expected = b"Tomorrow's victory is today's practice."
+>       with MeteredFile() as file:
+E       TypeError: MeteredFile.__init__() missing 1 required positional argument: 'file'
+
+exercises/practice/paasio/paasio_test.py:386: TypeError
+____________________ PaasioTest.test_meteredfile_write_once ____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_write_once>
+super_mock = <SuperMock at 0x7f9edf702fb0 with mock object: <NonCallableMagicMock id='140320330234848'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_write_once(self, super_mock):
+        wrapped = MockFile(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+E       TypeError: MeteredFile.__init__() missing 1 required positional argument: 'file'
+
+exercises/practice/paasio/paasio_test.py:371: TypeError
+_________________ PaasioTest.test_meteredfile_write_under_size _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_write_under_size>
+super_mock = <SuperMock at 0x7f9edf719c60 with mock object: <NonCallableMagicMock id='140320330320912'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_write_under_size(self, super_mock):
+        wrapped = MockFile(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+E       TypeError: MeteredFile.__init__() missing 1 required positional argument: 'file'
+
+exercises/practice/paasio/paasio_test.py:402: TypeError
+________________ PaasioTest.test_meteredsocket_bufsize_required ________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_bufsize_required>
+
+    def test_meteredsocket_bufsize_required(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+        with self.assertRaisesRegex(TypeError, "argument"):
+>           with MeteredSocket(mock) as socket:
+E           AttributeError: __enter__
+
+exercises/practice/paasio/paasio_test.py:144: AttributeError
+________________ PaasioTest.test_meteredsocket_context_manager _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_context_manager>
+
+    def test_meteredsocket_context_manager(self):
+        wrapped = MockSock()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+>       with MeteredSocket(mock) as socket:
+E       AttributeError: __enter__
+
+exercises/practice/paasio/paasio_test.py:16: AttributeError
+________ PaasioTest.test_meteredsocket_context_manager_exception_raise _________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_context_manager_exception_raise>
+
+    def test_meteredsocket_context_manager_exception_raise(self):
+        exception = MockException("Should raise")
+        wrapped = MockSock(exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        with self.assertRaisesRegex(MockException, "Should raise") as err:
+>           with MeteredSocket(mock) as socket:
+E           AttributeError: __enter__
+
+exercises/practice/paasio/paasio_test.py:33: AttributeError
+_______ PaasioTest.test_meteredsocket_context_manager_exception_suppress _______
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_context_manager_exception_suppress>
+
+    def test_meteredsocket_context_manager_exception_suppress(self):
+        exception = MockException("Should suppress")
+        wrapped = MockSock(exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+>       with MeteredSocket(mock) as socket:
+E       AttributeError: __enter__
+
+exercises/practice/paasio/paasio_test.py:49: AttributeError
+_________________ PaasioTest.test_meteredsocket_flags_support __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_flags_support>
+
+    def test_meteredsocket_flags_support(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+>       with MeteredSocket(mock) as socket:
+E       AttributeError: __enter__
+
+exercises/practice/paasio/paasio_test.py:159: AttributeError
+_________________ PaasioTest.test_meteredsocket_recv_multiple __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_multiple>
+
+    def test_meteredsocket_recv_multiple(self):
+        wrapped = MockSock()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        actual_recv = b""
+>       with MeteredSocket(mock) as socket:
+E       AttributeError: __enter__
+
+exercises/practice/paasio/paasio_test.py:72: AttributeError
+______________ PaasioTest.test_meteredsocket_recv_multiple_chunk _______________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_multiple_chunk>
+
+    def test_meteredsocket_recv_multiple_chunk(self):
+        wrapped = MockSock(chunk=20)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        actual_recv = b""
+>       with MeteredSocket(mock) as socket:
+E       AttributeError: __enter__
+
+exercises/practice/paasio/paasio_test.py:84: AttributeError
+___________________ PaasioTest.test_meteredsocket_recv_once ____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_once>
+
+    def test_meteredsocket_recv_once(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+>       with MeteredSocket(mock) as socket:
+E       AttributeError: __enter__
+
+exercises/practice/paasio/paasio_test.py:61: AttributeError
+________________ PaasioTest.test_meteredsocket_recv_under_size _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_under_size>
+
+    def test_meteredsocket_recv_under_size(self):
+        wrapped = MockSock(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+>       with MeteredSocket(mock) as socket:
+E       AttributeError: __enter__
+
+exercises/practice/paasio/paasio_test.py:96: AttributeError
+_________________ PaasioTest.test_meteredsocket_send_multiple __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_send_multiple>
+
+    def test_meteredsocket_send_multiple(self):
+        wrapped = MockSock()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        send_len = 0
+        expected = b"Tomorrow's victory is today's practice."
+>       with MeteredSocket(mock) as socket:
+E       AttributeError: __enter__
+
+exercises/practice/paasio/paasio_test.py:119: AttributeError
+___________________ PaasioTest.test_meteredsocket_send_once ____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_send_once>
+
+    def test_meteredsocket_send_once(self):
+        wrapped = MockSock(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+>       with MeteredSocket(mock) as socket:
+E       AttributeError: __enter__
+
+exercises/practice/paasio/paasio_test.py:106: AttributeError
+________________ PaasioTest.test_meteredsocket_send_under_size _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_send_under_size>
+
+    def test_meteredsocket_send_under_size(self):
+        wrapped = MockSock(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+>       with MeteredSocket(mock) as socket:
+E       AttributeError: __enter__
+
+exercises/practice/paasio/paasio_test.py:133: AttributeError
+________________ PaasioTest.test_meteredsocket_stats_read_only _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_stats_read_only>
+
+    def test_meteredsocket_stats_read_only(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+>       with MeteredSocket(mock) as socket:
+E       AttributeError: __enter__
+
+exercises/practice/paasio/paasio_test.py:187: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_context_manager
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_context_manager_exception_raise
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_context_manager_exception_suppress
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_iteration
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_read_multiple
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_read_multiple_chunk
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_read_once
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_read_under_size
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_stats_read_only
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_write_multiple
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_write_once
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_write_under_size
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_bufsize_required
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_context_manager
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_context_manager_exception_raise
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_context_manager_exception_suppress
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_flags_support
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_recv_multiple
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_recv_multiple_chunk
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_recv_once
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_recv_under_size
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_send_multiple
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_send_once
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_send_under_size
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_stats_read_only
+============================== 25 failed in 0.28s ==============================

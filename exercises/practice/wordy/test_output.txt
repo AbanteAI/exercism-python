@@ -1,0 +1,225 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 25 items
+
+exercises/practice/wordy/wordy_test.py ..F....FF....F.FFFFFFFFFF         [100%]
+
+=================================== FAILURES ===================================
+___________________ WordyTest.test_addition_and_subtraction ____________________
+
+self = <wordy_test.WordyTest testMethod=test_addition_and_subtraction>
+
+    def test_addition_and_subtraction(self):
+>       self.assertEqual(answer("What is 1 plus 5 minus -2?"), 8)
+
+exercises/practice/wordy/wordy_test.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = 'What is 1 plus 5 minus -2?'
+
+    def answer(question):
+        numbers, operations = parse_question(question)
+        if not numbers:
+            return None
+        if len(operations) != len(numbers) - 1:
+>           raise ValueError("Invalid syntax")
+E           ValueError: Invalid syntax
+
+exercises/practice/wordy/wordy.py:17: ValueError
+________________________ WordyTest.test_missing_number _________________________
+
+self = <wordy_test.WordyTest testMethod=test_missing_number>
+
+    def test_missing_number(self):
+        with self.assertRaises(ValueError) as err:
+            answer("What is 7 plus multiplied by -2?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "syntax error")
+E       AssertionError: 'Invalid syntax' != 'syntax error'
+E       - Invalid syntax
+E       + syntax error
+
+exercises/practice/wordy/wordy_test.py:118: AssertionError
+_______________________ WordyTest.test_missing_operation _______________________
+
+self = <wordy_test.WordyTest testMethod=test_missing_operation>
+
+    def test_missing_operation(self):
+        with self.assertRaises(ValueError) as err:
+            answer("What is 2 2 minus 3?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "syntax error")
+E       AssertionError: 'Invalid syntax' != 'syntax error'
+E       - Invalid syntax
+E       + syntax error
+
+exercises/practice/wordy/wordy_test.py:112: AssertionError
+_____________________ WordyTest.test_multiple_subtraction ______________________
+
+self = <wordy_test.WordyTest testMethod=test_multiple_subtraction>
+
+    def test_multiple_subtraction(self):
+>       self.assertEqual(answer("What is 20 minus 4 minus 13?"), 3)
+
+exercises/practice/wordy/wordy_test.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = 'What is 20 minus 4 minus 13?'
+
+    def answer(question):
+        numbers, operations = parse_question(question)
+        if not numbers:
+            return None
+        if len(operations) != len(numbers) - 1:
+>           raise ValueError("Invalid syntax")
+E           ValueError: Invalid syntax
+
+exercises/practice/wordy/wordy.py:17: ValueError
+_______________________ WordyTest.test_non_math_question _______________________
+
+self = <wordy_test.WordyTest testMethod=test_non_math_question>
+
+    def test_non_math_question(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/wordy/wordy_test.py:65: AssertionError
+____________________ WordyTest.test_reject_postfix_notation ____________________
+
+self = <wordy_test.WordyTest testMethod=test_reject_postfix_notation>
+
+    def test_reject_postfix_notation(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/wordy/wordy_test.py:95: AssertionError
+____________________ WordyTest.test_reject_prefix_notation _____________________
+
+self = <wordy_test.WordyTest testMethod=test_reject_prefix_notation>
+
+    def test_reject_prefix_notation(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/wordy/wordy_test.py:101: AssertionError
+_______________ WordyTest.test_reject_problem_missing_an_operand _______________
+
+self = <wordy_test.WordyTest testMethod=test_reject_problem_missing_an_operand>
+
+    def test_reject_problem_missing_an_operand(self):
+        with self.assertRaises(ValueError) as err:
+            answer("What is 1 plus?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "syntax error")
+E       AssertionError: 'Invalid syntax' != 'syntax error'
+E       - Invalid syntax
+E       + syntax error
+
+exercises/practice/wordy/wordy_test.py:74: AssertionError
+_________ WordyTest.test_reject_problem_with_no_operands_or_operators __________
+
+self = <wordy_test.WordyTest testMethod=test_reject_problem_with_no_operands_or_operators>
+
+    def test_reject_problem_with_no_operands_or_operators(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/wordy/wordy_test.py:77: AssertionError
+__________________ WordyTest.test_reject_two_numbers_in_a_row __________________
+
+self = <wordy_test.WordyTest testMethod=test_reject_two_numbers_in_a_row>
+
+    def test_reject_two_numbers_in_a_row(self):
+        with self.assertRaises(ValueError) as err:
+            answer("What is 1 plus 2 1?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "syntax error")
+E       AssertionError: 'Invalid syntax' != 'syntax error'
+E       - Invalid syntax
+E       + syntax error
+
+exercises/practice/wordy/wordy_test.py:92: AssertionError
+________________ WordyTest.test_reject_two_operations_in_a_row _________________
+
+self = <wordy_test.WordyTest testMethod=test_reject_two_operations_in_a_row>
+
+    def test_reject_two_operations_in_a_row(self):
+        with self.assertRaises(ValueError) as err:
+            answer("What is 1 plus plus 2?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "syntax error")
+E       AssertionError: 'Invalid syntax' != 'syntax error'
+E       - Invalid syntax
+E       + syntax error
+
+exercises/practice/wordy/wordy_test.py:86: AssertionError
+__________________________ WordyTest.test_subtraction __________________________
+
+self = <wordy_test.WordyTest testMethod=test_subtraction>
+
+    def test_subtraction(self):
+>       self.assertEqual(answer("What is 4 minus -12?"), 16)
+
+exercises/practice/wordy/wordy_test.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = 'What is 4 minus -12?'
+
+    def answer(question):
+        numbers, operations = parse_question(question)
+        if not numbers:
+            return None
+        if len(operations) != len(numbers) - 1:
+>           raise ValueError("Invalid syntax")
+E           ValueError: Invalid syntax
+
+exercises/practice/wordy/wordy.py:17: ValueError
+___________________ WordyTest.test_subtraction_then_addition ___________________
+
+self = <wordy_test.WordyTest testMethod=test_subtraction_then_addition>
+
+    def test_subtraction_then_addition(self):
+>       self.assertEqual(answer("What is 17 minus 6 plus 3?"), 14)
+
+exercises/practice/wordy/wordy_test.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = 'What is 17 minus 6 plus 3?'
+
+    def answer(question):
+        numbers, operations = parse_question(question)
+        if not numbers:
+            return None
+        if len(operations) != len(numbers) - 1:
+>           raise ValueError("Invalid syntax")
+E           ValueError: Invalid syntax
+
+exercises/practice/wordy/wordy.py:17: ValueError
+_______________________ WordyTest.test_unknown_operation _______________________
+
+self = <wordy_test.WordyTest testMethod=test_unknown_operation>
+
+    def test_unknown_operation(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/wordy/wordy_test.py:59: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_addition_and_subtraction
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_missing_number
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_missing_operation
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_multiple_subtraction
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_non_math_question
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_reject_postfix_notation
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_reject_prefix_notation
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_reject_problem_missing_an_operand
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_reject_problem_with_no_operands_or_operators
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_reject_two_numbers_in_a_row
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_reject_two_operations_in_a_row
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_subtraction - ...
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_subtraction_then_addition
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_unknown_operation
+======================== 14 failed, 11 passed in 0.10s =========================

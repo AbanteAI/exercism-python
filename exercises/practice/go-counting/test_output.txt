@@ -1,0 +1,127 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 11 items
+
+exercises/practice/go-counting/go_counting_test.py FFFFFF.F...           [100%]
+
+=================================== FAILURES ===================================
+_________ GoCountingTest.test_a_stone_and_not_a_territory_on_5x5_board _________
+
+self = <go_counting_test.GoCountingTest testMethod=test_a_stone_and_not_a_territory_on_5x5_board>
+
+    def test_a_stone_and_not_a_territory_on_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+        stone, territory = board.territory(x=1, y=1)
+>       self.assertEqual(stone, NONE)
+E       AssertionError: 'B' != ''
+E       - B
+E       +
+
+exercises/practice/go-counting/go_counting_test.py:37: AssertionError
+___________ GoCountingTest.test_black_corner_territory_on_5x5_board ____________
+
+self = <go_counting_test.GoCountingTest testMethod=test_black_corner_territory_on_5x5_board>
+
+    def test_black_corner_territory_on_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+        stone, territory = board.territory(x=0, y=1)
+        self.assertEqual(stone, BLACK)
+>       self.assertSetEqual(territory, {(0, 0), (0, 1), (1, 0)})
+E       AssertionError: Items in the second set but not the first:
+E       (1, 0)
+E       (0, 0)
+
+exercises/practice/go-counting/go_counting_test.py:20: AssertionError
+_______ GoCountingTest.test_invalid_because_x_is_too_high_for_5x5_board ________
+
+self = <go_counting_test.GoCountingTest testMethod=test_invalid_because_x_is_too_high_for_5x5_board>
+
+    def test_invalid_because_x_is_too_high_for_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+        with self.assertRaises(ValueError) as err:
+>           board.territory(x=5, y=1)
+
+exercises/practice/go-counting/go_counting_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/go-counting/go_counting.py:54: in territory
+    return find_territory(x, y, visited)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def find_territory(x, y, visited):
+        if (x, y) in visited:
+            return "", set()
+        visited.add((x, y))
+    
+>       if self.board[y][x] in "BW":
+E       IndexError: string index out of range
+
+exercises/practice/go-counting/go_counting.py:34: IndexError
+________ GoCountingTest.test_invalid_because_x_is_too_low_for_5x5_board ________
+
+self = <go_counting_test.GoCountingTest testMethod=test_invalid_because_x_is_too_low_for_5x5_board>
+
+    def test_invalid_because_x_is_too_low_for_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/go-counting/go_counting_test.py:42: AssertionError
+_______ GoCountingTest.test_invalid_because_y_is_too_high_for_5x5_board ________
+
+self = <go_counting_test.GoCountingTest testMethod=test_invalid_because_y_is_too_high_for_5x5_board>
+
+    def test_invalid_because_y_is_too_high_for_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+        with self.assertRaises(ValueError) as err:
+>           board.territory(x=1, y=5)
+
+exercises/practice/go-counting/go_counting_test.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/go-counting/go_counting.py:54: in territory
+    return find_territory(x, y, visited)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def find_territory(x, y, visited):
+        if (x, y) in visited:
+            return "", set()
+        visited.add((x, y))
+    
+>       if self.board[y][x] in "BW":
+E       IndexError: list index out of range
+
+exercises/practice/go-counting/go_counting.py:34: IndexError
+________ GoCountingTest.test_invalid_because_y_is_too_low_for_5x5_board ________
+
+self = <go_counting_test.GoCountingTest testMethod=test_invalid_because_y_is_too_low_for_5x5_board>
+
+    def test_invalid_because_y_is_too_low_for_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/go-counting/go_counting_test.py:56: AssertionError
+____________ GoCountingTest.test_open_corner_territory_on_5x5_board ____________
+
+self = <go_counting_test.GoCountingTest testMethod=test_open_corner_territory_on_5x5_board>
+
+    def test_open_corner_territory_on_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+        stone, territory = board.territory(x=1, y=4)
+>       self.assertEqual(stone, NONE)
+E       AssertionError: 'W' != ''
+E       - W
+E       +
+
+exercises/practice/go-counting/go_counting_test.py:31: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_a_stone_and_not_a_territory_on_5x5_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_black_corner_territory_on_5x5_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_invalid_because_x_is_too_high_for_5x5_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_invalid_because_x_is_too_low_for_5x5_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_invalid_because_y_is_too_high_for_5x5_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_invalid_because_y_is_too_low_for_5x5_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_open_corner_territory_on_5x5_board
+========================= 7 failed, 4 passed in 0.06s ==========================

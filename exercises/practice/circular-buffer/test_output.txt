@@ -1,0 +1,133 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 14 items
+
+exercises/practice/circular-buffer/circular_buffer_test.py ......FF.FFFF [ 92%]
+.                                                                        [100%]
+
+=================================== FAILURES ===================================
+____ CircularBufferTest.test_initial_clear_does_not_affect_wrapping_around _____
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_initial_clear_does_not_affect_wrapping_around>
+
+    def test_initial_clear_does_not_affect_wrapping_around(self):
+        buf = CircularBuffer(2)
+        buf.clear()
+        buf.write("1")
+>       buf.write("2")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7ff7da948790>, data = '2'
+
+    def write(self, data):
+        if self.buffer[self.end] is not None:
+>           raise BufferFullException("Circular buffer is full")
+E           circular_buffer.BufferFullException: Circular buffer is full
+
+exercises/practice/circular-buffer/circular_buffer.py:38: BufferFullException
+_____ CircularBufferTest.test_items_are_read_in_the_order_they_are_written _____
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_items_are_read_in_the_order_they_are_written>
+
+    def test_items_are_read_in_the_order_they_are_written(self):
+        buf = CircularBuffer(2)
+        buf.write("1")
+>       buf.write("2")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7ff7da7bbe20>, data = '2'
+
+    def write(self, data):
+        if self.buffer[self.end] is not None:
+>           raise BufferFullException("Circular buffer is full")
+E           circular_buffer.BufferFullException: Circular buffer is full
+
+exercises/practice/circular-buffer/circular_buffer.py:38: BufferFullException
+_____ CircularBufferTest.test_overwrite_acts_like_write_on_non_full_buffer _____
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_overwrite_acts_like_write_on_non_full_buffer>
+
+    def test_overwrite_acts_like_write_on_non_full_buffer(self):
+        buf = CircularBuffer(2)
+        buf.write("1")
+>       buf.overwrite("2")
+E       AttributeError: 'CircularBuffer' object has no attribute 'overwrite'
+
+exercises/practice/circular-buffer/circular_buffer_test.py:96: AttributeError
+__ CircularBufferTest.test_overwrite_replaces_the_oldest_item_on_full_buffer ___
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_overwrite_replaces_the_oldest_item_on_full_buffer>
+
+    def test_overwrite_replaces_the_oldest_item_on_full_buffer(self):
+        buf = CircularBuffer(2)
+        buf.write("1")
+>       buf.write("2")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7ff7da7b8ee0>, data = '2'
+
+    def write(self, data):
+        if self.buffer[self.end] is not None:
+>           raise BufferFullException("Circular buffer is full")
+E           circular_buffer.BufferFullException: Circular buffer is full
+
+exercises/practice/circular-buffer/circular_buffer.py:38: BufferFullException
+_ CircularBufferTest.test_overwrite_replaces_the_oldest_item_remaining_in_buffer_following_a_read _
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_overwrite_replaces_the_oldest_item_remaining_in_buffer_following_a_read>
+
+    def test_overwrite_replaces_the_oldest_item_remaining_in_buffer_following_a_read(
+        self,
+    ):
+        buf = CircularBuffer(3)
+        buf.write("1")
+>       buf.write("2")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7ff7da9489d0>, data = '2'
+
+    def write(self, data):
+        if self.buffer[self.end] is not None:
+>           raise BufferFullException("Circular buffer is full")
+E           circular_buffer.BufferFullException: Circular buffer is full
+
+exercises/practice/circular-buffer/circular_buffer.py:38: BufferFullException
+_ CircularBufferTest.test_read_position_is_maintained_even_across_multiple_writes _
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_read_position_is_maintained_even_across_multiple_writes>
+
+    def test_read_position_is_maintained_even_across_multiple_writes(self):
+        buf = CircularBuffer(3)
+        buf.write("1")
+>       buf.write("2")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7ff7da90b550>, data = '2'
+
+    def write(self, data):
+        if self.buffer[self.end] is not None:
+>           raise BufferFullException("Circular buffer is full")
+E           circular_buffer.BufferFullException: Circular buffer is full
+
+exercises/practice/circular-buffer/circular_buffer.py:38: BufferFullException
+=========================== short test summary info ============================
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_initial_clear_does_not_affect_wrapping_around
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_items_are_read_in_the_order_they_are_written
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_overwrite_acts_like_write_on_non_full_buffer
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_overwrite_replaces_the_oldest_item_on_full_buffer
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_overwrite_replaces_the_oldest_item_remaining_in_buffer_following_a_read
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_read_position_is_maintained_even_across_multiple_writes
+========================= 6 failed, 8 passed in 0.06s ==========================

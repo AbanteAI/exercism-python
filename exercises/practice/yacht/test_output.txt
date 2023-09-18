@@ -1,0 +1,42 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 29 items
+
+exercises/practice/yacht/yacht_test.py .....F..F................F...     [100%]
+
+=================================== FAILURES ===================================
+________________________ YachtTest.test_four_of_a_kind _________________________
+
+self = <yacht_test.YachtTest testMethod=test_four_of_a_kind>
+
+    def test_four_of_a_kind(self):
+>       self.assertEqual(yacht.score([6, 6, 4, 6, 6], yacht.FOUR_OF_A_KIND), 24)
+E       AssertionError: 20 != 24
+
+exercises/practice/yacht/yacht_test.py:59: AssertionError
+_______________ YachtTest.test_full_house_is_not_four_of_a_kind ________________
+
+self = <yacht_test.YachtTest testMethod=test_full_house_is_not_four_of_a_kind>
+
+    def test_full_house_is_not_four_of_a_kind(self):
+>       self.assertEqual(yacht.score([3, 3, 3, 5, 5], yacht.FOUR_OF_A_KIND), 0)
+E       AssertionError: None != 0
+
+exercises/practice/yacht/yacht_test.py:65: AssertionError
+_____________ YachtTest.test_yacht_can_be_scored_as_four_of_a_kind _____________
+
+self = <yacht_test.YachtTest testMethod=test_yacht_can_be_scored_as_four_of_a_kind>
+
+    def test_yacht_can_be_scored_as_four_of_a_kind(self):
+>       self.assertEqual(yacht.score([3, 3, 3, 3, 3], yacht.FOUR_OF_A_KIND), 12)
+E       AssertionError: 8 != 12
+
+exercises/practice/yacht/yacht_test.py:62: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_four_of_a_kind
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_full_house_is_not_four_of_a_kind
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_yacht_can_be_scored_as_four_of_a_kind
+========================= 3 failed, 26 passed in 0.06s =========================

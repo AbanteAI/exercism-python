@@ -1,19 +1,45 @@
 class TreeNode:
     def __init__(self, data, left=None, right=None):
-        self.data = None
-        self.left = None
-        self.right = None
+        self.data = data
+        self.left = left
+        self.right = right
 
     def __str__(self):
         return f'TreeNode(data={self.data}, left={self.left}, right={self.right})'
 
 
 class BinarySearchTree:
-    def __init__(self, tree_data):
-        pass
+    def __init__(self, tree_data=None):
+        self.root = None
+        if tree_data:
+            for data in tree_data:
+                self.insert(data)
+    def insert(self, data):
+        if not self.root:
+            self.root = TreeNode(data)
+        else:
+            current = self.root
+            while True:
+                if data <= current.data:
+                    if current.left:
+                        current = current.left
+                    else:
+                        current.left = TreeNode(data)
+                        break
+                else:
+                    if current.right:
+                        current = current.right
+                    else:
+                        current.right = TreeNode(data)
+                        break
 
     def data(self):
-        pass
+        return self.root.data if self.root else None
 
     def sorted_data(self):
-        pass
+        def inorder_traversal(node):
+            if not node:
+                return []
+            return inorder_traversal(node.left) + [node.data] + inorder_traversal(node.right)
+
+        return inorder_traversal(self.root)
