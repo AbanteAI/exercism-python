@@ -1,0 +1,230 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 22 items
+
+exercises/practice/sublist/sublist_test.py FFFFFFFFFFFFFFFFFFFFF.        [100%]
+
+=================================== FAILURES ===================================
+_____________________ SublistTest.test_at_end_of_superlist _____________________
+
+self = <sublist_test.SublistTest testMethod=test_at_end_of_superlist>
+
+    def test_at_end_of_superlist(self):
+>       self.assertEqual(sublist([0, 1, 2, 3, 4, 5], [3, 4, 5]), SUPERLIST)
+E       AssertionError: None != 'superlist'
+
+exercises/practice/sublist/sublist_test.py:54: AssertionError
+____________________ SublistTest.test_at_start_of_superlist ____________________
+
+self = <sublist_test.SublistTest testMethod=test_at_start_of_superlist>
+
+    def test_at_start_of_superlist(self):
+>       self.assertEqual(sublist([0, 1, 2, 3, 4, 5], [0, 1, 2]), SUPERLIST)
+E       AssertionError: None != 'superlist'
+
+exercises/practice/sublist/sublist_test.py:48: AssertionError
+_________________________ SublistTest.test_consecutive _________________________
+
+self = <sublist_test.SublistTest testMethod=test_consecutive>
+
+    def test_consecutive(self):
+>       self.assertEqual(sublist([1, 1, 2], [0, 1, 1, 1, 2, 1, 2]), SUBLIST)
+E       AssertionError: None != 'sublist'
+
+exercises/practice/sublist/sublist_test.py:36: AssertionError
+_______________________ SublistTest.test_different_lists _______________________
+
+self = <sublist_test.SublistTest testMethod=test_different_lists>
+
+    def test_different_lists(self):
+>       self.assertEqual(sublist([1, 2, 3], [2, 3, 4]), UNEQUAL)
+E       AssertionError: None != 'unequal'
+
+exercises/practice/sublist/sublist_test.py:30: AssertionError
+______________ SublistTest.test_empty_list_within_non_empty_list _______________
+
+self = <sublist_test.SublistTest testMethod=test_empty_list_within_non_empty_list>
+
+    def test_empty_list_within_non_empty_list(self):
+>       self.assertEqual(sublist([], [1, 2, 3]), SUBLIST)
+E       AssertionError: None != 'sublist'
+
+exercises/practice/sublist/sublist_test.py:21: AssertionError
+_________________________ SublistTest.test_empty_lists _________________________
+
+self = <sublist_test.SublistTest testMethod=test_empty_lists>
+
+    def test_empty_lists(self):
+>       self.assertEqual(sublist([], []), EQUAL)
+E       AssertionError: None != 'equal'
+
+exercises/practice/sublist/sublist_test.py:18: AssertionError
+_________________________ SublistTest.test_false_start _________________________
+
+self = <sublist_test.SublistTest testMethod=test_false_start>
+
+    def test_false_start(self):
+>       self.assertEqual(sublist([1, 2, 5], [0, 1, 2, 3, 1, 2, 5, 6]), SUBLIST)
+E       AssertionError: None != 'sublist'
+
+exercises/practice/sublist/sublist_test.py:33: AssertionError
+____ SublistTest.test_first_list_missing_additional_digits_from_second_list ____
+
+self = <sublist_test.SublistTest testMethod=test_first_list_missing_additional_digits_from_second_list>
+
+    def test_first_list_missing_additional_digits_from_second_list(self):
+>       self.assertEqual(sublist([1, 2], [1, 22]), UNEQUAL)
+E       AssertionError: None != 'unequal'
+
+exercises/practice/sublist/sublist_test.py:63: AssertionError
+_________ SublistTest.test_first_list_missing_element_from_second_list _________
+
+self = <sublist_test.SublistTest testMethod=test_first_list_missing_element_from_second_list>
+
+    def test_first_list_missing_element_from_second_list(self):
+>       self.assertEqual(sublist([1, 3], [1, 2, 3]), UNEQUAL)
+E       AssertionError: None != 'unequal'
+
+exercises/practice/sublist/sublist_test.py:57: AssertionError
+___________________ SublistTest.test_in_middle_of_superlist ____________________
+
+self = <sublist_test.SublistTest testMethod=test_in_middle_of_superlist>
+
+    def test_in_middle_of_superlist(self):
+>       self.assertEqual(sublist([0, 1, 2, 3, 4, 5], [2, 3]), SUPERLIST)
+E       AssertionError: None != 'superlist'
+
+exercises/practice/sublist/sublist_test.py:51: AssertionError
+________________________ SublistTest.test_inner_spaces _________________________
+
+self = <sublist_test.SublistTest testMethod=test_inner_spaces>
+
+    def test_inner_spaces(self):
+>       self.assertEqual(sublist(["a c"], ["a", "c"]), UNEQUAL)
+E       AssertionError: None != 'unequal'
+
+exercises/practice/sublist/sublist_test.py:76: AssertionError
+_________________________ SublistTest.test_large_lists _________________________
+
+self = <sublist_test.SublistTest testMethod=test_large_lists>
+
+    def test_large_lists(self):
+>       self.assertEqual(
+            sublist(
+                list(range(1000)) * 1000 + list(range(1000, 1100)),
+                list(range(900, 1050)),
+            ),
+            SUPERLIST,
+        )
+E       AssertionError: None != 'superlist'
+
+exercises/practice/sublist/sublist_test.py:79: AssertionError
+_____________________ SublistTest.test_list_equals_itself ______________________
+
+self = <sublist_test.SublistTest testMethod=test_list_equals_itself>
+
+    def test_list_equals_itself(self):
+>       self.assertEqual(sublist([1, 2, 3], [1, 2, 3]), EQUAL)
+E       AssertionError: None != 'equal'
+
+exercises/practice/sublist/sublist_test.py:27: AssertionError
+_____________ SublistTest.test_non_empty_list_contains_empty_list ______________
+
+self = <sublist_test.SublistTest testMethod=test_non_empty_list_contains_empty_list>
+
+    def test_non_empty_list_contains_empty_list(self):
+>       self.assertEqual(sublist([1, 2, 3], []), SUPERLIST)
+E       AssertionError: None != 'superlist'
+
+exercises/practice/sublist/sublist_test.py:24: AssertionError
+___________________ SublistTest.test_order_matters_to_a_list ___________________
+
+self = <sublist_test.SublistTest testMethod=test_order_matters_to_a_list>
+
+    def test_order_matters_to_a_list(self):
+>       self.assertEqual(sublist([1, 2, 3], [3, 2, 1]), UNEQUAL)
+E       AssertionError: None != 'unequal'
+
+exercises/practice/sublist/sublist_test.py:66: AssertionError
+______________ SublistTest.test_same_digits_but_different_numbers ______________
+
+self = <sublist_test.SublistTest testMethod=test_same_digits_but_different_numbers>
+
+    def test_same_digits_but_different_numbers(self):
+>       self.assertEqual(sublist([1, 0, 1], [10, 1]), UNEQUAL)
+E       AssertionError: None != 'unequal'
+
+exercises/practice/sublist/sublist_test.py:69: AssertionError
+_________ SublistTest.test_second_list_missing_element_from_first_list _________
+
+self = <sublist_test.SublistTest testMethod=test_second_list_missing_element_from_first_list>
+
+    def test_second_list_missing_element_from_first_list(self):
+>       self.assertEqual(sublist([1, 2, 3], [1, 3]), UNEQUAL)
+E       AssertionError: None != 'unequal'
+
+exercises/practice/sublist/sublist_test.py:60: AssertionError
+_______________________ SublistTest.test_spread_sublist ________________________
+
+self = <sublist_test.SublistTest testMethod=test_spread_sublist>
+
+    def test_spread_sublist(self):
+>       self.assertEqual(
+            sublist(list(range(3, 200, 3)), list(range(15, 200, 15))), UNEQUAL
+        )
+E       AssertionError: None != 'unequal'
+
+exercises/practice/sublist/sublist_test.py:88: AssertionError
+_______________________ SublistTest.test_sublist_at_end ________________________
+
+self = <sublist_test.SublistTest testMethod=test_sublist_at_end>
+
+    def test_sublist_at_end(self):
+>       self.assertEqual(sublist([3, 4, 5], [0, 1, 2, 3, 4, 5]), SUBLIST)
+E       AssertionError: None != 'sublist'
+
+exercises/practice/sublist/sublist_test.py:45: AssertionError
+______________________ SublistTest.test_sublist_at_start _______________________
+
+self = <sublist_test.SublistTest testMethod=test_sublist_at_start>
+
+    def test_sublist_at_start(self):
+>       self.assertEqual(sublist([0, 1, 2], [0, 1, 2, 3, 4, 5]), SUBLIST)
+E       AssertionError: None != 'sublist'
+
+exercises/practice/sublist/sublist_test.py:39: AssertionError
+______________________ SublistTest.test_sublist_in_middle ______________________
+
+self = <sublist_test.SublistTest testMethod=test_sublist_in_middle>
+
+    def test_sublist_in_middle(self):
+>       self.assertEqual(sublist([2, 3, 4], [0, 1, 2, 3, 4, 5]), SUBLIST)
+E       AssertionError: None != 'sublist'
+
+exercises/practice/sublist/sublist_test.py:42: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_at_end_of_superlist
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_at_start_of_superlist
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_consecutive
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_different_lists
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_empty_list_within_non_empty_list
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_empty_lists
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_false_start
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_first_list_missing_additional_digits_from_second_list
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_first_list_missing_element_from_second_list
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_in_middle_of_superlist
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_inner_spaces
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_large_lists
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_list_equals_itself
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_non_empty_list_contains_empty_list
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_order_matters_to_a_list
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_same_digits_but_different_numbers
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_second_list_missing_element_from_first_list
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_spread_sublist
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_sublist_at_end
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_sublist_at_start
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_sublist_in_middle
+========================= 21 failed, 1 passed in 0.11s =========================

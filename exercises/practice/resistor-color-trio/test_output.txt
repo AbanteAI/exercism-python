@@ -1,0 +1,85 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 10 items
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py .F.FF [ 50%]
+F..FF                                                                    [100%]
+
+=================================== FAILURES ===================================
+_____________ ResistorColorTrioTest.test_blue_and_violet_and_blue ______________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_blue_and_violet_and_blue>
+
+    def test_blue_and_violet_and_blue(self):
+>       self.assertEqual(label(["blue", "violet", "blue"]), "67 megaohms")
+E       AssertionError: '67000000 ohms' != '67 megaohms'
+E       - 67000000 ohms
+E       + 67 megaohms
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:29: AssertionError
+____________ ResistorColorTrioTest.test_green_and_brown_and_orange _____________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_green_and_brown_and_orange>
+
+    def test_green_and_brown_and_orange(self):
+>       self.assertEqual(label(["green", "brown", "orange"]), "51 kiloohms")
+E       AssertionError: '51000 ohms' != '51 kiloohms'
+E       - 51000 ohms
+E       + 51 kiloohms
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:23: AssertionError
+________________ ResistorColorTrioTest.test_ignore_extra_colors ________________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_ignore_extra_colors>
+
+    def test_ignore_extra_colors(self):
+>       self.assertEqual(label(["blue", "green", "yellow", "orange"]), "650 kiloohms")
+E       AssertionError: '650000 ohms' != '650 kiloohms'
+E       - 650000 ohms
+E       + 650 kiloohms
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:41: AssertionError
+______________ ResistorColorTrioTest.test_maximum_possible_value _______________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_maximum_possible_value>
+
+    def test_maximum_possible_value(self):
+>       self.assertEqual(label(["white", "white", "white"]), "99 gigaohms")
+E       AssertionError: '99000000000 ohms' != '99 gigaohms'
+E       - 99000000000 ohms
+E       + 99 gigaohms
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:35: AssertionError
+_______________ ResistorColorTrioTest.test_red_and_black_and_red _______________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_red_and_black_and_red>
+
+    def test_red_and_black_and_red(self):
+>       self.assertEqual(label(["red", "black", "red"]), "2 kiloohms")
+E       AssertionError: '2000 ohms' != '2 kiloohms'
+E       - 2000 ohms
+E       + 2 kiloohms
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:20: AssertionError
+___________ ResistorColorTrioTest.test_yellow_and_violet_and_yellow ____________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_yellow_and_violet_and_yellow>
+
+    def test_yellow_and_violet_and_yellow(self):
+>       self.assertEqual(label(["yellow", "violet", "yellow"]), "470 kiloohms")
+E       AssertionError: '470000 ohms' != '470 kiloohms'
+E       - 470000 ohms
+E       + 470 kiloohms
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:26: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_blue_and_violet_and_blue
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_green_and_brown_and_orange
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_ignore_extra_colors
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_maximum_possible_value
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_red_and_black_and_red
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_yellow_and_violet_and_yellow
+========================= 6 failed, 4 passed in 0.06s ==========================

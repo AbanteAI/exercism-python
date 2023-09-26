@@ -1,0 +1,271 @@
+Starting binary
+Finished binary in 2 iterations False
+Starting rail-fence-cipher
+Finished rail-fence-cipher in 2 iterations False
+Starting roman-numerals
+Finished roman-numerals in 2 iterations False
+Starting word-count
+Finished word-count in 2 iterations False
+Starting wordy
+Finished wordy in 2 iterations False
+Starting killer-sudoku-helper
+Finished killer-sudoku-helper in 2 iterations False
+Starting point-mutations
+Finished point-mutations in 2 iterations False
+Starting rest-api
+Finished rest-api in 2 iterations False
+Starting anagram
+Finished anagram in 1 iterations True
+Starting tournament
+Finished tournament in 2 iterations False
+Starting transpose
+Finished transpose in 2 iterations False
+Starting phone-number
+Finished phone-number in 2 iterations False
+Starting sublist
+Finished sublist in 2 iterations False
+Starting satellite
+Finished satellite in 2 iterations False
+Starting secret-handshake
+Finished secret-handshake in 2 iterations False
+Starting sum-of-multiples
+Finished sum-of-multiples in 2 iterations False
+Starting scale-generator
+Finished scale-generator in 2 iterations False
+Starting spiral-matrix
+Finished spiral-matrix in 1 iterations True
+Starting perfect-numbers
+Finished perfect-numbers in 2 iterations False
+Starting ocr-numbers
+Finished ocr-numbers in 2 iterations False
+Starting word-search
+Finished word-search in 1 iterations True
+Starting hexadecimal
+Finished hexadecimal in 2 iterations False
+Starting robot-name
+Finished robot-name in 1 iterations True
+Starting dnd-character
+Finished dnd-character in 2 iterations False
+Starting connect
+Finished connect in 2 iterations False
+Starting bob
+Finished bob in 1 iterations True
+Starting nucleotide-count
+Finished nucleotide-count in 1 iterations True
+Starting nth-prime
+Finished nth-prime in 2 iterations False
+Starting pangram
+Finished pangram in 2 iterations True
+Starting strain
+Finished strain in 1 iterations True
+Starting alphametics
+Finished alphametics in 2 iterations False
+Starting twelve-days
+Finished twelve-days in 1 iterations True
+Starting parallel-letter-frequency
+Finished parallel-letter-frequency in 1 iterations True
+Starting allergies
+Finished allergies in 2 iterations False
+Starting sgf-parsing
+Finished sgf-parsing in 2 iterations False
+Starting prime-factors
+Finished prime-factors in 1 iterations True
+Starting linked-list
+Finished linked-list in 2 iterations False
+Starting grains
+Finished grains in 2 iterations False
+Starting rna-transcription
+Finished rna-transcription in 1 iterations True
+Starting difference-of-squares
+Finished difference-of-squares in 1 iterations True
+Starting octal
+Finished octal in 2 iterations False
+Starting all-your-base
+Finished all-your-base in 2 iterations False
+Starting ledger
+Finished ledger in 2 iterations False
+Starting luhn
+Finished luhn in 1 iterations True
+Starting bottle-song
+Finished bottle-song in 2 iterations False
+Starting markdown
+Finished markdown in 2 iterations False
+Starting armstrong-numbers
+Finished armstrong-numbers in 1 iterations True
+Starting affine-cipher
+Finished affine-cipher in 2 iterations False
+Starting book-store
+Finished book-store in 2 iterations False
+Starting house
+Finished house in 1 iterations True
+Starting pig-latin
+Finished pig-latin in 2 iterations False
+Starting queen-attack
+Finished queen-attack in 2 iterations False
+Starting series
+Finished series in 2 iterations False
+Starting space-age
+Finished space-age in 2 iterations False
+Starting resistor-color
+Finished resistor-color in 2 iterations False
+Starting meetup
+Finished meetup in 2 iterations False
+Starting scrabble-score
+Finished scrabble-score in 1 iterations True
+Starting protein-translation
+Finished protein-translation in 1 iterations True
+Starting trinary
+Finished trinary in 1 iterations True
+Starting binary-search
+Finished binary-search in 2 iterations False
+Starting flatten-array
+Finished flatten-array in 1 iterations True
+Starting etl
+Finished etl in 1 iterations True
+Starting pythagorean-triplet
+Finished pythagorean-triplet in 2 iterations False
+Starting largest-series-product
+Finished largest-series-product in 2 iterations False
+Starting custom-set
+Finished custom-set in 2 iterations False
+Starting food-chain
+Finished food-chain in 2 iterations False
+Starting two-bucket
+Finished two-bucket in 2 iterations False
+Starting rotational-cipher
+Finished rotational-cipher in 1 iterations True
+Starting complex-numbers
+Finished complex-numbers in 2 iterations False
+Starting zipper
+Finished zipper in 2 iterations False
+Starting dominoes
+Finished dominoes in 2 iterations False
+Starting raindrops
+Finished raindrops in 1 iterations True
+Starting diamond
+Finished diamond in 2 iterations False
+Starting forth
+Finished forth in 2 iterations False
+Starting error-handling
+Finished error-handling in 2 iterations False
+Starting zebra-puzzle
+Finished zebra-puzzle in 2 iterations False
+Starting reverse-string
+Finished reverse-string in 1 iterations True
+Starting acronym
+Finished acronym in 2 iterations True
+Starting kindergarten-garden
+Finished kindergarten-garden in 1 iterations True
+Starting circular-buffer
+Finished circular-buffer in 2 iterations False
+Starting dot-dsl
+Finished dot-dsl in 2 iterations False
+Starting collatz-conjecture
+Finished collatz-conjecture in 2 iterations False
+Starting crypto-square
+Finished crypto-square in 2 iterations False
+Starting simple-linked-list
+Finished simple-linked-list in 2 iterations False
+Starting high-scores
+Finished high-scores in 2 iterations False
+Starting sieve
+Finished sieve in 1 iterations True
+Starting resistor-color-trio
+Finished resistor-color-trio in 2 iterations False
+Starting tree-building
+Finished tree-building in 2 iterations False
+Starting yacht
+Finished yacht in 2 iterations False
+Starting hello-world
+Finished hello-world in 1 iterations True
+Starting leap
+Finished leap in 1 iterations True
+Starting binary-search-tree
+Finished binary-search-tree in 2 iterations False
+Starting bowling
+Finished bowling in 2 iterations False
+Starting atbash-cipher
+Finished atbash-cipher in 1 iterations True
+Starting diffie-hellman
+Finished diffie-hellman in 1 iterations True
+Starting darts
+Finished darts in 1 iterations True
+Starting isogram
+Finished isogram in 1 iterations True
+Starting run-length-encoding
+Error running run-length-encoding'file'
+Starting saddle-points
+Finished saddle-points in 2 iterations False
+Starting triangle
+Finished triangle in 2 iterations False
+Starting palindrome-products
+Finished palindrome-products in 2 iterations False
+Starting change
+Finished change in 2 iterations False
+Starting robot-simulator
+Finished robot-simulator in 2 iterations False
+Starting matching-brackets
+Finished matching-brackets in 1 iterations True
+Starting matrix
+Finished matrix in 1 iterations True
+Starting knapsack
+Finished knapsack in 1 iterations True
+Starting isbn-verifier
+Finished isbn-verifier in 1 iterations True
+Starting clock
+Finished clock in 1 iterations True
+Starting gigasecond
+Finished gigasecond in 1 iterations True
+Starting pascals-triangle
+Finished pascals-triangle in 2 iterations False
+Starting two-fer
+Finished two-fer in 1 iterations True
+Starting react
+Finished react in 2 iterations False
+Starting variable-length-quantity
+Finished variable-length-quantity in 2 iterations False
+Starting grade-school
+Finished grade-school in 2 iterations False
+Starting hamming
+Finished hamming in 2 iterations False
+Starting bank-account
+Finished bank-account in 2 iterations False
+Starting accumulate
+Finished accumulate in 1 iterations True
+Starting rectangles
+Finished rectangles in 2 iterations False
+Starting list-ops
+Finished list-ops in 2 iterations False
+Starting poker
+Finished poker in 2 iterations False
+Starting go-counting
+Finished go-counting in 2 iterations False
+Starting paasio
+Finished paasio in 2 iterations False
+Starting rational-numbers
+Finished rational-numbers in 1 iterations True
+Starting grep
+Finished grep in 2 iterations False
+Starting beer-song
+Finished beer-song in 2 iterations False
+Starting resistor-color-expert
+Finished resistor-color-expert in 2 iterations False
+Starting square-root
+Finished square-root in 1 iterations True
+Starting resistor-color-duo
+Finished resistor-color-duo in 1 iterations True
+Starting say
+Finished say in 2 iterations False
+Starting hangman
+Finished hangman in 2 iterations False
+Starting simple-cipher
+Finished simple-cipher in 1 iterations True
+Starting minesweeper
+Finished minesweeper in 2 iterations False
+Starting proverb
+Finished proverb in 2 iterations False
+Starting pov
+Finished pov in 2 iterations False
+Results: [{'iterations': 2, 'passed': False, 'test': 'binary'}, {'iterations': 2, 'passed': False, 'test': 'rail-fence-cipher'}, {'iterations': 2, 'passed': False, 'test': 'roman-numerals'}, {'iterations': 2, 'passed': False, 'test': 'word-count'}, {'iterations': 2, 'passed': False, 'test': 'wordy'}, {'iterations': 2, 'passed': False, 'test': 'killer-sudoku-helper'}, {'iterations': 2, 'passed': False, 'test': 'point-mutations'}, {'iterations': 2, 'passed': False, 'test': 'rest-api'}, {'iterations': 1, 'passed': True, 'test': 'anagram'}, {'iterations': 2, 'passed': False, 'test': 'tournament'}, {'iterations': 2, 'passed': False, 'test': 'transpose'}, {'iterations': 2, 'passed': False, 'test': 'phone-number'}, {'iterations': 2, 'passed': False, 'test': 'sublist'}, {'iterations': 2, 'passed': False, 'test': 'satellite'}, {'iterations': 2, 'passed': False, 'test': 'secret-handshake'}, {'iterations': 2, 'passed': False, 'test': 'sum-of-multiples'}, {'iterations': 2, 'passed': False, 'test': 'scale-generator'}, {'iterations': 1, 'passed': True, 'test': 'spiral-matrix'}, {'iterations': 2, 'passed': False, 'test': 'perfect-numbers'}, {'iterations': 2, 'passed': False, 'test': 'ocr-numbers'}, {'iterations': 1, 'passed': True, 'test': 'word-search'}, {'iterations': 2, 'passed': False, 'test': 'hexadecimal'}, {'iterations': 1, 'passed': True, 'test': 'robot-name'}, {'iterations': 2, 'passed': False, 'test': 'dnd-character'}, {'iterations': 2, 'passed': False, 'test': 'connect'}, {'iterations': 1, 'passed': True, 'test': 'bob'}, {'iterations': 1, 'passed': True, 'test': 'nucleotide-count'}, {'iterations': 2, 'passed': False, 'test': 'nth-prime'}, {'iterations': 2, 'passed': True, 'test': 'pangram'}, {'iterations': 1, 'passed': True, 'test': 'strain'}, {'iterations': 2, 'passed': False, 'test': 'alphametics'}, {'iterations': 1, 'passed': True, 'test': 'twelve-days'}, {'iterations': 1, 'passed': True, 'test': 'parallel-letter-frequency'}, {'iterations': 2, 'passed': False, 'test': 'allergies'}, {'iterations': 2, 'passed': False, 'test': 'sgf-parsing'}, {'iterations': 1, 'passed': True, 'test': 'prime-factors'}, {'iterations': 2, 'passed': False, 'test': 'linked-list'}, {'iterations': 2, 'passed': False, 'test': 'grains'}, {'iterations': 1, 'passed': True, 'test': 'rna-transcription'}, {'iterations': 1, 'passed': True, 'test': 'difference-of-squares'}, {'iterations': 2, 'passed': False, 'test': 'octal'}, {'iterations': 2, 'passed': False, 'test': 'all-your-base'}, {'iterations': 2, 'passed': False, 'test': 'ledger'}, {'iterations': 1, 'passed': True, 'test': 'luhn'}, {'iterations': 2, 'passed': False, 'test': 'bottle-song'}, {'iterations': 2, 'passed': False, 'test': 'markdown'}, {'iterations': 1, 'passed': True, 'test': 'armstrong-numbers'}, {'iterations': 2, 'passed': False, 'test': 'affine-cipher'}, {'iterations': 2, 'passed': False, 'test': 'book-store'}, {'iterations': 1, 'passed': True, 'test': 'house'}, {'iterations': 2, 'passed': False, 'test': 'pig-latin'}, {'iterations': 2, 'passed': False, 'test': 'queen-attack'}, {'iterations': 2, 'passed': False, 'test': 'series'}, {'iterations': 2, 'passed': False, 'test': 'space-age'}, {'iterations': 2, 'passed': False, 'test': 'resistor-color'}, {'iterations': 2, 'passed': False, 'test': 'meetup'}, {'iterations': 1, 'passed': True, 'test': 'scrabble-score'}, {'iterations': 1, 'passed': True, 'test': 'protein-translation'}, {'iterations': 1, 'passed': True, 'test': 'trinary'}, {'iterations': 2, 'passed': False, 'test': 'binary-search'}, {'iterations': 1, 'passed': True, 'test': 'flatten-array'}, {'iterations': 1, 'passed': True, 'test': 'etl'}, {'iterations': 2, 'passed': False, 'test': 'pythagorean-triplet'}, {'iterations': 2, 'passed': False, 'test': 'largest-series-product'}, {'iterations': 2, 'passed': False, 'test': 'custom-set'}, {'iterations': 2, 'passed': False, 'test': 'food-chain'}, {'iterations': 2, 'passed': False, 'test': 'two-bucket'}, {'iterations': 1, 'passed': True, 'test': 'rotational-cipher'}, {'iterations': 2, 'passed': False, 'test': 'complex-numbers'}, {'iterations': 2, 'passed': False, 'test': 'zipper'}, {'iterations': 2, 'passed': False, 'test': 'dominoes'}, {'iterations': 1, 'passed': True, 'test': 'raindrops'}, {'iterations': 2, 'passed': False, 'test': 'diamond'}, {'iterations': 2, 'passed': False, 'test': 'forth'}, {'iterations': 2, 'passed': False, 'test': 'error-handling'}, {'iterations': 2, 'passed': False, 'test': 'zebra-puzzle'}, {'iterations': 1, 'passed': True, 'test': 'reverse-string'}, {'iterations': 2, 'passed': True, 'test': 'acronym'}, {'iterations': 1, 'passed': True, 'test': 'kindergarten-garden'}, {'iterations': 2, 'passed': False, 'test': 'circular-buffer'}, {'iterations': 2, 'passed': False, 'test': 'dot-dsl'}, {'iterations': 2, 'passed': False, 'test': 'collatz-conjecture'}, {'iterations': 2, 'passed': False, 'test': 'crypto-square'}, {'iterations': 2, 'passed': False, 'test': 'simple-linked-list'}, {'iterations': 2, 'passed': False, 'test': 'high-scores'}, {'iterations': 1, 'passed': True, 'test': 'sieve'}, {'iterations': 2, 'passed': False, 'test': 'resistor-color-trio'}, {'iterations': 2, 'passed': False, 'test': 'tree-building'}, {'iterations': 2, 'passed': False, 'test': 'yacht'}, {'iterations': 1, 'passed': True, 'test': 'hello-world'}, {'iterations': 1, 'passed': True, 'test': 'leap'}, {'iterations': 2, 'passed': False, 'test': 'binary-search-tree'}, {'iterations': 2, 'passed': False, 'test': 'bowling'}, {'iterations': 1, 'passed': True, 'test': 'atbash-cipher'}, {'iterations': 1, 'passed': True, 'test': 'diffie-hellman'}, {'iterations': 1, 'passed': True, 'test': 'darts'}, {'iterations': 1, 'passed': True, 'test': 'isogram'}, {'iterations': 1, 'passed': False, 'test': 'run-length-encoding'}, {'iterations': 2, 'passed': False, 'test': 'saddle-points'}, {'iterations': 2, 'passed': False, 'test': 'triangle'}, {'iterations': 2, 'passed': False, 'test': 'palindrome-products'}, {'iterations': 2, 'passed': False, 'test': 'change'}, {'iterations': 2, 'passed': False, 'test': 'robot-simulator'}, {'iterations': 1, 'passed': True, 'test': 'matching-brackets'}, {'iterations': 1, 'passed': True, 'test': 'matrix'}, {'iterations': 1, 'passed': True, 'test': 'knapsack'}, {'iterations': 1, 'passed': True, 'test': 'isbn-verifier'}, {'iterations': 1, 'passed': True, 'test': 'clock'}, {'iterations': 1, 'passed': True, 'test': 'gigasecond'}, {'iterations': 2, 'passed': False, 'test': 'pascals-triangle'}, {'iterations': 1, 'passed': True, 'test': 'two-fer'}, {'iterations': 2, 'passed': False, 'test': 'react'}, {'iterations': 2, 'passed': False, 'test': 'variable-length-quantity'}, {'iterations': 2, 'passed': False, 'test': 'grade-school'}, {'iterations': 2, 'passed': False, 'test': 'hamming'}, {'iterations': 2, 'passed': False, 'test': 'bank-account'}, {'iterations': 1, 'passed': True, 'test': 'accumulate'}, {'iterations': 2, 'passed': False, 'test': 'rectangles'}, {'iterations': 2, 'passed': False, 'test': 'list-ops'}, {'iterations': 2, 'passed': False, 'test': 'poker'}, {'iterations': 2, 'passed': False, 'test': 'go-counting'}, {'iterations': 2, 'passed': False, 'test': 'paasio'}, {'iterations': 1, 'passed': True, 'test': 'rational-numbers'}, {'iterations': 2, 'passed': False, 'test': 'grep'}, {'iterations': 2, 'passed': False, 'test': 'beer-song'}, {'iterations': 2, 'passed': False, 'test': 'resistor-color-expert'}, {'iterations': 1, 'passed': True, 'test': 'square-root'}, {'iterations': 1, 'passed': True, 'test': 'resistor-color-duo'}, {'iterations': 2, 'passed': False, 'test': 'say'}, {'iterations': 2, 'passed': False, 'test': 'hangman'}, {'iterations': 1, 'passed': True, 'test': 'simple-cipher'}, {'iterations': 2, 'passed': False, 'test': 'minesweeper'}, {'iterations': 2, 'passed': False, 'test': 'proverb'}, {'iterations': 2, 'passed': False, 'test': 'pov'}]
+Passed in first attempt: 43/134
+Passed in 2 attempts: 45/134

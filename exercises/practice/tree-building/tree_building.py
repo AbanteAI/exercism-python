@@ -10,41 +10,28 @@ class Node:
         self.children = []
 
 
+class Node:
+    def __init__(self, node_id):
+        self.node_id = node_id
+        self.children = []
+
 def BuildTree(records):
-    root = None
     records.sort(key=lambda x: x.record_id)
-    ordered_id = [i.record_id for i in records]
-    if records:
-        if ordered_id[-1] != len(ordered_id) - 1:
+    if not records or records[0].record_id != 0:
+        raise ValueError('invalid')
+
+    nodes = {0: Node(0)}
+    for record in records[1:]:
+        if record.record_id < record.parent_id:
+            raise ValueError('something went wrong!')
+        if record.record_id in nodes:
+            raise ValueError('duplicate record ID')
+
+        node = Node(record.record_id)
+        nodes[record.record_id] = node
+        parent = nodes.get(record.parent_id)
+        if parent is None:
             raise ValueError('broken tree')
-        if ordered_id[0] != 0:
-            raise ValueError('invalid')
-    trees = []
-    parent = {}
-    for i in range(len(ordered_id)):
-        for j in records:
-            if ordered_id[i] == j.record_id:
-                if j.record_id == 0:
-                    if j.parent_id != 0:
-                        raise ValueError('error!')
-                if j.record_id < j.parent_id:
-                    raise ValueError('something went wrong!')
-                if j.record_id == j.parent_id:
-                    if j.record_id != 0:
-                        raise ValueError('error!')
-                trees.append(Node(ordered_id[i]))
-    for i in range(len(ordered_id)):
-        for j in trees:
-            if i == j.node_id:
-                parent = j
-        for j in records:
-            if j.parent_id == i:
-                for k in trees:
-                    if k.node_id == 0:
-                        continue
-                    if j.record_id == k.node_id:
-                        child = k
-                        parent.children.append(child)
-    if len(trees) > 0:
-        root = trees[0]
-    return root
+        parent.children.append(node)
+
+    return nodes[0]

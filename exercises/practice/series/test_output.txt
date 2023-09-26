@@ -1,0 +1,126 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 11 items
+
+exercises/practice/series/series_test.py ..FFFFFFFFF                     [100%]
+
+=================================== FAILURES ===================================
+_________________ SeriesTest.test_slice_length_cannot_be_zero __________________
+
+self = <series_test.SeriesTest testMethod=test_slice_length_cannot_be_zero>
+
+    def test_slice_length_cannot_be_zero(self):
+        with self.assertRaises(ValueError) as err:
+            slices("12345", 0)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "slice length cannot be zero")
+E       AssertionError: 'slice length cannot be negative' != 'slice length cannot be zero'
+E       - slice length cannot be negative
+E       ?                        ^ ^^^^^^
+E       + slice length cannot be zero
+E       ?                        ^ ^^
+
+exercises/practice/series/series_test.py:54: AssertionError
+__________________ SeriesTest.test_slice_length_is_too_large ___________________
+
+self = <series_test.SeriesTest testMethod=test_slice_length_is_too_large>
+
+    def test_slice_length_is_too_large(self):
+        with self.assertRaises(ValueError) as err:
+            slices("12345", 6)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0], "slice length cannot be greater than series length"
+        )
+E       AssertionError: 'series cannot be empty' != 'slice length cannot be greater than series length'
+E       - series cannot be empty
+E       + slice length cannot be greater than series length
+
+exercises/practice/series/series_test.py:38: AssertionError
+________________ SeriesTest.test_slice_length_is_way_too_large _________________
+
+self = <series_test.SeriesTest testMethod=test_slice_length_is_way_too_large>
+
+    def test_slice_length_is_way_too_large(self):
+        with self.assertRaises(ValueError) as err:
+            slices("12345", 42)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0], "slice length cannot be greater than series length"
+        )
+E       AssertionError: 'series cannot be empty' != 'slice length cannot be greater than series length'
+E       - series cannot be empty
+E       + slice length cannot be greater than series length
+
+exercises/practice/series/series_test.py:46: AssertionError
+________________ SeriesTest.test_slices_can_include_duplicates _________________
+
+self = <series_test.SeriesTest testMethod=test_slices_can_include_duplicates>
+
+    def test_slices_can_include_duplicates(self):
+>       self.assertEqual(slices("777777", 3), ["777", "777", "777", "777"])
+E       AssertionError: None != ['777', '777', '777', '777']
+
+exercises/practice/series/series_test.py:26: AssertionError
+___________________ SeriesTest.test_slices_of_a_long_series ____________________
+
+self = <series_test.SeriesTest testMethod=test_slices_of_a_long_series>
+
+    def test_slices_of_a_long_series(self):
+>       self.assertEqual(
+            slices("918493904243", 5),
+            ["91849", "18493", "84939", "49390", "93904", "39042", "90424", "04243"],
+        )
+E       AssertionError: None != ['91849', '18493', '84939', '49390', '93904', '39042', '90424', '04243']
+
+exercises/practice/series/series_test.py:29: AssertionError
+____________________ SeriesTest.test_slices_of_one_from_one ____________________
+
+self = <series_test.SeriesTest testMethod=test_slices_of_one_from_one>
+
+    def test_slices_of_one_from_one(self):
+>       self.assertEqual(slices("1", 1), ["1"])
+E       AssertionError: None != ['1']
+
+exercises/practice/series/series_test.py:14: AssertionError
+____________________ SeriesTest.test_slices_of_one_from_two ____________________
+
+self = <series_test.SeriesTest testMethod=test_slices_of_one_from_two>
+
+    def test_slices_of_one_from_two(self):
+>       self.assertEqual(slices("12", 1), ["1", "2"])
+E       AssertionError: None != ['1', '2']
+
+exercises/practice/series/series_test.py:17: AssertionError
+________________________ SeriesTest.test_slices_of_two _________________________
+
+self = <series_test.SeriesTest testMethod=test_slices_of_two>
+
+    def test_slices_of_two(self):
+>       self.assertEqual(slices("35", 2), ["35"])
+E       AssertionError: None != ['35']
+
+exercises/practice/series/series_test.py:20: AssertionError
+____________________ SeriesTest.test_slices_of_two_overlap _____________________
+
+self = <series_test.SeriesTest testMethod=test_slices_of_two_overlap>
+
+    def test_slices_of_two_overlap(self):
+>       self.assertEqual(slices("9142", 2), ["91", "14", "42"])
+E       AssertionError: None != ['91', '14', '42']
+
+exercises/practice/series/series_test.py:23: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_slice_length_cannot_be_zero
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_slice_length_is_too_large
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_slice_length_is_way_too_large
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_slices_can_include_duplicates
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_slices_of_a_long_series
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_slices_of_one_from_one
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_slices_of_one_from_two
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_slices_of_two
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_slices_of_two_overlap
+========================= 9 failed, 2 passed in 0.05s ==========================

@@ -1,0 +1,94 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 17 items
+
+exercises/practice/markdown/markdown_test.py FF.FF.........F..           [100%]
+
+=================================== FAILURES ===================================
+_______________ MarkdownTest.test_h7_header_level_is_a_paragraph _______________
+
+self = <markdown_test.MarkdownTest testMethod=test_h7_header_level_is_a_paragraph>
+
+    def test_h7_header_level_is_a_paragraph(self):
+>       self.assertEqual(
+            parse("####### This will not be an h7"),
+            "<p>####### This will not be an h7</p>",
+        )
+E       AssertionError: '<h7>This will not be an h7</h7>' != '<p>####### This will not be an h7</p>'
+E       - <h7>This will not be an h7</h7>
+E       ?  ^^                         ^^
+E       + <p>####### This will not be an h7</p>
+E       ?  ^ ++++++++                        ^
+
+exercises/practice/markdown/markdown_test.py:59: AssertionError
+_____________ MarkdownTest.test_mixed_normal_italics_and_bold_text _____________
+
+self = <markdown_test.MarkdownTest testMethod=test_mixed_normal_italics_and_bold_text>
+
+    def test_mixed_normal_italics_and_bold_text(self):
+>       self.assertEqual(
+            parse("This will _be_ __mixed__"),
+            "<p>This will <em>be</em> <strong>mixed</strong></p>",
+        )
+E       AssertionError: '<p>This will <em>be<em> <strong>mixed<strong></p>' != '<p>This will <em>be</em> <strong>mixed</strong></p>'
+E       - <p>This will <em>be<em> <strong>mixed<strong></p>
+E       + <p>This will <em>be</em> <strong>mixed</strong></p>
+E       ?                     +                  +
+
+exercises/practice/markdown/markdown_test.py:29: AssertionError
+_____________________ MarkdownTest.test_parsing_bold_text ______________________
+
+self = <markdown_test.MarkdownTest testMethod=test_parsing_bold_text>
+
+    def test_parsing_bold_text(self):
+>       self.assertEqual(
+            parse("__This will be bold__"), "<p><strong>This will be bold</strong></p>"
+        )
+E       AssertionError: '<p><strong>This will be bold<strong></p>' != '<p><strong>This will be bold</strong></p>'
+E       - <p><strong>This will be bold<strong></p>
+E       + <p><strong>This will be bold</strong></p>
+E       ?                              +
+
+exercises/practice/markdown/markdown_test.py:24: AssertionError
+______________________ MarkdownTest.test_parsing_italics _______________________
+
+self = <markdown_test.MarkdownTest testMethod=test_parsing_italics>
+
+    def test_parsing_italics(self):
+>       self.assertEqual(
+            parse("_This will be italic_"), "<p><em>This will be italic</em></p>"
+        )
+E       AssertionError: '<p><em>This will be italic<em></p>' != '<p><em>This will be italic</em></p>'
+E       - <p><em>This will be italic<em></p>
+E       + <p><em>This will be italic</em></p>
+E       ?                            +
+
+exercises/practice/markdown/markdown_test.py:19: AssertionError
+_ MarkdownTest.test_with_markdown_symbols_in_the_header_text_that_should_not_be_interpreted _
+
+self = <markdown_test.MarkdownTest testMethod=test_with_markdown_symbols_in_the_header_text_that_should_not_be_interpreted>
+
+    def test_with_markdown_symbols_in_the_header_text_that_should_not_be_interpreted(
+        self,
+    ):
+>       self.assertEqual(
+            parse("# This is a header with # and * in the text"),
+            "<h1>This is a header with # and * in the text</h1>",
+        )
+E       AssertionError: '<h2>This is a header with # and * in the text</h2>' != '<h1>This is a header with # and * in the text</h1>'
+E       - <h2>This is a header with # and * in the text</h2>
+E       ?   ^                                             ^
+E       + <h1>This is a header with # and * in the text</h1>
+E       ?   ^                                             ^
+
+exercises/practice/markdown/markdown_test.py:78: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/markdown/markdown_test.py::MarkdownTest::test_h7_header_level_is_a_paragraph
+FAILED exercises/practice/markdown/markdown_test.py::MarkdownTest::test_mixed_normal_italics_and_bold_text
+FAILED exercises/practice/markdown/markdown_test.py::MarkdownTest::test_parsing_bold_text
+FAILED exercises/practice/markdown/markdown_test.py::MarkdownTest::test_parsing_italics
+FAILED exercises/practice/markdown/markdown_test.py::MarkdownTest::test_with_markdown_symbols_in_the_header_text_that_should_not_be_interpreted
+========================= 5 failed, 12 passed in 0.05s =========================

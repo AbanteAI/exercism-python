@@ -7,23 +7,47 @@ class Board:
     """
 
     def __init__(self, board):
-        pass
+        self.board = board
 
     def territory(self, x, y):
-        """Find the owner and the territories given a coordinate on
-           the board
+        owner = self.board[y][x]
+        visited = set()
+        territories = set()
 
-        Args:
-            x (int): Column on the board
-            y (int): Row on the board
+        def dfs(x, y):
+            if x < 0 or y < 0 or x >= len(self.board[0]) or y >= len(self.board) or (x, y) in visited:
+                return
+            visited.add((x, y))
+            if self.board[y][x] == owner:
+                territories.add((x, y))
+                dfs(x - 1, y)
+                dfs(x + 1, y)
+                dfs(x, y - 1)
+                dfs(x, y + 1)
 
-        Returns:
-            (str, set): A tuple, the first element being the owner
-                        of that area.  One of "W", "B", "".  The
-                        second being a set of coordinates, representing
-                        the owner's territories.
-        """
-        pass
+        dfs(x, y)
+        return (owner, territories)
+
+    def territories(self):
+        result = {"W": set(), "B": set(), "": set()}
+        for y in range(len(self.board)):
+            for x in range(len(self.board[0])):
+                if self.board[y][x] == "W" or self.board[y][x] == "B":
+                    owner, territories = self.territory(x, y)
+                    result[owner].update(territories)
+        return result
+
+        dfs(x, y)
+        return (owner, territories)
+
+    def territories(self):
+        result = {"W": set(), "B": set(), "": set()}
+        for y in range(len(self.board)):
+            for x in range(len(self.board[0])):
+                if self.board[y][x] == "W" or self.board[y][x] == "B":
+                    owner, territories = self.territory(x, y)
+                    result[owner].update(territories)
+        return result
 
     def territories(self):
         """Find the owners and the territories of the whole board

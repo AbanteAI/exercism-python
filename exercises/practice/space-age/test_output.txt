@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 8 items
+
+exercises/practice/space-age/space_age_test.py .......F                  [100%]
+
+=================================== FAILURES ===================================
+________________________ SpaceAgeTest.test_age_on_venus ________________________
+
+self = <space_age_test.SpaceAgeTest testMethod=test_age_on_venus>
+
+    def test_age_on_venus(self):
+>       self.assertEqual(SpaceAge(189839836).on_venus(), 9.78)
+E       AssertionError: 9.79 != 9.78
+
+exercises/practice/space-age/space_age_test.py:20: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/space-age/space_age_test.py::SpaceAgeTest::test_age_on_venus
+========================= 1 failed, 7 passed in 0.03s ==========================

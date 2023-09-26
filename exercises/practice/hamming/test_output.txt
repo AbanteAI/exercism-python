@@ -1,0 +1,84 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 9 items
+
+exercises/practice/hamming/hamming_test.py FFFF.....                     [100%]
+
+=================================== FAILURES ===================================
+_________________ HammingTest.test_disallow_empty_first_strand _________________
+
+self = <hamming_test.HammingTest testMethod=test_disallow_empty_first_strand>
+
+    def test_disallow_empty_first_strand(self):
+        with self.assertRaises(ValueError) as err:
+            distance("", "G")
+    
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "Strands must be of equal length.")
+E       AssertionError: 'Strands must have equal length' != 'Strands must be of equal length.'
+E       - Strands must have equal length
+E       ?              ^^^
+E       + Strands must be of equal length.
+E       ?              ^ +++             +
+
+exercises/practice/hamming/hamming_test.py:47: AssertionError
+________________ HammingTest.test_disallow_empty_second_strand _________________
+
+self = <hamming_test.HammingTest testMethod=test_disallow_empty_second_strand>
+
+    def test_disallow_empty_second_strand(self):
+        with self.assertRaises(ValueError) as err:
+            distance("G", "")
+    
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "Strands must be of equal length.")
+E       AssertionError: 'Strands must have equal length' != 'Strands must be of equal length.'
+E       - Strands must have equal length
+E       ?              ^^^
+E       + Strands must be of equal length.
+E       ?              ^ +++             +
+
+exercises/practice/hamming/hamming_test.py:54: AssertionError
+________________ HammingTest.test_disallow_first_strand_longer _________________
+
+self = <hamming_test.HammingTest testMethod=test_disallow_first_strand_longer>
+
+    def test_disallow_first_strand_longer(self):
+        with self.assertRaises(ValueError) as err:
+            distance("AATG", "AAA")
+    
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "Strands must be of equal length.")
+E       AssertionError: 'Strands must have equal length' != 'Strands must be of equal length.'
+E       - Strands must have equal length
+E       ?              ^^^
+E       + Strands must be of equal length.
+E       ?              ^ +++             +
+
+exercises/practice/hamming/hamming_test.py:33: AssertionError
+________________ HammingTest.test_disallow_second_strand_longer ________________
+
+self = <hamming_test.HammingTest testMethod=test_disallow_second_strand_longer>
+
+    def test_disallow_second_strand_longer(self):
+        with self.assertRaises(ValueError) as err:
+            distance("ATA", "AGTG")
+    
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "Strands must be of equal length.")
+E       AssertionError: 'Strands must have equal length' != 'Strands must be of equal length.'
+E       - Strands must have equal length
+E       ?              ^^^
+E       + Strands must be of equal length.
+E       ?              ^ +++             +
+
+exercises/practice/hamming/hamming_test.py:40: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/hamming/hamming_test.py::HammingTest::test_disallow_empty_first_strand
+FAILED exercises/practice/hamming/hamming_test.py::HammingTest::test_disallow_empty_second_strand
+FAILED exercises/practice/hamming/hamming_test.py::HammingTest::test_disallow_first_strand_longer
+FAILED exercises/practice/hamming/hamming_test.py::HammingTest::test_disallow_second_strand_longer
+========================= 4 failed, 5 passed in 0.04s ==========================

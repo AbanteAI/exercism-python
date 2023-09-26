@@ -1,0 +1,273 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 26 items
+
+exercises/practice/roman-numerals/roman_numerals_test.py FFFFFFFFFFFFFFF [ 57%]
+FFFFFFFFFFF                                                              [100%]
+
+=================================== FAILURES ===================================
+_____________________ RomanNumeralsTest.test_1024_is_mxxiv _____________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_1024_is_mxxiv>
+
+    def test_1024_is_mxxiv(self):
+>       self.assertEqual(roman(1024), "MXXIV")
+E       AssertionError: None != 'MXXIV'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:77: AssertionError
+______________________ RomanNumeralsTest.test_141_is_cxli ______________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_141_is_cxli>
+
+    def test_141_is_cxli(self):
+>       self.assertEqual(roman(141), "CXLI")
+E       AssertionError: None != 'CXLI'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:56: AssertionError
+_____________________ RomanNumeralsTest.test_163_is_clxiii _____________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_163_is_clxiii>
+
+    def test_163_is_clxiii(self):
+>       self.assertEqual(roman(163), "CLXIII")
+E       AssertionError: None != 'CLXIII'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:59: AssertionError
+____________________ RomanNumeralsTest.test_1666_is_mdclxvi ____________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_1666_is_mdclxvi>
+
+    def test_1666_is_mdclxvi(self):
+>       self.assertEqual(roman(1666), "MDCLXVI")
+E       AssertionError: None != 'MDCLXVI'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:80: AssertionError
+_____________________ RomanNumeralsTest.test_166_is_clxvi ______________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_166_is_clxvi>
+
+    def test_166_is_clxvi(self):
+>       self.assertEqual(roman(166), "CLXVI")
+E       AssertionError: None != 'CLXVI'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:62: AssertionError
+_______________________ RomanNumeralsTest.test_16_is_xvi _______________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_16_is_xvi>
+
+    def test_16_is_xvi(self):
+>       self.assertEqual(roman(16), "XVI")
+E       AssertionError: None != 'XVI'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:35: AssertionError
+________________________ RomanNumeralsTest.test_1_is_i _________________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_1_is_i>
+
+    def test_1_is_i(self):
+>       self.assertEqual(roman(1), "I")
+E       AssertionError: None != 'I'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:14: AssertionError
+______________________ RomanNumeralsTest.test_27_is_xxvii ______________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_27_is_xxvii>
+
+    def test_27_is_xxvii(self):
+>       self.assertEqual(roman(27), "XXVII")
+E       AssertionError: None != 'XXVII'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:38: AssertionError
+________________________ RomanNumeralsTest.test_2_is_ii ________________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_2_is_ii>
+
+    def test_2_is_ii(self):
+>       self.assertEqual(roman(2), "II")
+E       AssertionError: None != 'II'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:17: AssertionError
+______________________ RomanNumeralsTest.test_3000_is_mmm ______________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_3000_is_mmm>
+
+    def test_3000_is_mmm(self):
+>       self.assertEqual(roman(3000), "MMM")
+E       AssertionError: None != 'MMM'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:83: AssertionError
+_____________________ RomanNumeralsTest.test_3001_is_mmmi ______________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_3001_is_mmmi>
+
+    def test_3001_is_mmmi(self):
+>       self.assertEqual(roman(3001), "MMMI")
+E       AssertionError: None != 'MMMI'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:86: AssertionError
+___________________ RomanNumeralsTest.test_3999_is_mmmcmxcix ___________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_3999_is_mmmcmxcix>
+
+    def test_3999_is_mmmcmxcix(self):
+>       self.assertEqual(roman(3999), "MMMCMXCIX")
+E       AssertionError: None != 'MMMCMXCIX'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:89: AssertionError
+_______________________ RomanNumeralsTest.test_3_is_iii ________________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_3_is_iii>
+
+    def test_3_is_iii(self):
+>       self.assertEqual(roman(3), "III")
+E       AssertionError: None != 'III'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:20: AssertionError
+______________________ RomanNumeralsTest.test_402_is_cdii ______________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_402_is_cdii>
+
+    def test_402_is_cdii(self):
+>       self.assertEqual(roman(402), "CDII")
+E       AssertionError: None != 'CDII'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:65: AssertionError
+_____________________ RomanNumeralsTest.test_48_is_xlviii ______________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_48_is_xlviii>
+
+    def test_48_is_xlviii(self):
+>       self.assertEqual(roman(48), "XLVIII")
+E       AssertionError: None != 'XLVIII'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:41: AssertionError
+______________________ RomanNumeralsTest.test_49_is_xlix _______________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_49_is_xlix>
+
+    def test_49_is_xlix(self):
+>       self.assertEqual(roman(49), "XLIX")
+E       AssertionError: None != 'XLIX'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:44: AssertionError
+________________________ RomanNumeralsTest.test_4_is_iv ________________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_4_is_iv>
+
+    def test_4_is_iv(self):
+>       self.assertEqual(roman(4), "IV")
+E       AssertionError: None != 'IV'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:23: AssertionError
+_____________________ RomanNumeralsTest.test_575_is_dlxxv ______________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_575_is_dlxxv>
+
+    def test_575_is_dlxxv(self):
+>       self.assertEqual(roman(575), "DLXXV")
+E       AssertionError: None != 'DLXXV'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:68: AssertionError
+_______________________ RomanNumeralsTest.test_59_is_lix _______________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_59_is_lix>
+
+    def test_59_is_lix(self):
+>       self.assertEqual(roman(59), "LIX")
+E       AssertionError: None != 'LIX'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:47: AssertionError
+________________________ RomanNumeralsTest.test_5_is_v _________________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_5_is_v>
+
+    def test_5_is_v(self):
+>       self.assertEqual(roman(5), "V")
+E       AssertionError: None != 'V'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:26: AssertionError
+_____________________ RomanNumeralsTest.test_666_is_dclxvi _____________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_666_is_dclxvi>
+
+    def test_666_is_dclxvi(self):
+>       self.assertEqual(roman(666), "DCLXVI")
+E       AssertionError: None != 'DCLXVI'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:71: AssertionError
+______________________ RomanNumeralsTest.test_66_is_lxvi _______________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_66_is_lxvi>
+
+    def test_66_is_lxvi(self):
+>       self.assertEqual(roman(66), "LXVI")
+E       AssertionError: None != 'LXVI'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:50: AssertionError
+________________________ RomanNumeralsTest.test_6_is_vi ________________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_6_is_vi>
+
+    def test_6_is_vi(self):
+>       self.assertEqual(roman(6), "VI")
+E       AssertionError: None != 'VI'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:29: AssertionError
+______________________ RomanNumeralsTest.test_911_is_cmxi ______________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_911_is_cmxi>
+
+    def test_911_is_cmxi(self):
+>       self.assertEqual(roman(911), "CMXI")
+E       AssertionError: None != 'CMXI'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:74: AssertionError
+______________________ RomanNumeralsTest.test_93_is_xciii ______________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_93_is_xciii>
+
+    def test_93_is_xciii(self):
+>       self.assertEqual(roman(93), "XCIII")
+E       AssertionError: None != 'XCIII'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:53: AssertionError
+________________________ RomanNumeralsTest.test_9_is_ix ________________________
+
+self = <roman_numerals_test.RomanNumeralsTest testMethod=test_9_is_ix>
+
+    def test_9_is_ix(self):
+>       self.assertEqual(roman(9), "IX")
+E       AssertionError: None != 'IX'
+
+exercises/practice/roman-numerals/roman_numerals_test.py:32: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_1024_is_mxxiv
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_141_is_cxli
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_163_is_clxiii
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_1666_is_mdclxvi
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_166_is_clxvi
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_16_is_xvi
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_1_is_i
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_27_is_xxvii
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_2_is_ii
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_3000_is_mmm
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_3001_is_mmmi
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_3999_is_mmmcmxcix
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_3_is_iii
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_402_is_cdii
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_48_is_xlviii
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_49_is_xlix
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_4_is_iv
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_575_is_dlxxv
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_59_is_lix
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_5_is_v
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_666_is_dclxvi
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_66_is_lxvi
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_6_is_vi
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_911_is_cmxi
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_93_is_xciii
+FAILED exercises/practice/roman-numerals/roman_numerals_test.py::RomanNumeralsTest::test_9_is_ix
+============================== 26 failed in 0.09s ==============================

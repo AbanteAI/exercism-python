@@ -1,2 +1,4 @@
 def is_pangram(sentence):
-    pass
+    alphabet = set('abcdefghijklmnopqrstuvwxyz')
+    sentence = sentence.lower()
+    return all(letter in sentence for letter in alphabet)

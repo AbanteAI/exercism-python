@@ -1,0 +1,97 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 7 items
+
+exercises/practice/hangman/hangman_test.py F..F..F                       [100%]
+
+=================================== FAILURES ===================================
+_____________ HangmanTests.test_after_10_failures_the_game_is_over _____________
+
+self = <hangman_test.HangmanTests testMethod=test_after_10_failures_the_game_is_over>
+
+    def test_after_10_failures_the_game_is_over(self):
+        game = Hangman('foo')
+    
+        for i in range(10):
+>           game.guess('x')
+
+exercises/practice/hangman/hangman_test.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <hangman.Hangman object at 0x7f625471dae0>, char = 'x'
+
+    def guess(self, char):
+        if self.status != STATUS_ONGOING:
+>           raise ValueError("Game already finished.")
+E           ValueError: Game already finished.
+
+exercises/practice/hangman/hangman.py:53: ValueError
+_______ HangmanTests.test_getting_all_the_letters_right_makes_for_a_win ________
+
+self = <hangman_test.HangmanTests testMethod=test_getting_all_the_letters_right_makes_for_a_win>
+
+    def test_getting_all_the_letters_right_makes_for_a_win(self):
+        game = Hangman('hello')
+    
+        game.guess('b')
+        self.assertEqual(game.get_status(), hangman.STATUS_ONGOING)
+        self.assertEqual(game.remaining_guesses, 8)
+        self.assertEqual(game.get_masked_word(), '_____')
+    
+        game.guess('e')
+        self.assertEqual(game.get_status(), hangman.STATUS_ONGOING)
+        self.assertEqual(game.remaining_guesses, 8)
+        self.assertEqual(game.get_masked_word(), '_e___')
+    
+        game.guess('l')
+        self.assertEqual(game.get_status(), hangman.STATUS_ONGOING)
+        self.assertEqual(game.remaining_guesses, 8)
+        self.assertEqual(game.get_masked_word(), '_ell_')
+    
+        game.guess('o')
+        self.assertEqual(game.get_status(), hangman.STATUS_ONGOING)
+        self.assertEqual(game.remaining_guesses, 8)
+        self.assertEqual(game.get_masked_word(), '_ello')
+    
+        game.guess('h')
+        self.assertEqual(game.get_status(), hangman.STATUS_WIN)
+        self.assertEqual(game.get_masked_word(), 'hello')
+    
+        with self.assertRaises(ValueError) as err:
+            game.guess('x')
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "The game has already ended.")
+E       AssertionError: 'Game already finished.' != 'The game has already ended.'
+E       - Game already finished.
+E       + The game has already ended.
+
+exercises/practice/hangman/hangman_test.py:88: AssertionError
+________ HangmanTests.test_winning_on_last_guess_still_counts_as_a_win _________
+
+self = <hangman_test.HangmanTests testMethod=test_winning_on_last_guess_still_counts_as_a_win>
+
+    def test_winning_on_last_guess_still_counts_as_a_win(self):
+        game = Hangman('aaa')
+        for ch in 'bcdefghij':
+            game.guess(ch)
+>       game.guess('a')
+
+exercises/practice/hangman/hangman_test.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <hangman.Hangman object at 0x7f62545760e0>, char = 'a'
+
+    def guess(self, char):
+        if self.status != STATUS_ONGOING:
+>           raise ValueError("Game already finished.")
+E           ValueError: Game already finished.
+
+exercises/practice/hangman/hangman.py:53: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/hangman/hangman_test.py::HangmanTests::test_after_10_failures_the_game_is_over
+FAILED exercises/practice/hangman/hangman_test.py::HangmanTests::test_getting_all_the_letters_right_makes_for_a_win
+FAILED exercises/practice/hangman/hangman_test.py::HangmanTests::test_winning_on_last_guess_still_counts_as_a_win
+========================= 3 failed, 4 passed in 0.05s ==========================

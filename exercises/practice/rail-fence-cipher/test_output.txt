@@ -1,0 +1,79 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 6 items
+
+exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py FFFFFF    [100%]
+
+=================================== FAILURES ===================================
+_______________ RailFenceCipherTest.test_decode_with_five_rails ________________
+
+self = <rail_fence_cipher_test.RailFenceCipherTest testMethod=test_decode_with_five_rails>
+
+    def test_decode_with_five_rails(self):
+>       self.assertMultiLineEqual(decode("EIEXMSMESAORIWSCE", 5), "EXERCISMISAWESOME")
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py:31: AssertionError
+________________ RailFenceCipherTest.test_decode_with_six_rails ________________
+
+self = <rail_fence_cipher_test.RailFenceCipherTest testMethod=test_decode_with_six_rails>
+
+    def test_decode_with_six_rails(self):
+>       self.assertMultiLineEqual(
+            decode("133714114238148966225439541018335470986172518171757571896261", 6),
+            "112358132134558914423337761098715972584418167651094617711286",
+        )
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py:34: AssertionError
+_______________ RailFenceCipherTest.test_decode_with_three_rails _______________
+
+self = <rail_fence_cipher_test.RailFenceCipherTest testMethod=test_decode_with_three_rails>
+
+    def test_decode_with_three_rails(self):
+>       self.assertMultiLineEqual(
+            decode("TEITELHDVLSNHDTISEIIEA", 3), "THEDEVILISINTHEDETAILS"
+        )
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py:26: AssertionError
+__________ RailFenceCipherTest.test_encode_with_ending_in_the_middle ___________
+
+self = <rail_fence_cipher_test.RailFenceCipherTest testMethod=test_encode_with_ending_in_the_middle>
+
+    def test_encode_with_ending_in_the_middle(self):
+>       self.assertMultiLineEqual(encode("EXERCISES", 4), "ESXIEECSR")
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py:23: AssertionError
+_______________ RailFenceCipherTest.test_encode_with_three_rails _______________
+
+self = <rail_fence_cipher_test.RailFenceCipherTest testMethod=test_encode_with_three_rails>
+
+    def test_encode_with_three_rails(self):
+>       self.assertMultiLineEqual(
+            encode("WEAREDISCOVEREDFLEEATONCE", 3), "WECRLTEERDSOEEFEAOCAIVDEN"
+        )
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py:18: AssertionError
+________________ RailFenceCipherTest.test_encode_with_two_rails ________________
+
+self = <rail_fence_cipher_test.RailFenceCipherTest testMethod=test_encode_with_two_rails>
+
+    def test_encode_with_two_rails(self):
+>       self.assertMultiLineEqual(encode("XOXOXOXOXOXOXOXOXO", 2), "XXXXXXXXXOOOOOOOOO")
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py:15: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py::RailFenceCipherTest::test_decode_with_five_rails
+FAILED exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py::RailFenceCipherTest::test_decode_with_six_rails
+FAILED exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py::RailFenceCipherTest::test_decode_with_three_rails
+FAILED exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py::RailFenceCipherTest::test_encode_with_ending_in_the_middle
+FAILED exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py::RailFenceCipherTest::test_encode_with_three_rails
+FAILED exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py::RailFenceCipherTest::test_encode_with_two_rails
+============================== 6 failed in 0.04s ===============================

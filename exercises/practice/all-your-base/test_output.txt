@@ -1,0 +1,98 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 21 items
+
+exercises/practice/all-your-base/all_your_base_test.py ..........F..FFFF [ 80%]
+....                                                                     [100%]
+
+=================================== FAILURES ===================================
+_________________ AllYourBaseTest.test_invalid_positive_digit __________________
+
+self = <all_your_base_test.AllYourBaseTest testMethod=test_invalid_positive_digit>
+
+    def test_invalid_positive_digit(self):
+        with self.assertRaises(ValueError) as err:
+            rebase(2, [1, 2, 1, 0, 1, 0], 10)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0], "all digits must satisfy 0 <= d < input base"
+        )
+E       AssertionError: 'Invalid digits for input base' != 'all digits must satisfy 0 <= d < input base'
+E       - Invalid digits for input base
+E       + all digits must satisfy 0 <= d < input base
+
+exercises/practice/all-your-base/all_your_base_test.py:79: AssertionError
+_____________________ AllYourBaseTest.test_negative_digit ______________________
+
+self = <all_your_base_test.AllYourBaseTest testMethod=test_negative_digit>
+
+    def test_negative_digit(self):
+        with self.assertRaises(ValueError) as err:
+            rebase(2, [1, -1, 1, 0, 1, 0], 10)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0], "all digits must satisfy 0 <= d < input base"
+        )
+E       AssertionError: 'Invalid digits for input base' != 'all digits must satisfy 0 <= d < input base'
+E       - Invalid digits for input base
+E       + all digits must satisfy 0 <= d < input base
+
+exercises/practice/all-your-base/all_your_base_test.py:71: AssertionError
+_________________ AllYourBaseTest.test_output_base_is_negative _________________
+
+self = <all_your_base_test.AllYourBaseTest testMethod=test_output_base_is_negative>
+
+    def test_output_base_is_negative(self):
+        with self.assertRaises(ValueError) as err:
+            rebase(2, [1], -7)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "output base must be >= 2")
+E       AssertionError: 'input base must be >= 2' != 'output base must be >= 2'
+E       - input base must be >= 2
+E       ? ^^
+E       + output base must be >= 2
+E       ? ^^^
+
+exercises/practice/all-your-base/all_your_base_test.py:99: AssertionError
+___________________ AllYourBaseTest.test_output_base_is_one ____________________
+
+self = <all_your_base_test.AllYourBaseTest testMethod=test_output_base_is_one>
+
+    def test_output_base_is_one(self):
+        with self.assertRaises(ValueError) as err:
+            rebase(2, [1, 0, 1, 0, 1, 0], 1)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "output base must be >= 2")
+E       AssertionError: 'input base must be >= 2' != 'output base must be >= 2'
+E       - input base must be >= 2
+E       ? ^^
+E       + output base must be >= 2
+E       ? ^^^
+
+exercises/practice/all-your-base/all_your_base_test.py:87: AssertionError
+___________________ AllYourBaseTest.test_output_base_is_zero ___________________
+
+self = <all_your_base_test.AllYourBaseTest testMethod=test_output_base_is_zero>
+
+    def test_output_base_is_zero(self):
+        with self.assertRaises(ValueError) as err:
+            rebase(10, [7], 0)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "output base must be >= 2")
+E       AssertionError: 'input base must be >= 2' != 'output base must be >= 2'
+E       - input base must be >= 2
+E       ? ^^
+E       + output base must be >= 2
+E       ? ^^^
+
+exercises/practice/all-your-base/all_your_base_test.py:93: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/all-your-base/all_your_base_test.py::AllYourBaseTest::test_invalid_positive_digit
+FAILED exercises/practice/all-your-base/all_your_base_test.py::AllYourBaseTest::test_negative_digit
+FAILED exercises/practice/all-your-base/all_your_base_test.py::AllYourBaseTest::test_output_base_is_negative
+FAILED exercises/practice/all-your-base/all_your_base_test.py::AllYourBaseTest::test_output_base_is_one
+FAILED exercises/practice/all-your-base/all_your_base_test.py::AllYourBaseTest::test_output_base_is_zero
+========================= 5 failed, 16 passed in 0.06s =========================

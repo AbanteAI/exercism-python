@@ -1,0 +1,151 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 13 items
+
+exercises/practice/tree-building/tree_building_test.py .FFFF.FF.F...     [100%]
+
+=================================== FAILURES ===================================
+_____________________ TreeBuildingTest.test_cycle_directly _____________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_cycle_directly>
+
+    def test_cycle_directly(self):
+        records = [
+            Record(5, 2),
+            Record(3, 2),
+            Record(2, 2),
+            Record(4, 1),
+            Record(1, 0),
+            Record(0, 0),
+            Record(6, 3)
+        ]
+        # Cycle caused by Record 2 with parent_id pointing to itself
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/tree-building/tree_building_test.py:151: AssertionError
+____________________ TreeBuildingTest.test_cycle_indirectly ____________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_cycle_indirectly>
+
+    def test_cycle_indirectly(self):
+        records = [
+            Record(5, 2),
+            Record(3, 2),
+            Record(2, 6),
+            Record(4, 1),
+            Record(1, 0),
+            Record(0, 0),
+            Record(6, 3)
+        ]
+        # Cycle caused by Record 2 with parent_id(6) greater than record_id(2)
+        with self.assertRaises(ValueError) as err:
+            BuildTree(records)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "Node parent_id should be smaller than it's record_id.")
+E       AssertionError: 'something went wrong!' != "Node parent_id should be smaller than it's record_id."
+E       - something went wrong!
+E       + Node parent_id should be smaller than it's record_id.
+
+exercises/practice/tree-building/tree_building_test.py:170: AssertionError
+____________________ TreeBuildingTest.test_empty_list_input ____________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_empty_list_input>
+
+    def test_empty_list_input(self):
+        records = []
+>       root = BuildTree(records)
+
+exercises/practice/tree-building/tree_building_test.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+records = []
+
+    def BuildTree(records):
+        records.sort(key=lambda x: x.record_id)
+        if not records or records[0].record_id != 0:
+>           raise ValueError('invalid')
+E           ValueError: invalid
+
+exercises/practice/tree-building/tree_building.py:21: ValueError
+______________ TreeBuildingTest.test_higher_id_parent_of_lower_id ______________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_higher_id_parent_of_lower_id>
+
+    def test_higher_id_parent_of_lower_id(self):
+        records = [
+            Record(0, 0),
+            Record(2, 0),
+            Record(1, 2)
+        ]
+        # Record 1 have parent_id(2) greater than record_id(1)
+        with self.assertRaises(ValueError) as err:
+            BuildTree(records)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "Node parent_id should be smaller than it's record_id.")
+E       AssertionError: 'something went wrong!' != "Node parent_id should be smaller than it's record_id."
+E       - something went wrong!
+E       + Node parent_id should be smaller than it's record_id.
+
+exercises/practice/tree-building/tree_building_test.py:182: AssertionError
+______________________ TreeBuildingTest.test_no_root_node ______________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_no_root_node>
+
+    def test_no_root_node(self):
+        records = [
+            Record(1, 0),
+            Record(2, 0)
+        ]
+        # Record with record_id 0 (root) is missing
+        with self.assertRaises(ValueError) as err:
+            BuildTree(records)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "Record id is invalid or out of order.")
+E       AssertionError: 'invalid' != 'Record id is invalid or out of order.'
+E       - invalid
+E       + Record id is invalid or out of order.
+
+exercises/practice/tree-building/tree_building_test.py:125: AssertionError
+_____________________ TreeBuildingTest.test_non_continuous _____________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_non_continuous>
+
+    def test_non_continuous(self):
+        records = [
+            Record(2, 0),
+            Record(4, 2),
+            Record(1, 0),
+            Record(0, 0)
+        ]
+        # Record with record_id 3 is missing
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/tree-building/tree_building_test.py:135: AssertionError
+__________________ TreeBuildingTest.test_root_node_has_parent __________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_root_node_has_parent>
+
+    def test_root_node_has_parent(self):
+        records = [
+            Record(0, 1),
+            Record(1, 0)
+        ]
+        # Root parent_id should be equal to record_id(0)
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/tree-building/tree_building_test.py:111: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_cycle_directly
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_cycle_indirectly
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_empty_list_input
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_higher_id_parent_of_lower_id
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_no_root_node
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_non_continuous
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_root_node_has_parent
+========================= 7 failed, 6 passed in 0.08s ==========================

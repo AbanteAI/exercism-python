@@ -1,0 +1,148 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 12 items
+
+exercises/practice/high-scores/high_scores_test.py FFF.FFFFFFFF          [100%]
+
+=================================== FAILURES ===================================
+_______________________ HighScoresTest.test_latest_score _______________________
+
+self = <high_scores_test.HighScoresTest testMethod=test_latest_score>
+
+    def test_latest_score(self):
+        scores = [100, 0, 90, 30]
+        expected = 30
+>       self.assertEqual(HighScores(scores).latest(), expected)
+E       AttributeError: 'HighScores' object has no attribute 'latest'
+
+exercises/practice/high-scores/high_scores_test.py:21: AttributeError
+_____________ HighScoresTest.test_latest_score_after_personal_best _____________
+
+self = <high_scores_test.HighScoresTest testMethod=test_latest_score_after_personal_best>
+
+    def test_latest_score_after_personal_best(self):
+        scores = [20, 70, 15, 25, 30]
+        expected = 30
+        highscores = HighScores(scores)
+>       highscores.personal_best()
+E       AttributeError: 'HighScores' object has no attribute 'personal_best'
+
+exercises/practice/high-scores/high_scores_test.py:71: AttributeError
+__________ HighScoresTest.test_latest_score_after_personal_top_scores __________
+
+self = <high_scores_test.HighScoresTest testMethod=test_latest_score_after_personal_top_scores>
+
+    def test_latest_score_after_personal_top_scores(self):
+        scores = [70, 50, 20, 30]
+        expected = 30
+        highscores = HighScores(scores)
+>       highscores.personal_top_three()
+E       AttributeError: 'HighScores' object has no attribute 'personal_top_three'
+
+exercises/practice/high-scores/high_scores_test.py:57: AttributeError
+______________________ HighScoresTest.test_personal_best _______________________
+
+self = <high_scores_test.HighScoresTest testMethod=test_personal_best>
+
+    def test_personal_best(self):
+        scores = [40, 100, 70]
+        expected = 100
+>       self.assertEqual(HighScores(scores).personal_best(), expected)
+E       AttributeError: 'HighScores' object has no attribute 'personal_best'
+
+exercises/practice/high-scores/high_scores_test.py:26: AttributeError
+______________ HighScoresTest.test_personal_top_highest_to_lowest ______________
+
+self = <high_scores_test.HighScoresTest testMethod=test_personal_top_highest_to_lowest>
+
+    def test_personal_top_highest_to_lowest(self):
+        scores = [20, 10, 30]
+        expected = [30, 20, 10]
+>       self.assertEqual(HighScores(scores).personal_top_three(), expected)
+E       AttributeError: 'HighScores' object has no attribute 'personal_top_three'
+
+exercises/practice/high-scores/high_scores_test.py:36: AttributeError
+_________ HighScoresTest.test_personal_top_three_from_a_list_of_scores _________
+
+self = <high_scores_test.HighScoresTest testMethod=test_personal_top_three_from_a_list_of_scores>
+
+    def test_personal_top_three_from_a_list_of_scores(self):
+        scores = [10, 30, 90, 30, 100, 20, 10, 0, 30, 40, 40, 70, 70]
+        expected = [100, 90, 70]
+>       self.assertEqual(HighScores(scores).personal_top_three(), expected)
+E       AttributeError: 'HighScores' object has no attribute 'personal_top_three'
+
+exercises/practice/high-scores/high_scores_test.py:31: AttributeError
+_________ HighScoresTest.test_personal_top_when_there_are_less_than_3 __________
+
+self = <high_scores_test.HighScoresTest testMethod=test_personal_top_when_there_are_less_than_3>
+
+    def test_personal_top_when_there_are_less_than_3(self):
+        scores = [30, 70]
+        expected = [70, 30]
+>       self.assertEqual(HighScores(scores).personal_top_three(), expected)
+E       AttributeError: 'HighScores' object has no attribute 'personal_top_three'
+
+exercises/practice/high-scores/high_scores_test.py:46: AttributeError
+_____________ HighScoresTest.test_personal_top_when_there_is_a_tie _____________
+
+self = <high_scores_test.HighScoresTest testMethod=test_personal_top_when_there_is_a_tie>
+
+    def test_personal_top_when_there_is_a_tie(self):
+        scores = [40, 20, 40, 30]
+        expected = [40, 40, 30]
+>       self.assertEqual(HighScores(scores).personal_top_three(), expected)
+E       AttributeError: 'HighScores' object has no attribute 'personal_top_three'
+
+exercises/practice/high-scores/high_scores_test.py:41: AttributeError
+___________ HighScoresTest.test_personal_top_when_there_is_only_one ____________
+
+self = <high_scores_test.HighScoresTest testMethod=test_personal_top_when_there_is_only_one>
+
+    def test_personal_top_when_there_is_only_one(self):
+        scores = [40]
+        expected = [40]
+>       self.assertEqual(HighScores(scores).personal_top_three(), expected)
+E       AttributeError: 'HighScores' object has no attribute 'personal_top_three'
+
+exercises/practice/high-scores/high_scores_test.py:51: AttributeError
+________________ HighScoresTest.test_scores_after_personal_best ________________
+
+self = <high_scores_test.HighScoresTest testMethod=test_scores_after_personal_best>
+
+    def test_scores_after_personal_best(self):
+        scores = [20, 70, 15, 25, 30]
+        expected = [20, 70, 15, 25, 30]
+        highscores = HighScores(scores)
+>       highscores.personal_best()
+E       AttributeError: 'HighScores' object has no attribute 'personal_best'
+
+exercises/practice/high-scores/high_scores_test.py:78: AttributeError
+_____________ HighScoresTest.test_scores_after_personal_top_scores _____________
+
+self = <high_scores_test.HighScoresTest testMethod=test_scores_after_personal_top_scores>
+
+    def test_scores_after_personal_top_scores(self):
+        scores = [30, 50, 20, 70]
+        expected = [30, 50, 20, 70]
+        highscores = HighScores(scores)
+>       highscores.personal_top_three()
+E       AttributeError: 'HighScores' object has no attribute 'personal_top_three'
+
+exercises/practice/high-scores/high_scores_test.py:64: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/high-scores/high_scores_test.py::HighScoresTest::test_latest_score
+FAILED exercises/practice/high-scores/high_scores_test.py::HighScoresTest::test_latest_score_after_personal_best
+FAILED exercises/practice/high-scores/high_scores_test.py::HighScoresTest::test_latest_score_after_personal_top_scores
+FAILED exercises/practice/high-scores/high_scores_test.py::HighScoresTest::test_personal_best
+FAILED exercises/practice/high-scores/high_scores_test.py::HighScoresTest::test_personal_top_highest_to_lowest
+FAILED exercises/practice/high-scores/high_scores_test.py::HighScoresTest::test_personal_top_three_from_a_list_of_scores
+FAILED exercises/practice/high-scores/high_scores_test.py::HighScoresTest::test_personal_top_when_there_are_less_than_3
+FAILED exercises/practice/high-scores/high_scores_test.py::HighScoresTest::test_personal_top_when_there_is_a_tie
+FAILED exercises/practice/high-scores/high_scores_test.py::HighScoresTest::test_personal_top_when_there_is_only_one
+FAILED exercises/practice/high-scores/high_scores_test.py::HighScoresTest::test_scores_after_personal_best
+FAILED exercises/practice/high-scores/high_scores_test.py::HighScoresTest::test_scores_after_personal_top_scores
+========================= 11 failed, 1 passed in 0.09s =========================

@@ -1,0 +1,173 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 10 items
+
+exercises/practice/octal/octal_test.py ...FFFFFFF                        [100%]
+
+=================================== FAILURES ===================================
+_____________________ OctalTest.test_octal_10_is_decimal_8 _____________________
+
+self = <octal_test.OctalTest testMethod=test_octal_10_is_decimal_8>
+
+    def test_octal_10_is_decimal_8(self):
+>       self.assertEqual(parse_octal("10"), 8)
+
+exercises/practice/octal/octal_test.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+digits = '10'
+
+    def parse_octal(digits):
+        if not all(digit.isdigit() and int(digit) < 8 for digit in digits):
+            raise ValueError("Invalid octal input")
+        for i, digit in enumerate(reversed(digits)):
+            if not digit.isdigit() or int(digit) > 7:
+                return 0
+>           decimal += int(digit) * (8 ** i)
+E           UnboundLocalError: local variable 'decimal' referenced before assignment
+
+exercises/practice/octal/octal.py:7: UnboundLocalError
+________________ OctalTest.test_octal_1234567_is_decimal_342391 ________________
+
+self = <octal_test.OctalTest testMethod=test_octal_1234567_is_decimal_342391>
+
+    def test_octal_1234567_is_decimal_342391(self):
+>       self.assertEqual(parse_octal("1234567"), 342391)
+
+exercises/practice/octal/octal_test.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+digits = '1234567'
+
+    def parse_octal(digits):
+        if not all(digit.isdigit() and int(digit) < 8 for digit in digits):
+            raise ValueError("Invalid octal input")
+        for i, digit in enumerate(reversed(digits)):
+            if not digit.isdigit() or int(digit) > 7:
+                return 0
+>           decimal += int(digit) * (8 ** i)
+E           UnboundLocalError: local variable 'decimal' referenced before assignment
+
+exercises/practice/octal/octal.py:7: UnboundLocalError
+____________________ OctalTest.test_octal_130_is_decimal_88 ____________________
+
+self = <octal_test.OctalTest testMethod=test_octal_130_is_decimal_88>
+
+    def test_octal_130_is_decimal_88(self):
+>       self.assertEqual(parse_octal("130"), 88)
+
+exercises/practice/octal/octal_test.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+digits = '130'
+
+    def parse_octal(digits):
+        if not all(digit.isdigit() and int(digit) < 8 for digit in digits):
+            raise ValueError("Invalid octal input")
+        for i, digit in enumerate(reversed(digits)):
+            if not digit.isdigit() or int(digit) > 7:
+                return 0
+>           decimal += int(digit) * (8 ** i)
+E           UnboundLocalError: local variable 'decimal' referenced before assignment
+
+exercises/practice/octal/octal.py:7: UnboundLocalError
+____________________ OctalTest.test_octal_17_is_decimal_15 _____________________
+
+self = <octal_test.OctalTest testMethod=test_octal_17_is_decimal_15>
+
+    def test_octal_17_is_decimal_15(self):
+>       self.assertEqual(parse_octal("17"), 15)
+
+exercises/practice/octal/octal_test.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+digits = '17'
+
+    def parse_octal(digits):
+        if not all(digit.isdigit() and int(digit) < 8 for digit in digits):
+            raise ValueError("Invalid octal input")
+        for i, digit in enumerate(reversed(digits)):
+            if not digit.isdigit() or int(digit) > 7:
+                return 0
+>           decimal += int(digit) * (8 ** i)
+E           UnboundLocalError: local variable 'decimal' referenced before assignment
+
+exercises/practice/octal/octal.py:7: UnboundLocalError
+_____________________ OctalTest.test_octal_1_is_decimal_1 ______________________
+
+self = <octal_test.OctalTest testMethod=test_octal_1_is_decimal_1>
+
+    def test_octal_1_is_decimal_1(self):
+>       self.assertEqual(parse_octal("1"), 1)
+
+exercises/practice/octal/octal_test.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+digits = '1'
+
+    def parse_octal(digits):
+        if not all(digit.isdigit() and int(digit) < 8 for digit in digits):
+            raise ValueError("Invalid octal input")
+        for i, digit in enumerate(reversed(digits)):
+            if not digit.isdigit() or int(digit) > 7:
+                return 0
+>           decimal += int(digit) * (8 ** i)
+E           UnboundLocalError: local variable 'decimal' referenced before assignment
+
+exercises/practice/octal/octal.py:7: UnboundLocalError
+__________________ OctalTest.test_octal_2047_is_decimal_1063 ___________________
+
+self = <octal_test.OctalTest testMethod=test_octal_2047_is_decimal_1063>
+
+    def test_octal_2047_is_decimal_1063(self):
+>       self.assertEqual(parse_octal("2047"), 1063)
+
+exercises/practice/octal/octal_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+digits = '2047'
+
+    def parse_octal(digits):
+        if not all(digit.isdigit() and int(digit) < 8 for digit in digits):
+            raise ValueError("Invalid octal input")
+        for i, digit in enumerate(reversed(digits)):
+            if not digit.isdigit() or int(digit) > 7:
+                return 0
+>           decimal += int(digit) * (8 ** i)
+E           UnboundLocalError: local variable 'decimal' referenced before assignment
+
+exercises/practice/octal/octal.py:7: UnboundLocalError
+_________ OctalTest.test_valid_octal_formatted_string_011_is_decimal_9 _________
+
+self = <octal_test.OctalTest testMethod=test_valid_octal_formatted_string_011_is_decimal_9>
+
+    def test_valid_octal_formatted_string_011_is_decimal_9(self):
+>       self.assertEqual(parse_octal("011"), 9)
+
+exercises/practice/octal/octal_test.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+digits = '011'
+
+    def parse_octal(digits):
+        if not all(digit.isdigit() and int(digit) < 8 for digit in digits):
+            raise ValueError("Invalid octal input")
+        for i, digit in enumerate(reversed(digits)):
+            if not digit.isdigit() or int(digit) > 7:
+                return 0
+>           decimal += int(digit) * (8 ** i)
+E           UnboundLocalError: local variable 'decimal' referenced before assignment
+
+exercises/practice/octal/octal.py:7: UnboundLocalError
+=========================== short test summary info ============================
+FAILED exercises/practice/octal/octal_test.py::OctalTest::test_octal_10_is_decimal_8
+FAILED exercises/practice/octal/octal_test.py::OctalTest::test_octal_1234567_is_decimal_342391
+FAILED exercises/practice/octal/octal_test.py::OctalTest::test_octal_130_is_decimal_88
+FAILED exercises/practice/octal/octal_test.py::OctalTest::test_octal_17_is_decimal_15
+FAILED exercises/practice/octal/octal_test.py::OctalTest::test_octal_1_is_decimal_1
+FAILED exercises/practice/octal/octal_test.py::OctalTest::test_octal_2047_is_decimal_1063
+FAILED exercises/practice/octal/octal_test.py::OctalTest::test_valid_octal_formatted_string_011_is_decimal_9
+========================= 7 failed, 3 passed in 0.05s ==========================

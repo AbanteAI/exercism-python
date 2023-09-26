@@ -1,0 +1,39 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 15 items
+
+exercises/practice/minesweeper/minesweeper_test.py ..F..F.........       [100%]
+
+=================================== FAILURES ===================================
+______________________ MinesweeperTest.test_different_len ______________________
+
+self = <minesweeper_test.MinesweeperTest testMethod=test_different_len>
+
+    def test_different_len(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/minesweeper/minesweeper_test.py:63: AssertionError
+______________________ MinesweeperTest.test_invalid_char _______________________
+
+self = <minesweeper_test.MinesweeperTest testMethod=test_invalid_char>
+
+    def test_invalid_char(self):
+        with self.assertRaises(ValueError) as err:
+            annotate(["X  * "])
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0], "The board is invalid with current input."
+        )
+E       AssertionError: 'Invalid character in minefield' != 'The board is invalid with current input.'
+E       - Invalid character in minefield
+E       + The board is invalid with current input.
+
+exercises/practice/minesweeper/minesweeper_test.py:74: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/minesweeper/minesweeper_test.py::MinesweeperTest::test_different_len
+FAILED exercises/practice/minesweeper/minesweeper_test.py::MinesweeperTest::test_invalid_char
+========================= 2 failed, 13 passed in 0.05s =========================

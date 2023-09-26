@@ -1,24 +1,58 @@
 def largest(min_factor, max_factor):
-    """Given a range of numbers, find the largest palindromes which
-       are products of two numbers within that range.
+    if min_factor > max_factor:
+        raise ValueError("Invalid input: min_factor is greater than max_factor")
 
-    :param min_factor: int with a default value of 0
-    :param max_factor: int
-    :return: tuple of (palindrome, iterable).
-             Iterable should contain both factors of the palindrome in an arbitrary order.
-    """
+    max_palindrome = None
+    factors = []
 
-    pass
+    for i in range(max_factor, min_factor - 1, -1):
+        for j in range(i, min_factor - 1, -1):
+            product = i * j
+            if is_palindrome(product):
+                if max_palindrome is None or product > max_palindrome:
+                    max_palindrome = product
+                    factors = [(j, i)]
+                elif product == max_palindrome:
+                    factors.append((j, i))
+
+    return max_palindrome, factors
 
 
 def smallest(min_factor, max_factor):
-    """Given a range of numbers, find the smallest palindromes which
-    are products of two numbers within that range.
+    if min_factor > max_factor:
+        raise ValueError("Invalid input: min_factor is greater than max_factor")
 
-    :param min_factor: int with a default value of 0
-    :param max_factor: int
-    :return: tuple of (palindrome, iterable).
-    Iterable should contain both factors of the palindrome in an arbitrary order.
-    """
+    min_palindrome = None
+    factors = []
 
-    pass
+    for i in range(min_factor, max_factor + 1):
+        for j in range(i, max_factor + 1):
+            product = i * j
+            if is_palindrome(product):
+                if min_palindrome is None or product < min_palindrome:
+                    min_palindrome = product
+                    factors = [(i, j)]
+                elif product == min_palindrome:
+                    factors.append((i, j))
+
+    return min_palindrome, factors
+
+
+def smallest(min_factor, max_factor):
+    if min_factor > max_factor:
+        raise ValueError("Invalid input: min_factor is greater than max_factor")
+
+    min_palindrome = None
+    factors = []
+
+    for i in range(min_factor, max_factor + 1):
+        for j in range(i, max_factor + 1):
+            product = i * j
+            if is_palindrome(product):
+                if min_palindrome is None or product < min_palindrome:
+                    min_palindrome = product
+                    factors = [(i, j)]
+                elif product == min_palindrome:
+                    factors.append((i, j))
+
+    return min_palindrome, factors

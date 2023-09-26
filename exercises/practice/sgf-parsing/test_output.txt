@@ -1,0 +1,742 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 23 items
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py .FFFFFFFFFFFFFFFFFFF. [ 91%]
+FF                                                                       [100%]
+
+=================================== FAILURES ===================================
+_______________________ SgfParsingTest.test_empty_input ________________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_empty_input>
+
+    def test_empty_input(self):
+        input_string = ""
+        with self.assertRaises(ValueError) as err:
+>           parse(input_string)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def parse(input_string):
+        def parse_property_list(property_list):
+            properties = {}
+            while property_list:
+                key, property_list = parse_property(property_list)
+                values, property_list = parse_values(property_list)
+                properties[key] = values
+            return properties
+    
+        def parse_property(property_list):
+            key = property_list[0]
+            return key, property_list[1:]
+    
+        def parse_values(property_list):
+            values = []
+            while property_list and property_list[0] != ']':
+                if property_list[0] == '[':
+                    value, property_list = parse_value(property_list[1:])
+                    values.append(value)
+                else:
+                        raise ValueError("property must be in uppercase")
+            if property_list and property_list[0] == ']':
+                return values, property_list[1:]
+            else:
+                raise ValueError("Invalid property values")
+    
+        def parse_value(property_list):
+            value = ""
+            while property_list and property_list[0] != ']':
+                if property_list[0] == '\\':
+                    if len(property_list) > 1:
+                        value += property_list[1]
+                        property_list = property_list[2:]
+                    else:
+                        raise ValueError("Invalid property values")
+                else:
+                    value += property_list[0]
+                    property_list = property_list[1:]
+            if property_list and property_list[0] == ']':
+                return value, property_list[1:]
+            else:
+                raise ValueError("Invalid property values")
+    
+        property_list = list(input_string)
+        tree = SgfTree()
+        current_node = tree
+        while property_list:
+            if property_list[0] == '(':
+                property_list = property_list[1:]
+                child_node = SgfTree()
+                current_node.children.append(child_node)
+                current_node = child_node
+            elif property_list[0] == ')':
+                property_list = property_list[1:]
+                if current_node == tree:
+                    raise ValueError("Invalid property list")
+                current_node = current_node.parent
+            else:
+                properties = parse_property_list(property_list)
+                current_node.properties.update(properties)
+        if current_node != tree:
+            raise ValueError("Invalid property list")
+>       return tree.children[0]
+E       IndexError: list index out of range
+
+exercises/practice/sgf-parsing/sgf_parsing.py:90: IndexError
+_ SgfParsingTest.test_escaped_backslash_in_property_value_becomes_just_a_backslash _
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_escaped_backslash_in_property_value_becomes_just_a_backslash>
+
+    def test_escaped_backslash_in_property_value_becomes_just_a_backslash(self):
+        input_string = "(;A[\\\\])"
+        expected = SgfTree(properties={"A": ["\\"]})
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', '\\', '\\', ']', ')']
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+_ SgfParsingTest.test_escaped_closing_bracket_within_property_value_becomes_just_a_closing_bracket _
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_escaped_closing_bracket_within_property_value_becomes_just_a_closing_bracket>
+
+    def test_escaped_closing_bracket_within_property_value_becomes_just_a_closing_bracket(
+        self,
+    ):
+        input_string = "(;A[\\]])"
+        expected = SgfTree(properties={"A": ["]"]})
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', '\\', ']', ']', ')']
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+_ SgfParsingTest.test_escaped_newline_in_property_value_is_converted_to_nothing_at_all _
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_escaped_newline_in_property_value_is_converted_to_nothing_at_all>
+
+    def test_escaped_newline_in_property_value_is_converted_to_nothing_at_all(self):
+        input_string = "(;A[hello\\\nworld])"
+        expected = SgfTree(properties={"A": ["helloworld"]})
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:145: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', 'h', 'e', 'l', 'l', ...]
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+_ SgfParsingTest.test_escaped_t_and_n_in_property_value_are_just_letters_not_whitespace _
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_escaped_t_and_n_in_property_value_are_just_letters_not_whitespace>
+
+    def test_escaped_t_and_n_in_property_value_are_just_letters_not_whitespace(self):
+        input_string = "(;A[\\t = t and \\n = n])"
+        expected = SgfTree(properties={"A": ["t = t and n = n"]})
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:150: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', '\\', 't', ' ', '=', ...]
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+___ SgfParsingTest.test_escaped_tab_in_property_value_is_converted_to_space ____
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_escaped_tab_in_property_value_is_converted_to_space>
+
+    def test_escaped_tab_in_property_value_is_converted_to_space(self):
+        input_string = "(;A[hello\\\tworld])"
+        expected = SgfTree(properties={"A": ["hello world"]})
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', 'h', 'e', 'l', 'l', ...]
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+_ SgfParsingTest.test_mixing_various_kinds_of_whitespace_and_escaped_characters_in_property_value _
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_mixing_various_kinds_of_whitespace_and_escaped_characters_in_property_value>
+
+    def test_mixing_various_kinds_of_whitespace_and_escaped_characters_in_property_value(
+        self,
+    ):
+        input_string = "(;A[\\]b\nc\\\nd\t\te\\\\ \\\n\\]])"
+        expected = SgfTree(properties={"A": ["]b\ncd  e\\ ]"]})
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:157: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', '\\', ']', 'b', '\n', ...]
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+___________________ SgfParsingTest.test_multiple_properties ____________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_multiple_properties>
+
+    def test_multiple_properties(self):
+        input_string = "(;A[b]C[d])"
+        expected = SgfTree(properties={"A": ["b"], "C": ["d"]})
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', 'b', ']', 'C', '[', ...]
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+_________________ SgfParsingTest.test_multiple_property_values _________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_multiple_property_values>
+
+    def test_multiple_property_values(self):
+        input_string = "(;A[b][c][d])"
+        expected = SgfTree(properties={"A": ["b", "c", "d"]})
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:87: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', 'b', ']', '[', 'c', ...]
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+_________________ SgfParsingTest.test_node_without_properties __________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_node_without_properties>
+
+    def test_node_without_properties(self):
+        input_string = "(;)"
+        expected = SgfTree()
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = [')']
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+____________________ SgfParsingTest.test_node_without_tree _____________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_node_without_tree>
+
+    def test_node_without_tree(self):
+        input_string = ";"
+        with self.assertRaises(ValueError) as err:
+            parse(input_string)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "tree missing")
+E       AssertionError: 'Invalid property values' != 'tree missing'
+E       - Invalid property values
+E       + tree missing
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:33: AssertionError
+_ SgfParsingTest.test_opening_bracket_within_property_value_doesn_t_need_to_be_escaped _
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_opening_bracket_within_property_value_doesn_t_need_to_be_escaped>
+
+    def test_opening_bracket_within_property_value_doesn_t_need_to_be_escaped(self):
+        input_string = "(;A[x[y\\]z][foo]B[bar];C[baz])"
+        expected = SgfTree(
+            properties={"A": ["x[y]z", "foo"], "B": ["bar"]},
+            children=[SgfTree({"C": ["baz"]})],
+        )
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', 'x', '[', 'y', '\\', ...]
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+__ SgfParsingTest.test_parentheses_in_property_value_don_t_need_to_be_escaped __
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_parentheses_in_property_value_don_t_need_to_be_escaped>
+
+    def test_parentheses_in_property_value_don_t_need_to_be_escaped(self):
+        input_string = "(;A[x(y)z][foo]B[bar];C[baz])"
+        expected = SgfTree(
+            properties={"A": ["x(y)z", "foo"], "B": ["bar"]},
+            children=[SgfTree({"C": ["baz"]})],
+        )
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', 'x', '(', 'y', ')', ...]
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+_______________ SgfParsingTest.test_properties_without_delimiter _______________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_properties_without_delimiter>
+
+    def test_properties_without_delimiter(self):
+        input_string = "(;A)"
+        with self.assertRaises(ValueError) as err:
+            parse(input_string)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "properties without delimiter")
+E       AssertionError: 'property must be in uppercase' != 'properties without delimiter'
+E       - property must be in uppercase
+E       + properties without delimiter
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:55: AssertionError
+__ SgfParsingTest.test_semicolon_in_property_value_doesn_t_need_to_be_escaped __
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_semicolon_in_property_value_doesn_t_need_to_be_escaped>
+
+    def test_semicolon_in_property_value_doesn_t_need_to_be_escaped(self):
+        input_string = "(;A[a;b][foo]B[bar];C[baz])"
+        expected = SgfTree(
+            properties={"A": ["a;b", "foo"], "B": ["bar"]},
+            children=[SgfTree({"C": ["baz"]})],
+        )
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', 'a', ';', 'b', ']', ...]
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+_____________________ SgfParsingTest.test_single_node_tree _____________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_single_node_tree>
+
+    def test_single_node_tree(self):
+        input_string = "(;A[B])"
+        expected = SgfTree(properties={"A": ["B"]})
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', 'B', ']', ')']
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+____________________ SgfParsingTest.test_tree_with_no_nodes ____________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_tree_with_no_nodes>
+
+    def test_tree_with_no_nodes(self):
+        input_string = "()"
+        with self.assertRaises(ValueError) as err:
+>           parse(input_string)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def parse(input_string):
+        def parse_property_list(property_list):
+            properties = {}
+            while property_list:
+                key, property_list = parse_property(property_list)
+                values, property_list = parse_values(property_list)
+                properties[key] = values
+            return properties
+    
+        def parse_property(property_list):
+            key = property_list[0]
+            return key, property_list[1:]
+    
+        def parse_values(property_list):
+            values = []
+            while property_list and property_list[0] != ']':
+                if property_list[0] == '[':
+                    value, property_list = parse_value(property_list[1:])
+                    values.append(value)
+                else:
+                        raise ValueError("property must be in uppercase")
+            if property_list and property_list[0] == ']':
+                return values, property_list[1:]
+            else:
+                raise ValueError("Invalid property values")
+    
+        def parse_value(property_list):
+            value = ""
+            while property_list and property_list[0] != ']':
+                if property_list[0] == '\\':
+                    if len(property_list) > 1:
+                        value += property_list[1]
+                        property_list = property_list[2:]
+                    else:
+                        raise ValueError("Invalid property values")
+                else:
+                    value += property_list[0]
+                    property_list = property_list[1:]
+            if property_list and property_list[0] == ']':
+                return value, property_list[1:]
+            else:
+                raise ValueError("Invalid property values")
+    
+        property_list = list(input_string)
+        tree = SgfTree()
+        current_node = tree
+        while property_list:
+            if property_list[0] == '(':
+                property_list = property_list[1:]
+                child_node = SgfTree()
+                current_node.children.append(child_node)
+                current_node = child_node
+            elif property_list[0] == ')':
+                property_list = property_list[1:]
+                if current_node == tree:
+                    raise ValueError("Invalid property list")
+>               current_node = current_node.parent
+E               AttributeError: 'SgfTree' object has no attribute 'parent'
+
+exercises/practice/sgf-parsing/sgf_parsing.py:84: AttributeError
+_____________________ SgfParsingTest.test_two_child_trees ______________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_two_child_trees>
+
+    def test_two_child_trees(self):
+        input_string = "(;A[B](;B[C])(;C[D]))"
+        expected = SgfTree(
+            properties={"A": ["B"]},
+            children=[SgfTree({"B": ["C"]}), SgfTree({"C": ["D"]})],
+        )
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:82: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', 'B', ']', '(', ';', ...]
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+________________________ SgfParsingTest.test_two_nodes _________________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_two_nodes>
+
+    def test_two_nodes(self):
+        input_string = "(;A[B];B[C])"
+        expected = SgfTree(properties={"A": ["B"]}, children=[SgfTree({"B": ["C"]})])
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', 'B', ']', ';', 'B', ...]
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+____ SgfParsingTest.test_within_property_values_newlines_remain_as_newlines ____
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_within_property_values_newlines_remain_as_newlines>
+
+    def test_within_property_values_newlines_remain_as_newlines(self):
+        input_string = "(;A[hello\n\nworld])"
+        expected = SgfTree(properties={"A": ["hello\n\nworld"]})
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', 'h', 'e', 'l', 'l', ...]
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+_ SgfParsingTest.test_within_property_values_whitespace_characters_such_as_tab_are_converted_to_spaces _
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_within_property_values_whitespace_characters_such_as_tab_are_converted_to_spaces>
+
+    def test_within_property_values_whitespace_characters_such_as_tab_are_converted_to_spaces(
+        self,
+    ):
+        input_string = "(;A[hello\t\tworld])"
+        expected = SgfTree(properties={"A": ["hello  world"]})
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:86: in parse
+    properties = parse_property_list(property_list)
+exercises/practice/sgf-parsing/sgf_parsing.py:33: in parse_property_list
+    values, property_list = parse_values(property_list)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+property_list = ['A', '[', 'h', 'e', 'l', 'l', ...]
+
+    def parse_values(property_list):
+        values = []
+        while property_list and property_list[0] != ']':
+            if property_list[0] == '[':
+                value, property_list = parse_value(property_list[1:])
+                values.append(value)
+            else:
+>                   raise ValueError("property must be in uppercase")
+E                   ValueError: property must be in uppercase
+
+exercises/practice/sgf-parsing/sgf_parsing.py:48: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_empty_input
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_escaped_backslash_in_property_value_becomes_just_a_backslash
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_escaped_closing_bracket_within_property_value_becomes_just_a_closing_bracket
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_escaped_newline_in_property_value_is_converted_to_nothing_at_all
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_escaped_t_and_n_in_property_value_are_just_letters_not_whitespace
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_escaped_tab_in_property_value_is_converted_to_space
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_mixing_various_kinds_of_whitespace_and_escaped_characters_in_property_value
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_multiple_properties
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_multiple_property_values
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_node_without_properties
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_node_without_tree
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_opening_bracket_within_property_value_doesn_t_need_to_be_escaped
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_parentheses_in_property_value_don_t_need_to_be_escaped
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_properties_without_delimiter
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_semicolon_in_property_value_doesn_t_need_to_be_escaped
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_single_node_tree
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_tree_with_no_nodes
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_two_child_trees
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_two_nodes
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_within_property_values_newlines_remain_as_newlines
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_within_property_values_whitespace_characters_such_as_tab_are_converted_to_spaces
+========================= 21 failed, 2 passed in 0.23s =========================

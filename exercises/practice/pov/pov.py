@@ -19,7 +19,53 @@ class Tree:
         return self.__dict__() == other.__dict__()
 
     def from_pov(self, from_node):
-        pass
+        if self.label == from_node:
+            return self
+
+        for child in self.children:
+            result = child.from_pov(from_node)
+            if result:
+                return result
+
+        return None
+            return self
+    def path_to(self, from_node, to_node):
+        from_pov_node = self.from_pov(from_node)
+        if from_pov_node:
+            return self._find_path(from_pov_node, to_node)
+
+        return None
+
+    def _find_path(self, node, target):
+        if node.label == target:
+            return [node.label]
+
+        for child in node.children:
+            path = self._find_path(child, target)
+            if path:
+                return [node.label] + path
+
+        return None
+            result = child.from_pov(from_node)
+            if result:
+                return result
+
+        return None
 
     def path_to(self, from_node, to_node):
-        pass
+        from_pov_node = self.from_pov(from_node)
+        if from_pov_node:
+            return self._find_path(from_pov_node, to_node)
+
+        return None
+
+    def _find_path(self, node, target):
+        if node.label == target:
+            return [node.label]
+
+        for child in node.children:
+            path = self._find_path(child, target)
+            if path:
+                return [node.label] + path
+
+        return None

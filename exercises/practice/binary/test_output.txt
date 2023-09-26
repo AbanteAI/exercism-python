@@ -1,0 +1,122 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 11 items
+
+exercises/practice/binary/binary_test.py FFFFFFFFFFF                     [100%]
+
+=================================== FAILURES ===================================
+______________ BinaryTest.test_binary_10001101000_is_decimal_1128 ______________
+
+self = <binary_test.BinaryTest testMethod=test_binary_10001101000_is_decimal_1128>
+
+    def test_binary_10001101000_is_decimal_1128(self):
+>       self.assertEqual(parse_binary("10001101000"), 1128)
+E       AssertionError: None != 1128
+
+exercises/practice/binary/binary_test.py:32: AssertionError
+___________________ BinaryTest.test_binary_1001_is_decimal_9 ___________________
+
+self = <binary_test.BinaryTest testMethod=test_binary_1001_is_decimal_9>
+
+    def test_binary_1001_is_decimal_9(self):
+>       self.assertEqual(parse_binary("1001"), 9)
+E       AssertionError: None != 9
+
+exercises/practice/binary/binary_test.py:26: AssertionError
+___________________ BinaryTest.test_binary_100_is_decimal_4 ____________________
+
+self = <binary_test.BinaryTest testMethod=test_binary_100_is_decimal_4>
+
+    def test_binary_100_is_decimal_4(self):
+>       self.assertEqual(parse_binary("100"), 4)
+E       AssertionError: None != 4
+
+exercises/practice/binary/binary_test.py:23: AssertionError
+____________________ BinaryTest.test_binary_10_is_decimal_2 ____________________
+
+self = <binary_test.BinaryTest testMethod=test_binary_10_is_decimal_2>
+
+    def test_binary_10_is_decimal_2(self):
+>       self.assertEqual(parse_binary("10"), 2)
+E       AssertionError: None != 2
+
+exercises/practice/binary/binary_test.py:17: AssertionError
+__________________ BinaryTest.test_binary_11010_is_decimal_26 __________________
+
+self = <binary_test.BinaryTest testMethod=test_binary_11010_is_decimal_26>
+
+    def test_binary_11010_is_decimal_26(self):
+>       self.assertEqual(parse_binary("11010"), 26)
+E       AssertionError: None != 26
+
+exercises/practice/binary/binary_test.py:29: AssertionError
+____________________ BinaryTest.test_binary_11_is_decimal_3 ____________________
+
+self = <binary_test.BinaryTest testMethod=test_binary_11_is_decimal_3>
+
+    def test_binary_11_is_decimal_3(self):
+>       self.assertEqual(parse_binary("11"), 3)
+E       AssertionError: None != 3
+
+exercises/practice/binary/binary_test.py:20: AssertionError
+____________________ BinaryTest.test_binary_1_is_decimal_1 _____________________
+
+self = <binary_test.BinaryTest testMethod=test_binary_1_is_decimal_1>
+
+    def test_binary_1_is_decimal_1(self):
+>       self.assertEqual(parse_binary("1"), 1)
+E       AssertionError: None != 1
+
+exercises/practice/binary/binary_test.py:14: AssertionError
+_______________ BinaryTest.test_invalid_binary_number_not_base2 ________________
+
+self = <binary_test.BinaryTest testMethod=test_invalid_binary_number_not_base2>
+
+    def test_invalid_binary_number_not_base2(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/binary/binary_test.py:41: AssertionError
+_______________ BinaryTest.test_invalid_binary_numbers_with_text _______________
+
+self = <binary_test.BinaryTest testMethod=test_invalid_binary_numbers_with_text>
+
+    def test_invalid_binary_numbers_with_text(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/binary/binary_test.py:47: AssertionError
+___________________ BinaryTest.test_invalid_binary_text_only ___________________
+
+self = <binary_test.BinaryTest testMethod=test_invalid_binary_text_only>
+
+    def test_invalid_binary_text_only(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/binary/binary_test.py:35: AssertionError
+_______________ BinaryTest.test_invalid_binary_text_with_numbers _______________
+
+self = <binary_test.BinaryTest testMethod=test_invalid_binary_text_with_numbers>
+
+    def test_invalid_binary_text_with_numbers(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/binary/binary_test.py:53: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_binary_10001101000_is_decimal_1128
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_binary_1001_is_decimal_9
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_binary_100_is_decimal_4
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_binary_10_is_decimal_2
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_binary_11010_is_decimal_26
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_binary_11_is_decimal_3
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_binary_1_is_decimal_1
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_invalid_binary_number_not_base2
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_invalid_binary_numbers_with_text
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_invalid_binary_text_only
+FAILED exercises/practice/binary/binary_test.py::BinaryTest::test_invalid_binary_text_with_numbers
+============================== 11 failed in 0.06s ==============================

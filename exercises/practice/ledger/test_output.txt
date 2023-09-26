@@ -1,0 +1,258 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 11 items
+
+exercises/practice/ledger/ledger_test.py FFFFFFFFFFF                     [100%]
+
+=================================== FAILURES ===================================
+_ LedgerTest.test_american_negative_number_with_3_digits_before_decimal_point __
+
+self = <ledger_test.LedgerTest testMethod=test_american_negative_number_with_3_digits_before_decimal_point>
+
+    def test_american_negative_number_with_3_digits_before_decimal_point(self):
+        currency = "USD"
+        locale = "en_US"
+        entries = [
+>           create_entry("2015-03-12", "Buy present", -12345),
+        ]
+
+exercises/practice/ledger/ledger_test.py:165: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+date = '2015-03-12', description = 'Buy present', change = -12345
+
+    def create_entry(date, description, change):
+>       entry = LedgerEntry(date, description, change)
+E       TypeError: LedgerEntry.__init__() takes 1 positional argument but 4 were given
+
+exercises/practice/ledger/ledger.py:13: TypeError
+_______________________ LedgerTest.test_credit_and_debit _______________________
+
+self = <ledger_test.LedgerTest testMethod=test_credit_and_debit>
+
+    def test_credit_and_debit(self):
+        currency = "USD"
+        locale = "en_US"
+        entries = [
+>           create_entry("2015-01-02", "Get present", 1000),
+            create_entry("2015-01-01", "Buy present", -1000),
+        ]
+
+exercises/practice/ledger/ledger_test.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+date = '2015-01-02', description = 'Get present', change = 1000
+
+    def create_entry(date, description, change):
+>       entry = LedgerEntry(date, description, change)
+E       TypeError: LedgerEntry.__init__() takes 1 positional argument but 4 were given
+
+exercises/practice/ledger/ledger.py:13: TypeError
+_________________________ LedgerTest.test_dutch_locale _________________________
+
+self = <ledger_test.LedgerTest testMethod=test_dutch_locale>
+
+    def test_dutch_locale(self):
+        currency = "USD"
+        locale = "nl_NL"
+        entries = [
+>           create_entry("2015-03-12", "Buy present", 123456),
+        ]
+
+exercises/practice/ledger/ledger_test.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+date = '2015-03-12', description = 'Buy present', change = 123456
+
+    def create_entry(date, description, change):
+>       entry = LedgerEntry(date, description, change)
+E       TypeError: LedgerEntry.__init__() takes 1 positional argument but 4 were given
+
+exercises/practice/ledger/ledger.py:13: TypeError
+____________________ LedgerTest.test_dutch_locale_and_euros ____________________
+
+self = <ledger_test.LedgerTest testMethod=test_dutch_locale_and_euros>
+
+    def test_dutch_locale_and_euros(self):
+        currency = "EUR"
+        locale = "nl_NL"
+        entries = [
+>           create_entry("2015-03-12", "Buy present", 123456),
+        ]
+
+exercises/practice/ledger/ledger_test.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+date = '2015-03-12', description = 'Buy present', change = 123456
+
+    def create_entry(date, description, change):
+>       entry = LedgerEntry(date, description, change)
+E       TypeError: LedgerEntry.__init__() takes 1 positional argument but 4 were given
+
+exercises/practice/ledger/ledger.py:13: TypeError
+___ LedgerTest.test_dutch_negative_number_with_3_digits_before_decimal_point ___
+
+self = <ledger_test.LedgerTest testMethod=test_dutch_negative_number_with_3_digits_before_decimal_point>
+
+    def test_dutch_negative_number_with_3_digits_before_decimal_point(self):
+        currency = "USD"
+        locale = "nl_NL"
+        entries = [
+>           create_entry("2015-03-12", "Buy present", -12345),
+        ]
+
+exercises/practice/ledger/ledger_test.py:151: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+date = '2015-03-12', description = 'Buy present', change = -12345
+
+    def create_entry(date, description, change):
+>       entry = LedgerEntry(date, description, change)
+E       TypeError: LedgerEntry.__init__() takes 1 positional argument but 4 were given
+
+exercises/practice/ledger/ledger.py:13: TypeError
+_________________________ LedgerTest.test_empty_ledger _________________________
+
+self = <ledger_test.LedgerTest testMethod=test_empty_ledger>
+
+    def test_empty_ledger(self):
+        currency = "USD"
+        locale = "en_US"
+        entries = []
+        expected = "\n".join(
+            [
+                "Date       | Description               | Change       ",
+            ]
+        )
+>       self.assertEqual(format_entries(currency, locale, entries), expected)
+E       AssertionError: 'Date       | Description               | Change       \n' != 'Date       | Description               | Change       '
+E       - Date       | Description               | Change       
+E       ?                                                       -
+E       + Date       | Description               | Change
+
+exercises/practice/ledger/ledger_test.py:25: AssertionError
+____________________________ LedgerTest.test_euros _____________________________
+
+self = <ledger_test.LedgerTest testMethod=test_euros>
+
+    def test_euros(self):
+        currency = "EUR"
+        locale = "en_US"
+        entries = [
+>           create_entry("2015-01-01", "Buy present", -1000),
+        ]
+
+exercises/practice/ledger/ledger_test.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+date = '2015-01-01', description = 'Buy present', change = -1000
+
+    def create_entry(date, description, change):
+>       entry = LedgerEntry(date, description, change)
+E       TypeError: LedgerEntry.__init__() takes 1 positional argument but 4 were given
+
+exercises/practice/ledger/ledger.py:13: TypeError
+______________ LedgerTest.test_final_order_tie_breaker_is_change _______________
+
+self = <ledger_test.LedgerTest testMethod=test_final_order_tie_breaker_is_change>
+
+    def test_final_order_tie_breaker_is_change(self):
+        currency = "USD"
+        locale = "en_US"
+        entries = [
+>           create_entry("2015-01-01", "Something", 0),
+            create_entry("2015-01-01", "Something", -1),
+            create_entry("2015-01-01", "Something", 1),
+        ]
+
+exercises/practice/ledger/ledger_test.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+date = '2015-01-01', description = 'Something', change = 0
+
+    def create_entry(date, description, change):
+>       entry = LedgerEntry(date, description, change)
+E       TypeError: LedgerEntry.__init__() takes 1 positional argument but 4 were given
+
+exercises/practice/ledger/ledger.py:13: TypeError
+_____ LedgerTest.test_multiple_entries_on_same_date_ordered_by_description _____
+
+self = <ledger_test.LedgerTest testMethod=test_multiple_entries_on_same_date_ordered_by_description>
+
+    def test_multiple_entries_on_same_date_ordered_by_description(self):
+        currency = "USD"
+        locale = "en_US"
+        entries = [
+>           create_entry("2015-01-02", "Get present", 1000),
+            create_entry("2015-01-01", "Buy present", -1000),
+        ]
+
+exercises/practice/ledger/ledger_test.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+date = '2015-01-02', description = 'Get present', change = 1000
+
+    def create_entry(date, description, change):
+>       entry = LedgerEntry(date, description, change)
+E       TypeError: LedgerEntry.__init__() takes 1 positional argument but 4 were given
+
+exercises/practice/ledger/ledger.py:13: TypeError
+__________________________ LedgerTest.test_one_entry ___________________________
+
+self = <ledger_test.LedgerTest testMethod=test_one_entry>
+
+    def test_one_entry(self):
+        currency = "USD"
+        locale = "en_US"
+        entries = [
+>           create_entry("2015-01-01", "Buy present", -1000),
+        ]
+
+exercises/practice/ledger/ledger_test.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+date = '2015-01-01', description = 'Buy present', change = -1000
+
+    def create_entry(date, description, change):
+>       entry = LedgerEntry(date, description, change)
+E       TypeError: LedgerEntry.__init__() takes 1 positional argument but 4 were given
+
+exercises/practice/ledger/ledger.py:13: TypeError
+______________ LedgerTest.test_overlong_description_is_truncated _______________
+
+self = <ledger_test.LedgerTest testMethod=test_overlong_description_is_truncated>
+
+    def test_overlong_description_is_truncated(self):
+        currency = "USD"
+        locale = "en_US"
+        entries = [
+>           create_entry("2015-01-01", "Freude schoner Gotterfunken", -123456),
+        ]
+
+exercises/practice/ledger/ledger_test.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+date = '2015-01-01', description = 'Freude schoner Gotterfunken'
+change = -123456
+
+    def create_entry(date, description, change):
+>       entry = LedgerEntry(date, description, change)
+E       TypeError: LedgerEntry.__init__() takes 1 positional argument but 4 were given
+
+exercises/practice/ledger/ledger.py:13: TypeError
+=========================== short test summary info ============================
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_american_negative_number_with_3_digits_before_decimal_point
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_credit_and_debit
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_dutch_locale
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_dutch_locale_and_euros
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_dutch_negative_number_with_3_digits_before_decimal_point
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_empty_ledger
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_euros - Typ...
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_final_order_tie_breaker_is_change
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_multiple_entries_on_same_date_ordered_by_description
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_one_entry
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_overlong_description_is_truncated
+============================== 11 failed in 0.07s ==============================

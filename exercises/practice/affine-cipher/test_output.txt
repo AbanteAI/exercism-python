@@ -1,0 +1,185 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 16 items
+
+exercises/practice/affine-cipher/affine_cipher_test.py FFFF.FF.........  [100%]
+
+=================================== FAILURES ===================================
+___________________ AffineCipherTest.test_decode_a_sentence ____________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_a_sentence>
+
+    def test_decode_a_sentence(self):
+        self.assertEqual(
+>           decode("qdwju nqcro muwhn odqun oppmd aunwd o", 19, 16),
+            "anobstacleisoftenasteppingstone",
+        )
+
+exercises/practice/affine-cipher/affine_cipher_test.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ciphered_text = 'qdwju nqcro muwhn odqun oppmd aunwd o', a = 19, b = 16
+
+    def decode(ciphered_text, a, b):
+        alphabet = 'abcdefghijklmnopqrstuvwxyz'
+        decoded_text = ''
+    
+        if math.gcd(a, 26) != 1:
+            raise ValueError("a and m must be coprime.")
+    
+        for char in ciphered_text:
+            if char.isalpha():
+                index = alphabet.index(char)
+>               decoded_index = (modinv(a, 26) * (index - b)) % 26
+E               NameError: name 'modinv' is not defined
+
+exercises/practice/affine-cipher/affine_cipher.py:31: NameError
+_________________ AffineCipherTest.test_decode_all_the_letters _________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_all_the_letters>
+
+    def test_decode_all_the_letters(self):
+        self.assertEqual(
+>           decode("swxtj npvyk lruol iejdc blaxk swxmh qzglf", 17, 33),
+            "thequickbrownfoxjumpsoverthelazydog",
+        )
+
+exercises/practice/affine-cipher/affine_cipher_test.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ciphered_text = 'swxtj npvyk lruol iejdc blaxk swxmh qzglf', a = 17, b = 33
+
+    def decode(ciphered_text, a, b):
+        alphabet = 'abcdefghijklmnopqrstuvwxyz'
+        decoded_text = ''
+    
+        if math.gcd(a, 26) != 1:
+            raise ValueError("a and m must be coprime.")
+    
+        for char in ciphered_text:
+            if char.isalpha():
+                index = alphabet.index(char)
+>               decoded_index = (modinv(a, 26) * (index - b)) % 26
+E               NameError: name 'modinv' is not defined
+
+exercises/practice/affine-cipher/affine_cipher.py:31: NameError
+____________________ AffineCipherTest.test_decode_exercism _____________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_exercism>
+
+    def test_decode_exercism(self):
+>       self.assertEqual(decode("tytgn fjr", 3, 7), "exercism")
+
+exercises/practice/affine-cipher/affine_cipher_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ciphered_text = 'tytgn fjr', a = 3, b = 7
+
+    def decode(ciphered_text, a, b):
+        alphabet = 'abcdefghijklmnopqrstuvwxyz'
+        decoded_text = ''
+    
+        if math.gcd(a, 26) != 1:
+            raise ValueError("a and m must be coprime.")
+    
+        for char in ciphered_text:
+            if char.isalpha():
+                index = alphabet.index(char)
+>               decoded_index = (modinv(a, 26) * (index - b)) % 26
+E               NameError: name 'modinv' is not defined
+
+exercises/practice/affine-cipher/affine_cipher.py:31: NameError
+_____________________ AffineCipherTest.test_decode_numbers _____________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_numbers>
+
+    def test_decode_numbers(self):
+>       self.assertEqual(decode("odpoz ub123 odpoz ub", 25, 7), "testing123testing")
+
+exercises/practice/affine-cipher/affine_cipher_test.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ciphered_text = 'odpoz ub123 odpoz ub', a = 25, b = 7
+
+    def decode(ciphered_text, a, b):
+        alphabet = 'abcdefghijklmnopqrstuvwxyz'
+        decoded_text = ''
+    
+        if math.gcd(a, 26) != 1:
+            raise ValueError("a and m must be coprime.")
+    
+        for char in ciphered_text:
+            if char.isalpha():
+                index = alphabet.index(char)
+>               decoded_index = (modinv(a, 26) * (index - b)) % 26
+E               NameError: name 'modinv' is not defined
+
+exercises/practice/affine-cipher/affine_cipher.py:31: NameError
+_____________ AffineCipherTest.test_decode_with_no_spaces_in_input _____________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_with_no_spaces_in_input>
+
+    def test_decode_with_no_spaces_in_input(self):
+        self.assertEqual(
+>           decode("swxtjnpvyklruoliejdcblaxkswxmhqzglf", 17, 33),
+            "thequickbrownfoxjumpsoverthelazydog",
+        )
+
+exercises/practice/affine-cipher/affine_cipher_test.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ciphered_text = 'swxtjnpvyklruoliejdcblaxkswxmhqzglf', a = 17, b = 33
+
+    def decode(ciphered_text, a, b):
+        alphabet = 'abcdefghijklmnopqrstuvwxyz'
+        decoded_text = ''
+    
+        if math.gcd(a, 26) != 1:
+            raise ValueError("a and m must be coprime.")
+    
+        for char in ciphered_text:
+            if char.isalpha():
+                index = alphabet.index(char)
+>               decoded_index = (modinv(a, 26) * (index - b)) % 26
+E               NameError: name 'modinv' is not defined
+
+exercises/practice/affine-cipher/affine_cipher.py:31: NameError
+______________ AffineCipherTest.test_decode_with_too_many_spaces _______________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_with_too_many_spaces>
+
+    def test_decode_with_too_many_spaces(self):
+        self.assertEqual(
+>           decode("vszzm    cly   yd cg    qdp", 15, 16), "jollygreengiant"
+        )
+
+exercises/practice/affine-cipher/affine_cipher_test.py:75: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ciphered_text = 'vszzm    cly   yd cg    qdp', a = 15, b = 16
+
+    def decode(ciphered_text, a, b):
+        alphabet = 'abcdefghijklmnopqrstuvwxyz'
+        decoded_text = ''
+    
+        if math.gcd(a, 26) != 1:
+            raise ValueError("a and m must be coprime.")
+    
+        for char in ciphered_text:
+            if char.isalpha():
+                index = alphabet.index(char)
+>               decoded_index = (modinv(a, 26) * (index - b)) % 26
+E               NameError: name 'modinv' is not defined
+
+exercises/practice/affine-cipher/affine_cipher.py:31: NameError
+=========================== short test summary info ============================
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_a_sentence
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_all_the_letters
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_exercism
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_numbers
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_with_no_spaces_in_input
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_with_too_many_spaces
+========================= 6 failed, 10 passed in 0.06s =========================
