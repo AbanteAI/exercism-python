@@ -10,41 +10,25 @@ class Node:
         self.children = []
 
 
+def validate_records(records):
+    record_ids = set()
+    parent_ids = set()
+    for record in records:
+        record_ids.add(record.record_id)
+        parent_ids.add(record.parent_id)
+        if record.record_id == 0 and record.parent_id != 0:
+            raise ValueError('Root record should have parent ID equal to its own ID')
+        if record.record_id < record.parent_id:
+            raise ValueError('Record ID should be greater than or equal to its parent ID')
+    if len(record_ids) != len(records) or len(parent_ids) != len(records):
+        raise ValueError('Duplicate record IDs or parent IDs found')
+    if len(record_ids - parent_ids) != 1:
+        raise ValueError('Invalid tree structure')
+    return record_ids
 def BuildTree(records):
-    root = None
-    records.sort(key=lambda x: x.record_id)
-    ordered_id = [i.record_id for i in records]
-    if records:
-        if ordered_id[-1] != len(ordered_id) - 1:
-            raise ValueError('broken tree')
-        if ordered_id[0] != 0:
-            raise ValueError('invalid')
-    trees = []
-    parent = {}
-    for i in range(len(ordered_id)):
-        for j in records:
-            if ordered_id[i] == j.record_id:
-                if j.record_id == 0:
-                    if j.parent_id != 0:
-                        raise ValueError('error!')
-                if j.record_id < j.parent_id:
-                    raise ValueError('something went wrong!')
-                if j.record_id == j.parent_id:
-                    if j.record_id != 0:
-                        raise ValueError('error!')
-                trees.append(Node(ordered_id[i]))
-    for i in range(len(ordered_id)):
-        for j in trees:
-            if i == j.node_id:
-                parent = j
-        for j in records:
-            if j.parent_id == i:
-                for k in trees:
-                    if k.node_id == 0:
-                        continue
-                    if j.record_id == k.node_id:
-                        child = k
-                        parent.children.append(child)
-    if len(trees) > 0:
-        root = trees[0]
-    return root
+    validate_records(records)
+    record_ids = {record.record_id: Node(record.record_id) for record in records}
+    for record in records:
+        if record.parent_id != record.record_id:
+            record_ids[record.parent_id].children.append(record_ids[record.record_id])
+    return record_ids[0]

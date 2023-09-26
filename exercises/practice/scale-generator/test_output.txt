@@ -1,0 +1,336 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 17 items
+
+exercises/practice/scale-generator/scale_generator_test.py FFFFFFFFFFFFF [ 76%]
+FFFF                                                                     [100%]
+
+=================================== FAILURES ===================================
+______________ ScaleGeneratorTest.test_chromatic_scale_with_flats ______________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_chromatic_scale_with_flats>
+
+    def test_chromatic_scale_with_flats(self):
+        expected = ["F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E"]
+>       self.assertEqual(Scale("F").chromatic(), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fb939a0>
+
+    def chromatic(self):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:21: AttributeError
+_____________ ScaleGeneratorTest.test_chromatic_scale_with_sharps ______________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_chromatic_scale_with_sharps>
+
+    def test_chromatic_scale_with_sharps(self):
+        expected = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+>       self.assertEqual(Scale("C").chromatic(), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fb96620>
+
+    def chromatic(self):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:21: AttributeError
+_____________________ ScaleGeneratorTest.test_dorian_mode ______________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_dorian_mode>
+
+    def test_dorian_mode(self):
+        expected = ["D", "E", "F", "G", "A", "B", "C", "D"]
+>       self.assertEqual(Scale("d").interval("MmMMMmM"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fbe29e0>, intervals = 'MmMMMmM'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+______________________ ScaleGeneratorTest.test_enigmatic _______________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_enigmatic>
+
+    def test_enigmatic(self):
+        expected = ["G", "G#", "B", "C#", "D#", "F", "F#", "G"]
+>       self.assertEqual(Scale("G").interval("mAMMMmm"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:82: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fb95990>, intervals = 'mAMMMmm'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+____________________ ScaleGeneratorTest.test_harmonic_minor ____________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_harmonic_minor>
+
+    def test_harmonic_minor(self):
+        expected = ["D", "E", "F", "G", "A", "Bb", "Db", "D"]
+>       self.assertEqual(Scale("d").interval("MmMMmAm"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fbe1630>, intervals = 'MmMMmAm'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+______________________ ScaleGeneratorTest.test_hexatonic _______________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_hexatonic>
+
+    def test_hexatonic(self):
+        expected = ["Db", "Eb", "F", "G", "A", "B", "Db"]
+>       self.assertEqual(Scale("Db").interval("MMMMMM"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fb91720>, intervals = 'MMMMMM'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+_____________________ ScaleGeneratorTest.test_locrian_mode _____________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_locrian_mode>
+
+    def test_locrian_mode(self):
+        expected = ["G", "Ab", "Bb", "C", "Db", "Eb", "F", "G"]
+>       self.assertEqual(Scale("g").interval("mMMmMMM"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fbdca00>, intervals = 'mMMmMMM'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+_____________________ ScaleGeneratorTest.test_lydian_mode ______________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_lydian_mode>
+
+    def test_lydian_mode(self):
+        expected = ["A", "B", "C#", "D#", "E", "F#", "G#", "A"]
+>       self.assertEqual(Scale("a").interval("MMMmMMm"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fb970d0>, intervals = 'MMMmMMm'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+________________ ScaleGeneratorTest.test_major_scale_with_flats ________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_major_scale_with_flats>
+
+    def test_major_scale_with_flats(self):
+        expected = ["F", "G", "A", "Bb", "C", "D", "E", "F"]
+>       self.assertEqual(Scale("F").interval("MMmMMMm"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fbde500>, intervals = 'MMmMMMm'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+_______________ ScaleGeneratorTest.test_major_scale_with_sharps ________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_major_scale_with_sharps>
+
+    def test_major_scale_with_sharps(self):
+        expected = ["G", "A", "B", "C", "D", "E", "F#", "G"]
+>       self.assertEqual(Scale("G").interval("MMmMMMm"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fa2f940>, intervals = 'MMmMMMm'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+________________ ScaleGeneratorTest.test_minor_scale_with_flats ________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_minor_scale_with_flats>
+
+    def test_minor_scale_with_flats(self):
+        expected = ["Bb", "C", "Db", "Eb", "F", "Gb", "Ab", "Bb"]
+>       self.assertEqual(Scale("bb").interval("MmMMmMM"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fbe0cd0>, intervals = 'MmMMmMM'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+_______________ ScaleGeneratorTest.test_minor_scale_with_sharps ________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_minor_scale_with_sharps>
+
+    def test_minor_scale_with_sharps(self):
+        expected = ["F#", "G#", "A", "B", "C#", "D", "E", "F#"]
+>       self.assertEqual(Scale("f#").interval("MmMMmMM"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fbde2c0>, intervals = 'MmMMmMM'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+___________________ ScaleGeneratorTest.test_mixolydian_mode ____________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_mixolydian_mode>
+
+    def test_mixolydian_mode(self):
+        expected = ["Eb", "F", "G", "Ab", "Bb", "C", "Db", "Eb"]
+>       self.assertEqual(Scale("Eb").interval("MMmMMmM"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fbe00a0>, intervals = 'MMmMMmM'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+______________________ ScaleGeneratorTest.test_octatonic _______________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_octatonic>
+
+    def test_octatonic(self):
+        expected = ["C", "D", "D#", "F", "F#", "G#", "A", "B", "C"]
+>       self.assertEqual(Scale("C").interval("MmMmMmMm"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fbdfa90>, intervals = 'MmMmMmMm'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+______________________ ScaleGeneratorTest.test_pentatonic ______________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_pentatonic>
+
+    def test_pentatonic(self):
+        expected = ["A", "B", "C#", "E", "F#", "A"]
+>       self.assertEqual(Scale("A").interval("MMAMA"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fbe2e30>, intervals = 'MMAMA'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+____________________ ScaleGeneratorTest.test_phrygian_mode _____________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_phrygian_mode>
+
+    def test_phrygian_mode(self):
+        expected = ["E", "F", "G", "A", "B", "C", "D", "E"]
+>       self.assertEqual(Scale("e").interval("mMMMmMM"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fa2d4e0>, intervals = 'mMMMmMM'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+__________________ ScaleGeneratorTest.test_simple_major_scale __________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_simple_major_scale>
+
+    def test_simple_major_scale(self):
+        expected = ["C", "D", "E", "F", "G", "A", "B", "C"]
+>       self.assertEqual(Scale("C").interval("MMmMMMm"), expected)
+
+exercises/practice/scale-generator/scale_generator_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scale_generator.Scale object at 0x7f517fb96950>, intervals = 'MMmMMMm'
+
+    def interval(self, intervals):
+>       tonic = self.tonic.upper()
+E       AttributeError: 'Scale' object has no attribute 'tonic'
+
+exercises/practice/scale-generator/scale_generator.py:32: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_chromatic_scale_with_flats
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_chromatic_scale_with_sharps
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_dorian_mode
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_enigmatic
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_harmonic_minor
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_hexatonic
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_locrian_mode
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_lydian_mode
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_major_scale_with_flats
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_major_scale_with_sharps
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_minor_scale_with_flats
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_minor_scale_with_sharps
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_mixolydian_mode
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_octatonic
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_pentatonic
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_phrygian_mode
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_simple_major_scale
+============================== 17 failed in 0.10s ==============================

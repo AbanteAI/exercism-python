@@ -1,0 +1,139 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 50 items
+
+exercises/practice/allergies/allergies_test.py ......................... [ 50%]
+....F.FFFFFFFFF..........                                                [100%]
+
+=================================== FAILURES ===================================
+_____________________ AllergiesTest.test_eggs_and_peanuts ______________________
+
+self = <allergies_test.AllergiesTest testMethod=test_eggs_and_peanuts>
+
+    def test_eggs_and_peanuts(self):
+>       self.assertCountEqual(Allergies(3).lst, ["eggs", "peanuts"])
+E       TypeError: 'method' object is not iterable
+
+exercises/practice/allergies/allergies_test.py:146: TypeError
+________________________ AllergiesTest.test_everything _________________________
+
+self = <allergies_test.AllergiesTest testMethod=test_everything>
+
+    def test_everything(self):
+>       self.assertCountEqual(
+            Allergies(255).lst,
+            [
+                "eggs",
+                "peanuts",
+                "shellfish",
+                "strawberries",
+                "tomatoes",
+                "chocolate",
+                "pollen",
+                "cats",
+            ],
+        )
+E       TypeError: 'method' object is not iterable
+
+exercises/practice/allergies/allergies_test.py:158: TypeError
+_________________________ AllergiesTest.test_just_eggs _________________________
+
+self = <allergies_test.AllergiesTest testMethod=test_just_eggs>
+
+    def test_just_eggs(self):
+>       self.assertEqual(Allergies(1).lst, ["eggs"])
+E       AssertionError: <bound method Allergies.lst of <allergies.Allergies object at 0x7f92b72a5de0>> != ['eggs']
+
+exercises/practice/allergies/allergies_test.py:137: AssertionError
+_______________________ AllergiesTest.test_just_peanuts ________________________
+
+self = <allergies_test.AllergiesTest testMethod=test_just_peanuts>
+
+    def test_just_peanuts(self):
+>       self.assertEqual(Allergies(2).lst, ["peanuts"])
+E       AssertionError: <bound method Allergies.lst of <allergies.Allergies object at 0x7f92b72aef20>> != ['peanuts']
+
+exercises/practice/allergies/allergies_test.py:140: AssertionError
+_____________________ AllergiesTest.test_just_strawberries _____________________
+
+self = <allergies_test.AllergiesTest testMethod=test_just_strawberries>
+
+    def test_just_strawberries(self):
+>       self.assertEqual(Allergies(8).lst, ["strawberries"])
+E       AssertionError: <bound method Allergies.lst of <allergies.Allergies object at 0x7f92b72b8280>> != ['strawberries']
+
+exercises/practice/allergies/allergies_test.py:143: AssertionError
+_______________________ AllergiesTest.test_lots_of_stuff _______________________
+
+self = <allergies_test.AllergiesTest testMethod=test_lots_of_stuff>
+
+    def test_lots_of_stuff(self):
+>       self.assertCountEqual(
+            Allergies(248).lst,
+            ["strawberries", "tomatoes", "chocolate", "pollen", "cats"],
+        )
+E       TypeError: 'method' object is not iterable
+
+exercises/practice/allergies/allergies_test.py:152: TypeError
+______________ AllergiesTest.test_more_than_eggs_but_not_peanuts _______________
+
+self = <allergies_test.AllergiesTest testMethod=test_more_than_eggs_but_not_peanuts>
+
+    def test_more_than_eggs_but_not_peanuts(self):
+>       self.assertCountEqual(Allergies(5).lst, ["eggs", "shellfish"])
+E       TypeError: 'method' object is not iterable
+
+exercises/practice/allergies/allergies_test.py:149: TypeError
+__________________ AllergiesTest.test_no_allergen_score_parts __________________
+
+self = <allergies_test.AllergiesTest testMethod=test_no_allergen_score_parts>
+
+    def test_no_allergen_score_parts(self):
+>       self.assertCountEqual(
+            Allergies(509).lst,
+            [
+                "eggs",
+                "shellfish",
+                "strawberries",
+                "tomatoes",
+                "chocolate",
+                "pollen",
+                "cats",
+            ],
+        )
+E       TypeError: 'method' object is not iterable
+
+exercises/practice/allergies/allergies_test.py:173: TypeError
+____ AllergiesTest.test_no_allergen_score_parts_without_highest_valid_score ____
+
+self = <allergies_test.AllergiesTest testMethod=test_no_allergen_score_parts_without_highest_valid_score>
+
+    def test_no_allergen_score_parts_without_highest_valid_score(self):
+>       self.assertEqual(Allergies(257).lst, ["eggs"])
+E       AssertionError: <bound method Allergies.lst of <allergies.Allergies object at 0x7f92b72bada0>> != ['eggs']
+
+exercises/practice/allergies/allergies_test.py:187: AssertionError
+_______________________ AllergiesTest.test_no_allergies ________________________
+
+self = <allergies_test.AllergiesTest testMethod=test_no_allergies>
+
+    def test_no_allergies(self):
+>       self.assertEqual(Allergies(0).lst, [])
+E       AssertionError: <bound method Allergies.lst of <allergies.Allergies object at 0x7f92b72af1f0>> != []
+
+exercises/practice/allergies/allergies_test.py:134: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_eggs_and_peanuts
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_everything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_just_eggs
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_just_peanuts
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_just_strawberries
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_lots_of_stuff
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_more_than_eggs_but_not_peanuts
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_no_allergen_score_parts
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_no_allergen_score_parts_without_highest_valid_score
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_no_allergies
+======================== 10 failed, 40 passed in 0.09s =========================

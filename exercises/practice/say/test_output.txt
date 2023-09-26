@@ -1,0 +1,114 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 20 items
+
+exercises/practice/say/say_test.py .......FFF.F.F.FF.F.                  [100%]
+
+=================================== FAILURES ===================================
+___________________________ SayTest.test_one_billion ___________________________
+
+self = <say_test.SayTest testMethod=test_one_billion>
+
+    def test_one_billion(self):
+>       self.assertEqual(say(1000000000), "one billion")
+E       AssertionError: 'one billion zero' != 'one billion'
+E       - one billion zero
+E       ?            -----
+E       + one billion
+
+exercises/practice/say/say_test.py:61: AssertionError
+___________________________ SayTest.test_one_hundred ___________________________
+
+self = <say_test.SayTest testMethod=test_one_hundred>
+
+    def test_one_hundred(self):
+>       self.assertEqual(say(100), "one hundred")
+E       AssertionError: 'one hundred zero' != 'one hundred'
+E       - one hundred zero
+E       ?            -----
+E       + one hundred
+
+exercises/practice/say/say_test.py:35: AssertionError
+_______________________ SayTest.test_one_hundred_seventy _______________________
+
+self = <say_test.SayTest testMethod=test_one_hundred_seventy>
+
+    def test_one_hundred_seventy(self):
+>       self.assertEqual(say(170), "one hundred seventy")
+E       AssertionError: 'one hundred seventy-zero' != 'one hundred seventy'
+E       - one hundred seventy-zero
+E       ?                    -----
+E       + one hundred seventy
+
+exercises/practice/say/say_test.py:85: AssertionError
+___________________________ SayTest.test_one_million ___________________________
+
+self = <say_test.SayTest testMethod=test_one_million>
+
+    def test_one_million(self):
+>       self.assertEqual(say(1000000), "one million")
+E       AssertionError: 'one million zero' != 'one million'
+E       - one million zero
+E       ?            -----
+E       + one million
+
+exercises/practice/say/say_test.py:53: AssertionError
+__________________________ SayTest.test_one_thousand ___________________________
+
+self = <say_test.SayTest testMethod=test_one_thousand>
+
+    def test_one_thousand(self):
+>       self.assertEqual(say(1000), "one thousand")
+E       AssertionError: 'one thousand zero' != 'one thousand'
+E       - one thousand zero
+E       ?             -----
+E       + one thousand
+
+exercises/practice/say/say_test.py:47: AssertionError
+_____________________________ SayTest.test_thirty ______________________________
+
+self = <say_test.SayTest testMethod=test_thirty>
+
+    def test_thirty(self):
+>       self.assertEqual(say(30), "thirty")
+E       AssertionError: 'thirty-zero' != 'thirty'
+E       - thirty-zero
+E       + thirty
+
+exercises/practice/say/say_test.py:29: AssertionError
+_____________________________ SayTest.test_twenty ______________________________
+
+self = <say_test.SayTest testMethod=test_twenty>
+
+    def test_twenty(self):
+>       self.assertEqual(say(20), "twenty")
+E       AssertionError: 'twenty-zero' != 'twenty'
+E       - twenty-zero
+E       + twenty
+
+exercises/practice/say/say_test.py:23: AssertionError
+___________________________ SayTest.test_two_hundred ___________________________
+
+self = <say_test.SayTest testMethod=test_two_hundred>
+
+    def test_two_hundred(self):
+>       self.assertEqual(say(200), "two hundred")
+E       AssertionError: 'two hundred zero' != 'two hundred'
+E       - two hundred zero
+E       ?            -----
+E       + two hundred
+
+exercises/practice/say/say_test.py:41: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_billion - Assert...
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_hundred - Assert...
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_hundred_seventy
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_million - Assert...
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_thousand - Asser...
+FAILED exercises/practice/say/say_test.py::SayTest::test_thirty - AssertionEr...
+FAILED exercises/practice/say/say_test.py::SayTest::test_twenty - AssertionEr...
+FAILED exercises/practice/say/say_test.py::SayTest::test_two_hundred - Assert...
+========================= 8 failed, 12 passed in 0.09s =========================

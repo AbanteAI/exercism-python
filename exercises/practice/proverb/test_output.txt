@@ -1,0 +1,156 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 8 items
+
+exercises/practice/proverb/proverb_test.py ..FFFFF.                      [100%]
+
+=================================== FAILURES ===================================
+___________________ ProverbTest.test_four_pieces_modernized ____________________
+
+self = <proverb_test.ProverbTest testMethod=test_four_pieces_modernized>
+
+    def test_four_pieces_modernized(self):
+        input_data = ["pin", "gun", "soldier", "battle"]
+>       self.assertEqual(
+            proverb(*input_data, qualifier=None),
+            [
+                "For want of a pin the gun was lost.",
+                "For want of a gun the soldier was lost.",
+                "For want of a soldier the battle was lost.",
+                "And all for the want of a pin.",
+            ],
+        )
+E       AssertionError: Lists differ: ['For[99 chars]r the battle was lost.', 'And all for the want of a None pin.'] != ['For[99 chars]r the battle was lost.', 'And all for the want of a pin.']
+E       
+E       First differing element 3:
+E       'And all for the want of a None pin.'
+E       'And all for the want of a pin.'
+E       
+E         ['For want of a pin the gun was lost.',
+E          'For want of a gun the soldier was lost.',
+E          'For want of a soldier the battle was lost.',
+E       -  'And all for the want of a None pin.']
+E       ?                            -----
+E       
+E       +  'And all for the want of a pin.']
+
+exercises/practice/proverb/proverb_test.py:65: AssertionError
+________________________ ProverbTest.test_full_proverb _________________________
+
+self = <proverb_test.ProverbTest testMethod=test_full_proverb>
+
+    def test_full_proverb(self):
+        input_data = ["nail", "shoe", "horse", "rider", "message", "battle", "kingdom"]
+>       self.assertEqual(
+            proverb(*input_data, qualifier=None),
+            [
+                "For want of a nail the shoe was lost.",
+                "For want of a shoe the horse was lost.",
+                "For want of a horse the rider was lost.",
+                "For want of a rider the message was lost.",
+                "For want of a message the battle was lost.",
+                "For want of a battle the kingdom was lost.",
+                "And all for the want of a nail.",
+            ],
+        )
+E       AssertionError: Lists differ: ['For[235 chars]the kingdom was lost.', 'And all for the want of a None nail.'] != ['For[235 chars]the kingdom was lost.', 'And all for the want of a nail.']
+E       
+E       First differing element 6:
+E       'And all for the want of a None nail.'
+E       'And all for the want of a nail.'
+E       
+E         ['For want of a nail the shoe was lost.',
+E          'For want of a shoe the horse was lost.',
+E          'For want of a horse the rider was lost.',
+E          'For want of a rider the message was lost.',
+E          'For want of a message the battle was lost.',
+E          'For want of a battle the kingdom was lost.',
+E       -  'And all for the want of a None nail.']
+E       ?                            -----
+E       
+E       +  'And all for the want of a nail.']
+
+exercises/practice/proverb/proverb_test.py:50: AssertionError
+__________________________ ProverbTest.test_one_piece __________________________
+
+self = <proverb_test.ProverbTest testMethod=test_one_piece>
+
+    def test_one_piece(self):
+        input_data = ["nail"]
+>       self.assertEqual(
+            proverb(*input_data, qualifier=None), ["And all for the want of a nail."]
+        )
+E       AssertionError: Lists differ: ['And all for the want of a None nail.'] != ['And all for the want of a nail.']
+E       
+E       First differing element 0:
+E       'And all for the want of a None nail.'
+E       'And all for the want of a nail.'
+E       
+E       - ['And all for the want of a None nail.']
+E       ?                            -----
+E       
+E       + ['And all for the want of a nail.']
+
+exercises/practice/proverb/proverb_test.py:23: AssertionError
+________________________ ProverbTest.test_three_pieces _________________________
+
+self = <proverb_test.ProverbTest testMethod=test_three_pieces>
+
+    def test_three_pieces(self):
+        input_data = ["nail", "shoe", "horse"]
+>       self.assertEqual(
+            proverb(*input_data, qualifier=None),
+            [
+                "For want of a nail the shoe was lost.",
+                "For want of a shoe the horse was lost.",
+                "And all for the want of a nail.",
+            ],
+        )
+E       AssertionError: Lists differ: ['For[55 chars]e the horse was lost.', 'And all for the want of a None nail.'] != ['For[55 chars]e the horse was lost.', 'And all for the want of a nail.']
+E       
+E       First differing element 2:
+E       'And all for the want of a None nail.'
+E       'And all for the want of a nail.'
+E       
+E         ['For want of a nail the shoe was lost.',
+E          'For want of a shoe the horse was lost.',
+E       -  'And all for the want of a None nail.']
+E       ?                            -----
+E       
+E       +  'And all for the want of a nail.']
+
+exercises/practice/proverb/proverb_test.py:39: AssertionError
+_________________________ ProverbTest.test_two_pieces __________________________
+
+self = <proverb_test.ProverbTest testMethod=test_two_pieces>
+
+    def test_two_pieces(self):
+        input_data = ["nail", "shoe"]
+>       self.assertEqual(
+            proverb(*input_data, qualifier=None),
+            [
+                "For want of a nail the shoe was lost.",
+                "And all for the want of a nail.",
+            ],
+        )
+E       AssertionError: Lists differ: ['For[13 chars]il the shoe was lost.', 'And all for the want of a None nail.'] != ['For[13 chars]il the shoe was lost.', 'And all for the want of a nail.']
+E       
+E       First differing element 1:
+E       'And all for the want of a None nail.'
+E       'And all for the want of a nail.'
+E       
+E       + ['For want of a nail the shoe was lost.', 'And all for the want of a nail.']
+E       - ['For want of a nail the shoe was lost.',
+E       -  'And all for the want of a None nail.']
+
+exercises/practice/proverb/proverb_test.py:29: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/proverb/proverb_test.py::ProverbTest::test_four_pieces_modernized
+FAILED exercises/practice/proverb/proverb_test.py::ProverbTest::test_full_proverb
+FAILED exercises/practice/proverb/proverb_test.py::ProverbTest::test_one_piece
+FAILED exercises/practice/proverb/proverb_test.py::ProverbTest::test_three_pieces
+FAILED exercises/practice/proverb/proverb_test.py::ProverbTest::test_two_pieces
+========================= 5 failed, 3 passed in 0.07s ==========================

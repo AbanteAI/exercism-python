@@ -19,7 +19,28 @@ class Tree:
         return self.__dict__() == other.__dict__()
 
     def from_pov(self, from_node):
+    def from_pov(self, from_node):
+        new_tree = self.__class__(from_node)
+        new_tree.children = [c.from_pov(from_node) for c in self.children]
+        return new_tree
         pass
 
     def path_to(self, from_node, to_node):
+    def path_to(self, from_node, to_node):
+        if self.label == from_node:
+            return [self.label] + self._path_to(to_node)
+        for child in self.children:
+            path = child.path_to(from_node, to_node)
+            if path:
+                return [self.label] + path
+        return None
+
+    def _path_to(self, to_node):
+        if self.label == to_node:
+            return [self.label]
+        for child in self.children:
+            path = child._path_to(to_node)
+            if path:
+                return [self.label] + path
+        return None
         pass

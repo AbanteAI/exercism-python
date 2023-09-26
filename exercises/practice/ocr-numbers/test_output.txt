@@ -1,0 +1,728 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 17 items
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py F.FFFFFFFFFFFFFFF     [100%]
+
+=================================== FAILURES ===================================
+______ OcrNumbersTest.test_garbled_numbers_in_a_string_are_replaced_with _______
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_garbled_numbers_in_a_string_are_replaced_with>
+
+    def test_garbled_numbers_in_a_string_are_replaced_with(self):
+        self.assertEqual(
+>           convert(
+                [
+                    "       _     _           _ ",
+                    "  |  || |  || |     || || |",
+                    "  |  | _|  ||_|  |  ||_||_|",
+                    "                           ",
+                ]
+            ),
+            "11?10?1?0",
+        )
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = ['       _     _           _ ', '  |  || |  || |     || || |', '  |  | _|  ||_|  |  ||_||_|', '                           ']
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+_ OcrNumbersTest.test_input_with_a_number_of_lines_that_is_not_a_multiple_of_four_raises_an_error _
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_input_with_a_number_of_lines_that_is_not_a_multiple_of_four_raises_an_error>
+
+    def test_input_with_a_number_of_lines_that_is_not_a_multiple_of_four_raises_an_error(
+        self,
+    ):
+        with self.assertRaises(ValueError) as err:
+            convert([" _ ", "| |", "   "])
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0], "Number of input lines is not a multiple of four"
+        )
+E       AssertionError: 'Number of input columns is not a multiple of three' != 'Number of input lines is not a multiple of four'
+E       - Number of input columns is not a multiple of three
+E       ?                 -- ^^                        ^^ --
+E       + Number of input lines is not a multiple of four
+E       ?                  ^ +                       ^^^
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:28: AssertionError
+_ OcrNumbersTest.test_numbers_separated_by_empty_lines_are_recognized_lines_are_joined_by_commas _
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_numbers_separated_by_empty_lines_are_recognized_lines_are_joined_by_commas>
+
+    def test_numbers_separated_by_empty_lines_are_recognized_lines_are_joined_by_commas(
+        self,
+    ):
+        self.assertEqual(
+>           convert(
+                [
+                    "    _  _ ",
+                    "  | _| _|",
+                    "  ||_  _|",
+                    "         ",
+                    "    _  _ ",
+                    "|_||_ |_ ",
+                    "  | _||_|",
+                    "         ",
+                    " _  _  _ ",
+                    "  ||_||_|",
+                    "  ||_| _|",
+                    "         ",
+                ]
+            ),
+            "123,456,789",
+        )
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = ['    _  _ ', '  | _| _|', '  ||_  _|', '         ', '    _  _ ', '|_||_ |_ ', ...]
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+_______________________ OcrNumbersTest.test_recognizes_0 _______________________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_0>
+
+    def test_recognizes_0(self):
+>       self.assertEqual(convert([" _ ", "| |", "|_|", "   "]), "0")
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = [' _ ', '| |', '|_|', '   ']
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+_______________________ OcrNumbersTest.test_recognizes_1 _______________________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_1>
+
+    def test_recognizes_1(self):
+>       self.assertEqual(convert(["   ", "  |", "  |", "   "]), "1")
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = ['   ', '  |', '  |', '   ']
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+___________________ OcrNumbersTest.test_recognizes_110101100 ___________________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_110101100>
+
+    def test_recognizes_110101100(self):
+        self.assertEqual(
+>           convert(
+                [
+                    "       _     _        _  _ ",
+                    "  |  || |  || |  |  || || |",
+                    "  |  ||_|  ||_|  |  ||_||_|",
+                    "                           ",
+                ]
+            ),
+            "110101100",
+        )
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = ['       _     _        _  _ ', '  |  || |  || |  |  || || |', '  |  ||_|  ||_|  |  ||_||_|', '                           ']
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+_______________________ OcrNumbersTest.test_recognizes_2 _______________________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_2>
+
+    def test_recognizes_2(self):
+>       self.assertEqual(convert([" _ ", " _|", "|_ ", "   "]), "2")
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = [' _ ', ' _|', '|_ ', '   ']
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+_______________________ OcrNumbersTest.test_recognizes_3 _______________________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_3>
+
+    def test_recognizes_3(self):
+>       self.assertEqual(convert([" _ ", " _|", " _|", "   "]), "3")
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = [' _ ', ' _|', ' _|', '   ']
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+_______________________ OcrNumbersTest.test_recognizes_4 _______________________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_4>
+
+    def test_recognizes_4(self):
+>       self.assertEqual(convert(["   ", "|_|", "  |", "   "]), "4")
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:75: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = ['   ', '|_|', '  |', '   ']
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+_______________________ OcrNumbersTest.test_recognizes_5 _______________________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_5>
+
+    def test_recognizes_5(self):
+>       self.assertEqual(convert([" _ ", "|_ ", " _|", "   "]), "5")
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = [' _ ', '|_ ', ' _|', '   ']
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+_______________________ OcrNumbersTest.test_recognizes_6 _______________________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_6>
+
+    def test_recognizes_6(self):
+>       self.assertEqual(convert([" _ ", "|_ ", "|_|", "   "]), "6")
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = [' _ ', '|_ ', '|_|', '   ']
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+_______________________ OcrNumbersTest.test_recognizes_7 _______________________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_7>
+
+    def test_recognizes_7(self):
+>       self.assertEqual(convert([" _ ", "  |", "  |", "   "]), "7")
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = [' _ ', '  |', '  |', '   ']
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+_______________________ OcrNumbersTest.test_recognizes_8 _______________________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_8>
+
+    def test_recognizes_8(self):
+>       self.assertEqual(convert([" _ ", "|_|", "|_|", "   "]), "8")
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:87: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = [' _ ', '|_|', '|_|', '   ']
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+_______________________ OcrNumbersTest.test_recognizes_9 _______________________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_9>
+
+    def test_recognizes_9(self):
+>       self.assertEqual(convert([" _ ", "|_|", " _|", "   "]), "9")
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = [' _ ', '|_|', ' _|', '   ']
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+___________ OcrNumbersTest.test_recognizes_string_of_decimal_numbers ___________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_string_of_decimal_numbers>
+
+    def test_recognizes_string_of_decimal_numbers(self):
+        self.assertEqual(
+>           convert(
+                [
+                    "    _  _     _  _  _  _  _  _ ",
+                    "  | _| _||_||_ |_   ||_||_|| |",
+                    "  ||_  _|  | _||_|  ||_| _||_|",
+                    "                              ",
+                ]
+            ),
+            "1234567890",
+        )
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = ['    _  _     _  _  _  _  _  _ ', '  | _| _||_||_ |_   ||_||_|| |', '  ||_  _|  | _||_|  ||_| _||_|', '                              ']
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+_______ OcrNumbersTest.test_unreadable_but_correctly_sized_inputs_return _______
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_unreadable_but_correctly_sized_inputs_return>
+
+    def test_unreadable_but_correctly_sized_inputs_return(self):
+>       self.assertEqual(convert(["   ", "  _", "  |", "   "]), "?")
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_grid = ['   ', '  _', '  |', '   ']
+
+    def convert(input_grid):
+        binary_font = {
+            " _ | ||_|   ": "0",
+            "     |  |   ": "1",
+            " _  _||_    ": "2",
+            " _  _| _|   ": "3",
+            "   |_|  |   ": "4",
+            " _ |_  _|   ": "5",
+            " _ |_ |_|   ": "6",
+            " _   |  |   ": "7",
+            " _ |_||_|   ": "8",
+            " _ |_| _|   ": "9"
+        }
+    
+        if len(input_grid) % 4 != 0 or any(len(row) % 3 != 0 for row in input_grid):
+            raise ValueError("Number of input columns is not a multiple of three")
+    
+        result = ""
+        for i in range(0, len(input_grid), 4):
+            for j in range(0, len(input_grid[i]), 3):
+                digit = ""
+                for k in range(4):
+                    digit += input_grid[i + k][j:j + 3]
+                result += binary_font.get(digit, "?")
+            if i + 4 < len(input_grid):
+                result += ","
+>           raise ValueError("Number of input lines is not a multiple of four")
+E           ValueError: Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers.py:27: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_garbled_numbers_in_a_string_are_replaced_with
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_input_with_a_number_of_lines_that_is_not_a_multiple_of_four_raises_an_error
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_numbers_separated_by_empty_lines_are_recognized_lines_are_joined_by_commas
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_0
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_1
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_110101100
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_2
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_3
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_4
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_5
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_6
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_7
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_8
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_9
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_string_of_decimal_numbers
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_unreadable_but_correctly_sized_inputs_return
+========================= 16 failed, 1 passed in 0.10s =========================

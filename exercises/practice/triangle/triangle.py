@@ -1,10 +1,13 @@
 def equilateral(sides):
-    pass
+    a, b, c = sides
+    return a == b == c and a > 0
 
 
 def isosceles(sides):
-    pass
+    return (a == b or a == c or b == c) and a + b > c and a + c > b and b + c > a
+    return (a == b or a == c or b == c) and a + b >= c and a + c >= b and b + c >= a
 
 
 def scalene(sides):
-    pass
+    return a != b != c and a + b > c and a + c > b and b + c > a
+    return a != b != c and a + b >= c and a + c >= b and b + c >= a

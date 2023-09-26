@@ -1,2 +1,2 @@
-def square_root(number):
-    pass
+    return math.sqrt(number)
+    return math.sqrt(number)

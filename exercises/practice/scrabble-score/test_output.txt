@@ -1,0 +1,222 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 11 items
+
+exercises/practice/scrabble-score/scrabble_score_test.py .FFFFFFFFFF     [100%]
+
+=================================== FAILURES ===================================
+___________________ ScrabbleScoreTest.test_english_like_word ___________________
+
+self = <scrabble_score_test.ScrabbleScoreTest testMethod=test_english_like_word>
+
+    def test_english_like_word(self):
+>       self.assertEqual(score("pinata"), 8)
+
+exercises/practice/scrabble-score/scrabble_score_test.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+word = 'PINATA'
+
+    def score(word):
+        word = word.upper()
+        score = 0
+        for letter in word:
+>           score += letter_values[letter]
+E           UnboundLocalError: local variable 'letter_values' referenced before assignment
+
+exercises/practice/scrabble-score/scrabble_score.py:5: UnboundLocalError
+_______________ ScrabbleScoreTest.test_entire_alphabet_available _______________
+
+self = <scrabble_score_test.ScrabbleScoreTest testMethod=test_entire_alphabet_available>
+
+    def test_entire_alphabet_available(self):
+>       self.assertEqual(score("abcdefghijklmnopqrstuvwxyz"), 87)
+
+exercises/practice/scrabble-score/scrabble_score_test.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+word = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+    def score(word):
+        word = word.upper()
+        score = 0
+        for letter in word:
+>           score += letter_values[letter]
+E           UnboundLocalError: local variable 'letter_values' referenced before assignment
+
+exercises/practice/scrabble-score/scrabble_score.py:5: UnboundLocalError
+_________________ ScrabbleScoreTest.test_long_mixed_case_word __________________
+
+self = <scrabble_score_test.ScrabbleScoreTest testMethod=test_long_mixed_case_word>
+
+    def test_long_mixed_case_word(self):
+>       self.assertEqual(score("OxyphenButazone"), 41)
+
+exercises/practice/scrabble-score/scrabble_score_test.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+word = 'OXYPHENBUTAZONE'
+
+    def score(word):
+        word = word.upper()
+        score = 0
+        for letter in word:
+>           score += letter_values[letter]
+E           UnboundLocalError: local variable 'letter_values' referenced before assignment
+
+exercises/practice/scrabble-score/scrabble_score.py:5: UnboundLocalError
+___________________ ScrabbleScoreTest.test_lowercase_letter ____________________
+
+self = <scrabble_score_test.ScrabbleScoreTest testMethod=test_lowercase_letter>
+
+    def test_lowercase_letter(self):
+>       self.assertEqual(score("a"), 1)
+
+exercises/practice/scrabble-score/scrabble_score_test.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+word = 'A'
+
+    def score(word):
+        word = word.upper()
+        score = 0
+        for letter in word:
+>           score += letter_values[letter]
+E           UnboundLocalError: local variable 'letter_values' referenced before assignment
+
+exercises/practice/scrabble-score/scrabble_score.py:5: UnboundLocalError
+_________________ ScrabbleScoreTest.test_medium_valuable_word __________________
+
+self = <scrabble_score_test.ScrabbleScoreTest testMethod=test_medium_valuable_word>
+
+    def test_medium_valuable_word(self):
+>       self.assertEqual(score("quirky"), 22)
+
+exercises/practice/scrabble-score/scrabble_score_test.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+word = 'QUIRKY'
+
+    def score(word):
+        word = word.upper()
+        score = 0
+        for letter in word:
+>           score += letter_values[letter]
+E           UnboundLocalError: local variable 'letter_values' referenced before assignment
+
+exercises/practice/scrabble-score/scrabble_score.py:5: UnboundLocalError
+______________________ ScrabbleScoreTest.test_medium_word ______________________
+
+self = <scrabble_score_test.ScrabbleScoreTest testMethod=test_medium_word>
+
+    def test_medium_word(self):
+>       self.assertEqual(score("street"), 6)
+
+exercises/practice/scrabble-score/scrabble_score_test.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+word = 'STREET'
+
+    def score(word):
+        word = word.upper()
+        score = 0
+        for letter in word:
+>           score += letter_values[letter]
+E           UnboundLocalError: local variable 'letter_values' referenced before assignment
+
+exercises/practice/scrabble-score/scrabble_score.py:5: UnboundLocalError
+__________________ ScrabbleScoreTest.test_short_valuable_word __________________
+
+self = <scrabble_score_test.ScrabbleScoreTest testMethod=test_short_valuable_word>
+
+    def test_short_valuable_word(self):
+>       self.assertEqual(score("zoo"), 12)
+
+exercises/practice/scrabble-score/scrabble_score_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+word = 'ZOO'
+
+    def score(word):
+        word = word.upper()
+        score = 0
+        for letter in word:
+>           score += letter_values[letter]
+E           UnboundLocalError: local variable 'letter_values' referenced before assignment
+
+exercises/practice/scrabble-score/scrabble_score.py:5: UnboundLocalError
+______________________ ScrabbleScoreTest.test_short_word _______________________
+
+self = <scrabble_score_test.ScrabbleScoreTest testMethod=test_short_word>
+
+    def test_short_word(self):
+>       self.assertEqual(score("at"), 2)
+
+exercises/practice/scrabble-score/scrabble_score_test.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+word = 'AT'
+
+    def score(word):
+        word = word.upper()
+        score = 0
+        for letter in word:
+>           score += letter_values[letter]
+E           UnboundLocalError: local variable 'letter_values' referenced before assignment
+
+exercises/practice/scrabble-score/scrabble_score.py:5: UnboundLocalError
+___________________ ScrabbleScoreTest.test_uppercase_letter ____________________
+
+self = <scrabble_score_test.ScrabbleScoreTest testMethod=test_uppercase_letter>
+
+    def test_uppercase_letter(self):
+>       self.assertEqual(score("A"), 1)
+
+exercises/practice/scrabble-score/scrabble_score_test.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+word = 'A'
+
+    def score(word):
+        word = word.upper()
+        score = 0
+        for letter in word:
+>           score += letter_values[letter]
+E           UnboundLocalError: local variable 'letter_values' referenced before assignment
+
+exercises/practice/scrabble-score/scrabble_score.py:5: UnboundLocalError
+____________________ ScrabbleScoreTest.test_valuable_letter ____________________
+
+self = <scrabble_score_test.ScrabbleScoreTest testMethod=test_valuable_letter>
+
+    def test_valuable_letter(self):
+>       self.assertEqual(score("f"), 4)
+
+exercises/practice/scrabble-score/scrabble_score_test.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+word = 'F'
+
+    def score(word):
+        word = word.upper()
+        score = 0
+        for letter in word:
+>           score += letter_values[letter]
+E           UnboundLocalError: local variable 'letter_values' referenced before assignment
+
+exercises/practice/scrabble-score/scrabble_score.py:5: UnboundLocalError
+=========================== short test summary info ============================
+FAILED exercises/practice/scrabble-score/scrabble_score_test.py::ScrabbleScoreTest::test_english_like_word
+FAILED exercises/practice/scrabble-score/scrabble_score_test.py::ScrabbleScoreTest::test_entire_alphabet_available
+FAILED exercises/practice/scrabble-score/scrabble_score_test.py::ScrabbleScoreTest::test_long_mixed_case_word
+FAILED exercises/practice/scrabble-score/scrabble_score_test.py::ScrabbleScoreTest::test_lowercase_letter
+FAILED exercises/practice/scrabble-score/scrabble_score_test.py::ScrabbleScoreTest::test_medium_valuable_word
+FAILED exercises/practice/scrabble-score/scrabble_score_test.py::ScrabbleScoreTest::test_medium_word
+FAILED exercises/practice/scrabble-score/scrabble_score_test.py::ScrabbleScoreTest::test_short_valuable_word
+FAILED exercises/practice/scrabble-score/scrabble_score_test.py::ScrabbleScoreTest::test_short_word
+FAILED exercises/practice/scrabble-score/scrabble_score_test.py::ScrabbleScoreTest::test_uppercase_letter
+FAILED exercises/practice/scrabble-score/scrabble_score_test.py::ScrabbleScoreTest::test_valuable_letter
+========================= 10 failed, 1 passed in 0.05s =========================

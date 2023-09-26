@@ -1,10 +1,10 @@
 def private_key(p):
-    pass
-
+    import random
+    return random.randint(2, p - 1)
 
 def public_key(p, g, private):
-    pass
+    return pow(g, private, p)  # Calculate public key using modular exponentiation
 
 
 def secret(p, public, private):
-    pass
+    return pow(public, private, p)  # Calculate shared secret key using modular exponentiation

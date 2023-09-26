@@ -1,0 +1,606 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 25 items
+
+exercises/practice/grep/grep_test.py .FFFFFFFFFF.FFFFFFFFFF.FF           [100%]
+
+=================================== FAILURES ===================================
+________ GrepTest.test_multiple_files_one_match_match_entire_lines_flag ________
+
+self = <grep_test.GrepTest testMethod=test_multiple_files_one_match_match_entire_lines_flag>
+mock_file = <MagicMock name='StringIO' id='140335479752112'>
+mock_open = <MagicMock name='open' id='140335479759984'>
+
+    def test_multiple_files_one_match_match_entire_lines_flag(
+        self, mock_file, mock_open
+    ):
+>       self.assertMultiLineEqual(
+            grep(
+                "But I beseech your grace that I may know",
+                "-x",
+                ["iliad.txt", "midsummer-night.txt", "paradise-lost.txt"],
+            ),
+            "midsummer-night.txt:But I beseech your grace that I may know\n",
+        )
+E       AssertionError: '' != 'midsummer-night.txt:But I beseech your grace that I may know\n'
+E       + midsummer-night.txt:But I beseech your grace that I may know
+
+exercises/practice/grep/grep_test.py:221: AssertionError
+____________ GrepTest.test_multiple_files_one_match_multiple_flags _____________
+
+self = <grep_test.GrepTest testMethod=test_multiple_files_one_match_multiple_flags>
+mock_file = <MagicMock name='StringIO' id='140335479962784'>
+mock_open = <MagicMock name='open' id='140335479954816'>
+
+    def test_multiple_files_one_match_multiple_flags(self, mock_file, mock_open):
+>       self.assertMultiLineEqual(
+            grep(
+                "WITH LOSS OF EDEN, TILL ONE GREATER MAN",
+                "-n -i -x",
+                ["iliad.txt", "midsummer-night.txt", "paradise-lost.txt"],
+            ),
+            "paradise-lost.txt:4:With loss of Eden, till one greater Man\n",
+        )
+E       AssertionError: '' != 'paradise-lost.txt:4:With loss of Eden, till one greater Man\n'
+E       + paradise-lost.txt:4:With loss of Eden, till one greater Man
+
+exercises/practice/grep/grep_test.py:231: AssertionError
+_______________ GrepTest.test_multiple_files_one_match_no_flags ________________
+
+self = <grep_test.GrepTest testMethod=test_multiple_files_one_match_no_flags>
+mock_file = <MagicMock name='StringIO' id='140335480059744'>
+mock_open = <MagicMock name='open' id='140335480052448'>
+
+    def test_multiple_files_one_match_no_flags(self, mock_file, mock_open):
+        self.assertMultiLineEqual(
+>           grep(
+                "Agamemnon",
+                "",
+                ["iliad.txt", "midsummer-night.txt", "paradise-lost.txt"],
+            ),
+            "iliad.txt:Of Atreus, Agamemnon, King of men.\n",
+        )
+
+exercises/practice/grep/grep_test.py:156: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:20: in grep
+    return '' if not results else [line for _, line in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa2667038e0>
+
+>   return '' if not results else [line for _, line in results]
+E   ValueError: too many values to unpack (expected 2)
+
+exercises/practice/grep/grep.py:20: ValueError
+_________ GrepTest.test_multiple_files_one_match_print_file_names_flag _________
+
+self = <grep_test.GrepTest testMethod=test_multiple_files_one_match_print_file_names_flag>
+mock_file = <MagicMock name='StringIO' id='140335480097760'>
+mock_open = <MagicMock name='open' id='140335480105200'>
+
+    def test_multiple_files_one_match_print_file_names_flag(self, mock_file, mock_open):
+        self.assertMultiLineEqual(
+>           grep(
+                "who", "-l", ["iliad.txt", "midsummer-night.txt", "paradise-lost.txt"]
+            ),
+            "iliad.txt\n" "paradise-lost.txt\n",
+        )
+
+exercises/practice/grep/grep_test.py:187: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:16: in grep
+    return '' if not results else [file for file, _, _ in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa26670c7c0>
+
+>   return '' if not results else [file for file, _, _ in results]
+E   ValueError: too many values to unpack (expected 3)
+
+exercises/practice/grep/grep.py:16: ValueError
+______ GrepTest.test_multiple_files_several_matches_case_insensitive_flag ______
+
+self = <grep_test.GrepTest testMethod=test_multiple_files_several_matches_case_insensitive_flag>
+mock_file = <MagicMock name='StringIO' id='140335479899424'>
+mock_open = <MagicMock name='open' id='140335479909264'>
+
+    def test_multiple_files_several_matches_case_insensitive_flag(
+        self, mock_file, mock_open
+    ):
+        self.assertMultiLineEqual(
+>           grep("TO", "-i", ["iliad.txt", "midsummer-night.txt", "paradise-lost.txt"]),
+            "iliad.txt:Caused to Achaia's host, sent many a soul\n"
+            "iliad.txt:Illustrious into Ades premature,\n"
+            "iliad.txt:And Heroes gave (so stood the will of Jove)\n"
+            "iliad.txt:To dogs and to all ravening fowls a prey,\n"
+            "midsummer-night.txt:I do entreat your grace to pardon me.\n"
+            "midsummer-night.txt:In such a presence here to plead my thoughts;\n"
+            "midsummer-night.txt:If I refuse to wed Demetrius.\n"
+            "paradise-lost.txt:Brought Death into the World, and all our woe,\n"
+            "paradise-lost.txt:Restore us, and regain the blissful Seat,\n"
+            "paradise-lost.txt:Sing Heav'nly Muse, that on the secret top\n",
+        )
+
+exercises/practice/grep/grep_test.py:197: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:20: in grep
+    return '' if not results else [line for _, line in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa2666dd030>
+
+>   return '' if not results else [line for _, line in results]
+E   ValueError: too many values to unpack (expected 2)
+
+exercises/practice/grep/grep.py:20: ValueError
+_ GrepTest.test_multiple_files_several_matches_file_flag_takes_precedence_over_line_number_flag _
+
+self = <grep_test.GrepTest testMethod=test_multiple_files_several_matches_file_flag_takes_precedence_over_line_number_flag>
+mock_file = <MagicMock name='StringIO' id='140335479971488'>
+mock_open = <MagicMock name='open' id='140335479979696'>
+
+    def test_multiple_files_several_matches_file_flag_takes_precedence_over_line_number_flag(
+        self, mock_file, mock_open
+    ):
+        self.assertMultiLineEqual(
+>           grep(
+                "who",
+                "-n -l",
+                ["iliad.txt", "midsummer-night.txt", "paradise-lost.txt"],
+            ),
+            "iliad.txt\n" "paradise-lost.txt\n",
+        )
+
+exercises/practice/grep/grep_test.py:254: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:16: in grep
+    return '' if not results else [file for file, _, _ in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa2666ef160>
+
+>   return '' if not results else [file for file, _, _ in results]
+E   ValueError: too many values to unpack (expected 3)
+
+exercises/practice/grep/grep.py:16: ValueError
+_ GrepTest.test_multiple_files_several_matches_inverted_and_match_entire_lines_flags _
+
+self = <grep_test.GrepTest testMethod=test_multiple_files_several_matches_inverted_and_match_entire_lines_flags>
+mock_file = <MagicMock name='StringIO' id='140335479903504'>
+mock_open = <MagicMock name='open' id='140335479910080'>
+
+    def test_multiple_files_several_matches_inverted_and_match_entire_lines_flags(
+        self, mock_file, mock_open
+    ):
+>       self.assertMultiLineEqual(
+            grep(
+                "Illustrious into Ades premature,",
+                "-x -v",
+                ["iliad.txt", "midsummer-night.txt", "paradise-lost.txt"],
+            ),
+            "iliad.txt:Achilles sing, O Goddess! Peleus' son;\n"
+            "iliad.txt:His wrath pernicious, who ten thousand woes\n"
+            "iliad.txt:Caused to Achaia's host, sent many a soul\n"
+            "iliad.txt:And Heroes gave (so stood the will of Jove)\n"
+            "iliad.txt:To dogs and to all ravening fowls a prey,\n"
+            "iliad.txt:When fierce dispute had separated once\n"
+            "iliad.txt:The noble Chief Achilles from the son\n"
+            "iliad.txt:Of Atreus, Agamemnon, King of men.\n"
+            "midsummer-night.txt:I do entreat your grace to pardon me.\n"
+            "midsummer-night.txt:I know not by what power I am made bold,\n"
+            "midsummer-night.txt:Nor how it may concern my modesty,\n"
+            "midsummer-night.txt:In such a presence here to plead my thoughts;\n"
+            "midsummer-night.txt:But I beseech your grace that I may know\n"
+            "midsummer-night.txt:The worst that may befall me in this case,\n"
+            "midsummer-night.txt:If I refuse to wed Demetrius.\n"
+            "paradise-lost.txt:Of Mans First Disobedience, and the Fruit\n"
+            "paradise-lost.txt:Of that Forbidden Tree, whose mortal tast\n"
+            "paradise-lost.txt:Brought Death into the World, and all our woe,\n"
+            "paradise-lost.txt:With loss of Eden, till one greater Man\n"
+            "paradise-lost.txt:Restore us, and regain the blissful Seat,\n"
+            "paradise-lost.txt:Sing Heav'nly Muse, that on the secret top\n"
+            "paradise-lost.txt:Of Oreb, or of Sinai, didst inspire\n"
+            "paradise-lost.txt:That Shepherd, who first taught the chosen Seed\n",
+        )
+E       AssertionError: '' != "iliad.txt:Achilles sing, O Goddess! Pele[1280 chars]ed\n"
+E       Diff is 1348 characters long. Set self.maxDiff to None to see it.
+
+exercises/practice/grep/grep_test.py:265: AssertionError
+__________ GrepTest.test_multiple_files_several_matches_inverted_flag __________
+
+self = <grep_test.GrepTest testMethod=test_multiple_files_several_matches_inverted_flag>
+mock_file = <MagicMock name='StringIO' id='140335479691088'>
+mock_open = <MagicMock name='open' id='140335479686240'>
+
+    def test_multiple_files_several_matches_inverted_flag(self, mock_file, mock_open):
+        self.assertMultiLineEqual(
+>           grep("a", "-v", ["iliad.txt", "midsummer-night.txt", "paradise-lost.txt"]),
+            "iliad.txt:Achilles sing, O Goddess! Peleus' son;\n"
+            "iliad.txt:The noble Chief Achilles from the son\n"
+            "midsummer-night.txt:If I refuse to wed Demetrius.\n",
+        )
+
+exercises/practice/grep/grep_test.py:212: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:18: in grep
+    return '' if not results else [line for _, _, line in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa2666a9780>
+
+>   return '' if not results else [line for _, _, line in results]
+E   ValueError: too many values to unpack (expected 3)
+
+exercises/practice/grep/grep.py:18: ValueError
+____________ GrepTest.test_multiple_files_several_matches_no_flags _____________
+
+self = <grep_test.GrepTest testMethod=test_multiple_files_several_matches_no_flags>
+mock_file = <MagicMock name='StringIO' id='140335480109376'>
+mock_open = <MagicMock name='open' id='140335480107120'>
+
+    def test_multiple_files_several_matches_no_flags(self, mock_file, mock_open):
+        self.assertMultiLineEqual(
+>           grep("may", "", ["iliad.txt", "midsummer-night.txt", "paradise-lost.txt"]),
+            "midsummer-night.txt:Nor how it may concern my modesty,\n"
+            "midsummer-night.txt:But I beseech your grace that I may know\n"
+            "midsummer-night.txt:The worst that may befall me in this case,\n",
+        )
+
+exercises/practice/grep/grep_test.py:166: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:20: in grep
+    return '' if not results else [line for _, line in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa26670f340>
+
+>   return '' if not results else [line for _, line in results]
+E   ValueError: too many values to unpack (expected 2)
+
+exercises/practice/grep/grep.py:20: ValueError
+_____ GrepTest.test_multiple_files_several_matches_print_line_numbers_flag _____
+
+self = <grep_test.GrepTest testMethod=test_multiple_files_several_matches_print_line_numbers_flag>
+mock_file = <MagicMock name='StringIO' id='140335479797072'>
+mock_open = <MagicMock name='open' id='140335479950976'>
+
+    def test_multiple_files_several_matches_print_line_numbers_flag(
+        self, mock_file, mock_open
+    ):
+        self.assertMultiLineEqual(
+>           grep(
+                "that", "-n", ["iliad.txt", "midsummer-night.txt", "paradise-lost.txt"]
+            ),
+            "midsummer-night.txt:5:But I beseech your grace that I may know\n"
+            "midsummer-night.txt:6:The worst that may befall me in this case,\n"
+            "paradise-lost.txt:2:Of that Forbidden Tree, whose mortal tast\n"
+            "paradise-lost.txt:6:Sing Heav'nly Muse, that on the secret top\n",
+        )
+
+exercises/practice/grep/grep_test.py:176: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:20: in grep
+    return '' if not results else [line for _, line in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa2666c1c00>
+
+>   return '' if not results else [line for _, line in results]
+E   ValueError: too many values to unpack (expected 2)
+
+exercises/practice/grep/grep.py:20: ValueError
+____________ GrepTest.test_one_file_one_match_case_insensitive_flag ____________
+
+self = <grep_test.GrepTest testMethod=test_one_file_one_match_case_insensitive_flag>
+mock_file = <MagicMock name='StringIO' id='140335479751104'>
+mock_open = <MagicMock name='open' id='140335479910368'>
+
+    def test_one_file_one_match_case_insensitive_flag(self, mock_file, mock_open):
+        self.assertMultiLineEqual(
+>           grep("FORBIDDEN", "-i", ["paradise-lost.txt"]),
+            "Of that Forbidden Tree, whose mortal tast\n",
+        )
+
+exercises/practice/grep/grep_test.py:67: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:20: in grep
+    return '' if not results else [line for _, line in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa2666c37f0>
+
+>   return '' if not results else [line for _, line in results]
+E   ValueError: too many values to unpack (expected 2)
+
+exercises/practice/grep/grep.py:20: ValueError
+__ GrepTest.test_one_file_one_match_file_flag_takes_precedence_over_line_flag __
+
+self = <grep_test.GrepTest testMethod=test_one_file_one_match_file_flag_takes_precedence_over_line_flag>
+mock_file = <MagicMock name='StringIO' id='140335480369888'>
+mock_open = <MagicMock name='open' id='140335480358464'>
+
+    def test_one_file_one_match_file_flag_takes_precedence_over_line_flag(
+        self, mock_file, mock_open
+    ):
+>       self.assertMultiLineEqual(grep("ten", "-n -l", ["iliad.txt"]), "iliad.txt\n")
+
+exercises/practice/grep/grep_test.py:136: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:16: in grep
+    return '' if not results else [file for file, _, _ in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa26674f8e0>
+
+>   return '' if not results else [file for file, _, _ in results]
+E   ValueError: too many values to unpack (expected 3)
+
+exercises/practice/grep/grep.py:16: ValueError
+___________ GrepTest.test_one_file_one_match_match_entire_lines_flag ___________
+
+self = <grep_test.GrepTest testMethod=test_one_file_one_match_match_entire_lines_flag>
+mock_file = <MagicMock name='StringIO' id='140335479795536'>
+mock_open = <MagicMock name='open' id='140335479695408'>
+
+    def test_one_file_one_match_match_entire_lines_flag(self, mock_file, mock_open):
+>       self.assertMultiLineEqual(
+            grep(
+                "With loss of Eden, till one greater Man", "-x", ["paradise-lost.txt"]
+            ),
+            "With loss of Eden, till one greater Man\n",
+        )
+E       AssertionError: '' != 'With loss of Eden, till one greater Man\n'
+E       + With loss of Eden, till one greater Man
+
+exercises/practice/grep/grep_test.py:77: AssertionError
+_______________ GrepTest.test_one_file_one_match_multiple_flags ________________
+
+self = <grep_test.GrepTest testMethod=test_one_file_one_match_multiple_flags>
+mock_file = <MagicMock name='StringIO' id='140335479956304'>
+mock_open = <MagicMock name='open' id='140335480050768'>
+
+    def test_one_file_one_match_multiple_flags(self, mock_file, mock_open):
+>       self.assertMultiLineEqual(
+            grep("OF ATREUS, Agamemnon, KIng of MEN.", "-n -i -x", ["iliad.txt"]),
+            "9:Of Atreus, Agamemnon, King of men.\n",
+        )
+E       AssertionError: '' != '9:Of Atreus, Agamemnon, King of men.\n'
+E       + 9:Of Atreus, Agamemnon, King of men.
+
+exercises/practice/grep/grep_test.py:85: AssertionError
+__________________ GrepTest.test_one_file_one_match_no_flags ___________________
+
+self = <grep_test.GrepTest testMethod=test_one_file_one_match_no_flags>
+mock_file = <MagicMock name='StringIO' id='140335480099440'>
+mock_open = <MagicMock name='open' id='140335480109136'>
+
+    def test_one_file_one_match_no_flags(self, mock_file, mock_open):
+        self.assertMultiLineEqual(
+>           grep("Agamemnon", "", ["iliad.txt"]), "Of Atreus, Agamemnon, King of men.\n"
+        )
+
+exercises/practice/grep/grep_test.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:20: in grep
+    return '' if not results else [line for _, line in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa26670dc60>
+
+>   return '' if not results else [line for _, line in results]
+E   ValueError: too many values to unpack (expected 2)
+
+exercises/practice/grep/grep.py:20: ValueError
+____________ GrepTest.test_one_file_one_match_print_file_names_flag ____________
+
+self = <grep_test.GrepTest testMethod=test_one_file_one_match_print_file_names_flag>
+mock_file = <MagicMock name='StringIO' id='140335480057440'>
+mock_open = <MagicMock name='open' id='140335480046736'>
+
+    def test_one_file_one_match_print_file_names_flag(self, mock_file, mock_open):
+        self.assertMultiLineEqual(
+>           grep("Forbidden", "-l", ["paradise-lost.txt"]), "paradise-lost.txt\n"
+        )
+
+exercises/practice/grep/grep_test.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:16: in grep
+    return '' if not results else [file for file, _, _ in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa266702d40>
+
+>   return '' if not results else [file for file, _, _ in results]
+E   ValueError: too many values to unpack (expected 3)
+
+exercises/practice/grep/grep.py:16: ValueError
+___________ GrepTest.test_one_file_one_match_print_line_numbers_flag ___________
+
+self = <grep_test.GrepTest testMethod=test_one_file_one_match_print_line_numbers_flag>
+mock_file = <MagicMock name='StringIO' id='140335480108896'>
+mock_open = <MagicMock name='open' id='140335480102512'>
+
+    def test_one_file_one_match_print_line_numbers_flag(self, mock_file, mock_open):
+        self.assertMultiLineEqual(
+>           grep("Forbidden", "-n", ["paradise-lost.txt"]),
+            "2:Of that Forbidden Tree, whose mortal tast\n",
+        )
+
+exercises/practice/grep/grep_test.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:20: in grep
+    return '' if not results else [line for _, line in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa26670e020>
+
+>   return '' if not results else [line for _, line in results]
+E   ValueError: too many values to unpack (expected 2)
+
+exercises/practice/grep/grep.py:20: ValueError
+_________ GrepTest.test_one_file_several_matches_case_insensitive_flag _________
+
+self = <grep_test.GrepTest testMethod=test_one_file_several_matches_case_insensitive_flag>
+mock_file = <MagicMock name='StringIO' id='140335479914352'>
+mock_open = <MagicMock name='open' id='140335479907824'>
+
+    def test_one_file_several_matches_case_insensitive_flag(self, mock_file, mock_open):
+        self.assertMultiLineEqual(
+>           grep("ACHILLES", "-i", ["iliad.txt"]),
+            "Achilles sing, O Goddess! Peleus' son;\n"
+            "The noble Chief Achilles from the son\n",
+        )
+
+exercises/practice/grep/grep_test.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:20: in grep
+    return '' if not results else [line for _, line in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa2666df700>
+
+>   return '' if not results else [line for _, line in results]
+E   ValueError: too many values to unpack (expected 2)
+
+exercises/practice/grep/grep.py:20: ValueError
+_ GrepTest.test_one_file_several_matches_inverted_and_match_entire_lines_flags _
+
+self = <grep_test.GrepTest testMethod=test_one_file_several_matches_inverted_and_match_entire_lines_flags>
+mock_file = <MagicMock name='StringIO' id='140335480358176'>
+mock_open = <MagicMock name='open' id='140335480362976'>
+
+    def test_one_file_several_matches_inverted_and_match_entire_lines_flags(
+        self, mock_file, mock_open
+    ):
+>       self.assertMultiLineEqual(
+            grep("Illustrious into Ades premature,", "-x -v", ["iliad.txt"]),
+            "Achilles sing, O Goddess! Peleus' son;\n"
+            "His wrath pernicious, who ten thousand woes\n"
+            "Caused to Achaia's host, sent many a soul\n"
+            "And Heroes gave (so stood the will of Jove)\n"
+            "To dogs and to all ravening fowls a prey,\n"
+            "When fierce dispute had separated once\n"
+            "The noble Chief Achilles from the son\n"
+            "Of Atreus, Agamemnon, King of men.\n",
+        )
+E       AssertionError: '' != "Achilles sing, O Goddess! Peleus' son;\n[287 chars]n.\n"
+E       + Achilles sing, O Goddess! Peleus' son;
+E       + His wrath pernicious, who ten thousand woes
+E       + Caused to Achaia's host, sent many a soul
+E       + And Heroes gave (so stood the will of Jove)
+E       + To dogs and to all ravening fowls a prey,
+E       + When fierce dispute had separated once
+E       + The noble Chief Achilles from the son
+E       + Of Atreus, Agamemnon, King of men.
+
+exercises/practice/grep/grep_test.py:141: AssertionError
+_____________ GrepTest.test_one_file_several_matches_inverted_flag _____________
+
+self = <grep_test.GrepTest testMethod=test_one_file_several_matches_inverted_flag>
+mock_file = <MagicMock name='StringIO' id='140335479795248'>
+mock_open = <MagicMock name='open' id='140335479799280'>
+
+    def test_one_file_several_matches_inverted_flag(self, mock_file, mock_open):
+        self.assertMultiLineEqual(
+>           grep("Of", "-v", ["paradise-lost.txt"]),
+            "Brought Death into the World, and all our woe,\n"
+            "With loss of Eden, till one greater Man\n"
+            "Restore us, and regain the blissful Seat,\n"
+            "Sing Heav'nly Muse, that on the secret top\n"
+            "That Shepherd, who first taught the chosen Seed\n",
+        )
+
+exercises/practice/grep/grep_test.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:18: in grep
+    return '' if not results else [line for _, _, line in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa2666c3730>
+
+>   return '' if not results else [line for _, _, line in results]
+E   ValueError: too many values to unpack (expected 3)
+
+exercises/practice/grep/grep.py:18: ValueError
+_______________ GrepTest.test_one_file_several_matches_no_flags ________________
+
+self = <grep_test.GrepTest testMethod=test_one_file_several_matches_no_flags>
+mock_file = <MagicMock name='StringIO' id='140335479691760'>
+mock_open = <MagicMock name='open' id='140335479697760'>
+
+    def test_one_file_several_matches_no_flags(self, mock_file, mock_open):
+        self.assertMultiLineEqual(
+>           grep("may", "", ["midsummer-night.txt"]),
+            "Nor how it may concern my modesty,\n"
+            "But I beseech your grace that I may know\n"
+            "The worst that may befall me in this case,\n",
+        )
+
+exercises/practice/grep/grep_test.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:20: in grep
+    return '' if not results else [line for _, line in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa2666ab0d0>
+
+>   return '' if not results else [line for _, line in results]
+E   ValueError: too many values to unpack (expected 2)
+
+exercises/practice/grep/grep.py:20: ValueError
+________ GrepTest.test_one_file_several_matches_print_line_numbers_flag ________
+
+self = <grep_test.GrepTest testMethod=test_one_file_several_matches_print_line_numbers_flag>
+mock_file = <MagicMock name='StringIO' id='140335480568416'>
+mock_open = <MagicMock name='open' id='140335480559680'>
+
+    def test_one_file_several_matches_print_line_numbers_flag(
+        self, mock_file, mock_open
+    ):
+        self.assertMultiLineEqual(
+>           grep("may", "-n", ["midsummer-night.txt"]),
+            "3:Nor how it may concern my modesty,\n"
+            "5:But I beseech your grace that I may know\n"
+            "6:The worst that may befall me in this case,\n",
+        )
+
+exercises/practice/grep/grep_test.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/grep/grep.py:20: in grep
+    return '' if not results else [line for _, line in results]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x7fa26677f7f0>
+
+>   return '' if not results else [line for _, line in results]
+E   ValueError: too many values to unpack (expected 2)
+
+exercises/practice/grep/grep.py:20: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_multiple_files_one_match_match_entire_lines_flag
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_multiple_files_one_match_multiple_flags
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_multiple_files_one_match_no_flags
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_multiple_files_one_match_print_file_names_flag
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_multiple_files_several_matches_case_insensitive_flag
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_multiple_files_several_matches_file_flag_takes_precedence_over_line_number_flag
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_multiple_files_several_matches_inverted_and_match_entire_lines_flags
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_multiple_files_several_matches_inverted_flag
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_multiple_files_several_matches_no_flags
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_multiple_files_several_matches_print_line_numbers_flag
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_one_match_case_insensitive_flag
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_one_match_file_flag_takes_precedence_over_line_flag
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_one_match_match_entire_lines_flag
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_one_match_multiple_flags
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_one_match_no_flags
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_one_match_print_file_names_flag
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_one_match_print_line_numbers_flag
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_several_matches_case_insensitive_flag
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_several_matches_inverted_and_match_entire_lines_flags
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_several_matches_inverted_flag
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_several_matches_no_flags
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_several_matches_print_line_numbers_flag
+========================= 22 failed, 3 passed in 0.23s =========================

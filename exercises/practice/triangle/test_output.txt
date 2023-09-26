@@ -1,0 +1,300 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 21 items
+
+exercises/practice/triangle/triangle_test.py .....FFFFFFFFFFFFFFFF       [100%]
+
+=================================== FAILURES ===================================
+_____ IsoscelesTriangleTest.test_equilateral_triangles_are_also_isosceles ______
+
+self = <triangle_test.IsoscelesTriangleTest testMethod=test_equilateral_triangles_are_also_isosceles>
+
+    def test_equilateral_triangles_are_also_isosceles(self):
+>       self.assertIs(isosceles([4, 4, 4]), True)
+
+exercises/practice/triangle/triangle_test.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [4, 4, 4]
+
+    def isosceles(sides):
+>       return (a == b or a == c or b == c) and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:7: NameError
+__________ IsoscelesTriangleTest.test_first_and_last_sides_are_equal ___________
+
+self = <triangle_test.IsoscelesTriangleTest testMethod=test_first_and_last_sides_are_equal>
+
+    def test_first_and_last_sides_are_equal(self):
+>       self.assertIs(isosceles([4, 3, 4]), True)
+
+exercises/practice/triangle/triangle_test.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [4, 3, 4]
+
+    def isosceles(sides):
+>       return (a == b or a == c or b == c) and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:7: NameError
+________ IsoscelesTriangleTest.test_first_triangle_inequality_violation ________
+
+self = <triangle_test.IsoscelesTriangleTest testMethod=test_first_triangle_inequality_violation>
+
+    def test_first_triangle_inequality_violation(self):
+>       self.assertIs(isosceles([1, 1, 3]), False)
+
+exercises/practice/triangle/triangle_test.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [1, 1, 3]
+
+    def isosceles(sides):
+>       return (a == b or a == c or b == c) and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:7: NameError
+_____________ IsoscelesTriangleTest.test_first_two_sides_are_equal _____________
+
+self = <triangle_test.IsoscelesTriangleTest testMethod=test_first_two_sides_are_equal>
+
+    def test_first_two_sides_are_equal(self):
+>       self.assertIs(isosceles([4, 4, 3]), True)
+
+exercises/practice/triangle/triangle_test.py:36: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [4, 4, 3]
+
+    def isosceles(sides):
+>       return (a == b or a == c or b == c) and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:7: NameError
+_____________ IsoscelesTriangleTest.test_last_two_sides_are_equal ______________
+
+self = <triangle_test.IsoscelesTriangleTest testMethod=test_last_two_sides_are_equal>
+
+    def test_last_two_sides_are_equal(self):
+>       self.assertIs(isosceles([3, 4, 4]), True)
+
+exercises/practice/triangle/triangle_test.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [3, 4, 4]
+
+    def isosceles(sides):
+>       return (a == b or a == c or b == c) and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:7: NameError
+________________ IsoscelesTriangleTest.test_no_sides_are_equal _________________
+
+self = <triangle_test.IsoscelesTriangleTest testMethod=test_no_sides_are_equal>
+
+    def test_no_sides_are_equal(self):
+>       self.assertIs(isosceles([2, 3, 4]), False)
+
+exercises/practice/triangle/triangle_test.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [2, 3, 4]
+
+    def isosceles(sides):
+>       return (a == b or a == c or b == c) and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:7: NameError
+_______ IsoscelesTriangleTest.test_second_triangle_inequality_violation ________
+
+self = <triangle_test.IsoscelesTriangleTest testMethod=test_second_triangle_inequality_violation>
+
+    def test_second_triangle_inequality_violation(self):
+>       self.assertIs(isosceles([1, 3, 1]), False)
+
+exercises/practice/triangle/triangle_test.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [1, 3, 1]
+
+    def isosceles(sides):
+>       return (a == b or a == c or b == c) and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:7: NameError
+________________ IsoscelesTriangleTest.test_sides_may_be_floats ________________
+
+self = <triangle_test.IsoscelesTriangleTest testMethod=test_sides_may_be_floats>
+
+    def test_sides_may_be_floats(self):
+>       self.assertIs(isosceles([0.5, 0.4, 0.5]), True)
+
+exercises/practice/triangle/triangle_test.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [0.5, 0.4, 0.5]
+
+    def isosceles(sides):
+>       return (a == b or a == c or b == c) and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:7: NameError
+________ IsoscelesTriangleTest.test_third_triangle_inequality_violation ________
+
+self = <triangle_test.IsoscelesTriangleTest testMethod=test_third_triangle_inequality_violation>
+
+    def test_third_triangle_inequality_violation(self):
+>       self.assertIs(isosceles([3, 1, 1]), False)
+
+exercises/practice/triangle/triangle_test.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [3, 1, 1]
+
+    def isosceles(sides):
+>       return (a == b or a == c or b == c) and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:7: NameError
+_________________ ScaleneTriangleTest.test_all_sides_are_equal _________________
+
+self = <triangle_test.ScaleneTriangleTest testMethod=test_all_sides_are_equal>
+
+    def test_all_sides_are_equal(self):
+>       self.assertIs(scalene([4, 4, 4]), False)
+
+exercises/practice/triangle/triangle_test.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [4, 4, 4]
+
+    def scalene(sides):
+>       return a != b != c and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:12: NameError
+__________ ScaleneTriangleTest.test_first_and_second_sides_are_equal ___________
+
+self = <triangle_test.ScaleneTriangleTest testMethod=test_first_and_second_sides_are_equal>
+
+    def test_first_and_second_sides_are_equal(self):
+>       self.assertIs(scalene([4, 4, 3]), False)
+
+exercises/practice/triangle/triangle_test.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [4, 4, 3]
+
+    def scalene(sides):
+>       return a != b != c and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:12: NameError
+___________ ScaleneTriangleTest.test_first_and_third_sides_are_equal ___________
+
+self = <triangle_test.ScaleneTriangleTest testMethod=test_first_and_third_sides_are_equal>
+
+    def test_first_and_third_sides_are_equal(self):
+>       self.assertIs(scalene([3, 4, 3]), False)
+
+exercises/practice/triangle/triangle_test.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [3, 4, 3]
+
+    def scalene(sides):
+>       return a != b != c and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:12: NameError
+_________ ScaleneTriangleTest.test_may_not_violate_triangle_inequality _________
+
+self = <triangle_test.ScaleneTriangleTest testMethod=test_may_not_violate_triangle_inequality>
+
+    def test_may_not_violate_triangle_inequality(self):
+>       self.assertIs(scalene([7, 3, 2]), False)
+
+exercises/practice/triangle/triangle_test.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [7, 3, 2]
+
+    def scalene(sides):
+>       return a != b != c and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:12: NameError
+_________________ ScaleneTriangleTest.test_no_sides_are_equal __________________
+
+self = <triangle_test.ScaleneTriangleTest testMethod=test_no_sides_are_equal>
+
+    def test_no_sides_are_equal(self):
+>       self.assertIs(scalene([5, 4, 6]), True)
+
+exercises/practice/triangle/triangle_test.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [5, 4, 6]
+
+    def scalene(sides):
+>       return a != b != c and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:12: NameError
+__________ ScaleneTriangleTest.test_second_and_third_sides_are_equal ___________
+
+self = <triangle_test.ScaleneTriangleTest testMethod=test_second_and_third_sides_are_equal>
+
+    def test_second_and_third_sides_are_equal(self):
+>       self.assertIs(scalene([4, 3, 3]), False)
+
+exercises/practice/triangle/triangle_test.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [4, 3, 3]
+
+    def scalene(sides):
+>       return a != b != c and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:12: NameError
+_________________ ScaleneTriangleTest.test_sides_may_be_floats _________________
+
+self = <triangle_test.ScaleneTriangleTest testMethod=test_sides_may_be_floats>
+
+    def test_sides_may_be_floats(self):
+>       self.assertIs(scalene([0.5, 0.4, 0.6]), True)
+
+exercises/practice/triangle/triangle_test.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+sides = [0.5, 0.4, 0.6]
+
+    def scalene(sides):
+>       return a != b != c and a + b > c and a + c > b and b + c > a
+E       NameError: name 'a' is not defined
+
+exercises/practice/triangle/triangle.py:12: NameError
+=========================== short test summary info ============================
+FAILED exercises/practice/triangle/triangle_test.py::IsoscelesTriangleTest::test_equilateral_triangles_are_also_isosceles
+FAILED exercises/practice/triangle/triangle_test.py::IsoscelesTriangleTest::test_first_and_last_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::IsoscelesTriangleTest::test_first_triangle_inequality_violation
+FAILED exercises/practice/triangle/triangle_test.py::IsoscelesTriangleTest::test_first_two_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::IsoscelesTriangleTest::test_last_two_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::IsoscelesTriangleTest::test_no_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::IsoscelesTriangleTest::test_second_triangle_inequality_violation
+FAILED exercises/practice/triangle/triangle_test.py::IsoscelesTriangleTest::test_sides_may_be_floats
+FAILED exercises/practice/triangle/triangle_test.py::IsoscelesTriangleTest::test_third_triangle_inequality_violation
+FAILED exercises/practice/triangle/triangle_test.py::ScaleneTriangleTest::test_all_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::ScaleneTriangleTest::test_first_and_second_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::ScaleneTriangleTest::test_first_and_third_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::ScaleneTriangleTest::test_may_not_violate_triangle_inequality
+FAILED exercises/practice/triangle/triangle_test.py::ScaleneTriangleTest::test_no_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::ScaleneTriangleTest::test_second_and_third_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::ScaleneTriangleTest::test_sides_may_be_floats
+========================= 16 failed, 5 passed in 0.09s =========================

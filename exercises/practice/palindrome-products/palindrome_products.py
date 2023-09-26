@@ -1,24 +1,65 @@
 def largest(min_factor, max_factor):
-    """Given a range of numbers, find the largest palindromes which
-       are products of two numbers within that range.
+    if min_factor > max_factor:
+        raise ValueError("Invalid range")
 
-    :param min_factor: int with a default value of 0
-    :param max_factor: int
-    :return: tuple of (palindrome, iterable).
-             Iterable should contain both factors of the palindrome in an arbitrary order.
-    """
+    palindromes = []
+    factors = []
 
-    pass
+    for i in range(max_factor, min_factor - 1, -1):
+        for j in range(i, min_factor - 1, -1):
+            product = i * j
+            if str(product) == str(product)[::-1]:
+                if not palindromes:
+                    palindromes.append(product)
+                    factors.append((i, j))
+                elif product > palindromes[0]:
+                    palindromes = [product]
+                    factors = [(i, j)]
+                elif product == palindromes[0]:
+                    factors.append((i, j))
 
+    return palindromes[0], factors
 
 def smallest(min_factor, max_factor):
-    """Given a range of numbers, find the smallest palindromes which
-    are products of two numbers within that range.
+    if min_factor > max_factor:
+        raise ValueError("Invalid range")
 
-    :param min_factor: int with a default value of 0
-    :param max_factor: int
-    :return: tuple of (palindrome, iterable).
-    Iterable should contain both factors of the palindrome in an arbitrary order.
-    """
+    palindromes = []
+    factors = []
 
-    pass
+    for i in range(min_factor, max_factor + 1):
+        for j in range(i, max_factor + 1):
+            product = i * j
+            if str(product) == str(product)[::-1]:
+                if not palindromes:
+                    palindromes.append(product)
+                    factors.append((i, j))
+                elif product < palindromes[0]:
+                    palindromes = [product]
+                    factors = [(i, j)]
+                elif product == palindromes[0]:
+                    factors.append((i, j))
+
+    return palindromes[0], factors
+
+def smallest(min_factor, max_factor):
+    if min_factor > max_factor:
+        raise ValueError("Invalid range")
+
+    palindromes = []
+    factors = []
+
+    for i in range(min_factor, max_factor + 1):
+        for j in range(i, max_factor + 1):
+            product = i * j
+            if str(product) == str(product)[::-1]:
+                if not palindromes:
+                    palindromes.append(product)
+                    factors.append((i, j))
+                elif product < palindromes[0]:
+                    palindromes = [product]
+                    factors = [(i, j)]
+                elif product == palindromes[0]:
+                    factors.append((i, j))
+
+    return palindromes[0], factors
