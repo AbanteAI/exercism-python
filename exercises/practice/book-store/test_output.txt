@@ -1,0 +1,62 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 20 items
+
+exercises/practice/book-store/book_store_test.py F...F..F..........F.    [100%]
+
+=================================== FAILURES ===================================
+_ BookStoreTest.test_check_that_groups_of_four_are_created_properly_even_when_there_are_more_groups_of_three_than_groups_of_five _
+
+self = <book_store_test.BookStoreTest testMethod=test_check_that_groups_of_four_are_created_properly_even_when_there_are_more_groups_of_three_than_groups_of_five>
+
+    def test_check_that_groups_of_four_are_created_properly_even_when_there_are_more_groups_of_three_than_groups_of_five(
+        self,
+    ):
+        basket = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 5, 5]
+>       self.assertEqual(total(basket), 14560)
+E       AssertionError: 14600 != 14560
+
+exercises/practice/book-store/book_store_test.py:79: AssertionError
+_ BookStoreTest.test_four_groups_of_four_are_cheaper_than_two_groups_each_of_five_and_three _
+
+self = <book_store_test.BookStoreTest testMethod=test_four_groups_of_four_are_cheaper_than_two_groups_each_of_five_and_three>
+
+    def test_four_groups_of_four_are_cheaper_than_two_groups_each_of_five_and_three(
+        self,
+    ):
+        basket = [1, 1, 2, 2, 3, 3, 4, 5, 1, 1, 2, 2, 3, 3, 4, 5]
+>       self.assertEqual(total(basket), 10240)
+E       AssertionError: 10280 != 10240
+
+exercises/practice/book-store/book_store_test.py:73: AssertionError
+_ BookStoreTest.test_one_group_of_one_and_two_plus_three_groups_of_four_is_cheaper_than_one_group_of_each_size _
+
+self = <book_store_test.BookStoreTest testMethod=test_one_group_of_one_and_two_plus_three_groups_of_four_is_cheaper_than_one_group_of_each_size>
+
+    def test_one_group_of_one_and_two_plus_three_groups_of_four_is_cheaper_than_one_group_of_each_size(
+        self,
+    ):
+        basket = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5]
+>       self.assertEqual(total(basket), 10000)
+E       AssertionError: 10040 != 10000
+
+exercises/practice/book-store/book_store_test.py:89: AssertionError
+_ BookStoreTest.test_two_groups_of_four_is_cheaper_than_groups_of_five_and_three _
+
+self = <book_store_test.BookStoreTest testMethod=test_two_groups_of_four_is_cheaper_than_groups_of_five_and_three>
+
+    def test_two_groups_of_four_is_cheaper_than_groups_of_five_and_three(self):
+        basket = [1, 1, 2, 3, 4, 4, 5, 5]
+>       self.assertEqual(total(basket), 5120)
+E       AssertionError: 5160 != 5120
+
+exercises/practice/book-store/book_store_test.py:47: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/book-store/book_store_test.py::BookStoreTest::test_check_that_groups_of_four_are_created_properly_even_when_there_are_more_groups_of_three_than_groups_of_five
+FAILED exercises/practice/book-store/book_store_test.py::BookStoreTest::test_four_groups_of_four_are_cheaper_than_two_groups_each_of_five_and_three
+FAILED exercises/practice/book-store/book_store_test.py::BookStoreTest::test_one_group_of_one_and_two_plus_three_groups_of_four_is_cheaper_than_one_group_of_each_size
+FAILED exercises/practice/book-store/book_store_test.py::BookStoreTest::test_two_groups_of_four_is_cheaper_than_groups_of_five_and_three
+========================= 4 failed, 16 passed in 0.07s =========================

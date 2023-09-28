@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 10 items
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py ..... [ 50%]
+F....                                                                    [100%]
+
+=================================== FAILURES ===================================
+______________ ResistorColorTrioTest.test_maximum_possible_value _______________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_maximum_possible_value>
+
+    def test_maximum_possible_value(self):
+>       self.assertEqual(label(["white", "white", "white"]), "99 gigaohms")
+E       AssertionError: '99000 gigaohms' != '99 gigaohms'
+E       - 99000 gigaohms
+E       ?   ---
+E       + 99 gigaohms
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_maximum_possible_value
+========================= 1 failed, 9 passed in 0.04s ==========================

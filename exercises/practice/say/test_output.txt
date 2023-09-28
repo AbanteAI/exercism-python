@@ -1,0 +1,89 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 20 items
+
+exercises/practice/say/say_test.py F......F...FFFF.....                  [100%]
+
+=================================== FAILURES ===================================
+__________________________ SayTest.test_a_big_number ___________________________
+
+self = <say_test.SayTest testMethod=test_a_big_number>
+
+    def test_a_big_number(self):
+>       self.assertEqual(
+            say(987654321123),
+            "nine hundred eighty-seven billion six hundred fifty-four million three hundred twenty-one thousand one hundred twenty-three",
+        )
+E       AssertionError: 'one hundred twenty-three billion three hu[78 chars]even' != 'nine hundred eighty-seven billion six hun[78 chars]hree'
+E       - one hundred twenty-three billion three hundred twenty-one million six hundred fifty-four thousand nine hundred eighty-seven
+E       + nine hundred eighty-seven billion six hundred fifty-four million three hundred twenty-one thousand one hundred twenty-three
+
+exercises/practice/say/say_test.py:64: AssertionError
+___________________________ SayTest.test_one_billion ___________________________
+
+self = <say_test.SayTest testMethod=test_one_billion>
+
+    def test_one_billion(self):
+>       self.assertEqual(say(1000000000), "one billion")
+E       AssertionError: 'one' != 'one billion'
+E       - one
+E       + one billion
+
+exercises/practice/say/say_test.py:61: AssertionError
+___________________________ SayTest.test_one_million ___________________________
+
+self = <say_test.SayTest testMethod=test_one_million>
+
+    def test_one_million(self):
+>       self.assertEqual(say(1000000), "one million")
+E       AssertionError: 'one' != 'one million'
+E       - one
+E       + one million
+
+exercises/practice/say/say_test.py:53: AssertionError
+________ SayTest.test_one_million_two_thousand_three_hundred_forty_five ________
+
+self = <say_test.SayTest testMethod=test_one_million_two_thousand_three_hundred_forty_five>
+
+    def test_one_million_two_thousand_three_hundred_forty_five(self):
+>       self.assertEqual(
+            say(1002345), "one million two thousand three hundred forty-five"
+        )
+E       AssertionError: 'three hundred forty-five million two thousand one' != 'one million two thousand three hundred forty-five'
+E       - three hundred forty-five million two thousand one
+E       + one million two thousand three hundred forty-five
+
+exercises/practice/say/say_test.py:56: AssertionError
+__________________________ SayTest.test_one_thousand ___________________________
+
+self = <say_test.SayTest testMethod=test_one_thousand>
+
+    def test_one_thousand(self):
+>       self.assertEqual(say(1000), "one thousand")
+E       AssertionError: 'one' != 'one thousand'
+E       - one
+E       + one thousand
+
+exercises/practice/say/say_test.py:47: AssertionError
+______________ SayTest.test_one_thousand_two_hundred_thirty_four _______________
+
+self = <say_test.SayTest testMethod=test_one_thousand_two_hundred_thirty_four>
+
+    def test_one_thousand_two_hundred_thirty_four(self):
+>       self.assertEqual(say(1234), "one thousand two hundred thirty-four")
+E       AssertionError: 'two hundred thirty-four thousand one' != 'one thousand two hundred thirty-four'
+E       - two hundred thirty-four thousand one
+E       + one thousand two hundred thirty-four
+
+exercises/practice/say/say_test.py:50: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/say/say_test.py::SayTest::test_a_big_number - Asser...
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_billion - Assert...
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_million - Assert...
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_million_two_thousand_three_hundred_forty_five
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_thousand - Asser...
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_thousand_two_hundred_thirty_four
+========================= 6 failed, 14 passed in 0.05s =========================

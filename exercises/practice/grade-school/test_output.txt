@@ -1,0 +1,236 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 20 items
+
+exercises/practice/grade-school/grade_school_test.py FFFFFFFFFFFFFFFFFFF [ 95%]
+F                                                                        [100%]
+
+=================================== FAILURES ===================================
+______________________ GradeSchoolTest.test_add_a_student ______________________
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_add_a_student>
+
+    def test_add_a_student(self):
+        school = School()
+>       school.add_student(name="Aimee", grade=2)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:21: AttributeError
+_ GradeSchoolTest.test_adding_multiple_students_in_the_same_grade_in_the_roster _
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_adding_multiple_students_in_the_same_grade_in_the_roster>
+
+    def test_adding_multiple_students_in_the_same_grade_in_the_roster(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:34: AttributeError
+___________ GradeSchoolTest.test_adding_students_in_multiple_grades ____________
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_adding_students_in_multiple_grades>
+
+    def test_adding_students_in_multiple_grades(self):
+        school = School()
+>       school.add_student(name="Chelsea", grade=3)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:70: AttributeError
+_ GradeSchoolTest.test_cannot_add_same_student_to_multiple_grades_in_the_roster _
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_cannot_add_same_student_to_multiple_grades_in_the_roster>
+
+    def test_cannot_add_same_student_to_multiple_grades_in_the_roster(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:85: AttributeError
+_ GradeSchoolTest.test_cannot_add_student_to_same_grade_in_the_roster_more_than_once _
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_cannot_add_student_to_same_grade_in_the_roster_more_than_once>
+
+    def test_cannot_add_student_to_same_grade_in_the_roster_more_than_once(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:51: AttributeError
+_______ GradeSchoolTest.test_grade_is_empty_if_no_students_in_that_grade _______
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_grade_is_empty_if_no_students_in_that_grade>
+
+    def test_grade_is_empty_if_no_students_in_that_grade(self):
+        school = School()
+>       school.add_student(name="Peter", grade=2)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:140: AttributeError
+_______ GradeSchoolTest.test_grade_is_empty_if_no_students_in_the_roster _______
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_grade_is_empty_if_no_students_in_the_roster>
+
+    def test_grade_is_empty_if_no_students_in_the_roster(self):
+        school = School()
+        expected = []
+>       self.assertEqual(school.grade(1), expected)
+E       AttributeError: 'School' object has no attribute 'grade'
+
+exercises/practice/grade-school/grade_school_test.py:136: AttributeError
+_ GradeSchoolTest.test_multiple_students_in_the_same_grade_are_added_to_the_roster _
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_multiple_students_in_the_same_grade_are_added_to_the_roster>
+
+    def test_multiple_students_in_the_same_grade_are_added_to_the_roster(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:42: AttributeError
+________ GradeSchoolTest.test_roster_is_empty_when_no_student_is_added _________
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_roster_is_empty_when_no_student_is_added>
+
+    def test_roster_is_empty_when_no_student_is_added(self):
+        school = School()
+        expected = []
+    
+>       self.assertEqual(school.roster(), expected)
+E       AttributeError: 'School' object has no attribute 'roster'
+
+exercises/practice/grade-school/grade_school_test.py:17: AttributeError
+_____________ GradeSchoolTest.test_student_is_added_to_the_roster ______________
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_student_is_added_to_the_roster>
+
+    def test_student_is_added_to_the_roster(self):
+        school = School()
+>       school.add_student(name="Aimee", grade=2)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:27: AttributeError
+__________ GradeSchoolTest.test_student_not_added_to_multiple_grades ___________
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_student_not_added_to_multiple_grades>
+
+    def test_student_not_added_to_multiple_grades(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:158: AttributeError
+___ GradeSchoolTest.test_student_not_added_to_multiple_grades_in_the_roster ____
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_student_not_added_to_multiple_grades_in_the_roster>
+
+    def test_student_not_added_to_multiple_grades_in_the_roster(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:94: AttributeError
+__ GradeSchoolTest.test_student_not_added_to_other_grade_for_multiple_grades ___
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_student_not_added_to_other_grade_for_multiple_grades>
+
+    def test_student_not_added_to_other_grade_for_multiple_grades(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:167: AttributeError
+_ GradeSchoolTest.test_student_not_added_to_same_grade_in_the_roster_more_than_once _
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_student_not_added_to_same_grade_in_the_roster_more_than_once>
+
+    def test_student_not_added_to_same_grade_in_the_roster_more_than_once(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:60: AttributeError
+_____ GradeSchoolTest.test_student_not_added_to_same_grade_more_than_once ______
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_student_not_added_to_same_grade_more_than_once>
+
+    def test_student_not_added_to_same_grade_more_than_once(self):
+        school = School()
+>       school.add_student(name="Blair", grade=2)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:149: AttributeError
+_ GradeSchoolTest.test_students_are_sorted_by_grades_and_then_by_name_in_the_roster _
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_students_are_sorted_by_grades_and_then_by_name_in_the_roster>
+
+    def test_students_are_sorted_by_grades_and_then_by_name_in_the_roster(self):
+        school = School()
+>       school.add_student(name="Peter", grade=2)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:122: AttributeError
+_______ GradeSchoolTest.test_students_are_sorted_by_grades_in_the_roster _______
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_students_are_sorted_by_grades_in_the_roster>
+
+    def test_students_are_sorted_by_grades_in_the_roster(self):
+        school = School()
+>       school.add_student(name="Jim", grade=3)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:104: AttributeError
+_________ GradeSchoolTest.test_students_are_sorted_by_name_in_a_grade __________
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_students_are_sorted_by_name_in_a_grade>
+
+    def test_students_are_sorted_by_name_in_a_grade(self):
+        school = School()
+>       school.add_student(name="Franklin", grade=5)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:176: AttributeError
+________ GradeSchoolTest.test_students_are_sorted_by_name_in_the_roster ________
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_students_are_sorted_by_name_in_the_roster>
+
+    def test_students_are_sorted_by_name_in_the_roster(self):
+        school = School()
+>       school.add_student(name="Peter", grade=2)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:113: AttributeError
+___ GradeSchoolTest.test_students_in_multiple_grades_are_added_to_the_roster ___
+
+self = <grade_school_test.GradeSchoolTest testMethod=test_students_in_multiple_grades_are_added_to_the_roster>
+
+    def test_students_in_multiple_grades_are_added_to_the_roster(self):
+        school = School()
+>       school.add_student(name="Chelsea", grade=3)
+E       AttributeError: 'School' object has no attribute 'add_student'
+
+exercises/practice/grade-school/grade_school_test.py:77: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_add_a_student
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_adding_multiple_students_in_the_same_grade_in_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_adding_students_in_multiple_grades
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_cannot_add_same_student_to_multiple_grades_in_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_cannot_add_student_to_same_grade_in_the_roster_more_than_once
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_grade_is_empty_if_no_students_in_that_grade
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_grade_is_empty_if_no_students_in_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_multiple_students_in_the_same_grade_are_added_to_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_roster_is_empty_when_no_student_is_added
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_student_is_added_to_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_student_not_added_to_multiple_grades
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_student_not_added_to_multiple_grades_in_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_student_not_added_to_other_grade_for_multiple_grades
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_student_not_added_to_same_grade_in_the_roster_more_than_once
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_student_not_added_to_same_grade_more_than_once
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_students_are_sorted_by_grades_and_then_by_name_in_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_students_are_sorted_by_grades_in_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_students_are_sorted_by_name_in_a_grade
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_students_are_sorted_by_name_in_the_roster
+FAILED exercises/practice/grade-school/grade_school_test.py::GradeSchoolTest::test_students_in_multiple_grades_are_added_to_the_roster
+============================== 20 failed in 0.14s ==============================

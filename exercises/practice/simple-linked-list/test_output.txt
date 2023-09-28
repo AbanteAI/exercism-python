@@ -1,0 +1,46 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 20 items
+
+exercises/practice/simple-linked-list/simple_linked_list_test.py ....... [ 35%]
+......FFF....                                                            [100%]
+
+=================================== FAILURES ===================================
+_______________ SimpleLinkedListTest.test_reverse_non_empty_list _______________
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_reverse_non_empty_list>
+
+    def test_reverse_non_empty_list(self):
+        sut = LinkedList([1, 2, 3])
+>       self.assertEqual(list(sut.reversed()), [1, 2, 3])
+E       AttributeError: 'LinkedList' object has no attribute 'reversed'
+
+exercises/practice/simple-linked-list/simple_linked_list_test.py:114: AttributeError
+_________ SimpleLinkedListTest.test_reversed_empty_list_is_empty_list __________
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_reversed_empty_list_is_empty_list>
+
+    def test_reversed_empty_list_is_empty_list(self):
+        sut = LinkedList([])
+>       self.assertEqual(list(sut.reversed()), [])
+E       AttributeError: 'LinkedList' object has no attribute 'reversed'
+
+exercises/practice/simple-linked-list/simple_linked_list_test.py:106: AttributeError
+________ SimpleLinkedListTest.test_reversed_singleton_list_is_same_list ________
+
+self = <simple_linked_list_test.SimpleLinkedListTest testMethod=test_reversed_singleton_list_is_same_list>
+
+    def test_reversed_singleton_list_is_same_list(self):
+        sut = LinkedList([1])
+>       self.assertEqual(list(sut.reversed()), [1])
+E       AttributeError: 'LinkedList' object has no attribute 'reversed'
+
+exercises/practice/simple-linked-list/simple_linked_list_test.py:110: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_reverse_non_empty_list
+FAILED exercises/practice/simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_reversed_empty_list_is_empty_list
+FAILED exercises/practice/simple-linked-list/simple_linked_list_test.py::SimpleLinkedListTest::test_reversed_singleton_list_is_same_list
+========================= 3 failed, 17 passed in 0.05s =========================

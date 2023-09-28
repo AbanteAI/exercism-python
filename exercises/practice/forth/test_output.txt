@@ -1,0 +1,237 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 48 items
+
+exercises/practice/forth/forth_test.py ...F............F....F........F.. [ 68%]
+......FFF.FFFF.                                                          [100%]
+
+=================================== FAILURES ===================================
+______ ForthTest.test_case_insensitivity_definitions_are_case_insensitive ______
+
+self = <forth_test.ForthTest testMethod=test_case_insensitivity_definitions_are_case_insensitive>
+
+    def test_case_insensitivity_definitions_are_case_insensitive(self):
+>       self.assertEqual(evaluate([": SWAP DUP Dup dup ;", "1 swap"]), [1, 1, 1, 1])
+
+exercises/practice/forth/forth_test.py:245: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/forth/forth.py:70: in evaluate
+    process_token(token)
+exercises/practice/forth/forth.py:49: in process_token
+    apply_stack_manipulation(token.upper())
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'SWAP'
+
+    def apply_stack_manipulation(operation):
+        if operation == "DUP":
+            if not stack:
+                raise StackUnderflowError("Empty stack")
+            stack.append(stack[-1])
+        elif operation == "DROP":
+            if not stack:
+                raise StackUnderflowError("Empty stack")
+            stack.pop()
+        elif operation == "SWAP":
+            if len(stack) < 2:
+>               raise StackUnderflowError("Insufficient number of items in stack")
+E               forth.StackUnderflowError: Insufficient number of items in stack
+
+exercises/practice/forth/forth.py:36: StackUnderflowError
+_________ ForthTest.test_drop_errors_if_there_is_nothing_on_the_stack __________
+
+self = <forth_test.ForthTest testMethod=test_drop_errors_if_there_is_nothing_on_the_stack>
+
+    def test_drop_errors_if_there_is_nothing_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["drop"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: 'Empty stack' != 'Insufficient number of items in stack'
+E       - Empty stack
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:136: AssertionError
+__________ ForthTest.test_dup_errors_if_there_is_nothing_on_the_stack __________
+
+self = <forth_test.ForthTest testMethod=test_dup_errors_if_there_is_nothing_on_the_stack>
+
+    def test_dup_errors_if_there_is_nothing_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["dup"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: 'Empty stack' != 'Insufficient number of items in stack'
+E       - Empty stack
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:122: AssertionError
+__ ForthTest.test_parsing_and_numbers_pushes_negative_numbers_onto_the_stack ___
+
+self = <forth_test.ForthTest testMethod=test_parsing_and_numbers_pushes_negative_numbers_onto_the_stack>
+
+    def test_parsing_and_numbers_pushes_negative_numbers_onto_the_stack(self):
+>       self.assertEqual(evaluate(["-1 -2 -3 -4 -5"]), [-1, -2, -3, -4, -5])
+
+exercises/practice/forth/forth_test.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/forth/forth.py:70: in evaluate
+    process_token(token)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+token = '-1'
+
+    def process_token(token):
+        if token.isdigit():
+            stack.append(int(token))
+        elif token.upper() in {"+", "-", "*", "/"}:
+            apply_operation(token.upper())
+        elif token.upper() in {"DUP", "DROP", "SWAP", "OVER"}:
+            apply_stack_manipulation(token.upper())
+        elif token.upper() in definitions:
+            for definition_token in definitions[token.upper()]:
+                process_token(definition_token)
+        else:
+>           raise ValueError(f"undefined operation: {token}")
+E           ValueError: undefined operation: -1
+
+exercises/practice/forth/forth.py:54: ValueError
+_ ForthTest.test_user_defined_words_can_define_word_that_uses_word_with_the_same_name _
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_define_word_that_uses_word_with_the_same_name>
+
+    def test_user_defined_words_can_define_word_that_uses_word_with_the_same_name(self):
+>       self.assertEqual(evaluate([": foo 10 ;", ": foo foo 1 + ;", "foo"]), [11])
+
+exercises/practice/forth/forth_test.py:209: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/forth/forth.py:70: in evaluate
+    process_token(token)
+exercises/practice/forth/forth.py:52: in process_token
+    process_token(definition_token)
+exercises/practice/forth/forth.py:52: in process_token
+    process_token(definition_token)
+E   RecursionError: maximum recursion depth exceeded while calling a Python object
+!!! Recursion detected (same locals & position)
+______ ForthTest.test_user_defined_words_can_override_built_in_operators _______
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_override_built_in_operators>
+
+    def test_user_defined_words_can_override_built_in_operators(self):
+>       self.assertEqual(evaluate([": + * ;", "3 4 +"]), [12])
+E       AssertionError: Lists differ: [7] != [12]
+E       
+E       First differing element 0:
+E       7
+E       12
+E       
+E       - [7]
+E       + [12]
+
+exercises/practice/forth/forth_test.py:201: AssertionError
+________ ForthTest.test_user_defined_words_can_override_built_in_words _________
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_override_built_in_words>
+
+    def test_user_defined_words_can_override_built_in_words(self):
+>       self.assertEqual(evaluate([": swap dup ;", "1 swap"]), [1, 1])
+
+exercises/practice/forth/forth_test.py:198: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/forth/forth.py:70: in evaluate
+    process_token(token)
+exercises/practice/forth/forth.py:49: in process_token
+    apply_stack_manipulation(token.upper())
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+operation = 'SWAP'
+
+    def apply_stack_manipulation(operation):
+        if operation == "DUP":
+            if not stack:
+                raise StackUnderflowError("Empty stack")
+            stack.append(stack[-1])
+        elif operation == "DROP":
+            if not stack:
+                raise StackUnderflowError("Empty stack")
+            stack.pop()
+        elif operation == "SWAP":
+            if len(stack) < 2:
+>               raise StackUnderflowError("Insufficient number of items in stack")
+E               forth.StackUnderflowError: Insufficient number of items in stack
+
+exercises/practice/forth/forth.py:36: StackUnderflowError
+_ ForthTest.test_user_defined_words_can_use_different_words_with_the_same_name _
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_use_different_words_with_the_same_name>
+
+    def test_user_defined_words_can_use_different_words_with_the_same_name(self):
+>       self.assertEqual(
+            evaluate([": foo 5 ;", ": bar foo ;", ": foo 6 ;", "bar foo"]), [5, 6]
+        )
+E       AssertionError: Lists differ: [6, 6] != [5, 6]
+E       
+E       First differing element 0:
+E       6
+E       5
+E       
+E       - [6, 6]
+E       ?  ^
+E       
+E       + [5, 6]
+E       ?  ^
+
+exercises/practice/forth/forth_test.py:204: AssertionError
+______ ForthTest.test_user_defined_words_cannot_redefine_negative_numbers ______
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_cannot_redefine_negative_numbers>
+
+    def test_user_defined_words_cannot_redefine_negative_numbers(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/forth/forth_test.py:218: AssertionError
+____ ForthTest.test_user_defined_words_cannot_redefine_non_negative_numbers ____
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_cannot_redefine_non_negative_numbers>
+
+    def test_user_defined_words_cannot_redefine_non_negative_numbers(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/forth/forth_test.py:212: AssertionError
+__ ForthTest.test_user_defined_words_errors_if_executing_a_non_existent_word ___
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_errors_if_executing_a_non_existent_word>
+
+    def test_user_defined_words_errors_if_executing_a_non_existent_word(self):
+        with self.assertRaises(ValueError) as err:
+            evaluate(["foo"])
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(str(err.exception.args[0]), "undefined operation")
+E       AssertionError: 'undefined operation: foo' != 'undefined operation'
+E       - undefined operation: foo
+E       ?                    -----
+E       + undefined operation
+
+exercises/practice/forth/forth_test.py:227: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_case_insensitivity_definitions_are_case_insensitive
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_drop_errors_if_there_is_nothing_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_dup_errors_if_there_is_nothing_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_parsing_and_numbers_pushes_negative_numbers_onto_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_define_word_that_uses_word_with_the_same_name
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_override_built_in_operators
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_override_built_in_words
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_use_different_words_with_the_same_name
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_cannot_redefine_negative_numbers
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_cannot_redefine_non_negative_numbers
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_errors_if_executing_a_non_existent_word
+======================== 11 failed, 37 passed in 0.15s =========================

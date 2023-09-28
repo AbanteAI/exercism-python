@@ -1,0 +1,137 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 17 items
+
+exercises/practice/word-count/word_count_test.py ..........F.FF.FF       [100%]
+
+=================================== FAILURES ===================================
+_____________________ WordCountTest.test_non_alphanumeric ______________________
+
+self = <word_count_test.WordCountTest testMethod=test_non_alphanumeric>
+
+    def test_non_alphanumeric(self):
+>       self.assertEqual(
+            count_words("hey,my_spacebar_is_broken"),
+            {"hey": 1, "my": 1, "spacebar": 1, "is": 1, "broken": 1},
+        )
+E       AssertionError: {'hey': 1, 'my_spacebar_is_broken': 1} != {'hey': 1, 'my': 1, 'spacebar': 1, 'is': 1, 'broken': 1}
+E       - {'hey': 1, 'my_spacebar_is_broken': 1}
+E       + {'broken': 1, 'hey': 1, 'is': 1, 'my': 1, 'spacebar': 1}
+
+exercises/practice/word-count/word_count_test.py:119: AssertionError
+____________ WordCountTest.test_quotation_for_word_with_apostrophe _____________
+
+self = <word_count_test.WordCountTest testMethod=test_quotation_for_word_with_apostrophe>
+
+    def test_quotation_for_word_with_apostrophe(self):
+>       self.assertEqual(count_words("can, can't, 'can't'"), {"can": 1, "can't": 2})
+E       AssertionError: {'can': 3, 't': 2} != {'can': 1, "can't": 2}
+E       - {'can': 3, 't': 2}
+E       ?         ^    ^
+E       
+E       + {'can': 1, "can't": 2}
+E       ?         ^  ++++  ^
+
+exercises/practice/word-count/word_count_test.py:94: AssertionError
+_______________ WordCountTest.test_substrings_from_the_beginning _______________
+
+self = <word_count_test.WordCountTest testMethod=test_substrings_from_the_beginning>
+
+    def test_substrings_from_the_beginning(self):
+>       self.assertEqual(
+            count_words("Joe can't tell between app, apple and a."),
+            {
+                "joe": 1,
+                "can't": 1,
+                "tell": 1,
+                "between": 1,
+                "app": 1,
+                "apple": 1,
+                "and": 1,
+                "a": 1,
+            },
+        )
+E       AssertionError: {'joe': 1, 'can': 1, 't': 1, 'tell': 1, 'between': 1[36 chars]': 1} != {'joe': 1, "can't": 1, 'tell': 1, 'between': 1, 'app[30 chars]': 1}
+E         {'a': 1,
+E          'and': 1,
+E          'app': 1,
+E          'apple': 1,
+E          'between': 1,
+E       -  'can': 1,
+E       ?  ^
+E       
+E       +  "can't": 1,
+E       ?  ^    ++
+E       
+E          'joe': 1,
+E       -  't': 1,
+E          'tell': 1}
+
+exercises/practice/word-count/word_count_test.py:69: AssertionError
+_____________________ WordCountTest.test_with_apostrophes ______________________
+
+self = <word_count_test.WordCountTest testMethod=test_with_apostrophes>
+
+    def test_with_apostrophes(self):
+>       self.assertEqual(
+            count_words("'First: don't laugh. Then: don't cry. You're getting it.'"),
+            {
+                "first": 1,
+                "don't": 2,
+                "laugh": 1,
+                "then": 1,
+                "cry": 1,
+                "you're": 1,
+                "getting": 1,
+                "it": 1,
+            },
+        )
+E       AssertionError: {'first': 1, 'don': 2, 't': 2, 'laugh': 1, 'then': 1, [46 chars]': 1} != {'first': 1, "don't": 2, 'laugh': 1, 'then': 1, 'cry':[34 chars]': 1}
+E         {'cry': 1,
+E       -  'don': 2,
+E       ?  ^
+E       
+E       +  "don't": 2,
+E       ?  ^    ++
+E       
+E          'first': 1,
+E          'getting': 1,
+E          'it': 1,
+E          'laugh': 1,
+E       -  're': 1,
+E       -  't': 2,
+E          'then': 1,
+E       -  'you': 1}
+E       ?  ^
+E       
+E       +  "you're": 1}
+E       ?  ^    +++
+
+exercises/practice/word-count/word_count_test.py:48: AssertionError
+______________________ WordCountTest.test_with_quotations ______________________
+
+self = <word_count_test.WordCountTest testMethod=test_with_quotations>
+
+    def test_with_quotations(self):
+>       self.assertEqual(
+            count_words("Joe can't tell between 'large' and large."),
+            {"joe": 1, "can't": 1, "tell": 1, "between": 1, "large": 2, "and": 1},
+        )
+E       AssertionError: {'joe': 1, 'can': 1, 't': 1, 'tell': 1, 'between': 1, 'large': 2, 'and': 1} != {'joe': 1, "can't": 1, 'tell': 1, 'between': 1, 'large': 2, 'and': 1}
+E       - {'and': 1, 'between': 1, 'can': 1, 'joe': 1, 'large': 2, 't': 1, 'tell': 1}
+E       ?                          ^                              --------
+E       
+E       + {'and': 1, 'between': 1, "can't": 1, 'joe': 1, 'large': 2, 'tell': 1}
+E       ?                          ^    ++
+
+exercises/practice/word-count/word_count_test.py:63: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_non_alphanumeric
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_quotation_for_word_with_apostrophe
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_substrings_from_the_beginning
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_with_apostrophes
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_with_quotations
+========================= 5 failed, 12 passed in 0.05s =========================

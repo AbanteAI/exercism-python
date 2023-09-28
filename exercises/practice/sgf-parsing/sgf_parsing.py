@@ -25,5 +25,38 @@ class SgfTree:
         return not self == other
 
 
+import re
+
 def parse(input_string):
-    pass
+    if not input_string.startswith('(') or not input_string.endswith(')'):
+        raise ValueError("tree missing")
+
+    input_string = input_string[1:-1].strip()
+
+    if not input_string.startswith(';'):
+        raise ValueError("tree with no nodes")
+
+    input_string = input_string[1:]
+
+    properties_pattern = re.compile(r'([A-Za-z]+)\[((?:\\\\|\\\]|[^]])+)\]')
+    properties = {}
+    children = []
+
+    while input_string:
+        match = properties_pattern.match(input_string)
+        if not match:
+            raise ValueError("properties without delimiter")
+
+        key, value = match.groups()
+
+        if not key.isupper():
+            raise ValueError("property must be in uppercase")
+
+        if key not in properties:
+            properties[key] = []
+
+        value = value.replace('\\\n', '').replace('\\]', ']').replace('\\\\', '\\').replace('\n', '\\n').replace('  ', ' ')
+        properties[key].append(value)
+        input_string = input_string[match.end():].strip()
+
+    return SgfTree(properties, children)

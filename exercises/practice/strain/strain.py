@@ -1,6 +1,6 @@
 def keep(sequence, predicate):
-    pass
+    return [x for x in sequence if predicate(x)]
 
 
 def discard(sequence, predicate):
-    pass
+    return [x for x in sequence if not predicate(x)]

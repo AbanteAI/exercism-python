@@ -1,0 +1,150 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 8 items
+
+exercises/practice/crypto-square/crypto_square_test.py FFFFFFFF          [100%]
+
+=================================== FAILURES ===================================
+_ CryptoSquareTest.test_54_character_plaintext_results_in_7_chunks_the_last_two_with_trailing_spaces _
+
+self = <crypto_square_test.CryptoSquareTest testMethod=test_54_character_plaintext_results_in_7_chunks_the_last_two_with_trailing_spaces>
+
+    def test_54_character_plaintext_results_in_7_chunks_the_last_two_with_trailing_spaces(
+        self,
+    ):
+        value = "If man was meant to stay on the ground, god would have given us roots."
+        expected = "imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau "
+>       self.assertEqual(cipher_text(value), expected)
+E       AssertionError: None != 'imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau '
+
+exercises/practice/crypto-square/crypto_square_test.py:55: AssertionError
+_ CryptoSquareTest.test_8_character_plaintext_results_in_3_chunks_the_last_one_with_a_trailing_space _
+
+self = <crypto_square_test.CryptoSquareTest testMethod=test_8_character_plaintext_results_in_3_chunks_the_last_one_with_a_trailing_space>
+
+    def test_8_character_plaintext_results_in_3_chunks_the_last_one_with_a_trailing_space(
+        self,
+    ):
+        value = "Chill out."
+        expected = "clu hlt io "
+>       self.assertEqual(cipher_text(value), expected)
+E       AssertionError: None != 'clu hlt io '
+
+exercises/practice/crypto-square/crypto_square_test.py:48: AssertionError
+_ CryptoSquareTest.test_9_character_plaintext_results_in_3_chunks_of_3_characters _
+
+self = <crypto_square_test.CryptoSquareTest testMethod=test_9_character_plaintext_results_in_3_chunks_of_3_characters>
+
+    def test_9_character_plaintext_results_in_3_chunks_of_3_characters(self):
+        value = "This is fun!"
+        expected = "tsf hiu isn"
+>       self.assertEqual(cipher_text(value), expected)
+E       AssertionError: None != 'tsf hiu isn'
+
+exercises/practice/crypto-square/crypto_square_test.py:41: AssertionError
+_____ CryptoSquareTest.test_empty_plaintext_results_in_an_empty_ciphertext _____
+
+self = <crypto_square_test.CryptoSquareTest testMethod=test_empty_plaintext_results_in_an_empty_ciphertext>
+
+    def test_empty_plaintext_results_in_an_empty_ciphertext(self):
+        value = ""
+        expected = ""
+>       self.assertEqual(cipher_text(value), expected)
+
+exercises/practice/crypto-square/crypto_square_test.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+plain_text = ''
+
+    def cipher_text(plain_text):
+        # Step 1: Normalize the input text
+        normalized_text = re.sub(r'\W+', '', plain_text).lower()
+    
+        # Step 2: Determine the number of rows and columns for the rectangle
+        length = len(normalized_text)
+        c = int(math.ceil(math.sqrt(length)))
+        r = int(math.floor(math.sqrt(length)))
+        if r * c < length:
+            r += 1
+    
+        # Step 3: Organize the normalized text into a rectangle
+>       rectangle = [normalized_text[i:i+c] for i in range(0, length, c)]
+E       ValueError: range() arg 3 must not be zero
+
+exercises/practice/crypto-square/crypto_square.py:16: ValueError
+_______________________ CryptoSquareTest.test_lowercase ________________________
+
+self = <crypto_square_test.CryptoSquareTest testMethod=test_lowercase>
+
+    def test_lowercase(self):
+        value = "A"
+        expected = "a"
+>       self.assertEqual(cipher_text(value), expected)
+E       AssertionError: None != 'a'
+
+exercises/practice/crypto-square/crypto_square_test.py:26: AssertionError
+________ CryptoSquareTest.test_normalization_results_in_empty_plaintext ________
+
+self = <crypto_square_test.CryptoSquareTest testMethod=test_normalization_results_in_empty_plaintext>
+
+    def test_normalization_results_in_empty_plaintext(self):
+        value = "... --- ..."
+        expected = ""
+>       self.assertEqual(cipher_text(value), expected)
+
+exercises/practice/crypto-square/crypto_square_test.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+plain_text = '... --- ...'
+
+    def cipher_text(plain_text):
+        # Step 1: Normalize the input text
+        normalized_text = re.sub(r'\W+', '', plain_text).lower()
+    
+        # Step 2: Determine the number of rows and columns for the rectangle
+        length = len(normalized_text)
+        c = int(math.ceil(math.sqrt(length)))
+        r = int(math.floor(math.sqrt(length)))
+        if r * c < length:
+            r += 1
+    
+        # Step 3: Organize the normalized text into a rectangle
+>       rectangle = [normalized_text[i:i+c] for i in range(0, length, c)]
+E       ValueError: range() arg 3 must not be zero
+
+exercises/practice/crypto-square/crypto_square.py:16: ValueError
+___________________ CryptoSquareTest.test_remove_punctuation ___________________
+
+self = <crypto_square_test.CryptoSquareTest testMethod=test_remove_punctuation>
+
+    def test_remove_punctuation(self):
+        value = "@1,%!"
+        expected = "1"
+>       self.assertEqual(cipher_text(value), expected)
+E       AssertionError: None != '1'
+
+exercises/practice/crypto-square/crypto_square_test.py:36: AssertionError
+_____________________ CryptoSquareTest.test_remove_spaces ______________________
+
+self = <crypto_square_test.CryptoSquareTest testMethod=test_remove_spaces>
+
+    def test_remove_spaces(self):
+        value = "  b "
+        expected = "b"
+>       self.assertEqual(cipher_text(value), expected)
+E       AssertionError: None != 'b'
+
+exercises/practice/crypto-square/crypto_square_test.py:31: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/crypto-square/crypto_square_test.py::CryptoSquareTest::test_54_character_plaintext_results_in_7_chunks_the_last_two_with_trailing_spaces
+FAILED exercises/practice/crypto-square/crypto_square_test.py::CryptoSquareTest::test_8_character_plaintext_results_in_3_chunks_the_last_one_with_a_trailing_space
+FAILED exercises/practice/crypto-square/crypto_square_test.py::CryptoSquareTest::test_9_character_plaintext_results_in_3_chunks_of_3_characters
+FAILED exercises/practice/crypto-square/crypto_square_test.py::CryptoSquareTest::test_empty_plaintext_results_in_an_empty_ciphertext
+FAILED exercises/practice/crypto-square/crypto_square_test.py::CryptoSquareTest::test_lowercase
+FAILED exercises/practice/crypto-square/crypto_square_test.py::CryptoSquareTest::test_normalization_results_in_empty_plaintext
+FAILED exercises/practice/crypto-square/crypto_square_test.py::CryptoSquareTest::test_remove_punctuation
+FAILED exercises/practice/crypto-square/crypto_square_test.py::CryptoSquareTest::test_remove_spaces
+============================== 8 failed in 0.04s ===============================

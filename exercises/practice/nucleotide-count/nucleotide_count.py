@@ -1,6 +1,10 @@
 def count(strand, nucleotide):
-    pass
+    if nucleotide not in "ACGT":
+        raise ValueError("Invalid nucleotide")
+    return strand.count(nucleotide)
 
 
 def nucleotide_counts(strand):
-    pass
+    if any(c not in "ACGT" for c in strand):
+        raise ValueError("Invalid DNA sequence")
+    return {nucleotide: count(strand, nucleotide) for nucleotide in "ACGT"}

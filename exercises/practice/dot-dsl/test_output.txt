@@ -1,0 +1,127 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 12 items
+
+exercises/practice/dot-dsl/dot_dsl_test.py .......FFFFF                  [100%]
+
+=================================== FAILURES ===================================
+________________________ DotDslTest.test_malformed_attr ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_attr>
+
+    def test_malformed_attr(self):
+        with self.assertRaises(ValueError) as err:
+            Graph([(ATTR, 1, 2, 3)])
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "Attribute is malformed")
+E       AssertionError: 'too many values to unpack (expected 2)' != 'Attribute is malformed'
+E       - too many values to unpack (expected 2)
+E       + Attribute is malformed
+
+exercises/practice/dot-dsl/dot_dsl_test.py:101: AssertionError
+_______________________ DotDslTest.test_malformed_graph ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_graph>
+
+    def test_malformed_graph(self):
+        with self.assertRaises(TypeError) as err:
+            Graph(1)
+        self.assertEqual(type(err.exception), TypeError)
+>       self.assertEqual(err.exception.args[0], "Graph data malformed")
+E       AssertionError: "'int' object is not iterable" != 'Graph data malformed'
+E       - 'int' object is not iterable
+E       + Graph data malformed
+
+exercises/practice/dot-dsl/dot_dsl_test.py:77: AssertionError
+_____________________ DotDslTest.test_malformed_graph_item _____________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_graph_item>
+
+    def test_malformed_graph_item(self):
+        with self.assertRaises(TypeError) as err:
+>           Graph([()])
+
+exercises/practice/dot-dsl/dot_dsl_test.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def __init__(self, data=None):
+        if data is None:
+            data = []
+    
+        self.nodes = []
+        self.edges = []
+        self.attrs = {}
+    
+        for item in data:
+            if len(item) < 2:
+>               raise ValueError("Item malformed")
+E               ValueError: Item malformed
+
+exercises/practice/dot-dsl/dot_dsl.py:36: ValueError
+________________________ DotDslTest.test_malformed_node ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_node>
+
+    def test_malformed_node(self):
+        with self.assertRaises(ValueError) as err:
+            Graph([(NODE, 1, 2, 3)])
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "Node is malformed")
+E       AssertionError: 'NODE malformed' != 'Node is malformed'
+E       - NODE malformed
+E       + Node is malformed
+
+exercises/practice/dot-dsl/dot_dsl_test.py:108: AssertionError
+_________________________ DotDslTest.test_unknown_item _________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_unknown_item>
+
+    def test_unknown_item(self):
+        with self.assertRaises(ValueError) as err:
+>           Graph([(99, 1, 2)])
+
+exercises/practice/dot-dsl/dot_dsl_test.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def __init__(self, data=None):
+        if data is None:
+            data = []
+    
+        self.nodes = []
+        self.edges = []
+        self.attrs = {}
+    
+        for item in data:
+            if len(item) < 2:
+                raise ValueError("Item malformed")
+    
+            item_type, item_data = item[0], item[1:]
+    
+            if item_type == NODE:
+                if len(item_data) != 2:
+                    raise ValueError("NODE malformed")
+                name, attrs = item_data
+                self.nodes.append(Node(name, attrs))
+            elif item_type == EDGE:
+                if len(item_data) != 3:
+                    raise ValueError("Edge is malformed")
+                src, dst, attrs = item_data
+                self.edges.append(Edge(src, dst, attrs))
+            elif item_type == ATTR:
+                key, value = item_data
+                self.attrs[key] = value
+            else:
+>               raise TypeError("Graph data malformed")
+E               TypeError: Graph data malformed
+
+exercises/practice/dot-dsl/dot_dsl.py:54: TypeError
+=========================== short test summary info ============================
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_attr
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_graph
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_graph_item
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_node
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_unknown_item
+========================= 5 failed, 7 passed in 0.05s ==========================

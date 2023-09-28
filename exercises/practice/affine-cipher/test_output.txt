@@ -1,0 +1,93 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 16 items
+
+exercises/practice/affine-cipher/affine_cipher_test.py FFFFFFF.........  [100%]
+
+=================================== FAILURES ===================================
+___________________ AffineCipherTest.test_decode_a_sentence ____________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_a_sentence>
+
+    def test_decode_a_sentence(self):
+>       self.assertEqual(
+            decode("qdwju nqcro muwhn odqun oppmd aunwd o", 19, 16),
+            "anobstacleisoftenasteppingstone",
+        )
+E       AssertionError: None != 'anobstacleisoftenasteppingstone'
+
+exercises/practice/affine-cipher/affine_cipher_test.py:53: AssertionError
+_________________ AffineCipherTest.test_decode_all_the_letters _________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_all_the_letters>
+
+    def test_decode_all_the_letters(self):
+>       self.assertEqual(
+            decode("swxtj npvyk lruol iejdc blaxk swxmh qzglf", 17, 33),
+            "thequickbrownfoxjumpsoverthelazydog",
+        )
+E       AssertionError: None != 'thequickbrownfoxjumpsoverthelazydog'
+
+exercises/practice/affine-cipher/affine_cipher_test.py:62: AssertionError
+____________________ AffineCipherTest.test_decode_exercism _____________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_exercism>
+
+    def test_decode_exercism(self):
+>       self.assertEqual(decode("tytgn fjr", 3, 7), "exercism")
+E       AssertionError: None != 'exercism'
+
+exercises/practice/affine-cipher/affine_cipher_test.py:50: AssertionError
+_____________________ AffineCipherTest.test_decode_numbers _____________________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_numbers>
+
+    def test_decode_numbers(self):
+>       self.assertEqual(decode("odpoz ub123 odpoz ub", 25, 7), "testing123testing")
+E       AssertionError: None != 'testing123testing'
+
+exercises/practice/affine-cipher/affine_cipher_test.py:59: AssertionError
+_____________ AffineCipherTest.test_decode_with_a_not_coprime_to_m _____________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_with_a_not_coprime_to_m>
+
+    def test_decode_with_a_not_coprime_to_m(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/affine-cipher/affine_cipher_test.py:79: AssertionError
+_____________ AffineCipherTest.test_decode_with_no_spaces_in_input _____________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_with_no_spaces_in_input>
+
+    def test_decode_with_no_spaces_in_input(self):
+>       self.assertEqual(
+            decode("swxtjnpvyklruoliejdcblaxkswxmhqzglf", 17, 33),
+            "thequickbrownfoxjumpsoverthelazydog",
+        )
+E       AssertionError: None != 'thequickbrownfoxjumpsoverthelazydog'
+
+exercises/practice/affine-cipher/affine_cipher_test.py:68: AssertionError
+______________ AffineCipherTest.test_decode_with_too_many_spaces _______________
+
+self = <affine_cipher_test.AffineCipherTest testMethod=test_decode_with_too_many_spaces>
+
+    def test_decode_with_too_many_spaces(self):
+>       self.assertEqual(
+            decode("vszzm    cly   yd cg    qdp", 15, 16), "jollygreengiant"
+        )
+E       AssertionError: None != 'jollygreengiant'
+
+exercises/practice/affine-cipher/affine_cipher_test.py:74: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_a_sentence
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_all_the_letters
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_exercism
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_numbers
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_with_a_not_coprime_to_m
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_with_no_spaces_in_input
+FAILED exercises/practice/affine-cipher/affine_cipher_test.py::AffineCipherTest::test_decode_with_too_many_spaces
+========================= 7 failed, 9 passed in 0.05s ==========================

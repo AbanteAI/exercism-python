@@ -1,0 +1,40 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 11 items
+
+exercises/practice/go-counting/go_counting_test.py F......F...           [100%]
+
+=================================== FAILURES ===================================
+_________ GoCountingTest.test_a_stone_and_not_a_territory_on_5x5_board _________
+
+self = <go_counting_test.GoCountingTest testMethod=test_a_stone_and_not_a_territory_on_5x5_board>
+
+    def test_a_stone_and_not_a_territory_on_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+        stone, territory = board.territory(x=1, y=1)
+>       self.assertEqual(stone, NONE)
+E       AssertionError: 'B' != ''
+E       - B
+E       +
+
+exercises/practice/go-counting/go_counting_test.py:37: AssertionError
+____________ GoCountingTest.test_open_corner_territory_on_5x5_board ____________
+
+self = <go_counting_test.GoCountingTest testMethod=test_open_corner_territory_on_5x5_board>
+
+    def test_open_corner_territory_on_5x5_board(self):
+        board = Board(["  B  ", " B B ", "B W B", " W W ", "  W  "])
+        stone, territory = board.territory(x=1, y=4)
+>       self.assertEqual(stone, NONE)
+E       AssertionError: 'W' != ''
+E       - W
+E       +
+
+exercises/practice/go-counting/go_counting_test.py:31: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_a_stone_and_not_a_territory_on_5x5_board
+FAILED exercises/practice/go-counting/go_counting_test.py::GoCountingTest::test_open_corner_territory_on_5x5_board
+========================= 2 failed, 9 passed in 0.04s ==========================

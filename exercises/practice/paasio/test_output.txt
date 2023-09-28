@@ -1,0 +1,703 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 25 items
+
+exercises/practice/paasio/paasio_test.py FFFFFFFFFFFFFFFFFFFFFFFFF       [100%]
+
+=================================== FAILURES ===================================
+_________________ PaasioTest.test_meteredfile_context_manager __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_context_manager>
+super_mock = <SuperMock at 0x7f8d877381c0 with mock object: <NonCallableMagicMock id='140245839610736'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_context_manager(self, super_mock):
+        wrapped = MockFile(ZEN)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+E       TypeError: BufferedRandom() missing required argument 'raw' (pos 1)
+
+exercises/practice/paasio/paasio_test.py:221: TypeError
+_________ PaasioTest.test_meteredfile_context_manager_exception_raise __________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_context_manager_exception_raise>
+super_mock = <SuperMock at 0x7f8d877633a0 with mock object: <NonCallableMagicMock id='140245839785904'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_context_manager_exception_raise(self, super_mock):
+        exception = MockException("Should raise")
+        wrapped = MockFile(ZEN, exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        super_mock.mock_object = mock
+        with self.assertRaisesRegex(MockException, "Should raise") as err:
+>           with MeteredFile() as file:
+E           TypeError: BufferedRandom() missing required argument 'raw' (pos 1)
+
+exercises/practice/paasio/paasio_test.py:241: TypeError
+________ PaasioTest.test_meteredfile_context_manager_exception_suppress ________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_context_manager_exception_suppress>
+super_mock = <SuperMock at 0x7f8d8776b820 with mock object: <NonCallableMagicMock id='140245839820784'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_context_manager_exception_suppress(self, super_mock):
+        exception = MockException("Should suppress")
+        wrapped = MockFile(ZEN, exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+E       TypeError: BufferedRandom() missing required argument 'raw' (pos 1)
+
+exercises/practice/paasio/paasio_test.py:259: TypeError
+____________________ PaasioTest.test_meteredfile_iteration _____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_iteration>
+super_mock = <SuperMock at 0x7f8d877785b0 with mock object: <NonCallableMagicMock id='140245839873840'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_iteration(self, super_mock):
+        mock = NonCallableMagicMock(wraps=MockFile(ZEN), autospec=True)
+        super_mock.mock_object = mock
+        actual_reads = b""
+>       file = MeteredFile()
+E       TypeError: BufferedRandom() missing required argument 'raw' (pos 1)
+
+exercises/practice/paasio/paasio_test.py:274: TypeError
+__________________ PaasioTest.test_meteredfile_read_multiple ___________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_read_multiple>
+super_mock = <SuperMock at 0x7f8d8776a4d0 with mock object: <NonCallableMagicMock id='140245839814064'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_read_multiple(self, super_mock):
+        wrapped = MockFile(ZEN)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+        actual_read = b""
+>       with MeteredFile() as file:
+E       TypeError: BufferedRandom() missing required argument 'raw' (pos 1)
+
+exercises/practice/paasio/paasio_test.py:319: TypeError
+_______________ PaasioTest.test_meteredfile_read_multiple_chunk ________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_read_multiple_chunk>
+super_mock = <SuperMock at 0x7f8d8777bb50 with mock object: <NonCallableMagicMock id='140245839886560'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_read_multiple_chunk(self, super_mock):
+        wrapped = MockFile(ZEN, chunk=20)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+        actual_read = b""
+>       with MeteredFile() as file:
+E       TypeError: BufferedRandom() missing required argument 'raw' (pos 1)
+
+exercises/practice/paasio/paasio_test.py:333: TypeError
+____________________ PaasioTest.test_meteredfile_read_once _____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_read_once>
+super_mock = <SuperMock at 0x7f8d877387c0 with mock object: <NonCallableMagicMock id='140245839612608'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_read_once(self, super_mock):
+        mock = NonCallableMagicMock(wraps=MockFile(ZEN), autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+E       TypeError: BufferedRandom() missing required argument 'raw' (pos 1)
+
+exercises/practice/paasio/paasio_test.py:290: TypeError
+_________________ PaasioTest.test_meteredfile_read_under_size __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_read_under_size>
+super_mock = <SuperMock at 0x7f8d877683a0 with mock object: <NonCallableMagicMock id='140245839820976'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_read_under_size(self, super_mock):
+        wrapped = MockFile(ZEN, chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+E       TypeError: BufferedRandom() missing required argument 'raw' (pos 1)
+
+exercises/practice/paasio/paasio_test.py:359: TypeError
+_________________ PaasioTest.test_meteredfile_stats_read_only __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_stats_read_only>
+super_mock = <SuperMock at 0x7f8d8773ac80 with mock object: <NonCallableMagicMock id='140245839622256'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_stats_read_only(self, super_mock):
+        mock = NonCallableMagicMock(wraps=MockFile(ZEN), autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+E       TypeError: BufferedRandom() missing required argument 'raw' (pos 1)
+
+exercises/practice/paasio/paasio_test.py:414: TypeError
+__________________ PaasioTest.test_meteredfile_write_multiple __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_write_multiple>
+super_mock = <SuperMock at 0x7f8d87747fd0 with mock object: <NonCallableMagicMock id='140245839659600'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_write_multiple(self, super_mock):
+        wrapped = MockFile()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+        write_len = 0
+        expected = b"Tomorrow's victory is today's practice."
+>       with MeteredFile() as file:
+E       TypeError: BufferedRandom() missing required argument 'raw' (pos 1)
+
+exercises/practice/paasio/paasio_test.py:386: TypeError
+____________________ PaasioTest.test_meteredfile_write_once ____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_write_once>
+super_mock = <SuperMock at 0x7f8d8773b4c0 with mock object: <NonCallableMagicMock id='140245839622832'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_write_once(self, super_mock):
+        wrapped = MockFile(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+E       TypeError: BufferedRandom() missing required argument 'raw' (pos 1)
+
+exercises/practice/paasio/paasio_test.py:371: TypeError
+_________________ PaasioTest.test_meteredfile_write_under_size _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_write_under_size>
+super_mock = <SuperMock at 0x7f8d87745b10 with mock object: <NonCallableMagicMock id='140245839660416'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_write_under_size(self, super_mock):
+        wrapped = MockFile(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+E       TypeError: BufferedRandom() missing required argument 'raw' (pos 1)
+
+exercises/practice/paasio/paasio_test.py:402: TypeError
+________________ PaasioTest.test_meteredsocket_bufsize_required ________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_bufsize_required>
+
+    def test_meteredsocket_bufsize_required(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+        with self.assertRaisesRegex(TypeError, "argument"):
+            with MeteredSocket(mock) as socket:
+>               socket.recv()
+E               AttributeError: 'NoneType' object has no attribute 'recv'
+
+exercises/practice/paasio/paasio_test.py:145: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_bufsize_required>
+
+    def test_meteredsocket_bufsize_required(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+        with self.assertRaisesRegex(TypeError, "argument"):
+>           with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+    
+>       data = self._socket.recv(bufsize, flags)
+E       NameError: name 'bufsize' is not defined
+
+exercises/practice/paasio/paasio.py:71: NameError
+________________ PaasioTest.test_meteredsocket_context_manager _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_context_manager>
+
+    def test_meteredsocket_context_manager(self):
+        wrapped = MockSock()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        with MeteredSocket(mock) as socket:
+            self.assertFalse(mock.__enter__.called)
+>           socket.recv(30)
+E           AttributeError: 'NoneType' object has no attribute 'recv'
+
+exercises/practice/paasio/paasio_test.py:18: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_context_manager>
+
+    def test_meteredsocket_context_manager(self):
+        wrapped = MockSock()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paasio.MeteredSocket object at 0x7f8d877bb610>
+exc_type = <class 'AttributeError'>
+exc_val = AttributeError("'NoneType' object has no attribute 'recv'")
+exc_tb = <traceback object at 0x7f8d877e7780>
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+    
+>       data = self._socket.recv(bufsize, flags)
+E       NameError: name 'bufsize' is not defined
+
+exercises/practice/paasio/paasio.py:71: NameError
+________ PaasioTest.test_meteredsocket_context_manager_exception_raise _________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_context_manager_exception_raise>
+
+    def test_meteredsocket_context_manager_exception_raise(self):
+        exception = MockException("Should raise")
+        wrapped = MockSock(exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        with self.assertRaisesRegex(MockException, "Should raise") as err:
+            with MeteredSocket(mock) as socket:
+                self.assertFalse(mock.__enter__.called)
+>               socket.recv(4096)
+E               AttributeError: 'NoneType' object has no attribute 'recv'
+
+exercises/practice/paasio/paasio_test.py:35: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_context_manager_exception_raise>
+
+    def test_meteredsocket_context_manager_exception_raise(self):
+        exception = MockException("Should raise")
+        wrapped = MockSock(exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        with self.assertRaisesRegex(MockException, "Should raise") as err:
+>           with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+    
+>       data = self._socket.recv(bufsize, flags)
+E       NameError: name 'bufsize' is not defined
+
+exercises/practice/paasio/paasio.py:71: NameError
+_______ PaasioTest.test_meteredsocket_context_manager_exception_suppress _______
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_context_manager_exception_suppress>
+
+    def test_meteredsocket_context_manager_exception_suppress(self):
+        exception = MockException("Should suppress")
+        wrapped = MockSock(exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        with MeteredSocket(mock) as socket:
+            self.assertFalse(mock.__enter__.called)
+>           socket.recv(4096)
+E           AttributeError: 'NoneType' object has no attribute 'recv'
+
+exercises/practice/paasio/paasio_test.py:51: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_context_manager_exception_suppress>
+
+    def test_meteredsocket_context_manager_exception_suppress(self):
+        exception = MockException("Should suppress")
+        wrapped = MockSock(exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paasio.MeteredSocket object at 0x7f8d877d5f90>
+exc_type = <class 'AttributeError'>
+exc_val = AttributeError("'NoneType' object has no attribute 'recv'")
+exc_tb = <traceback object at 0x7f8d887b89c0>
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+    
+>       data = self._socket.recv(bufsize, flags)
+E       NameError: name 'bufsize' is not defined
+
+exercises/practice/paasio/paasio.py:71: NameError
+_________________ PaasioTest.test_meteredsocket_flags_support __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_flags_support>
+
+    def test_meteredsocket_flags_support(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+        with MeteredSocket(mock) as socket:
+>           self.assertEqual(len(ZEN), socket.send(ZEN, 42))
+E           AttributeError: 'NoneType' object has no attribute 'send'
+
+exercises/practice/paasio/paasio_test.py:160: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_flags_support>
+
+    def test_meteredsocket_flags_support(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:159: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paasio.MeteredSocket object at 0x7f8d8777d720>
+exc_type = <class 'AttributeError'>
+exc_val = AttributeError("'NoneType' object has no attribute 'send'")
+exc_tb = <traceback object at 0x7f8d87809040>
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+    
+>       data = self._socket.recv(bufsize, flags)
+E       NameError: name 'bufsize' is not defined
+
+exercises/practice/paasio/paasio.py:71: NameError
+_________________ PaasioTest.test_meteredsocket_recv_multiple __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_multiple>
+
+    def test_meteredsocket_recv_multiple(self):
+        wrapped = MockSock()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        actual_recv = b""
+        with MeteredSocket(mock) as socket:
+            for _ in range(5):
+>               actual_recv += socket.recv(30)
+E               AttributeError: 'NoneType' object has no attribute 'recv'
+
+exercises/practice/paasio/paasio_test.py:74: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_multiple>
+
+    def test_meteredsocket_recv_multiple(self):
+        wrapped = MockSock()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        actual_recv = b""
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paasio.MeteredSocket object at 0x7f8d87666590>
+exc_type = <class 'AttributeError'>
+exc_val = AttributeError("'NoneType' object has no attribute 'recv'")
+exc_tb = <traceback object at 0x7f8d87621680>
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+    
+>       data = self._socket.recv(bufsize, flags)
+E       NameError: name 'bufsize' is not defined
+
+exercises/practice/paasio/paasio.py:71: NameError
+______________ PaasioTest.test_meteredsocket_recv_multiple_chunk _______________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_multiple_chunk>
+
+    def test_meteredsocket_recv_multiple_chunk(self):
+        wrapped = MockSock(chunk=20)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        actual_recv = b""
+        with MeteredSocket(mock) as socket:
+            for _ in range(5):
+>               actual_recv += socket.recv(4096)
+E               AttributeError: 'NoneType' object has no attribute 'recv'
+
+exercises/practice/paasio/paasio_test.py:86: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_multiple_chunk>
+
+    def test_meteredsocket_recv_multiple_chunk(self):
+        wrapped = MockSock(chunk=20)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        actual_recv = b""
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paasio.MeteredSocket object at 0x7f8d8777e020>
+exc_type = <class 'AttributeError'>
+exc_val = AttributeError("'NoneType' object has no attribute 'recv'")
+exc_tb = <traceback object at 0x7f8d8768c640>
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+    
+>       data = self._socket.recv(bufsize, flags)
+E       NameError: name 'bufsize' is not defined
+
+exercises/practice/paasio/paasio.py:71: NameError
+___________________ PaasioTest.test_meteredsocket_recv_once ____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_once>
+
+    def test_meteredsocket_recv_once(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+        with MeteredSocket(mock) as socket:
+>           actual_recv = socket.recv(4096)
+E           AttributeError: 'NoneType' object has no attribute 'recv'
+
+exercises/practice/paasio/paasio_test.py:62: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_once>
+
+    def test_meteredsocket_recv_once(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paasio.MeteredSocket object at 0x7f8d876877f0>
+exc_type = <class 'AttributeError'>
+exc_val = AttributeError("'NoneType' object has no attribute 'recv'")
+exc_tb = <traceback object at 0x7f8d876a4b80>
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+    
+>       data = self._socket.recv(bufsize, flags)
+E       NameError: name 'bufsize' is not defined
+
+exercises/practice/paasio/paasio.py:71: NameError
+________________ PaasioTest.test_meteredsocket_recv_under_size _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_under_size>
+
+    def test_meteredsocket_recv_under_size(self):
+        wrapped = MockSock(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        with MeteredSocket(mock) as socket:
+>           actual_recv = socket.recv(4096)
+E           AttributeError: 'NoneType' object has no attribute 'recv'
+
+exercises/practice/paasio/paasio_test.py:97: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_under_size>
+
+    def test_meteredsocket_recv_under_size(self):
+        wrapped = MockSock(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paasio.MeteredSocket object at 0x7f8d8777d330>
+exc_type = <class 'AttributeError'>
+exc_val = AttributeError("'NoneType' object has no attribute 'recv'")
+exc_tb = <traceback object at 0x7f8d87719fc0>
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+    
+>       data = self._socket.recv(bufsize, flags)
+E       NameError: name 'bufsize' is not defined
+
+exercises/practice/paasio/paasio.py:71: NameError
+_________________ PaasioTest.test_meteredsocket_send_multiple __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_send_multiple>
+
+    def test_meteredsocket_send_multiple(self):
+        wrapped = MockSock()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        send_len = 0
+        expected = b"Tomorrow's victory is today's practice."
+        with MeteredSocket(mock) as socket:
+>           send_len += socket.send(b"Tomorro")
+E           AttributeError: 'NoneType' object has no attribute 'send'
+
+exercises/practice/paasio/paasio_test.py:120: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_send_multiple>
+
+    def test_meteredsocket_send_multiple(self):
+        wrapped = MockSock()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        send_len = 0
+        expected = b"Tomorrow's victory is today's practice."
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paasio.MeteredSocket object at 0x7f8d8776ad10>
+exc_type = <class 'AttributeError'>
+exc_val = AttributeError("'NoneType' object has no attribute 'send'")
+exc_tb = <traceback object at 0x7f8d877ee440>
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+    
+>       data = self._socket.recv(bufsize, flags)
+E       NameError: name 'bufsize' is not defined
+
+exercises/practice/paasio/paasio.py:71: NameError
+___________________ PaasioTest.test_meteredsocket_send_once ____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_send_once>
+
+    def test_meteredsocket_send_once(self):
+        wrapped = MockSock(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        with MeteredSocket(mock) as socket:
+>           send_len = socket.send(ZEN)
+E           AttributeError: 'NoneType' object has no attribute 'send'
+
+exercises/practice/paasio/paasio_test.py:107: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_send_once>
+
+    def test_meteredsocket_send_once(self):
+        wrapped = MockSock(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paasio.MeteredSocket object at 0x7f8d87667c40>
+exc_type = <class 'AttributeError'>
+exc_val = AttributeError("'NoneType' object has no attribute 'send'")
+exc_tb = <traceback object at 0x7f8d877d9240>
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+    
+>       data = self._socket.recv(bufsize, flags)
+E       NameError: name 'bufsize' is not defined
+
+exercises/practice/paasio/paasio.py:71: NameError
+________________ PaasioTest.test_meteredsocket_send_under_size _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_send_under_size>
+
+    def test_meteredsocket_send_under_size(self):
+        wrapped = MockSock(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        with MeteredSocket(mock) as socket:
+>           send_len = socket.send(ZEN[:123])
+E           AttributeError: 'NoneType' object has no attribute 'send'
+
+exercises/practice/paasio/paasio_test.py:134: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_send_under_size>
+
+    def test_meteredsocket_send_under_size(self):
+        wrapped = MockSock(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paasio.MeteredSocket object at 0x7f8d87768be0>
+exc_type = <class 'AttributeError'>
+exc_val = AttributeError("'NoneType' object has no attribute 'send'")
+exc_tb = <traceback object at 0x7f8d877d8540>
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+    
+>       data = self._socket.recv(bufsize, flags)
+E       NameError: name 'bufsize' is not defined
+
+exercises/practice/paasio/paasio.py:71: NameError
+________________ PaasioTest.test_meteredsocket_stats_read_only _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_stats_read_only>
+
+    def test_meteredsocket_stats_read_only(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+        with MeteredSocket(mock) as socket:
+>           self.assertEqual(0, socket.send_ops)
+E           AttributeError: 'NoneType' object has no attribute 'send_ops'
+
+exercises/practice/paasio/paasio_test.py:188: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_stats_read_only>
+
+    def test_meteredsocket_stats_read_only(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:187: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <paasio.MeteredSocket object at 0x7f8d876abc40>
+exc_type = <class 'AttributeError'>
+exc_val = AttributeError("'NoneType' object has no attribute 'send_ops'")
+exc_tb = <traceback object at 0x7f8d8776e000>
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+    
+>       data = self._socket.recv(bufsize, flags)
+E       NameError: name 'bufsize' is not defined
+
+exercises/practice/paasio/paasio.py:71: NameError
+=========================== short test summary info ============================
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_context_manager
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_context_manager_exception_raise
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_context_manager_exception_suppress
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_iteration
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_read_multiple
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_read_multiple_chunk
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_read_once
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_read_under_size
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_stats_read_only
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_write_multiple
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_write_once
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_write_under_size
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_bufsize_required
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_context_manager
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_context_manager_exception_raise
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_context_manager_exception_suppress
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_flags_support
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_recv_multiple
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_recv_multiple_chunk
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_recv_once
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_recv_under_size
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_send_multiple
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_send_once
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_send_under_size
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_stats_read_only
+============================== 25 failed in 0.37s ==============================

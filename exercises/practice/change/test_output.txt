@@ -1,0 +1,27 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 12 items
+
+exercises/practice/change/change_test.py ......F.....                    [100%]
+
+=================================== FAILURES ===================================
+_ ChangeTest.test_error_testing_for_change_smaller_than_the_smallest_of_coins __
+
+self = <change_test.ChangeTest testMethod=test_error_testing_for_change_smaller_than_the_smallest_of_coins>
+
+    def test_error_testing_for_change_smaller_than_the_smallest_of_coins(self):
+        with self.assertRaises(ValueError) as err:
+            find_fewest_coins([5, 10], 3)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "can't make target with given coins")
+E       AssertionError: 'Target value is smaller than the smallest coin value' != "can't make target with given coins"
+E       - Target value is smaller than the smallest coin value
+E       + can't make target with given coins
+
+exercises/practice/change/change_test.py:47: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_error_testing_for_change_smaller_than_the_smallest_of_coins
+========================= 1 failed, 11 passed in 0.04s =========================
