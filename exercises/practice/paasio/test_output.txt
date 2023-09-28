@@ -1,0 +1,1107 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 25 items
+
+exercises/practice/paasio/paasio_test.py FFFFFFFFFFFFFFFFFFFFFFFFF       [100%]
+
+=================================== FAILURES ===================================
+_________________ PaasioTest.test_meteredfile_context_manager __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_context_manager>
+super_mock = <SuperMock at 0x7fdabbc0e230 with mock object: <NonCallableMagicMock id='140577429577856'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_context_manager(self, super_mock):
+        wrapped = MockFile(ZEN)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+
+exercises/practice/paasio/paasio_test.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <MeteredFile>, exc_type = None, exc_val = None, exc_tb = None
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+>       self.close()
+E       ValueError: I/O operation on uninitialized object
+
+exercises/practice/paasio/paasio.py:18: ValueError
+_________ PaasioTest.test_meteredfile_context_manager_exception_raise __________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_context_manager_exception_raise>
+super_mock = <SuperMock at 0x7fdabba538b0 with mock object: <NonCallableMagicMock id='140577427765136'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_context_manager_exception_raise(self, super_mock):
+        exception = MockException("Should raise")
+        wrapped = MockFile(ZEN, exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        super_mock.mock_object = mock
+        with self.assertRaisesRegex(MockException, "Should raise") as err:
+            with MeteredFile() as file:
+                self.assertFalse(mock.__enter__.called)
+>               file.read()
+
+exercises/practice/paasio/paasio_test.py:243: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:27: in read
+    data = super().read(size)
+/usr/lib/python3.10/unittest/mock.py:1114: in __call__
+    return self._mock_call(*args, **kwargs)
+/usr/lib/python3.10/unittest/mock.py:1118: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+/usr/lib/python3.10/unittest/mock.py:1188: in _execute_mock_call
+    return self._mock_wraps(*args, **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <test_utils.MockFile object at 0x7fdabbd220c0>, size = -1
+
+    def read(self, size=-1):
+        if self.__exception is not None:
+>           raise self.__exception
+E           test_utils.MockException: Should raise
+
+exercises/practice/paasio/test_utils.py:47: MockException
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_context_manager_exception_raise>
+super_mock = <SuperMock at 0x7fdabba538b0 with mock object: <NonCallableMagicMock id='140577427765136'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_context_manager_exception_raise(self, super_mock):
+        exception = MockException("Should raise")
+        wrapped = MockFile(ZEN, exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        super_mock.mock_object = mock
+        with self.assertRaisesRegex(MockException, "Should raise") as err:
+>           with MeteredFile() as file:
+
+exercises/practice/paasio/paasio_test.py:241: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+>       self.close()
+E       ValueError: I/O operation on uninitialized object
+
+exercises/practice/paasio/paasio.py:18: ValueError
+________ PaasioTest.test_meteredfile_context_manager_exception_suppress ________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_context_manager_exception_suppress>
+super_mock = <SuperMock at 0x7fdabbc1b010 with mock object: <NonCallableMagicMock id='140577429630320'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_context_manager_exception_suppress(self, super_mock):
+        exception = MockException("Should suppress")
+        wrapped = MockFile(ZEN, exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        super_mock.mock_object = mock
+        with MeteredFile() as file:
+            self.assertFalse(mock.__enter__.called)
+>           file.read()
+
+exercises/practice/paasio/paasio_test.py:261: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:27: in read
+    data = super().read(size)
+/usr/lib/python3.10/unittest/mock.py:1114: in __call__
+    return self._mock_call(*args, **kwargs)
+/usr/lib/python3.10/unittest/mock.py:1118: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+/usr/lib/python3.10/unittest/mock.py:1188: in _execute_mock_call
+    return self._mock_wraps(*args, **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <test_utils.MockFile object at 0x7fdabba5d4e0>, size = -1
+
+    def read(self, size=-1):
+        if self.__exception is not None:
+>           raise self.__exception
+E           test_utils.MockException: Should suppress
+
+exercises/practice/paasio/test_utils.py:47: MockException
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_context_manager_exception_suppress>
+super_mock = <SuperMock at 0x7fdabbc1b010 with mock object: <NonCallableMagicMock id='140577429630320'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_context_manager_exception_suppress(self, super_mock):
+        exception = MockException("Should suppress")
+        wrapped = MockFile(ZEN, exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+
+exercises/practice/paasio/paasio_test.py:259: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <MeteredFile>, exc_type = <class 'test_utils.MockException'>
+exc_val = MockException('Should suppress')
+exc_tb = <traceback object at 0x7fdabbc3fe00>
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+>       self.close()
+E       ValueError: I/O operation on uninitialized object
+
+exercises/practice/paasio/paasio.py:18: ValueError
+____________________ PaasioTest.test_meteredfile_iteration _____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_iteration>
+super_mock = <SuperMock at 0x7fdabb7539a0 with mock object: <NonCallableMagicMock id='140577424619552'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_iteration(self, super_mock):
+        mock = NonCallableMagicMock(wraps=MockFile(ZEN), autospec=True)
+        super_mock.mock_object = mock
+        actual_reads = b""
+        file = MeteredFile()
+>       for line in file:
+
+exercises/practice/paasio/paasio_test.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <MeteredFile>
+
+    def __next__(self):
+>       return next(self._buffer)
+E       AttributeError: 'MeteredFile' object has no attribute '_buffer'
+
+exercises/practice/paasio/paasio.py:24: AttributeError
+__________________ PaasioTest.test_meteredfile_read_multiple ___________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_read_multiple>
+super_mock = <SuperMock at 0x7fdabb9c88e0 with mock object: <NonCallableMagicMock id='140577427198096'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_read_multiple(self, super_mock):
+        wrapped = MockFile(ZEN)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+        actual_read = b""
+>       with MeteredFile() as file:
+
+exercises/practice/paasio/paasio_test.py:319: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <MeteredFile>, exc_type = None, exc_val = None, exc_tb = None
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+>       self.close()
+E       ValueError: I/O operation on uninitialized object
+
+exercises/practice/paasio/paasio.py:18: ValueError
+_______________ PaasioTest.test_meteredfile_read_multiple_chunk ________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_read_multiple_chunk>
+super_mock = <SuperMock at 0x7fdabb751210 with mock object: <NonCallableMagicMock id='140577424608224'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_read_multiple_chunk(self, super_mock):
+        wrapped = MockFile(ZEN, chunk=20)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+        actual_read = b""
+>       with MeteredFile() as file:
+
+exercises/practice/paasio/paasio_test.py:333: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <MeteredFile>, exc_type = None, exc_val = None, exc_tb = None
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+>       self.close()
+E       ValueError: I/O operation on uninitialized object
+
+exercises/practice/paasio/paasio.py:18: ValueError
+____________________ PaasioTest.test_meteredfile_read_once _____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_read_once>
+super_mock = <SuperMock at 0x7fdabb8dac80 with mock object: <NonCallableMagicMock id='140577426223216'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_read_once(self, super_mock):
+        mock = NonCallableMagicMock(wraps=MockFile(ZEN), autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+
+exercises/practice/paasio/paasio_test.py:290: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <MeteredFile>, exc_type = None, exc_val = None, exc_tb = None
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+>       self.close()
+E       ValueError: I/O operation on uninitialized object
+
+exercises/practice/paasio/paasio.py:18: ValueError
+_________________ PaasioTest.test_meteredfile_read_under_size __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_read_under_size>
+super_mock = <SuperMock at 0x7fdabb750040 with mock object: <NonCallableMagicMock id='140577424621328'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_read_under_size(self, super_mock):
+        wrapped = MockFile(ZEN, chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+
+exercises/practice/paasio/paasio_test.py:359: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <MeteredFile>, exc_type = None, exc_val = None, exc_tb = None
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+>       self.close()
+E       ValueError: I/O operation on uninitialized object
+
+exercises/practice/paasio/paasio.py:18: ValueError
+_________________ PaasioTest.test_meteredfile_stats_read_only __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_stats_read_only>
+super_mock = <SuperMock at 0x7fdabb8d2e30 with mock object: <NonCallableMagicMock id='140577426188192'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_stats_read_only(self, super_mock):
+        mock = NonCallableMagicMock(wraps=MockFile(ZEN), autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+
+exercises/practice/paasio/paasio_test.py:414: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <MeteredFile>, exc_type = None, exc_val = None, exc_tb = None
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+>       self.close()
+E       ValueError: I/O operation on uninitialized object
+
+exercises/practice/paasio/paasio.py:18: ValueError
+__________________ PaasioTest.test_meteredfile_write_multiple __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_write_multiple>
+super_mock = <SuperMock at 0x7fdabbc0f190 with mock object: <NonCallableMagicMock id='140577429581792'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_write_multiple(self, super_mock):
+        wrapped = MockFile()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+        write_len = 0
+        expected = b"Tomorrow's victory is today's practice."
+        with MeteredFile() as file:
+>           write_len += file.write(b"Tomorro")
+E           TypeError: unsupported operand type(s) for +=: 'int' and 'NoneType'
+
+exercises/practice/paasio/paasio_test.py:387: TypeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_write_multiple>
+super_mock = <SuperMock at 0x7fdabbc0f190 with mock object: <NonCallableMagicMock id='140577429581792'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_write_multiple(self, super_mock):
+        wrapped = MockFile()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+        write_len = 0
+        expected = b"Tomorrow's victory is today's practice."
+>       with MeteredFile() as file:
+
+exercises/practice/paasio/paasio_test.py:386: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <MeteredFile>, exc_type = <class 'TypeError'>
+exc_val = TypeError("unsupported operand type(s) for +=: 'int' and 'NoneType'")
+exc_tb = <traceback object at 0x7fdabba16300>
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+>       self.close()
+E       ValueError: I/O operation on uninitialized object
+
+exercises/practice/paasio/paasio.py:18: ValueError
+____________________ PaasioTest.test_meteredfile_write_once ____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_write_once>
+super_mock = <SuperMock at 0x7fdabb990580 with mock object: <NonCallableMagicMock id='140577426974816'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_write_once(self, super_mock):
+        wrapped = MockFile(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+
+exercises/practice/paasio/paasio_test.py:371: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <MeteredFile>, exc_type = None, exc_val = None, exc_tb = None
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+>       self.close()
+E       ValueError: I/O operation on uninitialized object
+
+exercises/practice/paasio/paasio.py:18: ValueError
+_________________ PaasioTest.test_meteredfile_write_under_size _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredfile_write_under_size>
+super_mock = <SuperMock at 0x7fdabb8da0b0 with mock object: <NonCallableMagicMock id='140577426222016'>>
+
+    @patch("paasio.super", create=True, new_callable=SuperMock)
+    def test_meteredfile_write_under_size(self, super_mock):
+        wrapped = MockFile(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        super_mock.mock_object = mock
+>       with MeteredFile() as file:
+
+exercises/practice/paasio/paasio_test.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <MeteredFile>, exc_type = None, exc_val = None, exc_tb = None
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+>       self.close()
+E       ValueError: I/O operation on uninitialized object
+
+exercises/practice/paasio/paasio.py:18: ValueError
+________________ PaasioTest.test_meteredsocket_bufsize_required ________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_bufsize_required>
+
+    def test_meteredsocket_bufsize_required(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+        with self.assertRaisesRegex(TypeError, "argument"):
+            with MeteredSocket(mock) as socket:
+>               socket.recv()
+E               TypeError: MeteredSocket.recv() missing 1 required positional argument: 'bufsize'
+
+exercises/practice/paasio/paasio_test.py:145: TypeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_bufsize_required>
+
+    def test_meteredsocket_bufsize_required(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+        with self.assertRaisesRegex(TypeError, "argument"):
+>           with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:68: in __exit__
+    self._socket.close()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def __getattr__(self, name):
+        if name in {'_mock_methods', '_mock_unsafe'}:
+            raise AttributeError(name)
+        elif self._mock_methods is not None:
+            if name not in self._mock_methods or name in _all_magics:
+                raise AttributeError("Mock object has no attribute %r" % name)
+        elif _is_magic(name):
+            raise AttributeError(name)
+        if not self._mock_unsafe and (not self._mock_methods or name not in self._mock_methods):
+            if name.startswith(('assert', 'assret', 'asert', 'aseert', 'assrt')):
+                raise AttributeError(
+                    f"{name!r} is not a valid assertion. Use a spec "
+                    f"for the mock if {name!r} is meant to be an attribute.")
+    
+        with NonCallableMock._lock:
+            result = self._mock_children.get(name)
+            if result is _deleted:
+                raise AttributeError(name)
+            elif result is None:
+                wraps = None
+                if self._mock_wraps is not None:
+                    # XXXX should we get the attribute without triggering code
+                    # execution?
+>                   wraps = getattr(self._mock_wraps, name)
+E                   AttributeError: 'MockSock' object has no attribute 'close'
+
+/usr/lib/python3.10/unittest/mock.py:661: AttributeError
+________________ PaasioTest.test_meteredsocket_context_manager _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_context_manager>
+
+    def test_meteredsocket_context_manager(self):
+        wrapped = MockSock()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:68: in __exit__
+    self._socket.close()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <NonCallableMagicMock id='140577429629072'>, name = 'close'
+
+    def __getattr__(self, name):
+        if name in {'_mock_methods', '_mock_unsafe'}:
+            raise AttributeError(name)
+        elif self._mock_methods is not None:
+            if name not in self._mock_methods or name in _all_magics:
+                raise AttributeError("Mock object has no attribute %r" % name)
+        elif _is_magic(name):
+            raise AttributeError(name)
+        if not self._mock_unsafe and (not self._mock_methods or name not in self._mock_methods):
+            if name.startswith(('assert', 'assret', 'asert', 'aseert', 'assrt')):
+                raise AttributeError(
+                    f"{name!r} is not a valid assertion. Use a spec "
+                    f"for the mock if {name!r} is meant to be an attribute.")
+    
+        with NonCallableMock._lock:
+            result = self._mock_children.get(name)
+            if result is _deleted:
+                raise AttributeError(name)
+            elif result is None:
+                wraps = None
+                if self._mock_wraps is not None:
+                    # XXXX should we get the attribute without triggering code
+                    # execution?
+>                   wraps = getattr(self._mock_wraps, name)
+E                   AttributeError: 'MockSock' object has no attribute 'close'
+
+/usr/lib/python3.10/unittest/mock.py:661: AttributeError
+________ PaasioTest.test_meteredsocket_context_manager_exception_raise _________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_context_manager_exception_raise>
+
+    def test_meteredsocket_context_manager_exception_raise(self):
+        exception = MockException("Should raise")
+        wrapped = MockSock(exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        with self.assertRaisesRegex(MockException, "Should raise") as err:
+            with MeteredSocket(mock) as socket:
+                self.assertFalse(mock.__enter__.called)
+>               socket.recv(4096)
+
+exercises/practice/paasio/paasio_test.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:71: in recv
+    data = self._socket.recv(bufsize, flags)
+/usr/lib/python3.10/unittest/mock.py:1114: in __call__
+    return self._mock_call(*args, **kwargs)
+/usr/lib/python3.10/unittest/mock.py:1118: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+/usr/lib/python3.10/unittest/mock.py:1188: in _execute_mock_call
+    return self._mock_wraps(*args, **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <test_utils.MockSock object at 0x7fdabb9ad600>, bufsize = 4096, flags = 0
+
+    def recv(self, bufsize, flags=0):
+        if self.__closed:
+            raise OSError(errno.EBADF, os.strerror(errno.EBADF))
+        if bufsize is None:
+            raise TypeError("'NoneType' object cannot be interpreted as an integer")
+        if not isinstance(flags, int):
+            raise TypeError(
+                "an integer is required (got type {})".format(type(flags).__name__)
+            )
+        self.flags = flags
+        if self.__exception is not None:
+>           raise self.__exception
+E           test_utils.MockException: Should raise
+
+exercises/practice/paasio/test_utils.py:93: MockException
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_context_manager_exception_raise>
+
+    def test_meteredsocket_context_manager_exception_raise(self):
+        exception = MockException("Should raise")
+        wrapped = MockSock(exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        with self.assertRaisesRegex(MockException, "Should raise") as err:
+>           with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:68: in __exit__
+    self._socket.close()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def __getattr__(self, name):
+        if name in {'_mock_methods', '_mock_unsafe'}:
+            raise AttributeError(name)
+        elif self._mock_methods is not None:
+            if name not in self._mock_methods or name in _all_magics:
+                raise AttributeError("Mock object has no attribute %r" % name)
+        elif _is_magic(name):
+            raise AttributeError(name)
+        if not self._mock_unsafe and (not self._mock_methods or name not in self._mock_methods):
+            if name.startswith(('assert', 'assret', 'asert', 'aseert', 'assrt')):
+                raise AttributeError(
+                    f"{name!r} is not a valid assertion. Use a spec "
+                    f"for the mock if {name!r} is meant to be an attribute.")
+    
+        with NonCallableMock._lock:
+            result = self._mock_children.get(name)
+            if result is _deleted:
+                raise AttributeError(name)
+            elif result is None:
+                wraps = None
+                if self._mock_wraps is not None:
+                    # XXXX should we get the attribute without triggering code
+                    # execution?
+>                   wraps = getattr(self._mock_wraps, name)
+E                   AttributeError: 'MockSock' object has no attribute 'close'
+
+/usr/lib/python3.10/unittest/mock.py:661: AttributeError
+_______ PaasioTest.test_meteredsocket_context_manager_exception_suppress _______
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_context_manager_exception_suppress>
+
+    def test_meteredsocket_context_manager_exception_suppress(self):
+        exception = MockException("Should suppress")
+        wrapped = MockSock(exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+        with MeteredSocket(mock) as socket:
+            self.assertFalse(mock.__enter__.called)
+>           socket.recv(4096)
+
+exercises/practice/paasio/paasio_test.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:71: in recv
+    data = self._socket.recv(bufsize, flags)
+/usr/lib/python3.10/unittest/mock.py:1114: in __call__
+    return self._mock_call(*args, **kwargs)
+/usr/lib/python3.10/unittest/mock.py:1118: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+/usr/lib/python3.10/unittest/mock.py:1188: in _execute_mock_call
+    return self._mock_wraps(*args, **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <test_utils.MockSock object at 0x7fdabb74e590>, bufsize = 4096, flags = 0
+
+    def recv(self, bufsize, flags=0):
+        if self.__closed:
+            raise OSError(errno.EBADF, os.strerror(errno.EBADF))
+        if bufsize is None:
+            raise TypeError("'NoneType' object cannot be interpreted as an integer")
+        if not isinstance(flags, int):
+            raise TypeError(
+                "an integer is required (got type {})".format(type(flags).__name__)
+            )
+        self.flags = flags
+        if self.__exception is not None:
+>           raise self.__exception
+E           test_utils.MockException: Should suppress
+
+exercises/practice/paasio/test_utils.py:93: MockException
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_context_manager_exception_suppress>
+
+    def test_meteredsocket_context_manager_exception_suppress(self):
+        exception = MockException("Should suppress")
+        wrapped = MockSock(exception=exception)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        mock.__exit__.side_effect = wrapped.__exit__
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:68: in __exit__
+    self._socket.close()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <NonCallableMagicMock id='140577424597984'>, name = 'close'
+
+    def __getattr__(self, name):
+        if name in {'_mock_methods', '_mock_unsafe'}:
+            raise AttributeError(name)
+        elif self._mock_methods is not None:
+            if name not in self._mock_methods or name in _all_magics:
+                raise AttributeError("Mock object has no attribute %r" % name)
+        elif _is_magic(name):
+            raise AttributeError(name)
+        if not self._mock_unsafe and (not self._mock_methods or name not in self._mock_methods):
+            if name.startswith(('assert', 'assret', 'asert', 'aseert', 'assrt')):
+                raise AttributeError(
+                    f"{name!r} is not a valid assertion. Use a spec "
+                    f"for the mock if {name!r} is meant to be an attribute.")
+    
+        with NonCallableMock._lock:
+            result = self._mock_children.get(name)
+            if result is _deleted:
+                raise AttributeError(name)
+            elif result is None:
+                wraps = None
+                if self._mock_wraps is not None:
+                    # XXXX should we get the attribute without triggering code
+                    # execution?
+>                   wraps = getattr(self._mock_wraps, name)
+E                   AttributeError: 'MockSock' object has no attribute 'close'
+
+/usr/lib/python3.10/unittest/mock.py:661: AttributeError
+_________________ PaasioTest.test_meteredsocket_flags_support __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_flags_support>
+
+    def test_meteredsocket_flags_support(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+        with MeteredSocket(mock) as socket:
+>           self.assertEqual(len(ZEN), socket.send(ZEN, 42))
+E           AssertionError: 823 != None
+
+exercises/practice/paasio/paasio_test.py:160: AssertionError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_flags_support>
+
+    def test_meteredsocket_flags_support(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:159: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:68: in __exit__
+    self._socket.close()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <NonCallableMagicMock id='140577425693264'>, name = 'close'
+
+    def __getattr__(self, name):
+        if name in {'_mock_methods', '_mock_unsafe'}:
+            raise AttributeError(name)
+        elif self._mock_methods is not None:
+            if name not in self._mock_methods or name in _all_magics:
+                raise AttributeError("Mock object has no attribute %r" % name)
+        elif _is_magic(name):
+            raise AttributeError(name)
+        if not self._mock_unsafe and (not self._mock_methods or name not in self._mock_methods):
+            if name.startswith(('assert', 'assret', 'asert', 'aseert', 'assrt')):
+                raise AttributeError(
+                    f"{name!r} is not a valid assertion. Use a spec "
+                    f"for the mock if {name!r} is meant to be an attribute.")
+    
+        with NonCallableMock._lock:
+            result = self._mock_children.get(name)
+            if result is _deleted:
+                raise AttributeError(name)
+            elif result is None:
+                wraps = None
+                if self._mock_wraps is not None:
+                    # XXXX should we get the attribute without triggering code
+                    # execution?
+>                   wraps = getattr(self._mock_wraps, name)
+E                   AttributeError: 'MockSock' object has no attribute 'close'
+
+/usr/lib/python3.10/unittest/mock.py:661: AttributeError
+_________________ PaasioTest.test_meteredsocket_recv_multiple __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_multiple>
+
+    def test_meteredsocket_recv_multiple(self):
+        wrapped = MockSock()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        actual_recv = b""
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:68: in __exit__
+    self._socket.close()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <NonCallableMagicMock id='140577427592512'>, name = 'close'
+
+    def __getattr__(self, name):
+        if name in {'_mock_methods', '_mock_unsafe'}:
+            raise AttributeError(name)
+        elif self._mock_methods is not None:
+            if name not in self._mock_methods or name in _all_magics:
+                raise AttributeError("Mock object has no attribute %r" % name)
+        elif _is_magic(name):
+            raise AttributeError(name)
+        if not self._mock_unsafe and (not self._mock_methods or name not in self._mock_methods):
+            if name.startswith(('assert', 'assret', 'asert', 'aseert', 'assrt')):
+                raise AttributeError(
+                    f"{name!r} is not a valid assertion. Use a spec "
+                    f"for the mock if {name!r} is meant to be an attribute.")
+    
+        with NonCallableMock._lock:
+            result = self._mock_children.get(name)
+            if result is _deleted:
+                raise AttributeError(name)
+            elif result is None:
+                wraps = None
+                if self._mock_wraps is not None:
+                    # XXXX should we get the attribute without triggering code
+                    # execution?
+>                   wraps = getattr(self._mock_wraps, name)
+E                   AttributeError: 'MockSock' object has no attribute 'close'
+
+/usr/lib/python3.10/unittest/mock.py:661: AttributeError
+______________ PaasioTest.test_meteredsocket_recv_multiple_chunk _______________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_multiple_chunk>
+
+    def test_meteredsocket_recv_multiple_chunk(self):
+        wrapped = MockSock(chunk=20)
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        actual_recv = b""
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:68: in __exit__
+    self._socket.close()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <NonCallableMagicMock id='140577429696960'>, name = 'close'
+
+    def __getattr__(self, name):
+        if name in {'_mock_methods', '_mock_unsafe'}:
+            raise AttributeError(name)
+        elif self._mock_methods is not None:
+            if name not in self._mock_methods or name in _all_magics:
+                raise AttributeError("Mock object has no attribute %r" % name)
+        elif _is_magic(name):
+            raise AttributeError(name)
+        if not self._mock_unsafe and (not self._mock_methods or name not in self._mock_methods):
+            if name.startswith(('assert', 'assret', 'asert', 'aseert', 'assrt')):
+                raise AttributeError(
+                    f"{name!r} is not a valid assertion. Use a spec "
+                    f"for the mock if {name!r} is meant to be an attribute.")
+    
+        with NonCallableMock._lock:
+            result = self._mock_children.get(name)
+            if result is _deleted:
+                raise AttributeError(name)
+            elif result is None:
+                wraps = None
+                if self._mock_wraps is not None:
+                    # XXXX should we get the attribute without triggering code
+                    # execution?
+>                   wraps = getattr(self._mock_wraps, name)
+E                   AttributeError: 'MockSock' object has no attribute 'close'
+
+/usr/lib/python3.10/unittest/mock.py:661: AttributeError
+___________________ PaasioTest.test_meteredsocket_recv_once ____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_once>
+
+    def test_meteredsocket_recv_once(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:68: in __exit__
+    self._socket.close()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <NonCallableMagicMock id='140577425608512'>, name = 'close'
+
+    def __getattr__(self, name):
+        if name in {'_mock_methods', '_mock_unsafe'}:
+            raise AttributeError(name)
+        elif self._mock_methods is not None:
+            if name not in self._mock_methods or name in _all_magics:
+                raise AttributeError("Mock object has no attribute %r" % name)
+        elif _is_magic(name):
+            raise AttributeError(name)
+        if not self._mock_unsafe and (not self._mock_methods or name not in self._mock_methods):
+            if name.startswith(('assert', 'assret', 'asert', 'aseert', 'assrt')):
+                raise AttributeError(
+                    f"{name!r} is not a valid assertion. Use a spec "
+                    f"for the mock if {name!r} is meant to be an attribute.")
+    
+        with NonCallableMock._lock:
+            result = self._mock_children.get(name)
+            if result is _deleted:
+                raise AttributeError(name)
+            elif result is None:
+                wraps = None
+                if self._mock_wraps is not None:
+                    # XXXX should we get the attribute without triggering code
+                    # execution?
+>                   wraps = getattr(self._mock_wraps, name)
+E                   AttributeError: 'MockSock' object has no attribute 'close'
+
+/usr/lib/python3.10/unittest/mock.py:661: AttributeError
+________________ PaasioTest.test_meteredsocket_recv_under_size _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_recv_under_size>
+
+    def test_meteredsocket_recv_under_size(self):
+        wrapped = MockSock(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:68: in __exit__
+    self._socket.close()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <NonCallableMagicMock id='140577425691584'>, name = 'close'
+
+    def __getattr__(self, name):
+        if name in {'_mock_methods', '_mock_unsafe'}:
+            raise AttributeError(name)
+        elif self._mock_methods is not None:
+            if name not in self._mock_methods or name in _all_magics:
+                raise AttributeError("Mock object has no attribute %r" % name)
+        elif _is_magic(name):
+            raise AttributeError(name)
+        if not self._mock_unsafe and (not self._mock_methods or name not in self._mock_methods):
+            if name.startswith(('assert', 'assret', 'asert', 'aseert', 'assrt')):
+                raise AttributeError(
+                    f"{name!r} is not a valid assertion. Use a spec "
+                    f"for the mock if {name!r} is meant to be an attribute.")
+    
+        with NonCallableMock._lock:
+            result = self._mock_children.get(name)
+            if result is _deleted:
+                raise AttributeError(name)
+            elif result is None:
+                wraps = None
+                if self._mock_wraps is not None:
+                    # XXXX should we get the attribute without triggering code
+                    # execution?
+>                   wraps = getattr(self._mock_wraps, name)
+E                   AttributeError: 'MockSock' object has no attribute 'close'
+
+/usr/lib/python3.10/unittest/mock.py:661: AttributeError
+_________________ PaasioTest.test_meteredsocket_send_multiple __________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_send_multiple>
+
+    def test_meteredsocket_send_multiple(self):
+        wrapped = MockSock()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        send_len = 0
+        expected = b"Tomorrow's victory is today's practice."
+        with MeteredSocket(mock) as socket:
+>           send_len += socket.send(b"Tomorro")
+E           TypeError: unsupported operand type(s) for +=: 'int' and 'NoneType'
+
+exercises/practice/paasio/paasio_test.py:120: TypeError
+
+During handling of the above exception, another exception occurred:
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_send_multiple>
+
+    def test_meteredsocket_send_multiple(self):
+        wrapped = MockSock()
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+        send_len = 0
+        expected = b"Tomorrow's victory is today's practice."
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:68: in __exit__
+    self._socket.close()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <NonCallableMagicMock id='140577426289904'>, name = 'close'
+
+    def __getattr__(self, name):
+        if name in {'_mock_methods', '_mock_unsafe'}:
+            raise AttributeError(name)
+        elif self._mock_methods is not None:
+            if name not in self._mock_methods or name in _all_magics:
+                raise AttributeError("Mock object has no attribute %r" % name)
+        elif _is_magic(name):
+            raise AttributeError(name)
+        if not self._mock_unsafe and (not self._mock_methods or name not in self._mock_methods):
+            if name.startswith(('assert', 'assret', 'asert', 'aseert', 'assrt')):
+                raise AttributeError(
+                    f"{name!r} is not a valid assertion. Use a spec "
+                    f"for the mock if {name!r} is meant to be an attribute.")
+    
+        with NonCallableMock._lock:
+            result = self._mock_children.get(name)
+            if result is _deleted:
+                raise AttributeError(name)
+            elif result is None:
+                wraps = None
+                if self._mock_wraps is not None:
+                    # XXXX should we get the attribute without triggering code
+                    # execution?
+>                   wraps = getattr(self._mock_wraps, name)
+E                   AttributeError: 'MockSock' object has no attribute 'close'
+
+/usr/lib/python3.10/unittest/mock.py:661: AttributeError
+___________________ PaasioTest.test_meteredsocket_send_once ____________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_send_once>
+
+    def test_meteredsocket_send_once(self):
+        wrapped = MockSock(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:68: in __exit__
+    self._socket.close()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <NonCallableMagicMock id='140577427348000'>, name = 'close'
+
+    def __getattr__(self, name):
+        if name in {'_mock_methods', '_mock_unsafe'}:
+            raise AttributeError(name)
+        elif self._mock_methods is not None:
+            if name not in self._mock_methods or name in _all_magics:
+                raise AttributeError("Mock object has no attribute %r" % name)
+        elif _is_magic(name):
+            raise AttributeError(name)
+        if not self._mock_unsafe and (not self._mock_methods or name not in self._mock_methods):
+            if name.startswith(('assert', 'assret', 'asert', 'aseert', 'assrt')):
+                raise AttributeError(
+                    f"{name!r} is not a valid assertion. Use a spec "
+                    f"for the mock if {name!r} is meant to be an attribute.")
+    
+        with NonCallableMock._lock:
+            result = self._mock_children.get(name)
+            if result is _deleted:
+                raise AttributeError(name)
+            elif result is None:
+                wraps = None
+                if self._mock_wraps is not None:
+                    # XXXX should we get the attribute without triggering code
+                    # execution?
+>                   wraps = getattr(self._mock_wraps, name)
+E                   AttributeError: 'MockSock' object has no attribute 'close'
+
+/usr/lib/python3.10/unittest/mock.py:661: AttributeError
+________________ PaasioTest.test_meteredsocket_send_under_size _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_send_under_size>
+
+    def test_meteredsocket_send_under_size(self):
+        wrapped = MockSock(chunk=257)  # largish odd number
+        mock = NonCallableMagicMock(wraps=wrapped, autospec=True)
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:68: in __exit__
+    self._socket.close()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <NonCallableMagicMock id='140577424597216'>, name = 'close'
+
+    def __getattr__(self, name):
+        if name in {'_mock_methods', '_mock_unsafe'}:
+            raise AttributeError(name)
+        elif self._mock_methods is not None:
+            if name not in self._mock_methods or name in _all_magics:
+                raise AttributeError("Mock object has no attribute %r" % name)
+        elif _is_magic(name):
+            raise AttributeError(name)
+        if not self._mock_unsafe and (not self._mock_methods or name not in self._mock_methods):
+            if name.startswith(('assert', 'assret', 'asert', 'aseert', 'assrt')):
+                raise AttributeError(
+                    f"{name!r} is not a valid assertion. Use a spec "
+                    f"for the mock if {name!r} is meant to be an attribute.")
+    
+        with NonCallableMock._lock:
+            result = self._mock_children.get(name)
+            if result is _deleted:
+                raise AttributeError(name)
+            elif result is None:
+                wraps = None
+                if self._mock_wraps is not None:
+                    # XXXX should we get the attribute without triggering code
+                    # execution?
+>                   wraps = getattr(self._mock_wraps, name)
+E                   AttributeError: 'MockSock' object has no attribute 'close'
+
+/usr/lib/python3.10/unittest/mock.py:661: AttributeError
+________________ PaasioTest.test_meteredsocket_stats_read_only _________________
+
+self = <paasio_test.PaasioTest testMethod=test_meteredsocket_stats_read_only>
+
+    def test_meteredsocket_stats_read_only(self):
+        mock = NonCallableMagicMock(wraps=MockSock(), autospec=True)
+>       with MeteredSocket(mock) as socket:
+
+exercises/practice/paasio/paasio_test.py:187: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/paasio/paasio.py:68: in __exit__
+    self._socket.close()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <NonCallableMagicMock id='140577427610096'>, name = 'close'
+
+    def __getattr__(self, name):
+        if name in {'_mock_methods', '_mock_unsafe'}:
+            raise AttributeError(name)
+        elif self._mock_methods is not None:
+            if name not in self._mock_methods or name in _all_magics:
+                raise AttributeError("Mock object has no attribute %r" % name)
+        elif _is_magic(name):
+            raise AttributeError(name)
+        if not self._mock_unsafe and (not self._mock_methods or name not in self._mock_methods):
+            if name.startswith(('assert', 'assret', 'asert', 'aseert', 'assrt')):
+                raise AttributeError(
+                    f"{name!r} is not a valid assertion. Use a spec "
+                    f"for the mock if {name!r} is meant to be an attribute.")
+    
+        with NonCallableMock._lock:
+            result = self._mock_children.get(name)
+            if result is _deleted:
+                raise AttributeError(name)
+            elif result is None:
+                wraps = None
+                if self._mock_wraps is not None:
+                    # XXXX should we get the attribute without triggering code
+                    # execution?
+>                   wraps = getattr(self._mock_wraps, name)
+E                   AttributeError: 'MockSock' object has no attribute 'close'
+
+/usr/lib/python3.10/unittest/mock.py:661: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_context_manager
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_context_manager_exception_raise
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_context_manager_exception_suppress
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_iteration
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_read_multiple
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_read_multiple_chunk
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_read_once
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_read_under_size
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_stats_read_only
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_write_multiple
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_write_once
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredfile_write_under_size
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_bufsize_required
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_context_manager
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_context_manager_exception_raise
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_context_manager_exception_suppress
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_flags_support
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_recv_multiple
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_recv_multiple_chunk
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_recv_once
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_recv_under_size
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_send_multiple
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_send_once
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_send_under_size
+FAILED exercises/practice/paasio/paasio_test.py::PaasioTest::test_meteredsocket_stats_read_only
+============================== 25 failed in 2.13s ==============================

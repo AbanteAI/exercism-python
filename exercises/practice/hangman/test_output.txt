@@ -1,0 +1,85 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 7 items
+
+exercises/practice/hangman/hangman_test.py F.F...F                       [100%]
+
+=================================== FAILURES ===================================
+_____________ HangmanTests.test_after_10_failures_the_game_is_over _____________
+
+self = <hangman_test.HangmanTests testMethod=test_after_10_failures_the_game_is_over>
+
+    def test_after_10_failures_the_game_is_over(self):
+        game = Hangman('foo')
+    
+        for i in range(10):
+>           game.guess('x')
+
+exercises/practice/hangman/hangman_test.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <hangman.Hangman object at 0x7fed2f665b40>, char = 'x'
+
+    def guess(self, char):
+        if char in self.guessed_letters:
+>           raise ValueError("You have already guessed this letter.")
+E           ValueError: You have already guessed this letter.
+
+exercises/practice/hangman/hangman.py:17: ValueError
+_____ HangmanTests.test_feeding_a_correct_letter_twice_counts_as_a_failure _____
+
+self = <hangman_test.HangmanTests testMethod=test_feeding_a_correct_letter_twice_counts_as_a_failure>
+
+    def test_feeding_a_correct_letter_twice_counts_as_a_failure(self):
+        game = Hangman('foobar')
+    
+        game.guess('b')
+        self.assertEqual(game.get_status(), hangman.STATUS_ONGOING)
+        self.assertEqual(game.remaining_guesses, 9)
+        self.assertEqual(game.get_masked_word(), '___b__')
+    
+>       game.guess('b')
+
+exercises/practice/hangman/hangman_test.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <hangman.Hangman object at 0x7fed2f4b1d50>, char = 'b'
+
+    def guess(self, char):
+        if char in self.guessed_letters:
+>           raise ValueError("You have already guessed this letter.")
+E           ValueError: You have already guessed this letter.
+
+exercises/practice/hangman/hangman.py:17: ValueError
+________ HangmanTests.test_winning_on_last_guess_still_counts_as_a_win _________
+
+self = <hangman_test.HangmanTests testMethod=test_winning_on_last_guess_still_counts_as_a_win>
+
+    def test_winning_on_last_guess_still_counts_as_a_win(self):
+        game = Hangman('aaa')
+        for ch in 'bcdefghij':
+            game.guess(ch)
+>       game.guess('a')
+
+exercises/practice/hangman/hangman_test.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <hangman.Hangman object at 0x7fed2f4b3910>, char = 'a'
+
+    def guess(self, char):
+        if char in self.guessed_letters:
+            raise ValueError("You have already guessed this letter.")
+    
+        if self.status != STATUS_ONGOING:
+>           raise ValueError("The game has already ended.")
+E           ValueError: The game has already ended.
+
+exercises/practice/hangman/hangman.py:20: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/hangman/hangman_test.py::HangmanTests::test_after_10_failures_the_game_is_over
+FAILED exercises/practice/hangman/hangman_test.py::HangmanTests::test_feeding_a_correct_letter_twice_counts_as_a_failure
+FAILED exercises/practice/hangman/hangman_test.py::HangmanTests::test_winning_on_last_guess_still_counts_as_a_win
+========================= 3 failed, 4 passed in 0.08s ==========================

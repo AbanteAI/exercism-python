@@ -1,0 +1,101 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 43 items
+
+exercises/practice/rational-numbers/rational_numbers_test.py ........... [ 25%]
+..........FF.F..F...............                                         [100%]
+
+=================================== FAILURES ===================================
+_ RationalNumbersTest.test_raise_a_negative_rational_number_to_an_even_negative_integer_power _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_negative_rational_number_to_an_even_negative_integer_power>
+
+    def test_raise_a_negative_rational_number_to_an_even_negative_integer_power(self):
+>       self.assertEqual(Rational(-3, 5) ** -2, Rational(25, 9))
+
+exercises/practice/rational-numbers/rational_numbers_test.py:114: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rational-numbers/rational_numbers.py:57: in __pow__
+    return Rational(new_numer, new_denom)
+exercises/practice/rational-numbers/rational_numbers.py:9: in __init__
+    self.reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = 0.1111111111111111/0.04
+
+    def reduce(self):
+>       common_divisor = gcd(self.numer, self.denom)
+E       TypeError: 'float' object cannot be interpreted as an integer
+
+exercises/practice/rational-numbers/rational_numbers.py:12: TypeError
+_ RationalNumbersTest.test_raise_a_negative_rational_number_to_an_odd_negative_integer_power _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_negative_rational_number_to_an_odd_negative_integer_power>
+
+    def test_raise_a_negative_rational_number_to_an_odd_negative_integer_power(self):
+>       self.assertEqual(Rational(-3, 5) ** -3, Rational(-125, 27))
+
+exercises/practice/rational-numbers/rational_numbers_test.py:117: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rational-numbers/rational_numbers.py:57: in __pow__
+    return Rational(new_numer, new_denom)
+exercises/practice/rational-numbers/rational_numbers.py:9: in __init__
+    self.reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = -0.037037037037037035/0.008
+
+    def reduce(self):
+>       common_divisor = gcd(self.numer, self.denom)
+E       TypeError: 'float' object cannot be interpreted as an integer
+
+exercises/practice/rational-numbers/rational_numbers.py:12: TypeError
+_ RationalNumbersTest.test_raise_a_positive_rational_number_to_a_negative_integer_power _
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_positive_rational_number_to_a_negative_integer_power>
+
+    def test_raise_a_positive_rational_number_to_a_negative_integer_power(self):
+>       self.assertEqual(Rational(3, 5) ** -2, Rational(25, 9))
+
+exercises/practice/rational-numbers/rational_numbers_test.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rational-numbers/rational_numbers.py:57: in __pow__
+    return Rational(new_numer, new_denom)
+exercises/practice/rational-numbers/rational_numbers.py:9: in __init__
+    self.reduce()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = 0.1111111111111111/0.04
+
+    def reduce(self):
+>       common_divisor = gcd(self.numer, self.denom)
+E       TypeError: 'float' object cannot be interpreted as an integer
+
+exercises/practice/rational-numbers/rational_numbers.py:12: TypeError
+__ RationalNumbersTest.test_raise_a_real_number_to_a_negative_rational_number __
+
+self = <rational_numbers_test.RationalNumbersTest testMethod=test_raise_a_real_number_to_a_negative_rational_number>
+
+    def test_raise_a_real_number_to_a_negative_rational_number(self):
+>       self.assertAlmostEqual(9 ** Rational(-1, 2), 0.3333333333333333, places=8)
+
+exercises/practice/rational-numbers/rational_numbers_test.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = -1/2, base = 9
+
+    def __rpow__(self, base):
+        if self.numer < 0 and self.denom % 2 == 0:
+>           raise ValueError("Cannot calculate negative base to even root")
+E           ValueError: Cannot calculate negative base to even root
+
+exercises/practice/rational-numbers/rational_numbers.py:61: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_negative_rational_number_to_an_even_negative_integer_power
+FAILED exercises/practice/rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_negative_rational_number_to_an_odd_negative_integer_power
+FAILED exercises/practice/rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_positive_rational_number_to_a_negative_integer_power
+FAILED exercises/practice/rational-numbers/rational_numbers_test.py::RationalNumbersTest::test_raise_a_real_number_to_a_negative_rational_number
+========================= 4 failed, 39 passed in 0.15s =========================

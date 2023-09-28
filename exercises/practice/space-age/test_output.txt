@@ -1,0 +1,82 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 8 items
+
+exercises/practice/space-age/space_age_test.py .FFFFFFF                  [100%]
+
+=================================== FAILURES ===================================
+_______________________ SpaceAgeTest.test_age_on_jupiter _______________________
+
+self = <space_age_test.SpaceAgeTest testMethod=test_age_on_jupiter>
+
+    def test_age_on_jupiter(self):
+>       self.assertEqual(SpaceAge(901876382).on_jupiter(), 2.41)
+E       AttributeError: 'SpaceAge' object has no attribute 'on_jupiter'
+
+exercises/practice/space-age/space_age_test.py:26: AttributeError
+________________________ SpaceAgeTest.test_age_on_mars _________________________
+
+self = <space_age_test.SpaceAgeTest testMethod=test_age_on_mars>
+
+    def test_age_on_mars(self):
+>       self.assertEqual(SpaceAge(2129871239).on_mars(), 35.88)
+E       AttributeError: 'SpaceAge' object has no attribute 'on_mars'. Did you mean: 'on_earth'?
+
+exercises/practice/space-age/space_age_test.py:23: AttributeError
+_______________________ SpaceAgeTest.test_age_on_mercury _______________________
+
+self = <space_age_test.SpaceAgeTest testMethod=test_age_on_mercury>
+
+    def test_age_on_mercury(self):
+>       self.assertEqual(SpaceAge(2134835688).on_mercury(), 280.88)
+E       AttributeError: 'SpaceAge' object has no attribute 'on_mercury'
+
+exercises/practice/space-age/space_age_test.py:17: AttributeError
+_______________________ SpaceAgeTest.test_age_on_neptune _______________________
+
+self = <space_age_test.SpaceAgeTest testMethod=test_age_on_neptune>
+
+    def test_age_on_neptune(self):
+>       self.assertEqual(SpaceAge(1821023456).on_neptune(), 0.35)
+E       AttributeError: 'SpaceAge' object has no attribute 'on_neptune'
+
+exercises/practice/space-age/space_age_test.py:35: AttributeError
+_______________________ SpaceAgeTest.test_age_on_saturn ________________________
+
+self = <space_age_test.SpaceAgeTest testMethod=test_age_on_saturn>
+
+    def test_age_on_saturn(self):
+>       self.assertEqual(SpaceAge(2000000000).on_saturn(), 2.15)
+E       AttributeError: 'SpaceAge' object has no attribute 'on_saturn'
+
+exercises/practice/space-age/space_age_test.py:29: AttributeError
+_______________________ SpaceAgeTest.test_age_on_uranus ________________________
+
+self = <space_age_test.SpaceAgeTest testMethod=test_age_on_uranus>
+
+    def test_age_on_uranus(self):
+>       self.assertEqual(SpaceAge(1210123456).on_uranus(), 0.46)
+E       AttributeError: 'SpaceAge' object has no attribute 'on_uranus'
+
+exercises/practice/space-age/space_age_test.py:32: AttributeError
+________________________ SpaceAgeTest.test_age_on_venus ________________________
+
+self = <space_age_test.SpaceAgeTest testMethod=test_age_on_venus>
+
+    def test_age_on_venus(self):
+>       self.assertEqual(SpaceAge(189839836).on_venus(), 9.78)
+E       AttributeError: 'SpaceAge' object has no attribute 'on_venus'
+
+exercises/practice/space-age/space_age_test.py:20: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/space-age/space_age_test.py::SpaceAgeTest::test_age_on_jupiter
+FAILED exercises/practice/space-age/space_age_test.py::SpaceAgeTest::test_age_on_mars
+FAILED exercises/practice/space-age/space_age_test.py::SpaceAgeTest::test_age_on_mercury
+FAILED exercises/practice/space-age/space_age_test.py::SpaceAgeTest::test_age_on_neptune
+FAILED exercises/practice/space-age/space_age_test.py::SpaceAgeTest::test_age_on_saturn
+FAILED exercises/practice/space-age/space_age_test.py::SpaceAgeTest::test_age_on_uranus
+FAILED exercises/practice/space-age/space_age_test.py::SpaceAgeTest::test_age_on_venus
+========================= 7 failed, 1 passed in 0.05s ==========================

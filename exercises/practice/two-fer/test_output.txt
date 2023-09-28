@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 3 items
+
+exercises/practice/two-fer/two_fer_test.py ..F                           [100%]
+
+=================================== FAILURES ===================================
+________________________ TwoFerTest.test_no_name_given _________________________
+
+self = <two_fer_test.TwoFerTest testMethod=test_no_name_given>
+
+    def test_no_name_given(self):
+>       self.assertEqual(two_fer(), "One for you, one for me.")
+E       TypeError: two_fer() missing 1 required positional argument: 'name'
+
+exercises/practice/two-fer/two_fer_test.py:14: TypeError
+=========================== short test summary info ============================
+FAILED exercises/practice/two-fer/two_fer_test.py::TwoFerTest::test_no_name_given
+========================= 1 failed, 2 passed in 0.04s ==========================

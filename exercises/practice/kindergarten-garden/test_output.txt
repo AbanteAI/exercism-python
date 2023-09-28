@@ -1,0 +1,468 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 19 items
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py FFFFF [ 26%]
+FFFFFFFFFFFFFF                                                           [100%]
+
+=================================== FAILURES ===================================
+___ KindergartenGardenTest.test_full_garden_for_alice_first_student_s_garden ___
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_alice_first_student_s_garden>
+
+    def test_full_garden_for_alice_first_student_s_garden(self):
+        garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+        self.assertEqual(
+>           garden.plants("Alice"), ["Violets", "Radishes", "Violets", "Radishes"]
+        )
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f28b30e80>, student = 'Alice'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+___ KindergartenGardenTest.test_full_garden_for_bob_second_student_s_garden ____
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_bob_second_student_s_garden>
+
+    def test_full_garden_for_bob_second_student_s_garden(self):
+        garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+>       self.assertEqual(garden.plants("Bob"), ["Clover", "Grass", "Clover", "Clover"])
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f28b33220>, student = 'Bob'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+_____________ KindergartenGardenTest.test_full_garden_for_charlie ______________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_charlie>
+
+    def test_full_garden_for_charlie(self):
+        garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+        self.assertEqual(
+>           garden.plants("Charlie"), ["Violets", "Violets", "Clover", "Grass"]
+        )
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f28b33f70>
+student = 'Charlie'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+______________ KindergartenGardenTest.test_full_garden_for_david _______________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_david>
+
+    def test_full_garden_for_david(self):
+        garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+        self.assertEqual(
+>           garden.plants("David"), ["Radishes", "Violets", "Clover", "Radishes"]
+        )
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f289a7b20>, student = 'David'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+_______________ KindergartenGardenTest.test_full_garden_for_eve ________________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_eve>
+
+    def test_full_garden_for_eve(self):
+        garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+>       self.assertEqual(garden.plants("Eve"), ["Clover", "Grass", "Radishes", "Grass"])
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f28b30e80>, student = 'Eve'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+_______________ KindergartenGardenTest.test_full_garden_for_fred _______________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_fred>
+
+    def test_full_garden_for_fred(self):
+        garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+        self.assertEqual(
+>           garden.plants("Fred"), ["Grass", "Clover", "Violets", "Clover"]
+        )
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f289a6e90>, student = 'Fred'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+______________ KindergartenGardenTest.test_full_garden_for_ginny _______________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_ginny>
+
+    def test_full_garden_for_ginny(self):
+        garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+>       self.assertEqual(garden.plants("Ginny"), ["Clover", "Grass", "Grass", "Clover"])
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f28b33e50>, student = 'Ginny'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+_____________ KindergartenGardenTest.test_full_garden_for_harriet ______________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_harriet>
+
+    def test_full_garden_for_harriet(self):
+        garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+        self.assertEqual(
+>           garden.plants("Harriet"), ["Violets", "Radishes", "Radishes", "Violets"]
+        )
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f289a5ea0>
+student = 'Harriet'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+______________ KindergartenGardenTest.test_full_garden_for_ileana ______________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_ileana>
+
+    def test_full_garden_for_ileana(self):
+        garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+        self.assertEqual(
+>           garden.plants("Ileana"), ["Grass", "Clover", "Violets", "Clover"]
+        )
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f2899a170>, student = 'Ileana'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+______________ KindergartenGardenTest.test_full_garden_for_joseph ______________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_joseph>
+
+    def test_full_garden_for_joseph(self):
+        garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+        self.assertEqual(
+>           garden.plants("Joseph"), ["Violets", "Clover", "Violets", "Grass"]
+        )
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f289942b0>, student = 'Joseph'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+_ KindergartenGardenTest.test_full_garden_for_kincaid_second_to_last_student_s_garden _
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_kincaid_second_to_last_student_s_garden>
+
+    def test_full_garden_for_kincaid_second_to_last_student_s_garden(self):
+        garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+        self.assertEqual(
+>           garden.plants("Kincaid"), ["Grass", "Clover", "Clover", "Grass"]
+        )
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f28b30b50>
+student = 'Kincaid'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+___ KindergartenGardenTest.test_full_garden_for_larry_last_student_s_garden ____
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_full_garden_for_larry_last_student_s_garden>
+
+    def test_full_garden_for_larry_last_student_s_garden(self):
+        garden = Garden("VRCGVVRVCGGCCGVRGCVCGCGV\nVRCCCGCRRGVCGCRVVCVGCGCV")
+        self.assertEqual(
+>           garden.plants("Larry"), ["Grass", "Violets", "Clover", "Violets"]
+        )
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f289979a0>, student = 'Larry'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+_ KindergartenGardenTest.test_partial_garden_different_garden_with_single_student _
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_partial_garden_different_garden_with_single_student>
+
+    def test_partial_garden_different_garden_with_single_student(self):
+        garden = Garden("VC\nRC")
+        self.assertEqual(
+>           garden.plants("Alice"), ["Violets", "Clover", "Radishes", "Clover"]
+        )
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f2899b5e0>, student = 'Alice'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+____ KindergartenGardenTest.test_partial_garden_garden_with_single_student _____
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_partial_garden_garden_with_single_student>
+
+    def test_partial_garden_garden_with_single_student(self):
+        garden = Garden("RC\nGG")
+        self.assertEqual(
+>           garden.plants("Alice"), ["Radishes", "Clover", "Grass", "Grass"]
+        )
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f28995f30>, student = 'Alice'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+_____ KindergartenGardenTest.test_partial_garden_garden_with_two_students ______
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_partial_garden_garden_with_two_students>
+
+    def test_partial_garden_garden_with_two_students(self):
+        garden = Garden("VVCG\nVVRC")
+        self.assertEqual(
+>           garden.plants("Bob"), ["Clover", "Grass", "Radishes", "Clover"]
+        )
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f28b338b0>, student = 'Bob'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+______ KindergartenGardenTest.test_partial_garden_second_student_s_garden ______
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_partial_garden_second_student_s_garden>
+
+    def test_partial_garden_second_student_s_garden(self):
+        garden = Garden("VVCCGG\nVVCCGG")
+>       self.assertEqual(garden.plants("Bob"), ["Clover", "Clover", "Clover", "Clover"])
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f289f3df0>, student = 'Bob'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+______ KindergartenGardenTest.test_partial_garden_third_student_s_garden _______
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_partial_garden_third_student_s_garden>
+
+    def test_partial_garden_third_student_s_garden(self):
+        garden = Garden("VVCCGG\nVVCCGG")
+>       self.assertEqual(garden.plants("Charlie"), ["Grass", "Grass", "Grass", "Grass"])
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f289a4250>
+student = 'Charlie'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+_______ KindergartenGardenTest.test_students_are_unordered_first_student _______
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_students_are_unordered_first_student>
+
+    def test_students_are_unordered_first_student(self):
+        garden = Garden(
+            "VCRRGVRG\nRVGCCGCV", students=["Samantha", "Patricia", "Xander", "Roger"]
+        )
+        self.assertEqual(
+>           garden.plants("Patricia"), ["Violets", "Clover", "Radishes", "Violets"]
+        )
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f2899ab00>
+student = 'Patricia'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+_______ KindergartenGardenTest.test_students_are_unordered_last_student ________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_students_are_unordered_last_student>
+
+    def test_students_are_unordered_last_student(self):
+        garden = Garden(
+            "VCRRGVRG\nRVGCCGCV", students=["Samantha", "Patricia", "Xander", "Roger"]
+        )
+        self.assertEqual(
+>           garden.plants("Xander"), ["Radishes", "Grass", "Clover", "Violets"]
+        )
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <kindergarten_garden.Garden object at 0x7f4f289d9d20>, student = 'Xander'
+
+    def plants(self, student):
+        student_index = self.students.index(student)
+        plants = []
+        for row in self.rows:
+>           plants.extend([self.plant_names[row[student_index * 2]], self.plant_names[row[student_index * 2 + 1]]])
+E           AttributeError: 'Garden' object has no attribute 'plant_names'
+
+exercises/practice/kindergarten-garden/kindergarten_garden.py:13: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_alice_first_student_s_garden
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_bob_second_student_s_garden
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_charlie
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_david
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_eve
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_fred
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_ginny
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_harriet
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_ileana
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_joseph
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_kincaid_second_to_last_student_s_garden
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_full_garden_for_larry_last_student_s_garden
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_partial_garden_different_garden_with_single_student
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_partial_garden_garden_with_single_student
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_partial_garden_garden_with_two_students
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_partial_garden_second_student_s_garden
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_partial_garden_third_student_s_garden
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_students_are_unordered_first_student
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_students_are_unordered_last_student
+============================== 19 failed in 0.15s ==============================

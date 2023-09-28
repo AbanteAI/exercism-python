@@ -7,9 +7,18 @@ def largest(min_factor, max_factor):
     :return: tuple of (palindrome, iterable).
              Iterable should contain both factors of the palindrome in an arbitrary order.
     """
+def largest(min_factor, max_factor):
+    if min_factor > max_factor:
+        raise ValueError("min_factor must be less than or equal to max_factor")
 
     pass
 
+
+def smallest(min_factor, max_factor):
+    if min_factor > max_factor:
+        raise ValueError("min_factor must be less than or equal to max_factor")
+
+    pass
 
 def smallest(min_factor, max_factor):
     """Given a range of numbers, find the smallest palindromes which

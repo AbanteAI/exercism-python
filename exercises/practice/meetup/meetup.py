@@ -5,9 +5,20 @@ class MeetupDayException(ValueError):
     message: explanation of the error.
 
     """
+    def __init__(self, message):
+        self.message = message
+
+def meetup(year, month, week, day_of_week):
+    raise MeetupDayException("Invalid weekday and count combination.")
+class MeetupDayException(ValueError):
+    """Exception raised when the Meetup weekday and count do not result in a valid date.
+
+    message: explanation of the error.
+
+    """
     def __init__(self):
         pass
 
 
-def meetup(year, month, week, day_of_week):
+    raise MeetupDayException("Invalid weekday and count combination.")
     pass

@@ -1,0 +1,163 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 14 items
+
+exercises/practice/atbash-cipher/atbash_cipher_test.py FFFF.FFFF.FFF.    [100%]
+
+=================================== FAILURES ===================================
+___________________ AtbashCipherTest.test_decode_a_sentence ____________________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_decode_a_sentence>
+
+    def test_decode_a_sentence(self):
+>       self.assertEqual(
+            decode("zmlyh gzxov rhlug vmzhg vkkrm thglm v"),
+            "anobstacleisoftenasteppingstone",
+        )
+E       AssertionError: 'anobs tacle isoft enast eppin gston e' != 'anobstacleisoftenasteppingstone'
+E       - anobs tacle isoft enast eppin gston e
+E       ?      -     -     -     -     -     -
+E       + anobstacleisoftenasteppingstone
+
+exercises/practice/atbash-cipher/atbash_cipher_test.py:45: AssertionError
+_________________ AtbashCipherTest.test_decode_all_the_letters _________________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_decode_all_the_letters>
+
+    def test_decode_all_the_letters(self):
+>       self.assertEqual(
+            decode("gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt"),
+            "thequickbrownfoxjumpsoverthelazydog",
+        )
+E       AssertionError: 'thequ ickbr ownfo xjump sover thela zydog' != 'thequickbrownfoxjumpsoverthelazydog'
+E       - thequ ickbr ownfo xjump sover thela zydog
+E       ?      -     -     -     -     -     -
+E       + thequickbrownfoxjumpsoverthelazydog
+
+exercises/practice/atbash-cipher/atbash_cipher_test.py:54: AssertionError
+____________________ AtbashCipherTest.test_decode_exercism _____________________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_decode_exercism>
+
+    def test_decode_exercism(self):
+>       self.assertEqual(decode("vcvix rhn"), "exercism")
+E       AssertionError: 'exerc ism' != 'exercism'
+E       - exerc ism
+E       ?      -
+E       + exercism
+
+exercises/practice/atbash-cipher/atbash_cipher_test.py:42: AssertionError
+_____________________ AtbashCipherTest.test_decode_numbers _____________________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_decode_numbers>
+
+    def test_decode_numbers(self):
+>       self.assertEqual(decode("gvhgr mt123 gvhgr mt"), "testing123testing")
+E       AssertionError: 'testi ng123 testi ng' != 'testing123testing'
+E       - testi ng123 testi ng
+E       ?      -     -     -
+E       + testing123testing
+
+exercises/practice/atbash-cipher/atbash_cipher_test.py:51: AssertionError
+______________ AtbashCipherTest.test_decode_with_too_many_spaces _______________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_decode_with_too_many_spaces>
+
+    def test_decode_with_too_many_spaces(self):
+>       self.assertEqual(decode("vc vix    r hn"), "exercism")
+E       AssertionError: 'ex erc    i sm' != 'exercism'
+E       - ex erc    i sm
+E       ?   -   ---- -
+E       + exercism
+
+exercises/practice/atbash-cipher/atbash_cipher_test.py:60: AssertionError
+_________________ AtbashCipherTest.test_encode_all_the_letters _________________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_encode_all_the_letters>
+
+    def test_encode_all_the_letters(self):
+>       self.assertEqual(
+            encode("The quick brown fox jumps over the lazy dog."),
+            "gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt",
+        )
+E       AssertionError: 'Gsv jfrxp yildm ulc qfnkh levi gsv ozab wlt.' != 'gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt'
+E       - Gsv jfrxp yildm ulc qfnkh levi gsv ozab wlt.
+E       ? ^  -     -     -   -     -        -    -   -
+E       + gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt
+E       ? ^    +     +     +     +           +
+
+exercises/practice/atbash-cipher/atbash_cipher_test.py:36: AssertionError
+__________________ AtbashCipherTest.test_encode_deep_thought ___________________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_encode_deep_thought>
+
+    def test_encode_deep_thought(self):
+>       self.assertEqual(encode("Truth is fiction."), "gifgs rhurx grlm")
+E       AssertionError: 'Gifgs rh urxgrlm.' != 'gifgs rhurx grlm'
+E       - Gifgs rh urxgrlm.
+E       ? ^       -       -
+E       + gifgs rhurx grlm
+E       ? ^          +
+
+exercises/practice/atbash-cipher/atbash_cipher_test.py:33: AssertionError
+__________________ AtbashCipherTest.test_encode_mindblowingly __________________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_encode_mindblowingly>
+
+    def test_encode_mindblowingly(self):
+>       self.assertEqual(encode("mindblowingly"), "nrmwy oldrm tob")
+E       AssertionError: 'nrmwyoldrmtob' != 'nrmwy oldrm tob'
+E       - nrmwyoldrmtob
+E       + nrmwy oldrm tob
+E       ?      +     +
+
+exercises/practice/atbash-cipher/atbash_cipher_test.py:27: AssertionError
+_____________________ AtbashCipherTest.test_encode_numbers _____________________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_encode_numbers>
+
+    def test_encode_numbers(self):
+>       self.assertEqual(encode("Testing,1 2 3, testing."), "gvhgr mt123 gvhgr mt")
+E       AssertionError: 'Gvhgrmt,1 2 3, gvhgrmt.' != 'gvhgr mt123 gvhgr mt'
+E       - Gvhgrmt,1 2 3, gvhgrmt.
+E       + gvhgr mt123 gvhgr mt
+
+exercises/practice/atbash-cipher/atbash_cipher_test.py:30: AssertionError
+_______________________ AtbashCipherTest.test_encode_omg _______________________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_encode_omg>
+
+    def test_encode_omg(self):
+>       self.assertEqual(encode("OMG"), "lnt")
+E       AssertionError: 'LNT' != 'lnt'
+E       - LNT
+E       + lnt
+
+exercises/practice/atbash-cipher/atbash_cipher_test.py:21: AssertionError
+_____________________ AtbashCipherTest.test_encode_spaces ______________________
+
+self = <atbash_cipher_test.AtbashCipherTest testMethod=test_encode_spaces>
+
+    def test_encode_spaces(self):
+>       self.assertEqual(encode("O M G"), "lnt")
+E       AssertionError: 'L N T' != 'lnt'
+E       - L N T
+E       + lnt
+
+exercises/practice/atbash-cipher/atbash_cipher_test.py:24: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_decode_a_sentence
+FAILED exercises/practice/atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_decode_all_the_letters
+FAILED exercises/practice/atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_decode_exercism
+FAILED exercises/practice/atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_decode_numbers
+FAILED exercises/practice/atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_decode_with_too_many_spaces
+FAILED exercises/practice/atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_encode_all_the_letters
+FAILED exercises/practice/atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_encode_deep_thought
+FAILED exercises/practice/atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_encode_mindblowingly
+FAILED exercises/practice/atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_encode_numbers
+FAILED exercises/practice/atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_encode_omg
+FAILED exercises/practice/atbash-cipher/atbash_cipher_test.py::AtbashCipherTest::test_encode_spaces
+========================= 11 failed, 3 passed in 0.09s =========================

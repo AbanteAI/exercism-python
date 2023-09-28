@@ -1,0 +1,163 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 12 items
+
+exercises/practice/dot-dsl/dot_dsl_test.py FFFFFFFFFFFF                  [100%]
+
+=================================== FAILURES ===================================
+_________________________ DotDslTest.test_empty_graph __________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_empty_graph>
+
+    def test_empty_graph(self):
+        g = Graph()
+    
+>       self.assertEqual(g.nodes, [])
+E       AttributeError: 'Graph' object has no attribute 'nodes'
+
+exercises/practice/dot-dsl/dot_dsl_test.py:10: AttributeError
+____________________ DotDslTest.test_graph_with_attributes _____________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_graph_with_attributes>
+
+    def test_graph_with_attributes(self):
+        g = Graph([
+            (ATTR, "foo", "1"),
+            (ATTR, "title", "Testing Attrs"),
+            (NODE, "a", {"color": "green"}),
+            (NODE, "c", {}),
+            (NODE, "b", {"label": "Beta!"}),
+            (EDGE, "b", "c", {}),
+            (EDGE, "a", "b", {"color": "blue"}),
+            (ATTR, "bar", "true")
+        ])
+    
+>       self.assertEqual(g.nodes, [Node("a", {"color": "green"}),
+                                   Node("c", {}),
+                                   Node("b", {"label": "Beta!"})])
+E       AttributeError: 'Graph' object has no attribute 'nodes'
+
+exercises/practice/dot-dsl/dot_dsl_test.py:62: AttributeError
+___________________ DotDslTest.test_graph_with_one_attribute ___________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_graph_with_one_attribute>
+
+    def test_graph_with_one_attribute(self):
+        g = Graph([
+            (ATTR, "foo", "1")
+        ])
+    
+>       self.assertEqual(g.nodes, [])
+E       AttributeError: 'Graph' object has no attribute 'nodes'
+
+exercises/practice/dot-dsl/dot_dsl_test.py:46: AttributeError
+_____________________ DotDslTest.test_graph_with_one_edge ______________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_graph_with_one_edge>
+
+    def test_graph_with_one_edge(self):
+        g = Graph([
+            (EDGE, "a", "b", {})
+        ])
+    
+>       self.assertEqual(g.nodes, [])
+E       AttributeError: 'Graph' object has no attribute 'nodes'
+
+exercises/practice/dot-dsl/dot_dsl_test.py:37: AttributeError
+_____________________ DotDslTest.test_graph_with_one_node ______________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_graph_with_one_node>
+
+    def test_graph_with_one_node(self):
+        g = Graph([
+            (NODE, "a", {})
+        ])
+    
+>       self.assertEqual(g.nodes, [Node("a", {})])
+E       AttributeError: 'Graph' object has no attribute 'nodes'
+
+exercises/practice/dot-dsl/dot_dsl_test.py:19: AttributeError
+______________ DotDslTest.test_graph_with_one_node_with_keywords _______________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_graph_with_one_node_with_keywords>
+
+    def test_graph_with_one_node_with_keywords(self):
+        g = Graph([
+            (NODE, "a", {"color": "green"})
+        ])
+    
+>       self.assertEqual(g.nodes, [Node("a", {"color": "green"})])
+E       AttributeError: 'Graph' object has no attribute 'nodes'
+
+exercises/practice/dot-dsl/dot_dsl_test.py:28: AttributeError
+________________________ DotDslTest.test_malformed_EDGE ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_EDGE>
+
+    def test_malformed_EDGE(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/dot-dsl/dot_dsl_test.py:112: AssertionError
+________________________ DotDslTest.test_malformed_attr ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_attr>
+
+    def test_malformed_attr(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/dot-dsl/dot_dsl_test.py:98: AssertionError
+_______________________ DotDslTest.test_malformed_graph ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_graph>
+
+    def test_malformed_graph(self):
+>       with self.assertRaises(TypeError) as err:
+E       AssertionError: TypeError not raised
+
+exercises/practice/dot-dsl/dot_dsl_test.py:74: AssertionError
+_____________________ DotDslTest.test_malformed_graph_item _____________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_graph_item>
+
+    def test_malformed_graph_item(self):
+>       with self.assertRaises(TypeError) as err:
+E       AssertionError: TypeError not raised
+
+exercises/practice/dot-dsl/dot_dsl_test.py:85: AssertionError
+________________________ DotDslTest.test_malformed_node ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_node>
+
+    def test_malformed_node(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/dot-dsl/dot_dsl_test.py:105: AssertionError
+_________________________ DotDslTest.test_unknown_item _________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_unknown_item>
+
+    def test_unknown_item(self):
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/dot-dsl/dot_dsl_test.py:118: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_empty_graph
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_graph_with_attributes
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_graph_with_one_attribute
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_graph_with_one_edge
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_graph_with_one_node
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_graph_with_one_node_with_keywords
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_EDGE
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_attr
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_graph
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_graph_item
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_node
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_unknown_item
+============================== 12 failed in 0.09s ==============================

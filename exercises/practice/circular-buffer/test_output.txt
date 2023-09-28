@@ -1,0 +1,283 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 14 items
+
+exercises/practice/circular-buffer/circular_buffer_test.py FFFFF.FFFFFFF [ 92%]
+F                                                                        [100%]
+
+=================================== FAILURES ===================================
+______ CircularBufferTest.test_a_read_frees_up_capacity_for_another_write ______
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_a_read_frees_up_capacity_for_another_write>
+
+    def test_a_read_frees_up_capacity_for_another_write(self):
+        buf = CircularBuffer(1)
+        buf.write("1")
+>       self.assertEqual(buf.read(), "1")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7feac3996d40>
+
+    def read(self):
+>       if self.is_empty():
+E       AttributeError: 'CircularBuffer' object has no attribute 'is_empty'
+
+exercises/practice/circular-buffer/circular_buffer.py:30: AttributeError
+____________ CircularBufferTest.test_can_read_an_item_just_written _____________
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_can_read_an_item_just_written>
+
+    def test_can_read_an_item_just_written(self):
+        buf = CircularBuffer(1)
+        buf.write("1")
+>       self.assertEqual(buf.read(), "1")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7feac3994730>
+
+    def read(self):
+>       if self.is_empty():
+E       AttributeError: 'CircularBuffer' object has no attribute 'is_empty'
+
+exercises/practice/circular-buffer/circular_buffer.py:30: AttributeError
+__________ CircularBufferTest.test_clear_does_nothing_on_empty_buffer __________
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_clear_does_nothing_on_empty_buffer>
+
+    def test_clear_does_nothing_on_empty_buffer(self):
+        buf = CircularBuffer(1)
+        buf.clear()
+        buf.write("1")
+>       self.assertEqual(buf.read(), "1")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7feac3995fc0>
+
+    def read(self):
+>       if self.is_empty():
+E       AttributeError: 'CircularBuffer' object has no attribute 'is_empty'
+
+exercises/practice/circular-buffer/circular_buffer.py:30: AttributeError
+______ CircularBufferTest.test_clear_frees_up_capacity_for_another_write _______
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_clear_frees_up_capacity_for_another_write>
+
+    def test_clear_frees_up_capacity_for_another_write(self):
+        buf = CircularBuffer(1)
+        buf.write("1")
+        buf.clear()
+        buf.write("2")
+>       self.assertEqual(buf.read(), "2")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7feac394b2e0>
+
+    def read(self):
+>       if self.is_empty():
+E       AttributeError: 'CircularBuffer' object has no attribute 'is_empty'
+
+exercises/practice/circular-buffer/circular_buffer.py:30: AttributeError
+___________ CircularBufferTest.test_each_item_may_only_be_read_once ____________
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_each_item_may_only_be_read_once>
+
+    def test_each_item_may_only_be_read_once(self):
+        buf = CircularBuffer(1)
+        buf.write("1")
+>       self.assertEqual(buf.read(), "1")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7feac39d9360>
+
+    def read(self):
+>       if self.is_empty():
+E       AttributeError: 'CircularBuffer' object has no attribute 'is_empty'
+
+exercises/practice/circular-buffer/circular_buffer.py:30: AttributeError
+____ CircularBufferTest.test_initial_clear_does_not_affect_wrapping_around _____
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_initial_clear_does_not_affect_wrapping_around>
+
+    def test_initial_clear_does_not_affect_wrapping_around(self):
+        buf = CircularBuffer(2)
+        buf.clear()
+        buf.write("1")
+        buf.write("2")
+>       buf.overwrite("3")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7feac39d63b0>, data = '3'
+
+    def overwrite(self, data):
+>       if self.is_empty():
+E       AttributeError: 'CircularBuffer' object has no attribute 'is_empty'
+
+exercises/practice/circular-buffer/circular_buffer.py:51: AttributeError
+_____ CircularBufferTest.test_items_are_read_in_the_order_they_are_written _____
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_items_are_read_in_the_order_they_are_written>
+
+    def test_items_are_read_in_the_order_they_are_written(self):
+        buf = CircularBuffer(2)
+        buf.write("1")
+        buf.write("2")
+>       self.assertEqual(buf.read(), "1")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7feac3949f30>
+
+    def read(self):
+>       if self.is_empty():
+E       AttributeError: 'CircularBuffer' object has no attribute 'is_empty'
+
+exercises/practice/circular-buffer/circular_buffer.py:30: AttributeError
+______ CircularBufferTest.test_items_cleared_out_of_buffer_can_t_be_read _______
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_items_cleared_out_of_buffer_can_t_be_read>
+
+    def test_items_cleared_out_of_buffer_can_t_be_read(self):
+        buf = CircularBuffer(1)
+        buf.write("1")
+        buf.clear()
+        with self.assertRaises(BufferError) as err:
+>           buf.read()
+
+exercises/practice/circular-buffer/circular_buffer_test.py:75: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def read(self):
+>       if self.is_empty():
+E       AttributeError: 'CircularBuffer' object has no attribute 'is_empty'
+
+exercises/practice/circular-buffer/circular_buffer.py:30: AttributeError
+_____ CircularBufferTest.test_overwrite_acts_like_write_on_non_full_buffer _____
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_overwrite_acts_like_write_on_non_full_buffer>
+
+    def test_overwrite_acts_like_write_on_non_full_buffer(self):
+        buf = CircularBuffer(2)
+        buf.write("1")
+>       buf.overwrite("2")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7feac394a410>, data = '2'
+
+    def overwrite(self, data):
+>       if self.is_empty():
+E       AttributeError: 'CircularBuffer' object has no attribute 'is_empty'
+
+exercises/practice/circular-buffer/circular_buffer.py:51: AttributeError
+__ CircularBufferTest.test_overwrite_replaces_the_oldest_item_on_full_buffer ___
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_overwrite_replaces_the_oldest_item_on_full_buffer>
+
+    def test_overwrite_replaces_the_oldest_item_on_full_buffer(self):
+        buf = CircularBuffer(2)
+        buf.write("1")
+        buf.write("2")
+>       buf.overwrite("3")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7feac39de290>, data = '3'
+
+    def overwrite(self, data):
+>       if self.is_empty():
+E       AttributeError: 'CircularBuffer' object has no attribute 'is_empty'
+
+exercises/practice/circular-buffer/circular_buffer.py:51: AttributeError
+_ CircularBufferTest.test_overwrite_replaces_the_oldest_item_remaining_in_buffer_following_a_read _
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_overwrite_replaces_the_oldest_item_remaining_in_buffer_following_a_read>
+
+    def test_overwrite_replaces_the_oldest_item_remaining_in_buffer_following_a_read(
+        self,
+    ):
+        buf = CircularBuffer(3)
+        buf.write("1")
+        buf.write("2")
+        buf.write("3")
+>       self.assertEqual(buf.read(), "1")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7feac39952a0>
+
+    def read(self):
+>       if self.is_empty():
+E       AttributeError: 'CircularBuffer' object has no attribute 'is_empty'
+
+exercises/practice/circular-buffer/circular_buffer.py:30: AttributeError
+_ CircularBufferTest.test_read_position_is_maintained_even_across_multiple_writes _
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_read_position_is_maintained_even_across_multiple_writes>
+
+    def test_read_position_is_maintained_even_across_multiple_writes(self):
+        buf = CircularBuffer(3)
+        buf.write("1")
+        buf.write("2")
+>       self.assertEqual(buf.read(), "1")
+
+exercises/practice/circular-buffer/circular_buffer_test.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <circular_buffer.CircularBuffer object at 0x7feac394b1f0>
+
+    def read(self):
+>       if self.is_empty():
+E       AttributeError: 'CircularBuffer' object has no attribute 'is_empty'
+
+exercises/practice/circular-buffer/circular_buffer.py:30: AttributeError
+___________ CircularBufferTest.test_reading_empty_buffer_should_fail ___________
+
+self = <circular_buffer_test.CircularBufferTest testMethod=test_reading_empty_buffer_should_fail>
+
+    def test_reading_empty_buffer_should_fail(self):
+        buf = CircularBuffer(1)
+        with self.assertRaises(BufferError) as err:
+>           buf.read()
+
+exercises/practice/circular-buffer/circular_buffer_test.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def read(self):
+>       if self.is_empty():
+E       AttributeError: 'CircularBuffer' object has no attribute 'is_empty'
+
+exercises/practice/circular-buffer/circular_buffer.py:30: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_a_read_frees_up_capacity_for_another_write
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_can_read_an_item_just_written
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_clear_does_nothing_on_empty_buffer
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_clear_frees_up_capacity_for_another_write
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_each_item_may_only_be_read_once
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_initial_clear_does_not_affect_wrapping_around
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_items_are_read_in_the_order_they_are_written
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_items_cleared_out_of_buffer_can_t_be_read
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_overwrite_acts_like_write_on_non_full_buffer
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_overwrite_replaces_the_oldest_item_on_full_buffer
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_overwrite_replaces_the_oldest_item_remaining_in_buffer_following_a_read
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_read_position_is_maintained_even_across_multiple_writes
+FAILED exercises/practice/circular-buffer/circular_buffer_test.py::CircularBufferTest::test_reading_empty_buffer_should_fail
+========================= 13 failed, 1 passed in 0.17s =========================

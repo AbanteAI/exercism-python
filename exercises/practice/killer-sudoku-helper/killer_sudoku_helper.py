@@ -1,2 +1,4 @@
 def combinations(target, size, exclude):
-    pass
+    valid_combinations = []
+    # TODO: Implement the logic to generate valid combinations
+    return valid_combinations

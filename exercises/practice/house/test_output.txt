@@ -1,0 +1,229 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 14 items
+
+exercises/practice/house/house_test.py FFFFFFFFFFFFFF                    [100%]
+
+=================================== FAILURES ===================================
+__________________________ HouseTest.test_full_rhyme ___________________________
+
+self = <house_test.HouseTest testMethod=test_full_rhyme>
+
+    def test_full_rhyme(self):
+>       self.assertEqual(
+            recite(1, 12),
+            [
+                "This is the house that Jack built.",
+                "This is the malt that lay in the house that Jack built.",
+                "This is the rat that ate the malt that lay in the house that Jack built.",
+                "This is the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the horse and the hound and the horn that belonged to the farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+            ],
+        )
+E       AssertionError: 'This is the house that Jack built.\nThis[2368 chars]ilt.' != ['This is the house that Jack built.', 'T[2326 chars]lt.']
+
+exercises/practice/house/house_test.py:114: AssertionError
+________________________ HouseTest.test_multiple_verses ________________________
+
+self = <house_test.HouseTest testMethod=test_multiple_verses>
+
+    def test_multiple_verses(self):
+>       self.assertEqual(
+            recite(4, 8),
+            [
+                "This is the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+                "This is the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built.",
+            ],
+        )
+E       AssertionError: 'This is the cat\nthat killed the rat\nth[774 chars]ilt.' != ['This is the cat that killed the rat tha[759 chars]lt.']
+
+exercises/practice/house/house_test.py:102: AssertionError
+_________ HouseTest.test_verse_10_the_rooster_that_crowed_in_the_morn __________
+
+self = <house_test.HouseTest testMethod=test_verse_10_the_rooster_that_crowed_in_the_morn>
+
+    def test_verse_10_the_rooster_that_crowed_in_the_morn(self):
+>       self.assertEqual(
+            recite(10, 10),
+            [
+                "This is the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: 'This is the rooster that crowed in the m[289 chars]ilt.' != ['This is the rooster that crowed in the [282 chars]lt.']
+
+exercises/practice/house/house_test.py:78: AssertionError
+______________ HouseTest.test_verse_11_the_farmer_sowing_his_corn ______________
+
+self = <house_test.HouseTest testMethod=test_verse_11_the_farmer_sowing_his_corn>
+
+    def test_verse_11_the_farmer_sowing_his_corn(self):
+>       self.assertEqual(
+            recite(11, 11),
+            [
+                "This is the farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: 'This is the farmer sowing his corn\nthat[327 chars]ilt.' != ['This is the farmer sowing his corn that[319 chars]lt.']
+
+exercises/practice/house/house_test.py:86: AssertionError
+_________ HouseTest.test_verse_12_the_horse_and_the_hound_and_the_horn _________
+
+self = <house_test.HouseTest testMethod=test_verse_12_the_horse_and_the_hound_and_the_horn>
+
+    def test_verse_12_the_horse_and_the_hound_and_the_horn(self):
+>       self.assertEqual(
+            recite(12, 12),
+            [
+                "This is the horse and the hound and the horn that belonged to the farmer sowing his corn that kept the rooster that crowed in the morn that woke the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: 'This is the horse and the hound and the [382 chars]ilt.' != ['This is the horse and the hound and the[373 chars]lt.']
+
+exercises/practice/house/house_test.py:94: AssertionError
+___________ HouseTest.test_verse_eight_the_man_all_tattered_and_torn ___________
+
+self = <house_test.HouseTest testMethod=test_verse_eight_the_man_all_tattered_and_torn>
+
+    def test_verse_eight_the_man_all_tattered_and_torn(self):
+>       self.assertEqual(
+            recite(8, 8),
+            [
+                "This is the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: 'This is the man all tattered and torn\nt[196 chars]ilt.' != ['This is the man all tattered and torn t[191 chars]lt.']
+
+exercises/practice/house/house_test.py:62: AssertionError
+________________ HouseTest.test_verse_five_the_dog_that_worried ________________
+
+self = <house_test.HouseTest testMethod=test_verse_five_the_dog_that_worried>
+
+    def test_verse_five_the_dog_that_worried(self):
+>       self.assertEqual(
+            recite(5, 5),
+            [
+                "This is the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: 'This is the dog\nthat worried the cat\nt[73 chars]ilt.' != ['This is the dog that worried the cat th[71 chars]lt.']
+
+exercises/practice/house/house_test.py:38: AssertionError
+________________ HouseTest.test_verse_four_the_cat_that_killed _________________
+
+self = <house_test.HouseTest testMethod=test_verse_four_the_cat_that_killed>
+
+    def test_verse_four_the_cat_that_killed(self):
+>       self.assertEqual(
+            recite(4, 4),
+            [
+                "This is the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: 'This is the cat\nthat killed the rat\nth[51 chars]ilt.' != ['This is the cat that killed the rat tha[50 chars]lt.']
+
+exercises/practice/house/house_test.py:30: AssertionError
+__________ HouseTest.test_verse_nine_the_priest_all_shaven_and_shorn ___________
+
+self = <house_test.HouseTest testMethod=test_verse_nine_the_priest_all_shaven_and_shorn>
+
+    def test_verse_nine_the_priest_all_shaven_and_shorn(self):
+>       self.assertEqual(
+            recite(9, 9),
+            [
+                "This is the priest all shaven and shorn that married the man all tattered and torn that kissed the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: 'This is the priest all shaven and shorn\[242 chars]ilt.' != ['This is the priest all shaven and shorn[236 chars]lt.']
+
+exercises/practice/house/house_test.py:70: AssertionError
+______________ HouseTest.test_verse_one_the_house_that_jack_built ______________
+
+self = <house_test.HouseTest testMethod=test_verse_one_the_house_that_jack_built>
+
+    def test_verse_one_the_house_that_jack_built(self):
+>       self.assertEqual(recite(1, 1), ["This is the house that Jack built."])
+E       AssertionError: 'This is the house that Jack built.' != ['This is the house that Jack built.']
+
+exercises/practice/house/house_test.py:14: AssertionError
+______________ HouseTest.test_verse_seven_the_maiden_all_forlorn _______________
+
+self = <house_test.HouseTest testMethod=test_verse_seven_the_maiden_all_forlorn>
+
+    def test_verse_seven_the_maiden_all_forlorn(self):
+>       self.assertEqual(
+            recite(7, 7),
+            [
+                "This is the maiden all forlorn that milked the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: 'This is the maiden all forlorn\nthat mil[153 chars]ilt.' != ['This is the maiden all forlorn that mil[149 chars]lt.']
+
+exercises/practice/house/house_test.py:54: AssertionError
+___________ HouseTest.test_verse_six_the_cow_with_the_crumpled_horn ____________
+
+self = <house_test.HouseTest testMethod=test_verse_six_the_cow_with_the_crumpled_horn>
+
+    def test_verse_six_the_cow_with_the_crumpled_horn(self):
+>       self.assertEqual(
+            recite(6, 6),
+            [
+                "This is the cow with the crumpled horn that tossed the dog that worried the cat that killed the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: 'This is the cow with the crumpled horn\n[117 chars]ilt.' != ['This is the cow with the crumpled horn [114 chars]lt.']
+
+exercises/practice/house/house_test.py:46: AssertionError
+_________________ HouseTest.test_verse_three_the_rat_that_ate __________________
+
+self = <house_test.HouseTest testMethod=test_verse_three_the_rat_that_ate>
+
+    def test_verse_three_the_rat_that_ate(self):
+>       self.assertEqual(
+            recite(3, 3),
+            [
+                "This is the rat that ate the malt that lay in the house that Jack built."
+            ],
+        )
+E       AssertionError: 'This is the rat\nthat ate the malt\nthat lay in the house that Jack built.' != ['This is the rat that ate the malt that lay in the house that Jack built.']
+
+exercises/practice/house/house_test.py:22: AssertionError
+__________________ HouseTest.test_verse_two_the_malt_that_lay __________________
+
+self = <house_test.HouseTest testMethod=test_verse_two_the_malt_that_lay>
+
+    def test_verse_two_the_malt_that_lay(self):
+>       self.assertEqual(
+            recite(2, 2), ["This is the malt that lay in the house that Jack built."]
+        )
+E       AssertionError: 'This is the malt\nthat lay in the house that Jack built.' != ['This is the malt that lay in the house that Jack built.']
+
+exercises/practice/house/house_test.py:17: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/house/house_test.py::HouseTest::test_full_rhyme - A...
+FAILED exercises/practice/house/house_test.py::HouseTest::test_multiple_verses
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_10_the_rooster_that_crowed_in_the_morn
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_11_the_farmer_sowing_his_corn
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_12_the_horse_and_the_hound_and_the_horn
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_eight_the_man_all_tattered_and_torn
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_five_the_dog_that_worried
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_four_the_cat_that_killed
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_nine_the_priest_all_shaven_and_shorn
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_one_the_house_that_jack_built
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_seven_the_maiden_all_forlorn
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_six_the_cow_with_the_crumpled_horn
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_three_the_rat_that_ate
+FAILED exercises/practice/house/house_test.py::HouseTest::test_verse_two_the_malt_that_lay
+============================== 14 failed in 0.07s ==============================

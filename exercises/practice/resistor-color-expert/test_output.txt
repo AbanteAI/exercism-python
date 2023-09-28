@@ -1,0 +1,135 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 10 items
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py . [ 10%]
+FF.F...FF                                                                [100%]
+
+=================================== FAILURES ===================================
+__________ ResistorColorExpertTest.test_blue_grey_white_red_and_brown __________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_blue_grey_white_red_and_brown>
+
+    def test_blue_grey_white_red_and_brown(self):
+>       self.assertEqual(
+            resistor_label(["blue", "grey", "white", "brown", "brown"]), "6.89 kiloohms ±1%"
+        )
+E       AssertionError: '6 kiloohms ±1%' != '6.89 kiloohms ±1%'
+E       - 6 kiloohms ±1%
+E       + 6.89 kiloohms ±1%
+E       ?  +++
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:39: AssertionError
+_________ ResistorColorExpertTest.test_brown_red_orange_green_and_blue _________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_brown_red_orange_green_and_blue>
+
+    def test_brown_red_orange_green_and_blue(self):
+>       self.assertEqual(
+            resistor_label(["brown", "red", "orange", "green", "blue"]), "12.3 megaohms ±0.25%"
+        )
+E       AssertionError: '12 megaohms ±0.25%' != '12.3 megaohms ±0.25%'
+E       - 12 megaohms ±0.25%
+E       + 12.3 megaohms ±0.25%
+E       ?   ++
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:49: AssertionError
+_________________ ResistorColorExpertTest.test_one_black_band __________________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_one_black_band>
+
+    def test_one_black_band(self):
+>       self.assertEqual(resistor_label(["black"]), "0 ohms")
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['black']
+
+    def resistor_label(colors):
+        values = {
+            "black": 0,
+            "brown": 1,
+            "red": 2,
+            "orange": 3,
+            "yellow": 4,
+            "green": 5,
+            "blue": 6,
+            "violet": 7,
+            "grey": 8,
+            "white": 9
+        }
+        tolerances = {
+            "grey": 0.05,
+            "violet": 0.1,
+            "blue": 0.25,
+            "green": 0.5,
+            "brown": 1,
+            "red": 2,
+            "gold": 5,
+            "silver": 10
+        }
+    
+        if len(colors) == 1:
+            resistance = values[colors[0]]
+            label = f"{resistance} ohms"
+        elif len(colors) == 4:
+            resistance = (values[colors[0]] * 10 + values[colors[1]]) * (10 ** values[colors[2]])
+            tolerance = tolerances[colors[3]]
+            label = f"{resistance} ohms ±{tolerance}%"
+        elif len(colors) == 5:
+            resistance = (values[colors[0]] * 100 + values[colors[1]] * 10 + values[colors[2]]) * (10 ** values[colors[3]])
+            tolerance = tolerances[colors[4]]
+            label = f"{resistance} ohms ±{tolerance}%"
+    
+        if resistance >= 1000000:
+            resistance /= 1000000
+            unit = "megaohms"
+        elif resistance >= 1000:
+            resistance /= 1000
+            unit = "kiloohms"
+        else:
+            unit = "ohms"
+    
+>       label = f"{int(resistance)} {unit} ±{tolerance}%"
+E       UnboundLocalError: local variable 'tolerance' referenced before assignment
+
+exercises/practice/resistor-color-expert/resistor_color_expert.py:46: UnboundLocalError
+________ ResistorColorExpertTest.test_red_green_yellow_yellow_and_brown ________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_red_green_yellow_yellow_and_brown>
+
+    def test_red_green_yellow_yellow_and_brown(self):
+>       self.assertEqual(
+            resistor_label(["red", "green", "yellow", "yellow", "brown"]), "2.54 megaohms ±1%"
+        )
+E       AssertionError: '2 megaohms ±1%' != '2.54 megaohms ±1%'
+E       - 2 megaohms ±1%
+E       + 2.54 megaohms ±1%
+E       ?  +++
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:34: AssertionError
+___________ ResistorColorExpertTest.test_violet_orange_red_and_grey ____________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_violet_orange_red_and_grey>
+
+    def test_violet_orange_red_and_grey(self):
+>       self.assertEqual(
+            resistor_label(["violet", "orange", "red", "grey"]), "7.3 kiloohms ±0.05%"
+        )
+E       AssertionError: '7 kiloohms ±0.05%' != '7.3 kiloohms ±0.05%'
+E       - 7 kiloohms ±0.05%
+E       + 7.3 kiloohms ±0.05%
+E       ?  ++
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:44: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_blue_grey_white_red_and_brown
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_brown_red_orange_green_and_blue
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_one_black_band
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_red_green_yellow_yellow_and_brown
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_violet_orange_red_and_grey
+========================= 5 failed, 5 passed in 0.09s ==========================

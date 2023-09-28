@@ -1,0 +1,367 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 10 items
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py FFFFF [ 50%]
+FFFFF                                                                    [100%]
+
+=================================== FAILURES ===================================
+______________ ResistorColorTrioTest.test_blue_and_grey_and_brown ______________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_blue_and_grey_and_brown>
+
+    def test_blue_and_grey_and_brown(self):
+>       self.assertEqual(label(["blue", "grey", "brown"]), "680 ohms")
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['blue', 'grey', 'brown']
+
+    def label(colors):
+        color_values = {
+            "black": 0,
+            "brown": 1,
+            "red": 2,
+            "orange": 3,
+            "yellow": 4,
+            "green": 5,
+            "blue": 6,
+            "violet": 7,
+            "grey": 8,
+            "white": 9
+        }
+        first_color, second_color, third_color = colors
+        main_value = color_values[first_color] * 10 + color_values[second_color]
+        zeros = "0" * color_values[third_color]
+        if main_value >= 1000:
+            final_value = f"{main_value // 1000} kiloohms"
+        else:
+>           final_value = f"{final_value} ohms"
+E           UnboundLocalError: local variable 'final_value' referenced before assignment
+
+exercises/practice/resistor-color-trio/resistor_color_trio.py:20: UnboundLocalError
+_____________ ResistorColorTrioTest.test_blue_and_violet_and_blue ______________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_blue_and_violet_and_blue>
+
+    def test_blue_and_violet_and_blue(self):
+>       self.assertEqual(label(["blue", "violet", "blue"]), "67 megaohms")
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['blue', 'violet', 'blue']
+
+    def label(colors):
+        color_values = {
+            "black": 0,
+            "brown": 1,
+            "red": 2,
+            "orange": 3,
+            "yellow": 4,
+            "green": 5,
+            "blue": 6,
+            "violet": 7,
+            "grey": 8,
+            "white": 9
+        }
+        first_color, second_color, third_color = colors
+        main_value = color_values[first_color] * 10 + color_values[second_color]
+        zeros = "0" * color_values[third_color]
+        if main_value >= 1000:
+            final_value = f"{main_value // 1000} kiloohms"
+        else:
+>           final_value = f"{final_value} ohms"
+E           UnboundLocalError: local variable 'final_value' referenced before assignment
+
+exercises/practice/resistor-color-trio/resistor_color_trio.py:20: UnboundLocalError
+___ ResistorColorTrioTest.test_first_two_colors_make_an_invalid_octal_number ___
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_first_two_colors_make_an_invalid_octal_number>
+
+    def test_first_two_colors_make_an_invalid_octal_number(self):
+>       self.assertEqual(label(["black", "grey", "black"]), "8 ohms")
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['black', 'grey', 'black']
+
+    def label(colors):
+        color_values = {
+            "black": 0,
+            "brown": 1,
+            "red": 2,
+            "orange": 3,
+            "yellow": 4,
+            "green": 5,
+            "blue": 6,
+            "violet": 7,
+            "grey": 8,
+            "white": 9
+        }
+        first_color, second_color, third_color = colors
+        main_value = color_values[first_color] * 10 + color_values[second_color]
+        zeros = "0" * color_values[third_color]
+        if main_value >= 1000:
+            final_value = f"{main_value // 1000} kiloohms"
+        else:
+>           final_value = f"{final_value} ohms"
+E           UnboundLocalError: local variable 'final_value' referenced before assignment
+
+exercises/practice/resistor-color-trio/resistor_color_trio.py:20: UnboundLocalError
+____________ ResistorColorTrioTest.test_green_and_brown_and_orange _____________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_green_and_brown_and_orange>
+
+    def test_green_and_brown_and_orange(self):
+>       self.assertEqual(label(["green", "brown", "orange"]), "51 kiloohms")
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['green', 'brown', 'orange']
+
+    def label(colors):
+        color_values = {
+            "black": 0,
+            "brown": 1,
+            "red": 2,
+            "orange": 3,
+            "yellow": 4,
+            "green": 5,
+            "blue": 6,
+            "violet": 7,
+            "grey": 8,
+            "white": 9
+        }
+        first_color, second_color, third_color = colors
+        main_value = color_values[first_color] * 10 + color_values[second_color]
+        zeros = "0" * color_values[third_color]
+        if main_value >= 1000:
+            final_value = f"{main_value // 1000} kiloohms"
+        else:
+>           final_value = f"{final_value} ohms"
+E           UnboundLocalError: local variable 'final_value' referenced before assignment
+
+exercises/practice/resistor-color-trio/resistor_color_trio.py:20: UnboundLocalError
+________________ ResistorColorTrioTest.test_ignore_extra_colors ________________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_ignore_extra_colors>
+
+    def test_ignore_extra_colors(self):
+>       self.assertEqual(label(["blue", "green", "yellow", "orange"]), "650 kiloohms")
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['blue', 'green', 'yellow', 'orange']
+
+    def label(colors):
+        color_values = {
+            "black": 0,
+            "brown": 1,
+            "red": 2,
+            "orange": 3,
+            "yellow": 4,
+            "green": 5,
+            "blue": 6,
+            "violet": 7,
+            "grey": 8,
+            "white": 9
+        }
+>       first_color, second_color, third_color = colors
+E       ValueError: too many values to unpack (expected 3)
+
+exercises/practice/resistor-color-trio/resistor_color_trio.py:14: ValueError
+______________ ResistorColorTrioTest.test_maximum_possible_value _______________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_maximum_possible_value>
+
+    def test_maximum_possible_value(self):
+>       self.assertEqual(label(["white", "white", "white"]), "99 gigaohms")
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['white', 'white', 'white']
+
+    def label(colors):
+        color_values = {
+            "black": 0,
+            "brown": 1,
+            "red": 2,
+            "orange": 3,
+            "yellow": 4,
+            "green": 5,
+            "blue": 6,
+            "violet": 7,
+            "grey": 8,
+            "white": 9
+        }
+        first_color, second_color, third_color = colors
+        main_value = color_values[first_color] * 10 + color_values[second_color]
+        zeros = "0" * color_values[third_color]
+        if main_value >= 1000:
+            final_value = f"{main_value // 1000} kiloohms"
+        else:
+>           final_value = f"{final_value} ohms"
+E           UnboundLocalError: local variable 'final_value' referenced before assignment
+
+exercises/practice/resistor-color-trio/resistor_color_trio.py:20: UnboundLocalError
+______________ ResistorColorTrioTest.test_minimum_possible_value _______________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_minimum_possible_value>
+
+    def test_minimum_possible_value(self):
+>       self.assertEqual(label(["black", "black", "black"]), "0 ohms")
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['black', 'black', 'black']
+
+    def label(colors):
+        color_values = {
+            "black": 0,
+            "brown": 1,
+            "red": 2,
+            "orange": 3,
+            "yellow": 4,
+            "green": 5,
+            "blue": 6,
+            "violet": 7,
+            "grey": 8,
+            "white": 9
+        }
+        first_color, second_color, third_color = colors
+        main_value = color_values[first_color] * 10 + color_values[second_color]
+        zeros = "0" * color_values[third_color]
+        if main_value >= 1000:
+            final_value = f"{main_value // 1000} kiloohms"
+        else:
+>           final_value = f"{final_value} ohms"
+E           UnboundLocalError: local variable 'final_value' referenced before assignment
+
+exercises/practice/resistor-color-trio/resistor_color_trio.py:20: UnboundLocalError
+____________ ResistorColorTrioTest.test_orange_and_orange_and_black ____________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_orange_and_orange_and_black>
+
+    def test_orange_and_orange_and_black(self):
+>       self.assertEqual(label(["orange", "orange", "black"]), "33 ohms")
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['orange', 'orange', 'black']
+
+    def label(colors):
+        color_values = {
+            "black": 0,
+            "brown": 1,
+            "red": 2,
+            "orange": 3,
+            "yellow": 4,
+            "green": 5,
+            "blue": 6,
+            "violet": 7,
+            "grey": 8,
+            "white": 9
+        }
+        first_color, second_color, third_color = colors
+        main_value = color_values[first_color] * 10 + color_values[second_color]
+        zeros = "0" * color_values[third_color]
+        if main_value >= 1000:
+            final_value = f"{main_value // 1000} kiloohms"
+        else:
+>           final_value = f"{final_value} ohms"
+E           UnboundLocalError: local variable 'final_value' referenced before assignment
+
+exercises/practice/resistor-color-trio/resistor_color_trio.py:20: UnboundLocalError
+_______________ ResistorColorTrioTest.test_red_and_black_and_red _______________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_red_and_black_and_red>
+
+    def test_red_and_black_and_red(self):
+>       self.assertEqual(label(["red", "black", "red"]), "2 kiloohms")
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['red', 'black', 'red']
+
+    def label(colors):
+        color_values = {
+            "black": 0,
+            "brown": 1,
+            "red": 2,
+            "orange": 3,
+            "yellow": 4,
+            "green": 5,
+            "blue": 6,
+            "violet": 7,
+            "grey": 8,
+            "white": 9
+        }
+        first_color, second_color, third_color = colors
+        main_value = color_values[first_color] * 10 + color_values[second_color]
+        zeros = "0" * color_values[third_color]
+        if main_value >= 1000:
+            final_value = f"{main_value // 1000} kiloohms"
+        else:
+>           final_value = f"{final_value} ohms"
+E           UnboundLocalError: local variable 'final_value' referenced before assignment
+
+exercises/practice/resistor-color-trio/resistor_color_trio.py:20: UnboundLocalError
+___________ ResistorColorTrioTest.test_yellow_and_violet_and_yellow ____________
+
+self = <resistor_color_trio_test.ResistorColorTrioTest testMethod=test_yellow_and_violet_and_yellow>
+
+    def test_yellow_and_violet_and_yellow(self):
+>       self.assertEqual(label(["yellow", "violet", "yellow"]), "470 kiloohms")
+
+exercises/practice/resistor-color-trio/resistor_color_trio_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['yellow', 'violet', 'yellow']
+
+    def label(colors):
+        color_values = {
+            "black": 0,
+            "brown": 1,
+            "red": 2,
+            "orange": 3,
+            "yellow": 4,
+            "green": 5,
+            "blue": 6,
+            "violet": 7,
+            "grey": 8,
+            "white": 9
+        }
+        first_color, second_color, third_color = colors
+        main_value = color_values[first_color] * 10 + color_values[second_color]
+        zeros = "0" * color_values[third_color]
+        if main_value >= 1000:
+            final_value = f"{main_value // 1000} kiloohms"
+        else:
+>           final_value = f"{final_value} ohms"
+E           UnboundLocalError: local variable 'final_value' referenced before assignment
+
+exercises/practice/resistor-color-trio/resistor_color_trio.py:20: UnboundLocalError
+=========================== short test summary info ============================
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_blue_and_grey_and_brown
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_blue_and_violet_and_blue
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_first_two_colors_make_an_invalid_octal_number
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_green_and_brown_and_orange
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_ignore_extra_colors
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_maximum_possible_value
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_minimum_possible_value
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_orange_and_orange_and_black
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_red_and_black_and_red
+FAILED exercises/practice/resistor-color-trio/resistor_color_trio_test.py::ResistorColorTrioTest::test_yellow_and_violet_and_yellow
+============================== 10 failed in 0.12s ==============================

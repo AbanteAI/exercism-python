@@ -1,0 +1,52 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 9 items
+
+exercises/practice/acronym/acronym_test.py ...F..FF.                     [100%]
+
+=================================== FAILURES ===================================
+___________________ AcronymTest.test_consecutive_delimiters ____________________
+
+self = <acronym_test.AcronymTest testMethod=test_consecutive_delimiters>
+
+    def test_consecutive_delimiters(self):
+>       self.assertEqual(abbreviate("Something - I made up from thin air"), "SIMUFTA")
+E       AssertionError: 'S-IMUFTA' != 'SIMUFTA'
+E       - S-IMUFTA
+E       ?  -
+E       + SIMUFTA
+
+exercises/practice/acronym/acronym_test.py:37: AssertionError
+_______________ AcronymTest.test_punctuation_without_whitespace ________________
+
+self = <acronym_test.AcronymTest testMethod=test_punctuation_without_whitespace>
+
+    def test_punctuation_without_whitespace(self):
+>       self.assertEqual(abbreviate("Complementary metal-oxide semiconductor"), "CMOS")
+E       AssertionError: 'CMS' != 'CMOS'
+E       - CMS
+E       + CMOS
+E       ?   +
+
+exercises/practice/acronym/acronym_test.py:26: AssertionError
+_____________________ AcronymTest.test_underscore_emphasis _____________________
+
+self = <acronym_test.AcronymTest testMethod=test_underscore_emphasis>
+
+    def test_underscore_emphasis(self):
+>       self.assertEqual(abbreviate("The Road _Not_ Taken"), "TRNT")
+E       AssertionError: 'TR_T' != 'TRNT'
+E       - TR_T
+E       ?   ^
+E       + TRNT
+E       ?   ^
+
+exercises/practice/acronym/acronym_test.py:43: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/acronym/acronym_test.py::AcronymTest::test_consecutive_delimiters
+FAILED exercises/practice/acronym/acronym_test.py::AcronymTest::test_punctuation_without_whitespace
+FAILED exercises/practice/acronym/acronym_test.py::AcronymTest::test_underscore_emphasis
+========================= 3 failed, 6 passed in 0.07s ==========================

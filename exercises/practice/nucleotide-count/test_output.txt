@@ -1,0 +1,87 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 7 items
+
+exercises/practice/nucleotide-count/nucleotide_count_test.py FFFFFFF     [100%]
+
+=================================== FAILURES ===================================
+_______________ NucleotideCountTest.test_counts_all_nucleotides ________________
+
+self = <nucleotide_count_test.NucleotideCountTest testMethod=test_counts_all_nucleotides>
+
+    def test_counts_all_nucleotides(self):
+        dna = ('AGCTTTTCATTCTGACTGCAACGGGCAATATGTCT'
+               'CTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC')
+        expected = {'A': 20, 'T': 21, 'G': 17, 'C': 12}
+>       self.assertEqual(nucleotide_counts(dna), expected)
+E       AssertionError: None != {'A': 20, 'T': 21, 'G': 17, 'C': 12}
+
+exercises/practice/nucleotide-count/nucleotide_count_test.py:38: AssertionError
+________________ NucleotideCountTest.test_counts_only_thymidine ________________
+
+self = <nucleotide_count_test.NucleotideCountTest testMethod=test_counts_only_thymidine>
+
+    def test_counts_only_thymidine(self):
+>       self.assertEqual(count('GGGGGTAACCCGG', 'T'), 1)
+E       AssertionError: None != 1
+
+exercises/practice/nucleotide-count/nucleotide_count_test.py:28: AssertionError
+__________ NucleotideCountTest.test_empty_dna_string_has_no_adenosine __________
+
+self = <nucleotide_count_test.NucleotideCountTest testMethod=test_empty_dna_string_has_no_adenosine>
+
+    def test_empty_dna_string_has_no_adenosine(self):
+>       self.assertEqual(count('', 'A'), 0)
+E       AssertionError: None != 0
+
+exercises/practice/nucleotide-count/nucleotide_count_test.py:14: AssertionError
+_________ NucleotideCountTest.test_empty_dna_string_has_no_nucleotides _________
+
+self = <nucleotide_count_test.NucleotideCountTest testMethod=test_empty_dna_string_has_no_nucleotides>
+
+    def test_empty_dna_string_has_no_nucleotides(self):
+        expected = {'A': 0, 'T': 0, 'C': 0, 'G': 0}
+>       self.assertEqual(nucleotide_counts(""), expected)
+E       AssertionError: None != {'A': 0, 'T': 0, 'C': 0, 'G': 0}
+
+exercises/practice/nucleotide-count/nucleotide_count_test.py:18: AssertionError
+__________ NucleotideCountTest.test_repetitive_cytidine_gets_counted ___________
+
+self = <nucleotide_count_test.NucleotideCountTest testMethod=test_repetitive_cytidine_gets_counted>
+
+    def test_repetitive_cytidine_gets_counted(self):
+>       self.assertEqual(count('CCCCC', 'C'), 5)
+E       AssertionError: None != 5
+
+exercises/practice/nucleotide-count/nucleotide_count_test.py:21: AssertionError
+_______ NucleotideCountTest.test_repetitive_sequence_has_only_guanosine ________
+
+self = <nucleotide_count_test.NucleotideCountTest testMethod=test_repetitive_sequence_has_only_guanosine>
+
+    def test_repetitive_sequence_has_only_guanosine(self):
+        expected = {'A': 0, 'T': 0, 'C': 0, 'G': 8}
+>       self.assertEqual(nucleotide_counts('GGGGGGGG'), expected)
+E       AssertionError: None != {'A': 0, 'T': 0, 'C': 0, 'G': 8}
+
+exercises/practice/nucleotide-count/nucleotide_count_test.py:25: AssertionError
+________________ NucleotideCountTest.test_validates_nucleotides ________________
+
+self = <nucleotide_count_test.NucleotideCountTest testMethod=test_validates_nucleotides>
+
+    def test_validates_nucleotides(self):
+>       with self.assertRaisesWithMessage(ValueError):
+E       AssertionError: ValueError not raised
+
+exercises/practice/nucleotide-count/nucleotide_count_test.py:31: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/nucleotide-count/nucleotide_count_test.py::NucleotideCountTest::test_counts_all_nucleotides
+FAILED exercises/practice/nucleotide-count/nucleotide_count_test.py::NucleotideCountTest::test_counts_only_thymidine
+FAILED exercises/practice/nucleotide-count/nucleotide_count_test.py::NucleotideCountTest::test_empty_dna_string_has_no_adenosine
+FAILED exercises/practice/nucleotide-count/nucleotide_count_test.py::NucleotideCountTest::test_empty_dna_string_has_no_nucleotides
+FAILED exercises/practice/nucleotide-count/nucleotide_count_test.py::NucleotideCountTest::test_repetitive_cytidine_gets_counted
+FAILED exercises/practice/nucleotide-count/nucleotide_count_test.py::NucleotideCountTest::test_repetitive_sequence_has_only_guanosine
+FAILED exercises/practice/nucleotide-count/nucleotide_count_test.py::NucleotideCountTest::test_validates_nucleotides
+============================== 7 failed in 0.05s ===============================

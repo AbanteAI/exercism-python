@@ -19,7 +19,15 @@ class Tree:
         return self.__dict__() == other.__dict__()
 
     def from_pov(self, from_node):
+        def from_pov(self, from_node):
+            pass
+        def from_pov(self, from_node):
+            pass
         pass
+        def path_to(self, from_node, to_node):
+            pass
 
     def path_to(self, from_node, to_node):
+        def path_to(self, from_node, to_node):
+            pass
         pass

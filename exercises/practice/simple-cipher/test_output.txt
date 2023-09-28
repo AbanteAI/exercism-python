@@ -1,0 +1,150 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 12 items
+
+exercises/practice/simple-cipher/simple_cipher_test.py FFFFFFFFFFFF      [100%]
+
+=================================== FAILURES ===================================
+_____________________ RandomKeyCipherTest.test_can_decode ______________________
+
+self = <simple_cipher_test.RandomKeyCipherTest testMethod=test_can_decode>
+
+    def test_can_decode(self):
+        cipher = Cipher()
+>       self.assertEqual(cipher.decode(cipher.key[0 : len("aaaaaaaaaa")]), "aaaaaaaaaa")
+E       AttributeError: 'Cipher' object has no attribute 'key'
+
+exercises/practice/simple-cipher/simple_cipher_test.py:21: AttributeError
+_____________________ RandomKeyCipherTest.test_can_encode ______________________
+
+self = <simple_cipher_test.RandomKeyCipherTest testMethod=test_can_encode>
+
+    def test_can_encode(self):
+        cipher = Cipher()
+        plaintext = "aaaaaaaaaa"
+>       self.assertEqual(cipher.encode(plaintext), cipher.key[0 : len(plaintext)])
+E       AttributeError: 'Cipher' object has no attribute 'key'
+
+exercises/practice/simple-cipher/simple_cipher_test.py:17: AttributeError
+____________________ RandomKeyCipherTest.test_is_reversible ____________________
+
+self = <simple_cipher_test.RandomKeyCipherTest testMethod=test_is_reversible>
+
+    def test_is_reversible(self):
+        cipher = Cipher()
+        plaintext = "abcdefghij"
+>       self.assertEqual(cipher.decode(cipher.encode(plaintext)), plaintext)
+E       AssertionError: None != 'abcdefghij'
+
+exercises/practice/simple-cipher/simple_cipher_test.py:26: AssertionError
+________ RandomKeyCipherTest.test_key_is_made_only_of_lowercase_letters ________
+
+self = <simple_cipher_test.RandomKeyCipherTest testMethod=test_key_is_made_only_of_lowercase_letters>
+
+    def test_key_is_made_only_of_lowercase_letters(self):
+>       self.assertIsNotNone(re.match("^[a-z]+$", Cipher().key))
+E       AttributeError: 'Cipher' object has no attribute 'key'
+
+exercises/practice/simple-cipher/simple_cipher_test.py:29: AttributeError
+____________________ SubstitutionCipherTest.test_can_decode ____________________
+
+self = <simple_cipher_test.SubstitutionCipherTest testMethod=test_can_decode>
+
+    def test_can_decode(self):
+        cipher = Cipher("abcdefghij")
+>       self.assertEqual(cipher.decode(cipher.key), "aaaaaaaaaa")
+E       AttributeError: 'Cipher' object has no attribute 'key'
+
+exercises/practice/simple-cipher/simple_cipher_test.py:40: AttributeError
+_____ SubstitutionCipherTest.test_can_decode_messages_longer_than_the_key ______
+
+self = <simple_cipher_test.SubstitutionCipherTest testMethod=test_can_decode_messages_longer_than_the_key>
+
+    def test_can_decode_messages_longer_than_the_key(self):
+        cipher = Cipher("abc")
+>       self.assertEqual(cipher.decode("iboaqcnecbfcr"), "iamapandabear")
+E       AssertionError: None != 'iamapandabear'
+
+exercises/practice/simple-cipher/simple_cipher_test.py:68: AssertionError
+_____________ SubstitutionCipherTest.test_can_double_shift_encode ______________
+
+self = <simple_cipher_test.SubstitutionCipherTest testMethod=test_can_double_shift_encode>
+
+    def test_can_double_shift_encode(self):
+        cipher = Cipher("iamapandabear")
+        plaintext = "iamapandabear"
+>       self.assertEqual(cipher.encode(plaintext), "qayaeaagaciai")
+E       AssertionError: None != 'qayaeaagaciai'
+
+exercises/practice/simple-cipher/simple_cipher_test.py:50: AssertionError
+____________________ SubstitutionCipherTest.test_can_encode ____________________
+
+self = <simple_cipher_test.SubstitutionCipherTest testMethod=test_can_encode>
+
+    def test_can_encode(self):
+        cipher = Cipher("abcdefghij")
+        plaintext = "aaaaaaaaaa"
+>       self.assertEqual(cipher.encode(plaintext), cipher.key)
+E       AttributeError: 'Cipher' object has no attribute 'key'
+
+exercises/practice/simple-cipher/simple_cipher_test.py:36: AttributeError
+_____ SubstitutionCipherTest.test_can_encode_messages_longer_than_the_key ______
+
+self = <simple_cipher_test.SubstitutionCipherTest testMethod=test_can_encode_messages_longer_than_the_key>
+
+    def test_can_encode_messages_longer_than_the_key(self):
+        cipher = Cipher("abc")
+        plaintext = "iamapandabear"
+>       self.assertEqual(cipher.encode(plaintext), "iboaqcnecbfcr")
+E       AssertionError: None != 'iboaqcnecbfcr'
+
+exercises/practice/simple-cipher/simple_cipher_test.py:64: AssertionError
+________________ SubstitutionCipherTest.test_can_wrap_on_decode ________________
+
+self = <simple_cipher_test.SubstitutionCipherTest testMethod=test_can_wrap_on_decode>
+
+    def test_can_wrap_on_decode(self):
+        cipher = Cipher("abcdefghij")
+>       self.assertEqual(cipher.decode("zabcdefghi"), "zzzzzzzzzz")
+E       AssertionError: None != 'zzzzzzzzzz'
+
+exercises/practice/simple-cipher/simple_cipher_test.py:59: AssertionError
+________________ SubstitutionCipherTest.test_can_wrap_on_encode ________________
+
+self = <simple_cipher_test.SubstitutionCipherTest testMethod=test_can_wrap_on_encode>
+
+    def test_can_wrap_on_encode(self):
+        cipher = Cipher("abcdefghij")
+        plaintext = "zzzzzzzzzz"
+>       self.assertEqual(cipher.encode(plaintext), "zabcdefghi")
+E       AssertionError: None != 'zabcdefghi'
+
+exercises/practice/simple-cipher/simple_cipher_test.py:55: AssertionError
+__________________ SubstitutionCipherTest.test_is_reversible ___________________
+
+self = <simple_cipher_test.SubstitutionCipherTest testMethod=test_is_reversible>
+
+    def test_is_reversible(self):
+        cipher = Cipher("abcdefghij")
+        plaintext = "abcdefghij"
+>       self.assertEqual(cipher.decode(cipher.encode(plaintext)), plaintext)
+E       AssertionError: None != 'abcdefghij'
+
+exercises/practice/simple-cipher/simple_cipher_test.py:45: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/simple-cipher/simple_cipher_test.py::RandomKeyCipherTest::test_can_decode
+FAILED exercises/practice/simple-cipher/simple_cipher_test.py::RandomKeyCipherTest::test_can_encode
+FAILED exercises/practice/simple-cipher/simple_cipher_test.py::RandomKeyCipherTest::test_is_reversible
+FAILED exercises/practice/simple-cipher/simple_cipher_test.py::RandomKeyCipherTest::test_key_is_made_only_of_lowercase_letters
+FAILED exercises/practice/simple-cipher/simple_cipher_test.py::SubstitutionCipherTest::test_can_decode
+FAILED exercises/practice/simple-cipher/simple_cipher_test.py::SubstitutionCipherTest::test_can_decode_messages_longer_than_the_key
+FAILED exercises/practice/simple-cipher/simple_cipher_test.py::SubstitutionCipherTest::test_can_double_shift_encode
+FAILED exercises/practice/simple-cipher/simple_cipher_test.py::SubstitutionCipherTest::test_can_encode
+FAILED exercises/practice/simple-cipher/simple_cipher_test.py::SubstitutionCipherTest::test_can_encode_messages_longer_than_the_key
+FAILED exercises/practice/simple-cipher/simple_cipher_test.py::SubstitutionCipherTest::test_can_wrap_on_decode
+FAILED exercises/practice/simple-cipher/simple_cipher_test.py::SubstitutionCipherTest::test_can_wrap_on_encode
+FAILED exercises/practice/simple-cipher/simple_cipher_test.py::SubstitutionCipherTest::test_is_reversible
+============================== 12 failed in 0.09s ==============================

@@ -1,0 +1,62 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 21 items
+
+exercises/practice/triangle/triangle_test.py .F.....F...F.F...F...       [100%]
+
+=================================== FAILURES ===================================
+________ EquilateralTriangleTest.test_all_zero_sides_is_not_a_triangle _________
+
+self = <triangle_test.EquilateralTriangleTest testMethod=test_all_zero_sides_is_not_a_triangle>
+
+    def test_all_zero_sides_is_not_a_triangle(self):
+>       self.assertIs(equilateral([0, 0, 0]), False)
+E       AssertionError: True is not False
+
+exercises/practice/triangle/triangle_test.py:25: AssertionError
+________ IsoscelesTriangleTest.test_first_triangle_inequality_violation ________
+
+self = <triangle_test.IsoscelesTriangleTest testMethod=test_first_triangle_inequality_violation>
+
+    def test_first_triangle_inequality_violation(self):
+>       self.assertIs(isosceles([1, 1, 3]), False)
+E       AssertionError: True is not False
+
+exercises/practice/triangle/triangle_test.py:48: AssertionError
+_______ IsoscelesTriangleTest.test_second_triangle_inequality_violation ________
+
+self = <triangle_test.IsoscelesTriangleTest testMethod=test_second_triangle_inequality_violation>
+
+    def test_second_triangle_inequality_violation(self):
+>       self.assertIs(isosceles([1, 3, 1]), False)
+E       AssertionError: True is not False
+
+exercises/practice/triangle/triangle_test.py:51: AssertionError
+________ IsoscelesTriangleTest.test_third_triangle_inequality_violation ________
+
+self = <triangle_test.IsoscelesTriangleTest testMethod=test_third_triangle_inequality_violation>
+
+    def test_third_triangle_inequality_violation(self):
+>       self.assertIs(isosceles([3, 1, 1]), False)
+E       AssertionError: True is not False
+
+exercises/practice/triangle/triangle_test.py:54: AssertionError
+_________ ScaleneTriangleTest.test_may_not_violate_triangle_inequality _________
+
+self = <triangle_test.ScaleneTriangleTest testMethod=test_may_not_violate_triangle_inequality>
+
+    def test_may_not_violate_triangle_inequality(self):
+>       self.assertIs(scalene([7, 3, 2]), False)
+E       AssertionError: True is not False
+
+exercises/practice/triangle/triangle_test.py:77: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/triangle/triangle_test.py::EquilateralTriangleTest::test_all_zero_sides_is_not_a_triangle
+FAILED exercises/practice/triangle/triangle_test.py::IsoscelesTriangleTest::test_first_triangle_inequality_violation
+FAILED exercises/practice/triangle/triangle_test.py::IsoscelesTriangleTest::test_second_triangle_inequality_violation
+FAILED exercises/practice/triangle/triangle_test.py::IsoscelesTriangleTest::test_third_triangle_inequality_violation
+FAILED exercises/practice/triangle/triangle_test.py::ScaleneTriangleTest::test_may_not_violate_triangle_inequality
+========================= 5 failed, 16 passed in 0.11s =========================

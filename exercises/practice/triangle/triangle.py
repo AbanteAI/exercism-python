@@ -1,10 +1,8 @@
 def equilateral(sides):
-    pass
-
+    return len(set(sides)) == 1
 
 def isosceles(sides):
-    pass
-
+    return len(set(sides)) <= 2
 
 def scalene(sides):
-    pass
+    return len(set(sides)) == 3

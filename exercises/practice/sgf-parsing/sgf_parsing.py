@@ -26,4 +26,13 @@ class SgfTree:
 
 
 def parse(input_string):
-    pass
+    if not input_string.startswith("(") or not input_string.endswith(")"):
+        raise ValueError("Input does not form a tree")
+    if input_string.count("(") != input_string.count(")"):
+        raise ValueError("Input does not have proper delimiters")
+    if input_string != input_string.upper():
+        raise ValueError("Input must be in uppercase")
+    if input_string.count(";") == 0:
+        raise ValueError("Input does not form a tree with nodes")
+    # TODO: Parse the input string and return a tree structure of properties
+    return SgfTree()

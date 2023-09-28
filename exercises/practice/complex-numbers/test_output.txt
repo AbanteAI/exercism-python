@@ -1,0 +1,149 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1
+collected 43 items
+
+exercises/practice/complex-numbers/complex_numbers_test.py .....F....... [ 30%]
+FFFFF............F...F...F....                                           [100%]
+
+=================================== FAILURES ===================================
+__________ ComplexNumbersTest.test_add_complex_number_to_real_number ___________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_add_complex_number_to_real_number>
+
+    def test_add_complex_number_to_real_number(self):
+>       self.assertEqual(5 + ComplexNumber(1, 2), ComplexNumber(6, 2))
+E       TypeError: unsupported operand type(s) for +: 'int' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:163: TypeError
+_________ ComplexNumbersTest.test_divide_complex_number_by_real_number _________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_divide_complex_number_by_real_number>
+
+    def test_divide_complex_number_by_real_number(self):
+>       self.assertAlmostEqual(ComplexNumber(10, 100) / 10, ComplexNumber(1, 10))
+
+exercises/practice/complex-numbers/complex_numbers_test.py:178: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <complex_numbers.ComplexNumber object at 0x7f334a05a710>, other = None
+
+    def __eq__(self, other):
+>       return self.real == other.real and self.imaginary == other.imaginary
+E       AttributeError: 'NoneType' object has no attribute 'real'
+
+exercises/practice/complex-numbers/complex_numbers.py:11: AttributeError
+_____ ComplexNumbersTest.test_divide_numbers_with_real_and_imaginary_part ______
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_divide_numbers_with_real_and_imaginary_part>
+
+    def test_divide_numbers_with_real_and_imaginary_part(self):
+>       self.assertAlmostEqual(
+            ComplexNumber(1, 2) / ComplexNumber(3, 4), ComplexNumber(0.44, 0.08)
+        )
+
+exercises/practice/complex-numbers/complex_numbers_test.py:100: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <complex_numbers.ComplexNumber object at 0x7f334a0629b0>, other = None
+
+    def __eq__(self, other):
+>       return self.real == other.real and self.imaginary == other.imaginary
+E       AttributeError: 'NoneType' object has no attribute 'real'
+
+exercises/practice/complex-numbers/complex_numbers.py:11: AttributeError
+___________ ComplexNumbersTest.test_divide_purely_imaginary_numbers ____________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_divide_purely_imaginary_numbers>
+
+    def test_divide_purely_imaginary_numbers(self):
+>       self.assertAlmostEqual(
+            ComplexNumber(0, 1) / ComplexNumber(0, 2), ComplexNumber(0.5, 0)
+        )
+
+exercises/practice/complex-numbers/complex_numbers_test.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <complex_numbers.ComplexNumber object at 0x7f334a240e80>, other = None
+
+    def __eq__(self, other):
+>       return self.real == other.real and self.imaginary == other.imaginary
+E       AttributeError: 'NoneType' object has no attribute 'real'
+
+exercises/practice/complex-numbers/complex_numbers.py:11: AttributeError
+______________ ComplexNumbersTest.test_divide_purely_real_numbers ______________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_divide_purely_real_numbers>
+
+    def test_divide_purely_real_numbers(self):
+>       self.assertAlmostEqual(
+            ComplexNumber(1, 0) / ComplexNumber(2, 0), ComplexNumber(0.5, 0)
+        )
+
+exercises/practice/complex-numbers/complex_numbers_test.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <complex_numbers.ComplexNumber object at 0x7f334a243e20>, other = None
+
+    def __eq__(self, other):
+>       return self.real == other.real and self.imaginary == other.imaginary
+E       AttributeError: 'NoneType' object has no attribute 'real'
+
+exercises/practice/complex-numbers/complex_numbers.py:11: AttributeError
+_________ ComplexNumbersTest.test_divide_real_number_by_complex_number _________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_divide_real_number_by_complex_number>
+
+    def test_divide_real_number_by_complex_number(self):
+>       self.assertAlmostEqual(5 / ComplexNumber(1, 1), ComplexNumber(2.5, -2.5))
+E       TypeError: unsupported operand type(s) for /: 'int' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:181: TypeError
+________ ComplexNumbersTest.test_multiply_complex_number_by_real_number ________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_multiply_complex_number_by_real_number>
+
+    def test_multiply_complex_number_by_real_number(self):
+>       self.assertEqual(ComplexNumber(2, 5) * 5, ComplexNumber(10, 25))
+
+exercises/practice/complex-numbers/complex_numbers_test.py:172: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <complex_numbers.ComplexNumber object at 0x7f334a05a440>, other = 5
+
+    def __mul__(self, other):
+>       real = self.real * other.real - self.imaginary * other.imaginary
+E       AttributeError: 'int' object has no attribute 'imaginary'
+
+exercises/practice/complex-numbers/complex_numbers.py:31: AttributeError
+________ ComplexNumbersTest.test_multiply_real_number_by_complex_number ________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_multiply_real_number_by_complex_number>
+
+    def test_multiply_real_number_by_complex_number(self):
+>       self.assertEqual(5 * ComplexNumber(2, 5), ComplexNumber(10, 25))
+E       TypeError: unsupported operand type(s) for *: 'int' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:175: TypeError
+_______ ComplexNumbersTest.test_subtract_complex_number_from_real_number _______
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_subtract_complex_number_from_real_number>
+
+    def test_subtract_complex_number_from_real_number(self):
+>       self.assertEqual(4 - ComplexNumber(5, 7), ComplexNumber(-1, -7))
+E       TypeError: unsupported operand type(s) for -: 'int' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:169: TypeError
+=========================== short test summary info ============================
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_add_complex_number_to_real_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_divide_complex_number_by_real_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_divide_numbers_with_real_and_imaginary_part
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_divide_purely_imaginary_numbers
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_divide_purely_real_numbers
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_divide_real_number_by_complex_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_multiply_complex_number_by_real_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_multiply_real_number_by_complex_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_subtract_complex_number_from_real_number
+========================= 9 failed, 34 passed in 0.14s =========================
