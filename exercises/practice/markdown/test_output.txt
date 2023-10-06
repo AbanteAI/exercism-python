@@ -1,0 +1,29 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 17 items
+
+exercises/practice/markdown/markdown_test.py F................           [100%]
+
+=================================== FAILURES ===================================
+_______________ MarkdownTest.test_h7_header_level_is_a_paragraph _______________
+
+self = <markdown_test.MarkdownTest testMethod=test_h7_header_level_is_a_paragraph>
+
+    def test_h7_header_level_is_a_paragraph(self):
+>       self.assertEqual(
+            parse("####### This will not be an h7"),
+            "<p>####### This will not be an h7</p>",
+        )
+E       AssertionError: '<p>#This will not be an h7</p>' != '<p>####### This will not be an h7</p>'
+E       - <p>#This will not be an h7</p>
+E       + <p>####### This will not be an h7</p>
+E       ?     +++++++
+
+exercises/practice/markdown/markdown_test.py:59: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/markdown/markdown_test.py::MarkdownTest::test_h7_header_level_is_a_paragraph
+========================= 1 failed, 16 passed in 0.05s =========================

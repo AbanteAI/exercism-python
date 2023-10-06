@@ -1,0 +1,30 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 11 items
+
+exercises/practice/series/series_test.py .F.........                     [100%]
+
+=================================== FAILURES ===================================
+_______________ SeriesTest.test_slice_length_cannot_be_negative ________________
+
+self = <series_test.SeriesTest testMethod=test_slice_length_cannot_be_negative>
+
+    def test_slice_length_cannot_be_negative(self):
+        with self.assertRaises(ValueError) as err:
+            slices("123", -1)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "slice length cannot be negative")
+E       AssertionError: 'slice length cannot be zero' != 'slice length cannot be negative'
+E       - slice length cannot be zero
+E       ?                        ^ ^^
+E       + slice length cannot be negative
+E       ?                        ^ ^^^^^^
+
+exercises/practice/series/series_test.py:60: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/series/series_test.py::SeriesTest::test_slice_length_cannot_be_negative
+========================= 1 failed, 10 passed in 0.04s =========================

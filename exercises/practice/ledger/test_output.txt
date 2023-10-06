@@ -1,0 +1,277 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 11 items
+
+exercises/practice/ledger/ledger_test.py FFFFF.FFFFF                     [100%]
+
+=================================== FAILURES ===================================
+_ LedgerTest.test_american_negative_number_with_3_digits_before_decimal_point __
+
+self = <ledger_test.LedgerTest testMethod=test_american_negative_number_with_3_digits_before_decimal_point>
+
+    def test_american_negative_number_with_3_digits_before_decimal_point(self):
+        currency = "USD"
+        locale = "en_US"
+        entries = [
+            create_entry("2015-03-12", "Buy present", -12345),
+        ]
+        expected = "\n".join(
+            [
+                "Date       | Description               | Change       ",
+                "03/12/2015 | Buy present               |     ($123.45)",
+            ]
+        )
+>       self.assertEqual(format_entries(currency, locale, entries), expected)
+E       AssertionError: 'Date[44 chars]      \n03/12/2015 | Buy present               |    ($-123.00)' != 'Date[44 chars]      \n03/12/2015 | Buy present               |     ($123.45)'
+E         Date       | Description               | Change       
+E       - 03/12/2015 | Buy present               |    ($-123.00)?                                               -    ^^
+E       + 03/12/2015 | Buy present               |     ($123.45)?                                         +          ^^
+
+exercises/practice/ledger/ledger_test.py:173: AssertionError
+_______________________ LedgerTest.test_credit_and_debit _______________________
+
+self = <ledger_test.LedgerTest testMethod=test_credit_and_debit>
+
+    def test_credit_and_debit(self):
+        currency = "USD"
+        locale = "en_US"
+        entries = [
+            create_entry("2015-01-02", "Get present", 1000),
+            create_entry("2015-01-01", "Buy present", -1000),
+        ]
+        expected = "\n".join(
+            [
+                "Date       | Description               | Change       ",
+                "01/01/2015 | Buy present               |      ($10.00)",
+                "01/02/2015 | Get present               |       $10.00 ",
+            ]
+        )
+>       self.assertEqual(format_entries(currency, locale, entries), expected)
+E       AssertionError: 'Date[92 chars]     ($-10.00)\n01/02/2015 | Get present      [20 chars]0.00' != 'Date[92 chars]      ($10.00)\n01/02/2015 | Get present      [20 chars].00 '
+E         Date       | Description               | Change       
+E       - 01/01/2015 | Buy present               |     ($-10.00)
+E       ?                                                -
+E       + 01/01/2015 | Buy present               |      ($10.00)
+E       ?                                         +
+E       - 01/02/2015 | Get present               |        $10.00?                                         -
+E       + 01/02/2015 | Get present               |       $10.00 ?                                                      +
+
+exercises/practice/ledger/ledger_test.py:55: AssertionError
+_________________________ LedgerTest.test_dutch_locale _________________________
+
+self = <ledger_test.LedgerTest testMethod=test_dutch_locale>
+
+    def test_dutch_locale(self):
+        currency = "USD"
+        locale = "nl_NL"
+        entries = [
+            create_entry("2015-03-12", "Buy present", 123456),
+        ]
+        expected = "\n".join(
+            [
+                "Datum      | Omschrijving              | Verandering  ",
+                "12-03-2015 | Buy present               |   $ 1.234,56 ",
+            ]
+        )
+>       self.assertEqual(format_entries(currency, locale, entries), expected)
+E       AssertionError: 'Datu[44 chars]ring  \n12-03-2015 | Buy present               |     $1.234,00' != 'Datu[44 chars]ring  \n12-03-2015 | Buy present               |   $ 1.234,56 '
+E         Datum      | Omschrijving              | Verandering  
+E       - 12-03-2015 | Buy present               |     $1.234,00?                                            --       ^^
+E       + 12-03-2015 | Buy present               |   $ 1.234,56 ?                                             +      ^^^
+
+exercises/practice/ledger/ledger_test.py:131: AssertionError
+____________________ LedgerTest.test_dutch_locale_and_euros ____________________
+
+self = <ledger_test.LedgerTest testMethod=test_dutch_locale_and_euros>
+
+    def test_dutch_locale_and_euros(self):
+        currency = "EUR"
+        locale = "nl_NL"
+        entries = [
+            create_entry("2015-03-12", "Buy present", 123456),
+        ]
+        expected = "\n".join(
+            [
+                "Datum      | Omschrijving              | Verandering  ",
+                "12-03-2015 | Buy present               |   € 1.234,56 ",
+            ]
+        )
+>       self.assertEqual(format_entries(currency, locale, entries), expected)
+E       AssertionError: 'Datu[44 chars]ring  \n12-03-2015 | Buy present               |     €1.234,00' != 'Datu[44 chars]ring  \n12-03-2015 | Buy present               |   € 1.234,56 '
+E         Datum      | Omschrijving              | Verandering  
+E       - 12-03-2015 | Buy present               |     €1.234,00?                                            --       ^^
+E       + 12-03-2015 | Buy present               |   € 1.234,56 ?                                             +      ^^^
+
+exercises/practice/ledger/ledger_test.py:145: AssertionError
+___ LedgerTest.test_dutch_negative_number_with_3_digits_before_decimal_point ___
+
+self = <ledger_test.LedgerTest testMethod=test_dutch_negative_number_with_3_digits_before_decimal_point>
+
+    def test_dutch_negative_number_with_3_digits_before_decimal_point(self):
+        currency = "USD"
+        locale = "nl_NL"
+        entries = [
+            create_entry("2015-03-12", "Buy present", -12345),
+        ]
+        expected = "\n".join(
+            [
+                "Datum      | Omschrijving              | Verandering  ",
+                "12-03-2015 | Buy present               |    $ -123,45 ",
+            ]
+        )
+>       self.assertEqual(format_entries(currency, locale, entries), expected)
+E       AssertionError: 'Datu[44 chars]ring  \n12-03-2015 | Buy present               |    ($-123,00)' != 'Datu[44 chars]ring  \n12-03-2015 | Buy present               |    $ -123,45 '
+E         Datum      | Omschrijving              | Verandering  
+E       - 12-03-2015 | Buy present               |    ($-123,00)?                                             -      ^^^
+E       + 12-03-2015 | Buy present               |    $ -123,45 ?                                              +     ^^^
+
+exercises/practice/ledger/ledger_test.py:159: AssertionError
+____________________________ LedgerTest.test_euros _____________________________
+
+self = <ledger_test.LedgerTest testMethod=test_euros>
+
+    def test_euros(self):
+        currency = "EUR"
+        locale = "en_US"
+        entries = [
+            create_entry("2015-01-01", "Buy present", -1000),
+        ]
+        expected = "\n".join(
+            [
+                "Date       | Description               | Change       ",
+                "01/01/2015 | Buy present               |      (€10.00)",
+            ]
+        )
+>       self.assertEqual(format_entries(currency, locale, entries), expected)
+E       AssertionError: 'Date[44 chars]      \n01/01/2015 | Buy present               |     (€-10.00)' != 'Date[44 chars]      \n01/01/2015 | Buy present               |      (€10.00)'
+E         Date       | Description               | Change       
+E       - 01/01/2015 | Buy present               |     (€-10.00)?                                                -
+E       + 01/01/2015 | Buy present               |      (€10.00)?                                         +
+
+exercises/practice/ledger/ledger_test.py:117: AssertionError
+______________ LedgerTest.test_final_order_tie_breaker_is_change _______________
+
+self = <ledger_test.LedgerTest testMethod=test_final_order_tie_breaker_is_change>
+
+    def test_final_order_tie_breaker_is_change(self):
+        currency = "USD"
+        locale = "en_US"
+        entries = [
+            create_entry("2015-01-01", "Something", 0),
+            create_entry("2015-01-01", "Something", -1),
+            create_entry("2015-01-01", "Something", 1),
+        ]
+        expected = "\n".join(
+            [
+                "Date       | Description               | Change       ",
+                "01/01/2015 | Something                 |       ($0.01)",
+                "01/01/2015 | Something                 |        $0.00 ",
+                "01/01/2015 | Something                 |        $0.01 ",
+            ]
+        )
+>       self.assertEqual(format_entries(currency, locale, entries), expected)
+E       AssertionError: 'Date[93 chars]     ($-0.00)\n01/01/2015 | Something         [75 chars]0.00' != 'Date[93 chars]      ($0.01)\n01/01/2015 | Something         [75 chars].01 '
+E         Date       | Description               | Change       
+E       - 01/01/2015 | Something                 |      ($-0.00)
+E       ?                                                 -   ^
+E       + 01/01/2015 | Something                 |       ($0.01)
+E       ?                                         +           ^
+E       - 01/01/2015 | Something                 |         $0.00
+E       ?                                         -
+E       + 01/01/2015 | Something                 |        $0.00 
+E       ?                                                      +
+E       - 01/01/2015 | Something                 |         $0.00?                                         -            ^
+E       + 01/01/2015 | Something                 |        $0.01 ?                                                     ^^
+
+exercises/practice/ledger/ledger_test.py:89: AssertionError
+_____ LedgerTest.test_multiple_entries_on_same_date_ordered_by_description _____
+
+self = <ledger_test.LedgerTest testMethod=test_multiple_entries_on_same_date_ordered_by_description>
+
+    def test_multiple_entries_on_same_date_ordered_by_description(self):
+        currency = "USD"
+        locale = "en_US"
+        entries = [
+            create_entry("2015-01-02", "Get present", 1000),
+            create_entry("2015-01-01", "Buy present", -1000),
+        ]
+        expected = "\n".join(
+            [
+                "Date       | Description               | Change       ",
+                "01/01/2015 | Buy present               |      ($10.00)",
+                "01/02/2015 | Get present               |       $10.00 ",
+            ]
+        )
+>       self.assertEqual(format_entries(currency, locale, entries), expected)
+E       AssertionError: 'Date[92 chars]     ($-10.00)\n01/02/2015 | Get present      [20 chars]0.00' != 'Date[92 chars]      ($10.00)\n01/02/2015 | Get present      [20 chars].00 '
+E         Date       | Description               | Change       
+E       - 01/01/2015 | Buy present               |     ($-10.00)
+E       ?                                                -
+E       + 01/01/2015 | Buy present               |      ($10.00)
+E       ?                                         +
+E       - 01/02/2015 | Get present               |        $10.00?                                         -
+E       + 01/02/2015 | Get present               |       $10.00 ?                                                      +
+
+exercises/practice/ledger/ledger_test.py:71: AssertionError
+__________________________ LedgerTest.test_one_entry ___________________________
+
+self = <ledger_test.LedgerTest testMethod=test_one_entry>
+
+    def test_one_entry(self):
+        currency = "USD"
+        locale = "en_US"
+        entries = [
+            create_entry("2015-01-01", "Buy present", -1000),
+        ]
+        expected = "\n".join(
+            [
+                "Date       | Description               | Change       ",
+                "01/01/2015 | Buy present               |      ($10.00)",
+            ]
+        )
+>       self.assertEqual(format_entries(currency, locale, entries), expected)
+E       AssertionError: 'Date[44 chars]      \n01/01/2015 | Buy present               |     ($-10.00)' != 'Date[44 chars]      \n01/01/2015 | Buy present               |      ($10.00)'
+E         Date       | Description               | Change       
+E       - 01/01/2015 | Buy present               |     ($-10.00)?                                                -
+E       + 01/01/2015 | Buy present               |      ($10.00)?                                         +
+
+exercises/practice/ledger/ledger_test.py:39: AssertionError
+______________ LedgerTest.test_overlong_description_is_truncated _______________
+
+self = <ledger_test.LedgerTest testMethod=test_overlong_description_is_truncated>
+
+    def test_overlong_description_is_truncated(self):
+        currency = "USD"
+        locale = "en_US"
+        entries = [
+            create_entry("2015-01-01", "Freude schoner Gotterfunken", -123456),
+        ]
+        expected = "\n".join(
+            [
+                "Date       | Description               | Change       ",
+                "01/01/2015 | Freude schoner Gotterf... |   ($1,234.56)",
+            ]
+        )
+>       self.assertEqual(format_entries(currency, locale, entries), expected)
+E       AssertionError: 'Date[44 chars]      \n01/01/2015 | Freude schoner Gotterf... |  ($-1,234.00)' != 'Date[44 chars]      \n01/01/2015 | Freude schoner Gotterf... |   ($1,234.56)'
+E         Date       | Description               | Change       
+E       - 01/01/2015 | Freude schoner Gotterf... |  ($-1,234.00)?                                             -      ^^
+E       + 01/01/2015 | Freude schoner Gotterf... |   ($1,234.56)?                                         +          ^^
+
+exercises/practice/ledger/ledger_test.py:103: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_american_negative_number_with_3_digits_before_decimal_point
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_credit_and_debit
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_dutch_locale
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_dutch_locale_and_euros
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_dutch_negative_number_with_3_digits_before_decimal_point
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_euros - Ass...
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_final_order_tie_breaker_is_change
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_multiple_entries_on_same_date_ordered_by_description
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_one_entry
+FAILED exercises/practice/ledger/ledger_test.py::LedgerTest::test_overlong_description_is_truncated
+========================= 10 failed, 1 passed in 0.07s =========================

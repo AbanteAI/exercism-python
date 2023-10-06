@@ -1,0 +1,526 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 10 items
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py F [ 10%]
+FFFFFFFFF                                                                [100%]
+
+=================================== FAILURES ===================================
+___________ ResistorColorExpertTest.test_blue_grey_brown_and_violet ____________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_blue_grey_brown_and_violet>
+
+    def test_blue_grey_brown_and_violet(self):
+>       self.assertEqual(resistor_label(["blue", "grey", "brown", "violet"]), "680 ohms ±0.1%")
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:15: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['blue', 'grey', 'brown', 'violet']
+
+    def resistor_label(colors):
+        color_values = {
+            "black": 0, "brown": 1, "red": 2, "orange": 3, "yellow": 4,
+            "green": 5, "blue": 6, "violet": 7, "grey": 8, "white": 9
+        }
+    
+        tolerance_values = {
+            "grey": 0.05, "violet": 0.1, "blue": 0.25, "green": 0.5,
+            "brown": 1, "red": 2, "gold": 5, "silver": 10
+        }
+    
+        num_colors = len(colors)
+        if num_colors == 1:
+            value = 0
+            tolerance = ""
+        elif num_colors == 4:
+            value = (color_values[colors[0]] * 10 + color_values[colors[1]]) * (10 ** color_values[colors[2]])
+            tolerance = f"±{tolerance_values[colors[3]]}%"
+        elif num_colors == 5:
+            value = (color_values[colors[0]] * 100 + color_values[colors[1]] * 10 + color_values[colors[2]]) * (10 ** color_values[colors[3]])
+            tolerance = f"±{tolerance_values[colors[4]]}%"
+        else:
+            raise ValueError("Invalid number of colors")
+    
+        if value >= 1000000:
+            value /= 1000000
+            unit = "megaohms"
+        elif value >= 1000:
+            value /= 1000
+            unit = "kiloohms"
+        else:
+            unit = "ohms"
+    
+>       return f"{value:.0f if value.is_integer() else value} {unit} {tolerance}".strip()
+E       ValueError: Invalid format specifier
+
+exercises/practice/resistor-color-expert/resistor_color_expert.py:34: ValueError
+__________ ResistorColorExpertTest.test_blue_grey_white_red_and_brown __________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_blue_grey_white_red_and_brown>
+
+    def test_blue_grey_white_red_and_brown(self):
+        self.assertEqual(
+>           resistor_label(["blue", "grey", "white", "brown", "brown"]), "6.89 kiloohms ±1%"
+        )
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['blue', 'grey', 'white', 'brown', 'brown']
+
+    def resistor_label(colors):
+        color_values = {
+            "black": 0, "brown": 1, "red": 2, "orange": 3, "yellow": 4,
+            "green": 5, "blue": 6, "violet": 7, "grey": 8, "white": 9
+        }
+    
+        tolerance_values = {
+            "grey": 0.05, "violet": 0.1, "blue": 0.25, "green": 0.5,
+            "brown": 1, "red": 2, "gold": 5, "silver": 10
+        }
+    
+        num_colors = len(colors)
+        if num_colors == 1:
+            value = 0
+            tolerance = ""
+        elif num_colors == 4:
+            value = (color_values[colors[0]] * 10 + color_values[colors[1]]) * (10 ** color_values[colors[2]])
+            tolerance = f"±{tolerance_values[colors[3]]}%"
+        elif num_colors == 5:
+            value = (color_values[colors[0]] * 100 + color_values[colors[1]] * 10 + color_values[colors[2]]) * (10 ** color_values[colors[3]])
+            tolerance = f"±{tolerance_values[colors[4]]}%"
+        else:
+            raise ValueError("Invalid number of colors")
+    
+        if value >= 1000000:
+            value /= 1000000
+            unit = "megaohms"
+        elif value >= 1000:
+            value /= 1000
+            unit = "kiloohms"
+        else:
+            unit = "ohms"
+    
+>       return f"{value:.0f if value.is_integer() else value} {unit} {tolerance}".strip()
+E       ValueError: Invalid format specifier
+
+exercises/practice/resistor-color-expert/resistor_color_expert.py:34: ValueError
+_________ ResistorColorExpertTest.test_brown_red_orange_green_and_blue _________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_brown_red_orange_green_and_blue>
+
+    def test_brown_red_orange_green_and_blue(self):
+        self.assertEqual(
+>           resistor_label(["brown", "red", "orange", "green", "blue"]), "12.3 megaohms ±0.25%"
+        )
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['brown', 'red', 'orange', 'green', 'blue']
+
+    def resistor_label(colors):
+        color_values = {
+            "black": 0, "brown": 1, "red": 2, "orange": 3, "yellow": 4,
+            "green": 5, "blue": 6, "violet": 7, "grey": 8, "white": 9
+        }
+    
+        tolerance_values = {
+            "grey": 0.05, "violet": 0.1, "blue": 0.25, "green": 0.5,
+            "brown": 1, "red": 2, "gold": 5, "silver": 10
+        }
+    
+        num_colors = len(colors)
+        if num_colors == 1:
+            value = 0
+            tolerance = ""
+        elif num_colors == 4:
+            value = (color_values[colors[0]] * 10 + color_values[colors[1]]) * (10 ** color_values[colors[2]])
+            tolerance = f"±{tolerance_values[colors[3]]}%"
+        elif num_colors == 5:
+            value = (color_values[colors[0]] * 100 + color_values[colors[1]] * 10 + color_values[colors[2]]) * (10 ** color_values[colors[3]])
+            tolerance = f"±{tolerance_values[colors[4]]}%"
+        else:
+            raise ValueError("Invalid number of colors")
+    
+        if value >= 1000000:
+            value /= 1000000
+            unit = "megaohms"
+        elif value >= 1000:
+            value /= 1000
+            unit = "kiloohms"
+        else:
+            unit = "ohms"
+    
+>       return f"{value:.0f if value.is_integer() else value} {unit} {tolerance}".strip()
+E       ValueError: Invalid format specifier
+
+exercises/practice/resistor-color-expert/resistor_color_expert.py:34: ValueError
+___________ ResistorColorExpertTest.test_green_brown_orange_and_grey ___________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_green_brown_orange_and_grey>
+
+    def test_green_brown_orange_and_grey(self):
+        self.assertEqual(
+>           resistor_label(["green", "brown", "orange", "grey"]), "51 kiloohms ±0.05%"
+        )
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['green', 'brown', 'orange', 'grey']
+
+    def resistor_label(colors):
+        color_values = {
+            "black": 0, "brown": 1, "red": 2, "orange": 3, "yellow": 4,
+            "green": 5, "blue": 6, "violet": 7, "grey": 8, "white": 9
+        }
+    
+        tolerance_values = {
+            "grey": 0.05, "violet": 0.1, "blue": 0.25, "green": 0.5,
+            "brown": 1, "red": 2, "gold": 5, "silver": 10
+        }
+    
+        num_colors = len(colors)
+        if num_colors == 1:
+            value = 0
+            tolerance = ""
+        elif num_colors == 4:
+            value = (color_values[colors[0]] * 10 + color_values[colors[1]]) * (10 ** color_values[colors[2]])
+            tolerance = f"±{tolerance_values[colors[3]]}%"
+        elif num_colors == 5:
+            value = (color_values[colors[0]] * 100 + color_values[colors[1]] * 10 + color_values[colors[2]]) * (10 ** color_values[colors[3]])
+            tolerance = f"±{tolerance_values[colors[4]]}%"
+        else:
+            raise ValueError("Invalid number of colors")
+    
+        if value >= 1000000:
+            value /= 1000000
+            unit = "megaohms"
+        elif value >= 1000:
+            value /= 1000
+            unit = "kiloohms"
+        else:
+            unit = "ohms"
+    
+>       return f"{value:.0f if value.is_integer() else value} {unit} {tolerance}".strip()
+E       ValueError: Invalid format specifier
+
+exercises/practice/resistor-color-expert/resistor_color_expert.py:34: ValueError
+_________________ ResistorColorExpertTest.test_one_black_band __________________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_one_black_band>
+
+    def test_one_black_band(self):
+>       self.assertEqual(resistor_label(["black"]), "0 ohms")
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['black']
+
+    def resistor_label(colors):
+        color_values = {
+            "black": 0, "brown": 1, "red": 2, "orange": 3, "yellow": 4,
+            "green": 5, "blue": 6, "violet": 7, "grey": 8, "white": 9
+        }
+    
+        tolerance_values = {
+            "grey": 0.05, "violet": 0.1, "blue": 0.25, "green": 0.5,
+            "brown": 1, "red": 2, "gold": 5, "silver": 10
+        }
+    
+        num_colors = len(colors)
+        if num_colors == 1:
+            value = 0
+            tolerance = ""
+        elif num_colors == 4:
+            value = (color_values[colors[0]] * 10 + color_values[colors[1]]) * (10 ** color_values[colors[2]])
+            tolerance = f"±{tolerance_values[colors[3]]}%"
+        elif num_colors == 5:
+            value = (color_values[colors[0]] * 100 + color_values[colors[1]] * 10 + color_values[colors[2]]) * (10 ** color_values[colors[3]])
+            tolerance = f"±{tolerance_values[colors[4]]}%"
+        else:
+            raise ValueError("Invalid number of colors")
+    
+        if value >= 1000000:
+            value /= 1000000
+            unit = "megaohms"
+        elif value >= 1000:
+            value /= 1000
+            unit = "kiloohms"
+        else:
+            unit = "ohms"
+    
+>       return f"{value:.0f if value.is_integer() else value} {unit} {tolerance}".strip()
+E       ValueError: Invalid format specifier
+
+exercises/practice/resistor-color-expert/resistor_color_expert.py:34: ValueError
+___________ ResistorColorExpertTest.test_orange_orange_black_and_red ___________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_orange_orange_black_and_red>
+
+    def test_orange_orange_black_and_red(self):
+>       self.assertEqual(resistor_label(["orange", "orange", "black", "red"]), "33 ohms ±2%")
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:12: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['orange', 'orange', 'black', 'red']
+
+    def resistor_label(colors):
+        color_values = {
+            "black": 0, "brown": 1, "red": 2, "orange": 3, "yellow": 4,
+            "green": 5, "blue": 6, "violet": 7, "grey": 8, "white": 9
+        }
+    
+        tolerance_values = {
+            "grey": 0.05, "violet": 0.1, "blue": 0.25, "green": 0.5,
+            "brown": 1, "red": 2, "gold": 5, "silver": 10
+        }
+    
+        num_colors = len(colors)
+        if num_colors == 1:
+            value = 0
+            tolerance = ""
+        elif num_colors == 4:
+            value = (color_values[colors[0]] * 10 + color_values[colors[1]]) * (10 ** color_values[colors[2]])
+            tolerance = f"±{tolerance_values[colors[3]]}%"
+        elif num_colors == 5:
+            value = (color_values[colors[0]] * 100 + color_values[colors[1]] * 10 + color_values[colors[2]]) * (10 ** color_values[colors[3]])
+            tolerance = f"±{tolerance_values[colors[4]]}%"
+        else:
+            raise ValueError("Invalid number of colors")
+    
+        if value >= 1000000:
+            value /= 1000000
+            unit = "megaohms"
+        elif value >= 1000:
+            value /= 1000
+            unit = "kiloohms"
+        else:
+            unit = "ohms"
+    
+>       return f"{value:.0f if value.is_integer() else value} {unit} {tolerance}".strip()
+E       ValueError: Invalid format specifier
+
+exercises/practice/resistor-color-expert/resistor_color_expert.py:34: ValueError
+______ ResistorColorExpertTest.test_orange_orange_yellow_black_and_brown _______
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_orange_orange_yellow_black_and_brown>
+
+    def test_orange_orange_yellow_black_and_brown(self):
+        self.assertEqual(
+>           resistor_label(["orange", "orange", "yellow", "black", "brown"]), "334 ohms ±1%"
+        )
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['orange', 'orange', 'yellow', 'black', 'brown']
+
+    def resistor_label(colors):
+        color_values = {
+            "black": 0, "brown": 1, "red": 2, "orange": 3, "yellow": 4,
+            "green": 5, "blue": 6, "violet": 7, "grey": 8, "white": 9
+        }
+    
+        tolerance_values = {
+            "grey": 0.05, "violet": 0.1, "blue": 0.25, "green": 0.5,
+            "brown": 1, "red": 2, "gold": 5, "silver": 10
+        }
+    
+        num_colors = len(colors)
+        if num_colors == 1:
+            value = 0
+            tolerance = ""
+        elif num_colors == 4:
+            value = (color_values[colors[0]] * 10 + color_values[colors[1]]) * (10 ** color_values[colors[2]])
+            tolerance = f"±{tolerance_values[colors[3]]}%"
+        elif num_colors == 5:
+            value = (color_values[colors[0]] * 100 + color_values[colors[1]] * 10 + color_values[colors[2]]) * (10 ** color_values[colors[3]])
+            tolerance = f"±{tolerance_values[colors[4]]}%"
+        else:
+            raise ValueError("Invalid number of colors")
+    
+        if value >= 1000000:
+            value /= 1000000
+            unit = "megaohms"
+        elif value >= 1000:
+            value /= 1000
+            unit = "kiloohms"
+        else:
+            unit = "ohms"
+    
+>       return f"{value:.0f if value.is_integer() else value} {unit} {tolerance}".strip()
+E       ValueError: Invalid format specifier
+
+exercises/practice/resistor-color-expert/resistor_color_expert.py:34: ValueError
+_____________ ResistorColorExpertTest.test_red_black_red_and_green _____________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_red_black_red_and_green>
+
+    def test_red_black_red_and_green(self):
+>       self.assertEqual(resistor_label(["red", "black", "red", "green"]), "2 kiloohms ±0.5%")
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['red', 'black', 'red', 'green']
+
+    def resistor_label(colors):
+        color_values = {
+            "black": 0, "brown": 1, "red": 2, "orange": 3, "yellow": 4,
+            "green": 5, "blue": 6, "violet": 7, "grey": 8, "white": 9
+        }
+    
+        tolerance_values = {
+            "grey": 0.05, "violet": 0.1, "blue": 0.25, "green": 0.5,
+            "brown": 1, "red": 2, "gold": 5, "silver": 10
+        }
+    
+        num_colors = len(colors)
+        if num_colors == 1:
+            value = 0
+            tolerance = ""
+        elif num_colors == 4:
+            value = (color_values[colors[0]] * 10 + color_values[colors[1]]) * (10 ** color_values[colors[2]])
+            tolerance = f"±{tolerance_values[colors[3]]}%"
+        elif num_colors == 5:
+            value = (color_values[colors[0]] * 100 + color_values[colors[1]] * 10 + color_values[colors[2]]) * (10 ** color_values[colors[3]])
+            tolerance = f"±{tolerance_values[colors[4]]}%"
+        else:
+            raise ValueError("Invalid number of colors")
+    
+        if value >= 1000000:
+            value /= 1000000
+            unit = "megaohms"
+        elif value >= 1000:
+            value /= 1000
+            unit = "kiloohms"
+        else:
+            unit = "ohms"
+    
+>       return f"{value:.0f if value.is_integer() else value} {unit} {tolerance}".strip()
+E       ValueError: Invalid format specifier
+
+exercises/practice/resistor-color-expert/resistor_color_expert.py:34: ValueError
+________ ResistorColorExpertTest.test_red_green_yellow_yellow_and_brown ________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_red_green_yellow_yellow_and_brown>
+
+    def test_red_green_yellow_yellow_and_brown(self):
+        self.assertEqual(
+>           resistor_label(["red", "green", "yellow", "yellow", "brown"]), "2.54 megaohms ±1%"
+        )
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['red', 'green', 'yellow', 'yellow', 'brown']
+
+    def resistor_label(colors):
+        color_values = {
+            "black": 0, "brown": 1, "red": 2, "orange": 3, "yellow": 4,
+            "green": 5, "blue": 6, "violet": 7, "grey": 8, "white": 9
+        }
+    
+        tolerance_values = {
+            "grey": 0.05, "violet": 0.1, "blue": 0.25, "green": 0.5,
+            "brown": 1, "red": 2, "gold": 5, "silver": 10
+        }
+    
+        num_colors = len(colors)
+        if num_colors == 1:
+            value = 0
+            tolerance = ""
+        elif num_colors == 4:
+            value = (color_values[colors[0]] * 10 + color_values[colors[1]]) * (10 ** color_values[colors[2]])
+            tolerance = f"±{tolerance_values[colors[3]]}%"
+        elif num_colors == 5:
+            value = (color_values[colors[0]] * 100 + color_values[colors[1]] * 10 + color_values[colors[2]]) * (10 ** color_values[colors[3]])
+            tolerance = f"±{tolerance_values[colors[4]]}%"
+        else:
+            raise ValueError("Invalid number of colors")
+    
+        if value >= 1000000:
+            value /= 1000000
+            unit = "megaohms"
+        elif value >= 1000:
+            value /= 1000
+            unit = "kiloohms"
+        else:
+            unit = "ohms"
+    
+>       return f"{value:.0f if value.is_integer() else value} {unit} {tolerance}".strip()
+E       ValueError: Invalid format specifier
+
+exercises/practice/resistor-color-expert/resistor_color_expert.py:34: ValueError
+___________ ResistorColorExpertTest.test_violet_orange_red_and_grey ____________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_violet_orange_red_and_grey>
+
+    def test_violet_orange_red_and_grey(self):
+        self.assertEqual(
+>           resistor_label(["violet", "orange", "red", "grey"]), "7.3 kiloohms ±0.05%"
+        )
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+colors = ['violet', 'orange', 'red', 'grey']
+
+    def resistor_label(colors):
+        color_values = {
+            "black": 0, "brown": 1, "red": 2, "orange": 3, "yellow": 4,
+            "green": 5, "blue": 6, "violet": 7, "grey": 8, "white": 9
+        }
+    
+        tolerance_values = {
+            "grey": 0.05, "violet": 0.1, "blue": 0.25, "green": 0.5,
+            "brown": 1, "red": 2, "gold": 5, "silver": 10
+        }
+    
+        num_colors = len(colors)
+        if num_colors == 1:
+            value = 0
+            tolerance = ""
+        elif num_colors == 4:
+            value = (color_values[colors[0]] * 10 + color_values[colors[1]]) * (10 ** color_values[colors[2]])
+            tolerance = f"±{tolerance_values[colors[3]]}%"
+        elif num_colors == 5:
+            value = (color_values[colors[0]] * 100 + color_values[colors[1]] * 10 + color_values[colors[2]]) * (10 ** color_values[colors[3]])
+            tolerance = f"±{tolerance_values[colors[4]]}%"
+        else:
+            raise ValueError("Invalid number of colors")
+    
+        if value >= 1000000:
+            value /= 1000000
+            unit = "megaohms"
+        elif value >= 1000:
+            value /= 1000
+            unit = "kiloohms"
+        else:
+            unit = "ohms"
+    
+>       return f"{value:.0f if value.is_integer() else value} {unit} {tolerance}".strip()
+E       ValueError: Invalid format specifier
+
+exercises/practice/resistor-color-expert/resistor_color_expert.py:34: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_blue_grey_brown_and_violet
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_blue_grey_white_red_and_brown
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_brown_red_orange_green_and_blue
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_green_brown_orange_and_grey
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_one_black_band
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_orange_orange_black_and_red
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_orange_orange_yellow_black_and_brown
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_red_black_red_and_green
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_red_green_yellow_yellow_and_brown
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_violet_orange_red_and_grey
+============================== 10 failed in 0.07s ==============================

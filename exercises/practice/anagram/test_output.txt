@@ -1,0 +1,209 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 16 items
+
+exercises/practice/anagram/anagram_test.py FFFFFFFFFFFFFFFF              [100%]
+
+=================================== FAILURES ===================================
+_________ AnagramTest.test_anagrams_must_use_all_letters_exactly_once __________
+
+self = <anagram_test.AnagramTest testMethod=test_anagrams_must_use_all_letters_exactly_once>
+
+    def test_anagrams_must_use_all_letters_exactly_once(self):
+        candidates = ["patter"]
+        expected = []
+>       self.assertCountEqual(find_anagrams("tapper", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:71: TypeError
+_______________________ AnagramTest.test_detects_anagram _______________________
+
+self = <anagram_test.AnagramTest testMethod=test_detects_anagram>
+
+    def test_detects_anagram(self):
+        candidates = ["enlists", "google", "inlets", "banana"]
+        expected = ["inlets"]
+>       self.assertCountEqual(find_anagrams("listen", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:31: TypeError
+_____________ AnagramTest.test_detects_anagrams_case_insensitively _____________
+
+self = <anagram_test.AnagramTest testMethod=test_detects_anagrams_case_insensitively>
+
+    def test_detects_anagrams_case_insensitively(self):
+        candidates = ["cashregister", "Carthorse", "radishes"]
+        expected = ["Carthorse"]
+>       self.assertCountEqual(find_anagrams("Orchestra", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:51: TypeError
+__ AnagramTest.test_detects_anagrams_using_case_insensitive_possible_matches ___
+
+self = <anagram_test.AnagramTest testMethod=test_detects_anagrams_using_case_insensitive_possible_matches>
+
+    def test_detects_anagrams_using_case_insensitive_possible_matches(self):
+        candidates = ["cashregister", "Carthorse", "radishes"]
+        expected = ["Carthorse"]
+>       self.assertCountEqual(find_anagrams("orchestra", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:61: TypeError
+_______ AnagramTest.test_detects_anagrams_using_case_insensitive_subject _______
+
+self = <anagram_test.AnagramTest testMethod=test_detects_anagrams_using_case_insensitive_subject>
+
+    def test_detects_anagrams_using_case_insensitive_subject(self):
+        candidates = ["cashregister", "carthorse", "radishes"]
+        expected = ["carthorse"]
+>       self.assertCountEqual(find_anagrams("Orchestra", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:56: TypeError
+________ AnagramTest.test_detects_multiple_anagrams_with_different_case ________
+
+self = <anagram_test.AnagramTest testMethod=test_detects_multiple_anagrams_with_different_case>
+
+    def test_detects_multiple_anagrams_with_different_case(self):
+        candidates = ["Eons", "ONES"]
+        expected = ["Eons", "ONES"]
+>       self.assertCountEqual(find_anagrams("nose", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:41: TypeError
+___________________ AnagramTest.test_detects_three_anagrams ____________________
+
+self = <anagram_test.AnagramTest testMethod=test_detects_three_anagrams>
+
+    def test_detects_three_anagrams(self):
+        candidates = ["gallery", "ballerina", "regally", "clergy", "largely", "leading"]
+        expected = ["gallery", "regally", "largely"]
+>       self.assertCountEqual(find_anagrams("allergy", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:36: TypeError
+____________________ AnagramTest.test_detects_two_anagrams _____________________
+
+self = <anagram_test.AnagramTest testMethod=test_detects_two_anagrams>
+
+    def test_detects_two_anagrams(self):
+        candidates = ["lemons", "cherry", "melons"]
+        expected = ["lemons", "melons"]
+>       self.assertCountEqual(find_anagrams("solemn", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:21: TypeError
+_ AnagramTest.test_does_not_detect_an_anagram_if_the_original_word_is_repeated _
+
+self = <anagram_test.AnagramTest testMethod=test_does_not_detect_an_anagram_if_the_original_word_is_repeated>
+
+    def test_does_not_detect_an_anagram_if_the_original_word_is_repeated(self):
+        candidates = ["go Go GO"]
+        expected = []
+>       self.assertCountEqual(find_anagrams("go", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:66: TypeError
+_______________ AnagramTest.test_does_not_detect_anagram_subsets _______________
+
+self = <anagram_test.AnagramTest testMethod=test_does_not_detect_anagram_subsets>
+
+    def test_does_not_detect_anagram_subsets(self):
+        candidates = ["dog", "goody"]
+        expected = []
+>       self.assertCountEqual(find_anagrams("good", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:26: TypeError
+____ AnagramTest.test_does_not_detect_non_anagrams_with_identical_checksum _____
+
+self = <anagram_test.AnagramTest testMethod=test_does_not_detect_non_anagrams_with_identical_checksum>
+
+    def test_does_not_detect_non_anagrams_with_identical_checksum(self):
+        candidates = ["last"]
+        expected = []
+>       self.assertCountEqual(find_anagrams("mass", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:46: TypeError
+_________________________ AnagramTest.test_no_matches __________________________
+
+self = <anagram_test.AnagramTest testMethod=test_no_matches>
+
+    def test_no_matches(self):
+        candidates = ["hello", "world", "zombies", "pants"]
+        expected = []
+>       self.assertCountEqual(find_anagrams("diaper", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:16: TypeError
+____________ AnagramTest.test_words_are_not_anagrams_of_themselves _____________
+
+self = <anagram_test.AnagramTest testMethod=test_words_are_not_anagrams_of_themselves>
+
+    def test_words_are_not_anagrams_of_themselves(self):
+        candidates = ["BANANA"]
+        expected = []
+>       self.assertCountEqual(find_anagrams("BANANA", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:76: TypeError
+_ AnagramTest.test_words_are_not_anagrams_of_themselves_even_if_letter_case_is_completely_different _
+
+self = <anagram_test.AnagramTest testMethod=test_words_are_not_anagrams_of_themselves_even_if_letter_case_is_completely_different>
+
+    def test_words_are_not_anagrams_of_themselves_even_if_letter_case_is_completely_different(
+        self,
+    ):
+        candidates = ["banana"]
+        expected = []
+>       self.assertCountEqual(find_anagrams("BANANA", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:90: TypeError
+_ AnagramTest.test_words_are_not_anagrams_of_themselves_even_if_letter_case_is_partially_different _
+
+self = <anagram_test.AnagramTest testMethod=test_words_are_not_anagrams_of_themselves_even_if_letter_case_is_partially_different>
+
+    def test_words_are_not_anagrams_of_themselves_even_if_letter_case_is_partially_different(
+        self,
+    ):
+        candidates = ["Banana"]
+        expected = []
+>       self.assertCountEqual(find_anagrams("BANANA", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:83: TypeError
+_________ AnagramTest.test_words_other_than_themselves_can_be_anagrams _________
+
+self = <anagram_test.AnagramTest testMethod=test_words_other_than_themselves_can_be_anagrams>
+
+    def test_words_other_than_themselves_can_be_anagrams(self):
+        candidates = ["LISTEN", "Silent"]
+        expected = ["Silent"]
+>       self.assertCountEqual(find_anagrams("LISTEN", candidates), expected)
+E       TypeError: 'NoneType' object is not iterable
+
+exercises/practice/anagram/anagram_test.py:95: TypeError
+=========================== short test summary info ============================
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_anagrams_must_use_all_letters_exactly_once
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_detects_anagram
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_detects_anagrams_case_insensitively
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_detects_anagrams_using_case_insensitive_possible_matches
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_detects_anagrams_using_case_insensitive_subject
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_detects_multiple_anagrams_with_different_case
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_detects_three_anagrams
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_detects_two_anagrams
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_does_not_detect_an_anagram_if_the_original_word_is_repeated
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_does_not_detect_anagram_subsets
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_does_not_detect_non_anagrams_with_identical_checksum
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_no_matches
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_words_are_not_anagrams_of_themselves
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_words_are_not_anagrams_of_themselves_even_if_letter_case_is_completely_different
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_words_are_not_anagrams_of_themselves_even_if_letter_case_is_partially_different
+FAILED exercises/practice/anagram/anagram_test.py::AnagramTest::test_words_other_than_themselves_can_be_anagrams
+============================== 16 failed in 0.09s ==============================

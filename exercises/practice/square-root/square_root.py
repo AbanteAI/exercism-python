@@ -1,2 +1,5 @@
 def square_root(number):
-    pass
+    root = number
+    while root * root > number:
+        root = (root + number // root) // 2
+    return root

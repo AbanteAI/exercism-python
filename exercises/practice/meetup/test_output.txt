@@ -1,0 +1,1490 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 103 items
+
+exercises/practice/meetup/meetup_test.py ...FFFFFFFFFFFFFFFF............ [ 30%]
+.....................FF................................................. [100%]
+
+=================================== FAILURES ===================================
+___________ MeetupTest.test_last_friday_in_a_month_with_five_fridays ___________
+
+year = 2013, month = 11, week = 'last', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_friday_in_a_month_with_five_fridays>
+
+    def test_last_friday_in_a_month_with_five_fridays(self):
+>       self.assertEqual(meetup(2013, 11, "last", "Friday"), date(2013, 11, 29))
+
+exercises/practice/meetup/meetup_test.py:271: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 11, week = 'last', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+___________ MeetupTest.test_last_friday_in_a_month_with_four_fridays ___________
+
+year = 2013, month = 12, week = 'last', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_friday_in_a_month_with_four_fridays>
+
+    def test_last_friday_in_a_month_with_four_fridays(self):
+>       self.assertEqual(meetup(2013, 12, "last", "Friday"), date(2013, 12, 27))
+
+exercises/practice/meetup/meetup_test.py:274: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 12, week = 'last', day_of_week = 'Friday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+___________ MeetupTest.test_last_monday_in_a_month_with_five_mondays ___________
+
+year = 2013, month = 4, week = 'last', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_monday_in_a_month_with_five_mondays>
+
+    def test_last_monday_in_a_month_with_five_mondays(self):
+>       self.assertEqual(meetup(2013, 4, "last", "Monday"), date(2013, 4, 29))
+
+exercises/practice/meetup/meetup_test.py:250: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, week = 'last', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+___________ MeetupTest.test_last_monday_in_a_month_with_four_mondays ___________
+
+year = 2013, month = 3, week = 'last', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_monday_in_a_month_with_four_mondays>
+
+    def test_last_monday_in_a_month_with_four_mondays(self):
+>       self.assertEqual(meetup(2013, 3, "last", "Monday"), date(2013, 3, 25))
+
+exercises/practice/meetup/meetup_test.py:247: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 3, week = 'last', day_of_week = 'Monday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+_________ MeetupTest.test_last_saturday_in_a_month_with_four_saturdays _________
+
+year = 2013, month = 1, week = 'last', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_saturday_in_a_month_with_four_saturdays>
+
+    def test_last_saturday_in_a_month_with_four_saturdays(self):
+>       self.assertEqual(meetup(2013, 1, "last", "Saturday"), date(2013, 1, 26))
+
+exercises/practice/meetup/meetup_test.py:277: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 1, week = 'last', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+______ MeetupTest.test_last_saturday_in_another_month_with_four_saturdays ______
+
+year = 2013, month = 2, week = 'last', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_saturday_in_another_month_with_four_saturdays>
+
+    def test_last_saturday_in_another_month_with_four_saturdays(self):
+>       self.assertEqual(meetup(2013, 2, "last", "Saturday"), date(2013, 2, 23))
+
+exercises/practice/meetup/meetup_test.py:280: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 2, week = 'last', day_of_week = 'Saturday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+___________ MeetupTest.test_last_sunday_in_a_month_with_five_sundays ___________
+
+year = 2013, month = 3, week = 'last', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_sunday_in_a_month_with_five_sundays>
+
+    def test_last_sunday_in_a_month_with_five_sundays(self):
+>       self.assertEqual(meetup(2013, 3, "last", "Sunday"), date(2013, 3, 31))
+
+exercises/practice/meetup/meetup_test.py:283: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 3, week = 'last', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+___________ MeetupTest.test_last_sunday_in_a_month_with_four_sundays ___________
+
+year = 2013, month = 4, week = 'last', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_sunday_in_a_month_with_four_sundays>
+
+    def test_last_sunday_in_a_month_with_four_sundays(self):
+>       self.assertEqual(meetup(2013, 4, "last", "Sunday"), date(2013, 4, 28))
+
+exercises/practice/meetup/meetup_test.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, week = 'last', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+___________________ MeetupTest.test_last_sunday_of_june_2024 ___________________
+
+year = 2024, month = 6, week = 'last', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_sunday_of_june_2024>
+
+    def test_last_sunday_of_june_2024(self):
+>       self.assertEqual(meetup(2024, 6, "last", "Sunday"), date(2024, 6, 30))
+
+exercises/practice/meetup/meetup_test.py:312: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2024, month = 6, week = 'last', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+_________ MeetupTest.test_last_thursday_in_a_month_with_five_thursdays _________
+
+year = 2013, month = 10, week = 'last', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_thursday_in_a_month_with_five_thursdays>
+
+    def test_last_thursday_in_a_month_with_five_thursdays(self):
+>       self.assertEqual(meetup(2013, 10, "last", "Thursday"), date(2013, 10, 31))
+
+exercises/practice/meetup/meetup_test.py:268: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 10, week = 'last', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+_________ MeetupTest.test_last_thursday_in_a_month_with_four_thursdays _________
+
+year = 2013, month = 9, week = 'last', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_thursday_in_a_month_with_four_thursdays>
+
+    def test_last_thursday_in_a_month_with_four_thursdays(self):
+>       self.assertEqual(meetup(2013, 9, "last", "Thursday"), date(2013, 9, 26))
+
+exercises/practice/meetup/meetup_test.py:265: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 9, week = 'last', day_of_week = 'Thursday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+__________ MeetupTest.test_last_tuesday_in_a_month_with_four_tuesdays __________
+
+year = 2013, month = 5, week = 'last', day_of_week = 'Tuesday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_tuesday_in_a_month_with_four_tuesdays>
+
+    def test_last_tuesday_in_a_month_with_four_tuesdays(self):
+>       self.assertEqual(meetup(2013, 5, "last", "Tuesday"), date(2013, 5, 28))
+
+exercises/practice/meetup/meetup_test.py:253: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 5, week = 'last', day_of_week = 'Tuesday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+_______ MeetupTest.test_last_tuesday_in_another_month_with_four_tuesdays _______
+
+year = 2013, month = 6, week = 'last', day_of_week = 'Tuesday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_tuesday_in_another_month_with_four_tuesdays>
+
+    def test_last_tuesday_in_another_month_with_four_tuesdays(self):
+>       self.assertEqual(meetup(2013, 6, "last", "Tuesday"), date(2013, 6, 25))
+
+exercises/practice/meetup/meetup_test.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 6, week = 'last', day_of_week = 'Tuesday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+________ MeetupTest.test_last_wednesday_in_a_month_with_five_wednesdays ________
+
+year = 2013, month = 7, week = 'last', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_wednesday_in_a_month_with_five_wednesdays>
+
+    def test_last_wednesday_in_a_month_with_five_wednesdays(self):
+>       self.assertEqual(meetup(2013, 7, "last", "Wednesday"), date(2013, 7, 31))
+
+exercises/practice/meetup/meetup_test.py:259: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 7, week = 'last', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+________ MeetupTest.test_last_wednesday_in_a_month_with_four_wednesdays ________
+
+year = 2013, month = 8, week = 'last', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_wednesday_in_a_month_with_four_wednesdays>
+
+    def test_last_wednesday_in_a_month_with_four_wednesdays(self):
+>       self.assertEqual(meetup(2013, 8, "last", "Wednesday"), date(2013, 8, 28))
+
+exercises/practice/meetup/meetup_test.py:262: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 8, week = 'last', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+_ MeetupTest.test_last_wednesday_in_december_that_is_also_the_last_day_of_the_year _
+
+year = 2014, month = 12, week = 'last', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_last_wednesday_in_december_that_is_also_the_last_day_of_the_year>
+
+    def test_last_wednesday_in_december_that_is_also_the_last_day_of_the_year(self):
+>       self.assertEqual(meetup(2014, 12, "last", "Wednesday"), date(2014, 12, 31))
+
+exercises/practice/meetup/meetup_test.py:292: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2014, month = 12, week = 'last', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+_ MeetupTest.test_when_last_sunday_in_february_in_a_non_leap_year_is_not_the_29th _
+
+year = 2015, month = 2, week = 'last', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_when_last_sunday_in_february_in_a_non_leap_year_is_not_the_29th>
+
+    def test_when_last_sunday_in_february_in_a_non_leap_year_is_not_the_29th(self):
+>       self.assertEqual(meetup(2015, 2, "last", "Sunday"), date(2015, 2, 22))
+
+exercises/practice/meetup/meetup_test.py:295: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2015, month = 2, week = 'last', day_of_week = 'Sunday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+__ MeetupTest.test_when_last_wednesday_in_february_in_a_leap_year_is_the_29th __
+
+year = 2012, month = 2, week = 'last', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+>               meetup_date = datetime.date(year, month, day)
+E               ValueError: day is out of range for month
+
+exercises/practice/meetup/meetup.py:39: ValueError
+
+During handling of the above exception, another exception occurred:
+
+self = <meetup_test.MeetupTest testMethod=test_when_last_wednesday_in_february_in_a_leap_year_is_the_29th>
+
+    def test_when_last_wednesday_in_february_in_a_leap_year_is_the_29th(self):
+>       self.assertEqual(meetup(2012, 2, "last", "Wednesday"), date(2012, 2, 29))
+
+exercises/practice/meetup/meetup_test.py:289: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2012, month = 2, week = 'last', day_of_week = 'Wednesday'
+
+    def meetup(year, month, week, day_of_week):
+        days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6,
+        }
+    
+        if week == "teenth":
+            day = 13
+            while True:
+                meetup_date = datetime.date(year, month, day)
+                if meetup_date.weekday() == days[day_of_week]:
+                    return meetup_date
+                day += 1
+                if day > 19:
+                    raise MeetupDayException()
+        else:
+            week_num = {"first": 0, "second": 1, "third": 2, "fourth": 3, "fifth": 4, "last": -1}
+            first_day = datetime.date(year, month, 1)
+            first_day_of_week = (days[day_of_week] - first_day.weekday()) % 7
+            day = first_day_of_week + 1 + (7 * week_num[week])
+    
+            try:
+                meetup_date = datetime.date(year, month, day)
+            except ValueError:
+>               raise MeetupDayException()
+E               meetup.MeetupDayException: That day does not exist.
+
+exercises/practice/meetup/meetup.py:41: MeetupDayException
+=========================== short test summary info ============================
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_friday_in_a_month_with_five_fridays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_friday_in_a_month_with_four_fridays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_monday_in_a_month_with_five_mondays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_monday_in_a_month_with_four_mondays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_saturday_in_a_month_with_four_saturdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_saturday_in_another_month_with_four_saturdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_sunday_in_a_month_with_five_sundays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_sunday_in_a_month_with_four_sundays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_sunday_of_june_2024
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_thursday_in_a_month_with_five_thursdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_thursday_in_a_month_with_four_thursdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_tuesday_in_a_month_with_four_tuesdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_tuesday_in_another_month_with_four_tuesdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_wednesday_in_a_month_with_five_wednesdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_wednesday_in_a_month_with_four_wednesdays
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_last_wednesday_in_december_that_is_also_the_last_day_of_the_year
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_last_sunday_in_february_in_a_non_leap_year_is_not_the_29th
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_last_wednesday_in_february_in_a_leap_year_is_the_29th
+======================== 18 failed, 85 passed in 0.34s =========================

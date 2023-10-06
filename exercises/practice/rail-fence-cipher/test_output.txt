@@ -1,0 +1,166 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 6 items
+
+exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py FFF...    [100%]
+
+=================================== FAILURES ===================================
+_______________ RailFenceCipherTest.test_decode_with_five_rails ________________
+
+self = <rail_fence_cipher_test.RailFenceCipherTest testMethod=test_decode_with_five_rails>
+
+    def test_decode_with_five_rails(self):
+>       self.assertMultiLineEqual(decode("EIEXMSMESAORIWSCE", 5), "EXERCISMISAWESOME")
+
+exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+encoded_message = 'EIEXMSMESAORIWSCE', rails = 5
+
+    def decode(encoded_message, rails):
+        if rails == 1:
+            return encoded_message
+    
+        fence = [[] for _ in range(rails)]
+        rail = 0
+        step = 1
+    
+        for _ in encoded_message:
+            fence[rail].append(None)
+            rail += step
+            if rail == 0 or rail == rails - 1:
+                step = -step
+    
+        i = 0
+        for rail in range(rails):
+            for j in range(len(fence[rail])):
+                if fence[rail][j] is None:
+                    continue
+                fence[rail][j] = encoded_message[i]
+                i += 1
+    
+        result = []
+        rail = 0
+        step = 1
+        for _ in encoded_message:
+            if fence[rail]:
+                result.append(fence[rail].pop(0))
+            rail += step
+            if rail == 0 or rail == rails - 1:
+                step = -step
+    
+>       return ''.join(result)
+E       TypeError: sequence item 0: expected str instance, NoneType found
+
+exercises/practice/rail-fence-cipher/rail_fence_cipher.py:45: TypeError
+________________ RailFenceCipherTest.test_decode_with_six_rails ________________
+
+self = <rail_fence_cipher_test.RailFenceCipherTest testMethod=test_decode_with_six_rails>
+
+    def test_decode_with_six_rails(self):
+        self.assertMultiLineEqual(
+>           decode("133714114238148966225439541018335470986172518171757571896261", 6),
+            "112358132134558914423337761098715972584418167651094617711286",
+        )
+
+exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+encoded_message = '133714114238148966225439541018335470986172518171757571896261'
+rails = 6
+
+    def decode(encoded_message, rails):
+        if rails == 1:
+            return encoded_message
+    
+        fence = [[] for _ in range(rails)]
+        rail = 0
+        step = 1
+    
+        for _ in encoded_message:
+            fence[rail].append(None)
+            rail += step
+            if rail == 0 or rail == rails - 1:
+                step = -step
+    
+        i = 0
+        for rail in range(rails):
+            for j in range(len(fence[rail])):
+                if fence[rail][j] is None:
+                    continue
+                fence[rail][j] = encoded_message[i]
+                i += 1
+    
+        result = []
+        rail = 0
+        step = 1
+        for _ in encoded_message:
+            if fence[rail]:
+                result.append(fence[rail].pop(0))
+            rail += step
+            if rail == 0 or rail == rails - 1:
+                step = -step
+    
+>       return ''.join(result)
+E       TypeError: sequence item 0: expected str instance, NoneType found
+
+exercises/practice/rail-fence-cipher/rail_fence_cipher.py:45: TypeError
+_______________ RailFenceCipherTest.test_decode_with_three_rails _______________
+
+self = <rail_fence_cipher_test.RailFenceCipherTest testMethod=test_decode_with_three_rails>
+
+    def test_decode_with_three_rails(self):
+        self.assertMultiLineEqual(
+>           decode("TEITELHDVLSNHDTISEIIEA", 3), "THEDEVILISINTHEDETAILS"
+        )
+
+exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+encoded_message = 'TEITELHDVLSNHDTISEIIEA', rails = 3
+
+    def decode(encoded_message, rails):
+        if rails == 1:
+            return encoded_message
+    
+        fence = [[] for _ in range(rails)]
+        rail = 0
+        step = 1
+    
+        for _ in encoded_message:
+            fence[rail].append(None)
+            rail += step
+            if rail == 0 or rail == rails - 1:
+                step = -step
+    
+        i = 0
+        for rail in range(rails):
+            for j in range(len(fence[rail])):
+                if fence[rail][j] is None:
+                    continue
+                fence[rail][j] = encoded_message[i]
+                i += 1
+    
+        result = []
+        rail = 0
+        step = 1
+        for _ in encoded_message:
+            if fence[rail]:
+                result.append(fence[rail].pop(0))
+            rail += step
+            if rail == 0 or rail == rails - 1:
+                step = -step
+    
+>       return ''.join(result)
+E       TypeError: sequence item 0: expected str instance, NoneType found
+
+exercises/practice/rail-fence-cipher/rail_fence_cipher.py:45: TypeError
+=========================== short test summary info ============================
+FAILED exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py::RailFenceCipherTest::test_decode_with_five_rails
+FAILED exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py::RailFenceCipherTest::test_decode_with_six_rails
+FAILED exercises/practice/rail-fence-cipher/rail_fence_cipher_test.py::RailFenceCipherTest::test_decode_with_three_rails
+========================= 3 failed, 3 passed in 0.05s ==========================

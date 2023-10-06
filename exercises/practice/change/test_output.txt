@@ -1,0 +1,330 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 12 items
+
+exercises/practice/change/change_test.py FFFF.FFFFFFF                    [100%]
+
+=================================== FAILURES ===================================
+_____ ChangeTest.test_another_possible_change_without_unit_coins_available _____
+
+self = <change_test.ChangeTest testMethod=test_another_possible_change_without_unit_coins_available>
+
+    def test_another_possible_change_without_unit_coins_available(self):
+>       self.assertEqual(find_fewest_coins([4, 5], 27), [4, 4, 4, 5, 5, 5])
+E       AssertionError: Lists differ: [5, 5, 5, 4, 4, 4] != [4, 4, 4, 5, 5, 5]
+E       
+E       First differing element 0:
+E       5
+E       4
+E       
+E       - [5, 5, 5, 4, 4, 4]
+E       + [4, 4, 4, 5, 5, 5]
+
+exercises/practice/change/change_test.py:38: AssertionError
+______________ ChangeTest.test_cannot_find_negative_change_values ______________
+
+self = <change_test.ChangeTest testMethod=test_cannot_find_negative_change_values>
+
+    def test_cannot_find_negative_change_values(self):
+        with self.assertRaises(ValueError) as err:
+            find_fewest_coins([1, 2, 5], -5)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "target can't be negative")
+E       AssertionError: 'Invalid target value' != "target can't be negative"
+E       - Invalid target value
+E       + target can't be negative
+
+exercises/practice/change/change_test.py:59: AssertionError
+______________________ ChangeTest.test_change_for_1_cent _______________________
+
+self = <change_test.ChangeTest testMethod=test_change_for_1_cent>
+
+    def test_change_for_1_cent(self):
+>       self.assertEqual(find_fewest_coins([1, 5, 10, 25], 1), [1])
+
+exercises/practice/change/change_test.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+coins = [25, 10, 5, 1], target = 1
+
+    def find_fewest_coins(coins, target):
+        if target < 0 or (coins and target < min(coins)):
+            raise ValueError("Invalid target value")
+    
+        coins.sort(reverse=True)
+        result = []
+    
+        def helper(remaining, coin_idx, coins_so_far):
+            nonlocal result
+    
+            if remaining == 0:
+                if not result or len(coins_so_far) < len(result):
+                    result = coins_so_far
+                return
+    
+            if coin_idx >= len(coins) or remaining < coins[coin_idx]:
+                return
+    
+            max_coin_qty = remaining // coins[coin_idx]
+            for qty in range(max_coin_qty, -1, -1):
+                if not result or len(coins_so_far) + qty < len(result):
+                    helper(remaining - coins[coin_idx] * qty, coin_idx + 1, coins_so_far + [coins[coin_idx]] * qty)
+    
+        helper(target, 0, [])
+        if not result:
+>           raise ValueError("Can't make target with given coins")
+E           ValueError: Can't make target with given coins
+
+exercises/practice/change/change.py:26: ValueError
+________________ ChangeTest.test_change_with_lilliputian_coins _________________
+
+self = <change_test.ChangeTest testMethod=test_change_with_lilliputian_coins>
+
+    def test_change_with_lilliputian_coins(self):
+>       self.assertEqual(find_fewest_coins([1, 4, 15, 20, 50], 23), [4, 4, 15])
+
+exercises/practice/change/change_test.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+coins = [50, 20, 15, 4, 1], target = 23
+
+    def find_fewest_coins(coins, target):
+        if target < 0 or (coins and target < min(coins)):
+            raise ValueError("Invalid target value")
+    
+        coins.sort(reverse=True)
+        result = []
+    
+        def helper(remaining, coin_idx, coins_so_far):
+            nonlocal result
+    
+            if remaining == 0:
+                if not result or len(coins_so_far) < len(result):
+                    result = coins_so_far
+                return
+    
+            if coin_idx >= len(coins) or remaining < coins[coin_idx]:
+                return
+    
+            max_coin_qty = remaining // coins[coin_idx]
+            for qty in range(max_coin_qty, -1, -1):
+                if not result or len(coins_so_far) + qty < len(result):
+                    helper(remaining - coins[coin_idx] * qty, coin_idx + 1, coins_so_far + [coins[coin_idx]] * qty)
+    
+        helper(target, 0, [])
+        if not result:
+>           raise ValueError("Can't make target with given coins")
+E           ValueError: Can't make target with given coins
+
+exercises/practice/change/change.py:26: ValueError
+_________ ChangeTest.test_error_if_no_combination_can_add_up_to_target _________
+
+self = <change_test.ChangeTest testMethod=test_error_if_no_combination_can_add_up_to_target>
+
+    def test_error_if_no_combination_can_add_up_to_target(self):
+        with self.assertRaises(ValueError) as err:
+            find_fewest_coins([5, 10], 94)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "can't make target with given coins")
+E       AssertionError: "Can't make target with given coins" != "can't make target with given coins"
+E       - Can't make target with given coins
+E       ? ^
+E       + can't make target with given coins
+E       ? ^
+
+exercises/practice/change/change_test.py:53: AssertionError
+_ ChangeTest.test_error_testing_for_change_smaller_than_the_smallest_of_coins __
+
+self = <change_test.ChangeTest testMethod=test_error_testing_for_change_smaller_than_the_smallest_of_coins>
+
+    def test_error_testing_for_change_smaller_than_the_smallest_of_coins(self):
+        with self.assertRaises(ValueError) as err:
+            find_fewest_coins([5, 10], 3)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "can't make target with given coins")
+E       AssertionError: 'Invalid target value' != "can't make target with given coins"
+E       - Invalid target value
+E       + can't make target with given coins
+
+exercises/practice/change/change_test.py:47: AssertionError
+_____________________ ChangeTest.test_large_target_values ______________________
+
+self = <change_test.ChangeTest testMethod=test_large_target_values>
+
+    def test_large_target_values(self):
+>       self.assertEqual(
+            find_fewest_coins([1, 2, 5, 10, 20, 50, 100], 999),
+            [2, 2, 5, 20, 20, 50, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+        )
+E       AssertionError: Lists differ: [100, 100, 100, 100, 100, 100, 100, 100, 100, 50, 20, 10, 10, 5, 2, 2] != [2, 2, 5, 20, 20, 50, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+E       
+E       First differing element 0:
+E       100
+E       2
+E       
+E       First list contains 1 additional elements.
+E       First extra element 15:
+E       2
+E       
+E       - [100, 100, 100, 100, 100, 100, 100, 100, 100, 50, 20, 10, 10, 5, 2, 2]
+E       + [2, 2, 5, 20, 20, 50, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+
+exercises/practice/change/change_test.py:29: AssertionError
+_____________________ ChangeTest.test_multiple_coin_change _____________________
+
+self = <change_test.ChangeTest testMethod=test_multiple_coin_change>
+
+    def test_multiple_coin_change(self):
+>       self.assertEqual(find_fewest_coins([1, 5, 10, 25, 100], 15), [5, 10])
+
+exercises/practice/change/change_test.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+coins = [100, 25, 10, 5, 1], target = 15
+
+    def find_fewest_coins(coins, target):
+        if target < 0 or (coins and target < min(coins)):
+            raise ValueError("Invalid target value")
+    
+        coins.sort(reverse=True)
+        result = []
+    
+        def helper(remaining, coin_idx, coins_so_far):
+            nonlocal result
+    
+            if remaining == 0:
+                if not result or len(coins_so_far) < len(result):
+                    result = coins_so_far
+                return
+    
+            if coin_idx >= len(coins) or remaining < coins[coin_idx]:
+                return
+    
+            max_coin_qty = remaining // coins[coin_idx]
+            for qty in range(max_coin_qty, -1, -1):
+                if not result or len(coins_so_far) + qty < len(result):
+                    helper(remaining - coins[coin_idx] * qty, coin_idx + 1, coins_so_far + [coins[coin_idx]] * qty)
+    
+        helper(target, 0, [])
+        if not result:
+>           raise ValueError("Can't make target with given coins")
+E           ValueError: Can't make target with given coins
+
+exercises/practice/change/change.py:26: ValueError
+____________________ ChangeTest.test_no_coins_make_0_change ____________________
+
+self = <change_test.ChangeTest testMethod=test_no_coins_make_0_change>
+
+    def test_no_coins_make_0_change(self):
+>       self.assertEqual(find_fewest_coins([1, 5, 10, 21, 25], 0), [])
+
+exercises/practice/change/change_test.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+coins = [1, 5, 10, 21, 25], target = 0
+
+    def find_fewest_coins(coins, target):
+        if target < 0 or (coins and target < min(coins)):
+>           raise ValueError("Invalid target value")
+E           ValueError: Invalid target value
+
+exercises/practice/change/change.py:3: ValueError
+_________ ChangeTest.test_possible_change_without_unit_coins_available _________
+
+self = <change_test.ChangeTest testMethod=test_possible_change_without_unit_coins_available>
+
+    def test_possible_change_without_unit_coins_available(self):
+>       self.assertEqual(find_fewest_coins([2, 5, 10, 20, 50], 21), [2, 2, 2, 5, 10])
+
+exercises/practice/change/change_test.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+coins = [50, 20, 10, 5, 2], target = 21
+
+    def find_fewest_coins(coins, target):
+        if target < 0 or (coins and target < min(coins)):
+            raise ValueError("Invalid target value")
+    
+        coins.sort(reverse=True)
+        result = []
+    
+        def helper(remaining, coin_idx, coins_so_far):
+            nonlocal result
+    
+            if remaining == 0:
+                if not result or len(coins_so_far) < len(result):
+                    result = coins_so_far
+                return
+    
+            if coin_idx >= len(coins) or remaining < coins[coin_idx]:
+                return
+    
+            max_coin_qty = remaining // coins[coin_idx]
+            for qty in range(max_coin_qty, -1, -1):
+                if not result or len(coins_so_far) + qty < len(result):
+                    helper(remaining - coins[coin_idx] * qty, coin_idx + 1, coins_so_far + [coins[coin_idx]] * qty)
+    
+        helper(target, 0, [])
+        if not result:
+>           raise ValueError("Can't make target with given coins")
+E           ValueError: Can't make target with given coins
+
+exercises/practice/change/change.py:26: ValueError
+______________________ ChangeTest.test_single_coin_change ______________________
+
+self = <change_test.ChangeTest testMethod=test_single_coin_change>
+
+    def test_single_coin_change(self):
+>       self.assertEqual(find_fewest_coins([1, 5, 10, 25, 100], 25), [25])
+
+exercises/practice/change/change_test.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+coins = [100, 25, 10, 5, 1], target = 25
+
+    def find_fewest_coins(coins, target):
+        if target < 0 or (coins and target < min(coins)):
+            raise ValueError("Invalid target value")
+    
+        coins.sort(reverse=True)
+        result = []
+    
+        def helper(remaining, coin_idx, coins_so_far):
+            nonlocal result
+    
+            if remaining == 0:
+                if not result or len(coins_so_far) < len(result):
+                    result = coins_so_far
+                return
+    
+            if coin_idx >= len(coins) or remaining < coins[coin_idx]:
+                return
+    
+            max_coin_qty = remaining // coins[coin_idx]
+            for qty in range(max_coin_qty, -1, -1):
+                if not result or len(coins_so_far) + qty < len(result):
+                    helper(remaining - coins[coin_idx] * qty, coin_idx + 1, coins_so_far + [coins[coin_idx]] * qty)
+    
+        helper(target, 0, [])
+        if not result:
+>           raise ValueError("Can't make target with given coins")
+E           ValueError: Can't make target with given coins
+
+exercises/practice/change/change.py:26: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_another_possible_change_without_unit_coins_available
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_cannot_find_negative_change_values
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_change_for_1_cent
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_change_with_lilliputian_coins
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_error_if_no_combination_can_add_up_to_target
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_error_testing_for_change_smaller_than_the_smallest_of_coins
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_large_target_values
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_multiple_coin_change
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_no_coins_make_0_change
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_possible_change_without_unit_coins_available
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_single_coin_change
+========================= 11 failed, 1 passed in 3.41s =========================

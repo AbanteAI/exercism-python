@@ -10,41 +10,26 @@ class Node:
         self.children = []
 
 
-def BuildTree(records):
-    root = None
-    records.sort(key=lambda x: x.record_id)
-    ordered_id = [i.record_id for i in records]
-    if records:
-        if ordered_id[-1] != len(ordered_id) - 1:
-            raise ValueError('broken tree')
-        if ordered_id[0] != 0:
-            raise ValueError('invalid')
-    trees = []
-    parent = {}
-    for i in range(len(ordered_id)):
-        for j in records:
-            if ordered_id[i] == j.record_id:
-                if j.record_id == 0:
-                    if j.parent_id != 0:
-                        raise ValueError('error!')
-                if j.record_id < j.parent_id:
-                    raise ValueError('something went wrong!')
-                if j.record_id == j.parent_id:
-                    if j.record_id != 0:
-                        raise ValueError('error!')
-                trees.append(Node(ordered_id[i]))
-    for i in range(len(ordered_id)):
-        for j in trees:
-            if i == j.node_id:
-                parent = j
-        for j in records:
-            if j.parent_id == i:
-                for k in trees:
-                    if k.node_id == 0:
-                        continue
-                    if j.record_id == k.node_id:
-                        child = k
-                        parent.children.append(child)
-    if len(trees) > 0:
-        root = trees[0]
-    return root
+def build_tree(records):
+    if not records:
+        return None
+
+    records.sort(key=lambda r: r.record_id)
+
+    if records[0].record_id != 0 or records[0].parent_id != 0:
+        raise ValueError("Invalid root record")
+
+    tree_nodes = {record.record_id: Node(record.record_id) for record in records}
+
+    for record in records:
+        if record.record_id == 0:
+            continue
+
+        if record.record_id <= record.parent_id:
+            raise ValueError("Invalid record: parent_id must be less than record_id")
+
+        parent_node = tree_nodes[record.parent_id]
+        child_node = tree_nodes[record.record_id]
+        parent_node.children.append(child_node)
+
+    return tree_nodes[0]

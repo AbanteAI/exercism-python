@@ -1,0 +1,954 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 20 items
+
+exercises/practice/say/say_test.py FFFF..FFFFFFFFFFFFFF                  [100%]
+
+=================================== FAILURES ===================================
+__________________________ SayTest.test_a_big_number ___________________________
+
+self = <say_test.SayTest testMethod=test_a_big_number>
+
+    def test_a_big_number(self):
+        self.assertEqual(
+>           say(987654321123),
+            "nine hundred eighty-seven billion six hundred fifty-four million three hundred twenty-one thousand one hundred twenty-three",
+        )
+
+exercises/practice/say/say_test.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 987654321123
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+____________________________ SayTest.test_fourteen _____________________________
+
+self = <say_test.SayTest testMethod=test_fourteen>
+
+    def test_fourteen(self):
+>       self.assertEqual(say(14), "fourteen")
+
+exercises/practice/say/say_test.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 14
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+____________________ SayTest.test_nine_hundred_ninety_nine _____________________
+
+self = <say_test.SayTest testMethod=test_nine_hundred_ninety_nine>
+
+    def test_nine_hundred_ninety_nine(self):
+>       self.assertEqual(say(999), "nine hundred ninety-nine")
+
+exercises/practice/say/say_test.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 999
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+___________________________ SayTest.test_ninety_nine ___________________________
+
+self = <say_test.SayTest testMethod=test_ninety_nine>
+
+    def test_ninety_nine(self):
+>       self.assertEqual(say(99), "ninety-nine")
+
+exercises/practice/say/say_test.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 99
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+_______________________________ SayTest.test_one _______________________________
+
+self = <say_test.SayTest testMethod=test_one>
+
+    def test_one(self):
+>       self.assertEqual(say(1), "one")
+
+exercises/practice/say/say_test.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 1
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+___________________________ SayTest.test_one_billion ___________________________
+
+self = <say_test.SayTest testMethod=test_one_billion>
+
+    def test_one_billion(self):
+>       self.assertEqual(say(1000000000), "one billion")
+
+exercises/practice/say/say_test.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 1000000000
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+___________________________ SayTest.test_one_hundred ___________________________
+
+self = <say_test.SayTest testMethod=test_one_hundred>
+
+    def test_one_hundred(self):
+>       self.assertEqual(say(100), "one hundred")
+
+exercises/practice/say/say_test.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 100
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+_______________________ SayTest.test_one_hundred_seventy _______________________
+
+self = <say_test.SayTest testMethod=test_one_hundred_seventy>
+
+    def test_one_hundred_seventy(self):
+>       self.assertEqual(say(170), "one hundred seventy")
+
+exercises/practice/say/say_test.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 170
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+____________________ SayTest.test_one_hundred_twenty_three _____________________
+
+self = <say_test.SayTest testMethod=test_one_hundred_twenty_three>
+
+    def test_one_hundred_twenty_three(self):
+>       self.assertEqual(say(123), "one hundred twenty-three")
+
+exercises/practice/say/say_test.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 123
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+___________________________ SayTest.test_one_million ___________________________
+
+self = <say_test.SayTest testMethod=test_one_million>
+
+    def test_one_million(self):
+>       self.assertEqual(say(1000000), "one million")
+
+exercises/practice/say/say_test.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 1000000
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+________ SayTest.test_one_million_two_thousand_three_hundred_forty_five ________
+
+self = <say_test.SayTest testMethod=test_one_million_two_thousand_three_hundred_forty_five>
+
+    def test_one_million_two_thousand_three_hundred_forty_five(self):
+        self.assertEqual(
+>           say(1002345), "one million two thousand three hundred forty-five"
+        )
+
+exercises/practice/say/say_test.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 1002345
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+__________________________ SayTest.test_one_thousand ___________________________
+
+self = <say_test.SayTest testMethod=test_one_thousand>
+
+    def test_one_thousand(self):
+>       self.assertEqual(say(1000), "one thousand")
+
+exercises/practice/say/say_test.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 1000
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+______________ SayTest.test_one_thousand_two_hundred_thirty_four _______________
+
+self = <say_test.SayTest testMethod=test_one_thousand_two_hundred_thirty_four>
+
+    def test_one_thousand_two_hundred_thirty_four(self):
+>       self.assertEqual(say(1234), "one thousand two hundred thirty-four")
+
+exercises/practice/say/say_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 1234
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+_____________________________ SayTest.test_thirty ______________________________
+
+self = <say_test.SayTest testMethod=test_thirty>
+
+    def test_thirty(self):
+>       self.assertEqual(say(30), "thirty")
+
+exercises/practice/say/say_test.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 30
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+_____________________________ SayTest.test_twenty ______________________________
+
+self = <say_test.SayTest testMethod=test_twenty>
+
+    def test_twenty(self):
+>       self.assertEqual(say(20), "twenty")
+
+exercises/practice/say/say_test.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 20
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+___________________________ SayTest.test_twenty_two ____________________________
+
+self = <say_test.SayTest testMethod=test_twenty_two>
+
+    def test_twenty_two(self):
+>       self.assertEqual(say(22), "twenty-two")
+
+exercises/practice/say/say_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 22
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+___________________________ SayTest.test_two_hundred ___________________________
+
+self = <say_test.SayTest testMethod=test_two_hundred>
+
+    def test_two_hundred(self):
+>       self.assertEqual(say(200), "two hundred")
+
+exercises/practice/say/say_test.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 200
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+______________________________ SayTest.test_zero _______________________________
+
+self = <say_test.SayTest testMethod=test_zero>
+
+    def test_zero(self):
+>       self.assertEqual(say(0), "zero")
+
+exercises/practice/say/say_test.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+number = 0
+
+    def say(number):
+        if number < 0 or number > 999999999999:
+            raise ValueError("input out of range")
+    
+        def number_to_words(n):
+            ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+            if 1 <= n < 10:
+                return ones[n]
+            elif 10 <= n < 20:
+                return teens[n - 10]
+            elif 20 <= n < 100:
+                return tens[n // 10] + ("-" + ones[n % 10] if n % 10 != 0 else "")
+    
+        def number_to_grouped_words(n):
+            if n == 0:
+                return "zero"
+            group_names = ["", "thousand", "million", "billion"]
+            groups = []
+            group_index = 0
+    
+            while n > 0:
+                n, group = divmod(n, 1000)
+                if group > 0:
+                    hundreds, remainder = divmod(group, 100)
+                    words = []
+                    if hundreds > 0:
+                        words.append(number_to_words(hundreds) + " hundred")
+                    if remainder > 0:
+                        words.append(number_to_words(remainder))
+                    groups.append(" ".join(words) + " " + group_names[group_index])
+                group_index += 1
+    
+>       return " ".join(reversed(groups)).strip()
+E       NameError: name 'groups' is not defined
+
+exercises/practice/say/say.py:36: NameError
+=========================== short test summary info ============================
+FAILED exercises/practice/say/say_test.py::SayTest::test_a_big_number - NameE...
+FAILED exercises/practice/say/say_test.py::SayTest::test_fourteen - NameError...
+FAILED exercises/practice/say/say_test.py::SayTest::test_nine_hundred_ninety_nine
+FAILED exercises/practice/say/say_test.py::SayTest::test_ninety_nine - NameEr...
+FAILED exercises/practice/say/say_test.py::SayTest::test_one - NameError: nam...
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_billion - NameEr...
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_hundred - NameEr...
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_hundred_seventy
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_hundred_twenty_three
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_million - NameEr...
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_million_two_thousand_three_hundred_forty_five
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_thousand - NameE...
+FAILED exercises/practice/say/say_test.py::SayTest::test_one_thousand_two_hundred_thirty_four
+FAILED exercises/practice/say/say_test.py::SayTest::test_thirty - NameError: ...
+FAILED exercises/practice/say/say_test.py::SayTest::test_twenty - NameError: ...
+FAILED exercises/practice/say/say_test.py::SayTest::test_twenty_two - NameErr...
+FAILED exercises/practice/say/say_test.py::SayTest::test_two_hundred - NameEr...
+FAILED exercises/practice/say/say_test.py::SayTest::test_zero - NameError: na...
+========================= 18 failed, 2 passed in 0.13s =========================

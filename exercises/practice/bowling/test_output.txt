@@ -1,0 +1,446 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 31 items
+
+exercises/practice/bowling/bowling_test.py .FFFFFF........FFFFFFF..FFFFF [ 93%]
+FF                                                                       [100%]
+
+=================================== FAILURES ===================================
+________ BowlingTest.test_a_spare_followed_by_zeros_is_worth_ten_points ________
+
+self = <bowling_test.BowlingTest testMethod=test_a_spare_followed_by_zeros_is_worth_ten_points>
+
+    def test_a_spare_followed_by_zeros_is_worth_ten_points(self):
+        rolls = [6, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 10)
+
+exercises/practice/bowling/bowling_test.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be83b0b50>
+
+    def score(self):
+        if self.current_roll < 20:
+            raise IndexError("Incomplete or unstarted game")
+        score = 0
+        for frame in range(10):
+>           if self.rolls[frame_index] == 10:  # Strike
+E           UnboundLocalError: local variable 'frame_index' referenced before assignment
+
+exercises/practice/bowling/bowling.py:17: UnboundLocalError
+_ BowlingTest.test_a_spare_in_the_last_frame_gets_a_one_roll_bonus_that_is_counted_once _
+
+self = <bowling_test.BowlingTest testMethod=test_a_spare_in_the_last_frame_gets_a_one_roll_bonus_that_is_counted_once>
+
+    def test_a_spare_in_the_last_frame_gets_a_one_roll_bonus_that_is_counted_once(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 3, 7]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 17)
+
+exercises/practice/bowling/bowling_test.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be84035b0>
+
+    def score(self):
+        if self.current_roll < 20:
+            raise IndexError("Incomplete or unstarted game")
+        score = 0
+        for frame in range(10):
+>           if self.rolls[frame_index] == 10:  # Strike
+E           UnboundLocalError: local variable 'frame_index' referenced before assignment
+
+exercises/practice/bowling/bowling.py:17: UnboundLocalError
+___ BowlingTest.test_a_strike_earns_ten_points_in_a_frame_with_a_single_roll ___
+
+self = <bowling_test.BowlingTest testMethod=test_a_strike_earns_ten_points_in_a_frame_with_a_single_roll>
+
+    def test_a_strike_earns_ten_points_in_a_frame_with_a_single_roll(self):
+        rolls = [10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 10)
+
+exercises/practice/bowling/bowling_test.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be83b1c00>
+
+    def score(self):
+        if self.current_roll < 20:
+>           raise IndexError("Incomplete or unstarted game")
+E           IndexError: Incomplete or unstarted game
+
+exercises/practice/bowling/bowling.py:14: IndexError
+_ BowlingTest.test_a_strike_in_the_last_frame_gets_a_two_roll_bonus_that_is_counted_once _
+
+self = <bowling_test.BowlingTest testMethod=test_a_strike_in_the_last_frame_gets_a_two_roll_bonus_that_is_counted_once>
+
+    def test_a_strike_in_the_last_frame_gets_a_two_roll_bonus_that_is_counted_once(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 7, 1]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 18)
+
+exercises/practice/bowling/bowling_test.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be8403ca0>
+
+    def score(self):
+        if self.current_roll < 20:
+            raise IndexError("Incomplete or unstarted game")
+        score = 0
+        for frame in range(10):
+>           if self.rolls[frame_index] == 10:  # Strike
+E           UnboundLocalError: local variable 'frame_index' referenced before assignment
+
+exercises/practice/bowling/bowling.py:17: UnboundLocalError
+_ BowlingTest.test_a_strike_with_the_one_roll_bonus_after_a_spare_in_the_last_frame_does_not_get_a_bonus _
+
+self = <bowling_test.BowlingTest testMethod=test_a_strike_with_the_one_roll_bonus_after_a_spare_in_the_last_frame_does_not_get_a_bonus>
+
+    def test_a_strike_with_the_one_roll_bonus_after_a_spare_in_the_last_frame_does_not_get_a_bonus(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 3, 10]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 20)
+
+exercises/practice/bowling/bowling_test.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be83b2650>
+
+    def score(self):
+        if self.current_roll < 20:
+            raise IndexError("Incomplete or unstarted game")
+        score = 0
+        for frame in range(10):
+>           if self.rolls[frame_index] == 10:  # Strike
+E           UnboundLocalError: local variable 'frame_index' referenced before assignment
+
+exercises/practice/bowling/bowling.py:17: UnboundLocalError
+________________ BowlingTest.test_all_strikes_is_a_perfect_game ________________
+
+self = <bowling_test.BowlingTest testMethod=test_all_strikes_is_a_perfect_game>
+
+    def test_all_strikes_is_a_perfect_game(self):
+        rolls = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 300)
+
+exercises/practice/bowling/bowling_test.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be8402380>
+
+    def score(self):
+        if self.current_roll < 20:
+>           raise IndexError("Incomplete or unstarted game")
+E           IndexError: Incomplete or unstarted game
+
+exercises/practice/bowling/bowling.py:14: IndexError
+_________ BowlingTest.test_cannot_roll_if_game_already_has_ten_frames __________
+
+self = <bowling_test.BowlingTest testMethod=test_cannot_roll_if_game_already_has_ten_frames>
+
+    def test_cannot_roll_if_game_already_has_ten_frames(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+exercises/practice/bowling/bowling_test.py:172: AssertionError
+________ BowlingTest.test_consecutive_spares_each_get_a_one_roll_bonus _________
+
+self = <bowling_test.BowlingTest testMethod=test_consecutive_spares_each_get_a_one_roll_bonus>
+
+    def test_consecutive_spares_each_get_a_one_roll_bonus(self):
+        rolls = [5, 5, 3, 7, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 31)
+
+exercises/practice/bowling/bowling_test.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be83f73a0>
+
+    def score(self):
+        if self.current_roll < 20:
+            raise IndexError("Incomplete or unstarted game")
+        score = 0
+        for frame in range(10):
+>           if self.rolls[frame_index] == 10:  # Strike
+E           UnboundLocalError: local variable 'frame_index' referenced before assignment
+
+exercises/practice/bowling/bowling.py:17: UnboundLocalError
+_______ BowlingTest.test_consecutive_strikes_each_get_the_two_roll_bonus _______
+
+self = <bowling_test.BowlingTest testMethod=test_consecutive_strikes_each_get_the_two_roll_bonus>
+
+    def test_consecutive_strikes_each_get_the_two_roll_bonus(self):
+        rolls = [10, 10, 10, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 81)
+
+exercises/practice/bowling/bowling_test.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be83f09d0>
+
+    def score(self):
+        if self.current_roll < 20:
+>           raise IndexError("Incomplete or unstarted game")
+E           IndexError: Incomplete or unstarted game
+
+exercises/practice/bowling/bowling.py:14: IndexError
+_ BowlingTest.test_last_two_strikes_followed_by_only_last_bonus_with_non_strike_points _
+
+self = <bowling_test.BowlingTest testMethod=test_last_two_strikes_followed_by_only_last_bonus_with_non_strike_points>
+
+    def test_last_two_strikes_followed_by_only_last_bonus_with_non_strike_points(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 1]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 31)
+
+exercises/practice/bowling/bowling_test.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be83b3640>
+
+    def score(self):
+        if self.current_roll < 20:
+            raise IndexError("Incomplete or unstarted game")
+        score = 0
+        for frame in range(10):
+>           if self.rolls[frame_index] == 10:  # Strike
+E           UnboundLocalError: local variable 'frame_index' referenced before assignment
+
+exercises/practice/bowling/bowling.py:17: UnboundLocalError
+__ BowlingTest.test_points_scored_in_the_roll_after_a_spare_are_counted_twice __
+
+self = <bowling_test.BowlingTest testMethod=test_points_scored_in_the_roll_after_a_spare_are_counted_twice>
+
+    def test_points_scored_in_the_roll_after_a_spare_are_counted_twice(self):
+        rolls = [6, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 16)
+
+exercises/practice/bowling/bowling_test.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be845f8b0>
+
+    def score(self):
+        if self.current_roll < 20:
+            raise IndexError("Incomplete or unstarted game")
+        score = 0
+        for frame in range(10):
+>           if self.rolls[frame_index] == 10:  # Strike
+E           UnboundLocalError: local variable 'frame_index' referenced before assignment
+
+exercises/practice/bowling/bowling.py:17: UnboundLocalError
+_ BowlingTest.test_points_scored_in_the_two_rolls_after_a_strike_are_counted_twice_as_a_bonus _
+
+self = <bowling_test.BowlingTest testMethod=test_points_scored_in_the_two_rolls_after_a_strike_are_counted_twice_as_a_bonus>
+
+    def test_points_scored_in_the_two_rolls_after_a_strike_are_counted_twice_as_a_bonus(
+        self,
+    ):
+        rolls = [10, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 26)
+
+exercises/practice/bowling/bowling_test.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be83f6e30>
+
+    def score(self):
+        if self.current_roll < 20:
+>           raise IndexError("Incomplete or unstarted game")
+E           IndexError: Incomplete or unstarted game
+
+exercises/practice/bowling/bowling.py:14: IndexError
+_ BowlingTest.test_rolling_a_spare_with_the_two_roll_bonus_does_not_get_a_bonus_roll _
+
+self = <bowling_test.BowlingTest testMethod=test_rolling_a_spare_with_the_two_roll_bonus_does_not_get_a_bonus_roll>
+
+    def test_rolling_a_spare_with_the_two_roll_bonus_does_not_get_a_bonus_roll(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 7, 3]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 20)
+
+exercises/practice/bowling/bowling_test.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be842d210>
+
+    def score(self):
+        if self.current_roll < 20:
+            raise IndexError("Incomplete or unstarted game")
+        score = 0
+        for frame in range(10):
+>           if self.rolls[frame_index] == 10:  # Strike
+E           UnboundLocalError: local variable 'frame_index' referenced before assignment
+
+exercises/practice/bowling/bowling.py:17: UnboundLocalError
+________ BowlingTest.test_should_be_able_to_score_a_game_with_all_zeros ________
+
+self = <bowling_test.BowlingTest testMethod=test_should_be_able_to_score_a_game_with_all_zeros>
+
+    def test_should_be_able_to_score_a_game_with_all_zeros(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 0)
+
+exercises/practice/bowling/bowling_test.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be83b32b0>
+
+    def score(self):
+        if self.current_roll < 20:
+            raise IndexError("Incomplete or unstarted game")
+        score = 0
+        for frame in range(10):
+>           if self.rolls[frame_index] == 10:  # Strike
+E           UnboundLocalError: local variable 'frame_index' referenced before assignment
+
+exercises/practice/bowling/bowling.py:17: UnboundLocalError
+__ BowlingTest.test_should_be_able_to_score_a_game_with_no_strikes_or_spares ___
+
+self = <bowling_test.BowlingTest testMethod=test_should_be_able_to_score_a_game_with_no_strikes_or_spares>
+
+    def test_should_be_able_to_score_a_game_with_no_strikes_or_spares(self):
+        rolls = [3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 90)
+
+exercises/practice/bowling/bowling_test.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be845cfa0>
+
+    def score(self):
+        if self.current_roll < 20:
+            raise IndexError("Incomplete or unstarted game")
+        score = 0
+        for frame in range(10):
+>           if self.rolls[frame_index] == 10:  # Strike
+E           UnboundLocalError: local variable 'frame_index' referenced before assignment
+
+exercises/practice/bowling/bowling.py:17: UnboundLocalError
+___ BowlingTest.test_strikes_with_the_two_roll_bonus_do_not_get_bonus_rolls ____
+
+self = <bowling_test.BowlingTest testMethod=test_strikes_with_the_two_roll_bonus_do_not_get_bonus_rolls>
+
+    def test_strikes_with_the_two_roll_bonus_do_not_get_bonus_rolls(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 30)
+
+exercises/practice/bowling/bowling_test.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be8420430>
+
+    def score(self):
+        if self.current_roll < 20:
+            raise IndexError("Incomplete or unstarted game")
+        score = 0
+        for frame in range(10):
+>           if self.rolls[frame_index] == 10:  # Strike
+E           UnboundLocalError: local variable 'frame_index' referenced before assignment
+
+exercises/practice/bowling/bowling.py:17: UnboundLocalError
+_ BowlingTest.test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike _
+
+self = <bowling_test.BowlingTest testMethod=test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike>
+
+    def test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 6]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+exercises/practice/bowling/bowling_test.py:146: AssertionError
+_ BowlingTest.test_two_bonus_rolls_after_a_strike_in_the_last_frame_can_score_more_than_10_points_if_one_is_a_strike _
+
+self = <bowling_test.BowlingTest testMethod=test_two_bonus_rolls_after_a_strike_in_the_last_frame_can_score_more_than_10_points_if_one_is_a_strike>
+
+    def test_two_bonus_rolls_after_a_strike_in_the_last_frame_can_score_more_than_10_points_if_one_is_a_strike(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 6]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 26)
+
+exercises/practice/bowling/bowling_test.py:139: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f6be83ec2b0>
+
+    def score(self):
+        if self.current_roll < 20:
+            raise IndexError("Incomplete or unstarted game")
+        score = 0
+        for frame in range(10):
+>           if self.rolls[frame_index] == 10:  # Strike
+E           UnboundLocalError: local variable 'frame_index' referenced before assignment
+
+exercises/practice/bowling/bowling.py:17: UnboundLocalError
+_ BowlingTest.test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points _
+
+self = <bowling_test.BowlingTest testMethod=test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points>
+
+    def test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 5]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+exercises/practice/bowling/bowling_test.py:131: AssertionError
+____ BowlingTest.test_two_rolls_in_a_frame_cannot_score_more_than_10_points ____
+
+self = <bowling_test.BowlingTest testMethod=test_two_rolls_in_a_frame_cannot_score_more_than_10_points>
+
+    def test_two_rolls_in_a_frame_cannot_score_more_than_10_points(self):
+        rolls = [5]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+exercises/practice/bowling/bowling_test.py:115: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_a_spare_followed_by_zeros_is_worth_ten_points
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_a_spare_in_the_last_frame_gets_a_one_roll_bonus_that_is_counted_once
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_a_strike_earns_ten_points_in_a_frame_with_a_single_roll
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_a_strike_in_the_last_frame_gets_a_two_roll_bonus_that_is_counted_once
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_a_strike_with_the_one_roll_bonus_after_a_spare_in_the_last_frame_does_not_get_a_bonus
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_all_strikes_is_a_perfect_game
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_cannot_roll_if_game_already_has_ten_frames
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_consecutive_spares_each_get_a_one_roll_bonus
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_consecutive_strikes_each_get_the_two_roll_bonus
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_last_two_strikes_followed_by_only_last_bonus_with_non_strike_points
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_points_scored_in_the_roll_after_a_spare_are_counted_twice
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_points_scored_in_the_two_rolls_after_a_strike_are_counted_twice_as_a_bonus
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_rolling_a_spare_with_the_two_roll_bonus_does_not_get_a_bonus_roll
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_should_be_able_to_score_a_game_with_all_zeros
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_should_be_able_to_score_a_game_with_no_strikes_or_spares
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_strikes_with_the_two_roll_bonus_do_not_get_bonus_rolls
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_two_bonus_rolls_after_a_strike_in_the_last_frame_can_score_more_than_10_points_if_one_is_a_strike
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_two_rolls_in_a_frame_cannot_score_more_than_10_points
+======================== 20 failed, 11 passed in 0.19s =========================

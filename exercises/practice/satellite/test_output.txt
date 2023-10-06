@@ -1,0 +1,79 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 6 items
+
+exercises/practice/satellite/satellite_test.py F...FF                    [100%]
+
+=================================== FAILURES ===================================
+________________________ SatelliteTest.test_empty_tree _________________________
+
+self = <satellite_test.SatelliteTest testMethod=test_empty_tree>
+
+    def test_empty_tree(self):
+        preorder = []
+        inorder = []
+    
+        expected = {}
+>       self.assertEqual(tree_from_traversals(preorder, inorder), expected)
+E       AssertionError: None != {}
+
+exercises/practice/satellite/satellite_test.py:18: AssertionError
+___________________ SatelliteTest.test_tree_with_many_items ____________________
+
+self = <satellite_test.SatelliteTest testMethod=test_tree_with_many_items>
+
+    def test_tree_with_many_items(self):
+        preorder = ["a", "i", "x", "f", "r"]
+        inorder = ["i", "a", "f", "x", "r"]
+    
+        expected = {
+            "v": "a",
+            "l": {"v": "i", "l": {}, "r": {}},
+            "r": {
+                "v": "x",
+                "l": {"v": "f", "l": {}, "r": {}},
+                "r": {"v": "r", "l": {}, "r": {}},
+            },
+        }
+>       self.assertEqual(tree_from_traversals(preorder, inorder), expected)
+E       AssertionError: {'value': 'a', 'left': {'value': 'i', 'left'[150 chars]ne}}} != {'v': 'a', 'l': {'v': 'i', 'l': {}, 'r': {}}[83 chars]{}}}}
+E       - {'left': {'left': None, 'right': None, 'value': 'i'},
+E       -  'right': {'left': {'left': None, 'right': None, 'value': 'f'},
+E       -            'right': {'left': None, 'right': None, 'value': 'r'},
+E       + {'l': {'l': {}, 'r': {}, 'v': 'i'},
+E       +  'r': {'l': {'l': {}, 'r': {}, 'v': 'f'},
+E       +        'r': {'l': {}, 'r': {}, 'v': 'r'},
+E       -            'value': 'x'},
+E       ? ----         ----
+E       
+E       +        'v': 'x'},
+E       -  'value': 'a'}
+E       ?    ----
+E       
+E       +  'v': 'a'}
+
+exercises/practice/satellite/satellite_test.py:40: AssertionError
+____________________ SatelliteTest.test_tree_with_one_item _____________________
+
+self = <satellite_test.SatelliteTest testMethod=test_tree_with_one_item>
+
+    def test_tree_with_one_item(self):
+        preorder = ["a"]
+        inorder = ["a"]
+    
+        expected = {"v": "a", "l": {}, "r": {}}
+>       self.assertEqual(tree_from_traversals(preorder, inorder), expected)
+E       AssertionError: {'value': 'a', 'left': None, 'right': None} != {'v': 'a', 'l': {}, 'r': {}}
+E       - {'left': None, 'right': None, 'value': 'a'}
+E       + {'l': {}, 'r': {}, 'v': 'a'}
+
+exercises/practice/satellite/satellite_test.py:25: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/satellite/satellite_test.py::SatelliteTest::test_empty_tree
+FAILED exercises/practice/satellite/satellite_test.py::SatelliteTest::test_tree_with_many_items
+FAILED exercises/practice/satellite/satellite_test.py::SatelliteTest::test_tree_with_one_item
+========================= 3 failed, 3 passed in 0.04s ==========================
