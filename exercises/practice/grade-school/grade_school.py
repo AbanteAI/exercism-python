@@ -3,13 +3,14 @@ class School:
         pass
 
     def add_student(self, name, grade):
-        pass
+        self.roster = []
+        self.roster.append((grade, name))
 
-    def roster(self):
-        pass
+        return [student[1] for student in sorted(self.roster, key=lambda x: (x[0], x[1]))] if self.roster else []
+        return [student[1] for student in sorted(self.roster, key=lambda x: (x[0], x[1]))]
 
     def grade(self, grade_number):
-        pass
+        return [student[1] for student in sorted(self.roster, key=lambda x: x[1])]
 
     def added(self):
-        pass
+        return True

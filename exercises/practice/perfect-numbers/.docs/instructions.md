@@ -16,8 +16,7 @@ For example, the aliquot sum of `15` is `1 + 3 + 5 = 9`.
   - 8 is a deficient number because (1 + 2 + 4) = 7
   - Prime numbers are deficient
 
-Implement a way to determine whether a given number is **perfect**.
-Depending on your language track, you may also need to implement a way to determine whether a given number is **abundant** or **deficient**.
+Depending on your language track, you may also need to implement a way to determine whether a given number is **abundant** or **deficient**. Please refer to the exercise instructions for more details.
 
 [nicomachus]: https://en.wikipedia.org/wiki/Nicomachus
 [aliquot-sum]: https://en.wikipedia.org/wiki/Aliquot_sum

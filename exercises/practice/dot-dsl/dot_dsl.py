@@ -23,5 +23,9 @@ class Edge:
 
 
 class Graph:
-    def __init__(self, data=None):
-        pass
+        self.data = data if data is not None else []
+    def __eq__(self, other):
+        return self.data == other.data
+        return self.data == other.data
+    def __repr__(self):
+        return f"Graph({self.data})"

@@ -1,0 +1,162 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 14 items
+
+exercises/practice/rectangles/rectangles_test.py .FFF...FFFFFFF          [100%]
+
+=================================== FAILURES ===================================
+____ RectanglesTest.test_corner_is_required_for_a_rectangle_to_be_complete _____
+
+self = <rectangles_test.RectanglesTest testMethod=test_corner_is_required_for_a_rectangle_to_be_complete>
+
+    def test_corner_is_required_for_a_rectangle_to_be_complete(self):
+>       self.assertEqual(
+            rectangles(
+                [
+                    "+------+----+",
+                    "|      |    |",
+                    "+------+    |",
+                    "|   |       |",
+                    "+---+-------+",
+                ]
+            ),
+            2,
+        )
+E       AssertionError: 0 != 2
+
+exercises/practice/rectangles/rectangles_test.py:58: AssertionError
+____________ RectanglesTest.test_five_rectangles_with_shared_parts _____________
+
+self = <rectangles_test.RectanglesTest testMethod=test_five_rectangles_with_shared_parts>
+
+    def test_five_rectangles_with_shared_parts(self):
+>       self.assertEqual(rectangles(["  +-+", "  | |", "+-+-+", "| | |", "+-+-+"]), 5)
+E       AssertionError: 0 != 5
+
+exercises/practice/rectangles/rectangles_test.py:29: AssertionError
+_____________ RectanglesTest.test_large_input_with_many_rectangles _____________
+
+self = <rectangles_test.RectanglesTest testMethod=test_large_input_with_many_rectangles>
+
+    def test_large_input_with_many_rectangles(self):
+>       self.assertEqual(
+            rectangles(
+                [
+                    "+---+--+----+",
+                    "|   +--+----+",
+                    "+---+--+    |",
+                    "|   +--+----+",
+                    "+---+--+--+-+",
+                    "+---+--+--+-+",
+                    "+------+  | |",
+                    "          +-+",
+                ]
+            ),
+            60,
+        )
+E       AssertionError: 0 != 60
+
+exercises/practice/rectangles/rectangles_test.py:72: AssertionError
+______________________ RectanglesTest.test_one_rectangle _______________________
+
+self = <rectangles_test.RectanglesTest testMethod=test_one_rectangle>
+
+    def test_one_rectangle(self):
+>       self.assertEqual(rectangles(["+-+", "| |", "+-+"]), 1)
+E       AssertionError: 0 != 1
+
+exercises/practice/rectangles/rectangles_test.py:23: AssertionError
+___________ RectanglesTest.test_only_complete_rectangles_are_counted ___________
+
+self = <rectangles_test.RectanglesTest testMethod=test_only_complete_rectangles_are_counted>
+
+    def test_only_complete_rectangles_are_counted(self):
+>       self.assertEqual(rectangles(["  +-+", "    |", "+-+-+", "| | -", "+-+-+"]), 1)
+E       AssertionError: 0 != 1
+
+exercises/practice/rectangles/rectangles_test.py:41: AssertionError
+_____________ RectanglesTest.test_rectangle_of_height_1_is_counted _____________
+
+self = <rectangles_test.RectanglesTest testMethod=test_rectangle_of_height_1_is_counted>
+
+    def test_rectangle_of_height_1_is_counted(self):
+>       self.assertEqual(rectangles(["+--+", "+--+"]), 1)
+E       AssertionError: 0 != 1
+
+exercises/practice/rectangles/rectangles_test.py:32: AssertionError
+_____________ RectanglesTest.test_rectangle_of_width_1_is_counted ______________
+
+self = <rectangles_test.RectanglesTest testMethod=test_rectangle_of_width_1_is_counted>
+
+    def test_rectangle_of_width_1_is_counted(self):
+>       self.assertEqual(rectangles(["++", "||", "++"]), 1)
+E       AssertionError: 0 != 1
+
+exercises/practice/rectangles/rectangles_test.py:35: AssertionError
+___________ RectanglesTest.test_rectangles_can_be_of_different_sizes ___________
+
+self = <rectangles_test.RectanglesTest testMethod=test_rectangles_can_be_of_different_sizes>
+
+    def test_rectangles_can_be_of_different_sizes(self):
+>       self.assertEqual(
+            rectangles(
+                [
+                    "+------+----+",
+                    "|      |    |",
+                    "+---+--+    |",
+                    "|   |       |",
+                    "+---+-------+",
+                ]
+            ),
+            3,
+        )
+E       AssertionError: 0 != 3
+
+exercises/practice/rectangles/rectangles_test.py:44: AssertionError
+_____________ RectanglesTest.test_rectangles_must_have_four_sides ______________
+
+self = <rectangles_test.RectanglesTest testMethod=test_rectangles_must_have_four_sides>
+
+    def test_rectangles_must_have_four_sides(self):
+>       self.assertEqual(
+            rectangles(
+                [
+                    "+-+ +-+",
+                    "| | | |",
+                    "+-+-+-+",
+                    "  | |  ",
+                    "+-+-+-+",
+                    "| | | |",
+                    "+-+ +-+",
+                ]
+            ),
+            5,
+        )
+E       AssertionError: 0 != 5
+
+exercises/practice/rectangles/rectangles_test.py:89: AssertionError
+___________ RectanglesTest.test_two_rectangles_without_shared_parts ____________
+
+self = <rectangles_test.RectanglesTest testMethod=test_two_rectangles_without_shared_parts>
+
+    def test_two_rectangles_without_shared_parts(self):
+>       self.assertEqual(rectangles(["  +-+", "  | |", "+-+-+", "| |  ", "+-+  "]), 2)
+E       AssertionError: 0 != 2
+
+exercises/practice/rectangles/rectangles_test.py:26: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/rectangles/rectangles_test.py::RectanglesTest::test_corner_is_required_for_a_rectangle_to_be_complete
+FAILED exercises/practice/rectangles/rectangles_test.py::RectanglesTest::test_five_rectangles_with_shared_parts
+FAILED exercises/practice/rectangles/rectangles_test.py::RectanglesTest::test_large_input_with_many_rectangles
+FAILED exercises/practice/rectangles/rectangles_test.py::RectanglesTest::test_one_rectangle
+FAILED exercises/practice/rectangles/rectangles_test.py::RectanglesTest::test_only_complete_rectangles_are_counted
+FAILED exercises/practice/rectangles/rectangles_test.py::RectanglesTest::test_rectangle_of_height_1_is_counted
+FAILED exercises/practice/rectangles/rectangles_test.py::RectanglesTest::test_rectangle_of_width_1_is_counted
+FAILED exercises/practice/rectangles/rectangles_test.py::RectanglesTest::test_rectangles_can_be_of_different_sizes
+FAILED exercises/practice/rectangles/rectangles_test.py::RectanglesTest::test_rectangles_must_have_four_sides
+FAILED exercises/practice/rectangles/rectangles_test.py::RectanglesTest::test_two_rectangles_without_shared_parts
+========================= 10 failed, 4 passed in 0.06s =========================

@@ -1,0 +1,40 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 17 items
+
+exercises/practice/word-count/word_count_test.py ...F......F......       [100%]
+
+=================================== FAILURES ===================================
+___________________ WordCountTest.test_handles_cramped_lists ___________________
+
+self = <word_count_test.WordCountTest testMethod=test_handles_cramped_lists>
+
+    def test_handles_cramped_lists(self):
+>       self.assertEqual(count_words("one,two,three"), {"one": 1, "two": 1, "three": 1})
+E       AssertionError: {'one,two,three': 1} != {'one': 1, 'two': 1, 'three': 1}
+E       - {'one,two,three': 1}
+E       + {'one': 1, 'three': 1, 'two': 1}
+
+exercises/practice/word-count/word_count_test.py:26: AssertionError
+_____________________ WordCountTest.test_non_alphanumeric ______________________
+
+self = <word_count_test.WordCountTest testMethod=test_non_alphanumeric>
+
+    def test_non_alphanumeric(self):
+>       self.assertEqual(
+            count_words("hey,my_spacebar_is_broken"),
+            {"hey": 1, "my": 1, "spacebar": 1, "is": 1, "broken": 1},
+        )
+E       AssertionError: {'hey,my_spacebar_is_broken': 1} != {'hey': 1, 'my': 1, 'spacebar': 1, 'is': 1, 'broken': 1}
+E       - {'hey,my_spacebar_is_broken': 1}
+E       + {'broken': 1, 'hey': 1, 'is': 1, 'my': 1, 'spacebar': 1}
+
+exercises/practice/word-count/word_count_test.py:119: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_handles_cramped_lists
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_non_alphanumeric
+========================= 2 failed, 15 passed in 0.05s =========================

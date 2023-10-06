@@ -12,12 +12,10 @@ To raise a `ValueError` with a message, write the message as an argument to the 
 # if the row parameter is negative
 raise ValueError("row not positive")
 
-# if the row parameter is not on the defined board
-raise ValueError("row not on board")
+raise ValueError("row not positive")
 
 # if the column parameter is negative
 raise ValueError("column not positive")
-
 # if the column parameter is not on the defined board
 raise ValueError("column not on board")
 

@@ -3,8 +3,7 @@ class Rational:
         self.numer = None
         self.denom = None
 
-    def __eq__(self, other):
-        return self.numer == other.numer and self.denom == other.denom
+        return self.numer is not None and self.denom is not None and self.numer == other.numer and self.denom == other.denom
 
     def __repr__(self):
         return f'{self.numer}/{self.denom}'

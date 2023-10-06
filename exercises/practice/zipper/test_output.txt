@@ -1,0 +1,372 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 14 items
+
+exercises/practice/zipper/zipper_test.py FFFFFFFFFFFFFF                  [100%]
+
+=================================== FAILURES ===================================
+_______________________ ZipperTest.test_data_is_retained _______________________
+
+self = <zipper_test.ZipperTest testMethod=test_data_is_retained>
+
+    def test_data_is_retained(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+>       zipper = Zipper.from_tree(initial)
+E       AttributeError: type object 'Zipper' has no attribute 'from_tree'
+
+exercises/practice/zipper/zipper_test.py:34: AttributeError
+___________________________ ZipperTest.test_dead_end ___________________________
+
+self = <zipper_test.ZipperTest testMethod=test_dead_end>
+
+    def test_dead_end(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+>       zipper = Zipper.from_tree(initial)
+E       AttributeError: type object 'Zipper' has no attribute 'from_tree'
+
+exercises/practice/zipper/zipper_test.py:64: AttributeError
+________________ ZipperTest.test_different_paths_to_same_zipper ________________
+
+self = <zipper_test.ZipperTest testMethod=test_different_paths_to_same_zipper>
+
+    def test_different_paths_to_same_zipper(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+>       result = Zipper.from_tree(initial).left().up().right().to_tree()
+E       AttributeError: type object 'Zipper' has no attribute 'from_tree'
+
+exercises/practice/zipper/zipper_test.py:306: AttributeError
+______________________ ZipperTest.test_left_right_and_up _______________________
+
+self = <zipper_test.ZipperTest testMethod=test_left_right_and_up>
+
+    def test_left_right_and_up(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+>       zipper = Zipper.from_tree(initial)
+E       AttributeError: type object 'Zipper' has no attribute 'from_tree'
+
+exercises/practice/zipper/zipper_test.py:119: AttributeError
+_____________________ ZipperTest.test_left_right_and_value _____________________
+
+self = <zipper_test.ZipperTest testMethod=test_left_right_and_value>
+
+    def test_left_right_and_value(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+>       zipper = Zipper.from_tree(initial)
+E       AttributeError: type object 'Zipper' has no attribute 'from_tree'
+
+exercises/practice/zipper/zipper_test.py:49: AttributeError
+______________________ ZipperTest.test_set_left_with_leaf ______________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_left_with_leaf>
+
+    def test_set_left_with_leaf(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": {"value": 5, "left": None, "right": None},
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+>       zipper = Zipper.from_tree(initial)
+E       AttributeError: type object 'Zipper' has no attribute 'from_tree'
+
+exercises/practice/zipper/zipper_test.py:209: AttributeError
+_____________________ ZipperTest.test_set_right_with_null ______________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_right_with_null>
+
+    def test_set_right_with_null(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {"value": 2, "left": None, "right": None},
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+>       zipper = Zipper.from_tree(initial)
+E       AttributeError: type object 'Zipper' has no attribute 'from_tree'
+
+exercises/practice/zipper/zipper_test.py:232: AttributeError
+____________________ ZipperTest.test_set_right_with_subtree ____________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_right_with_subtree>
+
+    def test_set_right_with_subtree(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {
+                "value": 6,
+                "left": {"value": 7, "left": None, "right": None},
+                "right": {"value": 8, "left": None, "right": None},
+            },
+        }
+    
+>       zipper = Zipper.from_tree(initial)
+E       AttributeError: type object 'Zipper' has no attribute 'from_tree'
+
+exercises/practice/zipper/zipper_test.py:261: AttributeError
+__________________________ ZipperTest.test_set_value ___________________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_value>
+
+    def test_set_value(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 5,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+>       zipper = Zipper.from_tree(initial)
+E       AttributeError: type object 'Zipper' has no attribute 'from_tree'
+
+exercises/practice/zipper/zipper_test.py:159: AttributeError
+________________ ZipperTest.test_set_value_after_traversing_up _________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_value_after_traversing_up>
+
+    def test_set_value_after_traversing_up(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 5,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+>       zipper = Zipper.from_tree(initial)
+E       AttributeError: type object 'Zipper' has no attribute 'from_tree'
+
+exercises/practice/zipper/zipper_test.py:184: AttributeError
+___________________ ZipperTest.test_set_value_on_deep_focus ____________________
+
+self = <zipper_test.ZipperTest testMethod=test_set_value_on_deep_focus>
+
+    def test_set_value_on_deep_focus(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 5, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+>       zipper = Zipper.from_tree(initial)
+E       AttributeError: type object 'Zipper' has no attribute 'from_tree'
+
+exercises/practice/zipper/zipper_test.py:292: AttributeError
+______ ZipperTest.test_test_ability_to_descend_multiple_levels_and_return ______
+
+self = <zipper_test.ZipperTest testMethod=test_test_ability_to_descend_multiple_levels_and_return>
+
+    def test_test_ability_to_descend_multiple_levels_and_return(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+>       zipper = Zipper.from_tree(initial)
+E       AttributeError: type object 'Zipper' has no attribute 'from_tree'
+
+exercises/practice/zipper/zipper_test.py:134: AttributeError
+____________________ ZipperTest.test_traversing_up_from_top ____________________
+
+self = <zipper_test.ZipperTest testMethod=test_traversing_up_from_top>
+
+    def test_traversing_up_from_top(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+>       zipper = Zipper.from_tree(initial)
+E       AttributeError: type object 'Zipper' has no attribute 'from_tree'
+
+exercises/practice/zipper/zipper_test.py:104: AttributeError
+_____________________ ZipperTest.test_tree_from_deep_focus _____________________
+
+self = <zipper_test.ZipperTest testMethod=test_tree_from_deep_focus>
+
+    def test_tree_from_deep_focus(self):
+        initial = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+        expected = {
+            "value": 1,
+            "left": {
+                "value": 2,
+                "left": None,
+                "right": {"value": 3, "left": None, "right": None},
+            },
+            "right": {"value": 4, "left": None, "right": None},
+        }
+    
+>       zipper = Zipper.from_tree(initial)
+E       AttributeError: type object 'Zipper' has no attribute 'from_tree'
+
+exercises/practice/zipper/zipper_test.py:89: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_data_is_retained
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_dead_end - ...
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_different_paths_to_same_zipper
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_left_right_and_up
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_left_right_and_value
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_set_left_with_leaf
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_set_right_with_null
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_set_right_with_subtree
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_set_value
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_set_value_after_traversing_up
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_set_value_on_deep_focus
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_test_ability_to_descend_multiple_levels_and_return
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_traversing_up_from_top
+FAILED exercises/practice/zipper/zipper_test.py::ZipperTest::test_tree_from_deep_focus
+============================== 14 failed in 0.12s ==============================

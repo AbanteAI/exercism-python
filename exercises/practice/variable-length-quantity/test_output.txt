@@ -1,0 +1,556 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 26 items
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py F [  3%]
+FFFFFFFFFFFFFFFFFFFFFFFFF                                                [100%]
+
+=================================== FAILURES ===================================
+____________ VariableLengthQuantityTest.test_arbitrary_double_byte _____________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_arbitrary_double_byte>
+
+    def test_arbitrary_double_byte(self):
+>       self.assertEqual(encode([0x2000]), [0xC0, 0x0])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [8192]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+___________ VariableLengthQuantityTest.test_arbitrary_quadruple_byte ___________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_arbitrary_quadruple_byte>
+
+    def test_arbitrary_quadruple_byte(self):
+>       self.assertEqual(encode([0x8000000]), [0xC0, 0x80, 0x80, 0x0])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [134217728]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+___________ VariableLengthQuantityTest.test_arbitrary_quintuple_byte ___________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_arbitrary_quintuple_byte>
+
+    def test_arbitrary_quintuple_byte(self):
+>       self.assertEqual(encode([0xFF000000]), [0x8F, 0xF8, 0x80, 0x80, 0x0])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [4278190080]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+____________ VariableLengthQuantityTest.test_arbitrary_single_byte _____________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_arbitrary_single_byte>
+
+    def test_arbitrary_single_byte(self):
+>       self.assertEqual(encode([0x40]), [0x40])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [64]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+____________ VariableLengthQuantityTest.test_arbitrary_triple_byte _____________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_arbitrary_triple_byte>
+
+    def test_arbitrary_triple_byte(self):
+>       self.assertEqual(encode([0x100000]), [0xC0, 0x80, 0x0])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:36: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [1048576]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+__________________ VariableLengthQuantityTest.test_four_bytes __________________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_four_bytes>
+
+    def test_four_bytes(self):
+>       self.assertEqual(decode([0x81, 0x80, 0x80, 0x0]), [0x200000])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bytes_ = [129, 128, 128, 0]
+
+    def decode(bytes_):
+        numbers = []
+        num = 0
+>       num = (num << 7) | (byte & 0x7F)
+E       NameError: name 'byte' is not defined
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:15: NameError
+_______ VariableLengthQuantityTest.test_incomplete_sequence_causes_error _______
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_incomplete_sequence_causes_error>
+
+    def test_incomplete_sequence_causes_error(self):
+        with self.assertRaises(ValueError) as err:
+>           decode([0xFF])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def decode(bytes_):
+        numbers = []
+        num = 0
+>       num = (num << 7) | (byte & 0x7F)
+E       NameError: name 'byte' is not defined
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:15: NameError
+_ VariableLengthQuantityTest.test_incomplete_sequence_causes_error_even_if_value_is_zero _
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_incomplete_sequence_causes_error_even_if_value_is_zero>
+
+    def test_incomplete_sequence_causes_error_even_if_value_is_zero(self):
+        with self.assertRaises(ValueError) as err:
+>           decode([0x80])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def decode(bytes_):
+        numbers = []
+        num = 0
+>       num = (num << 7) | (byte & 0x7F)
+E       NameError: name 'byte' is not defined
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:15: NameError
+_____________ VariableLengthQuantityTest.test_largest_double_byte ______________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_largest_double_byte>
+
+    def test_largest_double_byte(self):
+>       self.assertEqual(encode([0x3FFF]), [0xFF, 0x7F])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [16383]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+____________ VariableLengthQuantityTest.test_largest_quadruple_byte ____________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_largest_quadruple_byte>
+
+    def test_largest_quadruple_byte(self):
+>       self.assertEqual(encode([0xFFFFFFF]), [0xFF, 0xFF, 0xFF, 0x7F])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [268435455]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+_____________ VariableLengthQuantityTest.test_largest_single_byte ______________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_largest_single_byte>
+
+    def test_largest_single_byte(self):
+>       self.assertEqual(encode([0x7F]), [0x7F])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [127]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+_____________ VariableLengthQuantityTest.test_largest_triple_byte ______________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_largest_triple_byte>
+
+    def test_largest_triple_byte(self):
+>       self.assertEqual(encode([0x1FFFFF]), [0xFF, 0xFF, 0x7F])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [2097151]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+____________ VariableLengthQuantityTest.test_many_multi_byte_values ____________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_many_multi_byte_values>
+
+    def test_many_multi_byte_values(self):
+        self.assertEqual(
+>           encode([0x2000, 0x123456, 0xFFFFFFF, 0x0, 0x3FFF, 0x4000]),
+            [
+                0xC0,
+                0x0,
+                0xC8,
+                0xE8,
+                0x56,
+                0xFF,
+                0xFF,
+                0xFF,
+                0x7F,
+                0x0,
+                0xFF,
+                0x7F,
+                0x81,
+                0x80,
+                0x0,
+            ],
+        )
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [8192, 1193046, 268435455, 0, 16383, 16384]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+____________ VariableLengthQuantityTest.test_maximum_32_bit_integer ____________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_maximum_32_bit_integer>
+
+    def test_maximum_32_bit_integer(self):
+>       self.assertEqual(decode([0x8F, 0xFF, 0xFF, 0xFF, 0x7F]), [0xFFFFFFFF])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bytes_ = [143, 255, 255, 255, 127]
+
+    def decode(bytes_):
+        numbers = []
+        num = 0
+>       num = (num << 7) | (byte & 0x7F)
+E       NameError: name 'byte' is not defined
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:15: NameError
+_________ VariableLengthQuantityTest.test_maximum_32_bit_integer_input _________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_maximum_32_bit_integer_input>
+
+    def test_maximum_32_bit_integer_input(self):
+>       self.assertEqual(encode([0xFFFFFFFF]), [0x8F, 0xFF, 0xFF, 0xFF, 0x7F])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [4294967295]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+_______________ VariableLengthQuantityTest.test_multiple_values ________________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_multiple_values>
+
+    def test_multiple_values(self):
+        self.assertEqual(
+>           decode(
+                [
+                    0xC0,
+                    0x0,
+                    0xC8,
+                    0xE8,
+                    0x56,
+                    0xFF,
+                    0xFF,
+                    0xFF,
+                    0x7F,
+                    0x0,
+                    0xFF,
+                    0x7F,
+                    0x81,
+                    0x80,
+                    0x0,
+                ]
+            ),
+            [0x2000, 0x123456, 0xFFFFFFF, 0x0, 0x3FFF, 0x4000],
+        )
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:118: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bytes_ = [192, 0, 200, 232, 86, 255, ...]
+
+    def decode(bytes_):
+        numbers = []
+        num = 0
+>       num = (num << 7) | (byte & 0x7F)
+E       NameError: name 'byte' is not defined
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:15: NameError
+___________________ VariableLengthQuantityTest.test_one_byte ___________________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_one_byte>
+
+    def test_one_byte(self):
+>       self.assertEqual(decode([0x7F]), [0x7F])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bytes_ = [127]
+
+    def decode(bytes_):
+        numbers = []
+        num = 0
+>       num = (num << 7) | (byte & 0x7F)
+E       NameError: name 'byte' is not defined
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:15: NameError
+_____________ VariableLengthQuantityTest.test_smallest_double_byte _____________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_smallest_double_byte>
+
+    def test_smallest_double_byte(self):
+>       self.assertEqual(encode([0x80]), [0x81, 0x0])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [128]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+___________ VariableLengthQuantityTest.test_smallest_quadruple_byte ____________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_smallest_quadruple_byte>
+
+    def test_smallest_quadruple_byte(self):
+>       self.assertEqual(encode([0x200000]), [0x81, 0x80, 0x80, 0x0])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [2097152]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+___________ VariableLengthQuantityTest.test_smallest_quintuple_byte ____________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_smallest_quintuple_byte>
+
+    def test_smallest_quintuple_byte(self):
+>       self.assertEqual(encode([0x10000000]), [0x81, 0x80, 0x80, 0x80, 0x0])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [268435456]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+_____________ VariableLengthQuantityTest.test_smallest_triple_byte _____________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_smallest_triple_byte>
+
+    def test_smallest_triple_byte(self):
+>       self.assertEqual(encode([0x4000]), [0x81, 0x80, 0x0])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [16384]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+_________________ VariableLengthQuantityTest.test_three_bytes __________________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_three_bytes>
+
+    def test_three_bytes(self):
+>       self.assertEqual(decode([0xFF, 0xFF, 0x7F]), [0x1FFFFF])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bytes_ = [255, 255, 127]
+
+    def decode(bytes_):
+        numbers = []
+        num = 0
+>       num = (num << 7) | (byte & 0x7F)
+E       NameError: name 'byte' is not defined
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:15: NameError
+__________________ VariableLengthQuantityTest.test_two_bytes ___________________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_two_bytes>
+
+    def test_two_bytes(self):
+>       self.assertEqual(decode([0xC0, 0x0]), [0x2000])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bytes_ = [192, 0]
+
+    def decode(bytes_):
+        numbers = []
+        num = 0
+>       num = (num << 7) | (byte & 0x7F)
+E       NameError: name 'byte' is not defined
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:15: NameError
+____________ VariableLengthQuantityTest.test_two_multi_byte_values _____________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_two_multi_byte_values>
+
+    def test_two_multi_byte_values(self):
+        self.assertEqual(
+>           encode([0x4000, 0x123456]), [0x81, 0x80, 0x0, 0xC8, 0xE8, 0x56]
+        )
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [16384, 1193046]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+____________ VariableLengthQuantityTest.test_two_single_byte_values ____________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_two_single_byte_values>
+
+    def test_two_single_byte_values(self):
+>       self.assertEqual(encode([0x40, 0x7F]), [0x40, 0x7F])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [64, 127]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+_____________________ VariableLengthQuantityTest.test_zero _____________________
+
+self = <variable_length_quantity_test.VariableLengthQuantityTest testMethod=test_zero>
+
+    def test_zero(self):
+>       self.assertEqual(encode([0x0]), [0x0])
+
+exercises/practice/variable-length-quantity/variable_length_quantity_test.py:15: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+numbers = [0]
+
+    def encode(numbers):
+        encoded = []
+>       while num > 0:
+E       UnboundLocalError: local variable 'num' referenced before assignment
+
+exercises/practice/variable-length-quantity/variable_length_quantity.py:3: UnboundLocalError
+=========================== short test summary info ============================
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_arbitrary_double_byte
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_arbitrary_quadruple_byte
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_arbitrary_quintuple_byte
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_arbitrary_single_byte
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_arbitrary_triple_byte
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_four_bytes
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_incomplete_sequence_causes_error
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_incomplete_sequence_causes_error_even_if_value_is_zero
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_largest_double_byte
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_largest_quadruple_byte
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_largest_single_byte
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_largest_triple_byte
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_many_multi_byte_values
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_maximum_32_bit_integer
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_maximum_32_bit_integer_input
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_multiple_values
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_one_byte
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_smallest_double_byte
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_smallest_quadruple_byte
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_smallest_quintuple_byte
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_smallest_triple_byte
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_three_bytes
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_two_bytes
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_two_multi_byte_values
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_two_single_byte_values
+FAILED exercises/practice/variable-length-quantity/variable_length_quantity_test.py::VariableLengthQuantityTest::test_zero
+============================== 26 failed in 0.14s ==============================

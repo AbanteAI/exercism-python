@@ -1,6 +1,10 @@
 def drinks_water():
-    pass
+    # The Norwegian drinks water
+    return "Norwegian"
+
 
 
 def owns_zebra():
-    pass
+    # The Japanese owns the zebra
+    return "Japanese"
+

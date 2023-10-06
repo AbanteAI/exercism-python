@@ -1,0 +1,103 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 21 items
+
+exercises/practice/triangle/triangle_test.py F.FFF.....F...FFF..F.       [100%]
+
+=================================== FAILURES ===================================
+_______________ EquilateralTriangleTest.test_all_sides_are_equal _______________
+
+self = <triangle_test.EquilateralTriangleTest testMethod=test_all_sides_are_equal>
+
+    def test_all_sides_are_equal(self):
+>       self.assertIs(equilateral([2, 2, 2]), True)
+E       AssertionError: None is not True
+
+exercises/practice/triangle/triangle_test.py:16: AssertionError
+_______________ EquilateralTriangleTest.test_any_side_is_unequal _______________
+
+self = <triangle_test.EquilateralTriangleTest testMethod=test_any_side_is_unequal>
+
+    def test_any_side_is_unequal(self):
+>       self.assertIs(equilateral([2, 3, 2]), False)
+E       AssertionError: None is not False
+
+exercises/practice/triangle/triangle_test.py:19: AssertionError
+_______________ EquilateralTriangleTest.test_no_sides_are_equal ________________
+
+self = <triangle_test.EquilateralTriangleTest testMethod=test_no_sides_are_equal>
+
+    def test_no_sides_are_equal(self):
+>       self.assertIs(equilateral([5, 4, 6]), False)
+E       AssertionError: None is not False
+
+exercises/practice/triangle/triangle_test.py:22: AssertionError
+_______________ EquilateralTriangleTest.test_sides_may_be_floats _______________
+
+self = <triangle_test.EquilateralTriangleTest testMethod=test_sides_may_be_floats>
+
+    def test_sides_may_be_floats(self):
+>       self.assertIs(equilateral([0.5, 0.5, 0.5]), True)
+E       AssertionError: None is not True
+
+exercises/practice/triangle/triangle_test.py:28: AssertionError
+________________ IsoscelesTriangleTest.test_no_sides_are_equal _________________
+
+self = <triangle_test.IsoscelesTriangleTest testMethod=test_no_sides_are_equal>
+
+    def test_no_sides_are_equal(self):
+>       self.assertIs(isosceles([2, 3, 4]), False)
+E       AssertionError: True is not False
+
+exercises/practice/triangle/triangle_test.py:45: AssertionError
+_________________ ScaleneTriangleTest.test_all_sides_are_equal _________________
+
+self = <triangle_test.ScaleneTriangleTest testMethod=test_all_sides_are_equal>
+
+    def test_all_sides_are_equal(self):
+>       self.assertIs(scalene([4, 4, 4]), False)
+E       AssertionError: True is not False
+
+exercises/practice/triangle/triangle_test.py:65: AssertionError
+__________ ScaleneTriangleTest.test_first_and_second_sides_are_equal ___________
+
+self = <triangle_test.ScaleneTriangleTest testMethod=test_first_and_second_sides_are_equal>
+
+    def test_first_and_second_sides_are_equal(self):
+>       self.assertIs(scalene([4, 4, 3]), False)
+E       AssertionError: True is not False
+
+exercises/practice/triangle/triangle_test.py:68: AssertionError
+___________ ScaleneTriangleTest.test_first_and_third_sides_are_equal ___________
+
+self = <triangle_test.ScaleneTriangleTest testMethod=test_first_and_third_sides_are_equal>
+
+    def test_first_and_third_sides_are_equal(self):
+>       self.assertIs(scalene([3, 4, 3]), False)
+E       AssertionError: True is not False
+
+exercises/practice/triangle/triangle_test.py:71: AssertionError
+__________ ScaleneTriangleTest.test_second_and_third_sides_are_equal ___________
+
+self = <triangle_test.ScaleneTriangleTest testMethod=test_second_and_third_sides_are_equal>
+
+    def test_second_and_third_sides_are_equal(self):
+>       self.assertIs(scalene([4, 3, 3]), False)
+E       AssertionError: True is not False
+
+exercises/practice/triangle/triangle_test.py:74: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/triangle/triangle_test.py::EquilateralTriangleTest::test_all_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::EquilateralTriangleTest::test_any_side_is_unequal
+FAILED exercises/practice/triangle/triangle_test.py::EquilateralTriangleTest::test_no_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::EquilateralTriangleTest::test_sides_may_be_floats
+FAILED exercises/practice/triangle/triangle_test.py::IsoscelesTriangleTest::test_no_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::ScaleneTriangleTest::test_all_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::ScaleneTriangleTest::test_first_and_second_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::ScaleneTriangleTest::test_first_and_third_sides_are_equal
+FAILED exercises/practice/triangle/triangle_test.py::ScaleneTriangleTest::test_second_and_third_sides_are_equal
+========================= 9 failed, 12 passed in 0.06s =========================

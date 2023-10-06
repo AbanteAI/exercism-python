@@ -1,0 +1,54 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 19 items
+
+exercises/practice/isbn-verifier/isbn_verifier_test.py ............F..FF [ 89%]
+F.                                                                       [100%]
+
+=================================== FAILURES ===================================
+__ IsbnVerifierTest.test_isbn_without_separating_dashes_and_x_as_check_digit ___
+
+self = <isbn_verifier_test.IsbnVerifierTest testMethod=test_isbn_without_separating_dashes_and_x_as_check_digit>
+
+    def test_isbn_without_separating_dashes_and_x_as_check_digit(self):
+>       self.assertIs(is_valid("359821507X"), True)
+E       AssertionError: False is not True
+
+exercises/practice/isbn-verifier/isbn_verifier_test.py:38: AssertionError
+_______________________ IsbnVerifierTest.test_valid_isbn _______________________
+
+self = <isbn_verifier_test.IsbnVerifierTest testMethod=test_valid_isbn>
+
+    def test_valid_isbn(self):
+>       self.assertIs(is_valid("3-598-21508-8"), True)
+E       AssertionError: False is not True
+
+exercises/practice/isbn-verifier/isbn_verifier_test.py:14: AssertionError
+__________ IsbnVerifierTest.test_valid_isbn_with_a_check_digit_of_10 ___________
+
+self = <isbn_verifier_test.IsbnVerifierTest testMethod=test_valid_isbn_with_a_check_digit_of_10>
+
+    def test_valid_isbn_with_a_check_digit_of_10(self):
+>       self.assertIs(is_valid("3-598-21507-X"), True)
+E       AssertionError: False is not True
+
+exercises/practice/isbn-verifier/isbn_verifier_test.py:20: AssertionError
+__________ IsbnVerifierTest.test_valid_isbn_without_separating_dashes __________
+
+self = <isbn_verifier_test.IsbnVerifierTest testMethod=test_valid_isbn_without_separating_dashes>
+
+    def test_valid_isbn_without_separating_dashes(self):
+>       self.assertIs(is_valid("3598215088"), True)
+E       AssertionError: False is not True
+
+exercises/practice/isbn-verifier/isbn_verifier_test.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/isbn-verifier/isbn_verifier_test.py::IsbnVerifierTest::test_isbn_without_separating_dashes_and_x_as_check_digit
+FAILED exercises/practice/isbn-verifier/isbn_verifier_test.py::IsbnVerifierTest::test_valid_isbn
+FAILED exercises/practice/isbn-verifier/isbn_verifier_test.py::IsbnVerifierTest::test_valid_isbn_with_a_check_digit_of_10
+FAILED exercises/practice/isbn-verifier/isbn_verifier_test.py::IsbnVerifierTest::test_valid_isbn_without_separating_dashes
+========================= 4 failed, 15 passed in 0.06s =========================

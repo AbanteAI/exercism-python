@@ -1,0 +1,273 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 9 items
+
+exercises/practice/rest-api/rest_api_test.py FFFFFFFFF                   [100%]
+
+=================================== FAILURES ===================================
+__________________________ RestApiTest.test_add_user ___________________________
+
+self = <rest_api_test.RestApiTest testMethod=test_add_user>
+
+    def test_add_user(self):
+        database = {"users": []}
+        api = RestAPI(database)
+        payload = json.dumps({"user": "Adam"})
+>       response = api.post("/add", payload)
+
+exercises/practice/rest-api/rest_api_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rest-api/rest_api.py:12: in post
+    return self.add_user(payload)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rest_api.RestAPI object at 0x7feb1364db70>, payload = '{"user": "Adam"}'
+
+    def add_user(self, payload):
+>       payload = json.loads(payload)
+E       NameError: name 'json' is not defined
+
+exercises/practice/rest-api/rest_api.py:22: NameError
+________________ RestApiTest.test_borrower_has_negative_balance ________________
+
+self = <rest_api_test.RestApiTest testMethod=test_borrower_has_negative_balance>
+
+    def test_borrower_has_negative_balance(self):
+        database = {
+            "users": [
+                {"name": "Adam", "owes": {}, "owed_by": {}, "balance": 0.0},
+                {"name": "Bob", "owes": {"Chuck": 3.0}, "owed_by": {}, "balance": -3.0},
+                {"name": "Chuck", "owes": {}, "owed_by": {"Bob": 3.0}, "balance": 3.0},
+            ]
+        }
+        api = RestAPI(database)
+        payload = json.dumps({"lender": "Adam", "borrower": "Bob", "amount": 3.0})
+>       response = api.post("/iou", payload)
+
+exercises/practice/rest-api/rest_api_test.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rest-api/rest_api.py:14: in post
+    return self.create_iou(payload)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rest_api.RestAPI object at 0x7feb13650fd0>
+payload = '{"lender": "Adam", "borrower": "Bob", "amount": 3.0}'
+
+    def create_iou(self, payload):
+>       lender = payload.get("lender")
+E       AttributeError: 'str' object has no attribute 'get'
+
+exercises/practice/rest-api/rest_api.py:29: AttributeError
+__________________ RestApiTest.test_both_users_have_0_balance __________________
+
+self = <rest_api_test.RestApiTest testMethod=test_both_users_have_0_balance>
+
+    def test_both_users_have_0_balance(self):
+        database = {
+            "users": [
+                {"name": "Adam", "owes": {}, "owed_by": {}, "balance": 0.0},
+                {"name": "Bob", "owes": {}, "owed_by": {}, "balance": 0.0},
+            ]
+        }
+        api = RestAPI(database)
+        payload = json.dumps({"lender": "Adam", "borrower": "Bob", "amount": 3.0})
+>       response = api.post("/iou", payload)
+
+exercises/practice/rest-api/rest_api_test.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rest-api/rest_api.py:14: in post
+    return self.create_iou(payload)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rest_api.RestAPI object at 0x7feb1364c670>
+payload = '{"lender": "Adam", "borrower": "Bob", "amount": 3.0}'
+
+    def create_iou(self, payload):
+>       lender = payload.get("lender")
+E       AttributeError: 'str' object has no attribute 'get'
+
+exercises/practice/rest-api/rest_api.py:29: AttributeError
+_______________________ RestApiTest.test_get_single_user _______________________
+
+self = <rest_api_test.RestApiTest testMethod=test_get_single_user>
+
+    def test_get_single_user(self):
+        database = {
+            "users": [
+                {"name": "Adam", "owes": {}, "owed_by": {}, "balance": 0.0},
+                {"name": "Bob", "owes": {}, "owed_by": {}, "balance": 0.0},
+            ]
+        }
+        api = RestAPI(database)
+        payload = json.dumps({"users": ["Bob"]})
+>       response = api.get("/users", payload)
+
+exercises/practice/rest-api/rest_api_test.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rest-api/rest_api.py:7: in get
+    return self.get_users(payload)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rest_api.RestAPI object at 0x7feb1363bfd0>
+payload = '{"users": ["Bob"]}'
+
+    def get_users(self, payload):
+>       users = payload.get("users", [])
+E       AttributeError: 'str' object has no attribute 'get'
+
+exercises/practice/rest-api/rest_api.py:18: AttributeError
+_________________ RestApiTest.test_lender_has_negative_balance _________________
+
+self = <rest_api_test.RestApiTest testMethod=test_lender_has_negative_balance>
+
+    def test_lender_has_negative_balance(self):
+        database = {
+            "users": [
+                {"name": "Adam", "owes": {}, "owed_by": {}, "balance": 0.0},
+                {"name": "Bob", "owes": {"Chuck": 3.0}, "owed_by": {}, "balance": -3.0},
+                {"name": "Chuck", "owes": {}, "owed_by": {"Bob": 3.0}, "balance": 3.0},
+            ]
+        }
+        api = RestAPI(database)
+        payload = json.dumps({"lender": "Bob", "borrower": "Adam", "amount": 3.0})
+>       response = api.post("/iou", payload)
+
+exercises/practice/rest-api/rest_api_test.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rest-api/rest_api.py:14: in post
+    return self.create_iou(payload)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rest_api.RestAPI object at 0x7feb1364c370>
+payload = '{"lender": "Bob", "borrower": "Adam", "amount": 3.0}'
+
+    def create_iou(self, payload):
+>       lender = payload.get("lender")
+E       AttributeError: 'str' object has no attribute 'get'
+
+exercises/practice/rest-api/rest_api.py:29: AttributeError
+____________________ RestApiTest.test_lender_owes_borrower _____________________
+
+self = <rest_api_test.RestApiTest testMethod=test_lender_owes_borrower>
+
+    def test_lender_owes_borrower(self):
+        database = {
+            "users": [
+                {"name": "Adam", "owes": {"Bob": 3.0}, "owed_by": {}, "balance": -3.0},
+                {"name": "Bob", "owes": {}, "owed_by": {"Adam": 3.0}, "balance": 3.0},
+            ]
+        }
+        api = RestAPI(database)
+        payload = json.dumps({"lender": "Adam", "borrower": "Bob", "amount": 2.0})
+>       response = api.post("/iou", payload)
+
+exercises/practice/rest-api/rest_api_test.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rest-api/rest_api.py:14: in post
+    return self.create_iou(payload)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rest_api.RestAPI object at 0x7feb134f38b0>
+payload = '{"lender": "Adam", "borrower": "Bob", "amount": 2.0}'
+
+    def create_iou(self, payload):
+>       lender = payload.get("lender")
+E       AttributeError: 'str' object has no attribute 'get'
+
+exercises/practice/rest-api/rest_api.py:29: AttributeError
+___________ RestApiTest.test_lender_owes_borrower_less_than_new_loan ___________
+
+self = <rest_api_test.RestApiTest testMethod=test_lender_owes_borrower_less_than_new_loan>
+
+    def test_lender_owes_borrower_less_than_new_loan(self):
+        database = {
+            "users": [
+                {"name": "Adam", "owes": {"Bob": 3.0}, "owed_by": {}, "balance": -3.0},
+                {"name": "Bob", "owes": {}, "owed_by": {"Adam": 3.0}, "balance": 3.0},
+            ]
+        }
+        api = RestAPI(database)
+        payload = json.dumps({"lender": "Adam", "borrower": "Bob", "amount": 4.0})
+>       response = api.post("/iou", payload)
+
+exercises/practice/rest-api/rest_api_test.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rest-api/rest_api.py:14: in post
+    return self.create_iou(payload)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rest_api.RestAPI object at 0x7feb1364d660>
+payload = '{"lender": "Adam", "borrower": "Bob", "amount": 4.0}'
+
+    def create_iou(self, payload):
+>       lender = payload.get("lender")
+E       AttributeError: 'str' object has no attribute 'get'
+
+exercises/practice/rest-api/rest_api.py:29: AttributeError
+____________ RestApiTest.test_lender_owes_borrower_same_as_new_loan ____________
+
+self = <rest_api_test.RestApiTest testMethod=test_lender_owes_borrower_same_as_new_loan>
+
+    def test_lender_owes_borrower_same_as_new_loan(self):
+        database = {
+            "users": [
+                {"name": "Adam", "owes": {"Bob": 3.0}, "owed_by": {}, "balance": -3.0},
+                {"name": "Bob", "owes": {}, "owed_by": {"Adam": 3.0}, "balance": 3.0},
+            ]
+        }
+        api = RestAPI(database)
+        payload = json.dumps({"lender": "Adam", "borrower": "Bob", "amount": 3.0})
+>       response = api.post("/iou", payload)
+
+exercises/practice/rest-api/rest_api_test.py:156: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rest-api/rest_api.py:14: in post
+    return self.create_iou(payload)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rest_api.RestAPI object at 0x7feb134f2a40>
+payload = '{"lender": "Adam", "borrower": "Bob", "amount": 3.0}'
+
+    def create_iou(self, payload):
+>       lender = payload.get("lender")
+E       AttributeError: 'str' object has no attribute 'get'
+
+exercises/practice/rest-api/rest_api.py:29: AttributeError
+__________________________ RestApiTest.test_no_users ___________________________
+
+self = <rest_api_test.RestApiTest testMethod=test_no_users>
+
+    def test_no_users(self):
+        database = {"users": []}
+        api = RestAPI(database)
+    
+>       response = api.get("/users")
+
+exercises/practice/rest-api/rest_api_test.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/rest-api/rest_api.py:7: in get
+    return self.get_users(payload)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <rest_api.RestAPI object at 0x7feb136b5ea0>, payload = None
+
+    def get_users(self, payload):
+>       users = payload.get("users", [])
+E       AttributeError: 'NoneType' object has no attribute 'get'
+
+exercises/practice/rest-api/rest_api.py:18: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_add_user
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_borrower_has_negative_balance
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_both_users_have_0_balance
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_get_single_user
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_lender_has_negative_balance
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_lender_owes_borrower
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_lender_owes_borrower_less_than_new_loan
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_lender_owes_borrower_same_as_new_loan
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_no_users
+============================== 9 failed in 0.09s ===============================

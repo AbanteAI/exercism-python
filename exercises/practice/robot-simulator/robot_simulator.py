@@ -7,5 +7,7 @@ SOUTH = None
 
 
 class Robot:
-    def __init__(self, direction=NORTH, x_pos=0, y_pos=0):
-        pass
+    def __init__(self, direction="NORTH", x_pos=0, y_pos=0):
+        self.direction = direction
+        self.x_pos = x_pos
+        self.y_pos = y_pos

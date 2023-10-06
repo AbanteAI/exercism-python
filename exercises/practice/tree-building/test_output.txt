@@ -1,0 +1,351 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 13 items
+
+exercises/practice/tree-building/tree_building_test.py FFF.FFFFFFFFF     [100%]
+
+=================================== FAILURES ===================================
+______________________ TreeBuildingTest.test_binary_tree _______________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_binary_tree>
+
+    def test_binary_tree(self):
+        records = [
+            Record(6, 2),
+            Record(0, 0),
+            Record(3, 1),
+            Record(2, 0),
+            Record(4, 1),
+            Record(5, 2),
+            Record(1, 0)
+        ]
+>       root = BuildTree(records)
+
+exercises/practice/tree-building/tree_building_test.py:75: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+records = [<tree_building.Record object at 0x7fe879ad7280>, <tree_building.Record object at 0x7fe879ad6f50>, <tree_building.Reco...0x7fe879ad6f20>, <tree_building.Record object at 0x7fe879ad6b60>, <tree_building.Record object at 0x7fe879ad6d40>, ...]
+
+    def BuildTree(records):
+        if not records:
+            return None
+    
+        for record in records:
+>           if record.record_id not in nodes:
+E           NameError: name 'nodes' is not defined
+
+exercises/practice/tree-building/tree_building.py:18: NameError
+_____________________ TreeBuildingTest.test_cycle_directly _____________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_cycle_directly>
+
+    def test_cycle_directly(self):
+        records = [
+            Record(5, 2),
+            Record(3, 2),
+            Record(2, 2),
+            Record(4, 1),
+            Record(1, 0),
+            Record(0, 0),
+            Record(6, 3)
+        ]
+        # Cycle caused by Record 2 with parent_id pointing to itself
+        with self.assertRaises(ValueError) as err:
+>           BuildTree(records)
+
+exercises/practice/tree-building/tree_building_test.py:152: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def BuildTree(records):
+        if not records:
+            return None
+    
+        for record in records:
+>           if record.record_id not in nodes:
+E           NameError: name 'nodes' is not defined
+
+exercises/practice/tree-building/tree_building.py:18: NameError
+____________________ TreeBuildingTest.test_cycle_indirectly ____________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_cycle_indirectly>
+
+    def test_cycle_indirectly(self):
+        records = [
+            Record(5, 2),
+            Record(3, 2),
+            Record(2, 6),
+            Record(4, 1),
+            Record(1, 0),
+            Record(0, 0),
+            Record(6, 3)
+        ]
+        # Cycle caused by Record 2 with parent_id(6) greater than record_id(2)
+        with self.assertRaises(ValueError) as err:
+>           BuildTree(records)
+
+exercises/practice/tree-building/tree_building_test.py:168: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def BuildTree(records):
+        if not records:
+            return None
+    
+        for record in records:
+>           if record.record_id not in nodes:
+E           NameError: name 'nodes' is not defined
+
+exercises/practice/tree-building/tree_building.py:18: NameError
+______________ TreeBuildingTest.test_higher_id_parent_of_lower_id ______________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_higher_id_parent_of_lower_id>
+
+    def test_higher_id_parent_of_lower_id(self):
+        records = [
+            Record(0, 0),
+            Record(2, 0),
+            Record(1, 2)
+        ]
+        # Record 1 have parent_id(2) greater than record_id(1)
+        with self.assertRaises(ValueError) as err:
+>           BuildTree(records)
+
+exercises/practice/tree-building/tree_building_test.py:180: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def BuildTree(records):
+        if not records:
+            return None
+    
+        for record in records:
+>           if record.record_id not in nodes:
+E           NameError: name 'nodes' is not defined
+
+exercises/practice/tree-building/tree_building.py:18: NameError
+_________________ TreeBuildingTest.test_more_than_two_children _________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_more_than_two_children>
+
+    def test_more_than_two_children(self):
+        records = [
+            Record(0, 0),
+            Record(1, 0),
+            Record(2, 0),
+            Record(3, 0)
+        ]
+>       root = BuildTree(records)
+
+exercises/practice/tree-building/tree_building_test.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+records = [<tree_building.Record object at 0x7fe879946440>, <tree_building.Record object at 0x7fe879946470>, <tree_building.Record object at 0x7fe879947e50>, <tree_building.Record object at 0x7fe879945180>]
+
+    def BuildTree(records):
+        if not records:
+            return None
+    
+        for record in records:
+>           if record.record_id not in nodes:
+E           NameError: name 'nodes' is not defined
+
+exercises/practice/tree-building/tree_building.py:18: NameError
+______________________ TreeBuildingTest.test_no_root_node ______________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_no_root_node>
+
+    def test_no_root_node(self):
+        records = [
+            Record(1, 0),
+            Record(2, 0)
+        ]
+        # Record with record_id 0 (root) is missing
+        with self.assertRaises(ValueError) as err:
+>           BuildTree(records)
+
+exercises/practice/tree-building/tree_building_test.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def BuildTree(records):
+        if not records:
+            return None
+    
+        for record in records:
+>           if record.record_id not in nodes:
+E           NameError: name 'nodes' is not defined
+
+exercises/practice/tree-building/tree_building.py:18: NameError
+_____________________ TreeBuildingTest.test_non_continuous _____________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_non_continuous>
+
+    def test_non_continuous(self):
+        records = [
+            Record(2, 0),
+            Record(4, 2),
+            Record(1, 0),
+            Record(0, 0)
+        ]
+        # Record with record_id 3 is missing
+        with self.assertRaises(ValueError) as err:
+>           BuildTree(records)
+
+exercises/practice/tree-building/tree_building_test.py:136: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def BuildTree(records):
+        if not records:
+            return None
+    
+        for record in records:
+>           if record.record_id not in nodes:
+E           NameError: name 'nodes' is not defined
+
+exercises/practice/tree-building/tree_building.py:18: NameError
+________________________ TreeBuildingTest.test_one_node ________________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_one_node>
+
+    def test_one_node(self):
+        records = [
+            Record(0, 0)
+        ]
+>       root = BuildTree(records)
+
+exercises/practice/tree-building/tree_building_test.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+records = [<tree_building.Record object at 0x7fe87996c430>]
+
+    def BuildTree(records):
+        if not records:
+            return None
+    
+        for record in records:
+>           if record.record_id not in nodes:
+E           NameError: name 'nodes' is not defined
+
+exercises/practice/tree-building/tree_building.py:18: NameError
+__________________ TreeBuildingTest.test_root_node_has_parent __________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_root_node_has_parent>
+
+    def test_root_node_has_parent(self):
+        records = [
+            Record(0, 1),
+            Record(1, 0)
+        ]
+        # Root parent_id should be equal to record_id(0)
+        with self.assertRaises(ValueError) as err:
+>           BuildTree(records)
+
+exercises/practice/tree-building/tree_building_test.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def BuildTree(records):
+        if not records:
+            return None
+    
+        for record in records:
+>           if record.record_id not in nodes:
+E           NameError: name 'nodes' is not defined
+
+exercises/practice/tree-building/tree_building.py:18: NameError
+__________________ TreeBuildingTest.test_three_nodes_in_order __________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_three_nodes_in_order>
+
+    def test_three_nodes_in_order(self):
+        records = [
+            Record(0, 0),
+            Record(1, 0),
+            Record(2, 0)
+        ]
+>       root = BuildTree(records)
+
+exercises/practice/tree-building/tree_building_test.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+records = [<tree_building.Record object at 0x7fe87996d3f0>, <tree_building.Record object at 0x7fe87996d510>, <tree_building.Record object at 0x7fe87996d690>]
+
+    def BuildTree(records):
+        if not records:
+            return None
+    
+        for record in records:
+>           if record.record_id not in nodes:
+E           NameError: name 'nodes' is not defined
+
+exercises/practice/tree-building/tree_building.py:18: NameError
+______________ TreeBuildingTest.test_three_nodes_in_reverse_order ______________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_three_nodes_in_reverse_order>
+
+    def test_three_nodes_in_reverse_order(self):
+        records = [
+            Record(2, 0),
+            Record(1, 0),
+            Record(0, 0)
+        ]
+>       root = BuildTree(records)
+
+exercises/practice/tree-building/tree_building_test.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+records = [<tree_building.Record object at 0x7fe879960820>, <tree_building.Record object at 0x7fe879960790>, <tree_building.Record object at 0x7fe8799609a0>]
+
+    def BuildTree(records):
+        if not records:
+            return None
+    
+        for record in records:
+>           if record.record_id not in nodes:
+E           NameError: name 'nodes' is not defined
+
+exercises/practice/tree-building/tree_building.py:18: NameError
+____________________ TreeBuildingTest.test_unbalanced_tree _____________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_unbalanced_tree>
+
+    def test_unbalanced_tree(self):
+        records = [
+            Record(0, 0),
+            Record(1, 0),
+            Record(2, 0),
+            Record(3, 1),
+            Record(4, 1),
+            Record(5, 1),
+            Record(6, 2),
+        ]
+>       root = BuildTree(records)
+
+exercises/practice/tree-building/tree_building_test.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+records = [<tree_building.Record object at 0x7fe87996dea0>, <tree_building.Record object at 0x7fe87996cca0>, <tree_building.Reco...0x7fe87996c070>, <tree_building.Record object at 0x7fe87996eaa0>, <tree_building.Record object at 0x7fe87996e560>, ...]
+
+    def BuildTree(records):
+        if not records:
+            return None
+    
+        for record in records:
+>           if record.record_id not in nodes:
+E           NameError: name 'nodes' is not defined
+
+exercises/practice/tree-building/tree_building.py:18: NameError
+=========================== short test summary info ============================
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_binary_tree
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_cycle_directly
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_cycle_indirectly
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_higher_id_parent_of_lower_id
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_more_than_two_children
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_no_root_node
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_non_continuous
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_one_node
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_root_node_has_parent
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_three_nodes_in_order
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_three_nodes_in_reverse_order
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_unbalanced_tree
+========================= 12 failed, 1 passed in 0.08s =========================

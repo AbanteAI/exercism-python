@@ -6,9 +6,7 @@ class Board:
         board (list[str]): A two-dimensional Go board
     """
 
-    def __init__(self, board):
-        pass
-
+    self.board = board
     def territory(self, x, y):
         """Find the owner and the territories given a coordinate on
            the board
@@ -23,17 +21,25 @@ class Board:
                         second being a set of coordinates, representing
                         the owner's territories.
         """
-        pass
+        if self.board[y][x] != ' ':
+            raise ValueError('Invalid coordinate')
 
-    def territories(self):
-        """Find the owners and the territories of the whole board
+        owner = self.board[y][x]
+        territories = set()
+        visited = set()
 
-        Args:
-            none
+        def dfs(x, y):
+            if x < 0 or x >= len(self.board[0]) or y < 0 or y >= len(self.board):
+                return
+            if (x, y) in visited or self.board[y][x] != owner:
+                return
+            visited.add((x, y))
+            territories.add((x, y))
+            dfs(x-1, y)
+            dfs(x+1, y)
+            dfs(x, y-1)
+            dfs(x, y+1)
 
-        Returns:
-            dict(str, set): A dictionary whose key being the owner
-                        , i.e. "W", "B", "".  The value being a set
-                        of coordinates owned by the owner.
-        """
-        pass
+        dfs(x, y)
+
+        return owner, territories

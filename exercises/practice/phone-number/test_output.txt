@@ -1,0 +1,246 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 21 items
+
+exercises/practice/phone-number/phone_number_test.py F....FFF.FFF..FFFFF [ 90%]
+FF                                                                       [100%]
+
+=================================== FAILURES ===================================
+________________________ PhoneNumberTest.test_area_code ________________________
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_area_code>
+
+    def test_area_code(self):
+        number = PhoneNumber("2234567890")
+>       self.assertEqual(number.area_code, "223")
+E       AttributeError: 'PhoneNumber' object has no attribute 'area_code'
+
+exercises/practice/phone-number/phone_number_test.py:114: AttributeError
+_ PhoneNumberTest.test_invalid_if_area_code_starts_with_0_on_valid_11_digit_number _
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_invalid_if_area_code_starts_with_0_on_valid_11_digit_number>
+
+    def test_invalid_if_area_code_starts_with_0_on_valid_11_digit_number(self):
+        with self.assertRaises(ValueError) as err:
+            PhoneNumber("1 (023) 456-7890")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "area code cannot start with zero")
+E       AssertionError: 'must not be fewer than 10 digits' != 'area code cannot start with zero'
+E       - must not be fewer than 10 digits
+E       + area code cannot start with zero
+
+exercises/practice/phone-number/phone_number_test.py:91: AssertionError
+___________ PhoneNumberTest.test_invalid_if_area_code_starts_with_1 ____________
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_invalid_if_area_code_starts_with_1>
+
+    def test_invalid_if_area_code_starts_with_1(self):
+        with self.assertRaises(ValueError) as err:
+            PhoneNumber("(123) 456-7890")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "area code cannot start with one")
+E       AssertionError: 'area code cannot start with zero' != 'area code cannot start with one'
+E       - area code cannot start with zero
+E       ?                             ^ --
+E       + area code cannot start with one
+E       ?                             ^^
+
+exercises/practice/phone-number/phone_number_test.py:73: AssertionError
+_ PhoneNumberTest.test_invalid_if_area_code_starts_with_1_on_valid_11_digit_number _
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_invalid_if_area_code_starts_with_1_on_valid_11_digit_number>
+
+    def test_invalid_if_area_code_starts_with_1_on_valid_11_digit_number(self):
+        with self.assertRaises(ValueError) as err:
+            PhoneNumber("1 (123) 456-7890")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "area code cannot start with one")
+E       AssertionError: 'must not be fewer than 10 digits' != 'area code cannot start with one'
+E       - must not be fewer than 10 digits
+E       + area code cannot start with one
+
+exercises/practice/phone-number/phone_number_test.py:97: AssertionError
+_ PhoneNumberTest.test_invalid_if_exchange_code_starts_with_0_on_valid_11_digit_number _
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_invalid_if_exchange_code_starts_with_0_on_valid_11_digit_number>
+
+    def test_invalid_if_exchange_code_starts_with_0_on_valid_11_digit_number(self):
+        with self.assertRaises(ValueError) as err:
+            PhoneNumber("1 (223) 056-7890")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "exchange code cannot start with zero")
+E       AssertionError: 'must not be fewer than 10 digits' != 'exchange code cannot start with zero'
+E       - must not be fewer than 10 digits
+E       + exchange code cannot start with zero
+
+exercises/practice/phone-number/phone_number_test.py:103: AssertionError
+_________ PhoneNumberTest.test_invalid_if_exchange_code_starts_with_1 __________
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_invalid_if_exchange_code_starts_with_1>
+
+    def test_invalid_if_exchange_code_starts_with_1(self):
+        with self.assertRaises(ValueError) as err:
+            PhoneNumber("(223) 156-7890")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "exchange code cannot start with one")
+E       AssertionError: 'exchange code cannot start with zero' != 'exchange code cannot start with one'
+E       - exchange code cannot start with zero
+E       ?                                 ^ --
+E       + exchange code cannot start with one
+E       ?                                 ^^
+
+exercises/practice/phone-number/phone_number_test.py:85: AssertionError
+_ PhoneNumberTest.test_invalid_if_exchange_code_starts_with_1_on_valid_11_digit_number _
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_invalid_if_exchange_code_starts_with_1_on_valid_11_digit_number>
+
+    def test_invalid_if_exchange_code_starts_with_1_on_valid_11_digit_number(self):
+        with self.assertRaises(ValueError) as err:
+            PhoneNumber("1 (223) 156-7890")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "exchange code cannot start with one")
+E       AssertionError: 'must not be fewer than 10 digits' != 'exchange code cannot start with one'
+E       - must not be fewer than 10 digits
+E       + exchange code cannot start with one
+
+exercises/practice/phone-number/phone_number_test.py:109: AssertionError
+____________ PhoneNumberTest.test_invalid_when_more_than_11_digits _____________
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_invalid_when_more_than_11_digits>
+
+    def test_invalid_when_more_than_11_digits(self):
+        with self.assertRaises(ValueError) as err:
+            PhoneNumber("321234567890")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "must not be greater than 11 digits")
+E       AssertionError: 'must not be fewer than 10 digits' != 'must not be greater than 11 digits'
+E       - must not be fewer than 10 digits
+E       ?             ^ ^         ^
+E       + must not be greater than 11 digits
+E       ?             ^^ ^^         ^
+
+exercises/practice/phone-number/phone_number_test.py:49: AssertionError
+__________________ PhoneNumberTest.test_invalid_with_letters ___________________
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_invalid_with_letters>
+
+    def test_invalid_with_letters(self):
+        with self.assertRaises(ValueError) as err:
+            PhoneNumber("523-abc-7890")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "letters not permitted")
+E       AssertionError: 'must not be fewer than 10 digits' != 'letters not permitted'
+E       - must not be fewer than 10 digits
+E       + letters not permitted
+
+exercises/practice/phone-number/phone_number_test.py:55: AssertionError
+________________ PhoneNumberTest.test_invalid_with_punctuations ________________
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_invalid_with_punctuations>
+
+    def test_invalid_with_punctuations(self):
+        with self.assertRaises(ValueError) as err:
+            PhoneNumber("523-@:!-7890")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "punctuations not permitted")
+E       AssertionError: 'must not be fewer than 10 digits' != 'punctuations not permitted'
+E       - must not be fewer than 10 digits
+E       + punctuations not permitted
+
+exercises/practice/phone-number/phone_number_test.py:61: AssertionError
+______________________ PhoneNumberTest.test_pretty_print _______________________
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_pretty_print>
+
+    def test_pretty_print(self):
+        number = PhoneNumber("2234567890")
+>       self.assertEqual(number.pretty(), "(223)-456-7890")
+E       AttributeError: 'PhoneNumber' object has no attribute 'pretty'
+
+exercises/practice/phone-number/phone_number_test.py:118: AttributeError
+_________ PhoneNumberTest.test_pretty_print_with_full_us_phone_number __________
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_pretty_print_with_full_us_phone_number>
+
+    def test_pretty_print_with_full_us_phone_number(self):
+>       number = PhoneNumber("12234567890")
+
+exercises/practice/phone-number/phone_number_test.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <phone_number.PhoneNumber object at 0x7f0466292530>
+number = '12234567890'
+
+    def __init__(self, number):
+        cleaned_number = ''.join(c for c in number if c.isdigit())
+        if len(cleaned_number) == 11 and cleaned_number[0] != '1':
+            raise ValueError("11 digits must start with 1")
+        if len(cleaned_number) != 10:
+>           raise ValueError("must not be fewer than 10 digits")
+E           ValueError: must not be fewer than 10 digits
+
+exercises/practice/phone-number/phone_number.py:7: ValueError
+________ PhoneNumberTest.test_valid_when_11_digits_and_starting_with_1 _________
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_valid_when_11_digits_and_starting_with_1>
+
+    def test_valid_when_11_digits_and_starting_with_1(self):
+>       number = PhoneNumber("12234567890").number
+
+exercises/practice/phone-number/phone_number_test.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <phone_number.PhoneNumber object at 0x7f04662b6590>
+number = '12234567890'
+
+    def __init__(self, number):
+        cleaned_number = ''.join(c for c in number if c.isdigit())
+        if len(cleaned_number) == 11 and cleaned_number[0] != '1':
+            raise ValueError("11 digits must start with 1")
+        if len(cleaned_number) != 10:
+>           raise ValueError("must not be fewer than 10 digits")
+E           ValueError: must not be fewer than 10 digits
+
+exercises/practice/phone-number/phone_number.py:7: ValueError
+_ PhoneNumberTest.test_valid_when_11_digits_and_starting_with_1_even_with_punctuation _
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_valid_when_11_digits_and_starting_with_1_even_with_punctuation>
+
+    def test_valid_when_11_digits_and_starting_with_1_even_with_punctuation(self):
+>       number = PhoneNumber("+1 (223) 456-7890").number
+
+exercises/practice/phone-number/phone_number_test.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <phone_number.PhoneNumber object at 0x7f0466291180>
+number = '+1 (223) 456-7890'
+
+    def __init__(self, number):
+        cleaned_number = ''.join(c for c in number if c.isdigit())
+        if len(cleaned_number) == 11 and cleaned_number[0] != '1':
+            raise ValueError("11 digits must start with 1")
+        if len(cleaned_number) != 10:
+>           raise ValueError("must not be fewer than 10 digits")
+E           ValueError: must not be fewer than 10 digits
+
+exercises/practice/phone-number/phone_number.py:7: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_area_code
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_invalid_if_area_code_starts_with_0_on_valid_11_digit_number
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_invalid_if_area_code_starts_with_1
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_invalid_if_area_code_starts_with_1_on_valid_11_digit_number
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_invalid_if_exchange_code_starts_with_0_on_valid_11_digit_number
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_invalid_if_exchange_code_starts_with_1
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_invalid_if_exchange_code_starts_with_1_on_valid_11_digit_number
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_invalid_when_more_than_11_digits
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_invalid_with_letters
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_invalid_with_punctuations
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_pretty_print
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_pretty_print_with_full_us_phone_number
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_valid_when_11_digits_and_starting_with_1
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_valid_when_11_digits_and_starting_with_1_even_with_punctuation
+========================= 14 failed, 7 passed in 0.10s =========================

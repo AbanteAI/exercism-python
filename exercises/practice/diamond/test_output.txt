@@ -1,0 +1,147 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 5 items
+
+exercises/practice/diamond/diamond_test.py .FFFF                         [100%]
+
+=================================== FAILURES ===================================
+_ DiamondTest.test_degenerate_case_with_no_row_containing_3_distinct_groups_of_spaces _
+
+self = <diamond_test.DiamondTest testMethod=test_degenerate_case_with_no_row_containing_3_distinct_groups_of_spaces>
+
+    def test_degenerate_case_with_no_row_containing_3_distinct_groups_of_spaces(self):
+        result = [" A ", "B B", " A "]
+>       self.assertEqual(rows("B"), result)
+E       AssertionError: Lists differ: [' A ', 'B', ' A '] != [' A ', 'B B', ' A ']
+E       
+E       First differing element 1:
+E       'B'
+E       'B B'
+E       
+E       - [' A ', 'B', ' A ']
+E       + [' A ', 'B B', ' A ']
+E       ?          ++
+
+exercises/practice/diamond/diamond_test.py:19: AssertionError
+__________________ DiamondTest.test_largest_possible_diamond ___________________
+
+self = <diamond_test.DiamondTest testMethod=test_largest_possible_diamond>
+
+    def test_largest_possible_diamond(self):
+        result = [
+            "                         A                         ",
+            "                        B B                        ",
+            "                       C   C                       ",
+            "                      D     D                      ",
+            "                     E       E                     ",
+            "                    F         F                    ",
+            "                   G           G                   ",
+            "                  H             H                  ",
+            "                 I               I                 ",
+            "                J                 J                ",
+            "               K                   K               ",
+            "              L                     L              ",
+            "             M                       M             ",
+            "            N                         N            ",
+            "           O                           O           ",
+            "          P                             P          ",
+            "         Q                               Q         ",
+            "        R                                 R        ",
+            "       S                                   S       ",
+            "      T                                     T      ",
+            "     U                                       U     ",
+            "    V                                         V    ",
+            "   W                                           W   ",
+            "  X                                             X  ",
+            " Y                                               Y ",
+            "Z                                                 Z",
+            " Y                                               Y ",
+            "  X                                             X  ",
+            "   W                                           W   ",
+            "    V                                         V    ",
+            "     U                                       U     ",
+            "      T                                     T      ",
+            "       S                                   S       ",
+            "        R                                 R        ",
+            "         Q                               Q         ",
+            "          P                             P          ",
+            "           O                           O           ",
+            "            N                         N            ",
+            "             M                       M             ",
+            "              L                     L              ",
+            "               K                   K               ",
+            "                J                 J                ",
+            "                 I               I                 ",
+            "                  H             H                  ",
+            "                   G           G                   ",
+            "                    F         F                    ",
+            "                     E       E                     ",
+            "                      D     D                      ",
+            "                       C   C                       ",
+            "                        B B                        ",
+            "                         A                         ",
+        ]
+>       self.assertEqual(rows("Z"), result)
+E       AssertionError: Lists differ: ['   [73 chars]   B                        ', '              [1426 chars]   '] != ['   [73 chars]   B B                        ', '            [2676 chars]   ']
+E       
+E       First differing element 1:
+E       '                        B                        '
+E       '                        B B                        '
+E       
+E       Diff is 5386 characters long. Set self.maxDiff to None to see it.
+
+exercises/practice/diamond/diamond_test.py:91: AssertionError
+_ DiamondTest.test_smallest_non_degenerate_case_with_even_diamond_side_length __
+
+self = <diamond_test.DiamondTest testMethod=test_smallest_non_degenerate_case_with_even_diamond_side_length>
+
+    def test_smallest_non_degenerate_case_with_even_diamond_side_length(self):
+        result = [
+            "   A   ",
+            "  B B  ",
+            " C   C ",
+            "D     D",
+            " C   C ",
+            "  B B  ",
+            "   A   ",
+        ]
+>       self.assertEqual(rows("D"), result)
+E       AssertionError: Lists differ: ['   A   ', '  B  ', ' C ', 'D', ' C ', '  B  ', '   A   '] != ['   A   ', '  B B  ', ' C   C ', 'D     D', ' C   C ', '  B B  ', '   A   ']
+E       
+E       First differing element 1:
+E       '  B  '
+E       '  B B  '
+E       
+E       - ['   A   ', '  B  ', ' C ', 'D', ' C ', '  B  ', '   A   ']
+E       + ['   A   ', '  B B  ', ' C   C ', 'D     D', ' C   C ', '  B B  ', '   A   ']
+E       ?                 ++        ++++     ++++++       ++++        ++
+
+exercises/practice/diamond/diamond_test.py:35: AssertionError
+__ DiamondTest.test_smallest_non_degenerate_case_with_odd_diamond_side_length __
+
+self = <diamond_test.DiamondTest testMethod=test_smallest_non_degenerate_case_with_odd_diamond_side_length>
+
+    def test_smallest_non_degenerate_case_with_odd_diamond_side_length(self):
+        result = ["  A  ", " B B ", "C   C", " B B ", "  A  "]
+>       self.assertEqual(rows("C"), result)
+E       AssertionError: Lists differ: ['  A  ', ' B ', 'C', ' B ', '  A  '] != ['  A  ', ' B B ', 'C   C', ' B B ', '  A  ']
+E       
+E       First differing element 1:
+E       ' B '
+E       ' B B '
+E       
+E       - ['  A  ', ' B ', 'C', ' B ', '  A  ']
+E       + ['  A  ', ' B B ', 'C   C', ' B B ', '  A  ']
+E       ?              ++     ++++       ++
+
+exercises/practice/diamond/diamond_test.py:23: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/diamond/diamond_test.py::DiamondTest::test_degenerate_case_with_no_row_containing_3_distinct_groups_of_spaces
+FAILED exercises/practice/diamond/diamond_test.py::DiamondTest::test_largest_possible_diamond
+FAILED exercises/practice/diamond/diamond_test.py::DiamondTest::test_smallest_non_degenerate_case_with_even_diamond_side_length
+FAILED exercises/practice/diamond/diamond_test.py::DiamondTest::test_smallest_non_degenerate_case_with_odd_diamond_side_length
+========================= 4 failed, 1 passed in 0.09s ==========================

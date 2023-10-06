@@ -1,0 +1,58 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 19 items
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py ..... [ 26%]
+............FF                                                           [100%]
+
+=================================== FAILURES ===================================
+_______ KindergartenGardenTest.test_students_are_unordered_first_student _______
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_students_are_unordered_first_student>
+
+    def test_students_are_unordered_first_student(self):
+        garden = Garden(
+            "VCRRGVRG\nRVGCCGCV", students=["Samantha", "Patricia", "Xander", "Roger"]
+        )
+>       self.assertEqual(
+            garden.plants("Patricia"), ["Violets", "Clover", "Radishes", "Violets"]
+        )
+E       AssertionError: Lists differ: ['Radishes', 'Radishes', 'Grass', 'Clover'] != ['Violets', 'Clover', 'Radishes', 'Violets']
+E       
+E       First differing element 0:
+E       'Radishes'
+E       'Violets'
+E       
+E       - ['Radishes', 'Radishes', 'Grass', 'Clover']
+E       + ['Violets', 'Clover', 'Radishes', 'Violets']
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:111: AssertionError
+_______ KindergartenGardenTest.test_students_are_unordered_last_student ________
+
+self = <kindergarten_garden_test.KindergartenGardenTest testMethod=test_students_are_unordered_last_student>
+
+    def test_students_are_unordered_last_student(self):
+        garden = Garden(
+            "VCRRGVRG\nRVGCCGCV", students=["Samantha", "Patricia", "Xander", "Roger"]
+        )
+>       self.assertEqual(
+            garden.plants("Xander"), ["Radishes", "Grass", "Clover", "Violets"]
+        )
+E       AssertionError: Lists differ: ['Grass', 'Violets', 'Clover', 'Grass'] != ['Radishes', 'Grass', 'Clover', 'Violets']
+E       
+E       First differing element 0:
+E       'Grass'
+E       'Radishes'
+E       
+E       - ['Grass', 'Violets', 'Clover', 'Grass']
+E       + ['Radishes', 'Grass', 'Clover', 'Violets']
+
+exercises/practice/kindergarten-garden/kindergarten_garden_test.py:119: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_students_are_unordered_first_student
+FAILED exercises/practice/kindergarten-garden/kindergarten_garden_test.py::KindergartenGardenTest::test_students_are_unordered_last_student
+========================= 2 failed, 17 passed in 0.05s =========================

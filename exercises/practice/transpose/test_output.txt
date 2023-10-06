@@ -1,0 +1,217 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 12 items
+
+exercises/practice/transpose/transpose_test.py FFFFFFFFFFFF              [100%]
+
+=================================== FAILURES ===================================
+_______________________ TransposeTest.test_empty_string ________________________
+
+self = <transpose_test.TransposeTest testMethod=test_empty_string>
+
+    def test_empty_string(self):
+        lines = []
+        expected = []
+>       self.assertEqual(transpose("\n".join(lines)), "\n".join(expected))
+
+exercises/practice/transpose/transpose_test.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+lines = ''
+
+    def transpose(lines):
+>       max_length = max(len(line) for line in lines)
+E       ValueError: max() arg is an empty sequence
+
+exercises/practice/transpose/transpose.py:2: ValueError
+____________ TransposeTest.test_first_line_longer_than_second_line _____________
+
+self = <transpose_test.TransposeTest testMethod=test_first_line_longer_than_second_line>
+
+    def test_first_line_longer_than_second_line(self):
+        lines = ["The fourth line.", "The fifth line."]
+        expected = [
+            "TT",
+            "hh",
+            "ee",
+            "  ",
+            "ff",
+            "oi",
+            "uf",
+            "rt",
+            "th",
+            "h ",
+            " l",
+            "li",
+            "in",
+            "ne",
+            "e.",
+            ".",
+        ]
+>       self.assertEqual(transpose("\n".join(lines)), "\n".join(expected))
+E       AssertionError: ['The fourth line.\nThe fifth line.'] != 'TT\nhh\nee\n  \nff\noi\nuf\nrt\nth\nh \n l\nli\nin\nne\ne.\n.'
+
+exercises/practice/transpose/transpose_test.py:58: AssertionError
+______________________ TransposeTest.test_jagged_triangle ______________________
+
+self = <transpose_test.TransposeTest testMethod=test_jagged_triangle>
+
+    def test_jagged_triangle(self):
+        lines = ["11", "2", "3333", "444", "555555", "66666"]
+        expected = ["123456", "1 3456", "  3456", "  3 56", "    56", "    5"]
+>       self.assertEqual(transpose("\n".join(lines)), "\n".join(expected))
+E       AssertionError: ['11\n2\n3333\n444\n555555\n66666'] != '123456\n1 3456\n  3456\n  3 56\n    56\n    5'
+
+exercises/practice/transpose/transpose_test.py:123: AssertionError
+_____________________ TransposeTest.test_mixed_line_length _____________________
+
+self = <transpose_test.TransposeTest testMethod=test_mixed_line_length>
+
+    def test_mixed_line_length(self):
+        lines = ["The longest line.", "A long line.", "A longer line.", "A line."]
+        expected = [
+            "TAAA",
+            "h   ",
+            "elll",
+            " ooi",
+            "lnnn",
+            "ogge",
+            "n e.",
+            "glr",
+            "ei ",
+            "snl",
+            "tei",
+            " .n",
+            "l e",
+            "i .",
+            "n",
+            "e",
+            ".",
+        ]
+>       self.assertEqual(transpose("\n".join(lines)), "\n".join(expected))
+E       AssertionError: ['The longest line.\nA long line.\nA long[14 chars]ne.'] != 'TAAA\nh   \nelll\n ooi\nlnnn\nogge\nn e.[40 chars]e\n.'
+
+exercises/practice/transpose/transpose_test.py:103: AssertionError
+_________________________ TransposeTest.test_rectangle _________________________
+
+self = <transpose_test.TransposeTest testMethod=test_rectangle>
+
+    def test_rectangle(self):
+        lines = ["FRACTURE", "OUTLINED", "BLOOMING", "SEPTETTE"]
+        expected = ["FOBS", "RULE", "ATOP", "CLOT", "TIME", "UNIT", "RENT", "EDGE"]
+>       self.assertEqual(transpose("\n".join(lines)), "\n".join(expected))
+E       AssertionError: ['FRACTURE\nOUTLINED\nBLOOMING\nSEPTETTE'] != 'FOBS\nRULE\nATOP\nCLOT\nTIME\nUNIT\nRENT\nEDGE'
+
+exercises/practice/transpose/transpose_test.py:113: AssertionError
+____________ TransposeTest.test_second_line_longer_than_first_line _____________
+
+self = <transpose_test.TransposeTest testMethod=test_second_line_longer_than_first_line>
+
+    def test_second_line_longer_than_first_line(self):
+        lines = ["The first line.", "The second line."]
+        expected = [
+            "TT",
+            "hh",
+            "ee",
+            "  ",
+            "fs",
+            "ie",
+            "rc",
+            "so",
+            "tn",
+            " d",
+            "l ",
+            "il",
+            "ni",
+            "en",
+            ".e",
+            " .",
+        ]
+>       self.assertEqual(transpose("\n".join(lines)), "\n".join(expected))
+E       AssertionError: ['The first line.\nThe second line.'] != 'TT\nhh\nee\n  \nfs\nie\nrc\nso\ntn\n d\nl \nil\nni\nen\n.e\n .'
+
+exercises/practice/transpose/transpose_test.py:80: AssertionError
+__________________________ TransposeTest.test_simple ___________________________
+
+self = <transpose_test.TransposeTest testMethod=test_simple>
+
+    def test_simple(self):
+        lines = ["ABC", "123"]
+        expected = ["A1", "B2", "C3"]
+>       self.assertEqual(transpose("\n".join(lines)), "\n".join(expected))
+E       AssertionError: ['ABC\n123'] != 'A1\nB2\nC3'
+
+exercises/practice/transpose/transpose_test.py:31: AssertionError
+________________________ TransposeTest.test_single_line ________________________
+
+self = <transpose_test.TransposeTest testMethod=test_single_line>
+
+    def test_single_line(self):
+        lines = ["Single line."]
+        expected = ["S", "i", "n", "g", "l", "e", " ", "l", "i", "n", "e", "."]
+>       self.assertEqual(transpose("\n".join(lines)), "\n".join(expected))
+E       AssertionError: ['Single line.'] != 'S\ni\nn\ng\nl\ne\n \nl\ni\nn\ne\n.'
+
+exercises/practice/transpose/transpose_test.py:36: AssertionError
+__________________________ TransposeTest.test_square ___________________________
+
+self = <transpose_test.TransposeTest testMethod=test_square>
+
+    def test_square(self):
+        lines = ["HEART", "EMBER", "ABUSE", "RESIN", "TREND"]
+        expected = ["HEART", "EMBER", "ABUSE", "RESIN", "TREND"]
+>       self.assertEqual(transpose("\n".join(lines)), "\n".join(expected))
+E       AssertionError: ['HEART\nEMBER\nABUSE\nRESIN\nTREND'] != 'HEART\nEMBER\nABUSE\nRESIN\nTREND'
+
+exercises/practice/transpose/transpose_test.py:108: AssertionError
+_________________________ TransposeTest.test_triangle __________________________
+
+self = <transpose_test.TransposeTest testMethod=test_triangle>
+
+    def test_triangle(self):
+        lines = ["T", "EE", "AAA", "SSSS", "EEEEE", "RRRRRR"]
+        expected = ["TEASER", " EASER", "  ASER", "   SER", "    ER", "     R"]
+>       self.assertEqual(transpose("\n".join(lines)), "\n".join(expected))
+E       AssertionError: ['T\nEE\nAAA\nSSSS\nEEEEE\nRRRRRR'] != 'TEASER\n EASER\n  ASER\n   SER\n    ER\n     R'
+
+exercises/practice/transpose/transpose_test.py:118: AssertionError
+________________ TransposeTest.test_two_characters_in_a_column _________________
+
+self = <transpose_test.TransposeTest testMethod=test_two_characters_in_a_column>
+
+    def test_two_characters_in_a_column(self):
+        lines = ["A", "1"]
+        expected = ["A1"]
+>       self.assertEqual(transpose("\n".join(lines)), "\n".join(expected))
+E       AssertionError: ['A\n1'] != 'A1'
+
+exercises/practice/transpose/transpose_test.py:26: AssertionError
+__________________ TransposeTest.test_two_characters_in_a_row __________________
+
+self = <transpose_test.TransposeTest testMethod=test_two_characters_in_a_row>
+
+    def test_two_characters_in_a_row(self):
+        lines = ["A1"]
+        expected = ["A", "1"]
+>       self.assertEqual(transpose("\n".join(lines)), "\n".join(expected))
+E       AssertionError: ['A1'] != 'A\n1'
+
+exercises/practice/transpose/transpose_test.py:21: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/transpose/transpose_test.py::TransposeTest::test_empty_string
+FAILED exercises/practice/transpose/transpose_test.py::TransposeTest::test_first_line_longer_than_second_line
+FAILED exercises/practice/transpose/transpose_test.py::TransposeTest::test_jagged_triangle
+FAILED exercises/practice/transpose/transpose_test.py::TransposeTest::test_mixed_line_length
+FAILED exercises/practice/transpose/transpose_test.py::TransposeTest::test_rectangle
+FAILED exercises/practice/transpose/transpose_test.py::TransposeTest::test_second_line_longer_than_first_line
+FAILED exercises/practice/transpose/transpose_test.py::TransposeTest::test_simple
+FAILED exercises/practice/transpose/transpose_test.py::TransposeTest::test_single_line
+FAILED exercises/practice/transpose/transpose_test.py::TransposeTest::test_square
+FAILED exercises/practice/transpose/transpose_test.py::TransposeTest::test_triangle
+FAILED exercises/practice/transpose/transpose_test.py::TransposeTest::test_two_characters_in_a_column
+FAILED exercises/practice/transpose/transpose_test.py::TransposeTest::test_two_characters_in_a_row
+============================== 12 failed in 0.10s ==============================

@@ -1,0 +1,116 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 6 items
+
+exercises/practice/satellite/satellite_test.py ....FF                    [100%]
+
+=================================== FAILURES ===================================
+___________________ SatelliteTest.test_tree_with_many_items ____________________
+
+self = <satellite_test.SatelliteTest testMethod=test_tree_with_many_items>
+
+    def test_tree_with_many_items(self):
+        preorder = ["a", "i", "x", "f", "r"]
+        inorder = ["i", "a", "f", "x", "r"]
+    
+        expected = {
+            "v": "a",
+            "l": {"v": "i", "l": {}, "r": {}},
+            "r": {
+                "v": "x",
+                "l": {"v": "f", "l": {}, "r": {}},
+                "r": {"v": "r", "l": {}, "r": {}},
+            },
+        }
+>       self.assertEqual(tree_from_traversals(preorder, inorder), expected)
+
+exercises/practice/satellite/satellite_test.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/satellite/satellite.py:23: in tree_from_traversals
+    left_subtree = tree_from_traversals(left_preorder, left_inorder)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+preorder = ['i'], inorder = ['i']
+
+    def tree_from_traversals(preorder, inorder):
+        if len(preorder) != len(inorder):
+            raise ValueError("traversals must have the same length")
+    
+        if set(preorder) != set(inorder):
+            raise ValueError("traversals must have the same elements")
+    
+        if len(set(preorder)) != len(preorder):
+            raise ValueError("traversals must contain unique items")
+    
+        if len(preorder) == 0:
+            return {}
+    
+        root_value = preorder[0]
+        root_index = inorder.index(root_value)
+    
+        left_inorder = inorder[:root_index]
+        right_inorder = inorder[root_index + 1:]
+    
+        left_preorder = [value for value in preorder if value in left_inorder]
+        right_preorder = [value for value in preorder if value in right_inorder]
+    
+        left_subtree = tree_from_traversals(left_preorder, left_inorder)
+        right_subtree = tree_from_traversals(right_preorder, right_inorder)
+    
+>       return TreeNode(root_value, left_subtree, right_subtree)
+E       NameError: name 'TreeNode' is not defined
+
+exercises/practice/satellite/satellite.py:26: NameError
+____________________ SatelliteTest.test_tree_with_one_item _____________________
+
+self = <satellite_test.SatelliteTest testMethod=test_tree_with_one_item>
+
+    def test_tree_with_one_item(self):
+        preorder = ["a"]
+        inorder = ["a"]
+    
+        expected = {"v": "a", "l": {}, "r": {}}
+>       self.assertEqual(tree_from_traversals(preorder, inorder), expected)
+
+exercises/practice/satellite/satellite_test.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+preorder = ['a'], inorder = ['a']
+
+    def tree_from_traversals(preorder, inorder):
+        if len(preorder) != len(inorder):
+            raise ValueError("traversals must have the same length")
+    
+        if set(preorder) != set(inorder):
+            raise ValueError("traversals must have the same elements")
+    
+        if len(set(preorder)) != len(preorder):
+            raise ValueError("traversals must contain unique items")
+    
+        if len(preorder) == 0:
+            return {}
+    
+        root_value = preorder[0]
+        root_index = inorder.index(root_value)
+    
+        left_inorder = inorder[:root_index]
+        right_inorder = inorder[root_index + 1:]
+    
+        left_preorder = [value for value in preorder if value in left_inorder]
+        right_preorder = [value for value in preorder if value in right_inorder]
+    
+        left_subtree = tree_from_traversals(left_preorder, left_inorder)
+        right_subtree = tree_from_traversals(right_preorder, right_inorder)
+    
+>       return TreeNode(root_value, left_subtree, right_subtree)
+E       NameError: name 'TreeNode' is not defined
+
+exercises/practice/satellite/satellite.py:26: NameError
+=========================== short test summary info ============================
+FAILED exercises/practice/satellite/satellite_test.py::SatelliteTest::test_tree_with_many_items
+FAILED exercises/practice/satellite/satellite_test.py::SatelliteTest::test_tree_with_one_item
+========================= 2 failed, 4 passed in 0.04s ==========================
