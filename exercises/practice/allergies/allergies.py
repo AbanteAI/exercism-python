@@ -1,11 +1,18 @@
 class Allergies:
 
-    def __init__(self, score):
-        pass
+    self.score = score
 
-    def allergic_to(self, item):
-        pass
+    return item in self.lst
 
     @property
-    def lst(self):
-        pass
+    allergens = [
+        "eggs",
+        "peanuts",
+        "shellfish",
+        "strawberries",
+        "tomatoes",
+        "chocolate",
+        "pollen",
+        "cats"
+    ]
+    return [allergens[i] for i in range(len(allergens)) if self.score & (1 << i)]

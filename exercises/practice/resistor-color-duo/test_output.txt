@@ -1,0 +1,83 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 7 items
+
+exercises/practice/resistor-color-duo/resistor_color_duo_test.py FFFFFFF [100%]
+
+=================================== FAILURES ===================================
+_____________ ResistorColorDuoTest.test_black_and_brown_one_digit ______________
+
+self = <resistor_color_duo_test.ResistorColorDuoTest testMethod=test_black_and_brown_one_digit>
+
+    def test_black_and_brown_one_digit(self):
+>       self.assertEqual(value(["black", "brown"]), 1)
+E       AssertionError: None != 1
+
+exercises/practice/resistor-color-duo/resistor_color_duo_test.py:32: AssertionError
+___________________ ResistorColorDuoTest.test_blue_and_grey ____________________
+
+self = <resistor_color_duo_test.ResistorColorDuoTest testMethod=test_blue_and_grey>
+
+    def test_blue_and_grey(self):
+>       self.assertEqual(value(["blue", "grey"]), 68)
+E       AssertionError: None != 68
+
+exercises/practice/resistor-color-duo/resistor_color_duo_test.py:17: AssertionError
+__________________ ResistorColorDuoTest.test_brown_and_black ___________________
+
+self = <resistor_color_duo_test.ResistorColorDuoTest testMethod=test_brown_and_black>
+
+    def test_brown_and_black(self):
+>       self.assertEqual(value(["brown", "black"]), 10)
+E       AssertionError: None != 10
+
+exercises/practice/resistor-color-duo/resistor_color_duo_test.py:14: AssertionError
+______________ ResistorColorDuoTest.test_ignore_additional_colors ______________
+
+self = <resistor_color_duo_test.ResistorColorDuoTest testMethod=test_ignore_additional_colors>
+
+    def test_ignore_additional_colors(self):
+>       self.assertEqual(value(["green", "brown", "orange"]), 51)
+E       AssertionError: None != 51
+
+exercises/practice/resistor-color-duo/resistor_color_duo_test.py:29: AssertionError
+_________________ ResistorColorDuoTest.test_orange_and_orange __________________
+
+self = <resistor_color_duo_test.ResistorColorDuoTest testMethod=test_orange_and_orange>
+
+    def test_orange_and_orange(self):
+>       self.assertEqual(value(["orange", "orange"]), 33)
+E       AssertionError: None != 33
+
+exercises/practice/resistor-color-duo/resistor_color_duo_test.py:26: AssertionError
+___________________ ResistorColorDuoTest.test_white_and_red ____________________
+
+self = <resistor_color_duo_test.ResistorColorDuoTest testMethod=test_white_and_red>
+
+    def test_white_and_red(self):
+>       self.assertEqual(value(["white", "red"]), 92)
+E       AssertionError: None != 92
+
+exercises/practice/resistor-color-duo/resistor_color_duo_test.py:23: AssertionError
+_________________ ResistorColorDuoTest.test_yellow_and_violet __________________
+
+self = <resistor_color_duo_test.ResistorColorDuoTest testMethod=test_yellow_and_violet>
+
+    def test_yellow_and_violet(self):
+>       self.assertEqual(value(["yellow", "violet"]), 47)
+E       AssertionError: None != 47
+
+exercises/practice/resistor-color-duo/resistor_color_duo_test.py:20: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/resistor-color-duo/resistor_color_duo_test.py::ResistorColorDuoTest::test_black_and_brown_one_digit
+FAILED exercises/practice/resistor-color-duo/resistor_color_duo_test.py::ResistorColorDuoTest::test_blue_and_grey
+FAILED exercises/practice/resistor-color-duo/resistor_color_duo_test.py::ResistorColorDuoTest::test_brown_and_black
+FAILED exercises/practice/resistor-color-duo/resistor_color_duo_test.py::ResistorColorDuoTest::test_ignore_additional_colors
+FAILED exercises/practice/resistor-color-duo/resistor_color_duo_test.py::ResistorColorDuoTest::test_orange_and_orange
+FAILED exercises/practice/resistor-color-duo/resistor_color_duo_test.py::ResistorColorDuoTest::test_white_and_red
+FAILED exercises/practice/resistor-color-duo/resistor_color_duo_test.py::ResistorColorDuoTest::test_yellow_and_violet
+============================== 7 failed in 0.04s ===============================

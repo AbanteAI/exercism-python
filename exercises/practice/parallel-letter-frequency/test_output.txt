@@ -1,0 +1,109 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 7 items
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py F [ 14%]
+F.F.F.                                                                   [100%]
+
+=================================== FAILURES ===================================
+_____________ ParallelLetterFrequencyTest.test_case_insensitivity ______________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_case_insensitivity>
+
+    def test_case_insensitivity(self):
+        actual = calculate(['aA'])
+        expected = {'a': 2}
+>       self.assertDictEqual(actual, expected)
+E       AssertionError: {} != {'a': 2}
+E       - {}
+E       + {'a': 2}
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:17: AssertionError
+_______________ ParallelLetterFrequencyTest.test_multiline_text ________________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_multiline_text>
+
+    def test_multiline_text(self):
+        text_input = "3 Quotes from Excerism Homepage:\n" + \
+                     "\tOne moment you feel like you're\n" + \
+                     "getting it. The next moment you're\n" + \
+                     "stuck.\n" + \
+                     "\tYou know what it’s like to be fluent.\n" + \
+                     "Suddenly you’re feeling incompetent\n" + \
+                     "and clumsy.\n" + \
+                     "\tHaphazard, convoluted code is\n" + \
+                     "infuriating, not to mention costly. That\n" + \
+                     "slapdash explosion of complexity is an\n" + \
+                     "expensive yak shave waiting to\n" + \
+                     "happen."
+        actual = calculate(text_input.split('\n'))
+        expected = Counter([x for x in text_input.lower() if x.isalpha()])
+>       self.assertDictEqual(actual, expected)
+E       AssertionError: {} != Counter({'e': 35, 'o': 26, 't': 26, 'n': [174 chars]: 1})
+E       - {}
+E       + Counter({'e': 35,
+E       +          'o': 26,
+E       +          't': 26,
+E       +          'n': 23,
+E       +          'i': 19,
+E       +          'a': 15,
+E       +          's': 14,
+E       +          'u': 12,
+E       +          'l': 12,
+E       +          'm': 11,
+E       +          'y': 10,
+E       +          'h': 9,
+E       +          'p': 9,
+E       +          'c': 8,
+E       +          'r': 7,
+E       +          'd': 7,
+E       +          'f': 6,
+E       +          'g': 6,
+E       +          'x': 5,
+E       +          'k': 5,
+E       +          'w': 3,
+E       +          'v': 3,
+E       +          'q': 1,
+E       +          'b': 1,
+E       +          'z': 1})
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:57: AssertionError
+_________________ ParallelLetterFrequencyTest.test_one_letter __________________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_one_letter>
+
+    def test_one_letter(self):
+        actual = calculate(['a'])
+        expected = {'a': 1}
+>       self.assertDictEqual(actual, expected)
+E       AssertionError: {} != {'a': 1}
+E       - {}
+E       + {'a': 1}
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:12: AssertionError
+___ ParallelLetterFrequencyTest.test_repeated_string_with_known_frequencies ____
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_repeated_string_with_known_frequencies>
+
+    def test_repeated_string_with_known_frequencies(self):
+        letter_frequency = 3
+        text_input = 'abc\n' * letter_frequency
+        actual = calculate(text_input.split('\n'))
+        expected = {'a': letter_frequency, 'b': letter_frequency,
+                    'c': letter_frequency}
+>       self.assertDictEqual(actual, expected)
+E       AssertionError: {} != {'a': 3, 'b': 3, 'c': 3}
+E       - {}
+E       + {'a': 3, 'b': 3, 'c': 3}
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:40: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_case_insensitivity
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_multiline_text
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_one_letter
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_repeated_string_with_known_frequencies
+========================= 4 failed, 3 passed in 0.14s ==========================

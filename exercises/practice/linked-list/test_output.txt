@@ -1,0 +1,459 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 24 items
+
+exercises/practice/linked-list/linked_list_test.py FF..FFFFFFFFFFFFFFFF. [ 87%]
+F..                                                                      [100%]
+
+=================================== FAILURES ===================================
+___ LinkedListTest.test_can_return_with_pop_and_then_raise_an_error_if_empty ___
+
+self = <linked_list_test.LinkedListTest testMethod=test_can_return_with_pop_and_then_raise_an_error_if_empty>
+
+    def test_can_return_with_pop_and_then_raise_an_error_if_empty(self):
+        lst = LinkedList()
+        lst.push(1)
+        lst.unshift(5)
+>       self.assertEqual(lst.pop(), 1)
+
+exercises/practice/linked-list/linked_list_test.py:178: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fd3c8b0>
+
+    def pop(self):
+        if self.length == 0:
+            raise IndexError("List is empty")
+>       value = self.tail.value
+E       AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:26: AttributeError
+__ LinkedListTest.test_can_return_with_shift_and_then_raise_an_error_if_empty __
+
+self = <linked_list_test.LinkedListTest testMethod=test_can_return_with_shift_and_then_raise_an_error_if_empty>
+
+    def test_can_return_with_shift_and_then_raise_an_error_if_empty(self):
+        lst = LinkedList()
+        lst.push(1)
+        lst.unshift(5)
+>       self.assertEqual(lst.pop(), 1)
+
+exercises/practice/linked-list/linked_list_test.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fbb3f40>
+
+    def pop(self):
+        if self.length == 0:
+            raise IndexError("List is empty")
+>       value = self.tail.value
+E       AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:26: AttributeError
+_____________ LinkedListTest.test_count_is_correct_after_mutation ______________
+
+self = <linked_list_test.LinkedListTest testMethod=test_count_is_correct_after_mutation>
+
+    def test_count_is_correct_after_mutation(self):
+        lst = LinkedList()
+        lst.push(31)
+        self.assertEqual(len(lst), 1)
+        lst.unshift(43)
+        self.assertEqual(len(lst), 2)
+>       lst.shift()
+
+exercises/practice/linked-list/linked_list_test.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fbabb80>
+
+    def shift(self):
+        if self.length == 0:
+            raise IndexError("List is empty")
+>       value = self.head.value
+E       AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:39: AttributeError
+____________ LinkedListTest.test_deletes_only_the_first_occurrence _____________
+
+self = <linked_list_test.LinkedListTest testMethod=test_deletes_only_the_first_occurrence>
+
+    def test_deletes_only_the_first_occurrence(self):
+        lst = LinkedList()
+        lst.push(73)
+        lst.push(9)
+        lst.push(9)
+        lst.push(107)
+>       lst.delete(9)
+
+exercises/practice/linked-list/linked_list_test.py:160: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fbf3ac0>, value = 9
+
+    def delete(self, value):
+        current = self.head
+        while current:
+>           if current.value == value:
+E           AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:63: AttributeError
+_ LinkedListTest.test_deletes_the_element_with_the_specified_value_from_the_list _
+
+self = <linked_list_test.LinkedListTest testMethod=test_deletes_the_element_with_the_specified_value_from_the_list>
+
+    def test_deletes_the_element_with_the_specified_value_from_the_list(self):
+        lst = LinkedList()
+        lst.push(71)
+        lst.push(83)
+        lst.push(79)
+>       lst.delete(83)
+
+exercises/practice/linked-list/linked_list_test.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fbb36a0>, value = 83
+
+    def delete(self, value):
+        current = self.head
+        while current:
+>           if current.value == value:
+E           AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:63: AttributeError
+_ LinkedListTest.test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_head _
+
+self = <linked_list_test.LinkedListTest testMethod=test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_head>
+
+    def test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_head(
+        self,
+    ):
+        lst = LinkedList()
+        lst.push(71)
+        lst.push(83)
+        lst.push(79)
+>       lst.delete(83)
+
+exercises/practice/linked-list/linked_list_test.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fd9bf10>, value = 83
+
+    def delete(self, value):
+        current = self.head
+        while current:
+>           if current.value == value:
+E           AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:63: AttributeError
+_ LinkedListTest.test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_tail _
+
+self = <linked_list_test.LinkedListTest testMethod=test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_tail>
+
+    def test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_tail(
+        self,
+    ):
+        lst = LinkedList()
+        lst.push(71)
+        lst.push(83)
+        lst.push(79)
+>       lst.delete(83)
+
+exercises/practice/linked-list/linked_list_test.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fbab250>, value = 83
+
+    def delete(self, value):
+        current = self.head
+        while current:
+>           if current.value == value:
+E           AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:63: AttributeError
+____________ LinkedListTest.test_deletes_the_first_of_two_elements _____________
+
+self = <linked_list_test.LinkedListTest testMethod=test_deletes_the_first_of_two_elements>
+
+    def test_deletes_the_first_of_two_elements(self):
+        lst = LinkedList()
+        lst.push(97)
+        lst.push(101)
+>       lst.delete(97)
+
+exercises/practice/linked-list/linked_list_test.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fb9ce20>, value = 97
+
+    def delete(self, value):
+        current = self.head
+        while current:
+>           if current.value == value:
+E           AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:63: AttributeError
+_________________ LinkedListTest.test_deletes_the_only_element _________________
+
+self = <linked_list_test.LinkedListTest testMethod=test_deletes_the_only_element>
+
+    def test_deletes_the_only_element(self):
+        lst = LinkedList()
+        lst.push(61)
+>       lst.delete(61)
+
+exercises/practice/linked-list/linked_list_test.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fbaead0>, value = 61
+
+    def delete(self, value):
+        current = self.head
+        while current:
+>           if current.value == value:
+E           AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:63: AttributeError
+____________ LinkedListTest.test_deletes_the_second_of_two_elements ____________
+
+self = <linked_list_test.LinkedListTest testMethod=test_deletes_the_second_of_two_elements>
+
+    def test_deletes_the_second_of_two_elements(self):
+        lst = LinkedList()
+        lst.push(97)
+        lst.push(101)
+>       lst.delete(101)
+
+exercises/practice/linked-list/linked_list_test.py:150: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fbf0be0>, value = 101
+
+    def delete(self, value):
+        current = self.head
+        while current:
+>           if current.value == value:
+E           AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:63: AttributeError
+______________ LinkedListTest.test_pop_gets_element_from_the_list ______________
+
+self = <linked_list_test.LinkedListTest testMethod=test_pop_gets_element_from_the_list>
+
+    def test_pop_gets_element_from_the_list(self):
+        lst = LinkedList()
+        lst.push(7)
+>       self.assertEqual(lst.pop(), 7)
+
+exercises/practice/linked-list/linked_list_test.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fbb34c0>
+
+    def pop(self):
+        if self.length == 0:
+            raise IndexError("List is empty")
+>       value = self.tail.value
+E       AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:26: AttributeError
+___ LinkedListTest.test_pop_push_shift_and_unshift_can_be_used_in_any_order ____
+
+self = <linked_list_test.LinkedListTest testMethod=test_pop_push_shift_and_unshift_can_be_used_in_any_order>
+
+    def test_pop_push_shift_and_unshift_can_be_used_in_any_order(self):
+        lst = LinkedList()
+        lst.push(1)
+        lst.push(2)
+>       self.assertEqual(lst.pop(), 2)
+
+exercises/practice/linked-list/linked_list_test.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fbabb80>
+
+    def pop(self):
+        if self.length == 0:
+            raise IndexError("List is empty")
+>       value = self.tail.value
+E       AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:26: AttributeError
+_________ LinkedListTest.test_popping_to_empty_doesn_t_break_the_list __________
+
+self = <linked_list_test.LinkedListTest testMethod=test_popping_to_empty_doesn_t_break_the_list>
+
+    def test_popping_to_empty_doesn_t_break_the_list(self):
+        lst = LinkedList()
+        lst.push(41)
+        lst.push(59)
+>       lst.pop()
+
+exercises/practice/linked-list/linked_list_test.py:82: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fd15c30>
+
+    def pop(self):
+        if self.length == 0:
+            raise IndexError("List is empty")
+>       value = self.tail.value
+E       AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:26: AttributeError
+_ LinkedListTest.test_push_pop_respectively_add_remove_at_the_end_of_the_list __
+
+self = <linked_list_test.LinkedListTest testMethod=test_push_pop_respectively_add_remove_at_the_end_of_the_list>
+
+    def test_push_pop_respectively_add_remove_at_the_end_of_the_list(self):
+        lst = LinkedList()
+        lst.push(11)
+        lst.push(13)
+>       self.assertEqual(lst.pop(), 13)
+
+exercises/practice/linked-list/linked_list_test.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fbb2f50>
+
+    def pop(self):
+        if self.length == 0:
+            raise IndexError("List is empty")
+>       value = self.tail.value
+E       AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:26: AttributeError
+___________ LinkedListTest.test_shift_gets_an_element_from_the_list ____________
+
+self = <linked_list_test.LinkedListTest testMethod=test_shift_gets_an_element_from_the_list>
+
+    def test_shift_gets_an_element_from_the_list(self):
+        lst = LinkedList()
+        lst.push(17)
+>       self.assertEqual(lst.shift(), 17)
+
+exercises/practice/linked-list/linked_list_test.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fb9dae0>
+
+    def shift(self):
+        if self.length == 0:
+            raise IndexError("List is empty")
+>       value = self.head.value
+E       AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:39: AttributeError
+__________ LinkedListTest.test_shift_gets_first_element_from_the_list __________
+
+self = <linked_list_test.LinkedListTest testMethod=test_shift_gets_first_element_from_the_list>
+
+    def test_shift_gets_first_element_from_the_list(self):
+        lst = LinkedList()
+        lst.push(23)
+        lst.push(5)
+>       self.assertEqual(lst.shift(), 23)
+
+exercises/practice/linked-list/linked_list_test.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fbacc10>
+
+    def shift(self):
+        if self.length == 0:
+            raise IndexError("List is empty")
+>       value = self.head.value
+E       AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:39: AttributeError
+_________ LinkedListTest.test_shifting_to_empty_doesn_t_break_the_list _________
+
+self = <linked_list_test.LinkedListTest testMethod=test_shifting_to_empty_doesn_t_break_the_list>
+
+    def test_shifting_to_empty_doesn_t_break_the_list(self):
+        lst = LinkedList()
+        lst.push(41)
+        lst.push(59)
+>       lst.shift()
+
+exercises/practice/linked-list/linked_list_test.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fba9030>
+
+    def shift(self):
+        if self.length == 0:
+            raise IndexError("List is empty")
+>       value = self.head.value
+E       AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:39: AttributeError
+________ LinkedListTest.test_unshift_adds_element_at_start_of_the_list _________
+
+self = <linked_list_test.LinkedListTest testMethod=test_unshift_adds_element_at_start_of_the_list>
+
+    def test_unshift_adds_element_at_start_of_the_list(self):
+        lst = LinkedList()
+        lst.unshift(23)
+        lst.unshift(5)
+>       self.assertEqual(lst.shift(), 5)
+
+exercises/practice/linked-list/linked_list_test.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fbf2fb0>
+
+    def shift(self):
+        if self.length == 0:
+            raise IndexError("List is empty")
+>       value = self.head.value
+E       AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:39: AttributeError
+__ LinkedListTest.test_using_delete_raises_an_error_if_the_value_is_not_found __
+
+self = <linked_list_test.LinkedListTest testMethod=test_using_delete_raises_an_error_if_the_value_is_not_found>
+
+    def test_using_delete_raises_an_error_if_the_value_is_not_found(self):
+        lst = LinkedList()
+        lst.push(5)
+        lst.push(7)
+>       self.assertEqual(lst.pop(), 7)
+
+exercises/practice/linked-list/linked_list_test.py:214: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <linked_list.LinkedList object at 0x7fbc9fd994e0>
+
+    def pop(self):
+        if self.length == 0:
+            raise IndexError("List is empty")
+>       value = self.tail.value
+E       AttributeError: 'Node' object has no attribute 'value'
+
+exercises/practice/linked-list/linked_list.py:26: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_can_return_with_pop_and_then_raise_an_error_if_empty
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_can_return_with_shift_and_then_raise_an_error_if_empty
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_count_is_correct_after_mutation
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_deletes_only_the_first_occurrence
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_deletes_the_element_with_the_specified_value_from_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_head
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_deletes_the_element_with_the_specified_value_from_the_list_re_assigns_tail
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_deletes_the_first_of_two_elements
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_deletes_the_only_element
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_deletes_the_second_of_two_elements
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_pop_gets_element_from_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_pop_push_shift_and_unshift_can_be_used_in_any_order
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_popping_to_empty_doesn_t_break_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_push_pop_respectively_add_remove_at_the_end_of_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_shift_gets_an_element_from_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_shift_gets_first_element_from_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_shifting_to_empty_doesn_t_break_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_unshift_adds_element_at_start_of_the_list
+FAILED exercises/practice/linked-list/linked_list_test.py::LinkedListTest::test_using_delete_raises_an_error_if_the_value_is_not_found
+========================= 19 failed, 5 passed in 0.18s =========================

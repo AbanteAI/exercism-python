@@ -11,10 +11,31 @@ class Hangman:
         self.status = STATUS_ONGOING
 
     def guess(self, char):
-        pass
+        if self.status != STATUS_ONGOING:
+            raise ValueError("The game has already ended.")
+        if self.remaining_guesses == 0:
+            self.status = STATUS_LOSE
+        elif char not in self.word:
+            self.remaining_guesses -= 1
+            if self.remaining_guesses == 0:
+                self.status = STATUS_LOSE
+        elif self.get_masked_word() == self.word:
+            self.status = STATUS_WIN
+        if self.remaining_guesses == 0:
+            self.status = STATUS_LOSE
+        elif char not in self.word:
+            self.remaining_guesses -= 1
+            if self.remaining_guesses == 0:
+                self.status = STATUS_LOSE
+        elif self.get_masked_word() == self.word:
+            self.status = STATUS_WIN
 
-    def get_masked_word(self):
-        pass
+        masked_word = ""
+        for letter in self.word:
+            if letter in self.guesses:
+                masked_word += letter
+            else:
+                masked_word += "_"
+        return masked_word
 
-    def get_status(self):
-        pass
+        return self.status

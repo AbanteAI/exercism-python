@@ -1,0 +1,279 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 25 items
+
+exercises/practice/bob/bob_test.py FFFFFFFFFFFFFFFFFFFFFFFFF             [100%]
+
+=================================== FAILURES ===================================
+________________________ BobTest.test_alternate_silence ________________________
+
+self = <bob_test.BobTest testMethod=test_alternate_silence>
+
+    def test_alternate_silence(self):
+>       self.assertEqual(response("\t\t\t\t\t\t\t\t\t\t"), "Fine. Be that way!")
+E       AssertionError: None != 'Fine. Be that way!'
+
+exercises/practice/bob/bob_test.py:80: AssertionError
+____________________ BobTest.test_asking_a_numeric_question ____________________
+
+self = <bob_test.BobTest testMethod=test_asking_a_numeric_question>
+
+    def test_asking_a_numeric_question(self):
+>       self.assertEqual(response("You are, what, like 15?"), "Sure.")
+E       AssertionError: None != 'Sure.'
+
+exercises/practice/bob/bob_test.py:28: AssertionError
+________________________ BobTest.test_asking_a_question ________________________
+
+self = <bob_test.BobTest testMethod=test_asking_a_question>
+
+    def test_asking_a_question(self):
+>       self.assertEqual(
+            response("Does this cryogenic chamber make me look fat?"), "Sure."
+        )
+E       AssertionError: None != 'Sure.'
+
+exercises/practice/bob/bob_test.py:23: AssertionError
+________________________ BobTest.test_asking_gibberish _________________________
+
+self = <bob_test.BobTest testMethod=test_asking_gibberish>
+
+    def test_asking_gibberish(self):
+>       self.assertEqual(response("fffbbcbeab?"), "Sure.")
+E       AssertionError: None != 'Sure.'
+
+exercises/practice/bob/bob_test.py:31: AssertionError
+_____________________ BobTest.test_ending_with_whitespace ______________________
+
+self = <bob_test.BobTest testMethod=test_ending_with_whitespace>
+
+    def test_ending_with_whitespace(self):
+>       self.assertEqual(
+            response("Okay if like my  spacebar  quite a bit?   "), "Sure."
+        )
+E       AssertionError: None != 'Sure.'
+
+exercises/practice/bob/bob_test.py:92: AssertionError
+________________________ BobTest.test_forceful_question ________________________
+
+self = <bob_test.BobTest testMethod=test_forceful_question>
+
+    def test_forceful_question(self):
+>       self.assertEqual(
+            response("WHAT'S GOING ON?"), "Calm down, I know what I'm doing!"
+        )
+E       AssertionError: None != "Calm down, I know what I'm doing!"
+
+exercises/practice/bob/bob_test.py:42: AssertionError
+_____________________ BobTest.test_multiple_line_question ______________________
+
+self = <bob_test.BobTest testMethod=test_multiple_line_question>
+
+    def test_multiple_line_question(self):
+>       self.assertEqual(
+            response("\nDoes this cryogenic chamber make me look fat?\nNo."),
+            "Whatever.",
+        )
+E       AssertionError: None != 'Whatever.'
+
+exercises/practice/bob/bob_test.py:83: AssertionError
+___________________________ BobTest.test_no_letters ____________________________
+
+self = <bob_test.BobTest testMethod=test_no_letters>
+
+    def test_no_letters(self):
+>       self.assertEqual(response("1, 2, 3"), "Whatever.")
+E       AssertionError: None != 'Whatever.'
+
+exercises/practice/bob/bob_test.py:50: AssertionError
+____________________ BobTest.test_non_letters_with_question ____________________
+
+self = <bob_test.BobTest testMethod=test_non_letters_with_question>
+
+    def test_non_letters_with_question(self):
+>       self.assertEqual(response(":) ?"), "Sure.")
+E       AssertionError: None != 'Sure.'
+
+exercises/practice/bob/bob_test.py:68: AssertionError
+_______________ BobTest.test_non_question_ending_with_whitespace _______________
+
+self = <bob_test.BobTest testMethod=test_non_question_ending_with_whitespace>
+
+    def test_non_question_ending_with_whitespace(self):
+>       self.assertEqual(
+            response("This is a statement ending with whitespace      "), "Whatever."
+        )
+E       AssertionError: None != 'Whatever.'
+
+exercises/practice/bob/bob_test.py:100: AssertionError
+________________________ BobTest.test_other_whitespace _________________________
+
+self = <bob_test.BobTest testMethod=test_other_whitespace>
+
+    def test_other_whitespace(self):
+>       self.assertEqual(response("\n\r \t"), "Fine. Be that way!")
+E       AssertionError: None != 'Fine. Be that way!'
+
+exercises/practice/bob/bob_test.py:97: AssertionError
+__________________________ BobTest.test_prattling_on ___________________________
+
+self = <bob_test.BobTest testMethod=test_prattling_on>
+
+    def test_prattling_on(self):
+>       self.assertEqual(response("Wait! Hang on. Are you going to be OK?"), "Sure.")
+E       AssertionError: None != 'Sure.'
+
+exercises/practice/bob/bob_test.py:71: AssertionError
+________________________ BobTest.test_prolonged_silence ________________________
+
+self = <bob_test.BobTest testMethod=test_prolonged_silence>
+
+    def test_prolonged_silence(self):
+>       self.assertEqual(response("          "), "Fine. Be that way!")
+E       AssertionError: None != 'Fine. Be that way!'
+
+exercises/practice/bob/bob_test.py:77: AssertionError
+____________________ BobTest.test_question_with_no_letters _____________________
+
+self = <bob_test.BobTest testMethod=test_question_with_no_letters>
+
+    def test_question_with_no_letters(self):
+>       self.assertEqual(response("4?"), "Sure.")
+E       AssertionError: None != 'Sure.'
+
+exercises/practice/bob/bob_test.py:53: AssertionError
+____________________________ BobTest.test_shouting _____________________________
+
+self = <bob_test.BobTest testMethod=test_shouting>
+
+    def test_shouting(self):
+>       self.assertEqual(response("WATCH OUT!"), "Whoa, chill out!")
+E       AssertionError: None != 'Whoa, chill out!'
+
+exercises/practice/bob/bob_test.py:17: AssertionError
+_______________________ BobTest.test_shouting_gibberish ________________________
+
+self = <bob_test.BobTest testMethod=test_shouting_gibberish>
+
+    def test_shouting_gibberish(self):
+>       self.assertEqual(response("FCECDFCAAB"), "Whoa, chill out!")
+E       AssertionError: None != 'Whoa, chill out!'
+
+exercises/practice/bob/bob_test.py:20: AssertionError
+________________________ BobTest.test_shouting_numbers _________________________
+
+self = <bob_test.BobTest testMethod=test_shouting_numbers>
+
+    def test_shouting_numbers(self):
+>       self.assertEqual(response("1, 2, 3 GO!"), "Whoa, chill out!")
+E       AssertionError: None != 'Whoa, chill out!'
+
+exercises/practice/bob/bob_test.py:47: AssertionError
+________________ BobTest.test_shouting_with_no_exclamation_mark ________________
+
+self = <bob_test.BobTest testMethod=test_shouting_with_no_exclamation_mark>
+
+    def test_shouting_with_no_exclamation_mark(self):
+>       self.assertEqual(response("I HATE THE DENTIST"), "Whoa, chill out!")
+E       AssertionError: None != 'Whoa, chill out!'
+
+exercises/practice/bob/bob_test.py:62: AssertionError
+________________ BobTest.test_shouting_with_special_characters _________________
+
+self = <bob_test.BobTest testMethod=test_shouting_with_special_characters>
+
+    def test_shouting_with_special_characters(self):
+>       self.assertEqual(
+            response("ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!"),
+            "Whoa, chill out!",
+        )
+E       AssertionError: None != 'Whoa, chill out!'
+
+exercises/practice/bob/bob_test.py:56: AssertionError
+_____________________________ BobTest.test_silence _____________________________
+
+self = <bob_test.BobTest testMethod=test_silence>
+
+    def test_silence(self):
+>       self.assertEqual(response(""), "Fine. Be that way!")
+E       AssertionError: None != 'Fine. Be that way!'
+
+exercises/practice/bob/bob_test.py:74: AssertionError
+____________________ BobTest.test_starting_with_whitespace _____________________
+
+self = <bob_test.BobTest testMethod=test_starting_with_whitespace>
+
+    def test_starting_with_whitespace(self):
+>       self.assertEqual(response("         hmmmmmmm..."), "Whatever.")
+E       AssertionError: None != 'Whatever.'
+
+exercises/practice/bob/bob_test.py:89: AssertionError
+_______________ BobTest.test_statement_containing_question_mark ________________
+
+self = <bob_test.BobTest testMethod=test_statement_containing_question_mark>
+
+    def test_statement_containing_question_mark(self):
+>       self.assertEqual(response("Ending with ? means a question."), "Whatever.")
+E       AssertionError: None != 'Whatever.'
+
+exercises/practice/bob/bob_test.py:65: AssertionError
+________________________ BobTest.test_stating_something ________________________
+
+self = <bob_test.BobTest testMethod=test_stating_something>
+
+    def test_stating_something(self):
+>       self.assertEqual(response("Tom-ay-to, tom-aaaah-to."), "Whatever.")
+E       AssertionError: None != 'Whatever.'
+
+exercises/practice/bob/bob_test.py:14: AssertionError
+_______________________ BobTest.test_talking_forcefully ________________________
+
+self = <bob_test.BobTest testMethod=test_talking_forcefully>
+
+    def test_talking_forcefully(self):
+>       self.assertEqual(response("Hi there!"), "Whatever.")
+E       AssertionError: None != 'Whatever.'
+
+exercises/practice/bob/bob_test.py:34: AssertionError
+________________ BobTest.test_using_acronyms_in_regular_speech _________________
+
+self = <bob_test.BobTest testMethod=test_using_acronyms_in_regular_speech>
+
+    def test_using_acronyms_in_regular_speech(self):
+>       self.assertEqual(
+            response("It's OK if you don't want to go work for NASA."), "Whatever."
+        )
+E       AssertionError: None != 'Whatever.'
+
+exercises/practice/bob/bob_test.py:37: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_alternate_silence - ...
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_asking_a_numeric_question
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_asking_a_question - ...
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_asking_gibberish - A...
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_ending_with_whitespace
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_forceful_question - ...
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_multiple_line_question
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_no_letters - Asserti...
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_non_letters_with_question
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_non_question_ending_with_whitespace
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_other_whitespace - A...
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_prattling_on - Asser...
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_prolonged_silence - ...
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_question_with_no_letters
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_shouting - Assertion...
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_shouting_gibberish
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_shouting_numbers - A...
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_shouting_with_no_exclamation_mark
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_shouting_with_special_characters
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_silence - AssertionE...
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_starting_with_whitespace
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_statement_containing_question_mark
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_stating_something - ...
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_talking_forcefully
+FAILED exercises/practice/bob/bob_test.py::BobTest::test_using_acronyms_in_regular_speech
+============================== 25 failed in 0.09s ==============================

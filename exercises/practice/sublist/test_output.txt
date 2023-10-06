@@ -1,0 +1,23 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 22 items
+
+exercises/practice/sublist/sublist_test.py .....................F        [100%]
+
+=================================== FAILURES ===================================
+____________________ SublistTest.test_unique_return_values _____________________
+
+self = <sublist_test.SublistTest testMethod=test_unique_return_values>
+
+    def test_unique_return_values(self):
+>       self.assertEqual(len(set([SUBLIST, SUPERLIST, EQUAL, UNEQUAL])), 4)
+E       AssertionError: 1 != 4
+
+exercises/practice/sublist/sublist_test.py:73: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/sublist/sublist_test.py::SublistTest::test_unique_return_values
+========================= 1 failed, 21 passed in 0.06s =========================

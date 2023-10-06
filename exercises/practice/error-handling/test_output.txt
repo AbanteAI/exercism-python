@@ -1,0 +1,70 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 5 items
+
+exercises/practice/error-handling/error_handling_test.py FFFFF           [100%]
+
+=================================== FAILURES ===================================
+_______ ErrorHandlingTest.test_filelike_objects_are_closed_on_exception ________
+
+self = <error_handling_test.ErrorHandlingTest testMethod=test_filelike_objects_are_closed_on_exception>
+
+    def test_filelike_objects_are_closed_on_exception(self):
+        filelike_object = FileLike(fail_something=True)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+exercises/practice/error-handling/error_handling_test.py:30: AssertionError
+_____ ErrorHandlingTest.test_filelike_objects_are_closed_without_exception _____
+
+self = <error_handling_test.ErrorHandlingTest testMethod=test_filelike_objects_are_closed_without_exception>
+
+    def test_filelike_objects_are_closed_without_exception(self):
+        filelike_object = FileLike(fail_something=False)
+        er.filelike_objects_are_closed_on_exception(filelike_object)
+        self.assertIs(filelike_object.is_open, False,
+                      'filelike_object should be closed')
+>       self.assertIs(filelike_object.was_open, True,
+                      'filelike_object should have been opened')
+E       AssertionError: False is not True : filelike_object should have been opened
+
+exercises/practice/error-handling/error_handling_test.py:44: AssertionError
+______________________ ErrorHandlingTest.test_return_none ______________________
+
+self = <error_handling_test.ErrorHandlingTest testMethod=test_return_none>
+
+    def test_return_none(self):
+>       self.assertEqual(er.handle_error_by_returning_none('1'), 1,
+                         'Result of valid input should not be None')
+E       AssertionError: None != 1 : Result of valid input should not be None
+
+exercises/practice/error-handling/error_handling_test.py:13: AssertionError
+_____________________ ErrorHandlingTest.test_return_tuple ______________________
+
+self = <error_handling_test.ErrorHandlingTest testMethod=test_return_tuple>
+
+    def test_return_tuple(self):
+>       successful_result, result = er.handle_error_by_returning_tuple('1')
+E       TypeError: cannot unpack non-iterable NoneType object
+
+exercises/practice/error-handling/error_handling_test.py:19: TypeError
+____________________ ErrorHandlingTest.test_throw_exception ____________________
+
+self = <error_handling_test.ErrorHandlingTest testMethod=test_throw_exception>
+
+    def test_throw_exception(self):
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+exercises/practice/error-handling/error_handling_test.py:9: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/error-handling/error_handling_test.py::ErrorHandlingTest::test_filelike_objects_are_closed_on_exception
+FAILED exercises/practice/error-handling/error_handling_test.py::ErrorHandlingTest::test_filelike_objects_are_closed_without_exception
+FAILED exercises/practice/error-handling/error_handling_test.py::ErrorHandlingTest::test_return_none
+FAILED exercises/practice/error-handling/error_handling_test.py::ErrorHandlingTest::test_return_tuple
+FAILED exercises/practice/error-handling/error_handling_test.py::ErrorHandlingTest::test_throw_exception
+============================== 5 failed in 0.04s ===============================

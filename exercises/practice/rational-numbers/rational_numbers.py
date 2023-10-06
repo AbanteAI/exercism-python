@@ -1,31 +1,34 @@
 class Rational:
     def __init__(self, numer, denom):
-        self.numer = None
-        self.denom = None
+        self.numer = numer
+        self.denom = denom
 
-    def __eq__(self, other):
-        return self.numer == other.numer and self.denom == other.denom
-
-    def __repr__(self):
+        if isinstance(self, Rational) and isinstance(other, Rational):
+            return self.numer == other.numer and self.denom == other.denom
+        return False
         return f'{self.numer}/{self.denom}'
+        new_numer = self.numer * other.denom + other.numer * self.denom
+        new_denom = self.denom * other.denom
+        return Rational(new_numer, new_denom)
 
-    def __add__(self, other):
-        pass
+        new_numer = self.numer * other.denom - other.numer * self.denom
+        new_denom = self.denom * other.denom
+        return Rational(new_numer, new_denom)
 
-    def __sub__(self, other):
-        pass
+        new_numer = self.numer * other.numer
+        new_denom = self.denom * other.denom
+        return Rational(new_numer, new_denom)
 
-    def __mul__(self, other):
-        pass
+        new_numer = self.numer * other.denom
+        new_denom = self.denom * other.numer
+        return Rational(new_numer, new_denom)
 
-    def __truediv__(self, other):
-        pass
+        new_numer = abs(self.numer)
+        new_denom = abs(self.denom)
+        return Rational(new_numer, new_denom)
 
-    def __abs__(self):
-        pass
+        new_numer = self.numer ** power
+        new_denom = self.denom ** power
+        return Rational(new_numer, new_denom)
 
-    def __pow__(self, power):
-        pass
-
-    def __rpow__(self, base):
-        pass
+        return base ** (self.numer / self.denom)

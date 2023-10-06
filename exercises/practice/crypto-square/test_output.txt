@@ -1,0 +1,107 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 8 items
+
+exercises/practice/crypto-square/crypto_square_test.py FFFF.F..          [100%]
+
+=================================== FAILURES ===================================
+_ CryptoSquareTest.test_54_character_plaintext_results_in_7_chunks_the_last_two_with_trailing_spaces _
+
+self = <crypto_square_test.CryptoSquareTest testMethod=test_54_character_plaintext_results_in_7_chunks_the_last_two_with_trailing_spaces>
+
+    def test_54_character_plaintext_results_in_7_chunks_the_last_two_with_trailing_spaces(
+        self,
+    ):
+        value = "If man was meant to stay on the ground, god would have given us roots."
+        expected = "imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau "
+>       self.assertEqual(cipher_text(value), expected)
+E       AssertionError: 'ifmanwas meanttos tayonthe groundgo dwouldha vegivenu sroots' != 'imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau '
+E       - ifmanwas meanttos tayonthe groundgo dwouldha vegivenu sroots
+E       + imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau
+
+exercises/practice/crypto-square/crypto_square_test.py:55: AssertionError
+_ CryptoSquareTest.test_8_character_plaintext_results_in_3_chunks_the_last_one_with_a_trailing_space _
+
+self = <crypto_square_test.CryptoSquareTest testMethod=test_8_character_plaintext_results_in_3_chunks_the_last_one_with_a_trailing_space>
+
+    def test_8_character_plaintext_results_in_3_chunks_the_last_one_with_a_trailing_space(
+        self,
+    ):
+        value = "Chill out."
+        expected = "clu hlt io "
+>       self.assertEqual(cipher_text(value), expected)
+E       AssertionError: 'chi llo ut' != 'clu hlt io '
+E       - chi llo ut
+E       + clu hlt io
+
+exercises/practice/crypto-square/crypto_square_test.py:48: AssertionError
+_ CryptoSquareTest.test_9_character_plaintext_results_in_3_chunks_of_3_characters _
+
+self = <crypto_square_test.CryptoSquareTest testMethod=test_9_character_plaintext_results_in_3_chunks_of_3_characters>
+
+    def test_9_character_plaintext_results_in_3_chunks_of_3_characters(self):
+        value = "This is fun!"
+        expected = "tsf hiu isn"
+>       self.assertEqual(cipher_text(value), expected)
+E       AssertionError: 'thi sis fun' != 'tsf hiu isn'
+E       - thi sis fun
+E       + tsf hiu isn
+
+exercises/practice/crypto-square/crypto_square_test.py:41: AssertionError
+_____ CryptoSquareTest.test_empty_plaintext_results_in_an_empty_ciphertext _____
+
+self = <crypto_square_test.CryptoSquareTest testMethod=test_empty_plaintext_results_in_an_empty_ciphertext>
+
+    def test_empty_plaintext_results_in_an_empty_ciphertext(self):
+        value = ""
+        expected = ""
+>       self.assertEqual(cipher_text(value), expected)
+
+exercises/practice/crypto-square/crypto_square_test.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+plain_text = ''
+
+    def cipher_text(plain_text):
+        normalized_text = ''.join(ch.lower() for ch in plain_text if ch.isalnum())
+        text_length = len(normalized_text)
+        rows = int(text_length ** 0.5)
+        cols = rows + 1 if rows * rows < text_length else rows
+>       chunks = [normalized_text[i:i+cols] for i in range(0, text_length, cols)]
+E       ValueError: range() arg 3 must not be zero
+
+exercises/practice/crypto-square/crypto_square.py:6: ValueError
+________ CryptoSquareTest.test_normalization_results_in_empty_plaintext ________
+
+self = <crypto_square_test.CryptoSquareTest testMethod=test_normalization_results_in_empty_plaintext>
+
+    def test_normalization_results_in_empty_plaintext(self):
+        value = "... --- ..."
+        expected = ""
+>       self.assertEqual(cipher_text(value), expected)
+
+exercises/practice/crypto-square/crypto_square_test.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+plain_text = '... --- ...'
+
+    def cipher_text(plain_text):
+        normalized_text = ''.join(ch.lower() for ch in plain_text if ch.isalnum())
+        text_length = len(normalized_text)
+        rows = int(text_length ** 0.5)
+        cols = rows + 1 if rows * rows < text_length else rows
+>       chunks = [normalized_text[i:i+cols] for i in range(0, text_length, cols)]
+E       ValueError: range() arg 3 must not be zero
+
+exercises/practice/crypto-square/crypto_square.py:6: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/crypto-square/crypto_square_test.py::CryptoSquareTest::test_54_character_plaintext_results_in_7_chunks_the_last_two_with_trailing_spaces
+FAILED exercises/practice/crypto-square/crypto_square_test.py::CryptoSquareTest::test_8_character_plaintext_results_in_3_chunks_the_last_one_with_a_trailing_space
+FAILED exercises/practice/crypto-square/crypto_square_test.py::CryptoSquareTest::test_9_character_plaintext_results_in_3_chunks_of_3_characters
+FAILED exercises/practice/crypto-square/crypto_square_test.py::CryptoSquareTest::test_empty_plaintext_results_in_an_empty_ciphertext
+FAILED exercises/practice/crypto-square/crypto_square_test.py::CryptoSquareTest::test_normalization_results_in_empty_plaintext
+========================= 5 failed, 3 passed in 0.05s ==========================

@@ -1,0 +1,23 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 29 items
+
+exercises/practice/yacht/yacht_test.py .........F...................     [100%]
+
+=================================== FAILURES ===================================
+________________ YachtTest.test_full_house_three_small_two_big _________________
+
+self = <yacht_test.YachtTest testMethod=test_full_house_three_small_two_big>
+
+    def test_full_house_three_small_two_big(self):
+>       self.assertEqual(yacht.score([5, 3, 3, 5, 3], yacht.FULL_HOUSE), 19)
+E       AssertionError: 0 != 19
+
+exercises/practice/yacht/yacht_test.py:47: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/yacht/yacht_test.py::YachtTest::test_full_house_three_small_two_big
+========================= 1 failed, 28 passed in 0.06s =========================

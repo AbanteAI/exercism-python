@@ -1,0 +1,2025 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 48 items
+
+exercises/practice/forth/forth_test.py F.FFFFFFFFFFF.FFFFFFFFF.FFFFFFFF. [ 68%]
+FFFFFFFFFFFFFFF                                                          [100%]
+
+=================================== FAILURES ===================================
+_________________ ForthTest.test_addition_can_add_two_numbers __________________
+
+self = <forth_test.ForthTest testMethod=test_addition_can_add_two_numbers>
+
+    def test_addition_can_add_two_numbers(self):
+>       self.assertEqual(evaluate(["1 2 +"]), [3])
+
+exercises/practice/forth/forth_test.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 2 +']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 2 +
+
+exercises/practice/forth/forth.py:36: ValueError
+____ ForthTest.test_addition_errors_if_there_is_only_one_value_on_the_stack ____
+
+self = <forth_test.ForthTest testMethod=test_addition_errors_if_there_is_only_one_value_on_the_stack>
+
+    def test_addition_errors_if_there_is_only_one_value_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+>           evaluate(["1 +"])
+
+exercises/practice/forth/forth_test.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 +
+
+exercises/practice/forth/forth.py:36: ValueError
+______ ForthTest.test_case_insensitivity_definitions_are_case_insensitive ______
+
+self = <forth_test.ForthTest testMethod=test_case_insensitivity_definitions_are_case_insensitive>
+
+    def test_case_insensitivity_definitions_are_case_insensitive(self):
+>       self.assertEqual(evaluate([": SWAP DUP Dup dup ;", "1 swap"]), [1, 1, 1, 1])
+
+exercises/practice/forth/forth_test.py:245: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': SWAP DUP Dup dup ;', '1 swap']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: : SWAP DUP Dup dup ;
+
+exercises/practice/forth/forth.py:36: ValueError
+__________ ForthTest.test_case_insensitivity_drop_is_case_insensitive __________
+
+self = <forth_test.ForthTest testMethod=test_case_insensitivity_drop_is_case_insensitive>
+
+    def test_case_insensitivity_drop_is_case_insensitive(self):
+>       self.assertEqual(evaluate(["1 2 3 4 DROP Drop drop"]), [1])
+
+exercises/practice/forth/forth_test.py:233: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 2 3 4 DROP Drop drop']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 2 3 4 DROP Drop drop
+
+exercises/practice/forth/forth.py:36: ValueError
+__________ ForthTest.test_case_insensitivity_dup_is_case_insensitive ___________
+
+self = <forth_test.ForthTest testMethod=test_case_insensitivity_dup_is_case_insensitive>
+
+    def test_case_insensitivity_dup_is_case_insensitive(self):
+>       self.assertEqual(evaluate(["1 DUP Dup dup"]), [1, 1, 1, 1])
+
+exercises/practice/forth/forth_test.py:230: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 DUP Dup dup']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 DUP Dup dup
+
+exercises/practice/forth/forth.py:36: ValueError
+__________ ForthTest.test_case_insensitivity_over_is_case_insensitive __________
+
+self = <forth_test.ForthTest testMethod=test_case_insensitivity_over_is_case_insensitive>
+
+    def test_case_insensitivity_over_is_case_insensitive(self):
+>       self.assertEqual(evaluate(["1 2 OVER Over over"]), [1, 2, 1, 2, 1])
+
+exercises/practice/forth/forth_test.py:239: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 2 OVER Over over']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 2 OVER Over over
+
+exercises/practice/forth/forth.py:36: ValueError
+__________ ForthTest.test_case_insensitivity_swap_is_case_insensitive __________
+
+self = <forth_test.ForthTest testMethod=test_case_insensitivity_swap_is_case_insensitive>
+
+    def test_case_insensitivity_swap_is_case_insensitive(self):
+>       self.assertEqual(evaluate(["1 2 SWAP 3 Swap 4 swap"]), [2, 3, 4, 1])
+
+exercises/practice/forth/forth_test.py:236: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 2 SWAP 3 Swap 4 swap']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 2 SWAP 3 Swap 4 swap
+
+exercises/practice/forth/forth.py:36: ValueError
+__ ForthTest.test_case_insensitivity_user_defined_words_are_case_insensitive ___
+
+self = <forth_test.ForthTest testMethod=test_case_insensitivity_user_defined_words_are_case_insensitive>
+
+    def test_case_insensitivity_user_defined_words_are_case_insensitive(self):
+>       self.assertEqual(evaluate([": foo dup ;", "1 FOO Foo foo"]), [1, 1, 1, 1])
+
+exercises/practice/forth/forth_test.py:242: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': foo dup ;', '1 FOO Foo foo']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: : foo dup ;
+
+exercises/practice/forth/forth.py:36: ValueError
+_________ ForthTest.test_combined_arithmetic_addition_and_subtraction __________
+
+self = <forth_test.ForthTest testMethod=test_combined_arithmetic_addition_and_subtraction>
+
+    def test_combined_arithmetic_addition_and_subtraction(self):
+>       self.assertEqual(evaluate(["1 2 + 4 -"]), [-1])
+
+exercises/practice/forth/forth_test.py:107: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 2 + 4 -']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 2 + 4 -
+
+exercises/practice/forth/forth.py:36: ValueError
+________ ForthTest.test_combined_arithmetic_multiplication_and_division ________
+
+self = <forth_test.ForthTest testMethod=test_combined_arithmetic_multiplication_and_division>
+
+    def test_combined_arithmetic_multiplication_and_division(self):
+>       self.assertEqual(evaluate(["2 4 * 3 /"]), [2])
+
+exercises/practice/forth/forth_test.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['2 4 * 3 /']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 2 4 * 3 /
+
+exercises/practice/forth/forth.py:36: ValueError
+________________ ForthTest.test_division_can_divide_two_numbers ________________
+
+self = <forth_test.ForthTest testMethod=test_division_can_divide_two_numbers>
+
+    def test_division_can_divide_two_numbers(self):
+>       self.assertEqual(evaluate(["12 3 /"]), [4])
+
+exercises/practice/forth/forth_test.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['12 3 /']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 12 3 /
+
+exercises/practice/forth/forth.py:36: ValueError
+______________ ForthTest.test_division_errors_if_dividing_by_zero ______________
+
+self = <forth_test.ForthTest testMethod=test_division_errors_if_dividing_by_zero>
+
+    def test_division_errors_if_dividing_by_zero(self):
+        # divide by zero
+        with self.assertRaises(ZeroDivisionError) as err:
+>           evaluate(["4 0 /"])
+
+exercises/practice/forth/forth_test.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 4 0 /
+
+exercises/practice/forth/forth.py:36: ValueError
+____ ForthTest.test_division_errors_if_there_is_only_one_value_on_the_stack ____
+
+self = <forth_test.ForthTest testMethod=test_division_errors_if_there_is_only_one_value_on_the_stack>
+
+    def test_division_errors_if_there_is_only_one_value_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+>           evaluate(["1 /"])
+
+exercises/practice/forth/forth_test.py:100: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 /
+
+exercises/practice/forth/forth.py:36: ValueError
+______________ ForthTest.test_division_performs_integer_division _______________
+
+self = <forth_test.ForthTest testMethod=test_division_performs_integer_division>
+
+    def test_division_performs_integer_division(self):
+>       self.assertEqual(evaluate(["8 3 /"]), [2])
+
+exercises/practice/forth/forth_test.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['8 3 /']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 8 3 /
+
+exercises/practice/forth/forth.py:36: ValueError
+_________ ForthTest.test_drop_errors_if_there_is_nothing_on_the_stack __________
+
+self = <forth_test.ForthTest testMethod=test_drop_errors_if_there_is_nothing_on_the_stack>
+
+    def test_drop_errors_if_there_is_nothing_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+>           evaluate(["drop"])
+
+exercises/practice/forth/forth_test.py:134: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: drop
+
+exercises/practice/forth/forth.py:36: ValueError
+_ ForthTest.test_drop_removes_the_top_value_on_the_stack_if_it_is_not_the_only_one _
+
+self = <forth_test.ForthTest testMethod=test_drop_removes_the_top_value_on_the_stack_if_it_is_not_the_only_one>
+
+    def test_drop_removes_the_top_value_on_the_stack_if_it_is_not_the_only_one(self):
+>       self.assertEqual(evaluate(["1 2 drop"]), [1])
+
+exercises/practice/forth/forth_test.py:130: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 2 drop']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 2 drop
+
+exercises/practice/forth/forth.py:36: ValueError
+_ ForthTest.test_drop_removes_the_top_value_on_the_stack_if_it_is_the_only_one _
+
+self = <forth_test.ForthTest testMethod=test_drop_removes_the_top_value_on_the_stack_if_it_is_the_only_one>
+
+    def test_drop_removes_the_top_value_on_the_stack_if_it_is_the_only_one(self):
+>       self.assertEqual(evaluate(["1 drop"]), [])
+
+exercises/practice/forth/forth_test.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 drop']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 drop
+
+exercises/practice/forth/forth.py:36: ValueError
+________________ ForthTest.test_dup_copies_a_value_on_the_stack ________________
+
+self = <forth_test.ForthTest testMethod=test_dup_copies_a_value_on_the_stack>
+
+    def test_dup_copies_a_value_on_the_stack(self):
+>       self.assertEqual(evaluate(["1 dup"]), [1, 1])
+
+exercises/practice/forth/forth_test.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 dup']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 dup
+
+exercises/practice/forth/forth.py:36: ValueError
+_____________ ForthTest.test_dup_copies_the_top_value_on_the_stack _____________
+
+self = <forth_test.ForthTest testMethod=test_dup_copies_the_top_value_on_the_stack>
+
+    def test_dup_copies_the_top_value_on_the_stack(self):
+>       self.assertEqual(evaluate(["1 2 dup"]), [1, 2, 2])
+
+exercises/practice/forth/forth_test.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 2 dup']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 2 dup
+
+exercises/practice/forth/forth.py:36: ValueError
+__________ ForthTest.test_dup_errors_if_there_is_nothing_on_the_stack __________
+
+self = <forth_test.ForthTest testMethod=test_dup_errors_if_there_is_nothing_on_the_stack>
+
+    def test_dup_errors_if_there_is_nothing_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+>           evaluate(["dup"])
+
+exercises/practice/forth/forth_test.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: dup
+
+exercises/practice/forth/forth.py:36: ValueError
+____________ ForthTest.test_multiplication_can_multiply_two_numbers ____________
+
+self = <forth_test.ForthTest testMethod=test_multiplication_can_multiply_two_numbers>
+
+    def test_multiplication_can_multiply_two_numbers(self):
+>       self.assertEqual(evaluate(["2 4 *"]), [8])
+
+exercises/practice/forth/forth_test.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['2 4 *']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 2 4 *
+
+exercises/practice/forth/forth.py:36: ValueError
+_ ForthTest.test_multiplication_errors_if_there_is_only_one_value_on_the_stack _
+
+self = <forth_test.ForthTest testMethod=test_multiplication_errors_if_there_is_only_one_value_on_the_stack>
+
+    def test_multiplication_errors_if_there_is_only_one_value_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+>           evaluate(["1 *"])
+
+exercises/practice/forth/forth_test.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 *
+
+exercises/practice/forth/forth.py:36: ValueError
+___ ForthTest.test_over_copies_the_second_element_if_there_are_more_than_two ___
+
+self = <forth_test.ForthTest testMethod=test_over_copies_the_second_element_if_there_are_more_than_two>
+
+    def test_over_copies_the_second_element_if_there_are_more_than_two(self):
+>       self.assertEqual(evaluate(["1 2 3 over"]), [1, 2, 3, 2])
+
+exercises/practice/forth/forth_test.py:168: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 2 3 over']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 2 3 over
+
+exercises/practice/forth/forth.py:36: ValueError
+_____ ForthTest.test_over_copies_the_second_element_if_there_are_only_two ______
+
+self = <forth_test.ForthTest testMethod=test_over_copies_the_second_element_if_there_are_only_two>
+
+    def test_over_copies_the_second_element_if_there_are_only_two(self):
+>       self.assertEqual(evaluate(["1 2 over"]), [1, 2, 1])
+
+exercises/practice/forth/forth_test.py:165: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 2 over']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 2 over
+
+exercises/practice/forth/forth.py:36: ValueError
+_________ ForthTest.test_over_errors_if_there_is_nothing_on_the_stack __________
+
+self = <forth_test.ForthTest testMethod=test_over_errors_if_there_is_nothing_on_the_stack>
+
+    def test_over_errors_if_there_is_nothing_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+>           evaluate(["over"])
+
+exercises/practice/forth/forth_test.py:172: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: over
+
+exercises/practice/forth/forth.py:36: ValueError
+______ ForthTest.test_over_errors_if_there_is_only_one_value_on_the_stack ______
+
+self = <forth_test.ForthTest testMethod=test_over_errors_if_there_is_only_one_value_on_the_stack>
+
+    def test_over_errors_if_there_is_only_one_value_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+>           evaluate(["1 over"])
+
+exercises/practice/forth/forth_test.py:180: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 over
+
+exercises/practice/forth/forth.py:36: ValueError
+__ ForthTest.test_parsing_and_numbers_numbers_just_get_pushed_onto_the_stack ___
+
+self = <forth_test.ForthTest testMethod=test_parsing_and_numbers_numbers_just_get_pushed_onto_the_stack>
+
+    def test_parsing_and_numbers_numbers_just_get_pushed_onto_the_stack(self):
+>       self.assertEqual(evaluate(["1 2 3 4 5"]), [1, 2, 3, 4, 5])
+
+exercises/practice/forth/forth_test.py:15: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 2 3 4 5']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 2 3 4 5
+
+exercises/practice/forth/forth.py:36: ValueError
+__ ForthTest.test_parsing_and_numbers_pushes_negative_numbers_onto_the_stack ___
+
+self = <forth_test.ForthTest testMethod=test_parsing_and_numbers_pushes_negative_numbers_onto_the_stack>
+
+    def test_parsing_and_numbers_pushes_negative_numbers_onto_the_stack(self):
+>       self.assertEqual(evaluate(["-1 -2 -3 -4 -5"]), [-1, -2, -3, -4, -5])
+
+exercises/practice/forth/forth_test.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['-1 -2 -3 -4 -5']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: -1 -2 -3 -4 -5
+
+exercises/practice/forth/forth.py:36: ValueError
+_____________ ForthTest.test_subtraction_can_subtract_two_numbers ______________
+
+self = <forth_test.ForthTest testMethod=test_subtraction_can_subtract_two_numbers>
+
+    def test_subtraction_can_subtract_two_numbers(self):
+>       self.assertEqual(evaluate(["3 4 -"]), [-1])
+
+exercises/practice/forth/forth_test.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['3 4 -']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 3 4 -
+
+exercises/practice/forth/forth.py:36: ValueError
+__ ForthTest.test_subtraction_errors_if_there_is_only_one_value_on_the_stack ___
+
+self = <forth_test.ForthTest testMethod=test_subtraction_errors_if_there_is_only_one_value_on_the_stack>
+
+    def test_subtraction_errors_if_there_is_only_one_value_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+>           evaluate(["1 -"])
+
+exercises/practice/forth/forth_test.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 -
+
+exercises/practice/forth/forth.py:36: ValueError
+_________ ForthTest.test_swap_errors_if_there_is_nothing_on_the_stack __________
+
+self = <forth_test.ForthTest testMethod=test_swap_errors_if_there_is_nothing_on_the_stack>
+
+    def test_swap_errors_if_there_is_nothing_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+>           evaluate(["swap"])
+
+exercises/practice/forth/forth_test.py:150: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: swap
+
+exercises/practice/forth/forth.py:36: ValueError
+______ ForthTest.test_swap_errors_if_there_is_only_one_value_on_the_stack ______
+
+self = <forth_test.ForthTest testMethod=test_swap_errors_if_there_is_only_one_value_on_the_stack>
+
+    def test_swap_errors_if_there_is_only_one_value_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+>           evaluate(["1 swap"])
+
+exercises/practice/forth/forth_test.py:158: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 swap
+
+exercises/practice/forth/forth.py:36: ValueError
+_ ForthTest.test_swap_swaps_the_top_two_values_on_the_stack_if_they_are_not_the_only_ones _
+
+self = <forth_test.ForthTest testMethod=test_swap_swaps_the_top_two_values_on_the_stack_if_they_are_not_the_only_ones>
+
+    def test_swap_swaps_the_top_two_values_on_the_stack_if_they_are_not_the_only_ones(
+        self,
+    ):
+>       self.assertEqual(evaluate(["1 2 3 swap"]), [1, 3, 2])
+
+exercises/practice/forth/forth_test.py:146: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 2 3 swap']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 2 3 swap
+
+exercises/practice/forth/forth.py:36: ValueError
+_ ForthTest.test_swap_swaps_the_top_two_values_on_the_stack_if_they_are_the_only_ones _
+
+self = <forth_test.ForthTest testMethod=test_swap_swaps_the_top_two_values_on_the_stack_if_they_are_the_only_ones>
+
+    def test_swap_swaps_the_top_two_values_on_the_stack_if_they_are_the_only_ones(self):
+>       self.assertEqual(evaluate(["1 2 swap"]), [2, 1])
+
+exercises/practice/forth/forth_test.py:141: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['1 2 swap']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: 1 2 swap
+
+exercises/practice/forth/forth.py:36: ValueError
+_______ ForthTest.test_user_defined_words_can_consist_of_built_in_words ________
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_consist_of_built_in_words>
+
+    def test_user_defined_words_can_consist_of_built_in_words(self):
+>       self.assertEqual(evaluate([": dup-twice dup dup ;", "1 dup-twice"]), [1, 1, 1])
+
+exercises/practice/forth/forth_test.py:187: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': dup-twice dup dup ;', '1 dup-twice']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: : dup-twice dup dup ;
+
+exercises/practice/forth/forth.py:36: ValueError
+_ ForthTest.test_user_defined_words_can_define_word_that_uses_word_with_the_same_name _
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_define_word_that_uses_word_with_the_same_name>
+
+    def test_user_defined_words_can_define_word_that_uses_word_with_the_same_name(self):
+>       self.assertEqual(evaluate([": foo 10 ;", ": foo foo 1 + ;", "foo"]), [11])
+
+exercises/practice/forth/forth_test.py:209: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': foo 10 ;', ': foo foo 1 + ;', 'foo']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: : foo 10 ;
+
+exercises/practice/forth/forth.py:36: ValueError
+______ ForthTest.test_user_defined_words_can_override_built_in_operators _______
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_override_built_in_operators>
+
+    def test_user_defined_words_can_override_built_in_operators(self):
+>       self.assertEqual(evaluate([": + * ;", "3 4 +"]), [12])
+
+exercises/practice/forth/forth_test.py:201: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': + * ;', '3 4 +']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: : + * ;
+
+exercises/practice/forth/forth.py:36: ValueError
+________ ForthTest.test_user_defined_words_can_override_built_in_words _________
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_override_built_in_words>
+
+    def test_user_defined_words_can_override_built_in_words(self):
+>       self.assertEqual(evaluate([": swap dup ;", "1 swap"]), [1, 1])
+
+exercises/practice/forth/forth_test.py:198: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': swap dup ;', '1 swap']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: : swap dup ;
+
+exercises/practice/forth/forth.py:36: ValueError
+___ ForthTest.test_user_defined_words_can_override_other_user_defined_words ____
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_override_other_user_defined_words>
+
+    def test_user_defined_words_can_override_other_user_defined_words(self):
+        self.assertEqual(
+>           evaluate([": foo dup ;", ": foo dup dup ;", "1 foo"]), [1, 1, 1]
+        )
+
+exercises/practice/forth/forth_test.py:194: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': foo dup ;', ': foo dup dup ;', '1 foo']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: : foo dup ;
+
+exercises/practice/forth/forth.py:36: ValueError
+_ ForthTest.test_user_defined_words_can_use_different_words_with_the_same_name _
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_use_different_words_with_the_same_name>
+
+    def test_user_defined_words_can_use_different_words_with_the_same_name(self):
+        self.assertEqual(
+>           evaluate([": foo 5 ;", ": bar foo ;", ": foo 6 ;", "bar foo"]), [5, 6]
+        )
+
+exercises/practice/forth/forth_test.py:205: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': foo 5 ;', ': bar foo ;', ': foo 6 ;', 'bar foo']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: : foo 5 ;
+
+exercises/practice/forth/forth.py:36: ValueError
+______ ForthTest.test_user_defined_words_cannot_redefine_negative_numbers ______
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_cannot_redefine_negative_numbers>
+
+    def test_user_defined_words_cannot_redefine_negative_numbers(self):
+        with self.assertRaises(ValueError) as err:
+            evaluate([": -1 2 ;"])
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(str(err.exception.args[0]), "illegal operation")
+E       AssertionError: 'Undefined operation: : -1 2 ;' != 'illegal operation'
+E       - Undefined operation: : -1 2 ;
+E       + illegal operation
+
+exercises/practice/forth/forth_test.py:221: AssertionError
+____ ForthTest.test_user_defined_words_cannot_redefine_non_negative_numbers ____
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_cannot_redefine_non_negative_numbers>
+
+    def test_user_defined_words_cannot_redefine_non_negative_numbers(self):
+        with self.assertRaises(ValueError) as err:
+            evaluate([": 1 2 ;"])
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(str(err.exception.args[0]), "illegal operation")
+E       AssertionError: 'Undefined operation: : 1 2 ;' != 'illegal operation'
+E       - Undefined operation: : 1 2 ;
+E       + illegal operation
+
+exercises/practice/forth/forth_test.py:215: AssertionError
+__ ForthTest.test_user_defined_words_errors_if_executing_a_non_existent_word ___
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_errors_if_executing_a_non_existent_word>
+
+    def test_user_defined_words_errors_if_executing_a_non_existent_word(self):
+        with self.assertRaises(ValueError) as err:
+            evaluate(["foo"])
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(str(err.exception.args[0]), "undefined operation")
+E       AssertionError: 'Undefined operation: foo' != 'undefined operation'
+E       - Undefined operation: foo
+E       ? ^                  -----
+E       + undefined operation
+E       ? ^
+
+exercises/practice/forth/forth_test.py:227: AssertionError
+_________ ForthTest.test_user_defined_words_execute_in_the_right_order _________
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_execute_in_the_right_order>
+
+    def test_user_defined_words_execute_in_the_right_order(self):
+>       self.assertEqual(evaluate([": countup 1 2 3 ;", "countup"]), [1, 2, 3])
+
+exercises/practice/forth/forth_test.py:190: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': countup 1 2 3 ;', 'countup']
+
+    def evaluate(input_data):
+        stack = Stack()
+        words = input_data
+        for word in words:
+            if word.isdigit():
+                stack.push(int(word))
+            elif word == "+":
+                stack.push(stack.pop() + stack.pop())
+            elif word == "-":
+                stack.push(-stack.pop() + stack.pop())
+            elif word == "*":
+                stack.push(stack.pop() * stack.pop())
+            elif word == "/":
+                divisor = stack.pop()
+                stack.push(stack.pop() // divisor)
+            elif word == "DUP":
+                stack.push(stack.peek())
+            elif word == "DROP":
+                stack.pop()
+            elif word == "SWAP":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(a)
+                stack.push(b)
+            elif word == "OVER":
+                a = stack.pop()
+                b = stack.pop()
+                stack.push(b)
+                stack.push(a)
+                stack.push(b)
+            else:
+>               raise ValueError(f"Undefined operation: {word}")
+E               ValueError: Undefined operation: : countup 1 2 3 ;
+
+exercises/practice/forth/forth.py:36: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_addition_can_add_two_numbers
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_addition_errors_if_there_is_only_one_value_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_case_insensitivity_definitions_are_case_insensitive
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_case_insensitivity_drop_is_case_insensitive
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_case_insensitivity_dup_is_case_insensitive
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_case_insensitivity_over_is_case_insensitive
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_case_insensitivity_swap_is_case_insensitive
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_case_insensitivity_user_defined_words_are_case_insensitive
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_combined_arithmetic_addition_and_subtraction
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_combined_arithmetic_multiplication_and_division
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_division_can_divide_two_numbers
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_division_errors_if_dividing_by_zero
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_division_errors_if_there_is_only_one_value_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_division_performs_integer_division
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_drop_errors_if_there_is_nothing_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_drop_removes_the_top_value_on_the_stack_if_it_is_not_the_only_one
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_drop_removes_the_top_value_on_the_stack_if_it_is_the_only_one
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_dup_copies_a_value_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_dup_copies_the_top_value_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_dup_errors_if_there_is_nothing_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_multiplication_can_multiply_two_numbers
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_multiplication_errors_if_there_is_only_one_value_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_over_copies_the_second_element_if_there_are_more_than_two
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_over_copies_the_second_element_if_there_are_only_two
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_over_errors_if_there_is_nothing_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_over_errors_if_there_is_only_one_value_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_parsing_and_numbers_numbers_just_get_pushed_onto_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_parsing_and_numbers_pushes_negative_numbers_onto_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_subtraction_can_subtract_two_numbers
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_subtraction_errors_if_there_is_only_one_value_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_swap_errors_if_there_is_nothing_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_swap_errors_if_there_is_only_one_value_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_swap_swaps_the_top_two_values_on_the_stack_if_they_are_not_the_only_ones
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_swap_swaps_the_top_two_values_on_the_stack_if_they_are_the_only_ones
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_consist_of_built_in_words
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_define_word_that_uses_word_with_the_same_name
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_override_built_in_operators
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_override_built_in_words
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_override_other_user_defined_words
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_use_different_words_with_the_same_name
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_cannot_redefine_negative_numbers
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_cannot_redefine_non_negative_numbers
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_errors_if_executing_a_non_existent_word
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_execute_in_the_right_order
+========================= 44 failed, 4 passed in 0.35s =========================

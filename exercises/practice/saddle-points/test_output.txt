@@ -1,0 +1,31 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 10 items
+
+exercises/practice/saddle-points/saddle_points_test.py .........F        [100%]
+
+=================================== FAILURES ===================================
+____________________ SaddlePointsTest.test_irregular_matrix ____________________
+
+self = <saddle_points_test.SaddlePointsTest testMethod=test_irregular_matrix>
+
+    def test_irregular_matrix(self):
+        matrix = [[3, 2, 1], [0, 1], [2, 1, 0]]
+        with self.assertRaises(ValueError) as err:
+            saddle_points(matrix)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "irregular matrix")
+E       AssertionError: 'Irregular matrix' != 'irregular matrix'
+E       - Irregular matrix
+E       ? ^
+E       + irregular matrix
+E       ? ^
+
+exercises/practice/saddle-points/saddle_points_test.py:97: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/saddle-points/saddle_points_test.py::SaddlePointsTest::test_irregular_matrix
+========================= 1 failed, 9 passed in 0.05s ==========================

@@ -1,0 +1,65 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 4 items
+
+exercises/practice/resistor-color/resistor_color_test.py FFFF            [100%]
+
+=================================== FAILURES ===================================
+_________________________ ResistorColorTest.test_black _________________________
+
+self = <resistor_color_test.ResistorColorTest testMethod=test_black>
+
+    def test_black(self):
+>       self.assertEqual(color_code("black"), 0)
+E       AssertionError: None != 0
+
+exercises/practice/resistor-color/resistor_color_test.py:15: AssertionError
+________________________ ResistorColorTest.test_colors _________________________
+
+self = <resistor_color_test.ResistorColorTest testMethod=test_colors>
+
+    def test_colors(self):
+        expected = [
+            "black",
+            "brown",
+            "red",
+            "orange",
+            "yellow",
+            "green",
+            "blue",
+            "violet",
+            "grey",
+            "white",
+        ]
+>       self.assertEqual(colors(), expected)
+E       AssertionError: None != ['black', 'brown', 'red', 'orange', 'yell[43 chars]ite']
+
+exercises/practice/resistor-color/resistor_color_test.py:36: AssertionError
+________________________ ResistorColorTest.test_orange _________________________
+
+self = <resistor_color_test.ResistorColorTest testMethod=test_orange>
+
+    def test_orange(self):
+>       self.assertEqual(color_code("orange"), 3)
+E       AssertionError: None != 3
+
+exercises/practice/resistor-color/resistor_color_test.py:21: AssertionError
+_________________________ ResistorColorTest.test_white _________________________
+
+self = <resistor_color_test.ResistorColorTest testMethod=test_white>
+
+    def test_white(self):
+>       self.assertEqual(color_code("white"), 9)
+E       AssertionError: None != 9
+
+exercises/practice/resistor-color/resistor_color_test.py:18: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/resistor-color/resistor_color_test.py::ResistorColorTest::test_black
+FAILED exercises/practice/resistor-color/resistor_color_test.py::ResistorColorTest::test_colors
+FAILED exercises/practice/resistor-color/resistor_color_test.py::ResistorColorTest::test_orange
+FAILED exercises/practice/resistor-color/resistor_color_test.py::ResistorColorTest::test_white
+============================== 4 failed in 0.05s ===============================

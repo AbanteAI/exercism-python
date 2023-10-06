@@ -1,5 +1,6 @@
 def append(list1, list2):
-    pass
+    return list1.copy() + list2
+
 
 
 def concat(lists):

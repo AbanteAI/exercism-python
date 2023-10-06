@@ -1,0 +1,576 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 55 items
+
+exercises/practice/clock/clock_test.py FFFFFFFFF..FFFFFFFFFFFFFFFFFFFFFF [ 60%]
+FFFFFFFFFFFFFFFFFFFFFF                                                   [100%]
+
+=================================== FAILURES ===================================
+______________________ ClockTest.test_add_across_midnight ______________________
+
+self = <clock_test.ClockTest testMethod=test_add_across_midnight>
+
+    def test_add_across_midnight(self):
+>       self.assertEqual(str(Clock(23, 59) + 2), "00:01")
+E       AssertionError: 'None' != '00:01'
+E       - None
+E       + 00:01
+
+exercises/practice/clock/clock_test.py:101: AssertionError
+__________________________ ClockTest.test_add_minutes __________________________
+
+self = <clock_test.ClockTest testMethod=test_add_minutes>
+
+    def test_add_minutes(self):
+>       self.assertEqual(str(Clock(10, 0) + 3), "10:03")
+E       AssertionError: 'None' != '10:03'
+E       - None
+E       + 10:03
+
+exercises/practice/clock/clock_test.py:86: AssertionError
+_____________ ClockTest.test_add_more_than_one_day_1500_min_25_hrs _____________
+
+self = <clock_test.ClockTest testMethod=test_add_more_than_one_day_1500_min_25_hrs>
+
+    def test_add_more_than_one_day_1500_min_25_hrs(self):
+>       self.assertEqual(str(Clock(5, 32) + 1500), "06:32")
+E       AssertionError: 'None' != '06:32'
+E       - None
+E       + 06:32
+
+exercises/practice/clock/clock_test.py:104: AssertionError
+____________________ ClockTest.test_add_more_than_one_hour _____________________
+
+self = <clock_test.ClockTest testMethod=test_add_more_than_one_hour>
+
+    def test_add_more_than_one_hour(self):
+>       self.assertEqual(str(Clock(10, 0) + 61), "11:01")
+E       AssertionError: 'None' != '11:01'
+E       - None
+E       + 11:01
+
+exercises/practice/clock/clock_test.py:95: AssertionError
+____________________ ClockTest.test_add_more_than_two_days _____________________
+
+self = <clock_test.ClockTest testMethod=test_add_more_than_two_days>
+
+    def test_add_more_than_two_days(self):
+>       self.assertEqual(str(Clock(1, 1) + 3500), "11:21")
+E       AssertionError: 'None' != '11:21'
+E       - None
+E       + 11:21
+
+exercises/practice/clock/clock_test.py:107: AssertionError
+______________ ClockTest.test_add_more_than_two_hours_with_carry _______________
+
+self = <clock_test.ClockTest testMethod=test_add_more_than_two_hours_with_carry>
+
+    def test_add_more_than_two_hours_with_carry(self):
+>       self.assertEqual(str(Clock(0, 45) + 160), "03:25")
+E       AssertionError: 'None' != '03:25'
+E       - None
+E       + 03:25
+
+exercises/practice/clock/clock_test.py:98: AssertionError
+________________________ ClockTest.test_add_no_minutes _________________________
+
+self = <clock_test.ClockTest testMethod=test_add_no_minutes>
+
+    def test_add_no_minutes(self):
+>       self.assertEqual(str(Clock(6, 41) + 0), "06:41")
+E       AssertionError: 'None' != '06:41'
+E       - None
+E       + 06:41
+
+exercises/practice/clock/clock_test.py:89: AssertionError
+_______________________ ClockTest.test_add_to_next_hour ________________________
+
+self = <clock_test.ClockTest testMethod=test_add_to_next_hour>
+
+    def test_add_to_next_hour(self):
+>       self.assertEqual(str(Clock(0, 45) + 40), "01:25")
+E       AssertionError: 'None' != '01:25'
+E       - None
+E       + 01:25
+
+exercises/practice/clock/clock_test.py:92: AssertionError
+________________________ ClockTest.test_breakfast_time _________________________
+
+self = <clock_test.ClockTest testMethod=test_breakfast_time>
+
+    def test_breakfast_time(self):
+>       self.assertEqual(repr(Clock(6, 45)), "Clock(6, 45)")
+E       TypeError: __repr__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:18: TypeError
+___________________ ClockTest.test_clocks_with_hour_overflow ___________________
+
+self = <clock_test.ClockTest testMethod=test_clocks_with_hour_overflow>
+
+    def test_clocks_with_hour_overflow(self):
+>       self.assertEqual(Clock(10, 37), Clock(34, 37))
+E       AssertionError: <clock.Clock object at 0x7efea28ab520> != <clock.Clock object at 0x7efea28ab160>
+
+exercises/practice/clock/clock_test.py:145: AssertionError
+___________ ClockTest.test_clocks_with_hour_overflow_by_several_days ___________
+
+self = <clock_test.ClockTest testMethod=test_clocks_with_hour_overflow_by_several_days>
+
+    def test_clocks_with_hour_overflow_by_several_days(self):
+>       self.assertEqual(Clock(3, 11), Clock(99, 11))
+E       AssertionError: <clock.Clock object at 0x7efea2913340> != <clock.Clock object at 0x7efea2913160>
+
+exercises/practice/clock/clock_test.py:148: AssertionError
+__________________ ClockTest.test_clocks_with_minute_overflow __________________
+
+self = <clock_test.ClockTest testMethod=test_clocks_with_minute_overflow>
+
+    def test_clocks_with_minute_overflow(self):
+>       self.assertEqual(Clock(0, 1), Clock(0, 1441))
+E       AssertionError: <clock.Clock object at 0x7efea28aafe0> != <clock.Clock object at 0x7efea28aabc0>
+
+exercises/practice/clock/clock_test.py:160: AssertionError
+__________ ClockTest.test_clocks_with_minute_overflow_by_several_days __________
+
+self = <clock_test.ClockTest testMethod=test_clocks_with_minute_overflow_by_several_days>
+
+    def test_clocks_with_minute_overflow_by_several_days(self):
+>       self.assertEqual(Clock(2, 2), Clock(2, 4322))
+E       AssertionError: <clock.Clock object at 0x7efea29122c0> != <clock.Clock object at 0x7efea2912320>
+
+exercises/practice/clock/clock_test.py:163: AssertionError
+___________________ ClockTest.test_clocks_with_negative_hour ___________________
+
+self = <clock_test.ClockTest testMethod=test_clocks_with_negative_hour>
+
+    def test_clocks_with_negative_hour(self):
+>       self.assertEqual(Clock(22, 40), Clock(-2, 40))
+E       AssertionError: <clock.Clock object at 0x7efea28ab400> != <clock.Clock object at 0x7efea28aa560>
+
+exercises/practice/clock/clock_test.py:151: AssertionError
+_____________ ClockTest.test_clocks_with_negative_hour_that_wraps ______________
+
+self = <clock_test.ClockTest testMethod=test_clocks_with_negative_hour_that_wraps>
+
+    def test_clocks_with_negative_hour_that_wraps(self):
+>       self.assertEqual(Clock(17, 3), Clock(-31, 3))
+E       AssertionError: <clock.Clock object at 0x7efea28fa5c0> != <clock.Clock object at 0x7efea28fb5e0>
+
+exercises/practice/clock/clock_test.py:154: AssertionError
+______ ClockTest.test_clocks_with_negative_hour_that_wraps_multiple_times ______
+
+self = <clock_test.ClockTest testMethod=test_clocks_with_negative_hour_that_wraps_multiple_times>
+
+    def test_clocks_with_negative_hour_that_wraps_multiple_times(self):
+>       self.assertEqual(Clock(13, 49), Clock(-83, 49))
+E       AssertionError: <clock.Clock object at 0x7efea29661d0> != <clock.Clock object at 0x7efea2966230>
+
+exercises/practice/clock/clock_test.py:157: AssertionError
+____________ ClockTest.test_clocks_with_negative_hours_and_minutes _____________
+
+self = <clock_test.ClockTest testMethod=test_clocks_with_negative_hours_and_minutes>
+
+    def test_clocks_with_negative_hours_and_minutes(self):
+>       self.assertEqual(Clock(7, 32), Clock(-12, -268))
+E       AssertionError: <clock.Clock object at 0x7efea2923400> != <clock.Clock object at 0x7efea29237f0>
+
+exercises/practice/clock/clock_test.py:175: AssertionError
+_______ ClockTest.test_clocks_with_negative_hours_and_minutes_that_wrap ________
+
+self = <clock_test.ClockTest testMethod=test_clocks_with_negative_hours_and_minutes_that_wrap>
+
+    def test_clocks_with_negative_hours_and_minutes_that_wrap(self):
+>       self.assertEqual(Clock(18, 7), Clock(-54, -11513))
+E       AssertionError: <clock.Clock object at 0x7efea2911a50> != <clock.Clock object at 0x7efea2911180>
+
+exercises/practice/clock/clock_test.py:178: AssertionError
+__________________ ClockTest.test_clocks_with_negative_minute __________________
+
+self = <clock_test.ClockTest testMethod=test_clocks_with_negative_minute>
+
+    def test_clocks_with_negative_minute(self):
+>       self.assertEqual(Clock(2, 40), Clock(3, -20))
+E       AssertionError: <clock.Clock object at 0x7efea2905660> != <clock.Clock object at 0x7efea2905810>
+
+exercises/practice/clock/clock_test.py:166: AssertionError
+____________ ClockTest.test_clocks_with_negative_minute_that_wraps _____________
+
+self = <clock_test.ClockTest testMethod=test_clocks_with_negative_minute_that_wraps>
+
+    def test_clocks_with_negative_minute_that_wraps(self):
+>       self.assertEqual(Clock(4, 10), Clock(5, -1490))
+E       AssertionError: <clock.Clock object at 0x7efea28aab30> != <clock.Clock object at 0x7efea28ab790>
+
+exercises/practice/clock/clock_test.py:169: AssertionError
+_____ ClockTest.test_clocks_with_negative_minute_that_wraps_multiple_times _____
+
+self = <clock_test.ClockTest testMethod=test_clocks_with_negative_minute_that_wraps_multiple_times>
+
+    def test_clocks_with_negative_minute_that_wraps_multiple_times(self):
+>       self.assertEqual(Clock(6, 15), Clock(6, -4305))
+E       AssertionError: <clock.Clock object at 0x7efea28f9780> != <clock.Clock object at 0x7efea28f97e0>
+
+exercises/practice/clock/clock_test.py:172: AssertionError
+_____________________ ClockTest.test_clocks_with_same_time _____________________
+
+self = <clock_test.ClockTest testMethod=test_clocks_with_same_time>
+
+    def test_clocks_with_same_time(self):
+>       self.assertEqual(Clock(15, 37), Clock(15, 37))
+E       AssertionError: <clock.Clock object at 0x7efea2912e90> != <clock.Clock object at 0x7efea29139a0>
+
+exercises/practice/clock/clock_test.py:136: AssertionError
+__________________________ ClockTest.test_dinner_time __________________________
+
+self = <clock_test.ClockTest testMethod=test_dinner_time>
+
+    def test_dinner_time(self):
+>       self.assertEqual(repr(Clock(18, 30)), "Clock(18, 30)")
+E       TypeError: __repr__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:21: TypeError
+__________________ ClockTest.test_full_clock_and_zeroed_clock __________________
+
+self = <clock_test.ClockTest testMethod=test_full_clock_and_zeroed_clock>
+
+    def test_full_clock_and_zeroed_clock(self):
+>       self.assertEqual(Clock(24, 0), Clock(0, 0))
+E       AssertionError: <clock.Clock object at 0x7efea2967910> != <clock.Clock object at 0x7efea29677f0>
+
+exercises/practice/clock/clock_test.py:181: AssertionError
+__________________ ClockTest.test_hour_and_minutes_roll_over ___________________
+
+self = <clock_test.ClockTest testMethod=test_hour_and_minutes_roll_over>
+
+    def test_hour_and_minutes_roll_over(self):
+>       self.assertEqual(str(Clock(25, 160)), "03:40")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:49: TypeError
+____________ ClockTest.test_hour_and_minutes_roll_over_continuously ____________
+
+self = <clock_test.ClockTest testMethod=test_hour_and_minutes_roll_over_continuously>
+
+    def test_hour_and_minutes_roll_over_continuously(self):
+>       self.assertEqual(str(Clock(201, 3001)), "11:01")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:52: TypeError
+________ ClockTest.test_hour_and_minutes_roll_over_to_exactly_midnight _________
+
+self = <clock_test.ClockTest testMethod=test_hour_and_minutes_roll_over_to_exactly_midnight>
+
+    def test_hour_and_minutes_roll_over_to_exactly_midnight(self):
+>       self.assertEqual(str(Clock(72, 8640)), "00:00")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:55: TypeError
+________________________ ClockTest.test_hour_rolls_over ________________________
+
+self = <clock_test.ClockTest testMethod=test_hour_rolls_over>
+
+    def test_hour_rolls_over(self):
+>       self.assertEqual(str(Clock(25, 0)), "01:00")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:34: TypeError
+_________________ ClockTest.test_hour_rolls_over_continuously __________________
+
+self = <clock_test.ClockTest testMethod=test_hour_rolls_over_continuously>
+
+    def test_hour_rolls_over_continuously(self):
+>       self.assertEqual(str(Clock(100, 0)), "04:00")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:37: TypeError
+__________________________ ClockTest.test_lunch_time ___________________________
+
+self = <clock_test.ClockTest testMethod=test_lunch_time>
+
+    def test_lunch_time(self):
+>       self.assertEqual(repr(Clock(12, 0)), "Clock(12, 0)")
+E       TypeError: __repr__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:15: TypeError
+____________________ ClockTest.test_midnight_is_zero_hours _____________________
+
+self = <clock_test.ClockTest testMethod=test_midnight_is_zero_hours>
+
+    def test_midnight_is_zero_hours(self):
+>       self.assertEqual(str(Clock(24, 0)), "00:00")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:31: TypeError
+_______________________ ClockTest.test_minutes_roll_over _______________________
+
+self = <clock_test.ClockTest testMethod=test_minutes_roll_over>
+
+    def test_minutes_roll_over(self):
+>       self.assertEqual(str(Clock(0, 160)), "02:40")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:43: TypeError
+________________ ClockTest.test_minutes_roll_over_continuously _________________
+
+self = <clock_test.ClockTest testMethod=test_minutes_roll_over_continuously>
+
+    def test_minutes_roll_over_continuously(self):
+>       self.assertEqual(str(Clock(0, 1723)), "04:43")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:46: TypeError
+_________________________ ClockTest.test_negative_hour _________________________
+
+self = <clock_test.ClockTest testMethod=test_negative_hour>
+
+    def test_negative_hour(self):
+>       self.assertEqual(str(Clock(-1, 15)), "23:15")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:58: TypeError
+___________ ClockTest.test_negative_hour_and_minutes_both_roll_over ____________
+
+self = <clock_test.ClockTest testMethod=test_negative_hour_and_minutes_both_roll_over>
+
+    def test_negative_hour_and_minutes_both_roll_over(self):
+>       self.assertEqual(str(Clock(-25, -160)), "20:20")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:79: TypeError
+_____ ClockTest.test_negative_hour_and_minutes_both_roll_over_continuously _____
+
+self = <clock_test.ClockTest testMethod=test_negative_hour_and_minutes_both_roll_over_continuously>
+
+    def test_negative_hour_and_minutes_both_roll_over_continuously(self):
+>       self.assertEqual(str(Clock(-121, -5810)), "22:10")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:82: TypeError
+___________________ ClockTest.test_negative_hour_rolls_over ____________________
+
+self = <clock_test.ClockTest testMethod=test_negative_hour_rolls_over>
+
+    def test_negative_hour_rolls_over(self):
+>       self.assertEqual(str(Clock(-25, 0)), "23:00")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:61: TypeError
+_____________ ClockTest.test_negative_hour_rolls_over_continuously _____________
+
+self = <clock_test.ClockTest testMethod=test_negative_hour_rolls_over_continuously>
+
+    def test_negative_hour_rolls_over_continuously(self):
+>       self.assertEqual(str(Clock(-91, 0)), "05:00")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:64: TypeError
+_______________________ ClockTest.test_negative_minutes ________________________
+
+self = <clock_test.ClockTest testMethod=test_negative_minutes>
+
+    def test_negative_minutes(self):
+>       self.assertEqual(str(Clock(1, -40)), "00:20")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:67: TypeError
+__________________ ClockTest.test_negative_minutes_roll_over ___________________
+
+self = <clock_test.ClockTest testMethod=test_negative_minutes_roll_over>
+
+    def test_negative_minutes_roll_over(self):
+>       self.assertEqual(str(Clock(1, -160)), "22:20")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:70: TypeError
+____________ ClockTest.test_negative_minutes_roll_over_continuously ____________
+
+self = <clock_test.ClockTest testMethod=test_negative_minutes_roll_over_continuously>
+
+    def test_negative_minutes_roll_over_continuously(self):
+>       self.assertEqual(str(Clock(1, -4820)), "16:40")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:73: TypeError
+____________ ClockTest.test_negative_sixty_minutes_is_previous_hour ____________
+
+self = <clock_test.ClockTest testMethod=test_negative_sixty_minutes_is_previous_hour>
+
+    def test_negative_sixty_minutes_is_previous_hour(self):
+>       self.assertEqual(str(Clock(2, -60)), "01:00")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:76: TypeError
+__________________________ ClockTest.test_on_the_hour __________________________
+
+self = <clock_test.ClockTest testMethod=test_on_the_hour>
+
+    def test_on_the_hour(self):
+>       self.assertEqual(str(Clock(8, 0)), "08:00")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:25: TypeError
+_________________________ ClockTest.test_past_the_hour _________________________
+
+self = <clock_test.ClockTest testMethod=test_past_the_hour>
+
+    def test_past_the_hour(self):
+>       self.assertEqual(str(Clock(11, 9)), "11:09")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:28: TypeError
+__________________ ClockTest.test_sixty_minutes_is_next_hour ___________________
+
+self = <clock_test.ClockTest testMethod=test_sixty_minutes_is_next_hour>
+
+    def test_sixty_minutes_is_next_hour(self):
+>       self.assertEqual(str(Clock(1, 60)), "02:00")
+E       TypeError: __str__ returned non-string (type NoneType)
+
+exercises/practice/clock/clock_test.py:40: TypeError
+___________________ ClockTest.test_subtract_across_midnight ____________________
+
+self = <clock_test.ClockTest testMethod=test_subtract_across_midnight>
+
+    def test_subtract_across_midnight(self):
+>       self.assertEqual(str(Clock(0, 3) - 4), "23:59")
+E       AssertionError: 'None' != '23:59'
+E       - None
+E       + 23:59
+
+exercises/practice/clock/clock_test.py:120: AssertionError
+_______________________ ClockTest.test_subtract_minutes ________________________
+
+self = <clock_test.ClockTest testMethod=test_subtract_minutes>
+
+    def test_subtract_minutes(self):
+>       self.assertEqual(str(Clock(10, 3) - 3), "10:00")
+E       AssertionError: 'None' != '10:00'
+E       - None
+E       + 10:00
+
+exercises/practice/clock/clock_test.py:111: AssertionError
+__________________ ClockTest.test_subtract_more_than_an_hour ___________________
+
+self = <clock_test.ClockTest testMethod=test_subtract_more_than_an_hour>
+
+    def test_subtract_more_than_an_hour(self):
+>       self.assertEqual(str(Clock(10, 3) - 70), "08:53")
+E       AssertionError: 'None' != '08:53'
+E       - None
+E       + 08:53
+
+exercises/practice/clock/clock_test.py:117: AssertionError
+__________ ClockTest.test_subtract_more_than_one_day_1500_min_25_hrs ___________
+
+self = <clock_test.ClockTest testMethod=test_subtract_more_than_one_day_1500_min_25_hrs>
+
+    def test_subtract_more_than_one_day_1500_min_25_hrs(self):
+>       self.assertEqual(str(Clock(5, 32) - 1500), "04:32")
+E       AssertionError: 'None' != '04:32'
+E       - None
+E       + 04:32
+
+exercises/practice/clock/clock_test.py:129: AssertionError
+__________________ ClockTest.test_subtract_more_than_two_days __________________
+
+self = <clock_test.ClockTest testMethod=test_subtract_more_than_two_days>
+
+    def test_subtract_more_than_two_days(self):
+>       self.assertEqual(str(Clock(2, 20) - 3000), "00:20")
+E       AssertionError: 'None' != '00:20'
+E       - None
+E       + 00:20
+
+exercises/practice/clock/clock_test.py:132: AssertionError
+_________________ ClockTest.test_subtract_more_than_two_hours __________________
+
+self = <clock_test.ClockTest testMethod=test_subtract_more_than_two_hours>
+
+    def test_subtract_more_than_two_hours(self):
+>       self.assertEqual(str(Clock(0, 0) - 160), "21:20")
+E       AssertionError: 'None' != '21:20'
+E       - None
+E       + 21:20
+
+exercises/practice/clock/clock_test.py:123: AssertionError
+___________ ClockTest.test_subtract_more_than_two_hours_with_borrow ____________
+
+self = <clock_test.ClockTest testMethod=test_subtract_more_than_two_hours_with_borrow>
+
+    def test_subtract_more_than_two_hours_with_borrow(self):
+>       self.assertEqual(str(Clock(6, 15) - 160), "03:35")
+E       AssertionError: 'None' != '03:35'
+E       - None
+E       + 03:35
+
+exercises/practice/clock/clock_test.py:126: AssertionError
+___________________ ClockTest.test_subtract_to_previous_hour ___________________
+
+self = <clock_test.ClockTest testMethod=test_subtract_to_previous_hour>
+
+    def test_subtract_to_previous_hour(self):
+>       self.assertEqual(str(Clock(10, 3) - 30), "09:33")
+E       AssertionError: 'None' != '09:33'
+E       - None
+E       + 09:33
+
+exercises/practice/clock/clock_test.py:114: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_add_across_midnight
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_add_minutes - ...
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_add_more_than_one_day_1500_min_25_hrs
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_add_more_than_one_hour
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_add_more_than_two_days
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_add_more_than_two_hours_with_carry
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_add_no_minutes
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_add_to_next_hour
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_breakfast_time
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_clocks_with_hour_overflow
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_clocks_with_hour_overflow_by_several_days
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_clocks_with_minute_overflow
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_clocks_with_minute_overflow_by_several_days
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_clocks_with_negative_hour
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_clocks_with_negative_hour_that_wraps
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_clocks_with_negative_hour_that_wraps_multiple_times
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_clocks_with_negative_hours_and_minutes
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_clocks_with_negative_hours_and_minutes_that_wrap
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_clocks_with_negative_minute
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_clocks_with_negative_minute_that_wraps
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_clocks_with_negative_minute_that_wraps_multiple_times
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_clocks_with_same_time
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_dinner_time - ...
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_full_clock_and_zeroed_clock
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_hour_and_minutes_roll_over
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_hour_and_minutes_roll_over_continuously
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_hour_and_minutes_roll_over_to_exactly_midnight
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_hour_rolls_over
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_hour_rolls_over_continuously
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_lunch_time - T...
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_midnight_is_zero_hours
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_minutes_roll_over
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_minutes_roll_over_continuously
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_negative_hour
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_negative_hour_and_minutes_both_roll_over
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_negative_hour_and_minutes_both_roll_over_continuously
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_negative_hour_rolls_over
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_negative_hour_rolls_over_continuously
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_negative_minutes
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_negative_minutes_roll_over
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_negative_minutes_roll_over_continuously
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_negative_sixty_minutes_is_previous_hour
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_on_the_hour - ...
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_past_the_hour
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_sixty_minutes_is_next_hour
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_subtract_across_midnight
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_subtract_minutes
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_subtract_more_than_an_hour
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_subtract_more_than_one_day_1500_min_25_hrs
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_subtract_more_than_two_days
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_subtract_more_than_two_hours
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_subtract_more_than_two_hours_with_borrow
+FAILED exercises/practice/clock/clock_test.py::ClockTest::test_subtract_to_previous_hour
+========================= 53 failed, 2 passed in 0.26s =========================

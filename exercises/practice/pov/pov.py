@@ -19,7 +19,22 @@ class Tree:
         return self.__dict__() == other.__dict__()
 
     def from_pov(self, from_node):
+        if from_node not in self.__dict__():
+            raise ValueError("Invalid from_node")
+        new_tree = Tree(from_node)
+        self._reorient(self, from_node, new_tree)
+        return new_tree
+
+        for child in node.children:
+            if child.label == from_node:
+                new_tree.children.extend(child.children)
+            else:
+                self._reorient(child, from_node, new_tree)
+
+    def path_to(self, from_node, to_node):
         pass
+
+
 
     def path_to(self, from_node, to_node):
         pass

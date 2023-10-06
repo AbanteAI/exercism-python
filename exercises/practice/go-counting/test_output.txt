@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+_____ ERROR collecting exercises/practice/go-counting/go_counting_test.py ______
+ImportError while importing test module '/home/jake/Development/exercism-python/exercises/practice/go-counting/go_counting_test.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.10/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+exercises/practice/go-counting/go_counting_test.py:7: in <module>
+    from go_counting import (
+E   ImportError: cannot import name 'WHITE' from 'go_counting' (/home/jake/Development/exercism-python/exercises/practice/go-counting/go_counting.py)
+=========================== short test summary info ============================
+ERROR exercises/practice/go-counting/go_counting_test.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+=============================== 1 error in 0.06s ===============================

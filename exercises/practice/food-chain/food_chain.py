@@ -1,2 +1,3 @@
 def recite(start_verse, end_verse):
-    pass
+    ]
+        "I know an old lady who swallowed a fly.",

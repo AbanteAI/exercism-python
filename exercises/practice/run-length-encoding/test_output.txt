@@ -1,0 +1,150 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/jake/Development/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, repeat-0.9.1, asyncio-0.21.1
+asyncio: mode=strict
+collected 13 items
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py FFFFF [ 38%]
+FFFFFFFF                                                                 [100%]
+
+=================================== FAILURES ===================================
+________________ RunLengthEncodingTest.test_decode_empty_string ________________
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_decode_empty_string>
+
+    def test_decode_empty_string(self):
+>       self.assertMultiLineEqual(decode(""), "")
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:36: AssertionError
+______________ RunLengthEncodingTest.test_decode_lowercase_string ______________
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_decode_lowercase_string>
+
+    def test_decode_lowercase_string(self):
+>       self.assertMultiLineEqual(decode("2a3b4c"), "aabbbcccc")
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:54: AssertionError
+____ RunLengthEncodingTest.test_decode_multiple_whitespace_mixed_in_string _____
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_decode_multiple_whitespace_mixed_in_string>
+
+    def test_decode_multiple_whitespace_mixed_in_string(self):
+>       self.assertMultiLineEqual(decode("2 hs2q q2w2 "), "  hsqq qww  ")
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:51: AssertionError
+___________ RunLengthEncodingTest.test_decode_single_characters_only ___________
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_decode_single_characters_only>
+
+    def test_decode_single_characters_only(self):
+>       self.assertMultiLineEqual(decode("XYZ"), "XYZ")
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:39: AssertionError
+_ RunLengthEncodingTest.test_decode_single_characters_with_repeated_characters _
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_decode_single_characters_with_repeated_characters>
+
+    def test_decode_single_characters_with_repeated_characters(self):
+>       self.assertMultiLineEqual(
+            decode("12WB12W3B24WB"),
+            "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB",
+        )
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:45: AssertionError
+______ RunLengthEncodingTest.test_decode_string_with_no_single_characters ______
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_decode_string_with_no_single_characters>
+
+    def test_decode_string_with_no_single_characters(self):
+>       self.assertMultiLineEqual(decode("2A3B4C"), "AABBBCCCC")
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:42: AssertionError
+________________ RunLengthEncodingTest.test_encode_empty_string ________________
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_empty_string>
+
+    def test_encode_empty_string(self):
+>       self.assertMultiLineEqual(encode(""), "")
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:15: AssertionError
+__ RunLengthEncodingTest.test_encode_followed_by_decode_gives_original_string __
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_followed_by_decode_gives_original_string>
+
+    def test_encode_followed_by_decode_gives_original_string(self):
+>       self.assertMultiLineEqual(decode(encode("zzz ZZ  zZ")), "zzz ZZ  zZ")
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:57: AssertionError
+____________ RunLengthEncodingTest.test_encode_lowercase_characters ____________
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_lowercase_characters>
+
+    def test_encode_lowercase_characters(self):
+>       self.assertMultiLineEqual(encode("aabbbcccc"), "2a3b4c")
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:33: AssertionError
+____ RunLengthEncodingTest.test_encode_multiple_whitespace_mixed_in_string _____
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_multiple_whitespace_mixed_in_string>
+
+    def test_encode_multiple_whitespace_mixed_in_string(self):
+>       self.assertMultiLineEqual(encode("  hsqq qww  "), "2 hs2q q2w2 ")
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:30: AssertionError
+_ RunLengthEncodingTest.test_encode_single_characters_mixed_with_repeated_characters _
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_single_characters_mixed_with_repeated_characters>
+
+    def test_encode_single_characters_mixed_with_repeated_characters(self):
+>       self.assertMultiLineEqual(
+            encode("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB"),
+            "12WB12W3B24WB",
+        )
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:24: AssertionError
+_ RunLengthEncodingTest.test_encode_single_characters_only_are_encoded_without_count _
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_single_characters_only_are_encoded_without_count>
+
+    def test_encode_single_characters_only_are_encoded_without_count(self):
+>       self.assertMultiLineEqual(encode("XYZ"), "XYZ")
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:18: AssertionError
+______ RunLengthEncodingTest.test_encode_string_with_no_single_characters ______
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_string_with_no_single_characters>
+
+    def test_encode_string_with_no_single_characters(self):
+>       self.assertMultiLineEqual(encode("AABBBCCCC"), "2A3B4C")
+E       AssertionError: None is not an instance of <class 'str'> : First argument is not a string
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:21: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_decode_empty_string
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_decode_lowercase_string
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_decode_multiple_whitespace_mixed_in_string
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_decode_single_characters_only
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_decode_single_characters_with_repeated_characters
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_decode_string_with_no_single_characters
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_empty_string
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_followed_by_decode_gives_original_string
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_lowercase_characters
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_multiple_whitespace_mixed_in_string
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_single_characters_mixed_with_repeated_characters
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_single_characters_only_are_encoded_without_count
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_string_with_no_single_characters
+============================== 13 failed in 0.06s ==============================
