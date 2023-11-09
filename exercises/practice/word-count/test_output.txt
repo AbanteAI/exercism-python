@@ -1,0 +1,36 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+______ ERROR collecting exercises/practice/word-count/word_count_test.py _______
+../../../../.venv/lib/python3.10/site-packages/_pytest/python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+../../../../.venv/lib/python3.10/site-packages/_pytest/pathlib.py:565: in import_path
+    importlib.import_module(module_name)
+/usr/lib/python3.10/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1050: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1027: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1006: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:688: in _load_unlocked
+    ???
+../../../../.venv/lib/python3.10/site-packages/_pytest/assertion/rewrite.py:178: in exec_module
+    exec(co, module.__dict__)
+exercises/practice/word-count/word_count_test.py:7: in <module>
+    from word_count import (
+E     File "/home/jake/Development/mentat/tests/benchmarks/repos/exercism-python/exercises/practice/word-count/word_count.py", line 5
+E       def count_words(sentence):
+E       ^^^
+E   IndentationError: expected an indented block after function definition on line 4
+=========================== short test summary info ============================
+ERROR exercises/practice/word-count/word_count_test.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+=============================== 1 error in 0.14s ===============================

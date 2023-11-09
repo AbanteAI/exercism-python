@@ -1,0 +1,395 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 12 items
+
+exercises/practice/tournament/tournament_test.py FFFFFFFFFFFF            [100%]
+
+=================================== FAILURES ===================================
+_________________ TournamentTest.test_a_different_team_can_win _________________
+
+self = <tournament_test.TournamentTest testMethod=test_a_different_team_can_win>
+
+    def test_a_different_team_can_win(self):
+        results = ["Blithering Badgers;Allegoric Alaskans;win"]
+        table = [
+            "Team                           | MP |  W |  D |  L |  P",
+            "Blithering Badgers             |  1 |  1 |  0 |  0 |  3",
+            "Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0",
+        ]
+>       self.assertEqual(tally(results), table)
+E       AssertionError: Lists differ: ['Tea[47 chars] |  P\n', 'Blithering Badgers             |   [86 chars]  0'] != ['Tea[47 chars] |  P', 'Blithering Badgers             |  1 |[74 chars]  0']
+E       
+E       First differing element 0:
+E       'Team                           | MP |  W |  D |  L |  P\n'
+E       'Team                           | MP |  W |  D |  L |  P'
+E       
+E       - ['Team                           | MP |  W |  D |  L |  P\n',
+E       ?                                                          --
+E       
+E       + ['Team                           | MP |  W |  D |  L |  P',
+E       -  'Blithering Badgers             |   1 |   1 |   0 |   0 |   3',
+E       ?                                     -     -     -     -   -
+E       
+E       +  'Blithering Badgers             |  1 |  1 |  0 |  0 |  3',
+E       -  'Allegoric Alaskans             |   1 |   0 |   0 |   1 |   0']
+E       ?                                     -     -     -     -   -
+E       
+E       +  'Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0']
+
+exercises/practice/tournament/tournament_test.py:43: AssertionError
+_________________ TournamentTest.test_a_draw_is_one_point_each _________________
+
+self = <tournament_test.TournamentTest testMethod=test_a_draw_is_one_point_each>
+
+    def test_a_draw_is_one_point_each(self):
+        results = ["Allegoric Alaskans;Blithering Badgers;draw"]
+        table = [
+            "Team                           | MP |  W |  D |  L |  P",
+            "Allegoric Alaskans             |  1 |  0 |  1 |  0 |  1",
+            "Blithering Badgers             |  1 |  0 |  1 |  0 |  1",
+        ]
+>       self.assertEqual(tally(results), table)
+E       AssertionError: Lists differ: ['Tea[47 chars] |  P\n', 'Allegoric Alaskans             |   [86 chars]  1'] != ['Tea[47 chars] |  P', 'Allegoric Alaskans             |  1 |[74 chars]  1']
+E       
+E       First differing element 0:
+E       'Team                           | MP |  W |  D |  L |  P\n'
+E       'Team                           | MP |  W |  D |  L |  P'
+E       
+E       - ['Team                           | MP |  W |  D |  L |  P\n',
+E       ?                                                          --
+E       
+E       + ['Team                           | MP |  W |  D |  L |  P',
+E       -  'Allegoric Alaskans             |   1 |   0 |   1 |   0 |   1',
+E       ?                                     -     -     -     -   -
+E       
+E       +  'Allegoric Alaskans             |  1 |  0 |  1 |  0 |  1',
+E       -  'Blithering Badgers             |   1 |   0 |   1 |   0 |   1']
+E       ?                                     -     -     -     -   -
+E       
+E       +  'Blithering Badgers             |  1 |  0 |  1 |  0 |  1']
+
+exercises/practice/tournament/tournament_test.py:52: AssertionError
+__________ TournamentTest.test_a_win_can_also_be_expressed_as_a_loss ___________
+
+self = <tournament_test.TournamentTest testMethod=test_a_win_can_also_be_expressed_as_a_loss>
+
+    def test_a_win_can_also_be_expressed_as_a_loss(self):
+        results = ["Blithering Badgers;Allegoric Alaskans;loss"]
+        table = [
+            "Team                           | MP |  W |  D |  L |  P",
+            "Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3",
+            "Blithering Badgers             |  1 |  0 |  0 |  1 |  0",
+        ]
+>       self.assertEqual(tally(results), table)
+E       AssertionError: Lists differ: ['Tea[47 chars] |  P\n', 'Allegoric Alaskans             |   [86 chars]  0'] != ['Tea[47 chars] |  P', 'Allegoric Alaskans             |  1 |[74 chars]  0']
+E       
+E       First differing element 0:
+E       'Team                           | MP |  W |  D |  L |  P\n'
+E       'Team                           | MP |  W |  D |  L |  P'
+E       
+E       - ['Team                           | MP |  W |  D |  L |  P\n',
+E       ?                                                          --
+E       
+E       + ['Team                           | MP |  W |  D |  L |  P',
+E       -  'Allegoric Alaskans             |   1 |   1 |   0 |   0 |   3',
+E       ?                                     -     -     -     -   -
+E       
+E       +  'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3',
+E       -  'Blithering Badgers             |   1 |   0 |   0 |   1 |   0']
+E       ?                                     -     -     -     -   -
+E       
+E       +  'Blithering Badgers             |  1 |  0 |  0 |  1 |  0']
+
+exercises/practice/tournament/tournament_test.py:34: AssertionError
+_______ TournamentTest.test_a_win_is_three_points_a_loss_is_zero_points ________
+
+self = <tournament_test.TournamentTest testMethod=test_a_win_is_three_points_a_loss_is_zero_points>
+
+    def test_a_win_is_three_points_a_loss_is_zero_points(self):
+        results = ["Allegoric Alaskans;Blithering Badgers;win"]
+        table = [
+            "Team                           | MP |  W |  D |  L |  P",
+            "Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3",
+            "Blithering Badgers             |  1 |  0 |  0 |  1 |  0",
+        ]
+>       self.assertEqual(tally(results), table)
+E       AssertionError: Lists differ: ['Tea[47 chars] |  P\n', 'Allegoric Alaskans             |   [86 chars]  0'] != ['Tea[47 chars] |  P', 'Allegoric Alaskans             |  1 |[74 chars]  0']
+E       
+E       First differing element 0:
+E       'Team                           | MP |  W |  D |  L |  P\n'
+E       'Team                           | MP |  W |  D |  L |  P'
+E       
+E       - ['Team                           | MP |  W |  D |  L |  P\n',
+E       ?                                                          --
+E       
+E       + ['Team                           | MP |  W |  D |  L |  P',
+E       -  'Allegoric Alaskans             |   1 |   1 |   0 |   0 |   3',
+E       ?                                     -     -     -     -   -
+E       
+E       +  'Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3',
+E       -  'Blithering Badgers             |   1 |   0 |   0 |   1 |   0']
+E       ?                                     -     -     -     -   -
+E       
+E       +  'Blithering Badgers             |  1 |  0 |  0 |  1 |  0']
+
+exercises/practice/tournament/tournament_test.py:25: AssertionError
+_____________ TournamentTest.test_ensure_points_sorted_numerically _____________
+
+self = <tournament_test.TournamentTest testMethod=test_ensure_points_sorted_numerically>
+
+    def test_ensure_points_sorted_numerically(self):
+        results = [
+            "Devastating Donkeys;Blithering Badgers;win",
+            "Devastating Donkeys;Blithering Badgers;win",
+            "Devastating Donkeys;Blithering Badgers;win",
+            "Devastating Donkeys;Blithering Badgers;win",
+            "Blithering Badgers;Devastating Donkeys;win",
+        ]
+        table = [
+            "Team                           | MP |  W |  D |  L |  P",
+            "Devastating Donkeys            |  5 |  4 |  0 |  1 | 12",
+            "Blithering Badgers             |  5 |  1 |  0 |  4 |  3",
+        ]
+>       self.assertEqual(tally(results), table)
+E       AssertionError: Lists differ: ['Tea[47 chars] |  P\n', 'Devastating Donkeys            |   [86 chars]  3'] != ['Tea[47 chars] |  P', 'Devastating Donkeys            |  5 |[74 chars]  3']
+E       
+E       First differing element 0:
+E       'Team                           | MP |  W |  D |  L |  P\n'
+E       'Team                           | MP |  W |  D |  L |  P'
+E       
+E       - ['Team                           | MP |  W |  D |  L |  P\n',
+E       ?                                                          --
+E       
+E       + ['Team                           | MP |  W |  D |  L |  P',
+E       -  'Devastating Donkeys            |   5 |   4 |   0 |   1 |  12',
+E       ?                                     -     -     -     -   -
+E       
+E       +  'Devastating Donkeys            |  5 |  4 |  0 |  1 | 12',
+E       -  'Blithering Badgers             |   5 |   1 |   0 |   4 |   3']
+E       ?                                     -     -     -     -   -
+E       
+E       +  'Blithering Badgers             |  5 |  1 |  0 |  4 |  3']
+
+exercises/practice/tournament/tournament_test.py:157: AssertionError
+_____ TournamentTest.test_incomplete_competition_not_all_pairs_have_played _____
+
+self = <tournament_test.TournamentTest testMethod=test_incomplete_competition_not_all_pairs_have_played>
+
+    def test_incomplete_competition_not_all_pairs_have_played(self):
+        results = [
+            "Allegoric Alaskans;Blithering Badgers;loss",
+            "Devastating Donkeys;Allegoric Alaskans;loss",
+            "Courageous Californians;Blithering Badgers;draw",
+            "Allegoric Alaskans;Courageous Californians;win",
+        ]
+        table = [
+            "Team                           | MP |  W |  D |  L |  P",
+            "Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6",
+            "Blithering Badgers             |  2 |  1 |  1 |  0 |  4",
+            "Courageous Californians        |  2 |  0 |  1 |  1 |  1",
+            "Devastating Donkeys            |  1 |  0 |  0 |  1 |  0",
+        ]
+>       self.assertEqual(tally(results), table)
+E       AssertionError: Lists differ: ['Tea[47 chars] |  P\n', 'Allegoric Alaskans             |   [214 chars]  0'] != ['Tea[47 chars] |  P', 'Allegoric Alaskans             |  3 |[192 chars]  0']
+E       
+E       First differing element 0:
+E       'Team                           | MP |  W |  D |  L |  P\n'
+E       'Team                           | MP |  W |  D |  L |  P'
+E       
+E       Diff is 957 characters long. Set self.maxDiff to None to see it.
+
+exercises/practice/tournament/tournament_test.py:124: AssertionError
+_______________ TournamentTest.test_just_the_header_if_no_input ________________
+
+self = <tournament_test.TournamentTest testMethod=test_just_the_header_if_no_input>
+
+    def test_just_the_header_if_no_input(self):
+        results = []
+        table = ["Team                           | MP |  W |  D |  L |  P"]
+>       self.assertEqual(tally(results), table)
+E       AssertionError: Lists differ: ['Team                           | MP |  W |  D |  L |  P\n'] != ['Team                           | MP |  W |  D |  L |  P']
+E       
+E       First differing element 0:
+E       'Team                           | MP |  W |  D |  L |  P\n'
+E       'Team                           | MP |  W |  D |  L |  P'
+E       
+E       - ['Team                           | MP |  W |  D |  L |  P\n']
+E       ?                                                          --
+E       
+E       + ['Team                           | MP |  W |  D |  L |  P']
+
+exercises/practice/tournament/tournament_test.py:16: AssertionError
+_____________ TournamentTest.test_there_can_be_more_than_one_match _____________
+
+self = <tournament_test.TournamentTest testMethod=test_there_can_be_more_than_one_match>
+
+    def test_there_can_be_more_than_one_match(self):
+        results = [
+            "Allegoric Alaskans;Blithering Badgers;win",
+            "Allegoric Alaskans;Blithering Badgers;win",
+        ]
+        table = [
+            "Team                           | MP |  W |  D |  L |  P",
+            "Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6",
+            "Blithering Badgers             |  2 |  0 |  0 |  2 |  0",
+        ]
+>       self.assertEqual(tally(results), table)
+E       AssertionError: Lists differ: ['Tea[47 chars] |  P\n', 'Allegoric Alaskans             |   [86 chars]  0'] != ['Tea[47 chars] |  P', 'Allegoric Alaskans             |  2 |[74 chars]  0']
+E       
+E       First differing element 0:
+E       'Team                           | MP |  W |  D |  L |  P\n'
+E       'Team                           | MP |  W |  D |  L |  P'
+E       
+E       - ['Team                           | MP |  W |  D |  L |  P\n',
+E       ?                                                          --
+E       
+E       + ['Team                           | MP |  W |  D |  L |  P',
+E       -  'Allegoric Alaskans             |   2 |   2 |   0 |   0 |   6',
+E       ?                                     -     -     -     -   -
+E       
+E       +  'Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6',
+E       -  'Blithering Badgers             |   2 |   0 |   0 |   2 |   0']
+E       ?                                     -     -     -     -   -
+E       
+E       +  'Blithering Badgers             |  2 |  0 |  0 |  2 |  0']
+
+exercises/practice/tournament/tournament_test.py:64: AssertionError
+____________ TournamentTest.test_there_can_be_more_than_one_winner _____________
+
+self = <tournament_test.TournamentTest testMethod=test_there_can_be_more_than_one_winner>
+
+    def test_there_can_be_more_than_one_winner(self):
+        results = [
+            "Allegoric Alaskans;Blithering Badgers;loss",
+            "Allegoric Alaskans;Blithering Badgers;win",
+        ]
+        table = [
+            "Team                           | MP |  W |  D |  L |  P",
+            "Allegoric Alaskans             |  2 |  1 |  0 |  1 |  3",
+            "Blithering Badgers             |  2 |  1 |  0 |  1 |  3",
+        ]
+>       self.assertEqual(tally(results), table)
+E       AssertionError: Lists differ: ['Tea[47 chars] |  P\n', 'Allegoric Alaskans             |   [86 chars]  3'] != ['Tea[47 chars] |  P', 'Allegoric Alaskans             |  2 |[74 chars]  3']
+E       
+E       First differing element 0:
+E       'Team                           | MP |  W |  D |  L |  P\n'
+E       'Team                           | MP |  W |  D |  L |  P'
+E       
+E       - ['Team                           | MP |  W |  D |  L |  P\n',
+E       ?                                                          --
+E       
+E       + ['Team                           | MP |  W |  D |  L |  P',
+E       -  'Allegoric Alaskans             |   2 |   1 |   0 |   1 |   3',
+E       ?                                     -     -     -     -   -
+E       
+E       +  'Allegoric Alaskans             |  2 |  1 |  0 |  1 |  3',
+E       -  'Blithering Badgers             |   2 |   1 |   0 |   1 |   3']
+E       ?                                     -     -     -     -   -
+E       
+E       +  'Blithering Badgers             |  2 |  1 |  0 |  1 |  3']
+
+exercises/practice/tournament/tournament_test.py:76: AssertionError
+_____________ TournamentTest.test_there_can_be_more_than_two_teams _____________
+
+self = <tournament_test.TournamentTest testMethod=test_there_can_be_more_than_two_teams>
+
+    def test_there_can_be_more_than_two_teams(self):
+        results = [
+            "Allegoric Alaskans;Blithering Badgers;win",
+            "Blithering Badgers;Courageous Californians;win",
+            "Courageous Californians;Allegoric Alaskans;loss",
+        ]
+        table = [
+            "Team                           | MP |  W |  D |  L |  P",
+            "Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6",
+            "Blithering Badgers             |  2 |  1 |  0 |  1 |  3",
+            "Courageous Californians        |  2 |  0 |  0 |  2 |  0",
+        ]
+>       self.assertEqual(tally(results), table)
+E       AssertionError: Lists differ: ['Tea[47 chars] |  P\n', 'Allegoric Alaskans             |   [150 chars]  0'] != ['Tea[47 chars] |  P', 'Allegoric Alaskans             |  2 |[133 chars]  0']
+E       
+E       First differing element 0:
+E       'Team                           | MP |  W |  D |  L |  P\n'
+E       'Team                           | MP |  W |  D |  L |  P'
+E       
+E       Diff is 765 characters long. Set self.maxDiff to None to see it.
+
+exercises/practice/tournament/tournament_test.py:90: AssertionError
+________________ TournamentTest.test_ties_broken_alphabetically ________________
+
+self = <tournament_test.TournamentTest testMethod=test_ties_broken_alphabetically>
+
+    def test_ties_broken_alphabetically(self):
+        results = [
+            "Courageous Californians;Devastating Donkeys;win",
+            "Allegoric Alaskans;Blithering Badgers;win",
+            "Devastating Donkeys;Allegoric Alaskans;loss",
+            "Courageous Californians;Blithering Badgers;win",
+            "Blithering Badgers;Devastating Donkeys;draw",
+            "Allegoric Alaskans;Courageous Californians;draw",
+        ]
+        table = [
+            "Team                           | MP |  W |  D |  L |  P",
+            "Allegoric Alaskans             |  3 |  2 |  1 |  0 |  7",
+            "Courageous Californians        |  3 |  2 |  1 |  0 |  7",
+            "Blithering Badgers             |  3 |  0 |  1 |  2 |  1",
+            "Devastating Donkeys            |  3 |  0 |  1 |  2 |  1",
+        ]
+>       self.assertEqual(tally(results), table)
+E       AssertionError: Lists differ: ['Tea[47 chars] |  P\n', 'Allegoric Alaskans             |   [214 chars]  1'] != ['Tea[47 chars] |  P', 'Allegoric Alaskans             |  3 |[192 chars]  1']
+E       
+E       First differing element 0:
+E       'Team                           | MP |  W |  D |  L |  P\n'
+E       'Team                           | MP |  W |  D |  L |  P'
+E       
+E       Diff is 957 characters long. Set self.maxDiff to None to see it.
+
+exercises/practice/tournament/tournament_test.py:142: AssertionError
+______________________ TournamentTest.test_typical_input _______________________
+
+self = <tournament_test.TournamentTest testMethod=test_typical_input>
+
+    def test_typical_input(self):
+        results = [
+            "Allegoric Alaskans;Blithering Badgers;win",
+            "Devastating Donkeys;Courageous Californians;draw",
+            "Devastating Donkeys;Allegoric Alaskans;win",
+            "Courageous Californians;Blithering Badgers;loss",
+            "Blithering Badgers;Devastating Donkeys;loss",
+            "Allegoric Alaskans;Courageous Californians;win",
+        ]
+        table = [
+            "Team                           | MP |  W |  D |  L |  P",
+            "Devastating Donkeys            |  3 |  2 |  1 |  0 |  7",
+            "Allegoric Alaskans             |  3 |  2 |  0 |  1 |  6",
+            "Blithering Badgers             |  3 |  1 |  0 |  2 |  3",
+            "Courageous Californians        |  3 |  0 |  1 |  2 |  1",
+        ]
+>       self.assertEqual(tally(results), table)
+E       AssertionError: Lists differ: ['Tea[47 chars] |  P\n', 'Devastating Donkeys            |   [214 chars]  1'] != ['Tea[47 chars] |  P', 'Devastating Donkeys            |  3 |[192 chars]  1']
+E       
+E       First differing element 0:
+E       'Team                           | MP |  W |  D |  L |  P\n'
+E       'Team                           | MP |  W |  D |  L |  P'
+E       
+E       Diff is 957 characters long. Set self.maxDiff to None to see it.
+
+exercises/practice/tournament/tournament_test.py:108: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/tournament/tournament_test.py::TournamentTest::test_a_different_team_can_win
+FAILED exercises/practice/tournament/tournament_test.py::TournamentTest::test_a_draw_is_one_point_each
+FAILED exercises/practice/tournament/tournament_test.py::TournamentTest::test_a_win_can_also_be_expressed_as_a_loss
+FAILED exercises/practice/tournament/tournament_test.py::TournamentTest::test_a_win_is_three_points_a_loss_is_zero_points
+FAILED exercises/practice/tournament/tournament_test.py::TournamentTest::test_ensure_points_sorted_numerically
+FAILED exercises/practice/tournament/tournament_test.py::TournamentTest::test_incomplete_competition_not_all_pairs_have_played
+FAILED exercises/practice/tournament/tournament_test.py::TournamentTest::test_just_the_header_if_no_input
+FAILED exercises/practice/tournament/tournament_test.py::TournamentTest::test_there_can_be_more_than_one_match
+FAILED exercises/practice/tournament/tournament_test.py::TournamentTest::test_there_can_be_more_than_one_winner
+FAILED exercises/practice/tournament/tournament_test.py::TournamentTest::test_there_can_be_more_than_two_teams
+FAILED exercises/practice/tournament/tournament_test.py::TournamentTest::test_ties_broken_alphabetically
+FAILED exercises/practice/tournament/tournament_test.py::TournamentTest::test_typical_input
+============================== 12 failed in 0.09s ==============================

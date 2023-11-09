@@ -1,0 +1,44 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 10 items
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py . [ 10%]
+F......F.                                                                [100%]
+
+=================================== FAILURES ===================================
+__________ ResistorColorExpertTest.test_blue_grey_white_red_and_brown __________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_blue_grey_white_red_and_brown>
+
+    def test_blue_grey_white_red_and_brown(self):
+>       self.assertEqual(
+            resistor_label(["blue", "grey", "white", "brown", "brown"]), "6.89 kiloohms ±1%"
+        )
+E       AssertionError: '6.9 kiloohms ±1%' != '6.89 kiloohms ±1%'
+E       - 6.9 kiloohms ±1%
+E       + 6.89 kiloohms ±1%
+E       ?   +
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:39: AssertionError
+________ ResistorColorExpertTest.test_red_green_yellow_yellow_and_brown ________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_red_green_yellow_yellow_and_brown>
+
+    def test_red_green_yellow_yellow_and_brown(self):
+>       self.assertEqual(
+            resistor_label(["red", "green", "yellow", "yellow", "brown"]), "2.54 megaohms ±1%"
+        )
+E       AssertionError: '2.5 megaohms ±1%' != '2.54 megaohms ±1%'
+E       - 2.5 megaohms ±1%
+E       + 2.54 megaohms ±1%
+E       ?    +
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:34: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_blue_grey_white_red_and_brown
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_red_green_yellow_yellow_and_brown
+========================= 2 failed, 8 passed in 0.05s ==========================

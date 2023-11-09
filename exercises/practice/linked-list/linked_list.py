@@ -1,8 +1,78 @@
 class Node:
     def __init__(self, value, succeeding=None, previous=None):
-        pass
+        self.value = value
+        self.succeeding = succeeding
+        self.previous = previous
 
 
 class LinkedList:
     def __init__(self):
-        pass
+        self.head = None
+        self.tail = None
+    def push(self, value):
+        new_node = Node(value, previous=self.tail)
+        if self.tail:
+            self.tail.succeeding = new_node
+        self.tail = new_node
+        if not self.head:
+            self.head = new_node
+
+    def pop(self):
+        if not self.tail:
+            raise IndexError("List is empty")
+        value = self.tail.value
+        self.tail = self.tail.previous
+        if self.tail:
+            self.tail.succeeding = None
+        else:
+            self.head = None
+        return value
+
+    def shift(self):
+        if not self.head:
+            raise IndexError("List is empty")
+        value = self.head.value
+        self.head = self.head.succeeding
+        if self.head:
+            self.head.previous = None
+        else:
+            self.tail = None
+        return value
+
+    def unshift(self, value):
+        new_node = Node(value, succeeding=self.head)
+        if self.head:
+            self.head.previous = new_node
+        self.head = new_node
+        if not self.tail:
+            self.tail = new_node
+
+    def delete(self, value):
+        current = self.head
+        while current:
+            if current.value == value:
+                if current.previous:
+                    current.previous.succeeding = current.succeeding
+                else:
+                    self.head = current.succeeding
+                if current.succeeding:
+                    current.succeeding.previous = current.previous
+                else:
+                    self.tail = current.previous
+                return
+            current = current.succeeding
+        raise ValueError("Value not found")
+
+    def __len__(self):
+        length = 0
+        current = self.head
+        while current:
+            length += 1
+            current = current.succeeding
+        return length
+
+    def __iter__(self):
+        current = self.head
+        while current:
+            yield current.value
+            current = current.succeeding

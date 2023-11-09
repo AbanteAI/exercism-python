@@ -1,0 +1,543 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 103 items
+
+exercises/practice/meetup/meetup_test.py ...................FFFF........ [ 30%]
+.....................................FFFFFFFFFFFFFFFFFFFFF.............. [100%]
+
+=================================== FAILURES ===================================
+___________ MeetupTest.test_nonexistent_fifth_friday_of_august_2022 ____________
+
+self = <meetup_test.MeetupTest testMethod=test_nonexistent_fifth_friday_of_august_2022>
+
+    def test_nonexistent_fifth_friday_of_august_2022(self):
+        with self.assertRaises(MeetupDayException) as err:
+            meetup(2022, 8, "fifth", "Friday")
+        self.assertEqual(type(err.exception), MeetupDayException)
+>       self.assertEqual(err.exception.args[0], "That day does not exist.")
+E       AssertionError: 'The 5th Friday does not exist in August 2022.' != 'That day does not exist.'
+E       - The 5th Friday does not exist in August 2022.
+E       + That day does not exist.
+
+exercises/practice/meetup/meetup_test.py:327: AssertionError
+__________ MeetupTest.test_nonexistent_fifth_monday_of_february_2022 ___________
+
+self = <meetup_test.MeetupTest testMethod=test_nonexistent_fifth_monday_of_february_2022>
+
+    def test_nonexistent_fifth_monday_of_february_2022(self):
+        with self.assertRaises(MeetupDayException) as err:
+            meetup(2022, 2, "fifth", "Monday")
+        self.assertEqual(type(err.exception), MeetupDayException)
+>       self.assertEqual(err.exception.args[0], "That day does not exist.")
+E       AssertionError: 'The 5th Monday does not exist in February 2022.' != 'That day does not exist.'
+E       - The 5th Monday does not exist in February 2022.
+E       + That day does not exist.
+
+exercises/practice/meetup/meetup_test.py:321: AssertionError
+____________ MeetupTest.test_nonexistent_fifth_thursday_of_may_2023 ____________
+
+self = <meetup_test.MeetupTest testMethod=test_nonexistent_fifth_thursday_of_may_2023>
+
+    def test_nonexistent_fifth_thursday_of_may_2023(self):
+        with self.assertRaises(MeetupDayException) as err:
+            meetup(2023, 5, "fifth", "Thursday")
+        self.assertEqual(type(err.exception), MeetupDayException)
+>       self.assertEqual(err.exception.args[0], "That day does not exist.")
+E       AssertionError: 'The 5th Thursday does not exist in May 2023.' != 'That day does not exist.'
+E       - The 5th Thursday does not exist in May 2023.
+E       + That day does not exist.
+
+exercises/practice/meetup/meetup_test.py:333: AssertionError
+__________________ MeetupTest.test_teenth_friday_of_may_2022 ___________________
+
+self = <meetup_test.MeetupTest testMethod=test_teenth_friday_of_may_2022>
+
+    def test_teenth_friday_of_may_2022(self):
+>       self.assertEqual(meetup(2022, 5, "teenth", "Friday"), date(2022, 5, 13))
+
+exercises/practice/meetup/meetup_test.py:315: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2022, month = 5, weekday = 4
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_friday_is_some_day_in_the_middle_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_friday_is_some_day_in_the_middle_of_the_teenth_week>
+
+    def test_when_teenth_friday_is_some_day_in_the_middle_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 8, "teenth", "Friday"), date(2013, 8, 16))
+
+exercises/practice/meetup/meetup_test.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 8, weekday = 4
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_friday_is_the_13th_the_first_day_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_friday_is_the_13th_the_first_day_of_the_teenth_week>
+
+    def test_when_teenth_friday_is_the_13th_the_first_day_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 9, "teenth", "Friday"), date(2013, 9, 13))
+
+exercises/practice/meetup/meetup_test.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 9, weekday = 4
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_friday_is_the_19th_the_last_day_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_friday_is_the_19th_the_last_day_of_the_teenth_week>
+
+    def test_when_teenth_friday_is_the_19th_the_last_day_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 4, "teenth", "Friday"), date(2013, 4, 19))
+
+exercises/practice/meetup/meetup_test.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, weekday = 4
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_monday_is_some_day_in_the_middle_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_monday_is_some_day_in_the_middle_of_the_teenth_week>
+
+    def test_when_teenth_monday_is_some_day_in_the_middle_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 9, "teenth", "Monday"), date(2013, 9, 16))
+
+exercises/practice/meetup/meetup_test.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 9, weekday = 0
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_monday_is_the_13th_the_first_day_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_monday_is_the_13th_the_first_day_of_the_teenth_week>
+
+    def test_when_teenth_monday_is_the_13th_the_first_day_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 5, "teenth", "Monday"), date(2013, 5, 13))
+
+exercises/practice/meetup/meetup_test.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 5, weekday = 0
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_monday_is_the_19th_the_last_day_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_monday_is_the_19th_the_last_day_of_the_teenth_week>
+
+    def test_when_teenth_monday_is_the_19th_the_last_day_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 8, "teenth", "Monday"), date(2013, 8, 19))
+
+exercises/practice/meetup/meetup_test.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 8, weekday = 0
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_saturday_is_some_day_in_the_middle_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_saturday_is_some_day_in_the_middle_of_the_teenth_week>
+
+    def test_when_teenth_saturday_is_some_day_in_the_middle_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 2, "teenth", "Saturday"), date(2013, 2, 16))
+
+exercises/practice/meetup/meetup_test.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 2, weekday = 5
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_saturday_is_the_13th_the_first_day_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_saturday_is_the_13th_the_first_day_of_the_teenth_week>
+
+    def test_when_teenth_saturday_is_the_13th_the_first_day_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 4, "teenth", "Saturday"), date(2013, 4, 13))
+
+exercises/practice/meetup/meetup_test.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, weekday = 5
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_saturday_is_the_19th_the_last_day_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_saturday_is_the_19th_the_last_day_of_the_teenth_week>
+
+    def test_when_teenth_saturday_is_the_19th_the_last_day_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 10, "teenth", "Saturday"), date(2013, 10, 19))
+
+exercises/practice/meetup/meetup_test.py:67: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 10, weekday = 5
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_sunday_is_some_day_in_the_middle_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_sunday_is_some_day_in_the_middle_of_the_teenth_week>
+
+    def test_when_teenth_sunday_is_some_day_in_the_middle_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 6, "teenth", "Sunday"), date(2013, 6, 16))
+
+exercises/practice/meetup/meetup_test.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 6, weekday = 6
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_sunday_is_the_13th_the_first_day_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_sunday_is_the_13th_the_first_day_of_the_teenth_week>
+
+    def test_when_teenth_sunday_is_the_13th_the_first_day_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 10, "teenth", "Sunday"), date(2013, 10, 13))
+
+exercises/practice/meetup/meetup_test.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 10, weekday = 6
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_sunday_is_the_19th_the_last_day_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_sunday_is_the_19th_the_last_day_of_the_teenth_week>
+
+    def test_when_teenth_sunday_is_the_19th_the_last_day_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 5, "teenth", "Sunday"), date(2013, 5, 19))
+
+exercises/practice/meetup/meetup_test.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 5, weekday = 6
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_thursday_is_some_day_in_the_middle_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_thursday_is_some_day_in_the_middle_of_the_teenth_week>
+
+    def test_when_teenth_thursday_is_some_day_in_the_middle_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 5, "teenth", "Thursday"), date(2013, 5, 16))
+
+exercises/practice/meetup/meetup_test.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 5, weekday = 3
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_thursday_is_the_13th_the_first_day_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_thursday_is_the_13th_the_first_day_of_the_teenth_week>
+
+    def test_when_teenth_thursday_is_the_13th_the_first_day_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 6, "teenth", "Thursday"), date(2013, 6, 13))
+
+exercises/practice/meetup/meetup_test.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 6, weekday = 3
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_thursday_is_the_19th_the_last_day_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_thursday_is_the_19th_the_last_day_of_the_teenth_week>
+
+    def test_when_teenth_thursday_is_the_19th_the_last_day_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 9, "teenth", "Thursday"), date(2013, 9, 19))
+
+exercises/practice/meetup/meetup_test.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 9, weekday = 3
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_tuesday_is_some_day_in_the_middle_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_tuesday_is_some_day_in_the_middle_of_the_teenth_week>
+
+    def test_when_teenth_tuesday_is_some_day_in_the_middle_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 4, "teenth", "Tuesday"), date(2013, 4, 16))
+
+exercises/practice/meetup/meetup_test.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 4, weekday = 1
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_tuesday_is_the_13th_the_first_day_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_tuesday_is_the_13th_the_first_day_of_the_teenth_week>
+
+    def test_when_teenth_tuesday_is_the_13th_the_first_day_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 8, "teenth", "Tuesday"), date(2013, 8, 13))
+
+exercises/practice/meetup/meetup_test.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 8, weekday = 1
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_tuesday_is_the_19th_the_last_day_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_tuesday_is_the_19th_the_last_day_of_the_teenth_week>
+
+    def test_when_teenth_tuesday_is_the_19th_the_last_day_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 3, "teenth", "Tuesday"), date(2013, 3, 19))
+
+exercises/practice/meetup/meetup_test.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 3, weekday = 1
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_wednesday_is_some_day_in_the_middle_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_wednesday_is_some_day_in_the_middle_of_the_teenth_week>
+
+    def test_when_teenth_wednesday_is_some_day_in_the_middle_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 1, "teenth", "Wednesday"), date(2013, 1, 16))
+
+exercises/practice/meetup/meetup_test.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 1, weekday = 2
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_wednesday_is_the_13th_the_first_day_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_wednesday_is_the_13th_the_first_day_of_the_teenth_week>
+
+    def test_when_teenth_wednesday_is_the_13th_the_first_day_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 2, "teenth", "Wednesday"), date(2013, 2, 13))
+
+exercises/practice/meetup/meetup_test.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 2, weekday = 2
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+_ MeetupTest.test_when_teenth_wednesday_is_the_19th_the_last_day_of_the_teenth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_teenth_wednesday_is_the_19th_the_last_day_of_the_teenth_week>
+
+    def test_when_teenth_wednesday_is_the_19th_the_last_day_of_the_teenth_week(self):
+>       self.assertEqual(meetup(2013, 6, "teenth", "Wednesday"), date(2013, 6, 19))
+
+exercises/practice/meetup/meetup_test.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:42: in meetup
+    return teenth_weekday(year, month, day_num)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+year = 2013, month = 6, weekday = 2
+
+    def teenth_weekday(year, month, weekday):
+        month_calendar = calendar.monthcalendar(year, month)
+>       for day in teenth_days:
+E       NameError: name 'teenth_days' is not defined
+
+exercises/practice/meetup/meetup.py:69: NameError
+=========================== short test summary info ============================
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_nonexistent_fifth_friday_of_august_2022
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_nonexistent_fifth_monday_of_february_2022
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_nonexistent_fifth_thursday_of_may_2023
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_teenth_friday_of_may_2022
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_friday_is_some_day_in_the_middle_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_friday_is_the_13th_the_first_day_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_friday_is_the_19th_the_last_day_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_monday_is_some_day_in_the_middle_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_monday_is_the_13th_the_first_day_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_monday_is_the_19th_the_last_day_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_saturday_is_some_day_in_the_middle_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_saturday_is_the_13th_the_first_day_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_saturday_is_the_19th_the_last_day_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_sunday_is_some_day_in_the_middle_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_sunday_is_the_13th_the_first_day_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_sunday_is_the_19th_the_last_day_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_thursday_is_some_day_in_the_middle_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_thursday_is_the_13th_the_first_day_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_thursday_is_the_19th_the_last_day_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_tuesday_is_some_day_in_the_middle_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_tuesday_is_the_13th_the_first_day_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_tuesday_is_the_19th_the_last_day_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_wednesday_is_some_day_in_the_middle_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_wednesday_is_the_13th_the_first_day_of_the_teenth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_teenth_wednesday_is_the_19th_the_last_day_of_the_teenth_week
+======================== 25 failed, 78 passed in 0.50s =========================

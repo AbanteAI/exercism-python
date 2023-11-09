@@ -1,0 +1,90 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 43 items
+
+exercises/practice/complex-numbers/complex_numbers_test.py .....F....... [ 30%]
+....F............F...F...F...F                                           [100%]
+
+=================================== FAILURES ===================================
+__________ ComplexNumbersTest.test_add_complex_number_to_real_number ___________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_add_complex_number_to_real_number>
+
+    def test_add_complex_number_to_real_number(self):
+>       self.assertEqual(5 + ComplexNumber(1, 2), ComplexNumber(6, 2))
+E       TypeError: unsupported operand type(s) for +: 'int' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:163: TypeError
+_________ ComplexNumbersTest.test_divide_real_number_by_complex_number _________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_divide_real_number_by_complex_number>
+
+    def test_divide_real_number_by_complex_number(self):
+>       self.assertAlmostEqual(5 / ComplexNumber(1, 1), ComplexNumber(2.5, -2.5))
+E       TypeError: unsupported operand type(s) for /: 'int' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:181: TypeError
+________ ComplexNumbersTest.test_multiply_complex_number_by_real_number ________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_multiply_complex_number_by_real_number>
+
+    def test_multiply_complex_number_by_real_number(self):
+>       self.assertEqual(ComplexNumber(2, 5) * 5, ComplexNumber(10, 25))
+
+exercises/practice/complex-numbers/complex_numbers_test.py:172: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <complex_numbers.ComplexNumber object at 0x7f5c04675d80>, other = 5
+
+    def __mul__(self, other):
+>       real = self.real * other.real - self.imaginary * other.imaginary
+E       AttributeError: 'int' object has no attribute 'imaginary'
+
+exercises/practice/complex-numbers/complex_numbers.py:18: AttributeError
+________ ComplexNumbersTest.test_multiply_real_number_by_complex_number ________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_multiply_real_number_by_complex_number>
+
+    def test_multiply_real_number_by_complex_number(self):
+>       self.assertEqual(5 * ComplexNumber(2, 5), ComplexNumber(10, 25))
+E       TypeError: unsupported operand type(s) for *: 'int' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:175: TypeError
+_______ ComplexNumbersTest.test_subtract_complex_number_from_real_number _______
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_subtract_complex_number_from_real_number>
+
+    def test_subtract_complex_number_from_real_number(self):
+>       self.assertEqual(4 - ComplexNumber(5, 7), ComplexNumber(-1, -7))
+E       TypeError: unsupported operand type(s) for -: 'int' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:169: TypeError
+_______ ComplexNumbersTest.test_subtract_real_number_from_complex_number _______
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_subtract_real_number_from_complex_number>
+
+    def test_subtract_real_number_from_complex_number(self):
+>       self.assertEqual(ComplexNumber(5, 7) - 4, ComplexNumber(1, 7))
+
+exercises/practice/complex-numbers/complex_numbers_test.py:166: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <complex_numbers.ComplexNumber object at 0x7f5c04722170>, other = 4
+
+    def __sub__(self, other):
+>       return ComplexNumber(self.real - other.real, self.imaginary - other.imaginary)
+E       AttributeError: 'int' object has no attribute 'imaginary'
+
+exercises/practice/complex-numbers/complex_numbers.py:23: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_add_complex_number_to_real_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_divide_real_number_by_complex_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_multiply_complex_number_by_real_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_multiply_real_number_by_complex_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_subtract_complex_number_from_real_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_subtract_real_number_from_complex_number
+========================= 6 failed, 37 passed in 0.14s =========================

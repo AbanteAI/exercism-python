@@ -1,0 +1,46 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 19 items
+
+exercises/practice/dnd-character/dnd_character_test.py ................F [ 89%]
+FF                                                                       [100%]
+
+=================================== FAILURES ===================================
+__________ DndCharacterTest.test_each_ability_is_only_calculated_once __________
+
+self = <dnd_character_test.DndCharacterTest testMethod=test_each_ability_is_only_calculated_once>
+
+    def test_each_ability_is_only_calculated_once(self):
+        Char = Character()
+>       self.assertIs(Char.strength == Char.strength, True)
+E       AttributeError: 'Character' object has no attribute 'strength'
+
+exercises/practice/dnd-character/dnd_character_test.py:78: AttributeError
+_____________ DndCharacterTest.test_random_ability_is_within_range _____________
+
+self = <dnd_character_test.DndCharacterTest testMethod=test_random_ability_is_within_range>
+
+    def test_random_ability_is_within_range(self):
+>       score = Character().ability()
+E       AttributeError: 'Character' object has no attribute 'ability'
+
+exercises/practice/dnd-character/dnd_character_test.py:63: AttributeError
+_______________ DndCharacterTest.test_random_character_is_valid ________________
+
+self = <dnd_character_test.DndCharacterTest testMethod=test_random_character_is_valid>
+
+    def test_random_character_is_valid(self):
+        Char = Character()
+>       self.assertIs(Char.strength >= 3 and Char.strength <= 18, True)
+E       AttributeError: 'Character' object has no attribute 'strength'
+
+exercises/practice/dnd-character/dnd_character_test.py:68: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/dnd-character/dnd_character_test.py::DndCharacterTest::test_each_ability_is_only_calculated_once
+FAILED exercises/practice/dnd-character/dnd_character_test.py::DndCharacterTest::test_random_ability_is_within_range
+FAILED exercises/practice/dnd-character/dnd_character_test.py::DndCharacterTest::test_random_character_is_valid
+========================= 3 failed, 16 passed in 0.05s =========================

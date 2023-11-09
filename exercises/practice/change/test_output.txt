@@ -1,0 +1,285 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 12 items
+
+exercises/practice/change/change_test.py FFFF..FFF.FF                    [100%]
+
+=================================== FAILURES ===================================
+_____ ChangeTest.test_another_possible_change_without_unit_coins_available _____
+
+self = <change_test.ChangeTest testMethod=test_another_possible_change_without_unit_coins_available>
+
+    def test_another_possible_change_without_unit_coins_available(self):
+>       self.assertEqual(find_fewest_coins([4, 5], 27), [4, 4, 4, 5, 5, 5])
+E       AssertionError: Lists differ: [5, 5, 5, 4, 4, 4] != [4, 4, 4, 5, 5, 5]
+E       
+E       First differing element 0:
+E       5
+E       4
+E       
+E       - [5, 5, 5, 4, 4, 4]
+E       + [4, 4, 4, 5, 5, 5]
+
+exercises/practice/change/change_test.py:38: AssertionError
+______________ ChangeTest.test_cannot_find_negative_change_values ______________
+
+self = <change_test.ChangeTest testMethod=test_cannot_find_negative_change_values>
+
+    def test_cannot_find_negative_change_values(self):
+        with self.assertRaises(ValueError) as err:
+            find_fewest_coins([1, 2, 5], -5)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "target can't be negative")
+E       AssertionError: 'cannot find change for negative value' != "target can't be negative"
+E       - cannot find change for negative value
+E       + target can't be negative
+
+exercises/practice/change/change_test.py:59: AssertionError
+______________________ ChangeTest.test_change_for_1_cent _______________________
+
+self = <change_test.ChangeTest testMethod=test_change_for_1_cent>
+
+    def test_change_for_1_cent(self):
+>       self.assertEqual(find_fewest_coins([1, 5, 10, 25], 1), [1])
+
+exercises/practice/change/change_test.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+coins = [1, 5, 10, 25], target = 1
+
+    def find_fewest_coins(coins, target):
+        if target < 0:
+            raise ValueError("cannot find change for negative value")
+        if target == 0:
+            return []
+        if not coins or min(coins) > target:
+            raise ValueError("no coins available to make change")
+    
+        # Initialize the table to store the minimum coins for each amount
+        min_coins = [0] + [float('inf')] * target
+    
+        # Build the table in a bottom-up manner
+        for coin in coins:
+            for amount in range(coin, target + 1):
+                if min_coins[amount - coin] != float('inf'):
+                    min_coins[amount] = min(min_coins[amount], min_coins[amount - coin] + 1)
+    
+        if min_coins[target] == float('inf'):
+            raise ValueError("can't make target with given coins")
+    
+        # Trace back the coins used
+        change = []
+        while target > 0:
+            for coin in reversed(coins):
+>               if min_coins[target - coin] == min_coins[target] - 1:
+E               IndexError: list index out of range
+
+exercises/practice/change/change.py:25: IndexError
+________________ ChangeTest.test_change_with_lilliputian_coins _________________
+
+self = <change_test.ChangeTest testMethod=test_change_with_lilliputian_coins>
+
+    def test_change_with_lilliputian_coins(self):
+>       self.assertEqual(find_fewest_coins([1, 4, 15, 20, 50], 23), [4, 4, 15])
+
+exercises/practice/change/change_test.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+coins = [1, 4, 15, 20, 50], target = 23
+
+    def find_fewest_coins(coins, target):
+        if target < 0:
+            raise ValueError("cannot find change for negative value")
+        if target == 0:
+            return []
+        if not coins or min(coins) > target:
+            raise ValueError("no coins available to make change")
+    
+        # Initialize the table to store the minimum coins for each amount
+        min_coins = [0] + [float('inf')] * target
+    
+        # Build the table in a bottom-up manner
+        for coin in coins:
+            for amount in range(coin, target + 1):
+                if min_coins[amount - coin] != float('inf'):
+                    min_coins[amount] = min(min_coins[amount], min_coins[amount - coin] + 1)
+    
+        if min_coins[target] == float('inf'):
+            raise ValueError("can't make target with given coins")
+    
+        # Trace back the coins used
+        change = []
+        while target > 0:
+            for coin in reversed(coins):
+>               if min_coins[target - coin] == min_coins[target] - 1:
+E               IndexError: list index out of range
+
+exercises/practice/change/change.py:25: IndexError
+_ ChangeTest.test_error_testing_for_change_smaller_than_the_smallest_of_coins __
+
+self = <change_test.ChangeTest testMethod=test_error_testing_for_change_smaller_than_the_smallest_of_coins>
+
+    def test_error_testing_for_change_smaller_than_the_smallest_of_coins(self):
+        with self.assertRaises(ValueError) as err:
+            find_fewest_coins([5, 10], 3)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "can't make target with given coins")
+E       AssertionError: 'no coins available to make change' != "can't make target with given coins"
+E       - no coins available to make change
+E       + can't make target with given coins
+
+exercises/practice/change/change_test.py:47: AssertionError
+_____________________ ChangeTest.test_large_target_values ______________________
+
+self = <change_test.ChangeTest testMethod=test_large_target_values>
+
+    def test_large_target_values(self):
+>       self.assertEqual(
+            find_fewest_coins([1, 2, 5, 10, 20, 50, 100], 999),
+            [2, 2, 5, 20, 20, 50, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+        )
+E       AssertionError: Lists differ: [100, 100, 100, 100, 100, 100, 100, 100, 100, 50, 20, 20, 5, 2, 2] != [2, 2, 5, 20, 20, 50, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+E       
+E       First differing element 0:
+E       100
+E       2
+E       
+E       - [100, 100, 100, 100, 100, 100, 100, 100, 100, 50, 20, 20, 5, 2, 2]
+E       + [2, 2, 5, 20, 20, 50, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+
+exercises/practice/change/change_test.py:29: AssertionError
+_____________________ ChangeTest.test_multiple_coin_change _____________________
+
+self = <change_test.ChangeTest testMethod=test_multiple_coin_change>
+
+    def test_multiple_coin_change(self):
+>       self.assertEqual(find_fewest_coins([1, 5, 10, 25, 100], 15), [5, 10])
+
+exercises/practice/change/change_test.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+coins = [1, 5, 10, 25, 100], target = 15
+
+    def find_fewest_coins(coins, target):
+        if target < 0:
+            raise ValueError("cannot find change for negative value")
+        if target == 0:
+            return []
+        if not coins or min(coins) > target:
+            raise ValueError("no coins available to make change")
+    
+        # Initialize the table to store the minimum coins for each amount
+        min_coins = [0] + [float('inf')] * target
+    
+        # Build the table in a bottom-up manner
+        for coin in coins:
+            for amount in range(coin, target + 1):
+                if min_coins[amount - coin] != float('inf'):
+                    min_coins[amount] = min(min_coins[amount], min_coins[amount - coin] + 1)
+    
+        if min_coins[target] == float('inf'):
+            raise ValueError("can't make target with given coins")
+    
+        # Trace back the coins used
+        change = []
+        while target > 0:
+            for coin in reversed(coins):
+>               if min_coins[target - coin] == min_coins[target] - 1:
+E               IndexError: list index out of range
+
+exercises/practice/change/change.py:25: IndexError
+_________ ChangeTest.test_possible_change_without_unit_coins_available _________
+
+self = <change_test.ChangeTest testMethod=test_possible_change_without_unit_coins_available>
+
+    def test_possible_change_without_unit_coins_available(self):
+>       self.assertEqual(find_fewest_coins([2, 5, 10, 20, 50], 21), [2, 2, 2, 5, 10])
+
+exercises/practice/change/change_test.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+coins = [2, 5, 10, 20, 50], target = 21
+
+    def find_fewest_coins(coins, target):
+        if target < 0:
+            raise ValueError("cannot find change for negative value")
+        if target == 0:
+            return []
+        if not coins or min(coins) > target:
+            raise ValueError("no coins available to make change")
+    
+        # Initialize the table to store the minimum coins for each amount
+        min_coins = [0] + [float('inf')] * target
+    
+        # Build the table in a bottom-up manner
+        for coin in coins:
+            for amount in range(coin, target + 1):
+                if min_coins[amount - coin] != float('inf'):
+                    min_coins[amount] = min(min_coins[amount], min_coins[amount - coin] + 1)
+    
+        if min_coins[target] == float('inf'):
+            raise ValueError("can't make target with given coins")
+    
+        # Trace back the coins used
+        change = []
+        while target > 0:
+            for coin in reversed(coins):
+>               if min_coins[target - coin] == min_coins[target] - 1:
+E               IndexError: list index out of range
+
+exercises/practice/change/change.py:25: IndexError
+______________________ ChangeTest.test_single_coin_change ______________________
+
+self = <change_test.ChangeTest testMethod=test_single_coin_change>
+
+    def test_single_coin_change(self):
+>       self.assertEqual(find_fewest_coins([1, 5, 10, 25, 100], 25), [25])
+
+exercises/practice/change/change_test.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+coins = [1, 5, 10, 25, 100], target = 25
+
+    def find_fewest_coins(coins, target):
+        if target < 0:
+            raise ValueError("cannot find change for negative value")
+        if target == 0:
+            return []
+        if not coins or min(coins) > target:
+            raise ValueError("no coins available to make change")
+    
+        # Initialize the table to store the minimum coins for each amount
+        min_coins = [0] + [float('inf')] * target
+    
+        # Build the table in a bottom-up manner
+        for coin in coins:
+            for amount in range(coin, target + 1):
+                if min_coins[amount - coin] != float('inf'):
+                    min_coins[amount] = min(min_coins[amount], min_coins[amount - coin] + 1)
+    
+        if min_coins[target] == float('inf'):
+            raise ValueError("can't make target with given coins")
+    
+        # Trace back the coins used
+        change = []
+        while target > 0:
+            for coin in reversed(coins):
+>               if min_coins[target - coin] == min_coins[target] - 1:
+E               IndexError: list index out of range
+
+exercises/practice/change/change.py:25: IndexError
+=========================== short test summary info ============================
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_another_possible_change_without_unit_coins_available
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_cannot_find_negative_change_values
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_change_for_1_cent
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_change_with_lilliputian_coins
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_error_testing_for_change_smaller_than_the_smallest_of_coins
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_large_target_values
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_multiple_coin_change
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_possible_change_without_unit_coins_available
+FAILED exercises/practice/change/change_test.py::ChangeTest::test_single_coin_change
+========================= 9 failed, 3 passed in 0.07s ==========================

@@ -1,0 +1,96 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 13 items
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py ..... [ 38%]
+..FFFFFF                                                                 [100%]
+
+=================================== FAILURES ===================================
+__ RunLengthEncodingTest.test_encode_followed_by_decode_gives_original_string __
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_followed_by_decode_gives_original_string>
+
+    def test_encode_followed_by_decode_gives_original_string(self):
+>       self.assertMultiLineEqual(decode(encode("zzz ZZ  zZ")), "zzz ZZ  zZ")
+E       AssertionError: 'zz ZZ  zZ' != 'zzz ZZ  zZ'
+E       - zz ZZ  zZ
+E       + zzz ZZ  zZ
+E       ?   +
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:57: AssertionError
+____________ RunLengthEncodingTest.test_encode_lowercase_characters ____________
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_lowercase_characters>
+
+    def test_encode_lowercase_characters(self):
+>       self.assertMultiLineEqual(encode("aabbbcccc"), "2a3b4c")
+E       AssertionError: 'a3b4c' != '2a3b4c'
+E       - a3b4c
+E       + 2a3b4c
+E       ? +
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:33: AssertionError
+____ RunLengthEncodingTest.test_encode_multiple_whitespace_mixed_in_string _____
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_multiple_whitespace_mixed_in_string>
+
+    def test_encode_multiple_whitespace_mixed_in_string(self):
+>       self.assertMultiLineEqual(encode("  hsqq qww  "), "2 hs2q q2w2 ")
+E       AssertionError: ' hs2q q2w2 ' != '2 hs2q q2w2 '
+E       -  hs2q q2w2 
+E       + 2 hs2q q2w2 
+E       ? +
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:30: AssertionError
+_ RunLengthEncodingTest.test_encode_single_characters_mixed_with_repeated_characters _
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_single_characters_mixed_with_repeated_characters>
+
+    def test_encode_single_characters_mixed_with_repeated_characters(self):
+>       self.assertMultiLineEqual(
+            encode("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB"),
+            "12WB12W3B24WB",
+        )
+E       AssertionError: '11WB12W3B24WB' != '12WB12W3B24WB'
+E       - 11WB12W3B24WB
+E       ?  ^
+E       + 12WB12W3B24WB
+E       ?  ^
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:24: AssertionError
+_ RunLengthEncodingTest.test_encode_single_characters_only_are_encoded_without_count _
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_single_characters_only_are_encoded_without_count>
+
+    def test_encode_single_characters_only_are_encoded_without_count(self):
+>       self.assertMultiLineEqual(encode("XYZ"), "XYZ")
+E       AssertionError: 'YZ' != 'XYZ'
+E       - YZ
+E       + XYZ
+E       ? +
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:18: AssertionError
+______ RunLengthEncodingTest.test_encode_string_with_no_single_characters ______
+
+self = <run_length_encoding_test.RunLengthEncodingTest testMethod=test_encode_string_with_no_single_characters>
+
+    def test_encode_string_with_no_single_characters(self):
+>       self.assertMultiLineEqual(encode("AABBBCCCC"), "2A3B4C")
+E       AssertionError: 'A3B4C' != '2A3B4C'
+E       - A3B4C
+E       + 2A3B4C
+E       ? +
+
+exercises/practice/run-length-encoding/run_length_encoding_test.py:21: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_followed_by_decode_gives_original_string
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_lowercase_characters
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_multiple_whitespace_mixed_in_string
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_single_characters_mixed_with_repeated_characters
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_single_characters_only_are_encoded_without_count
+FAILED exercises/practice/run-length-encoding/run_length_encoding_test.py::RunLengthEncodingTest::test_encode_string_with_no_single_characters
+========================= 6 failed, 7 passed in 0.06s ==========================

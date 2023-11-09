@@ -1,0 +1,365 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 13 items
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py FFF [ 23%]
+FFFFFFFFFF                                                               [100%]
+
+=================================== FAILURES ===================================
+________________________ KillerSudokuHelperTest.test_1 _________________________
+
+self = <killer_sudoku_helper_test.KillerSudokuHelperTest testMethod=test_1>
+
+    def test_1(self):
+>       self.assertEqual(combinations(1, 1, []), [[1]])
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target = 1, size = 1, exclude = []
+
+    def combinations(target, size, exclude):
+        """
+        Generate all valid combinations of digits for a Killer Sudoku cage.
+    
+        :param target: The target sum of the digits in the cage.
+        :param size: The number of digits in the cage.
+        :param exclude: A list of digits to exclude from the combinations.
+        :return: A list of valid combinations, each combination is a tuple of digits.
+        """
+        all_digits = set(range(1, 10)) - set(exclude)
+>       all_combinations = list(combinations(all_digits, size))
+E       TypeError: combinations() missing 1 required positional argument: 'exclude'
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper.py:13: TypeError
+________________________ KillerSudokuHelperTest.test_2 _________________________
+
+self = <killer_sudoku_helper_test.KillerSudokuHelperTest testMethod=test_2>
+
+    def test_2(self):
+>       self.assertEqual(combinations(2, 1, []), [[2]])
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target = 2, size = 1, exclude = []
+
+    def combinations(target, size, exclude):
+        """
+        Generate all valid combinations of digits for a Killer Sudoku cage.
+    
+        :param target: The target sum of the digits in the cage.
+        :param size: The number of digits in the cage.
+        :param exclude: A list of digits to exclude from the combinations.
+        :return: A list of valid combinations, each combination is a tuple of digits.
+        """
+        all_digits = set(range(1, 10)) - set(exclude)
+>       all_combinations = list(combinations(all_digits, size))
+E       TypeError: combinations() missing 1 required positional argument: 'exclude'
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper.py:13: TypeError
+________________________ KillerSudokuHelperTest.test_3 _________________________
+
+self = <killer_sudoku_helper_test.KillerSudokuHelperTest testMethod=test_3>
+
+    def test_3(self):
+>       self.assertEqual(combinations(3, 1, []), [[3]])
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target = 3, size = 1, exclude = []
+
+    def combinations(target, size, exclude):
+        """
+        Generate all valid combinations of digits for a Killer Sudoku cage.
+    
+        :param target: The target sum of the digits in the cage.
+        :param size: The number of digits in the cage.
+        :param exclude: A list of digits to exclude from the combinations.
+        :return: A list of valid combinations, each combination is a tuple of digits.
+        """
+        all_digits = set(range(1, 10)) - set(exclude)
+>       all_combinations = list(combinations(all_digits, size))
+E       TypeError: combinations() missing 1 required positional argument: 'exclude'
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper.py:13: TypeError
+________________________ KillerSudokuHelperTest.test_4 _________________________
+
+self = <killer_sudoku_helper_test.KillerSudokuHelperTest testMethod=test_4>
+
+    def test_4(self):
+>       self.assertEqual(combinations(4, 1, []), [[4]])
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target = 4, size = 1, exclude = []
+
+    def combinations(target, size, exclude):
+        """
+        Generate all valid combinations of digits for a Killer Sudoku cage.
+    
+        :param target: The target sum of the digits in the cage.
+        :param size: The number of digits in the cage.
+        :param exclude: A list of digits to exclude from the combinations.
+        :return: A list of valid combinations, each combination is a tuple of digits.
+        """
+        all_digits = set(range(1, 10)) - set(exclude)
+>       all_combinations = list(combinations(all_digits, size))
+E       TypeError: combinations() missing 1 required positional argument: 'exclude'
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper.py:13: TypeError
+________________________ KillerSudokuHelperTest.test_5 _________________________
+
+self = <killer_sudoku_helper_test.KillerSudokuHelperTest testMethod=test_5>
+
+    def test_5(self):
+>       self.assertEqual(combinations(5, 1, []), [[5]])
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target = 5, size = 1, exclude = []
+
+    def combinations(target, size, exclude):
+        """
+        Generate all valid combinations of digits for a Killer Sudoku cage.
+    
+        :param target: The target sum of the digits in the cage.
+        :param size: The number of digits in the cage.
+        :param exclude: A list of digits to exclude from the combinations.
+        :return: A list of valid combinations, each combination is a tuple of digits.
+        """
+        all_digits = set(range(1, 10)) - set(exclude)
+>       all_combinations = list(combinations(all_digits, size))
+E       TypeError: combinations() missing 1 required positional argument: 'exclude'
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper.py:13: TypeError
+________________________ KillerSudokuHelperTest.test_6 _________________________
+
+self = <killer_sudoku_helper_test.KillerSudokuHelperTest testMethod=test_6>
+
+    def test_6(self):
+>       self.assertEqual(combinations(6, 1, []), [[6]])
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target = 6, size = 1, exclude = []
+
+    def combinations(target, size, exclude):
+        """
+        Generate all valid combinations of digits for a Killer Sudoku cage.
+    
+        :param target: The target sum of the digits in the cage.
+        :param size: The number of digits in the cage.
+        :param exclude: A list of digits to exclude from the combinations.
+        :return: A list of valid combinations, each combination is a tuple of digits.
+        """
+        all_digits = set(range(1, 10)) - set(exclude)
+>       all_combinations = list(combinations(all_digits, size))
+E       TypeError: combinations() missing 1 required positional argument: 'exclude'
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper.py:13: TypeError
+________________________ KillerSudokuHelperTest.test_7 _________________________
+
+self = <killer_sudoku_helper_test.KillerSudokuHelperTest testMethod=test_7>
+
+    def test_7(self):
+>       self.assertEqual(combinations(7, 1, []), [[7]])
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target = 7, size = 1, exclude = []
+
+    def combinations(target, size, exclude):
+        """
+        Generate all valid combinations of digits for a Killer Sudoku cage.
+    
+        :param target: The target sum of the digits in the cage.
+        :param size: The number of digits in the cage.
+        :param exclude: A list of digits to exclude from the combinations.
+        :return: A list of valid combinations, each combination is a tuple of digits.
+        """
+        all_digits = set(range(1, 10)) - set(exclude)
+>       all_combinations = list(combinations(all_digits, size))
+E       TypeError: combinations() missing 1 required positional argument: 'exclude'
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper.py:13: TypeError
+________________________ KillerSudokuHelperTest.test_8 _________________________
+
+self = <killer_sudoku_helper_test.KillerSudokuHelperTest testMethod=test_8>
+
+    def test_8(self):
+>       self.assertEqual(combinations(8, 1, []), [[8]])
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target = 8, size = 1, exclude = []
+
+    def combinations(target, size, exclude):
+        """
+        Generate all valid combinations of digits for a Killer Sudoku cage.
+    
+        :param target: The target sum of the digits in the cage.
+        :param size: The number of digits in the cage.
+        :param exclude: A list of digits to exclude from the combinations.
+        :return: A list of valid combinations, each combination is a tuple of digits.
+        """
+        all_digits = set(range(1, 10)) - set(exclude)
+>       all_combinations = list(combinations(all_digits, size))
+E       TypeError: combinations() missing 1 required positional argument: 'exclude'
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper.py:13: TypeError
+________________________ KillerSudokuHelperTest.test_9 _________________________
+
+self = <killer_sudoku_helper_test.KillerSudokuHelperTest testMethod=test_9>
+
+    def test_9(self):
+>       self.assertEqual(combinations(9, 1, []), [[9]])
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target = 9, size = 1, exclude = []
+
+    def combinations(target, size, exclude):
+        """
+        Generate all valid combinations of digits for a Killer Sudoku cage.
+    
+        :param target: The target sum of the digits in the cage.
+        :param size: The number of digits in the cage.
+        :param exclude: A list of digits to exclude from the combinations.
+        :return: A list of valid combinations, each combination is a tuple of digits.
+        """
+        all_digits = set(range(1, 10)) - set(exclude)
+>       all_combinations = list(combinations(all_digits, size))
+E       TypeError: combinations() missing 1 required positional argument: 'exclude'
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper.py:13: TypeError
+______ KillerSudokuHelperTest.test_cage_with_only_1_possible_combination _______
+
+self = <killer_sudoku_helper_test.KillerSudokuHelperTest testMethod=test_cage_with_only_1_possible_combination>
+
+    def test_cage_with_only_1_possible_combination(self):
+>       self.assertEqual(combinations(7, 3, []), [[1, 2, 4]])
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target = 7, size = 3, exclude = []
+
+    def combinations(target, size, exclude):
+        """
+        Generate all valid combinations of digits for a Killer Sudoku cage.
+    
+        :param target: The target sum of the digits in the cage.
+        :param size: The number of digits in the cage.
+        :param exclude: A list of digits to exclude from the combinations.
+        :return: A list of valid combinations, each combination is a tuple of digits.
+        """
+        all_digits = set(range(1, 10)) - set(exclude)
+>       all_combinations = list(combinations(all_digits, size))
+E       TypeError: combinations() missing 1 required positional argument: 'exclude'
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper.py:13: TypeError
+__________ KillerSudokuHelperTest.test_cage_with_several_combinations __________
+
+self = <killer_sudoku_helper_test.KillerSudokuHelperTest testMethod=test_cage_with_several_combinations>
+
+    def test_cage_with_several_combinations(self):
+>       self.assertEqual(combinations(10, 2, []), [[1, 9], [2, 8], [3, 7], [4, 6]])
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target = 10, size = 2, exclude = []
+
+    def combinations(target, size, exclude):
+        """
+        Generate all valid combinations of digits for a Killer Sudoku cage.
+    
+        :param target: The target sum of the digits in the cage.
+        :param size: The number of digits in the cage.
+        :param exclude: A list of digits to exclude from the combinations.
+        :return: A list of valid combinations, each combination is a tuple of digits.
+        """
+        all_digits = set(range(1, 10)) - set(exclude)
+>       all_combinations = list(combinations(all_digits, size))
+E       TypeError: combinations() missing 1 required positional argument: 'exclude'
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper.py:13: TypeError
+_ KillerSudokuHelperTest.test_cage_with_several_combinations_that_is_restricted _
+
+self = <killer_sudoku_helper_test.KillerSudokuHelperTest testMethod=test_cage_with_several_combinations_that_is_restricted>
+
+    def test_cage_with_several_combinations_that_is_restricted(self):
+>       self.assertEqual(combinations(10, 2, [1, 4]), [[2, 8], [3, 7]])
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target = 10, size = 2, exclude = [1, 4]
+
+    def combinations(target, size, exclude):
+        """
+        Generate all valid combinations of digits for a Killer Sudoku cage.
+    
+        :param target: The target sum of the digits in the cage.
+        :param size: The number of digits in the cage.
+        :param exclude: A list of digits to exclude from the combinations.
+        :return: A list of valid combinations, each combination is a tuple of digits.
+        """
+        all_digits = set(range(1, 10)) - set(exclude)
+>       all_combinations = list(combinations(all_digits, size))
+E       TypeError: combinations() missing 1 required positional argument: 'exclude'
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper.py:13: TypeError
+_____ KillerSudokuHelperTest.test_cage_with_sum_45_contains_all_digits_1_9 _____
+
+self = <killer_sudoku_helper_test.KillerSudokuHelperTest testMethod=test_cage_with_sum_45_contains_all_digits_1_9>
+
+    def test_cage_with_sum_45_contains_all_digits_1_9(self):
+>       self.assertEqual(combinations(45, 9, []), [[1, 2, 3, 4, 5, 6, 7, 8, 9]])
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+target = 45, size = 9, exclude = []
+
+    def combinations(target, size, exclude):
+        """
+        Generate all valid combinations of digits for a Killer Sudoku cage.
+    
+        :param target: The target sum of the digits in the cage.
+        :param size: The number of digits in the cage.
+        :param exclude: A list of digits to exclude from the combinations.
+        :return: A list of valid combinations, each combination is a tuple of digits.
+        """
+        all_digits = set(range(1, 10)) - set(exclude)
+>       all_combinations = list(combinations(all_digits, size))
+E       TypeError: combinations() missing 1 required positional argument: 'exclude'
+
+exercises/practice/killer-sudoku-helper/killer_sudoku_helper.py:13: TypeError
+=========================== short test summary info ============================
+FAILED exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py::KillerSudokuHelperTest::test_1
+FAILED exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py::KillerSudokuHelperTest::test_2
+FAILED exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py::KillerSudokuHelperTest::test_3
+FAILED exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py::KillerSudokuHelperTest::test_4
+FAILED exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py::KillerSudokuHelperTest::test_5
+FAILED exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py::KillerSudokuHelperTest::test_6
+FAILED exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py::KillerSudokuHelperTest::test_7
+FAILED exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py::KillerSudokuHelperTest::test_8
+FAILED exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py::KillerSudokuHelperTest::test_9
+FAILED exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py::KillerSudokuHelperTest::test_cage_with_only_1_possible_combination
+FAILED exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py::KillerSudokuHelperTest::test_cage_with_several_combinations
+FAILED exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py::KillerSudokuHelperTest::test_cage_with_several_combinations_that_is_restricted
+FAILED exercises/practice/killer-sudoku-helper/killer_sudoku_helper_test.py::KillerSudokuHelperTest::test_cage_with_sum_45_contains_all_digits_1_9
+============================== 13 failed in 0.08s ==============================

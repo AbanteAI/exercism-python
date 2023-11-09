@@ -3,297 +3,117 @@ from datetime import datetime
 
 
 class LedgerEntry:
-    def __init__(self):
-        self.date = None
-        self.description = None
-        self.change = None
+    def __init__(self, date, description, change):
+        self.date = datetime.strptime(date, '%Y-%m-%d')
+        self.description = description
+        self.change = change
 
 
 def create_entry(date, description, change):
-    entry = LedgerEntry()
-    entry.date = datetime.strptime(date, '%Y-%m-%d')
-    entry.description = description
-    entry.change = change
-    return entry
+    return LedgerEntry(date, description, change)
 
 
-def format_entries(currency, locale, entries):
+    # Sort entries by date, change, and description
+    entries = sorted(entries, key=lambda x: (x.date, x.change, x.description))
+
+    # Generate Header Row based on locale
     if locale == 'en_US':
-        # Generate Header Row
-        table = 'Date'
-        for _ in range(7):
-            table += ' '
-        table += '| Description'
-        for _ in range(15):
-            table += ' '
-        table += '| Change'
-        for _ in range(7):
-            table += ' '
-
-        while len(entries) > 0:
-            table += '\n'
-
-            # Find next entry in order
-            min_entry_index = -1
-            for i in range(len(entries)):
-                entry = entries[i]
-                if min_entry_index < 0:
-                    min_entry_index = i
-                    continue
-                min_entry = entries[min_entry_index]
-                if entry.date < min_entry.date:
-                    min_entry_index = i
-                    continue
-                if (
-                    entry.date == min_entry.date and
-                    entry.change < min_entry.change
-                ):
-                    min_entry_index = i
-                    continue
-                if (
-                    entry.date == min_entry.date and
-                    entry.change == min_entry.change and
-                    entry.description < min_entry.description
-                ):
-                    min_entry_index = i
-                    continue
-            entry = entries[min_entry_index]
-            entries.pop(min_entry_index)
-
-            # Write entry date to table
-            month = entry.date.month
-            month = str(month)
-            if len(month) < 2:
-                month = '0' + month
-            date_str = month
-            date_str += '/'
-            day = entry.date.day
-            day = str(day)
-            if len(day) < 2:
-                day = '0' + day
-            date_str += day
-            date_str += '/'
-            year = entry.date.year
-            year = str(year)
-            while len(year) < 4:
-                year = '0' + year
-            date_str += year
-            table += date_str
-            table += ' | '
-
-            # Write entry description to table
-            # Truncate if necessary
-            if len(entry.description) > 25:
-                for i in range(22):
-                    table += entry.description[i]
-                table += '...'
-            else:
-                for i in range(25):
-                    if len(entry.description) > i:
-                        table += entry.description[i]
-                    else:
-                        table += ' '
-            table += ' | '
-
-            # Write entry change to table
-            if currency == 'USD':
-                change_str = ''
-                if entry.change < 0:
-                    change_str = '('
-                change_str += '$'
-                change_dollar = abs(int(entry.change / 100.0))
-                dollar_parts = []
-                while change_dollar > 0:
-                    dollar_parts.insert(0, str(change_dollar % 1000))
-                    change_dollar = change_dollar // 1000
-                if len(dollar_parts) == 0:
-                    change_str += '0'
-                else:
-                    while True:
-                        change_str += dollar_parts[0]
-                        dollar_parts.pop(0)
-                        if len(dollar_parts) == 0:
-                            break
-                        change_str += ','
-                change_str += '.'
-                change_cents = abs(entry.change) % 100
-                change_cents = str(change_cents)
-                if len(change_cents) < 2:
-                    change_cents = '0' + change_cents
-                change_str += change_cents
-                if entry.change < 0:
-                    change_str += ')'
-                else:
-                    change_str += ' '
-                while len(change_str) < 13:
-                    change_str = ' ' + change_str
-                table += change_str
-            elif currency == 'EUR':
-                change_str = ''
-                if entry.change < 0:
-                    change_str = '('
-                change_str += u'€'
-                change_euro = abs(int(entry.change / 100.0))
-                euro_parts = []
-                while change_euro > 0:
-                    euro_parts.insert(0, str(change_euro % 1000))
-                    change_euro = change_euro // 1000
-                if len(euro_parts) == 0:
-                    change_str += '0'
-                else:
-                    while True:
-                        change_str += euro_parts[0]
-                        euro_parts.pop(0)
-                        if len(euro_parts) == 0:
-                            break
-                        change_str += ','
-                change_str += '.'
-                change_cents = abs(entry.change) % 100
-                change_cents = str(change_cents)
-                if len(change_cents) < 2:
-                    change_cents = '0' + change_cents
-                change_str += change_cents
-                if entry.change < 0:
-                    change_str += ')'
-                else:
-                    change_str += ' '
-                while len(change_str) < 13:
-                    change_str = ' ' + change_str
-                table += change_str
-        return table
+        header = 'Date       | Description               | Change       '
     elif locale == 'nl_NL':
-        # Generate Header Row
-        table = 'Datum'
-        for _ in range(6):
-            table += ' '
-        table += '| Omschrijving'
-        for _ in range(14):
-            table += ' '
-        table += '| Verandering'
-        for _ in range(2):
-            table += ' '
+        header = 'Datum      | Omschrijving              | Verandering  '
+    else:
+        raise ValueError("Unsupported locale")
 
-        while len(entries) > 0:
-            table += '\n'
+    # Initialize the table with the header
+    table = header
 
-            # Find next entry in order
-            min_entry_index = -1
-            for i in range(len(entries)):
-                entry = entries[i]
-                if min_entry_index < 0:
-                    min_entry_index = i
-                    continue
-                min_entry = entries[min_entry_index]
-                if entry.date < min_entry.date:
-                    min_entry_index = i
-                    continue
-                if (
-                    entry.date == min_entry.date and
-                    entry.change < min_entry.change
-                ):
-                    min_entry_index = i
-                    continue
-                if (
-                    entry.date == min_entry.date and
-                    entry.change == min_entry.change and
-                    entry.description < min_entry.description
-                ):
-                    min_entry_index = i
-                    continue
-            entry = entries[min_entry_index]
-            entries.pop(min_entry_index)
+    # Process each entry
+    for entry in entries:
+        table += '\n' + format_date(entry.date, locale) + ' | ' + format_description(entry.description) + ' | ' + format_change(entry.change, currency)
 
-            # Write entry date to table
-            day = entry.date.day
-            day = str(day)
-            if len(day) < 2:
-                day = '0' + day
-            date_str = day
-            date_str += '-'
-            month = entry.date.month
-            month = str(month)
-            if len(month) < 2:
-                month = '0' + month
-            date_str += month
-            date_str += '-'
-            year = entry.date.year
-            year = str(year)
-            while len(year) < 4:
-                year = '0' + year
-            date_str += year
-            table += date_str
-            table += ' | '
+    return table
 
-            # Write entry description to table
-            # Truncate if necessary
-            if len(entry.description) > 25:
-                for i in range(22):
-                    table += entry.description[i]
-                table += '...'
-            else:
-                for i in range(25):
-                    if len(entry.description) > i:
-                        table += entry.description[i]
-                    else:
-                        table += ' '
-            table += ' | '
+def format_date(date, locale):
+    if locale == 'en_US':
+        return date.strftime('%m/%d/%Y')
+    elif locale == 'nl_NL':
+        return date.strftime('%d-%m-%Y')
+    else:
+        raise ValueError("Unsupported locale")
 
-            # Write entry change to table
-            if currency == 'USD':
-                change_str = '$ '
-                if entry.change < 0:
-                    change_str += '-'
-                change_dollar = abs(int(entry.change / 100.0))
-                dollar_parts = []
-                while change_dollar > 0:
-                    dollar_parts.insert(0, str(change_dollar % 1000))
-                    change_dollar = change_dollar // 1000
-                if len(dollar_parts) == 0:
-                    change_str += '0'
-                else:
-                    while True:
-                        change_str += dollar_parts[0]
-                        dollar_parts.pop(0)
-                        if len(dollar_parts) == 0:
-                            break
-                        change_str += '.'
-                change_str += ','
-                change_cents = abs(entry.change) % 100
-                change_cents = str(change_cents)
-                if len(change_cents) < 2:
-                    change_cents = '0' + change_cents
-                change_str += change_cents
-                change_str += ' '
-                while len(change_str) < 13:
-                    change_str = ' ' + change_str
-                table += change_str
-            elif currency == 'EUR':
-                change_str = u'€ '
-                if entry.change < 0:
-                    change_str += '-'
-                change_euro = abs(int(entry.change / 100.0))
-                euro_parts = []
-                while change_euro > 0:
-                    euro_parts.insert(0, str(change_euro % 1000))
-                    change_euro = change_euro // 1000
-                if len(euro_parts) == 0:
-                    change_str += '0'
-                else:
-                    while True:
-                        change_str += euro_parts[0]
-                        euro_parts.pop(0)
-                        if len(euro_parts) == 0:
-                            break
-                        change_str += '.'
-                change_str += ','
-                change_cents = abs(entry.change) % 100
-                change_cents = str(change_cents)
-                if len(change_cents) < 2:
-                    change_cents = '0' + change_cents
-                change_str += change_cents
-                change_str += ' '
-                while len(change_str) < 13:
-                    change_str = ' ' + change_str
-                table += change_str
-        return table
+def format_description(description):
+    if len(description) > 25:
+        return description[:22] + '...'
+    else:
+        return description.ljust(25)
 
+def format_change(change, currency):
+    if currency == 'USD':
+        symbol = '$'
+    elif currency == 'EUR':
+        symbol = u'€'
+    else:
+        raise ValueError("Unsupported currency")
+
+    change_str = format_currency(change, symbol)
+    if change < 0:
+        change_str = '(' + change_str.strip() + ')'
+    return change_str.rjust(13)
+
+def format_currency(amount, symbol):
+    sign = '-' if amount < 0 else ''
+    amount = abs(amount)
+    dollars, cents = divmod(amount, 100)
+    dollars_str = "{:,}".format(dollars)
+    cents_str = "{:02}".format(cents)
+    return f"{symbol}{sign}{dollars_str}.{cents_str}"
+def format_entries(currency, locale, entries):
+    entries = sorted(entries, key=lambda x: (x.date, x.change, x.description))
+
+    if locale == 'en_US':
+        header = 'Date       | Description               | Change       '
+    elif locale == 'nl_NL':
+        header = 'Datum      | Omschrijving              | Verandering  '
+    else:
+        raise ValueError("Unsupported locale")
+
+    lines = [header]
+    for entry in entries:
+        lines.append(
+            f"{format_date(entry.date, locale)} | {format_description(entry.description)} | {format_change(entry.change, currency)}"
+        )
+    return '\n'.join(lines)
+
+def format_date(date, locale):
+    if locale == 'en_US':
+        return date.strftime('%m/%d/%Y')
+    elif locale == 'nl_NL':
+        return date.strftime('%d-%m-%Y')
+    else:
+        raise ValueError("Unsupported locale")
+
+def format_description(description):
+    if len(description) > 25:
+        return description[:22] + '...'
+    else:
+        return description.ljust(25)
+
+def format_change(change, currency):
+    if currency == 'USD':
+        symbol = '$'
+    elif currency == 'EUR':
+        symbol = '€'
+    else:
+        raise ValueError("Unsupported currency")
+
+    return format_currency(change, symbol)
+
+def format_currency(amount, symbol):
+    sign = '-' if amount < 0 else ''
+    amount = abs(amount)
+    integer, cents = divmod(amount, 100)
+    integer_with_commas = "{:,}".format(integer)
+    formatted = f"{symbol}{sign}{integer_with_commas}.{cents:02}"
+    if amount < 0:
+        formatted = f"({formatted})"
+    return formatted.rjust(13)

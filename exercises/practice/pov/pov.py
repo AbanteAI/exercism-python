@@ -19,7 +19,30 @@ class Tree:
         return self.__dict__() == other.__dict__()
 
     def from_pov(self, from_node):
-        pass
+        if from_node == self.label:
+            return
+        for child in self.children:
+            try:
+                child.from_pov(from_node)
+                # If from_node is found, reorient the tree
+                self.children.remove(child)
+                child.children.append(Tree(self.label, self.children))
+                self.label = child.label
+                self.children = child.children
+                return
+            except ValueError:
+                continue
+        raise ValueError("Tree could not be reoriented")
 
     def path_to(self, from_node, to_node):
-        pass
+        if from_node == to_node:
+            return [from_node]
+        path = [self.label]
+        for child in self.children:
+            try:
+                subpath = child.path_to(from_node, to_node)
+                if subpath[0] == from_node or subpath[-1] == to_node:
+                    return path + subpath
+            except ValueError:
+                continue
+        raise ValueError("No path found")
