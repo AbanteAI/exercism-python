@@ -1,0 +1,196 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 7 items
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py F [ 14%]
+FFFFFF                                                                   [100%]
+
+=================================== FAILURES ===================================
+_____________ ParallelLetterFrequencyTest.test_case_insensitivity ______________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_case_insensitivity>
+
+    def test_case_insensitivity(self):
+>       actual = calculate(['aA'])
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:15: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+text_input = ['aA']
+
+    def calculate(text_input):
+        def count_letters(text):
+            return Counter(c for c in text.lower() if c.isalpha())
+    
+        with ThreadPoolExecutor() as executor:
+            futures = [executor.submit(count_letters, text) for text in text_input]
+            total_frequency = Counter()
+>           for future in as_completed(futures):
+E           NameError: name 'as_completed' is not defined
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency.py:10: NameError
+_______________ ParallelLetterFrequencyTest.test_multiline_text ________________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_multiline_text>
+
+    def test_multiline_text(self):
+        text_input = "3 Quotes from Excerism Homepage:\n" + \
+                     "\tOne moment you feel like you're\n" + \
+                     "getting it. The next moment you're\n" + \
+                     "stuck.\n" + \
+                     "\tYou know what it’s like to be fluent.\n" + \
+                     "Suddenly you’re feeling incompetent\n" + \
+                     "and clumsy.\n" + \
+                     "\tHaphazard, convoluted code is\n" + \
+                     "infuriating, not to mention costly. That\n" + \
+                     "slapdash explosion of complexity is an\n" + \
+                     "expensive yak shave waiting to\n" + \
+                     "happen."
+>       actual = calculate(text_input.split('\n'))
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+text_input = ['3 Quotes from Excerism Homepage:', "\tOne moment you feel like you're", "getting it. The next moment you're", 'stuck.', '\tYou know what it’s like to be fluent.', 'Suddenly you’re feeling incompetent', ...]
+
+    def calculate(text_input):
+        def count_letters(text):
+            return Counter(c for c in text.lower() if c.isalpha())
+    
+        with ThreadPoolExecutor() as executor:
+            futures = [executor.submit(count_letters, text) for text in text_input]
+            total_frequency = Counter()
+>           for future in as_completed(futures):
+E           NameError: name 'as_completed' is not defined
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency.py:10: NameError
+___________________ ParallelLetterFrequencyTest.test_numbers ___________________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_numbers>
+
+    def test_numbers(self):
+>       actual = calculate(['012', '345', '6789'])
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+text_input = ['012', '345', '6789']
+
+    def calculate(text_input):
+        def count_letters(text):
+            return Counter(c for c in text.lower() if c.isalpha())
+    
+        with ThreadPoolExecutor() as executor:
+            futures = [executor.submit(count_letters, text) for text in text_input]
+            total_frequency = Counter()
+>           for future in as_completed(futures):
+E           NameError: name 'as_completed' is not defined
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency.py:10: NameError
+_________________ ParallelLetterFrequencyTest.test_one_letter __________________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_one_letter>
+
+    def test_one_letter(self):
+>       actual = calculate(['a'])
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+text_input = ['a']
+
+    def calculate(text_input):
+        def count_letters(text):
+            return Counter(c for c in text.lower() if c.isalpha())
+    
+        with ThreadPoolExecutor() as executor:
+            futures = [executor.submit(count_letters, text) for text in text_input]
+            total_frequency = Counter()
+>           for future in as_completed(futures):
+E           NameError: name 'as_completed' is not defined
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency.py:10: NameError
+________________ ParallelLetterFrequencyTest.test_punctuations _________________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_punctuations>
+
+    def test_punctuations(self):
+>       actual = calculate([r'[]\;,', './{}|', ':"<>?'])
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+text_input = ['[]\\;,', './{}|', ':"<>?']
+
+    def calculate(text_input):
+        def count_letters(text):
+            return Counter(c for c in text.lower() if c.isalpha())
+    
+        with ThreadPoolExecutor() as executor:
+            futures = [executor.submit(count_letters, text) for text in text_input]
+            total_frequency = Counter()
+>           for future in as_completed(futures):
+E           NameError: name 'as_completed' is not defined
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency.py:10: NameError
+___ ParallelLetterFrequencyTest.test_repeated_string_with_known_frequencies ____
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_repeated_string_with_known_frequencies>
+
+    def test_repeated_string_with_known_frequencies(self):
+        letter_frequency = 3
+        text_input = 'abc\n' * letter_frequency
+>       actual = calculate(text_input.split('\n'))
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+text_input = ['abc', 'abc', 'abc', '']
+
+    def calculate(text_input):
+        def count_letters(text):
+            return Counter(c for c in text.lower() if c.isalpha())
+    
+        with ThreadPoolExecutor() as executor:
+            futures = [executor.submit(count_letters, text) for text in text_input]
+            total_frequency = Counter()
+>           for future in as_completed(futures):
+E           NameError: name 'as_completed' is not defined
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency.py:10: NameError
+_________________ ParallelLetterFrequencyTest.test_whitespaces _________________
+
+self = <parallel_letter_frequency_test.ParallelLetterFrequencyTest testMethod=test_whitespaces>
+
+    def test_whitespaces(self):
+>       actual = calculate(['  ', '\t ', '\n\n'])
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+text_input = ['  ', '\t ', '\n\n']
+
+    def calculate(text_input):
+        def count_letters(text):
+            return Counter(c for c in text.lower() if c.isalpha())
+    
+        with ThreadPoolExecutor() as executor:
+            futures = [executor.submit(count_letters, text) for text in text_input]
+            total_frequency = Counter()
+>           for future in as_completed(futures):
+E           NameError: name 'as_completed' is not defined
+
+exercises/practice/parallel-letter-frequency/parallel_letter_frequency.py:10: NameError
+=========================== short test summary info ============================
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_case_insensitivity
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_multiline_text
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_numbers
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_one_letter
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_punctuations
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_repeated_string_with_known_frequencies
+FAILED exercises/practice/parallel-letter-frequency/parallel_letter_frequency_test.py::ParallelLetterFrequencyTest::test_whitespaces
+============================== 7 failed in 0.07s ===============================

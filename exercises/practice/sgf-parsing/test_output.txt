@@ -1,0 +1,334 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 23 items
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py F.F.F.FF.FFFFFFF..FFF [ 91%]
+.F                                                                       [100%]
+
+=================================== FAILURES ===================================
+__________________ SgfParsingTest.test_all_lowercase_property __________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_all_lowercase_property>
+
+    def test_all_lowercase_property(self):
+        input_string = "(;a[b])"
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:59: AssertionError
+_ SgfParsingTest.test_escaped_backslash_in_property_value_becomes_just_a_backslash _
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_escaped_backslash_in_property_value_becomes_just_a_backslash>
+
+    def test_escaped_backslash_in_property_value_becomes_just_a_backslash(self):
+        input_string = "(;A[\\\\])"
+        expected = SgfTree(properties={"A": ["\\"]})
+>       self.assertEqual(parse(input_string), expected)
+E       AssertionError: <sgf_parsing.SgfTree object at 0x7efd0c5b2590> != <sgf_parsing.SgfTree object at 0x7efd0c5b2620>
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:111: AssertionError
+_ SgfParsingTest.test_escaped_newline_in_property_value_is_converted_to_nothing_at_all _
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_escaped_newline_in_property_value_is_converted_to_nothing_at_all>
+
+    def test_escaped_newline_in_property_value_is_converted_to_nothing_at_all(self):
+        input_string = "(;A[hello\\\nworld])"
+        expected = SgfTree(properties={"A": ["helloworld"]})
+>       self.assertEqual(parse(input_string), expected)
+E       AssertionError: <sgf_parsing.SgfTree object at 0x7efd0be07790> != <sgf_parsing.SgfTree object at 0x7efd0be07700>
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:145: AssertionError
+___ SgfParsingTest.test_escaped_tab_in_property_value_is_converted_to_space ____
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_escaped_tab_in_property_value_is_converted_to_space>
+
+    def test_escaped_tab_in_property_value_is_converted_to_space(self):
+        input_string = "(;A[hello\\\tworld])"
+        expected = SgfTree(properties={"A": ["hello world"]})
+>       self.assertEqual(parse(input_string), expected)
+E       AssertionError: <sgf_parsing.SgfTree object at 0x7efd0bdfb040> != <sgf_parsing.SgfTree object at 0x7efd0bdfb400>
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:140: AssertionError
+_ SgfParsingTest.test_mixing_various_kinds_of_whitespace_and_escaped_characters_in_property_value _
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_mixing_various_kinds_of_whitespace_and_escaped_characters_in_property_value>
+
+    def test_mixing_various_kinds_of_whitespace_and_escaped_characters_in_property_value(
+        self,
+    ):
+        input_string = "(;A[\\]b\nc\\\nd\t\te\\\\ \\\n\\]])"
+        expected = SgfTree(properties={"A": ["]b\ncd  e\\ ]"]})
+>       self.assertEqual(parse(input_string), expected)
+E       AssertionError: <sgf_parsing.SgfTree object at 0x7efd0be06d70> != <sgf_parsing.SgfTree object at 0x7efd0be06c80>
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:157: AssertionError
+_________________ SgfParsingTest.test_multiple_property_values _________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_multiple_property_values>
+
+    def test_multiple_property_values(self):
+        input_string = "(;A[b][c][d])"
+        expected = SgfTree(properties={"A": ["b", "c", "d"]})
+>       self.assertEqual(parse(input_string), expected)
+E       AssertionError: <sgf_parsing.SgfTree object at 0x7efd0bf5e4d0> != <sgf_parsing.SgfTree object at 0x7efd0bf5e5c0>
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:87: AssertionError
+_________________ SgfParsingTest.test_node_without_properties __________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_node_without_properties>
+
+    def test_node_without_properties(self):
+        input_string = "(;)"
+        expected = SgfTree()
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_string = ';'
+
+    def parse(input_string):
+        if not input_string:
+            raise ValueError("tree missing")
+        if not input_string.startswith('(') or not input_string.endswith(')'):
+            raise ValueError("properties without delimiter")
+        if input_string.count('(') != input_string.count(')'):
+            raise ValueError("tree missing")
+    
+        input_string = input_string.strip()
+        # Remove the leading and trailing parentheses
+        input_string = input_string[1:-1].strip()
+    
+        # Check if the input string is empty after removing parentheses
+        if not input_string:
+            raise ValueError("tree with no nodes")
+    
+        # Split the input string into parts based on semicolon
+        parts = input_string.split(';')
+    
+        # Remove empty strings from parts
+        parts = [part for part in parts if part]
+    
+        # Check if there are no nodes after splitting
+        if not parts:
+>           raise ValueError("tree with no nodes")
+E           ValueError: tree with no nodes
+
+exercises/practice/sgf-parsing/sgf_parsing.py:69: ValueError
+____________________ SgfParsingTest.test_node_without_tree _____________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_node_without_tree>
+
+    def test_node_without_tree(self):
+        input_string = ";"
+        with self.assertRaises(ValueError) as err:
+            parse(input_string)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "tree missing")
+E       AssertionError: 'properties without delimiter' != 'tree missing'
+E       - properties without delimiter
+E       + tree missing
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:33: AssertionError
+_ SgfParsingTest.test_opening_bracket_within_property_value_doesn_t_need_to_be_escaped _
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_opening_bracket_within_property_value_doesn_t_need_to_be_escaped>
+
+    def test_opening_bracket_within_property_value_doesn_t_need_to_be_escaped(self):
+        input_string = "(;A[x[y\\]z][foo]B[bar];C[baz])"
+        expected = SgfTree(
+            properties={"A": ["x[y]z", "foo"], "B": ["bar"]},
+            children=[SgfTree({"C": ["baz"]})],
+        )
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:73: in parse
+    children = [parse(child) for child in find_children(parts[1:])]
+exercises/practice/sgf-parsing/sgf_parsing.py:73: in <listcomp>
+    children = [parse(child) for child in find_children(parts[1:])]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_string = 'C[baz]'
+
+    def parse(input_string):
+        if not input_string:
+            raise ValueError("tree missing")
+        if not input_string.startswith('(') or not input_string.endswith(')'):
+>           raise ValueError("properties without delimiter")
+E           ValueError: properties without delimiter
+
+exercises/practice/sgf-parsing/sgf_parsing.py:49: ValueError
+__ SgfParsingTest.test_parentheses_in_property_value_don_t_need_to_be_escaped __
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_parentheses_in_property_value_don_t_need_to_be_escaped>
+
+    def test_parentheses_in_property_value_don_t_need_to_be_escaped(self):
+        input_string = "(;A[x(y)z][foo]B[bar];C[baz])"
+        expected = SgfTree(
+            properties={"A": ["x(y)z", "foo"], "B": ["bar"]},
+            children=[SgfTree({"C": ["baz"]})],
+        )
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:73: in parse
+    children = [parse(child) for child in find_children(parts[1:])]
+exercises/practice/sgf-parsing/sgf_parsing.py:73: in <listcomp>
+    children = [parse(child) for child in find_children(parts[1:])]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_string = 'C[baz]'
+
+    def parse(input_string):
+        if not input_string:
+            raise ValueError("tree missing")
+        if not input_string.startswith('(') or not input_string.endswith(')'):
+>           raise ValueError("properties without delimiter")
+E           ValueError: properties without delimiter
+
+exercises/practice/sgf-parsing/sgf_parsing.py:49: ValueError
+_______________ SgfParsingTest.test_properties_without_delimiter _______________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_properties_without_delimiter>
+
+    def test_properties_without_delimiter(self):
+        input_string = "(;A)"
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:52: AssertionError
+__ SgfParsingTest.test_semicolon_in_property_value_doesn_t_need_to_be_escaped __
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_semicolon_in_property_value_doesn_t_need_to_be_escaped>
+
+    def test_semicolon_in_property_value_doesn_t_need_to_be_escaped(self):
+        input_string = "(;A[a;b][foo]B[bar];C[baz])"
+        expected = SgfTree(
+            properties={"A": ["a;b", "foo"], "B": ["bar"]},
+            children=[SgfTree({"C": ["baz"]})],
+        )
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:73: in parse
+    children = [parse(child) for child in find_children(parts[1:])]
+exercises/practice/sgf-parsing/sgf_parsing.py:73: in <listcomp>
+    children = [parse(child) for child in find_children(parts[1:])]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_string = 'b][foo]B[bar]'
+
+    def parse(input_string):
+        if not input_string:
+            raise ValueError("tree missing")
+        if not input_string.startswith('(') or not input_string.endswith(')'):
+>           raise ValueError("properties without delimiter")
+E           ValueError: properties without delimiter
+
+exercises/practice/sgf-parsing/sgf_parsing.py:49: ValueError
+_____________________ SgfParsingTest.test_two_child_trees ______________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_two_child_trees>
+
+    def test_two_child_trees(self):
+        input_string = "(;A[B](;B[C])(;C[D]))"
+        expected = SgfTree(
+            properties={"A": ["B"]},
+            children=[SgfTree({"B": ["C"]}), SgfTree({"C": ["D"]})],
+        )
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:82: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:73: in parse
+    children = [parse(child) for child in find_children(parts[1:])]
+exercises/practice/sgf-parsing/sgf_parsing.py:73: in <listcomp>
+    children = [parse(child) for child in find_children(parts[1:])]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_string = 'B[C])('
+
+    def parse(input_string):
+        if not input_string:
+            raise ValueError("tree missing")
+        if not input_string.startswith('(') or not input_string.endswith(')'):
+>           raise ValueError("properties without delimiter")
+E           ValueError: properties without delimiter
+
+exercises/practice/sgf-parsing/sgf_parsing.py:49: ValueError
+________________________ SgfParsingTest.test_two_nodes _________________________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_two_nodes>
+
+    def test_two_nodes(self):
+        input_string = "(;A[B];B[C])"
+        expected = SgfTree(properties={"A": ["B"]}, children=[SgfTree({"B": ["C"]})])
+>       self.assertEqual(parse(input_string), expected)
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/sgf-parsing/sgf_parsing.py:73: in parse
+    children = [parse(child) for child in find_children(parts[1:])]
+exercises/practice/sgf-parsing/sgf_parsing.py:73: in <listcomp>
+    children = [parse(child) for child in find_children(parts[1:])]
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_string = 'B[C]'
+
+    def parse(input_string):
+        if not input_string:
+            raise ValueError("tree missing")
+        if not input_string.startswith('(') or not input_string.endswith(')'):
+>           raise ValueError("properties without delimiter")
+E           ValueError: properties without delimiter
+
+exercises/practice/sgf-parsing/sgf_parsing.py:49: ValueError
+_______________ SgfParsingTest.test_upper_and_lowercase_property _______________
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_upper_and_lowercase_property>
+
+    def test_upper_and_lowercase_property(self):
+        input_string = "(;Aa[b])"
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:66: AssertionError
+_ SgfParsingTest.test_within_property_values_whitespace_characters_such_as_tab_are_converted_to_spaces _
+
+self = <sgf_parsing_test.SgfParsingTest testMethod=test_within_property_values_whitespace_characters_such_as_tab_are_converted_to_spaces>
+
+    def test_within_property_values_whitespace_characters_such_as_tab_are_converted_to_spaces(
+        self,
+    ):
+        input_string = "(;A[hello\t\tworld])"
+        expected = SgfTree(properties={"A": ["hello  world"]})
+>       self.assertEqual(parse(input_string), expected)
+E       AssertionError: <sgf_parsing.SgfTree object at 0x7efd0bdfb1c0> != <sgf_parsing.SgfTree object at 0x7efd0bdfa7a0>
+
+exercises/practice/sgf-parsing/sgf_parsing_test.py:94: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_all_lowercase_property
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_escaped_backslash_in_property_value_becomes_just_a_backslash
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_escaped_newline_in_property_value_is_converted_to_nothing_at_all
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_escaped_tab_in_property_value_is_converted_to_space
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_mixing_various_kinds_of_whitespace_and_escaped_characters_in_property_value
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_multiple_property_values
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_node_without_properties
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_node_without_tree
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_opening_bracket_within_property_value_doesn_t_need_to_be_escaped
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_parentheses_in_property_value_don_t_need_to_be_escaped
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_properties_without_delimiter
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_semicolon_in_property_value_doesn_t_need_to_be_escaped
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_two_child_trees
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_two_nodes
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_upper_and_lowercase_property
+FAILED exercises/practice/sgf-parsing/sgf_parsing_test.py::SgfParsingTest::test_within_property_values_whitespace_characters_such_as_tab_are_converted_to_spaces
+========================= 16 failed, 7 passed in 0.18s =========================

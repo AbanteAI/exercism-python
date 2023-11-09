@@ -1,0 +1,111 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 17 items
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py F..F..F........F.     [100%]
+
+=================================== FAILURES ===================================
+______ OcrNumbersTest.test_garbled_numbers_in_a_string_are_replaced_with _______
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_garbled_numbers_in_a_string_are_replaced_with>
+
+    def test_garbled_numbers_in_a_string_are_replaced_with(self):
+>       self.assertEqual(
+            convert(
+                [
+                    "       _     _           _ ",
+                    "  |  || |  || |     || || |",
+                    "  |  | _|  ||_|  |  ||_||_|",
+                    "                           ",
+                ]
+            ),
+            "11?10?1?0",
+        )
+E       AssertionError: '??0' != '11?10?1?0'
+E       - ??0
+E       + 11?10?1?0
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:56: AssertionError
+_ OcrNumbersTest.test_numbers_separated_by_empty_lines_are_recognized_lines_are_joined_by_commas _
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_numbers_separated_by_empty_lines_are_recognized_lines_are_joined_by_commas>
+
+    def test_numbers_separated_by_empty_lines_are_recognized_lines_are_joined_by_commas(
+        self,
+    ):
+>       self.assertEqual(
+            convert(
+                [
+                    "    _  _ ",
+                    "  | _| _|",
+                    "  ||_  _|",
+                    "         ",
+                    "    _  _ ",
+                    "|_||_ |_ ",
+                    "  | _||_|",
+                    "         ",
+                    " _  _  _ ",
+                    "  ||_||_|",
+                    "  ||_| _|",
+                    "         ",
+                ]
+            ),
+            "123,456,789",
+        )
+E       AssertionError: '?,?,?' != '123,456,789'
+E       - ?,?,?
+E       + 123,456,789
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:108: AssertionError
+___________________ OcrNumbersTest.test_recognizes_110101100 ___________________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_110101100>
+
+    def test_recognizes_110101100(self):
+>       self.assertEqual(
+            convert(
+                [
+                    "       _     _        _  _ ",
+                    "  |  || |  || |  |  || || |",
+                    "  |  ||_|  ||_|  |  ||_||_|",
+                    "                           ",
+                ]
+            ),
+            "110101100",
+        )
+E       AssertionError: '??0' != '110101100'
+E       - ??0
+E       + 110101100
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:43: AssertionError
+___________ OcrNumbersTest.test_recognizes_string_of_decimal_numbers ___________
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_recognizes_string_of_decimal_numbers>
+
+    def test_recognizes_string_of_decimal_numbers(self):
+>       self.assertEqual(
+            convert(
+                [
+                    "    _  _     _  _  _  _  _  _ ",
+                    "  | _| _||_||_ |_   ||_||_|| |",
+                    "  ||_  _|  | _||_|  ||_| _||_|",
+                    "                              ",
+                ]
+            ),
+            "1234567890",
+        )
+E       AssertionError: '???' != '1234567890'
+E       - ???
+E       + 1234567890
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:93: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_garbled_numbers_in_a_string_are_replaced_with
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_numbers_separated_by_empty_lines_are_recognized_lines_are_joined_by_commas
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_110101100
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_recognizes_string_of_decimal_numbers
+========================= 4 failed, 13 passed in 0.07s =========================

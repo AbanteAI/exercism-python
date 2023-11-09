@@ -1,0 +1,351 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 9 items
+
+exercises/practice/two-bucket/two_bucket_test.py ...FFFF.F               [100%]
+
+=================================== FAILURES ===================================
+_ TwoBucketTest.test_measure_using_bucket_one_of_size_3_and_bucket_two_of_size_5_start_with_bucket_one _
+
+self = <two_bucket_test.TwoBucketTest testMethod=test_measure_using_bucket_one_of_size_3_and_bucket_two_of_size_5_start_with_bucket_one>
+
+    def test_measure_using_bucket_one_of_size_3_and_bucket_two_of_size_5_start_with_bucket_one(
+        self,
+    ):
+>       self.assertEqual(measure(3, 5, 1, "one"), (4, "one", 5))
+
+exercises/practice/two-bucket/two_bucket_test.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bucket_one = 3, bucket_two = 5, goal = 1, start_bucket = 'one'
+
+    def measure(bucket_one, bucket_two, goal, start_bucket):
+        def fill(bucket):
+            return bucket
+    
+        def empty(bucket):
+            return 0
+    
+        def pour(from_bucket, to_bucket, to_bucket_size):
+            transfer = min(from_bucket, to_bucket_size - to_bucket)
+            return from_bucket - transfer, to_bucket + transfer
+    
+        bucket_sizes = {'one': bucket_one, 'two': bucket_two}
+        buckets = {'one': 0, 'two': 0}
+        actions = 0
+    
+        if start_bucket not in bucket_sizes:
+            raise ValueError("Invalid start bucket name.")
+    
+        current_bucket = start_bucket
+        other_bucket = 'two' if current_bucket == 'one' else 'one'
+    
+        while True:
+            if buckets[current_bucket] == goal or buckets[other_bucket] == goal:
+                goal_bucket = current_bucket if buckets[current_bucket] == goal else other_bucket
+                other_bucket = 'two' if goal_bucket == 'one' else 'one'
+                return (actions, goal_bucket, buckets[other_bucket])
+    
+            if buckets[current_bucket] < bucket_sizes[current_bucket]:
+                buckets[current_bucket] = fill(bucket_sizes[current_bucket])
+                actions += 1
+            elif buckets[other_bucket] > 0:
+                buckets[current_bucket], buckets[other_bucket] = pour(
+                    buckets[other_bucket], buckets[current_bucket], bucket_sizes[current_bucket])
+                actions += 1
+    
+            if buckets[current_bucket] == goal or buckets[other_bucket] == goal:
+                goal_bucket = current_bucket if buckets[current_bucket] == goal else other_bucket
+                other_bucket = 'two' if goal_bucket == 'one' else 'one'
+                return (actions, goal_bucket, buckets[other_bucket])
+    
+            if buckets[current_bucket] == bucket_sizes[current_bucket] and buckets[other_bucket] == 0:
+                buckets[other_bucket] = fill(bucket_sizes[other_bucket])
+                actions += 1
+            elif buckets[current_bucket] > 0 and buckets[other_bucket] < bucket_sizes[other_bucket]:
+                buckets[current_bucket], buckets[other_bucket] = pour(
+                    buckets[current_bucket], buckets[other_bucket], bucket_sizes[other_bucket])
+                actions += 1
+    
+            if actions > max(bucket_sizes.values()) * 2:
+>               raise ValueError("No solution possible with the given parameters.")
+E               ValueError: No solution possible with the given parameters.
+
+exercises/practice/two-bucket/two_bucket.py:50: ValueError
+_ TwoBucketTest.test_measure_using_bucket_one_of_size_3_and_bucket_two_of_size_5_start_with_bucket_two _
+
+self = <two_bucket_test.TwoBucketTest testMethod=test_measure_using_bucket_one_of_size_3_and_bucket_two_of_size_5_start_with_bucket_two>
+
+    def test_measure_using_bucket_one_of_size_3_and_bucket_two_of_size_5_start_with_bucket_two(
+        self,
+    ):
+>       self.assertEqual(measure(3, 5, 1, "two"), (8, "two", 3))
+
+exercises/practice/two-bucket/two_bucket_test.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bucket_one = 3, bucket_two = 5, goal = 1, start_bucket = 'two'
+
+    def measure(bucket_one, bucket_two, goal, start_bucket):
+        def fill(bucket):
+            return bucket
+    
+        def empty(bucket):
+            return 0
+    
+        def pour(from_bucket, to_bucket, to_bucket_size):
+            transfer = min(from_bucket, to_bucket_size - to_bucket)
+            return from_bucket - transfer, to_bucket + transfer
+    
+        bucket_sizes = {'one': bucket_one, 'two': bucket_two}
+        buckets = {'one': 0, 'two': 0}
+        actions = 0
+    
+        if start_bucket not in bucket_sizes:
+            raise ValueError("Invalid start bucket name.")
+    
+        current_bucket = start_bucket
+        other_bucket = 'two' if current_bucket == 'one' else 'one'
+    
+        while True:
+            if buckets[current_bucket] == goal or buckets[other_bucket] == goal:
+                goal_bucket = current_bucket if buckets[current_bucket] == goal else other_bucket
+                other_bucket = 'two' if goal_bucket == 'one' else 'one'
+                return (actions, goal_bucket, buckets[other_bucket])
+    
+            if buckets[current_bucket] < bucket_sizes[current_bucket]:
+                buckets[current_bucket] = fill(bucket_sizes[current_bucket])
+                actions += 1
+            elif buckets[other_bucket] > 0:
+                buckets[current_bucket], buckets[other_bucket] = pour(
+                    buckets[other_bucket], buckets[current_bucket], bucket_sizes[current_bucket])
+                actions += 1
+    
+            if buckets[current_bucket] == goal or buckets[other_bucket] == goal:
+                goal_bucket = current_bucket if buckets[current_bucket] == goal else other_bucket
+                other_bucket = 'two' if goal_bucket == 'one' else 'one'
+                return (actions, goal_bucket, buckets[other_bucket])
+    
+            if buckets[current_bucket] == bucket_sizes[current_bucket] and buckets[other_bucket] == 0:
+                buckets[other_bucket] = fill(bucket_sizes[other_bucket])
+                actions += 1
+            elif buckets[current_bucket] > 0 and buckets[other_bucket] < bucket_sizes[other_bucket]:
+                buckets[current_bucket], buckets[other_bucket] = pour(
+                    buckets[current_bucket], buckets[other_bucket], bucket_sizes[other_bucket])
+                actions += 1
+    
+            if actions > max(bucket_sizes.values()) * 2:
+>               raise ValueError("No solution possible with the given parameters.")
+E               ValueError: No solution possible with the given parameters.
+
+exercises/practice/two-bucket/two_bucket.py:50: ValueError
+_ TwoBucketTest.test_measure_using_bucket_one_of_size_7_and_bucket_two_of_size_11_start_with_bucket_one _
+
+self = <two_bucket_test.TwoBucketTest testMethod=test_measure_using_bucket_one_of_size_7_and_bucket_two_of_size_11_start_with_bucket_one>
+
+    def test_measure_using_bucket_one_of_size_7_and_bucket_two_of_size_11_start_with_bucket_one(
+        self,
+    ):
+>       self.assertEqual(measure(7, 11, 2, "one"), (14, "one", 11))
+
+exercises/practice/two-bucket/two_bucket_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bucket_one = 7, bucket_two = 11, goal = 2, start_bucket = 'one'
+
+    def measure(bucket_one, bucket_two, goal, start_bucket):
+        def fill(bucket):
+            return bucket
+    
+        def empty(bucket):
+            return 0
+    
+        def pour(from_bucket, to_bucket, to_bucket_size):
+            transfer = min(from_bucket, to_bucket_size - to_bucket)
+            return from_bucket - transfer, to_bucket + transfer
+    
+        bucket_sizes = {'one': bucket_one, 'two': bucket_two}
+        buckets = {'one': 0, 'two': 0}
+        actions = 0
+    
+        if start_bucket not in bucket_sizes:
+            raise ValueError("Invalid start bucket name.")
+    
+        current_bucket = start_bucket
+        other_bucket = 'two' if current_bucket == 'one' else 'one'
+    
+        while True:
+            if buckets[current_bucket] == goal or buckets[other_bucket] == goal:
+                goal_bucket = current_bucket if buckets[current_bucket] == goal else other_bucket
+                other_bucket = 'two' if goal_bucket == 'one' else 'one'
+                return (actions, goal_bucket, buckets[other_bucket])
+    
+            if buckets[current_bucket] < bucket_sizes[current_bucket]:
+                buckets[current_bucket] = fill(bucket_sizes[current_bucket])
+                actions += 1
+            elif buckets[other_bucket] > 0:
+                buckets[current_bucket], buckets[other_bucket] = pour(
+                    buckets[other_bucket], buckets[current_bucket], bucket_sizes[current_bucket])
+                actions += 1
+    
+            if buckets[current_bucket] == goal or buckets[other_bucket] == goal:
+                goal_bucket = current_bucket if buckets[current_bucket] == goal else other_bucket
+                other_bucket = 'two' if goal_bucket == 'one' else 'one'
+                return (actions, goal_bucket, buckets[other_bucket])
+    
+            if buckets[current_bucket] == bucket_sizes[current_bucket] and buckets[other_bucket] == 0:
+                buckets[other_bucket] = fill(bucket_sizes[other_bucket])
+                actions += 1
+            elif buckets[current_bucket] > 0 and buckets[other_bucket] < bucket_sizes[other_bucket]:
+                buckets[current_bucket], buckets[other_bucket] = pour(
+                    buckets[current_bucket], buckets[other_bucket], bucket_sizes[other_bucket])
+                actions += 1
+    
+            if actions > max(bucket_sizes.values()) * 2:
+>               raise ValueError("No solution possible with the given parameters.")
+E               ValueError: No solution possible with the given parameters.
+
+exercises/practice/two-bucket/two_bucket.py:50: ValueError
+_ TwoBucketTest.test_measure_using_bucket_one_of_size_7_and_bucket_two_of_size_11_start_with_bucket_two _
+
+self = <two_bucket_test.TwoBucketTest testMethod=test_measure_using_bucket_one_of_size_7_and_bucket_two_of_size_11_start_with_bucket_two>
+
+    def test_measure_using_bucket_one_of_size_7_and_bucket_two_of_size_11_start_with_bucket_two(
+        self,
+    ):
+>       self.assertEqual(measure(7, 11, 2, "two"), (18, "two", 7))
+
+exercises/practice/two-bucket/two_bucket_test.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bucket_one = 7, bucket_two = 11, goal = 2, start_bucket = 'two'
+
+    def measure(bucket_one, bucket_two, goal, start_bucket):
+        def fill(bucket):
+            return bucket
+    
+        def empty(bucket):
+            return 0
+    
+        def pour(from_bucket, to_bucket, to_bucket_size):
+            transfer = min(from_bucket, to_bucket_size - to_bucket)
+            return from_bucket - transfer, to_bucket + transfer
+    
+        bucket_sizes = {'one': bucket_one, 'two': bucket_two}
+        buckets = {'one': 0, 'two': 0}
+        actions = 0
+    
+        if start_bucket not in bucket_sizes:
+            raise ValueError("Invalid start bucket name.")
+    
+        current_bucket = start_bucket
+        other_bucket = 'two' if current_bucket == 'one' else 'one'
+    
+        while True:
+            if buckets[current_bucket] == goal or buckets[other_bucket] == goal:
+                goal_bucket = current_bucket if buckets[current_bucket] == goal else other_bucket
+                other_bucket = 'two' if goal_bucket == 'one' else 'one'
+                return (actions, goal_bucket, buckets[other_bucket])
+    
+            if buckets[current_bucket] < bucket_sizes[current_bucket]:
+                buckets[current_bucket] = fill(bucket_sizes[current_bucket])
+                actions += 1
+            elif buckets[other_bucket] > 0:
+                buckets[current_bucket], buckets[other_bucket] = pour(
+                    buckets[other_bucket], buckets[current_bucket], bucket_sizes[current_bucket])
+                actions += 1
+    
+            if buckets[current_bucket] == goal or buckets[other_bucket] == goal:
+                goal_bucket = current_bucket if buckets[current_bucket] == goal else other_bucket
+                other_bucket = 'two' if goal_bucket == 'one' else 'one'
+                return (actions, goal_bucket, buckets[other_bucket])
+    
+            if buckets[current_bucket] == bucket_sizes[current_bucket] and buckets[other_bucket] == 0:
+                buckets[other_bucket] = fill(bucket_sizes[other_bucket])
+                actions += 1
+            elif buckets[current_bucket] > 0 and buckets[other_bucket] < bucket_sizes[other_bucket]:
+                buckets[current_bucket], buckets[other_bucket] = pour(
+                    buckets[current_bucket], buckets[other_bucket], bucket_sizes[other_bucket])
+                actions += 1
+    
+            if actions > max(bucket_sizes.values()) * 2:
+>               raise ValueError("No solution possible with the given parameters.")
+E               ValueError: No solution possible with the given parameters.
+
+exercises/practice/two-bucket/two_bucket.py:50: ValueError
+_ TwoBucketTest.test_with_the_same_buckets_but_a_different_goal_then_it_is_possible _
+
+self = <two_bucket_test.TwoBucketTest testMethod=test_with_the_same_buckets_but_a_different_goal_then_it_is_possible>
+
+    def test_with_the_same_buckets_but_a_different_goal_then_it_is_possible(self):
+>       self.assertEqual(measure(6, 15, 9, "one"), (10, "two", 0))
+
+exercises/practice/two-bucket/two_bucket_test.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+bucket_one = 6, bucket_two = 15, goal = 9, start_bucket = 'one'
+
+    def measure(bucket_one, bucket_two, goal, start_bucket):
+        def fill(bucket):
+            return bucket
+    
+        def empty(bucket):
+            return 0
+    
+        def pour(from_bucket, to_bucket, to_bucket_size):
+            transfer = min(from_bucket, to_bucket_size - to_bucket)
+            return from_bucket - transfer, to_bucket + transfer
+    
+        bucket_sizes = {'one': bucket_one, 'two': bucket_two}
+        buckets = {'one': 0, 'two': 0}
+        actions = 0
+    
+        if start_bucket not in bucket_sizes:
+            raise ValueError("Invalid start bucket name.")
+    
+        current_bucket = start_bucket
+        other_bucket = 'two' if current_bucket == 'one' else 'one'
+    
+        while True:
+            if buckets[current_bucket] == goal or buckets[other_bucket] == goal:
+                goal_bucket = current_bucket if buckets[current_bucket] == goal else other_bucket
+                other_bucket = 'two' if goal_bucket == 'one' else 'one'
+                return (actions, goal_bucket, buckets[other_bucket])
+    
+            if buckets[current_bucket] < bucket_sizes[current_bucket]:
+                buckets[current_bucket] = fill(bucket_sizes[current_bucket])
+                actions += 1
+            elif buckets[other_bucket] > 0:
+                buckets[current_bucket], buckets[other_bucket] = pour(
+                    buckets[other_bucket], buckets[current_bucket], bucket_sizes[current_bucket])
+                actions += 1
+    
+            if buckets[current_bucket] == goal or buckets[other_bucket] == goal:
+                goal_bucket = current_bucket if buckets[current_bucket] == goal else other_bucket
+                other_bucket = 'two' if goal_bucket == 'one' else 'one'
+                return (actions, goal_bucket, buckets[other_bucket])
+    
+            if buckets[current_bucket] == bucket_sizes[current_bucket] and buckets[other_bucket] == 0:
+                buckets[other_bucket] = fill(bucket_sizes[other_bucket])
+                actions += 1
+            elif buckets[current_bucket] > 0 and buckets[other_bucket] < bucket_sizes[other_bucket]:
+                buckets[current_bucket], buckets[other_bucket] = pour(
+                    buckets[current_bucket], buckets[other_bucket], bucket_sizes[other_bucket])
+                actions += 1
+    
+            if actions > max(bucket_sizes.values()) * 2:
+>               raise ValueError("No solution possible with the given parameters.")
+E               ValueError: No solution possible with the given parameters.
+
+exercises/practice/two-bucket/two_bucket.py:50: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/two-bucket/two_bucket_test.py::TwoBucketTest::test_measure_using_bucket_one_of_size_3_and_bucket_two_of_size_5_start_with_bucket_one
+FAILED exercises/practice/two-bucket/two_bucket_test.py::TwoBucketTest::test_measure_using_bucket_one_of_size_3_and_bucket_two_of_size_5_start_with_bucket_two
+FAILED exercises/practice/two-bucket/two_bucket_test.py::TwoBucketTest::test_measure_using_bucket_one_of_size_7_and_bucket_two_of_size_11_start_with_bucket_one
+FAILED exercises/practice/two-bucket/two_bucket_test.py::TwoBucketTest::test_measure_using_bucket_one_of_size_7_and_bucket_two_of_size_11_start_with_bucket_two
+FAILED exercises/practice/two-bucket/two_bucket_test.py::TwoBucketTest::test_with_the_same_buckets_but_a_different_goal_then_it_is_possible
+========================= 5 failed, 4 passed in 0.08s ==========================

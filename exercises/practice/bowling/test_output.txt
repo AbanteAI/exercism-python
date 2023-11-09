@@ -1,0 +1,100 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 31 items
+
+exercises/practice/bowling/bowling_test.py ....F.........F......F....... [ 93%]
+..                                                                       [100%]
+
+=================================== FAILURES ===================================
+_ BowlingTest.test_a_strike_in_the_last_frame_gets_a_two_roll_bonus_that_is_counted_once _
+
+self = <bowling_test.BowlingTest testMethod=test_a_strike_in_the_last_frame_gets_a_two_roll_bonus_that_is_counted_once>
+
+    def test_a_strike_in_the_last_frame_gets_a_two_roll_bonus_that_is_counted_once(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 7, 1]
+>       game = self.roll_new_game(rolls)
+
+exercises/practice/bowling/bowling_test.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/bowling/bowling_test.py:16: in roll_new_game
+    game.roll(roll)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f583bd652a0>, pins = 1
+
+    def roll(self, pins):
+        if pins < 0 or pins > 10:
+            raise ValueError("Pins must have a value from 0 to 10")
+        if self.current_roll >= 20:
+            if self.current_roll == 20 and (self.rolls[-1] == 10 or sum(self.rolls[-2:]) == 10):
+                pass  # Allow bonus roll(s) in the tenth frame
+            else:
+>               raise IndexError("Cannot roll after game is over")
+E               IndexError: Cannot roll after game is over
+
+exercises/practice/bowling/bowling.py:13: IndexError
+__________ BowlingTest.test_cannot_roll_after_bonus_rolls_for_strike ___________
+
+self = <bowling_test.BowlingTest testMethod=test_cannot_roll_after_bonus_rolls_for_strike>
+
+    def test_cannot_roll_after_bonus_rolls_for_strike(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 3, 2]
+>       game = self.roll_new_game(rolls)
+
+exercises/practice/bowling/bowling_test.py:207: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/bowling/bowling_test.py:16: in roll_new_game
+    game.roll(roll)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f583c58e080>, pins = 2
+
+    def roll(self, pins):
+        if pins < 0 or pins > 10:
+            raise ValueError("Pins must have a value from 0 to 10")
+        if self.current_roll >= 20:
+            if self.current_roll == 20 and (self.rolls[-1] == 10 or sum(self.rolls[-2:]) == 10):
+                pass  # Allow bonus roll(s) in the tenth frame
+            else:
+>               raise IndexError("Cannot roll after game is over")
+E               IndexError: Cannot roll after game is over
+
+exercises/practice/bowling/bowling.py:13: IndexError
+_ BowlingTest.test_rolling_a_spare_with_the_two_roll_bonus_does_not_get_a_bonus_roll _
+
+self = <bowling_test.BowlingTest testMethod=test_rolling_a_spare_with_the_two_roll_bonus_does_not_get_a_bonus_roll>
+
+    def test_rolling_a_spare_with_the_two_roll_bonus_does_not_get_a_bonus_roll(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 7, 3]
+>       game = self.roll_new_game(rolls)
+
+exercises/practice/bowling/bowling_test.py:75: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/bowling/bowling_test.py:16: in roll_new_game
+    game.roll(roll)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7f583bd67e20>, pins = 3
+
+    def roll(self, pins):
+        if pins < 0 or pins > 10:
+            raise ValueError("Pins must have a value from 0 to 10")
+        if self.current_roll >= 20:
+            if self.current_roll == 20 and (self.rolls[-1] == 10 or sum(self.rolls[-2:]) == 10):
+                pass  # Allow bonus roll(s) in the tenth frame
+            else:
+>               raise IndexError("Cannot roll after game is over")
+E               IndexError: Cannot roll after game is over
+
+exercises/practice/bowling/bowling.py:13: IndexError
+=========================== short test summary info ============================
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_a_strike_in_the_last_frame_gets_a_two_roll_bonus_that_is_counted_once
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_cannot_roll_after_bonus_rolls_for_strike
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_rolling_a_spare_with_the_two_roll_bonus_does_not_get_a_bonus_roll
+========================= 3 failed, 28 passed in 0.08s =========================

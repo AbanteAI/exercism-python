@@ -1,0 +1,254 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 9 items
+
+exercises/practice/rest-api/rest_api_test.py .FF.FFFF.                   [100%]
+
+=================================== FAILURES ===================================
+________________ RestApiTest.test_borrower_has_negative_balance ________________
+
+self = <rest_api_test.RestApiTest testMethod=test_borrower_has_negative_balance>
+
+    def test_borrower_has_negative_balance(self):
+        database = {
+            "users": [
+                {"name": "Adam", "owes": {}, "owed_by": {}, "balance": 0.0},
+                {"name": "Bob", "owes": {"Chuck": 3.0}, "owed_by": {}, "balance": -3.0},
+                {"name": "Chuck", "owes": {}, "owed_by": {"Bob": 3.0}, "balance": 3.0},
+            ]
+        }
+        api = RestAPI(database)
+        payload = json.dumps({"lender": "Adam", "borrower": "Bob", "amount": 3.0})
+        response = api.post("/iou", payload)
+        expected = {
+            "users": [
+                {"name": "Adam", "owes": {}, "owed_by": {"Bob": 3.0}, "balance": 3.0},
+                {
+                    "name": "Bob",
+                    "owes": {"Adam": 3.0, "Chuck": 3.0},
+                    "owed_by": {},
+                    "balance": -6.0,
+                },
+            ]
+        }
+>       self.assertDictEqual(json.loads(response), expected)
+E       AssertionError: {'use[42 chars]y': {}, 'balance': 0}, {'name': 'Bob', 'owes':[58 chars].0}]} != {'use[42 chars]y': {'Bob': 3.0}, 'balance': 3.0}, {'name': 'B[70 chars].0}]}
+E       - {'users': [{'balance': 0, 'name': 'Adam', 'owed_by': {}, 'owes': {}},
+E       + {'users': [{'balance': 3.0,
+E       +             'name': 'Adam',
+E       +             'owed_by': {'Bob': 3.0},
+E       +             'owes': {}},
+E                    {'balance': -6.0,
+E                     'name': 'Bob',
+E                     'owed_by': {},
+E                     'owes': {'Adam': 3.0, 'Chuck': 3.0}}]}
+
+exercises/practice/rest-api/rest_api_test.py:85: AssertionError
+__________________ RestApiTest.test_both_users_have_0_balance __________________
+
+self = <rest_api_test.RestApiTest testMethod=test_both_users_have_0_balance>
+
+    def test_both_users_have_0_balance(self):
+        database = {
+            "users": [
+                {"name": "Adam", "owes": {}, "owed_by": {}, "balance": 0.0},
+                {"name": "Bob", "owes": {}, "owed_by": {}, "balance": 0.0},
+            ]
+        }
+        api = RestAPI(database)
+        payload = json.dumps({"lender": "Adam", "borrower": "Bob", "amount": 3.0})
+        response = api.post("/iou", payload)
+        expected = {
+            "users": [
+                {"name": "Adam", "owes": {}, "owed_by": {"Bob": 3.0}, "balance": 3.0},
+                {"name": "Bob", "owes": {"Adam": 3.0}, "owed_by": {}, "balance": -3.0},
+            ]
+        }
+>       self.assertDictEqual(json.loads(response), expected)
+E       AssertionError: {'use[42 chars]y': {}, 'balance': 0}, {'name': 'Bob', 'owes':[44 chars].0}]} != {'use[42 chars]y': {'Bob': 3.0}, 'balance': 3.0}, {'name': 'B[56 chars].0}]}
+E       - {'users': [{'balance': 0, 'name': 'Adam', 'owed_by': {}, 'owes': {}},
+E       + {'users': [{'balance': 3.0,
+E       +             'name': 'Adam',
+E       +             'owed_by': {'Bob': 3.0},
+E       +             'owes': {}},
+E                    {'balance': -3.0,
+E                     'name': 'Bob',
+E                     'owed_by': {},
+E                     'owes': {'Adam': 3.0}}]}
+
+exercises/practice/rest-api/rest_api_test.py:61: AssertionError
+_________________ RestApiTest.test_lender_has_negative_balance _________________
+
+self = <rest_api_test.RestApiTest testMethod=test_lender_has_negative_balance>
+
+    def test_lender_has_negative_balance(self):
+        database = {
+            "users": [
+                {"name": "Adam", "owes": {}, "owed_by": {}, "balance": 0.0},
+                {"name": "Bob", "owes": {"Chuck": 3.0}, "owed_by": {}, "balance": -3.0},
+                {"name": "Chuck", "owes": {}, "owed_by": {"Bob": 3.0}, "balance": 3.0},
+            ]
+        }
+        api = RestAPI(database)
+        payload = json.dumps({"lender": "Bob", "borrower": "Adam", "amount": 3.0})
+        response = api.post("/iou", payload)
+        expected = {
+            "users": [
+                {"name": "Adam", "owes": {"Bob": 3.0}, "owed_by": {}, "balance": -3.0},
+                {
+                    "name": "Bob",
+                    "owes": {"Chuck": 3.0},
+                    "owed_by": {"Adam": 3.0},
+                    "balance": 0.0,
+                },
+            ]
+        }
+>       self.assertDictEqual(json.loads(response), expected)
+E       AssertionError: {'use[98 chars]s': {'Chuck': 3.0}, 'owed_by': {}, 'balance': -3.0}]} != {'use[98 chars]s': {'Chuck': 3.0}, 'owed_by': {'Adam': 3.0}, 'balance': 0.0}]}
+E         {'users': [{'balance': -3.0,
+E                     'name': 'Adam',
+E                     'owed_by': {},
+E                     'owes': {'Bob': 3.0}},
+E       -            {'balance': -3.0,
+E       ?                        ^^
+E       
+E       +            {'balance': 0.0,
+E       ?                        ^
+E       
+E                     'name': 'Bob',
+E       -             'owed_by': {},
+E       +             'owed_by': {'Adam': 3.0},
+E       ?                         +++++++++++
+E       
+E                     'owes': {'Chuck': 3.0}}]}
+
+exercises/practice/rest-api/rest_api_test.py:109: AssertionError
+____________________ RestApiTest.test_lender_owes_borrower _____________________
+
+self = <rest_api_test.RestApiTest testMethod=test_lender_owes_borrower>
+
+    def test_lender_owes_borrower(self):
+        database = {
+            "users": [
+                {"name": "Adam", "owes": {"Bob": 3.0}, "owed_by": {}, "balance": -3.0},
+                {"name": "Bob", "owes": {}, "owed_by": {"Adam": 3.0}, "balance": 3.0},
+            ]
+        }
+        api = RestAPI(database)
+        payload = json.dumps({"lender": "Adam", "borrower": "Bob", "amount": 2.0})
+        response = api.post("/iou", payload)
+        expected = {
+            "users": [
+                {"name": "Adam", "owes": {"Bob": 1.0}, "owed_by": {}, "balance": -1.0},
+                {"name": "Bob", "owes": {}, "owed_by": {"Adam": 1.0}, "balance": 1.0},
+            ]
+        }
+>       self.assertDictEqual(json.loads(response), expected)
+E       AssertionError: {'use[34 chars]ob': 3.0}, 'owed_by': {}, 'balance': -3.0}, {'[64 chars].0}]} != {'use[34 chars]ob': 1.0}, 'owed_by': {}, 'balance': -1.0}, {'[64 chars].0}]}
+E       - {'users': [{'balance': -3.0,
+E       ?                         ^
+E       
+E       + {'users': [{'balance': -1.0,
+E       ?                         ^
+E       
+E                     'name': 'Adam',
+E                     'owed_by': {},
+E       -             'owes': {'Bob': 3.0}},
+E       ?                             ^
+E       
+E       +             'owes': {'Bob': 1.0}},
+E       ?                             ^
+E       
+E                    {'balance': 1.0,
+E                     'name': 'Bob',
+E                     'owed_by': {'Adam': 1.0},
+E                     'owes': {}}]}
+
+exercises/practice/rest-api/rest_api_test.py:127: AssertionError
+___________ RestApiTest.test_lender_owes_borrower_less_than_new_loan ___________
+
+self = <rest_api_test.RestApiTest testMethod=test_lender_owes_borrower_less_than_new_loan>
+
+    def test_lender_owes_borrower_less_than_new_loan(self):
+        database = {
+            "users": [
+                {"name": "Adam", "owes": {"Bob": 3.0}, "owed_by": {}, "balance": -3.0},
+                {"name": "Bob", "owes": {}, "owed_by": {"Adam": 3.0}, "balance": 3.0},
+            ]
+        }
+        api = RestAPI(database)
+        payload = json.dumps({"lender": "Adam", "borrower": "Bob", "amount": 4.0})
+        response = api.post("/iou", payload)
+        expected = {
+            "users": [
+                {"name": "Adam", "owes": {}, "owed_by": {"Bob": 1.0}, "balance": 1.0},
+                {"name": "Bob", "owes": {"Adam": 1.0}, "owed_by": {}, "balance": -1.0},
+            ]
+        }
+>       self.assertDictEqual(json.loads(response), expected)
+E       AssertionError: {'use[27 chars]s': {'Bob': 3.0}, 'owed_by': {}, 'balance': -3[72 chars].0}]} != {'use[27 chars]s': {}, 'owed_by': {'Bob': 1.0}, 'balance': 1.[71 chars].0}]}
+E       - {'users': [{'balance': -3.0,
+E       ?                        ^^
+E       
+E       + {'users': [{'balance': 1.0,
+E       ?                        ^
+E       
+E                     'name': 'Adam',
+E       -             'owed_by': {},
+E       -             'owes': {'Bob': 3.0}},
+E       ?                 ^           ^   -
+E       
+E       +             'owed_by': {'Bob': 1.0},
+E       ?                 ^^^^           ^
+E       
+E       +             'owes': {}},
+E                    {'balance': -1.0,
+E                     'name': 'Bob',
+E                     'owed_by': {},
+E                     'owes': {'Adam': 1.0}}]}
+
+exercises/practice/rest-api/rest_api_test.py:145: AssertionError
+____________ RestApiTest.test_lender_owes_borrower_same_as_new_loan ____________
+
+self = <rest_api_test.RestApiTest testMethod=test_lender_owes_borrower_same_as_new_loan>
+
+    def test_lender_owes_borrower_same_as_new_loan(self):
+        database = {
+            "users": [
+                {"name": "Adam", "owes": {"Bob": 3.0}, "owed_by": {}, "balance": -3.0},
+                {"name": "Bob", "owes": {}, "owed_by": {"Adam": 3.0}, "balance": 3.0},
+            ]
+        }
+        api = RestAPI(database)
+        payload = json.dumps({"lender": "Adam", "borrower": "Bob", "amount": 3.0})
+        response = api.post("/iou", payload)
+        expected = {
+            "users": [
+                {"name": "Adam", "owes": {}, "owed_by": {}, "balance": 0.0},
+                {"name": "Bob", "owes": {}, "owed_by": {}, "balance": 0.0},
+            ]
+        }
+>       self.assertDictEqual(json.loads(response), expected)
+E       AssertionError: {'use[27 chars]s': {'Bob': 3.0}, 'owed_by': {}, 'balance': -3[58 chars] 0}]} != {'use[27 chars]s': {}, 'owed_by': {}, 'balance': 0.0}, {'name[49 chars].0}]}
+E       + {'users': [{'balance': 0.0, 'name': 'Adam', 'owed_by': {}, 'owes': {}},
+E       - {'users': [{'balance': -3.0,
+E       -             'name': 'Adam',
+E       -             'owed_by': {},
+E       -             'owes': {'Bob': 3.0}},
+E       -            {'balance': 0, 'name': 'Bob', 'owed_by': {}, 'owes': {}}]}
+E       +            {'balance': 0.0, 'name': 'Bob', 'owed_by': {}, 'owes': {}}]}
+E       ?                        ++
+
+exercises/practice/rest-api/rest_api_test.py:163: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_borrower_has_negative_balance
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_both_users_have_0_balance
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_lender_has_negative_balance
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_lender_owes_borrower
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_lender_owes_borrower_less_than_new_loan
+FAILED exercises/practice/rest-api/rest_api_test.py::RestApiTest::test_lender_owes_borrower_same_as_new_loan
+========================= 6 failed, 3 passed in 0.09s ==========================

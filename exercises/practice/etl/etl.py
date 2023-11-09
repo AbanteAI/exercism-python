@@ -1,2 +1,6 @@
 def transform(legacy_data):
-    pass
+    new_format = {}
+    for score, letters in legacy_data.items():
+        for letter in letters:
+            new_format[letter.lower()] = score
+    return new_format

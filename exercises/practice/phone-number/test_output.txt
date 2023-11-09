@@ -1,0 +1,66 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 21 items
+
+exercises/practice/phone-number/phone_number_test.py ...............FFFF [ 90%]
+..                                                                       [100%]
+
+=================================== FAILURES ===================================
+__________________ PhoneNumberTest.test_invalid_with_letters ___________________
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_invalid_with_letters>
+
+    def test_invalid_with_letters(self):
+        with self.assertRaises(ValueError) as err:
+            PhoneNumber("523-abc-7890")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "letters not permitted")
+E       AssertionError: 'must not be fewer than 10 digits' != 'letters not permitted'
+E       - must not be fewer than 10 digits
+E       + letters not permitted
+
+exercises/practice/phone-number/phone_number_test.py:55: AssertionError
+________________ PhoneNumberTest.test_invalid_with_punctuations ________________
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_invalid_with_punctuations>
+
+    def test_invalid_with_punctuations(self):
+        with self.assertRaises(ValueError) as err:
+            PhoneNumber("523-@:!-7890")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "punctuations not permitted")
+E       AssertionError: 'must not be fewer than 10 digits' != 'punctuations not permitted'
+E       - must not be fewer than 10 digits
+E       + punctuations not permitted
+
+exercises/practice/phone-number/phone_number_test.py:61: AssertionError
+______________________ PhoneNumberTest.test_pretty_print _______________________
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_pretty_print>
+
+    def test_pretty_print(self):
+        number = PhoneNumber("2234567890")
+>       self.assertEqual(number.pretty(), "(223)-456-7890")
+E       AttributeError: 'PhoneNumber' object has no attribute 'pretty'
+
+exercises/practice/phone-number/phone_number_test.py:118: AttributeError
+_________ PhoneNumberTest.test_pretty_print_with_full_us_phone_number __________
+
+self = <phone_number_test.PhoneNumberTest testMethod=test_pretty_print_with_full_us_phone_number>
+
+    def test_pretty_print_with_full_us_phone_number(self):
+        number = PhoneNumber("12234567890")
+>       self.assertEqual(number.pretty(), "(223)-456-7890")
+E       AttributeError: 'PhoneNumber' object has no attribute 'pretty'
+
+exercises/practice/phone-number/phone_number_test.py:122: AttributeError
+=========================== short test summary info ============================
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_invalid_with_letters
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_invalid_with_punctuations
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_pretty_print
+FAILED exercises/practice/phone-number/phone_number_test.py::PhoneNumberTest::test_pretty_print_with_full_us_phone_number
+========================= 4 failed, 17 passed in 0.06s =========================
