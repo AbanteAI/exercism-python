@@ -1,0 +1,80 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 17 items
+
+exercises/practice/markdown/markdown_test.py .....FFF.......F.           [100%]
+
+=================================== FAILURES ===================================
+______________________ MarkdownTest.test_unordered_lists _______________________
+
+self = <markdown_test.MarkdownTest testMethod=test_unordered_lists>
+
+    def test_unordered_lists(self):
+>       self.assertEqual(
+            parse("* Item 1\n* Item 2"), "<ul><li>Item 1</li><li>Item 2</li></ul>"
+        )
+E       AssertionError: '<p>* Item 1</p><p>* Item 2</p>' != '<ul><li>Item 1</li><li>Item 2</li></ul>'
+E       - <p>* Item 1</p><p>* Item 2</p>
+E       + <ul><li>Item 1</li><li>Item 2</li></ul>
+
+exercises/practice/markdown/markdown_test.py:65: AssertionError
+_ MarkdownTest.test_unordered_lists_close_properly_with_preceding_and_following_lines _
+
+self = <markdown_test.MarkdownTest testMethod=test_unordered_lists_close_properly_with_preceding_and_following_lines>
+
+    def test_unordered_lists_close_properly_with_preceding_and_following_lines(self):
+>       self.assertEqual(
+            parse("# Start a list\n* Item 1\n* Item 2\nEnd a list"),
+            "<h1>Start a list</h1><ul><li>Item 1</li><li>Item 2</li></ul><p>End a list</p>",
+        )
+E       AssertionError: '<h1>Start a list</h1><p>* Item 1</p><p>* Item 2</p><p>End a list</p>' != '<h1>Start a list</h1><ul><li>Item 1</li><li>Item 2</li></ul><p>End a list</p>'
+E       - <h1>Start a list</h1><p>* Item 1</p><p>* Item 2</p><p>End a list</p>
+E       ?                       ^ ^^        ^  ^ --        ^
+E       + <h1>Start a list</h1><ul><li>Item 1</li><li>Item 2</li></ul><p>End a list</p>
+E       ?                       ^^ ^^^^        ^^  ^^         ^^^^^^^
+
+exercises/practice/markdown/markdown_test.py:100: AssertionError
+______________ MarkdownTest.test_with_a_little_bit_of_everything _______________
+
+self = <markdown_test.MarkdownTest testMethod=test_with_a_little_bit_of_everything>
+
+    def test_with_a_little_bit_of_everything(self):
+>       self.assertEqual(
+            parse("# Header!\n* __Bold Item__\n* _Italic Item_"),
+            "<h1>Header!</h1><ul><li><strong>Bold Item</strong></li><li><em>Italic Item</em></li></ul>",
+        )
+E       AssertionError: '<h1>Header!</h1><p>* <strong>Bold Item</strong></p><p>* <e[18 chars]</p>' != '<h1>Header!</h1><ul><li><strong>Bold Item</strong></li><li[27 chars]/ul>'
+E       - <h1>Header!</h1><p>* <strong>Bold Item</strong></p><p>* <em>Italic Item</em></p>
+E       ?                  ^ ^^                            ^  ^ --                      ^
+E       + <h1>Header!</h1><ul><li><strong>Bold Item</strong></li><li><em>Italic Item</em></li></ul>
+E       ?                  ^^ ^^^^                            ^^  ^^                       ^^^^^^^
+
+exercises/practice/markdown/markdown_test.py:70: AssertionError
+_ MarkdownTest.test_with_markdown_symbols_in_the_list_item_text_that_should_not_be_interpreted _
+
+self = <markdown_test.MarkdownTest testMethod=test_with_markdown_symbols_in_the_list_item_text_that_should_not_be_interpreted>
+
+    def test_with_markdown_symbols_in_the_list_item_text_that_should_not_be_interpreted(
+        self,
+    ):
+>       self.assertEqual(
+            parse("* Item 1 with a # in the text\n* Item 2 with * in the text"),
+            "<ul><li>Item 1 with a # in the text</li><li>Item 2 with * in the text</li></ul>",
+        )
+E       AssertionError: '<p>* Item 1 with a # in the text</p><p>* I[24 chars]</p>' != '<ul><li>Item 1 with a # in the text</li><l[33 chars]/ul>'
+E       - <p>* Item 1 with a # in the text</p><p>* Item 2 with * in the text</p>
+E       ?  ^ ^^                             ^  ^ --                           ^
+E       + <ul><li>Item 1 with a # in the text</li><li>Item 2 with * in the text</li></ul>
+E       ?  ^^ ^^^^                             ^^  ^^                            ^^^^^^^
+
+exercises/practice/markdown/markdown_test.py:86: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/markdown/markdown_test.py::MarkdownTest::test_unordered_lists
+FAILED exercises/practice/markdown/markdown_test.py::MarkdownTest::test_unordered_lists_close_properly_with_preceding_and_following_lines
+FAILED exercises/practice/markdown/markdown_test.py::MarkdownTest::test_with_a_little_bit_of_everything
+FAILED exercises/practice/markdown/markdown_test.py::MarkdownTest::test_with_markdown_symbols_in_the_list_item_text_that_should_not_be_interpreted
+========================= 4 failed, 13 passed in 0.05s =========================

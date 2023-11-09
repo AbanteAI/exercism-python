@@ -1,0 +1,219 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 13 items
+
+exercises/practice/tree-building/tree_building_test.py FF.F.FFF.FFFF     [100%]
+
+=================================== FAILURES ===================================
+______________________ TreeBuildingTest.test_binary_tree _______________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_binary_tree>
+
+    def test_binary_tree(self):
+        records = [
+            Record(6, 2),
+            Record(0, 0),
+            Record(3, 1),
+            Record(2, 0),
+            Record(4, 1),
+            Record(5, 2),
+            Record(1, 0)
+        ]
+        root = BuildTree(records)
+    
+>       self.assert_node_is_branch(root, 0, 2)
+
+exercises/practice/tree-building/tree_building_test.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/tree-building/tree_building_test.py:187: in assert_node_is_branch
+    self.assertEqual(len(node.children), children_count)
+E   AssertionError: 4 != 2
+_____________________ TreeBuildingTest.test_cycle_directly _____________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_cycle_directly>
+
+    def test_cycle_directly(self):
+        records = [
+            Record(5, 2),
+            Record(3, 2),
+            Record(2, 2),
+            Record(4, 1),
+            Record(1, 0),
+            Record(0, 0),
+            Record(6, 3)
+        ]
+        # Cycle caused by Record 2 with parent_id pointing to itself
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/tree-building/tree_building_test.py:151: AssertionError
+____________________ TreeBuildingTest.test_empty_list_input ____________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_empty_list_input>
+
+    def test_empty_list_input(self):
+        records = []
+>       root = BuildTree(records)
+
+exercises/practice/tree-building/tree_building_test.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+records = []
+
+    def BuildTree(records):
+        if not records:
+>           raise ValueError("No records to build the tree.")
+E           ValueError: No records to build the tree.
+
+exercises/practice/tree-building/tree_building.py:15: ValueError
+_________________ TreeBuildingTest.test_more_than_two_children _________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_more_than_two_children>
+
+    def test_more_than_two_children(self):
+        records = [
+            Record(0, 0),
+            Record(1, 0),
+            Record(2, 0),
+            Record(3, 0)
+        ]
+        root = BuildTree(records)
+    
+>       self.assert_node_is_branch(root, node_id=0, children_count=3)
+
+exercises/practice/tree-building/tree_building_test.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/tree-building/tree_building_test.py:187: in assert_node_is_branch
+    self.assertEqual(len(node.children), children_count)
+E   AssertionError: 6 != 3
+______________________ TreeBuildingTest.test_no_root_node ______________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_no_root_node>
+
+    def test_no_root_node(self):
+        records = [
+            Record(1, 0),
+            Record(2, 0)
+        ]
+        # Record with record_id 0 (root) is missing
+        with self.assertRaises(ValueError) as err:
+            BuildTree(records)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "Record id is invalid or out of order.")
+E       AssertionError: 'Root node cannot have a parent that is not itself.' != 'Record id is invalid or out of order.'
+E       - Root node cannot have a parent that is not itself.
+E       + Record id is invalid or out of order.
+
+exercises/practice/tree-building/tree_building_test.py:125: AssertionError
+_____________________ TreeBuildingTest.test_non_continuous _____________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_non_continuous>
+
+    def test_non_continuous(self):
+        records = [
+            Record(2, 0),
+            Record(4, 2),
+            Record(1, 0),
+            Record(0, 0)
+        ]
+        # Record with record_id 3 is missing
+>       with self.assertRaises(ValueError) as err:
+E       AssertionError: ValueError not raised
+
+exercises/practice/tree-building/tree_building_test.py:135: AssertionError
+__________________ TreeBuildingTest.test_root_node_has_parent __________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_root_node_has_parent>
+
+    def test_root_node_has_parent(self):
+        records = [
+            Record(0, 1),
+            Record(1, 0)
+        ]
+        # Root parent_id should be equal to record_id(0)
+        with self.assertRaises(ValueError) as err:
+            BuildTree(records)
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "Node parent_id should be smaller than it's record_id.")
+E       AssertionError: 'Root node cannot have a parent that is not itself.' != "Node parent_id should be smaller than it's record_id."
+E       - Root node cannot have a parent that is not itself.
+E       + Node parent_id should be smaller than it's record_id.
+
+exercises/practice/tree-building/tree_building_test.py:114: AssertionError
+__________________ TreeBuildingTest.test_three_nodes_in_order __________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_three_nodes_in_order>
+
+    def test_three_nodes_in_order(self):
+        records = [
+            Record(0, 0),
+            Record(1, 0),
+            Record(2, 0)
+        ]
+        root = BuildTree(records)
+    
+>       self.assert_node_is_branch(root, node_id=0, children_count=2)
+
+exercises/practice/tree-building/tree_building_test.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/tree-building/tree_building_test.py:187: in assert_node_is_branch
+    self.assertEqual(len(node.children), children_count)
+E   AssertionError: 4 != 2
+______________ TreeBuildingTest.test_three_nodes_in_reverse_order ______________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_three_nodes_in_reverse_order>
+
+    def test_three_nodes_in_reverse_order(self):
+        records = [
+            Record(2, 0),
+            Record(1, 0),
+            Record(0, 0)
+        ]
+        root = BuildTree(records)
+    
+>       self.assert_node_is_branch(root, node_id=0, children_count=2)
+
+exercises/practice/tree-building/tree_building_test.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/tree-building/tree_building_test.py:187: in assert_node_is_branch
+    self.assertEqual(len(node.children), children_count)
+E   AssertionError: 4 != 2
+____________________ TreeBuildingTest.test_unbalanced_tree _____________________
+
+self = <tree_building_test.TreeBuildingTest testMethod=test_unbalanced_tree>
+
+    def test_unbalanced_tree(self):
+        records = [
+            Record(0, 0),
+            Record(1, 0),
+            Record(2, 0),
+            Record(3, 1),
+            Record(4, 1),
+            Record(5, 1),
+            Record(6, 2),
+        ]
+        root = BuildTree(records)
+    
+>       self.assert_node_is_branch(root, 0, 2)
+
+exercises/practice/tree-building/tree_building_test.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/tree-building/tree_building_test.py:187: in assert_node_is_branch
+    self.assertEqual(len(node.children), children_count)
+E   AssertionError: 4 != 2
+=========================== short test summary info ============================
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_binary_tree
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_cycle_directly
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_empty_list_input
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_more_than_two_children
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_no_root_node
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_non_continuous
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_root_node_has_parent
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_three_nodes_in_order
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_three_nodes_in_reverse_order
+FAILED exercises/practice/tree-building/tree_building_test.py::TreeBuildingTest::test_unbalanced_tree
+========================= 10 failed, 3 passed in 0.09s =========================

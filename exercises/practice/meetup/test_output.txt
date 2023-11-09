@@ -1,0 +1,573 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 103 items
+
+exercises/practice/meetup/meetup_test.py F..................FFF.F.FF.... [ 30%]
+..FFF.FF.F......FFF.F..F.F......FFF.F.....................F.F......FFF.F [100%]
+
+=================================== FAILURES ===================================
+__________________ MeetupTest.test_fifth_monday_of_march_2015 __________________
+
+self = <meetup_test.MeetupTest testMethod=test_fifth_monday_of_march_2015>
+
+    def test_fifth_monday_of_march_2015(self):
+>       self.assertEqual(meetup(2015, 3, "fifth", "Monday"), date(2015, 3, 30))
+E       AssertionError: datetime.date(2015, 3, 23) != datetime.date(2015, 3, 30)
+
+exercises/practice/meetup/meetup_test.py:303: AssertionError
+___________ MeetupTest.test_nonexistent_fifth_friday_of_august_2022 ____________
+
+self = <meetup_test.MeetupTest testMethod=test_nonexistent_fifth_friday_of_august_2022>
+
+    def test_nonexistent_fifth_friday_of_august_2022(self):
+        with self.assertRaises(MeetupDayException) as err:
+            meetup(2022, 8, "fifth", "Friday")
+        self.assertEqual(type(err.exception), MeetupDayException)
+>       self.assertEqual(err.exception.args[0], "That day does not exist.")
+E       AssertionError: 'No such day exists: fifth Friday' != 'That day does not exist.'
+E       - No such day exists: fifth Friday
+E       + That day does not exist.
+
+exercises/practice/meetup/meetup_test.py:327: AssertionError
+__________ MeetupTest.test_nonexistent_fifth_monday_of_february_2022 ___________
+
+self = <meetup_test.MeetupTest testMethod=test_nonexistent_fifth_monday_of_february_2022>
+
+    def test_nonexistent_fifth_monday_of_february_2022(self):
+>       with self.assertRaises(MeetupDayException) as err:
+E       AssertionError: MeetupDayException not raised
+
+exercises/practice/meetup/meetup_test.py:318: AssertionError
+____________ MeetupTest.test_nonexistent_fifth_thursday_of_may_2023 ____________
+
+self = <meetup_test.MeetupTest testMethod=test_nonexistent_fifth_thursday_of_may_2023>
+
+    def test_nonexistent_fifth_thursday_of_may_2023(self):
+        with self.assertRaises(MeetupDayException) as err:
+            meetup(2023, 5, "fifth", "Thursday")
+        self.assertEqual(type(err.exception), MeetupDayException)
+>       self.assertEqual(err.exception.args[0], "That day does not exist.")
+E       AssertionError: 'No such day exists: fifth Thursday' != 'That day does not exist.'
+E       - No such day exists: fifth Thursday
+E       + That day does not exist.
+
+exercises/practice/meetup/meetup_test.py:333: AssertionError
+_ MeetupTest.test_when_first_friday_is_some_day_in_the_middle_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_friday_is_some_day_in_the_middle_of_the_first_week>
+
+    def test_when_first_friday_is_some_day_in_the_middle_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 12, "first", "Friday"), date(2013, 12, 6))
+
+exercises/practice/meetup/meetup_test.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:66: in meetup
+    meetup_day = find_meetup_day(week)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+week_descriptor = 'first'
+
+    def find_meetup_day(week_descriptor):
+        if week_descriptor == "teenth":
+            for week in month_calendar:
+                if 13 <= week[day_index] <= 19:
+                    return week[day_index]
+        elif week_descriptor == "last":
+            for week in reversed(month_calendar):
+                if week[day_index] != 0:
+                    return week[day_index]
+        else:
+            week_counts = {
+                "first": 0,
+                "second": 1,
+                "third": 2,
+                "fourth": 3,
+                "fifth": 4
+            }
+            if week_descriptor in week_counts:
+                week_number = week_counts[week_descriptor]
+                try:
+                    if month_calendar[week_number][day_index] != 0:
+                        return month_calendar[week_number][day_index]
+                except IndexError:
+                    pass
+            else:
+                raise MeetupDayException(f"Invalid week descriptor: {week_descriptor}")
+    
+>       raise MeetupDayException(f"No such day exists: {week_descriptor} {day_of_week}")
+E       meetup.MeetupDayException: No such day exists: first Friday
+
+exercises/practice/meetup/meetup.py:63: MeetupDayException
+_ MeetupTest.test_when_first_friday_is_the_7th_the_last_day_of_the_first_week __
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_friday_is_the_7th_the_last_day_of_the_first_week>
+
+    def test_when_first_friday_is_the_7th_the_last_day_of_the_first_week(self):
+>       self.assertEqual(meetup(2012, 12, "first", "Friday"), date(2012, 12, 7))
+
+exercises/practice/meetup/meetup_test.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:66: in meetup
+    meetup_day = find_meetup_day(week)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+week_descriptor = 'first'
+
+    def find_meetup_day(week_descriptor):
+        if week_descriptor == "teenth":
+            for week in month_calendar:
+                if 13 <= week[day_index] <= 19:
+                    return week[day_index]
+        elif week_descriptor == "last":
+            for week in reversed(month_calendar):
+                if week[day_index] != 0:
+                    return week[day_index]
+        else:
+            week_counts = {
+                "first": 0,
+                "second": 1,
+                "third": 2,
+                "fourth": 3,
+                "fifth": 4
+            }
+            if week_descriptor in week_counts:
+                week_number = week_counts[week_descriptor]
+                try:
+                    if month_calendar[week_number][day_index] != 0:
+                        return month_calendar[week_number][day_index]
+                except IndexError:
+                    pass
+            else:
+                raise MeetupDayException(f"Invalid week descriptor: {week_descriptor}")
+    
+>       raise MeetupDayException(f"No such day exists: {week_descriptor} {day_of_week}")
+E       meetup.MeetupDayException: No such day exists: first Friday
+
+exercises/practice/meetup/meetup.py:63: MeetupDayException
+_ MeetupTest.test_when_first_monday_is_some_day_in_the_middle_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_monday_is_some_day_in_the_middle_of_the_first_week>
+
+    def test_when_first_monday_is_some_day_in_the_middle_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 3, "first", "Monday"), date(2013, 3, 4))
+
+exercises/practice/meetup/meetup_test.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:66: in meetup
+    meetup_day = find_meetup_day(week)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+week_descriptor = 'first'
+
+    def find_meetup_day(week_descriptor):
+        if week_descriptor == "teenth":
+            for week in month_calendar:
+                if 13 <= week[day_index] <= 19:
+                    return week[day_index]
+        elif week_descriptor == "last":
+            for week in reversed(month_calendar):
+                if week[day_index] != 0:
+                    return week[day_index]
+        else:
+            week_counts = {
+                "first": 0,
+                "second": 1,
+                "third": 2,
+                "fourth": 3,
+                "fifth": 4
+            }
+            if week_descriptor in week_counts:
+                week_number = week_counts[week_descriptor]
+                try:
+                    if month_calendar[week_number][day_index] != 0:
+                        return month_calendar[week_number][day_index]
+                except IndexError:
+                    pass
+            else:
+                raise MeetupDayException(f"Invalid week descriptor: {week_descriptor}")
+    
+>       raise MeetupDayException(f"No such day exists: {week_descriptor} {day_of_week}")
+E       meetup.MeetupDayException: No such day exists: first Monday
+
+exercises/practice/meetup/meetup.py:63: MeetupDayException
+_ MeetupTest.test_when_first_thursday_is_some_day_in_the_middle_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_thursday_is_some_day_in_the_middle_of_the_first_week>
+
+    def test_when_first_thursday_is_some_day_in_the_middle_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 9, "first", "Thursday"), date(2013, 9, 5))
+
+exercises/practice/meetup/meetup_test.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:66: in meetup
+    meetup_day = find_meetup_day(week)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+week_descriptor = 'first'
+
+    def find_meetup_day(week_descriptor):
+        if week_descriptor == "teenth":
+            for week in month_calendar:
+                if 13 <= week[day_index] <= 19:
+                    return week[day_index]
+        elif week_descriptor == "last":
+            for week in reversed(month_calendar):
+                if week[day_index] != 0:
+                    return week[day_index]
+        else:
+            week_counts = {
+                "first": 0,
+                "second": 1,
+                "third": 2,
+                "fourth": 3,
+                "fifth": 4
+            }
+            if week_descriptor in week_counts:
+                week_number = week_counts[week_descriptor]
+                try:
+                    if month_calendar[week_number][day_index] != 0:
+                        return month_calendar[week_number][day_index]
+                except IndexError:
+                    pass
+            else:
+                raise MeetupDayException(f"Invalid week descriptor: {week_descriptor}")
+    
+>       raise MeetupDayException(f"No such day exists: {week_descriptor} {day_of_week}")
+E       meetup.MeetupDayException: No such day exists: first Thursday
+
+exercises/practice/meetup/meetup.py:63: MeetupDayException
+_ MeetupTest.test_when_first_tuesday_is_some_day_in_the_middle_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_tuesday_is_some_day_in_the_middle_of_the_first_week>
+
+    def test_when_first_tuesday_is_some_day_in_the_middle_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 6, "first", "Tuesday"), date(2013, 6, 4))
+
+exercises/practice/meetup/meetup_test.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:66: in meetup
+    meetup_day = find_meetup_day(week)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+week_descriptor = 'first'
+
+    def find_meetup_day(week_descriptor):
+        if week_descriptor == "teenth":
+            for week in month_calendar:
+                if 13 <= week[day_index] <= 19:
+                    return week[day_index]
+        elif week_descriptor == "last":
+            for week in reversed(month_calendar):
+                if week[day_index] != 0:
+                    return week[day_index]
+        else:
+            week_counts = {
+                "first": 0,
+                "second": 1,
+                "third": 2,
+                "fourth": 3,
+                "fifth": 4
+            }
+            if week_descriptor in week_counts:
+                week_number = week_counts[week_descriptor]
+                try:
+                    if month_calendar[week_number][day_index] != 0:
+                        return month_calendar[week_number][day_index]
+                except IndexError:
+                    pass
+            else:
+                raise MeetupDayException(f"Invalid week descriptor: {week_descriptor}")
+    
+>       raise MeetupDayException(f"No such day exists: {week_descriptor} {day_of_week}")
+E       meetup.MeetupDayException: No such day exists: first Tuesday
+
+exercises/practice/meetup/meetup.py:63: MeetupDayException
+_ MeetupTest.test_when_first_tuesday_is_the_7th_the_last_day_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_tuesday_is_the_7th_the_last_day_of_the_first_week>
+
+    def test_when_first_tuesday_is_the_7th_the_last_day_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 5, "first", "Tuesday"), date(2013, 5, 7))
+
+exercises/practice/meetup/meetup_test.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:66: in meetup
+    meetup_day = find_meetup_day(week)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+week_descriptor = 'first'
+
+    def find_meetup_day(week_descriptor):
+        if week_descriptor == "teenth":
+            for week in month_calendar:
+                if 13 <= week[day_index] <= 19:
+                    return week[day_index]
+        elif week_descriptor == "last":
+            for week in reversed(month_calendar):
+                if week[day_index] != 0:
+                    return week[day_index]
+        else:
+            week_counts = {
+                "first": 0,
+                "second": 1,
+                "third": 2,
+                "fourth": 3,
+                "fifth": 4
+            }
+            if week_descriptor in week_counts:
+                week_number = week_counts[week_descriptor]
+                try:
+                    if month_calendar[week_number][day_index] != 0:
+                        return month_calendar[week_number][day_index]
+                except IndexError:
+                    pass
+            else:
+                raise MeetupDayException(f"Invalid week descriptor: {week_descriptor}")
+    
+>       raise MeetupDayException(f"No such day exists: {week_descriptor} {day_of_week}")
+E       meetup.MeetupDayException: No such day exists: first Tuesday
+
+exercises/practice/meetup/meetup.py:63: MeetupDayException
+_ MeetupTest.test_when_first_wednesday_is_the_7th_the_last_day_of_the_first_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_first_wednesday_is_the_7th_the_last_day_of_the_first_week>
+
+    def test_when_first_wednesday_is_the_7th_the_last_day_of_the_first_week(self):
+>       self.assertEqual(meetup(2013, 8, "first", "Wednesday"), date(2013, 8, 7))
+
+exercises/practice/meetup/meetup_test.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/meetup/meetup.py:66: in meetup
+    meetup_day = find_meetup_day(week)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+week_descriptor = 'first'
+
+    def find_meetup_day(week_descriptor):
+        if week_descriptor == "teenth":
+            for week in month_calendar:
+                if 13 <= week[day_index] <= 19:
+                    return week[day_index]
+        elif week_descriptor == "last":
+            for week in reversed(month_calendar):
+                if week[day_index] != 0:
+                    return week[day_index]
+        else:
+            week_counts = {
+                "first": 0,
+                "second": 1,
+                "third": 2,
+                "fourth": 3,
+                "fifth": 4
+            }
+            if week_descriptor in week_counts:
+                week_number = week_counts[week_descriptor]
+                try:
+                    if month_calendar[week_number][day_index] != 0:
+                        return month_calendar[week_number][day_index]
+                except IndexError:
+                    pass
+            else:
+                raise MeetupDayException(f"Invalid week descriptor: {week_descriptor}")
+    
+>       raise MeetupDayException(f"No such day exists: {week_descriptor} {day_of_week}")
+E       meetup.MeetupDayException: No such day exists: first Wednesday
+
+exercises/practice/meetup/meetup.py:63: MeetupDayException
+_ MeetupTest.test_when_fourth_friday_is_some_day_in_the_middle_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_friday_is_some_day_in_the_middle_of_the_fourth_week>
+
+    def test_when_fourth_friday_is_some_day_in_the_middle_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 12, "fourth", "Friday"), date(2013, 12, 27))
+E       AssertionError: datetime.date(2013, 12, 20) != datetime.date(2013, 12, 27)
+
+exercises/practice/meetup/meetup_test.py:232: AssertionError
+_ MeetupTest.test_when_fourth_monday_is_some_day_in_the_middle_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_monday_is_some_day_in_the_middle_of_the_fourth_week>
+
+    def test_when_fourth_monday_is_some_day_in_the_middle_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 3, "fourth", "Monday"), date(2013, 3, 25))
+E       AssertionError: datetime.date(2013, 3, 18) != datetime.date(2013, 3, 25)
+
+exercises/practice/meetup/meetup_test.py:205: AssertionError
+_ MeetupTest.test_when_fourth_thursday_is_some_day_in_the_middle_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_thursday_is_some_day_in_the_middle_of_the_fourth_week>
+
+    def test_when_fourth_thursday_is_some_day_in_the_middle_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 9, "fourth", "Thursday"), date(2013, 9, 26))
+E       AssertionError: datetime.date(2013, 9, 19) != datetime.date(2013, 9, 26)
+
+exercises/practice/meetup/meetup_test.py:223: AssertionError
+_ MeetupTest.test_when_fourth_tuesday_is_some_day_in_the_middle_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_tuesday_is_some_day_in_the_middle_of_the_fourth_week>
+
+    def test_when_fourth_tuesday_is_some_day_in_the_middle_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 6, "fourth", "Tuesday"), date(2013, 6, 25))
+E       AssertionError: datetime.date(2013, 6, 18) != datetime.date(2013, 6, 25)
+
+exercises/practice/meetup/meetup_test.py:214: AssertionError
+_ MeetupTest.test_when_fourth_tuesday_is_the_28th_the_last_day_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_tuesday_is_the_28th_the_last_day_of_the_fourth_week>
+
+    def test_when_fourth_tuesday_is_the_28th_the_last_day_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 5, "fourth", "Tuesday"), date(2013, 5, 28))
+E       AssertionError: datetime.date(2013, 5, 21) != datetime.date(2013, 5, 28)
+
+exercises/practice/meetup/meetup_test.py:211: AssertionError
+_ MeetupTest.test_when_fourth_wednesday_is_the_28th_the_last_day_of_the_fourth_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_fourth_wednesday_is_the_28th_the_last_day_of_the_fourth_week>
+
+    def test_when_fourth_wednesday_is_the_28th_the_last_day_of_the_fourth_week(self):
+>       self.assertEqual(meetup(2013, 8, "fourth", "Wednesday"), date(2013, 8, 28))
+E       AssertionError: datetime.date(2013, 8, 21) != datetime.date(2013, 8, 28)
+
+exercises/practice/meetup/meetup_test.py:220: AssertionError
+_ MeetupTest.test_when_second_friday_is_some_day_in_the_middle_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_friday_is_some_day_in_the_middle_of_the_second_week>
+
+    def test_when_second_friday_is_some_day_in_the_middle_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 12, "second", "Friday"), date(2013, 12, 13))
+E       AssertionError: datetime.date(2013, 12, 6) != datetime.date(2013, 12, 13)
+
+exercises/practice/meetup/meetup_test.py:148: AssertionError
+_ MeetupTest.test_when_second_monday_is_some_day_in_the_middle_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_monday_is_some_day_in_the_middle_of_the_second_week>
+
+    def test_when_second_monday_is_some_day_in_the_middle_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 3, "second", "Monday"), date(2013, 3, 11))
+E       AssertionError: datetime.date(2013, 3, 4) != datetime.date(2013, 3, 11)
+
+exercises/practice/meetup/meetup_test.py:121: AssertionError
+_ MeetupTest.test_when_second_thursday_is_some_day_in_the_middle_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_thursday_is_some_day_in_the_middle_of_the_second_week>
+
+    def test_when_second_thursday_is_some_day_in_the_middle_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 9, "second", "Thursday"), date(2013, 9, 12))
+E       AssertionError: datetime.date(2013, 9, 5) != datetime.date(2013, 9, 12)
+
+exercises/practice/meetup/meetup_test.py:139: AssertionError
+_ MeetupTest.test_when_second_tuesday_is_some_day_in_the_middle_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_tuesday_is_some_day_in_the_middle_of_the_second_week>
+
+    def test_when_second_tuesday_is_some_day_in_the_middle_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 6, "second", "Tuesday"), date(2013, 6, 11))
+E       AssertionError: datetime.date(2013, 6, 4) != datetime.date(2013, 6, 11)
+
+exercises/practice/meetup/meetup_test.py:130: AssertionError
+_ MeetupTest.test_when_second_tuesday_is_the_14th_the_last_day_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_tuesday_is_the_14th_the_last_day_of_the_second_week>
+
+    def test_when_second_tuesday_is_the_14th_the_last_day_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 5, "second", "Tuesday"), date(2013, 5, 14))
+E       AssertionError: datetime.date(2013, 5, 7) != datetime.date(2013, 5, 14)
+
+exercises/practice/meetup/meetup_test.py:127: AssertionError
+_ MeetupTest.test_when_second_wednesday_is_the_14th_the_last_day_of_the_second_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_second_wednesday_is_the_14th_the_last_day_of_the_second_week>
+
+    def test_when_second_wednesday_is_the_14th_the_last_day_of_the_second_week(self):
+>       self.assertEqual(meetup(2013, 8, "second", "Wednesday"), date(2013, 8, 14))
+E       AssertionError: datetime.date(2013, 8, 7) != datetime.date(2013, 8, 14)
+
+exercises/practice/meetup/meetup_test.py:136: AssertionError
+_ MeetupTest.test_when_third_friday_is_some_day_in_the_middle_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_friday_is_some_day_in_the_middle_of_the_third_week>
+
+    def test_when_third_friday_is_some_day_in_the_middle_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 12, "third", "Friday"), date(2013, 12, 20))
+E       AssertionError: datetime.date(2013, 12, 13) != datetime.date(2013, 12, 20)
+
+exercises/practice/meetup/meetup_test.py:190: AssertionError
+_ MeetupTest.test_when_third_monday_is_some_day_in_the_middle_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_monday_is_some_day_in_the_middle_of_the_third_week>
+
+    def test_when_third_monday_is_some_day_in_the_middle_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 3, "third", "Monday"), date(2013, 3, 18))
+E       AssertionError: datetime.date(2013, 3, 11) != datetime.date(2013, 3, 18)
+
+exercises/practice/meetup/meetup_test.py:163: AssertionError
+_ MeetupTest.test_when_third_thursday_is_some_day_in_the_middle_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_thursday_is_some_day_in_the_middle_of_the_third_week>
+
+    def test_when_third_thursday_is_some_day_in_the_middle_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 9, "third", "Thursday"), date(2013, 9, 19))
+E       AssertionError: datetime.date(2013, 9, 12) != datetime.date(2013, 9, 19)
+
+exercises/practice/meetup/meetup_test.py:181: AssertionError
+_ MeetupTest.test_when_third_tuesday_is_some_day_in_the_middle_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_tuesday_is_some_day_in_the_middle_of_the_third_week>
+
+    def test_when_third_tuesday_is_some_day_in_the_middle_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 6, "third", "Tuesday"), date(2013, 6, 18))
+E       AssertionError: datetime.date(2013, 6, 11) != datetime.date(2013, 6, 18)
+
+exercises/practice/meetup/meetup_test.py:172: AssertionError
+_ MeetupTest.test_when_third_tuesday_is_the_21st_the_last_day_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_tuesday_is_the_21st_the_last_day_of_the_third_week>
+
+    def test_when_third_tuesday_is_the_21st_the_last_day_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 5, "third", "Tuesday"), date(2013, 5, 21))
+E       AssertionError: datetime.date(2013, 5, 14) != datetime.date(2013, 5, 21)
+
+exercises/practice/meetup/meetup_test.py:169: AssertionError
+_ MeetupTest.test_when_third_wednesday_is_the_21st_the_last_day_of_the_third_week _
+
+self = <meetup_test.MeetupTest testMethod=test_when_third_wednesday_is_the_21st_the_last_day_of_the_third_week>
+
+    def test_when_third_wednesday_is_the_21st_the_last_day_of_the_third_week(self):
+>       self.assertEqual(meetup(2013, 8, "third", "Wednesday"), date(2013, 8, 21))
+E       AssertionError: datetime.date(2013, 8, 14) != datetime.date(2013, 8, 21)
+
+exercises/practice/meetup/meetup_test.py:178: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_fifth_monday_of_march_2015
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_nonexistent_fifth_friday_of_august_2022
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_nonexistent_fifth_monday_of_february_2022
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_nonexistent_fifth_thursday_of_may_2023
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_friday_is_some_day_in_the_middle_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_friday_is_the_7th_the_last_day_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_monday_is_some_day_in_the_middle_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_thursday_is_some_day_in_the_middle_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_tuesday_is_some_day_in_the_middle_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_tuesday_is_the_7th_the_last_day_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_first_wednesday_is_the_7th_the_last_day_of_the_first_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_friday_is_some_day_in_the_middle_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_monday_is_some_day_in_the_middle_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_thursday_is_some_day_in_the_middle_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_tuesday_is_some_day_in_the_middle_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_tuesday_is_the_28th_the_last_day_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_fourth_wednesday_is_the_28th_the_last_day_of_the_fourth_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_friday_is_some_day_in_the_middle_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_monday_is_some_day_in_the_middle_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_thursday_is_some_day_in_the_middle_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_tuesday_is_some_day_in_the_middle_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_tuesday_is_the_14th_the_last_day_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_second_wednesday_is_the_14th_the_last_day_of_the_second_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_friday_is_some_day_in_the_middle_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_monday_is_some_day_in_the_middle_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_thursday_is_some_day_in_the_middle_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_tuesday_is_some_day_in_the_middle_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_tuesday_is_the_21st_the_last_day_of_the_third_week
+FAILED exercises/practice/meetup/meetup_test.py::MeetupTest::test_when_third_wednesday_is_the_21st_the_last_day_of_the_third_week
+======================== 29 failed, 74 passed in 0.34s =========================

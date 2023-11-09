@@ -1,0 +1,1090 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 50 items
+
+exercises/practice/allergies/allergies_test.py FFFFFFFFFFFFFFFFFFFFFFFFF [ 50%]
+FFFFFFFFFFFFFFFFFFFFFFFFF                                                [100%]
+
+=================================== FAILURES ===================================
+___________________ AllergiesTest.test_allergic_only_to_cats ___________________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_only_to_cats>
+
+    def test_allergic_only_to_cats(self):
+>       self.assertIs(Allergies(128).allergic_to("cats"), True)
+
+exercises/practice/allergies/allergies_test.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d131a2f0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+________________ AllergiesTest.test_allergic_only_to_chocolate _________________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_only_to_chocolate>
+
+    def test_allergic_only_to_chocolate(self):
+>       self.assertIs(Allergies(32).allergic_to("chocolate"), True)
+
+exercises/practice/allergies/allergies_test.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1b324a0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+___________________ AllergiesTest.test_allergic_only_to_eggs ___________________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_only_to_eggs>
+
+    def test_allergic_only_to_eggs(self):
+>       self.assertIs(Allergies(1).allergic_to("eggs"), True)
+
+exercises/practice/allergies/allergies_test.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1372470>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_________________ AllergiesTest.test_allergic_only_to_peanuts __________________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_only_to_peanuts>
+
+    def test_allergic_only_to_peanuts(self):
+>       self.assertIs(Allergies(2).allergic_to("peanuts"), True)
+
+exercises/practice/allergies/allergies_test.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1b326e0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+__________________ AllergiesTest.test_allergic_only_to_pollen __________________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_only_to_pollen>
+
+    def test_allergic_only_to_pollen(self):
+>       self.assertIs(Allergies(64).allergic_to("pollen"), True)
+
+exercises/practice/allergies/allergies_test.py:107: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1370100>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+________________ AllergiesTest.test_allergic_only_to_shellfish _________________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_only_to_shellfish>
+
+    def test_allergic_only_to_shellfish(self):
+>       self.assertIs(Allergies(4).allergic_to("shellfish"), True)
+
+exercises/practice/allergies/allergies_test.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1b33550>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_______________ AllergiesTest.test_allergic_only_to_strawberries _______________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_only_to_strawberries>
+
+    def test_allergic_only_to_strawberries(self):
+>       self.assertIs(Allergies(8).allergic_to("strawberries"), True)
+
+exercises/practice/allergies/allergies_test.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d131ada0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_________________ AllergiesTest.test_allergic_only_to_tomatoes _________________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_only_to_tomatoes>
+
+    def test_allergic_only_to_tomatoes(self):
+>       self.assertIs(Allergies(16).allergic_to("tomatoes"), True)
+
+exercises/practice/allergies/allergies_test.py:77: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d13818d0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+____________ AllergiesTest.test_allergic_to_cats_and_something_else ____________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_cats_and_something_else>
+
+    def test_allergic_to_cats_and_something_else(self):
+>       self.assertIs(Allergies(192).allergic_to("cats"), True)
+
+exercises/practice/allergies/allergies_test.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d136d1b0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_________ AllergiesTest.test_allergic_to_chocolate_and_something_else __________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_chocolate_and_something_else>
+
+    def test_allergic_to_chocolate_and_something_else(self):
+>       self.assertIs(Allergies(112).allergic_to("chocolate"), True)
+
+exercises/practice/allergies/allergies_test.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1b31e70>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+____________ AllergiesTest.test_allergic_to_eggs_and_something_else ____________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_eggs_and_something_else>
+
+    def test_allergic_to_eggs_and_something_else(self):
+>       self.assertIs(Allergies(3).allergic_to("eggs"), True)
+
+exercises/practice/allergies/allergies_test.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d13887f0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+__________ AllergiesTest.test_allergic_to_peanuts_and_something_else ___________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_peanuts_and_something_else>
+
+    def test_allergic_to_peanuts_and_something_else(self):
+>       self.assertIs(Allergies(7).allergic_to("peanuts"), True)
+
+exercises/practice/allergies/allergies_test.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d136cb50>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+___________ AllergiesTest.test_allergic_to_pollen_and_something_else ___________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_pollen_and_something_else>
+
+    def test_allergic_to_pollen_and_something_else(self):
+>       self.assertIs(Allergies(224).allergic_to("pollen"), True)
+
+exercises/practice/allergies/allergies_test.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d131a2f0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_________ AllergiesTest.test_allergic_to_shellfish_and_something_else __________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_shellfish_and_something_else>
+
+    def test_allergic_to_shellfish_and_something_else(self):
+>       self.assertIs(Allergies(14).allergic_to("shellfish"), True)
+
+exercises/practice/allergies/allergies_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1378910>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+____________ AllergiesTest.test_allergic_to_something_but_not_cats _____________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_something_but_not_cats>
+
+    def test_allergic_to_something_but_not_cats(self):
+>       self.assertIs(Allergies(64).allergic_to("cats"), False)
+
+exercises/practice/allergies/allergies_test.py:128: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1b323b0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+__________ AllergiesTest.test_allergic_to_something_but_not_chocolate __________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_something_but_not_chocolate>
+
+    def test_allergic_to_something_but_not_chocolate(self):
+>       self.assertIs(Allergies(80).allergic_to("chocolate"), False)
+
+exercises/practice/allergies/allergies_test.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d138b7f0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+____________ AllergiesTest.test_allergic_to_something_but_not_eggs _____________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_something_but_not_eggs>
+
+    def test_allergic_to_something_but_not_eggs(self):
+>       self.assertIs(Allergies(2).allergic_to("eggs"), False)
+
+exercises/practice/allergies/allergies_test.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1380f10>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+___________ AllergiesTest.test_allergic_to_something_but_not_peanuts ___________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_something_but_not_peanuts>
+
+    def test_allergic_to_something_but_not_peanuts(self):
+>       self.assertIs(Allergies(5).allergic_to("peanuts"), False)
+
+exercises/practice/allergies/allergies_test.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1b32800>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+___________ AllergiesTest.test_allergic_to_something_but_not_pollen ____________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_something_but_not_pollen>
+
+    def test_allergic_to_something_but_not_pollen(self):
+>       self.assertIs(Allergies(160).allergic_to("pollen"), False)
+
+exercises/practice/allergies/allergies_test.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d131b400>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+__________ AllergiesTest.test_allergic_to_something_but_not_shellfish __________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_something_but_not_shellfish>
+
+    def test_allergic_to_something_but_not_shellfish(self):
+>       self.assertIs(Allergies(10).allergic_to("shellfish"), False)
+
+exercises/practice/allergies/allergies_test.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1396440>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+________ AllergiesTest.test_allergic_to_something_but_not_strawberries _________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_something_but_not_strawberries>
+
+    def test_allergic_to_something_but_not_strawberries(self):
+>       self.assertIs(Allergies(20).allergic_to("strawberries"), False)
+
+exercises/practice/allergies/allergies_test.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d136cfd0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+__________ AllergiesTest.test_allergic_to_something_but_not_tomatoes ___________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_something_but_not_tomatoes>
+
+    def test_allergic_to_something_but_not_tomatoes(self):
+>       self.assertIs(Allergies(40).allergic_to("tomatoes"), False)
+
+exercises/practice/allergies/allergies_test.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1371db0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+________ AllergiesTest.test_allergic_to_strawberries_and_something_else ________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_strawberries_and_something_else>
+
+    def test_allergic_to_strawberries_and_something_else(self):
+>       self.assertIs(Allergies(28).allergic_to("strawberries"), True)
+
+exercises/practice/allergies/allergies_test.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1380430>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+__________ AllergiesTest.test_allergic_to_tomatoes_and_something_else __________
+
+self = <allergies_test.AllergiesTest testMethod=test_allergic_to_tomatoes_and_something_else>
+
+    def test_allergic_to_tomatoes_and_something_else(self):
+>       self.assertIs(Allergies(56).allergic_to("tomatoes"), True)
+
+exercises/practice/allergies/allergies_test.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d13946d0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+________________ AllergiesTest.test_cats_allergic_to_everything ________________
+
+self = <allergies_test.AllergiesTest testMethod=test_cats_allergic_to_everything>
+
+    def test_cats_allergic_to_everything(self):
+>       self.assertIs(Allergies(255).allergic_to("cats"), True)
+
+exercises/practice/allergies/allergies_test.py:131: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d138b1c0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_______________ AllergiesTest.test_cats_not_allergic_to_anything _______________
+
+self = <allergies_test.AllergiesTest testMethod=test_cats_not_allergic_to_anything>
+
+    def test_cats_not_allergic_to_anything(self):
+>       self.assertIs(Allergies(0).allergic_to("cats"), False)
+
+exercises/practice/allergies/allergies_test.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d137bd00>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_____________ AllergiesTest.test_chocolate_allergic_to_everything ______________
+
+self = <allergies_test.AllergiesTest testMethod=test_chocolate_allergic_to_everything>
+
+    def test_chocolate_allergic_to_everything(self):
+>       self.assertIs(Allergies(255).allergic_to("chocolate"), True)
+
+exercises/practice/allergies/allergies_test.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d138ad40>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+____________ AllergiesTest.test_chocolate_not_allergic_to_anything _____________
+
+self = <allergies_test.AllergiesTest testMethod=test_chocolate_not_allergic_to_anything>
+
+    def test_chocolate_not_allergic_to_anything(self):
+>       self.assertIs(Allergies(0).allergic_to("chocolate"), False)
+
+exercises/practice/allergies/allergies_test.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1372fb0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+________________ AllergiesTest.test_eggs_allergic_to_everything ________________
+
+self = <allergies_test.AllergiesTest testMethod=test_eggs_allergic_to_everything>
+
+    def test_eggs_allergic_to_everything(self):
+>       self.assertIs(Allergies(255).allergic_to("eggs"), True)
+
+exercises/practice/allergies/allergies_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d131b130>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_____________________ AllergiesTest.test_eggs_and_peanuts ______________________
+
+self = <allergies_test.AllergiesTest testMethod=test_eggs_and_peanuts>
+
+    def test_eggs_and_peanuts(self):
+>       self.assertCountEqual(Allergies(3).lst, ["eggs", "peanuts"])
+
+exercises/practice/allergies/allergies_test.py:146: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d137abc0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_______________ AllergiesTest.test_eggs_not_allergic_to_anything _______________
+
+self = <allergies_test.AllergiesTest testMethod=test_eggs_not_allergic_to_anything>
+
+    def test_eggs_not_allergic_to_anything(self):
+>       self.assertIs(Allergies(0).allergic_to("eggs"), False)
+
+exercises/practice/allergies/allergies_test.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d136ca30>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+________________________ AllergiesTest.test_everything _________________________
+
+self = <allergies_test.AllergiesTest testMethod=test_everything>
+
+    def test_everything(self):
+        self.assertCountEqual(
+>           Allergies(255).lst,
+            [
+                "eggs",
+                "peanuts",
+                "shellfish",
+                "strawberries",
+                "tomatoes",
+                "chocolate",
+                "pollen",
+                "cats",
+            ],
+        )
+
+exercises/practice/allergies/allergies_test.py:159: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1372dd0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_________________________ AllergiesTest.test_just_eggs _________________________
+
+self = <allergies_test.AllergiesTest testMethod=test_just_eggs>
+
+    def test_just_eggs(self):
+>       self.assertEqual(Allergies(1).lst, ["eggs"])
+
+exercises/practice/allergies/allergies_test.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1382980>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_______________________ AllergiesTest.test_just_peanuts ________________________
+
+self = <allergies_test.AllergiesTest testMethod=test_just_peanuts>
+
+    def test_just_peanuts(self):
+>       self.assertEqual(Allergies(2).lst, ["peanuts"])
+
+exercises/practice/allergies/allergies_test.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1394b50>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_____________________ AllergiesTest.test_just_strawberries _____________________
+
+self = <allergies_test.AllergiesTest testMethod=test_just_strawberries>
+
+    def test_just_strawberries(self):
+>       self.assertEqual(Allergies(8).lst, ["strawberries"])
+
+exercises/practice/allergies/allergies_test.py:143: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1382bf0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_______________________ AllergiesTest.test_lots_of_stuff _______________________
+
+self = <allergies_test.AllergiesTest testMethod=test_lots_of_stuff>
+
+    def test_lots_of_stuff(self):
+        self.assertCountEqual(
+>           Allergies(248).lst,
+            ["strawberries", "tomatoes", "chocolate", "pollen", "cats"],
+        )
+
+exercises/practice/allergies/allergies_test.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1395c30>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+______________ AllergiesTest.test_more_than_eggs_but_not_peanuts _______________
+
+self = <allergies_test.AllergiesTest testMethod=test_more_than_eggs_but_not_peanuts>
+
+    def test_more_than_eggs_but_not_peanuts(self):
+>       self.assertCountEqual(Allergies(5).lst, ["eggs", "shellfish"])
+
+exercises/practice/allergies/allergies_test.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d13883d0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+__________________ AllergiesTest.test_no_allergen_score_parts __________________
+
+self = <allergies_test.AllergiesTest testMethod=test_no_allergen_score_parts>
+
+    def test_no_allergen_score_parts(self):
+        self.assertCountEqual(
+>           Allergies(509).lst,
+            [
+                "eggs",
+                "shellfish",
+                "strawberries",
+                "tomatoes",
+                "chocolate",
+                "pollen",
+                "cats",
+            ],
+        )
+
+exercises/practice/allergies/allergies_test.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1372aa0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+____ AllergiesTest.test_no_allergen_score_parts_without_highest_valid_score ____
+
+self = <allergies_test.AllergiesTest testMethod=test_no_allergen_score_parts_without_highest_valid_score>
+
+    def test_no_allergen_score_parts_without_highest_valid_score(self):
+>       self.assertEqual(Allergies(257).lst, ["eggs"])
+
+exercises/practice/allergies/allergies_test.py:187: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d131bf40>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_______________________ AllergiesTest.test_no_allergies ________________________
+
+self = <allergies_test.AllergiesTest testMethod=test_no_allergies>
+
+    def test_no_allergies(self):
+>       self.assertEqual(Allergies(0).lst, [])
+
+exercises/practice/allergies/allergies_test.py:134: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1380a90>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+______________ AllergiesTest.test_peanuts_allergic_to_everything _______________
+
+self = <allergies_test.AllergiesTest testMethod=test_peanuts_allergic_to_everything>
+
+    def test_peanuts_allergic_to_everything(self):
+>       self.assertIs(Allergies(255).allergic_to("peanuts"), True)
+
+exercises/practice/allergies/allergies_test.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d13787c0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_____________ AllergiesTest.test_peanuts_not_allergic_to_anything ______________
+
+self = <allergies_test.AllergiesTest testMethod=test_peanuts_not_allergic_to_anything>
+
+    def test_peanuts_not_allergic_to_anything(self):
+>       self.assertIs(Allergies(0).allergic_to("peanuts"), False)
+
+exercises/practice/allergies/allergies_test.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d131a8c0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_______________ AllergiesTest.test_pollen_allergic_to_everything _______________
+
+self = <allergies_test.AllergiesTest testMethod=test_pollen_allergic_to_everything>
+
+    def test_pollen_allergic_to_everything(self):
+>       self.assertIs(Allergies(255).allergic_to("pollen"), True)
+
+exercises/practice/allergies/allergies_test.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d11e43d0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+______________ AllergiesTest.test_pollen_not_allergic_to_anything ______________
+
+self = <allergies_test.AllergiesTest testMethod=test_pollen_not_allergic_to_anything>
+
+    def test_pollen_not_allergic_to_anything(self):
+>       self.assertIs(Allergies(0).allergic_to("pollen"), False)
+
+exercises/practice/allergies/allergies_test.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d131bd30>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_____________ AllergiesTest.test_shellfish_allergic_to_everything ______________
+
+self = <allergies_test.AllergiesTest testMethod=test_shellfish_allergic_to_everything>
+
+    def test_shellfish_allergic_to_everything(self):
+>       self.assertIs(Allergies(255).allergic_to("shellfish"), True)
+
+exercises/practice/allergies/allergies_test.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d13889d0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+____________ AllergiesTest.test_shellfish_not_allergic_to_anything _____________
+
+self = <allergies_test.AllergiesTest testMethod=test_shellfish_not_allergic_to_anything>
+
+    def test_shellfish_not_allergic_to_anything(self):
+>       self.assertIs(Allergies(0).allergic_to("shellfish"), False)
+
+exercises/practice/allergies/allergies_test.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d13816c0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+____________ AllergiesTest.test_strawberries_allergic_to_everything ____________
+
+self = <allergies_test.AllergiesTest testMethod=test_strawberries_allergic_to_everything>
+
+    def test_strawberries_allergic_to_everything(self):
+>       self.assertIs(Allergies(255).allergic_to("strawberries"), True)
+
+exercises/practice/allergies/allergies_test.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d137b730>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+___________ AllergiesTest.test_strawberries_not_allergic_to_anything ___________
+
+self = <allergies_test.AllergiesTest testMethod=test_strawberries_not_allergic_to_anything>
+
+    def test_strawberries_not_allergic_to_anything(self):
+>       self.assertIs(Allergies(0).allergic_to("strawberries"), False)
+
+exercises/practice/allergies/allergies_test.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d1373e50>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+______________ AllergiesTest.test_tomatoes_allergic_to_everything ______________
+
+self = <allergies_test.AllergiesTest testMethod=test_tomatoes_allergic_to_everything>
+
+    def test_tomatoes_allergic_to_everything(self):
+>       self.assertIs(Allergies(255).allergic_to("tomatoes"), True)
+
+exercises/practice/allergies/allergies_test.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d13881c0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+_____________ AllergiesTest.test_tomatoes_not_allergic_to_anything _____________
+
+self = <allergies_test.AllergiesTest testMethod=test_tomatoes_not_allergic_to_anything>
+
+    def test_tomatoes_not_allergic_to_anything(self):
+>       self.assertIs(Allergies(0).allergic_to("tomatoes"), False)
+
+exercises/practice/allergies/allergies_test.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/allergies/allergies.py:32: in __init__
+    self.allergies = self.calculate_allergies()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <allergies.Allergies object at 0x7fb9d136e7a0>
+
+    def calculate_allergies(self):
+>       return [item for item, score in ALLERGENS.items() if self.score & score]
+E       NameError: name 'ALLERGENS' is not defined
+
+exercises/practice/allergies/allergies.py:35: NameError
+=========================== short test summary info ============================
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_only_to_cats
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_only_to_chocolate
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_only_to_eggs
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_only_to_peanuts
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_only_to_pollen
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_only_to_shellfish
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_only_to_strawberries
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_only_to_tomatoes
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_cats_and_something_else
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_chocolate_and_something_else
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_eggs_and_something_else
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_peanuts_and_something_else
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_pollen_and_something_else
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_shellfish_and_something_else
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_something_but_not_cats
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_something_but_not_chocolate
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_something_but_not_eggs
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_something_but_not_peanuts
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_something_but_not_pollen
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_something_but_not_shellfish
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_something_but_not_strawberries
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_something_but_not_tomatoes
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_strawberries_and_something_else
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_allergic_to_tomatoes_and_something_else
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_cats_allergic_to_everything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_cats_not_allergic_to_anything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_chocolate_allergic_to_everything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_chocolate_not_allergic_to_anything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_eggs_allergic_to_everything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_eggs_and_peanuts
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_eggs_not_allergic_to_anything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_everything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_just_eggs
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_just_peanuts
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_just_strawberries
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_lots_of_stuff
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_more_than_eggs_but_not_peanuts
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_no_allergen_score_parts
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_no_allergen_score_parts_without_highest_valid_score
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_no_allergies
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_peanuts_allergic_to_everything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_peanuts_not_allergic_to_anything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_pollen_allergic_to_everything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_pollen_not_allergic_to_anything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_shellfish_allergic_to_everything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_shellfish_not_allergic_to_anything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_strawberries_allergic_to_everything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_strawberries_not_allergic_to_anything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_tomatoes_allergic_to_everything
+FAILED exercises/practice/allergies/allergies_test.py::AllergiesTest::test_tomatoes_not_allergic_to_anything
+============================== 50 failed in 0.32s ==============================

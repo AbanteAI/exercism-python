@@ -1,0 +1,56 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 17 items
+
+exercises/practice/scale-generator/scale_generator_test.py ....F.F...... [ 76%]
+....                                                                     [100%]
+
+=================================== FAILURES ===================================
+____________________ ScaleGeneratorTest.test_harmonic_minor ____________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_harmonic_minor>
+
+    def test_harmonic_minor(self):
+        expected = ["D", "E", "F", "G", "A", "Bb", "Db", "D"]
+>       self.assertEqual(Scale("d").interval("MmMMmAm"), expected)
+E       AssertionError: Lists differ: ['D', 'E', 'F', 'G', 'A', 'A#', 'C#', 'D'] != ['D', 'E', 'F', 'G', 'A', 'Bb', 'Db', 'D']
+E       
+E       First differing element 5:
+E       'A#'
+E       'Bb'
+E       
+E       - ['D', 'E', 'F', 'G', 'A', 'A#', 'C#', 'D']
+E       ?                            ^^    ^^
+E       
+E       + ['D', 'E', 'F', 'G', 'A', 'Bb', 'Db', 'D']
+E       ?                            ^^    ^^
+
+exercises/practice/scale-generator/scale_generator_test.py:66: AssertionError
+_____________________ ScaleGeneratorTest.test_locrian_mode _____________________
+
+self = <scale_generator_test.ScaleGeneratorTest testMethod=test_locrian_mode>
+
+    def test_locrian_mode(self):
+        expected = ["G", "Ab", "Bb", "C", "Db", "Eb", "F", "G"]
+>       self.assertEqual(Scale("g").interval("mMMmMMM"), expected)
+E       AssertionError: Lists differ: ['G', 'G#', 'A#', 'C', 'C#', 'D#', 'F', 'G'] != ['G', 'Ab', 'Bb', 'C', 'Db', 'Eb', 'F', 'G']
+E       
+E       First differing element 1:
+E       'G#'
+E       'Ab'
+E       
+E       - ['G', 'G#', 'A#', 'C', 'C#', 'D#', 'F', 'G']
+E       ?        ^^    ^^         ^^    ^^
+E       
+E       + ['G', 'Ab', 'Bb', 'C', 'Db', 'Eb', 'F', 'G']
+E       ?        ^^    ^^         ^^    ^^
+
+exercises/practice/scale-generator/scale_generator_test.py:62: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_harmonic_minor
+FAILED exercises/practice/scale-generator/scale_generator_test.py::ScaleGeneratorTest::test_locrian_mode
+========================= 2 failed, 15 passed in 0.05s =========================

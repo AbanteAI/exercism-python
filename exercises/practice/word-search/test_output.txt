@@ -1,0 +1,36 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 24 items
+
+exercises/practice/word-search/word_search_test.py ..................... [ 87%]
+.FF                                                                      [100%]
+
+=================================== FAILURES ===================================
+____ WordSearchTest.test_should_not_wrap_around_horizontally_to_find_a_word ____
+
+self = <word_search_test.WordSearchTest testMethod=test_should_not_wrap_around_horizontally_to_find_a_word>
+
+    def test_should_not_wrap_around_horizontally_to_find_a_word(self):
+        puzzle = WordSearch(["silabcdefp"])
+>       self.assertIsNone(puzzle.search("lisp"))
+E       AssertionError: (<word_search.Point object at 0x7fce1ceacbe0>, <word_search.Point object at 0x7fce1ceacb20>) is not None
+
+exercises/practice/word-search/word_search_test.py:310: AssertionError
+_____ WordSearchTest.test_should_not_wrap_around_vertically_to_find_a_word _____
+
+self = <word_search_test.WordSearchTest testMethod=test_should_not_wrap_around_vertically_to_find_a_word>
+
+    def test_should_not_wrap_around_vertically_to_find_a_word(self):
+        puzzle = WordSearch(["s", "u", "r", "a", "b", "c", "t"])
+>       self.assertIsNone(puzzle.search("rust"))
+E       AssertionError: (<word_search.Point object at 0x7fce1d6c32e0>, <word_search.Point object at 0x7fce1d6c28c0>) is not None
+
+exercises/practice/word-search/word_search_test.py:314: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_not_wrap_around_horizontally_to_find_a_word
+FAILED exercises/practice/word-search/word_search_test.py::WordSearchTest::test_should_not_wrap_around_vertically_to_find_a_word
+========================= 2 failed, 22 passed in 0.07s =========================

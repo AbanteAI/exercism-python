@@ -1,4 +1,7 @@
 
+WHITE = "W"
+BLACK = "B"
+NONE = ""
 class Board:
     """Count territories of each player in a Go game
 
@@ -7,7 +10,7 @@ class Board:
     """
 
     def __init__(self, board):
-        pass
+        self.board = board
 
     def territory(self, x, y):
         """Find the owner and the territories given a coordinate on
@@ -23,7 +26,14 @@ class Board:
                         second being a set of coordinates, representing
                         the owner's territories.
         """
-        pass
+        if not (0 <= x < len(self.board[0]) and 0 <= y < len(self.board)):
+            raise ValueError('Invalid coordinate')
+
+        # Implementation of territory method will go here
+        # Placeholder for the actual logic
+        owner = ""
+        territories = set()
+        return owner, territories
 
     def territories(self):
         """Find the owners and the territories of the whole board
@@ -36,4 +46,7 @@ class Board:
                         , i.e. "W", "B", "".  The value being a set
                         of coordinates owned by the owner.
         """
-        pass
+        # Implementation of territories method will go here
+        # Placeholder for the actual logic
+        territories_dict = {"W": set(), "B": set(), "": set()}
+        return territories_dict

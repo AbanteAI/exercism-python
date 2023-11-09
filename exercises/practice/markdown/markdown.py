@@ -1,77 +1,85 @@
 import re
 
 
-def parse(markdown):
-    lines = markdown.split('\n')
-    res = ''
-    in_list = False
-    in_list_append = False
-    for i in lines:
-        if re.match('###### (.*)', i) is not None:
-            i = '<h6>' + i[7:] + '</h6>'
-        elif re.match('##### (.*)', i) is not None:
-            i = '<h5>' + i[6:] + '</h5>'
-        elif re.match('#### (.*)', i) is not None:
-            i = '<h4>' + i[5:] + '</h4>'
-        elif re.match('### (.*)', i) is not None:
-            i = '<h3>' + i[4:] + '</h3>'
-        elif re.match('## (.*)', i) is not None:
-            i = '<h2>' + i[3:] + '</h2>'
-        elif re.match('# (.*)', i) is not None:
-            i = '<h1>' + i[2:] + '</h1>'
-        m = re.match(r'\* (.*)', i)
-        if m:
-            if not in_list:
-                in_list = True
-                is_bold = False
-                is_italic = False
-                curr = m.group(1)
-                m1 = re.match('(.*)__(.*)__(.*)', curr)
-                if m1:
-                    curr = m1.group(1) + '<strong>' + \
-                        m1.group(2) + '</strong>' + m1.group(3)
-                    is_bold = True
-                m1 = re.match('(.*)_(.*)_(.*)', curr)
-                if m1:
-                    curr = m1.group(1) + '<em>' + m1.group(2) + \
-                        '</em>' + m1.group(3)
-                    is_italic = True
-                i = '<ul><li>' + curr + '</li>'
-            else:
-                is_bold = False
-                is_italic = False
-                curr = m.group(1)
-                m1 = re.match('(.*)__(.*)__(.*)', curr)
-                if m1:
-                    is_bold = True
-                m1 = re.match('(.*)_(.*)_(.*)', curr)
-                if m1:
-                    is_italic = True
-                if is_bold:
-                    curr = m1.group(1) + '<strong>' + \
-                        m1.group(2) + '</strong>' + m1.group(3)
-                if is_italic:
-                    curr = m1.group(1) + '<em>' + m1.group(2) + \
-                        '</em>' + m1.group(3)
-                i = '<li>' + curr + '</li>'
-        else:
-            if in_list:
-                in_list_append = True
-                in_list = False
+class MarkdownParser:
+    def __init__(self):
+        self.in_list = False
+        self.in_list_append = False
+        self.result = ''
 
-        m = re.match('<h|<ul|<p|<li', i)
-        if not m:
-            i = '<p>' + i + '</p>'
-        m = re.match('(.*)__(.*)__(.*)', i)
-        if m:
-            i = m.group(1) + '<strong>' + m.group(2) + '</strong>' + m.group(3)
-        m = re.match('(.*)_(.*)_(.*)', i)
-        if m:
-            i = m.group(1) + '<em>' + m.group(2) + '</em>' + m.group(3)
-        if in_list_append:
-            i = '</ul>' + i
-            in_list_append = False
-        res += i
-    if in_list:
-        res += '</ul>'
-    return res
+    def parse(self, markdown):
+        lines = markdown.split('\n')
+        for line in lines:
+            line = self.parse_line(line)
+            self.result += line
+        self.close_list_if_needed()
+        return self.result
+
+        if self.is_list_item(line):
+            return self.parse_list_item(line)
+        if self.in_list:
+            self.close_list()
+        return self.parse_paragraph(line)
+    def parse_line(self, line):
+        if self.is_heading(line):
+            return self.parse_heading(line)
+        if self.in_list:
+            if not self.is_list_item(line):
+                self.close_list()
+                return self.parse_paragraph(line)
+            return self.parse_list_item(line)
+        return self.parse_paragraph(line)
+
+    def is_heading(self, line):
+        return re.match('#+ ', line)
+
+    def parse_heading(self, line):
+        level = len(re.match('#+', line).group(0))
+        content = line[level+1:]
+        if level <= 6:
+            return f'<h{level}>{content}</h{level}>'
+        else:
+            return f'<p>{line}</p>'
+
+    def is_list_item(self, line):
+        return re.match(r'\* (.*)', line)
+
+    def parse_list_item(self, line):
+        content = re.match(r'\* (.*)', line).group(1)
+        content = self.parse_text(content)
+        if not self.in_list:
+            self.start_list()
+        return f'<li>{content}</li>'
+
+    def start_list(self):
+        self.in_list = True
+        self.result += '<ul>'
+
+    def close_list(self):
+        self.in_list = False
+        self.in_list_append = False
+        self.result += '</ul>'
+
+    def close_list_if_needed(self):
+        if self.in_list:
+            self.close_list()
+
+    def parse_paragraph(self, line):
+        line = self.parse_text(line)
+        return f'<p>{line}</p>'
+
+    def parse_text(self, text):
+        text = self.parse_bold(text)
+        text = self.parse_italic(text)
+        return text
+
+    def parse_bold(self, text):
+        return re.sub(r'__(.*?)__', r'<strong>\1</strong>', text)
+
+    def parse_italic(self, text):
+        return re.sub(r'_(.*?)_', r'<em>\1</em>', text)
+
+
+def parse(markdown):
+    parser = MarkdownParser()
+    return parser.parse(markdown)

@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 17 items
+
+exercises/practice/word-count/word_count_test.py ..........F......       [100%]
+
+=================================== FAILURES ===================================
+_____________________ WordCountTest.test_non_alphanumeric ______________________
+
+self = <word_count_test.WordCountTest testMethod=test_non_alphanumeric>
+
+    def test_non_alphanumeric(self):
+>       self.assertEqual(
+            count_words("hey,my_spacebar_is_broken"),
+            {"hey": 1, "my": 1, "spacebar": 1, "is": 1, "broken": 1},
+        )
+E       AssertionError: {'hey': 1, 'my_spacebar_is_broken': 1} != {'hey': 1, 'my': 1, 'spacebar': 1, 'is': 1, 'broken': 1}
+E       - {'hey': 1, 'my_spacebar_is_broken': 1}
+E       + {'broken': 1, 'hey': 1, 'is': 1, 'my': 1, 'spacebar': 1}
+
+exercises/practice/word-count/word_count_test.py:119: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/word-count/word_count_test.py::WordCountTest::test_non_alphanumeric
+========================= 1 failed, 16 passed in 0.06s =========================

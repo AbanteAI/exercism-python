@@ -1,0 +1,76 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 10 items
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py . [ 10%]
+FF.....FF                                                                [100%]
+
+=================================== FAILURES ===================================
+__________ ResistorColorExpertTest.test_blue_grey_white_red_and_brown __________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_blue_grey_white_red_and_brown>
+
+    def test_blue_grey_white_red_and_brown(self):
+>       self.assertEqual(
+            resistor_label(["blue", "grey", "white", "brown", "brown"]), "6.89 kiloohms ±1%"
+        )
+E       AssertionError: '7 kiloohms ±1%' != '6.89 kiloohms ±1%'
+E       - 7 kiloohms ±1%
+E       ? ^
+E       + 6.89 kiloohms ±1%
+E       ? ^^^^
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:39: AssertionError
+_________ ResistorColorExpertTest.test_brown_red_orange_green_and_blue _________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_brown_red_orange_green_and_blue>
+
+    def test_brown_red_orange_green_and_blue(self):
+>       self.assertEqual(
+            resistor_label(["brown", "red", "orange", "green", "blue"]), "12.3 megaohms ±0.25%"
+        )
+E       AssertionError: '12 megaohms ±0.25%' != '12.3 megaohms ±0.25%'
+E       - 12 megaohms ±0.25%
+E       + 12.3 megaohms ±0.25%
+E       ?   ++
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:49: AssertionError
+________ ResistorColorExpertTest.test_red_green_yellow_yellow_and_brown ________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_red_green_yellow_yellow_and_brown>
+
+    def test_red_green_yellow_yellow_and_brown(self):
+>       self.assertEqual(
+            resistor_label(["red", "green", "yellow", "yellow", "brown"]), "2.54 megaohms ±1%"
+        )
+E       AssertionError: '3 megaohms ±1%' != '2.54 megaohms ±1%'
+E       - 3 megaohms ±1%
+E       ? ^
+E       + 2.54 megaohms ±1%
+E       ? ^^^^
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:34: AssertionError
+___________ ResistorColorExpertTest.test_violet_orange_red_and_grey ____________
+
+self = <resistor_color_expert_test.ResistorColorExpertTest testMethod=test_violet_orange_red_and_grey>
+
+    def test_violet_orange_red_and_grey(self):
+>       self.assertEqual(
+            resistor_label(["violet", "orange", "red", "grey"]), "7.3 kiloohms ±0.05%"
+        )
+E       AssertionError: '7 kiloohms ±0.05%' != '7.3 kiloohms ±0.05%'
+E       - 7 kiloohms ±0.05%
+E       + 7.3 kiloohms ±0.05%
+E       ?  ++
+
+exercises/practice/resistor-color-expert/resistor_color_expert_test.py:44: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_blue_grey_white_red_and_brown
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_brown_red_orange_green_and_blue
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_red_green_yellow_yellow_and_brown
+FAILED exercises/practice/resistor-color-expert/resistor_color_expert_test.py::ResistorColorExpertTest::test_violet_orange_red_and_grey
+========================= 4 failed, 6 passed in 0.04s ==========================

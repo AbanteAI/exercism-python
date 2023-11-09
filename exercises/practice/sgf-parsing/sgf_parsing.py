@@ -26,4 +26,43 @@ class SgfTree:
 
 
 def parse(input_string):
-    pass
+    if not input_string:
+        raise ValueError("tree missing")
+    if not input_string.startswith('(') or not input_string.endswith(')'):
+        raise ValueError("tree missing")
+    
+    input_string = input_string.strip('()')
+    properties = {}
+    children = []
+    current_node_properties = None
+
+    parts = input_string.split(';')
+    for part in parts:
+        if part.startswith('('):
+            children.append(parse(part))
+        elif part:
+            key_values = part.split(']')
+            for key_value in key_values:
+                if not key_value:
+                    continue
+                key, value = key_value.split('[', 1)
+                if not key.isupper():
+                    raise ValueError("property must be in uppercase")
+                if '\\' in value:
+                    value = value.replace('\\\\', '\\').replace('\\]', ']')
+                if current_node_properties is not None:
+                    properties = current_node_properties
+                    current_node_properties = None
+                if key in properties:
+                    properties[key].append(value)
+                else:
+                    properties[key] = [value]
+        elif current_node_properties is not None:
+            raise ValueError("tree with no nodes")
+        else:
+            current_node_properties = {}
+
+    if not properties and not children:
+        raise ValueError("tree with no nodes")
+
+    return SgfTree(properties=properties, children=children)

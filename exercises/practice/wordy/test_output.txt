@@ -1,0 +1,630 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 25 items
+
+exercises/practice/wordy/wordy_test.py FFFFF.F..FFFFFF....F..FF.         [100%]
+
+=================================== FAILURES ===================================
+___________________________ WordyTest.test_addition ____________________________
+
+self = <wordy_test.WordyTest testMethod=test_addition>
+
+    def test_addition(self):
+>       self.assertEqual(answer("What is 1 plus 1?"), 2)
+
+exercises/practice/wordy/wordy_test.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = '1 + 1'
+
+    def answer(question):
+        # Remove question mark and 'What is ' part
+        question = question.replace('?', '').replace('What is ', '', 1)
+    
+        # Define the operations
+        operations = {
+            'plus': '+',
+            'minus': '-',
+            'multiplied by': '*',
+            'divided by': '/'
+        }
+    
+        # Replace words with actual operators
+        for word, operator in operations.items():
+            question = question.replace(word, operator)
+    
+        # Check for unsupported operations
+        if re.search(r'cubed|to the power of', question):
+            raise ValueError("unknown operation")
+    
+        # Check for non-math questions
+        if re.search(r'Who|What|When|Where|Why|How', question):
+            raise ValueError("unknown operation")
+    
+        # Check for invalid syntax
+        if not re.fullmatch(r'(-?\d+)( (plus|minus|multiplied by|divided by) -?\d+)*', question):
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+exercises/practice/wordy/wordy.py:29: ValueError
+__________________ WordyTest.test_addition_and_multiplication __________________
+
+self = <wordy_test.WordyTest testMethod=test_addition_and_multiplication>
+
+    def test_addition_and_multiplication(self):
+>       self.assertEqual(answer("What is -3 plus 7 multiplied by -2?"), -8)
+
+exercises/practice/wordy/wordy_test.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = '-3 + 7 * -2'
+
+    def answer(question):
+        # Remove question mark and 'What is ' part
+        question = question.replace('?', '').replace('What is ', '', 1)
+    
+        # Define the operations
+        operations = {
+            'plus': '+',
+            'minus': '-',
+            'multiplied by': '*',
+            'divided by': '/'
+        }
+    
+        # Replace words with actual operators
+        for word, operator in operations.items():
+            question = question.replace(word, operator)
+    
+        # Check for unsupported operations
+        if re.search(r'cubed|to the power of', question):
+            raise ValueError("unknown operation")
+    
+        # Check for non-math questions
+        if re.search(r'Who|What|When|Where|Why|How', question):
+            raise ValueError("unknown operation")
+    
+        # Check for invalid syntax
+        if not re.fullmatch(r'(-?\d+)( (plus|minus|multiplied by|divided by) -?\d+)*', question):
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+exercises/practice/wordy/wordy.py:29: ValueError
+___________________ WordyTest.test_addition_and_subtraction ____________________
+
+self = <wordy_test.WordyTest testMethod=test_addition_and_subtraction>
+
+    def test_addition_and_subtraction(self):
+>       self.assertEqual(answer("What is 1 plus 5 minus -2?"), 8)
+
+exercises/practice/wordy/wordy_test.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = '1 + 5 - -2'
+
+    def answer(question):
+        # Remove question mark and 'What is ' part
+        question = question.replace('?', '').replace('What is ', '', 1)
+    
+        # Define the operations
+        operations = {
+            'plus': '+',
+            'minus': '-',
+            'multiplied by': '*',
+            'divided by': '/'
+        }
+    
+        # Replace words with actual operators
+        for word, operator in operations.items():
+            question = question.replace(word, operator)
+    
+        # Check for unsupported operations
+        if re.search(r'cubed|to the power of', question):
+            raise ValueError("unknown operation")
+    
+        # Check for non-math questions
+        if re.search(r'Who|What|When|Where|Why|How', question):
+            raise ValueError("unknown operation")
+    
+        # Check for invalid syntax
+        if not re.fullmatch(r'(-?\d+)( (plus|minus|multiplied by|divided by) -?\d+)*', question):
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+exercises/practice/wordy/wordy.py:29: ValueError
+________________ WordyTest.test_addition_with_negative_numbers _________________
+
+self = <wordy_test.WordyTest testMethod=test_addition_with_negative_numbers>
+
+    def test_addition_with_negative_numbers(self):
+>       self.assertEqual(answer("What is -1 plus -10?"), -11)
+
+exercises/practice/wordy/wordy_test.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = '-1 + -10'
+
+    def answer(question):
+        # Remove question mark and 'What is ' part
+        question = question.replace('?', '').replace('What is ', '', 1)
+    
+        # Define the operations
+        operations = {
+            'plus': '+',
+            'minus': '-',
+            'multiplied by': '*',
+            'divided by': '/'
+        }
+    
+        # Replace words with actual operators
+        for word, operator in operations.items():
+            question = question.replace(word, operator)
+    
+        # Check for unsupported operations
+        if re.search(r'cubed|to the power of', question):
+            raise ValueError("unknown operation")
+    
+        # Check for non-math questions
+        if re.search(r'Who|What|When|Where|Why|How', question):
+            raise ValueError("unknown operation")
+    
+        # Check for invalid syntax
+        if not re.fullmatch(r'(-?\d+)( (plus|minus|multiplied by|divided by) -?\d+)*', question):
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+exercises/practice/wordy/wordy.py:29: ValueError
+___________________________ WordyTest.test_division ____________________________
+
+self = <wordy_test.WordyTest testMethod=test_division>
+
+    def test_division(self):
+>       self.assertEqual(answer("What is 33 divided by -3?"), -11)
+
+exercises/practice/wordy/wordy_test.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = '33 / -3'
+
+    def answer(question):
+        # Remove question mark and 'What is ' part
+        question = question.replace('?', '').replace('What is ', '', 1)
+    
+        # Define the operations
+        operations = {
+            'plus': '+',
+            'minus': '-',
+            'multiplied by': '*',
+            'divided by': '/'
+        }
+    
+        # Replace words with actual operators
+        for word, operator in operations.items():
+            question = question.replace(word, operator)
+    
+        # Check for unsupported operations
+        if re.search(r'cubed|to the power of', question):
+            raise ValueError("unknown operation")
+    
+        # Check for non-math questions
+        if re.search(r'Who|What|When|Where|Why|How', question):
+            raise ValueError("unknown operation")
+    
+        # Check for invalid syntax
+        if not re.fullmatch(r'(-?\d+)( (plus|minus|multiplied by|divided by) -?\d+)*', question):
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+exercises/practice/wordy/wordy.py:29: ValueError
+________________________ WordyTest.test_large_addition _________________________
+
+self = <wordy_test.WordyTest testMethod=test_large_addition>
+
+    def test_large_addition(self):
+>       self.assertEqual(answer("What is 123 plus 45678?"), 45801)
+
+exercises/practice/wordy/wordy_test.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = '123 + 45678'
+
+    def answer(question):
+        # Remove question mark and 'What is ' part
+        question = question.replace('?', '').replace('What is ', '', 1)
+    
+        # Define the operations
+        operations = {
+            'plus': '+',
+            'minus': '-',
+            'multiplied by': '*',
+            'divided by': '/'
+        }
+    
+        # Replace words with actual operators
+        for word, operator in operations.items():
+            question = question.replace(word, operator)
+    
+        # Check for unsupported operations
+        if re.search(r'cubed|to the power of', question):
+            raise ValueError("unknown operation")
+    
+        # Check for non-math questions
+        if re.search(r'Who|What|When|Where|Why|How', question):
+            raise ValueError("unknown operation")
+    
+        # Check for invalid syntax
+        if not re.fullmatch(r'(-?\d+)( (plus|minus|multiplied by|divided by) -?\d+)*', question):
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+exercises/practice/wordy/wordy.py:29: ValueError
+_________________________ WordyTest.test_more_addition _________________________
+
+self = <wordy_test.WordyTest testMethod=test_more_addition>
+
+    def test_more_addition(self):
+>       self.assertEqual(answer("What is 53 plus 2?"), 55)
+
+exercises/practice/wordy/wordy_test.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = '53 + 2'
+
+    def answer(question):
+        # Remove question mark and 'What is ' part
+        question = question.replace('?', '').replace('What is ', '', 1)
+    
+        # Define the operations
+        operations = {
+            'plus': '+',
+            'minus': '-',
+            'multiplied by': '*',
+            'divided by': '/'
+        }
+    
+        # Replace words with actual operators
+        for word, operator in operations.items():
+            question = question.replace(word, operator)
+    
+        # Check for unsupported operations
+        if re.search(r'cubed|to the power of', question):
+            raise ValueError("unknown operation")
+    
+        # Check for non-math questions
+        if re.search(r'Who|What|When|Where|Why|How', question):
+            raise ValueError("unknown operation")
+    
+        # Check for invalid syntax
+        if not re.fullmatch(r'(-?\d+)( (plus|minus|multiplied by|divided by) -?\d+)*', question):
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+exercises/practice/wordy/wordy.py:29: ValueError
+______________________ WordyTest.test_multiple_additions _______________________
+
+self = <wordy_test.WordyTest testMethod=test_multiple_additions>
+
+    def test_multiple_additions(self):
+>       self.assertEqual(answer("What is 1 plus 1 plus 1?"), 3)
+
+exercises/practice/wordy/wordy_test.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = '1 + 1 + 1'
+
+    def answer(question):
+        # Remove question mark and 'What is ' part
+        question = question.replace('?', '').replace('What is ', '', 1)
+    
+        # Define the operations
+        operations = {
+            'plus': '+',
+            'minus': '-',
+            'multiplied by': '*',
+            'divided by': '/'
+        }
+    
+        # Replace words with actual operators
+        for word, operator in operations.items():
+            question = question.replace(word, operator)
+    
+        # Check for unsupported operations
+        if re.search(r'cubed|to the power of', question):
+            raise ValueError("unknown operation")
+    
+        # Check for non-math questions
+        if re.search(r'Who|What|When|Where|Why|How', question):
+            raise ValueError("unknown operation")
+    
+        # Check for invalid syntax
+        if not re.fullmatch(r'(-?\d+)( (plus|minus|multiplied by|divided by) -?\d+)*', question):
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+exercises/practice/wordy/wordy.py:29: ValueError
+_______________________ WordyTest.test_multiple_division _______________________
+
+self = <wordy_test.WordyTest testMethod=test_multiple_division>
+
+    def test_multiple_division(self):
+>       self.assertEqual(answer("What is -12 divided by 2 divided by -3?"), 2)
+
+exercises/practice/wordy/wordy_test.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = '-12 / 2 / -3'
+
+    def answer(question):
+        # Remove question mark and 'What is ' part
+        question = question.replace('?', '').replace('What is ', '', 1)
+    
+        # Define the operations
+        operations = {
+            'plus': '+',
+            'minus': '-',
+            'multiplied by': '*',
+            'divided by': '/'
+        }
+    
+        # Replace words with actual operators
+        for word, operator in operations.items():
+            question = question.replace(word, operator)
+    
+        # Check for unsupported operations
+        if re.search(r'cubed|to the power of', question):
+            raise ValueError("unknown operation")
+    
+        # Check for non-math questions
+        if re.search(r'Who|What|When|Where|Why|How', question):
+            raise ValueError("unknown operation")
+    
+        # Check for invalid syntax
+        if not re.fullmatch(r'(-?\d+)( (plus|minus|multiplied by|divided by) -?\d+)*', question):
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+exercises/practice/wordy/wordy.py:29: ValueError
+____________________ WordyTest.test_multiple_multiplication ____________________
+
+self = <wordy_test.WordyTest testMethod=test_multiple_multiplication>
+
+    def test_multiple_multiplication(self):
+>       self.assertEqual(answer("What is 2 multiplied by -2 multiplied by 3?"), -12)
+
+exercises/practice/wordy/wordy_test.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = '2 * -2 * 3'
+
+    def answer(question):
+        # Remove question mark and 'What is ' part
+        question = question.replace('?', '').replace('What is ', '', 1)
+    
+        # Define the operations
+        operations = {
+            'plus': '+',
+            'minus': '-',
+            'multiplied by': '*',
+            'divided by': '/'
+        }
+    
+        # Replace words with actual operators
+        for word, operator in operations.items():
+            question = question.replace(word, operator)
+    
+        # Check for unsupported operations
+        if re.search(r'cubed|to the power of', question):
+            raise ValueError("unknown operation")
+    
+        # Check for non-math questions
+        if re.search(r'Who|What|When|Where|Why|How', question):
+            raise ValueError("unknown operation")
+    
+        # Check for invalid syntax
+        if not re.fullmatch(r'(-?\d+)( (plus|minus|multiplied by|divided by) -?\d+)*', question):
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+exercises/practice/wordy/wordy.py:29: ValueError
+_____________________ WordyTest.test_multiple_subtraction ______________________
+
+self = <wordy_test.WordyTest testMethod=test_multiple_subtraction>
+
+    def test_multiple_subtraction(self):
+>       self.assertEqual(answer("What is 20 minus 4 minus 13?"), 3)
+
+exercises/practice/wordy/wordy_test.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = '20 - 4 - 13'
+
+    def answer(question):
+        # Remove question mark and 'What is ' part
+        question = question.replace('?', '').replace('What is ', '', 1)
+    
+        # Define the operations
+        operations = {
+            'plus': '+',
+            'minus': '-',
+            'multiplied by': '*',
+            'divided by': '/'
+        }
+    
+        # Replace words with actual operators
+        for word, operator in operations.items():
+            question = question.replace(word, operator)
+    
+        # Check for unsupported operations
+        if re.search(r'cubed|to the power of', question):
+            raise ValueError("unknown operation")
+    
+        # Check for non-math questions
+        if re.search(r'Who|What|When|Where|Why|How', question):
+            raise ValueError("unknown operation")
+    
+        # Check for invalid syntax
+        if not re.fullmatch(r'(-?\d+)( (plus|minus|multiplied by|divided by) -?\d+)*', question):
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+exercises/practice/wordy/wordy.py:29: ValueError
+________________________ WordyTest.test_multiplication _________________________
+
+self = <wordy_test.WordyTest testMethod=test_multiplication>
+
+    def test_multiplication(self):
+>       self.assertEqual(answer("What is -3 multiplied by 25?"), -75)
+
+exercises/practice/wordy/wordy_test.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = '-3 * 25'
+
+    def answer(question):
+        # Remove question mark and 'What is ' part
+        question = question.replace('?', '').replace('What is ', '', 1)
+    
+        # Define the operations
+        operations = {
+            'plus': '+',
+            'minus': '-',
+            'multiplied by': '*',
+            'divided by': '/'
+        }
+    
+        # Replace words with actual operators
+        for word, operator in operations.items():
+            question = question.replace(word, operator)
+    
+        # Check for unsupported operations
+        if re.search(r'cubed|to the power of', question):
+            raise ValueError("unknown operation")
+    
+        # Check for non-math questions
+        if re.search(r'Who|What|When|Where|Why|How', question):
+            raise ValueError("unknown operation")
+    
+        # Check for invalid syntax
+        if not re.fullmatch(r'(-?\d+)( (plus|minus|multiplied by|divided by) -?\d+)*', question):
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+exercises/practice/wordy/wordy.py:29: ValueError
+_________ WordyTest.test_reject_problem_with_no_operands_or_operators __________
+
+self = <wordy_test.WordyTest testMethod=test_reject_problem_with_no_operands_or_operators>
+
+    def test_reject_problem_with_no_operands_or_operators(self):
+        with self.assertRaises(ValueError) as err:
+            answer("What is?")
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(err.exception.args[0], "syntax error")
+E       AssertionError: 'unknown operation' != 'syntax error'
+E       - unknown operation
+E       + syntax error
+
+exercises/practice/wordy/wordy_test.py:80: AssertionError
+__________________________ WordyTest.test_subtraction __________________________
+
+self = <wordy_test.WordyTest testMethod=test_subtraction>
+
+    def test_subtraction(self):
+>       self.assertEqual(answer("What is 4 minus -12?"), 16)
+
+exercises/practice/wordy/wordy_test.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = '4 - -12'
+
+    def answer(question):
+        # Remove question mark and 'What is ' part
+        question = question.replace('?', '').replace('What is ', '', 1)
+    
+        # Define the operations
+        operations = {
+            'plus': '+',
+            'minus': '-',
+            'multiplied by': '*',
+            'divided by': '/'
+        }
+    
+        # Replace words with actual operators
+        for word, operator in operations.items():
+            question = question.replace(word, operator)
+    
+        # Check for unsupported operations
+        if re.search(r'cubed|to the power of', question):
+            raise ValueError("unknown operation")
+    
+        # Check for non-math questions
+        if re.search(r'Who|What|When|Where|Why|How', question):
+            raise ValueError("unknown operation")
+    
+        # Check for invalid syntax
+        if not re.fullmatch(r'(-?\d+)( (plus|minus|multiplied by|divided by) -?\d+)*', question):
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+exercises/practice/wordy/wordy.py:29: ValueError
+___________________ WordyTest.test_subtraction_then_addition ___________________
+
+self = <wordy_test.WordyTest testMethod=test_subtraction_then_addition>
+
+    def test_subtraction_then_addition(self):
+>       self.assertEqual(answer("What is 17 minus 6 plus 3?"), 14)
+
+exercises/practice/wordy/wordy_test.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+question = '17 - 6 + 3'
+
+    def answer(question):
+        # Remove question mark and 'What is ' part
+        question = question.replace('?', '').replace('What is ', '', 1)
+    
+        # Define the operations
+        operations = {
+            'plus': '+',
+            'minus': '-',
+            'multiplied by': '*',
+            'divided by': '/'
+        }
+    
+        # Replace words with actual operators
+        for word, operator in operations.items():
+            question = question.replace(word, operator)
+    
+        # Check for unsupported operations
+        if re.search(r'cubed|to the power of', question):
+            raise ValueError("unknown operation")
+    
+        # Check for non-math questions
+        if re.search(r'Who|What|When|Where|Why|How', question):
+            raise ValueError("unknown operation")
+    
+        # Check for invalid syntax
+        if not re.fullmatch(r'(-?\d+)( (plus|minus|multiplied by|divided by) -?\d+)*', question):
+>           raise ValueError("syntax error")
+E           ValueError: syntax error
+
+exercises/practice/wordy/wordy.py:29: ValueError
+=========================== short test summary info ============================
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_addition - Val...
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_addition_and_multiplication
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_addition_and_subtraction
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_addition_with_negative_numbers
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_division - Val...
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_large_addition
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_more_addition
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_multiple_additions
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_multiple_division
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_multiple_multiplication
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_multiple_subtraction
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_multiplication
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_reject_problem_with_no_operands_or_operators
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_subtraction - ...
+FAILED exercises/practice/wordy/wordy_test.py::WordyTest::test_subtraction_then_addition
+======================== 15 failed, 10 passed in 0.11s =========================
