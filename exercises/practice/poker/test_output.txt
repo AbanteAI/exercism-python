@@ -1,0 +1,356 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 35 items
+
+exercises/practice/poker/poker_test.py FFFFFFFF.....FF...FFFF.FF.F...... [ 94%]
+..                                                                       [100%]
+
+=================================== FAILURES ===================================
+_______________ PokerTest.test_a_straight_beats_three_of_a_kind ________________
+
+self = <poker_test.PokerTest testMethod=test_a_straight_beats_three_of_a_kind>
+
+    def test_a_straight_beats_three_of_a_kind(self):
+>       self.assertEqual(
+            best_hands(["4S 5H 4C 8D 4H", "3S 4D 2S 6D 5C"]), ["3S 4D 2S 6D 5C"]
+        )
+E       AssertionError: Lists differ: ['4S 5H 4C 8D 4H'] != ['3S 4D 2S 6D 5C']
+E       
+E       First differing element 0:
+E       '4S 5H 4C 8D 4H'
+E       '3S 4D 2S 6D 5C'
+E       
+E       - ['4S 5H 4C 8D 4H']
+E       + ['3S 4D 2S 6D 5C']
+
+exercises/practice/poker/poker_test.py:106: AssertionError
+__________________ PokerTest.test_a_tie_has_multiple_winners ___________________
+
+self = <poker_test.PokerTest testMethod=test_a_tie_has_multiple_winners>
+
+    def test_a_tie_has_multiple_winners(self):
+>       self.assertEqual(
+            best_hands(
+                [
+                    "4D 5S 6S 8D 3C",
+                    "2S 4C 7S 9H 10H",
+                    "3S 4S 5D 6H JH",
+                    "3H 4H 5C 6C JD",
+                ]
+            ),
+            ["3S 4S 5D 6H JH", "3H 4H 5C 6C JD"],
+        )
+E       AssertionError: Lists differ: ['4D 5S 6S 8D 3C'] != ['3S 4S 5D 6H JH', '3H 4H 5C 6C JD']
+E       
+E       First differing element 0:
+E       '4D 5S 6S 8D 3C'
+E       '3S 4S 5D 6H JH'
+E       
+E       Second list contains 1 additional elements.
+E       First extra element 1:
+E       '3H 4H 5C 6C JD'
+E       
+E       - ['4D 5S 6S 8D 3C']
+E       + ['3S 4S 5D 6H JH', '3H 4H 5C 6C JD']
+
+exercises/practice/poker/poker_test.py:23: AssertionError
+______________ PokerTest.test_aces_can_end_a_straight_10_j_q_k_a _______________
+
+self = <poker_test.PokerTest testMethod=test_aces_can_end_a_straight_10_j_q_k_a>
+
+    def test_aces_can_end_a_straight_10_j_q_k_a(self):
+>       self.assertEqual(
+            best_hands(["4S 5H 4C 8D 4H", "10D JH QS KD AC"]), ["10D JH QS KD AC"]
+        )
+E       AssertionError: Lists differ: ['4S 5H 4C 8D 4H'] != ['10D JH QS KD AC']
+E       
+E       First differing element 0:
+E       '4S 5H 4C 8D 4H'
+E       '10D JH QS KD AC'
+E       
+E       - ['4S 5H 4C 8D 4H']
+E       + ['10D JH QS KD AC']
+
+exercises/practice/poker/poker_test.py:111: AssertionError
+___________ PokerTest.test_aces_can_end_a_straight_flush_10_j_q_k_a ____________
+
+self = <poker_test.PokerTest testMethod=test_aces_can_end_a_straight_flush_10_j_q_k_a>
+
+    def test_aces_can_end_a_straight_flush_10_j_q_k_a(self):
+>       self.assertEqual(
+            best_hands(["KC AH AS AD AC", "10C JC QC KC AC"]), ["10C JC QC KC AC"]
+        )
+E       AssertionError: Lists differ: ['KC AH AS AD AC'] != ['10C JC QC KC AC']
+E       
+E       First differing element 0:
+E       'KC AH AS AD AC'
+E       '10C JC QC KC AC'
+E       
+E       - ['KC AH AS AD AC']
+E       + ['10C JC QC KC AC']
+
+exercises/practice/poker/poker_test.py:189: AssertionError
+______________ PokerTest.test_aces_can_start_a_straight_a_2_3_4_5 ______________
+
+self = <poker_test.PokerTest testMethod=test_aces_can_start_a_straight_a_2_3_4_5>
+
+    def test_aces_can_start_a_straight_a_2_3_4_5(self):
+>       self.assertEqual(
+            best_hands(["4S 5H 4C 8D 4H", "4D AH 3S 2D 5C"]), ["4D AH 3S 2D 5C"]
+        )
+E       AssertionError: Lists differ: ['4S 5H 4C 8D 4H'] != ['4D AH 3S 2D 5C']
+E       
+E       First differing element 0:
+E       '4S 5H 4C 8D 4H'
+E       '4D AH 3S 2D 5C'
+E       
+E       - ['4S 5H 4C 8D 4H']
+E       + ['4D AH 3S 2D 5C']
+
+exercises/practice/poker/poker_test.py:116: AssertionError
+___________ PokerTest.test_aces_can_start_a_straight_flush_a_2_3_4_5 ___________
+
+self = <poker_test.PokerTest testMethod=test_aces_can_start_a_straight_flush_a_2_3_4_5>
+
+    def test_aces_can_start_a_straight_flush_a_2_3_4_5(self):
+>       self.assertEqual(
+            best_hands(["KS AH AS AD AC", "4H AH 3H 2H 5H"]), ["4H AH 3H 2H 5H"]
+        )
+E       AssertionError: Lists differ: ['KS AH AS AD AC'] != ['4H AH 3H 2H 5H']
+E       
+E       First differing element 0:
+E       'KS AH AS AD AC'
+E       '4H AH 3H 2H 5H'
+E       
+E       - ['KS AH AS AD AC']
+E       + ['4H AH 3H 2H 5H']
+
+exercises/practice/poker/poker_test.py:194: AssertionError
+__ PokerTest.test_aces_cannot_be_in_the_middle_of_a_straight_flush_q_k_a_2_3 ___
+
+self = <poker_test.PokerTest testMethod=test_aces_cannot_be_in_the_middle_of_a_straight_flush_q_k_a_2_3>
+
+    def test_aces_cannot_be_in_the_middle_of_a_straight_flush_q_k_a_2_3(self):
+>       self.assertEqual(
+            best_hands(["2C AC QC 10C KC", "QH KH AH 2H 3H"]), ["2C AC QC 10C KC"]
+        )
+E       AssertionError: Lists differ: ['QH KH AH 2H 3H'] != ['2C AC QC 10C KC']
+E       
+E       First differing element 0:
+E       'QH KH AH 2H 3H'
+E       '2C AC QC 10C KC'
+E       
+E       - ['QH KH AH 2H 3H']
+E       + ['2C AC QC 10C KC']
+
+exercises/practice/poker/poker_test.py:199: AssertionError
+_____ PokerTest.test_aces_cannot_be_in_the_middle_of_a_straight_q_k_a_2_3 ______
+
+self = <poker_test.PokerTest testMethod=test_aces_cannot_be_in_the_middle_of_a_straight_q_k_a_2_3>
+
+    def test_aces_cannot_be_in_the_middle_of_a_straight_q_k_a_2_3(self):
+>       self.assertEqual(
+            best_hands(["2C 3D 7H 5H 2S", "QS KH AC 2D 3S"]), ["2C 3D 7H 5H 2S"]
+        )
+E       AssertionError: Lists differ: ['QS KH AC 2D 3S'] != ['2C 3D 7H 5H 2S']
+E       
+E       First differing element 0:
+E       'QS KH AC 2D 3S'
+E       '2C 3D 7H 5H 2S'
+E       
+E       - ['QS KH AC 2D 3S']
+E       + ['2C 3D 7H 5H 2S']
+
+exercises/practice/poker/poker_test.py:121: AssertionError
+_ PokerTest.test_both_hands_have_two_identically_ranked_pairs_tie_goes_to_remaining_card_kicker _
+
+self = <poker_test.PokerTest testMethod=test_both_hands_have_two_identically_ranked_pairs_tie_goes_to_remaining_card_kicker>
+
+    def test_both_hands_have_two_identically_ranked_pairs_tie_goes_to_remaining_card_kicker(
+        self,
+    ):
+>       self.assertEqual(
+            best_hands(["JD QH JS 8D QC", "JS QS JC 2D QD"]), ["JD QH JS 8D QC"]
+        )
+E       AssertionError: Lists differ: ['JS QS JC 2D QD'] != ['JD QH JS 8D QC']
+E       
+E       First differing element 0:
+E       'JS QS JC 2D QD'
+E       'JD QH JS 8D QC'
+E       
+E       - ['JS QS JC 2D QD']
+E       + ['JD QH JS 8D QC']
+
+exercises/practice/poker/poker_test.py:72: AssertionError
+______ PokerTest.test_both_hands_have_two_pairs_highest_ranked_pair_wins _______
+
+self = <poker_test.PokerTest testMethod=test_both_hands_have_two_pairs_highest_ranked_pair_wins>
+
+    def test_both_hands_have_two_pairs_highest_ranked_pair_wins(self):
+>       self.assertEqual(
+            best_hands(["2S 8H 2D 8D 3H", "4S 5H 4C 8S 5D"]), ["2S 8H 2D 8D 3H"]
+        )
+E       AssertionError: Lists differ: ['4S 5H 4C 8S 5D'] != ['2S 8H 2D 8D 3H']
+E       
+E       First differing element 0:
+E       '4S 5H 4C 8S 5D'
+E       '2S 8H 2D 8D 3H'
+E       
+E       - ['4S 5H 4C 8S 5D']
+E       + ['2S 8H 2D 8D 3H']
+
+exercises/practice/poker/poker_test.py:58: AssertionError
+_ PokerTest.test_even_though_an_ace_is_usually_high_a_5_high_straight_flush_is_the_lowest_scoring_straight_flush _
+
+self = <poker_test.PokerTest testMethod=test_even_though_an_ace_is_usually_high_a_5_high_straight_flush_is_the_lowest_scoring_straight_flush>
+
+    def test_even_though_an_ace_is_usually_high_a_5_high_straight_flush_is_the_lowest_scoring_straight_flush(
+        self,
+    ):
+>       self.assertEqual(
+            best_hands(["2H 3H 4H 5H 6H", "4D AD 3D 2D 5D"]), ["2H 3H 4H 5H 6H"]
+        )
+E       AssertionError: Lists differ: ['4D AD 3D 2D 5D'] != ['2H 3H 4H 5H 6H']
+E       
+E       First differing element 0:
+E       '4D AD 3D 2D 5D'
+E       '2H 3H 4H 5H 6H'
+E       
+E       - ['4D AD 3D 2D 5D']
+E       + ['2H 3H 4H 5H 6H']
+
+exercises/practice/poker/poker_test.py:211: AssertionError
+_ PokerTest.test_even_though_an_ace_is_usually_high_a_5_high_straight_is_the_lowest_scoring_straight _
+
+self = <poker_test.PokerTest testMethod=test_even_though_an_ace_is_usually_high_a_5_high_straight_is_the_lowest_scoring_straight>
+
+    def test_even_though_an_ace_is_usually_high_a_5_high_straight_is_the_lowest_scoring_straight(
+        self,
+    ):
+>       self.assertEqual(
+            best_hands(["2H 3C 4D 5D 6H", "4S AH 3S 2D 5H"]), ["2H 3C 4D 5D 6H"]
+        )
+E       AssertionError: Lists differ: ['4S AH 3S 2D 5H'] != ['2H 3C 4D 5D 6H']
+E       
+E       First differing element 0:
+E       '4S AH 3S 2D 5H'
+E       '2H 3C 4D 5D 6H'
+E       
+E       - ['4S AH 3S 2D 5H']
+E       + ['2H 3C 4D 5D 6H']
+
+exercises/practice/poker/poker_test.py:133: AssertionError
+____________________ PokerTest.test_flush_beats_a_straight _____________________
+
+self = <poker_test.PokerTest testMethod=test_flush_beats_a_straight>
+
+    def test_flush_beats_a_straight(self):
+>       self.assertEqual(
+            best_hands(["4C 6H 7D 8D 5H", "2S 4S 5S 6S 7S"]), ["2S 4S 5S 6S 7S"]
+        )
+E       AssertionError: Lists differ: ['4C 6H 7D 8D 5H'] != ['2S 4S 5S 6S 7S']
+E       
+E       First differing element 0:
+E       '4C 6H 7D 8D 5H'
+E       '2S 4S 5S 6S 7S'
+E       
+E       - ['4C 6H 7D 8D 5H']
+E       + ['2S 4S 5S 6S 7S']
+
+exercises/practice/poker/poker_test.py:138: AssertionError
+_______________ PokerTest.test_four_of_a_kind_beats_a_full_house _______________
+
+self = <poker_test.PokerTest testMethod=test_four_of_a_kind_beats_a_full_house>
+
+    def test_four_of_a_kind_beats_a_full_house(self):
+>       self.assertEqual(
+            best_hands(["4S 5H 4D 5D 4H", "3S 3H 2S 3D 3C"]), ["3S 3H 2S 3D 3C"]
+        )
+E       AssertionError: Lists differ: ['4S 5H 4D 5D 4H'] != ['3S 3H 2S 3D 3C']
+E       
+E       First differing element 0:
+E       '4S 5H 4D 5D 4H'
+E       '3S 3H 2S 3D 3C'
+E       
+E       - ['4S 5H 4D 5D 4H']
+E       + ['3S 3H 2S 3D 3C']
+
+exercises/practice/poker/poker_test.py:167: AssertionError
+______________ PokerTest.test_highest_card_out_of_all_hands_wins _______________
+
+self = <poker_test.PokerTest testMethod=test_highest_card_out_of_all_hands_wins>
+
+    def test_highest_card_out_of_all_hands_wins(self):
+>       self.assertEqual(
+            best_hands(["4D 5S 6S 8D 3C", "2S 4C 7S 9H 10H", "3S 4S 5D 6H JH"]),
+            ["3S 4S 5D 6H JH"],
+        )
+E       AssertionError: Lists differ: ['4D 5S 6S 8D 3C'] != ['3S 4S 5D 6H JH']
+E       
+E       First differing element 0:
+E       '4D 5S 6S 8D 3C'
+E       '3S 4S 5D 6H JH'
+E       
+E       - ['4D 5S 6S 8D 3C']
+E       + ['3S 4S 5D 6H JH']
+
+exercises/practice/poker/poker_test.py:17: AssertionError
+_______________________ PokerTest.test_highest_pair_wins _______________________
+
+self = <poker_test.PokerTest testMethod=test_highest_pair_wins>
+
+    def test_highest_pair_wins(self):
+>       self.assertEqual(
+            best_hands(["4S 2H 6S 2D JH", "2S 4H 6C 4D JD"]), ["2S 4H 6C 4D JD"]
+        )
+E       AssertionError: Lists differ: ['4S 2H 6S 2D JH'] != ['2S 4H 6C 4D JD']
+E       
+E       First differing element 0:
+E       '4S 2H 6S 2D JH'
+E       '2S 4H 6C 4D JD'
+E       
+E       - ['4S 2H 6S 2D JH']
+E       + ['2S 4H 6C 4D JD']
+
+exercises/practice/poker/poker_test.py:48: AssertionError
+___________________ PokerTest.test_one_pair_beats_high_card ____________________
+
+self = <poker_test.PokerTest testMethod=test_one_pair_beats_high_card>
+
+    def test_one_pair_beats_high_card(self):
+>       self.assertEqual(
+            best_hands(["4S 5H 6C 8D KH", "2S 4H 6S 4D JH"]), ["2S 4H 6S 4D JH"]
+        )
+E       AssertionError: Lists differ: ['4S 5H 6C 8D KH'] != ['2S 4H 6S 4D JH']
+E       
+E       First differing element 0:
+E       '4S 5H 6C 8D KH'
+E       '2S 4H 6S 4D JH'
+E       
+E       - ['4S 5H 6C 8D KH']
+E       + ['2S 4H 6S 4D JH']
+
+exercises/practice/poker/poker_test.py:43: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_a_straight_beats_three_of_a_kind
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_a_tie_has_multiple_winners
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_aces_can_end_a_straight_10_j_q_k_a
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_aces_can_end_a_straight_flush_10_j_q_k_a
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_aces_can_start_a_straight_a_2_3_4_5
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_aces_can_start_a_straight_flush_a_2_3_4_5
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_aces_cannot_be_in_the_middle_of_a_straight_flush_q_k_a_2_3
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_aces_cannot_be_in_the_middle_of_a_straight_q_k_a_2_3
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_both_hands_have_two_identically_ranked_pairs_tie_goes_to_remaining_card_kicker
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_both_hands_have_two_pairs_highest_ranked_pair_wins
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_even_though_an_ace_is_usually_high_a_5_high_straight_flush_is_the_lowest_scoring_straight_flush
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_even_though_an_ace_is_usually_high_a_5_high_straight_is_the_lowest_scoring_straight
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_flush_beats_a_straight
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_four_of_a_kind_beats_a_full_house
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_highest_card_out_of_all_hands_wins
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_highest_pair_wins
+FAILED exercises/practice/poker/poker_test.py::PokerTest::test_one_pair_beats_high_card
+======================== 17 failed, 18 passed in 0.11s =========================

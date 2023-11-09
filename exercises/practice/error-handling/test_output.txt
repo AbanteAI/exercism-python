@@ -1,0 +1,36 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 5 items
+
+exercises/practice/error-handling/error_handling_test.py ..FF.           [100%]
+
+=================================== FAILURES ===================================
+______________________ ErrorHandlingTest.test_return_none ______________________
+
+self = <error_handling_test.ErrorHandlingTest testMethod=test_return_none>
+
+    def test_return_none(self):
+>       self.assertEqual(er.handle_error_by_returning_none('1'), 1,
+                         'Result of valid input should not be None')
+E       AssertionError: None != 1 : Result of valid input should not be None
+
+exercises/practice/error-handling/error_handling_test.py:13: AssertionError
+_____________________ ErrorHandlingTest.test_return_tuple ______________________
+
+self = <error_handling_test.ErrorHandlingTest testMethod=test_return_tuple>
+
+    def test_return_tuple(self):
+        successful_result, result = er.handle_error_by_returning_tuple('1')
+>       self.assertIs(successful_result, True,
+                      'Valid input should be successful')
+E       AssertionError: False is not True : Valid input should be successful
+
+exercises/practice/error-handling/error_handling_test.py:20: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/error-handling/error_handling_test.py::ErrorHandlingTest::test_return_none
+FAILED exercises/practice/error-handling/error_handling_test.py::ErrorHandlingTest::test_return_tuple
+========================= 2 failed, 3 passed in 0.04s ==========================

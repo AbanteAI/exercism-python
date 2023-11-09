@@ -1,0 +1,1087 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 48 items
+
+exercises/practice/forth/forth_test.py .FFF....F...FFF.F....F.FF..FF.F.F [ 68%]
+FFF..FFFFFFFFFF                                                          [100%]
+
+=================================== FAILURES ===================================
+_______ ForthTest.test_addition_errors_if_there_is_nothing_on_the_stack ________
+
+self = <forth_test.ForthTest testMethod=test_addition_errors_if_there_is_nothing_on_the_stack>
+
+    def test_addition_errors_if_there_is_nothing_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["+"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: 'Cannot perform operation because the stack is empty' != 'Insufficient number of items in stack'
+E       - Cannot perform operation because the stack is empty
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:27: AssertionError
+____ ForthTest.test_addition_errors_if_there_is_only_one_value_on_the_stack ____
+
+self = <forth_test.ForthTest testMethod=test_addition_errors_if_there_is_only_one_value_on_the_stack>
+
+    def test_addition_errors_if_there_is_only_one_value_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["1 +"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: 'Cannot perform operation because the stack is empty' != 'Insufficient number of items in stack'
+E       - Cannot perform operation because the stack is empty
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:35: AssertionError
+______ ForthTest.test_case_insensitivity_definitions_are_case_insensitive ______
+
+self = <forth_test.ForthTest testMethod=test_case_insensitivity_definitions_are_case_insensitive>
+
+    def test_case_insensitivity_definitions_are_case_insensitive(self):
+>       self.assertEqual(evaluate([": SWAP DUP Dup dup ;", "1 swap"]), [1, 1, 1, 1])
+
+exercises/practice/forth/forth_test.py:245: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': SWAP DUP Dup dup ;', '1 swap']
+
+    def evaluate(input_data):
+        stack = []
+        definitions = {}
+    
+        def get_value():
+            if not stack:
+                raise StackUnderflowError("Cannot perform operation because the stack is empty")
+            return stack.pop()
+    
+        def perform_operation(operator):
+            b = get_value()
+            a = get_value()
+            if operator == '+':
+                stack.append(a + b)
+            elif operator == '-':
+                stack.append(a - b)
+            elif operator == '*':
+                stack.append(a * b)
+            elif operator == '/':
+                if b == 0:
+                    raise ZeroDivisionError("Cannot divide by zero")
+                stack.append(a // b)
+    
+        for item in ' '.join(input_data).upper().split():
+            if item.isdigit():
+                stack.append(int(item))
+            elif item in definitions:
+                for word in definitions[item].split():
+                    if word.isdigit():
+                        stack.append(int(word))
+                    else:
+                        perform_operation(word)
+            elif item in '+-*/':
+                perform_operation(item)
+            elif item == 'DUP':
+                if not stack:
+                    raise StackUnderflowError("Cannot duplicate because the stack is empty")
+                stack.append(stack[-1])
+            elif item == 'DROP':
+                get_value()
+            elif item == 'SWAP':
+                b = get_value()
+                a = get_value()
+                stack.extend([b, a])
+            elif item == 'OVER':
+                if len(stack) < 2:
+                    raise StackUnderflowError("Cannot perform 'over' because there are not enough values in the stack")
+                stack.append(stack[-2])
+            elif item == ':':
+>               name = next(input_data).upper()
+E               TypeError: 'list' object is not an iterator
+
+exercises/practice/forth/forth.py:59: TypeError
+__ ForthTest.test_case_insensitivity_user_defined_words_are_case_insensitive ___
+
+self = <forth_test.ForthTest testMethod=test_case_insensitivity_user_defined_words_are_case_insensitive>
+
+    def test_case_insensitivity_user_defined_words_are_case_insensitive(self):
+>       self.assertEqual(evaluate([": foo dup ;", "1 FOO Foo foo"]), [1, 1, 1, 1])
+
+exercises/practice/forth/forth_test.py:242: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': foo dup ;', '1 FOO Foo foo']
+
+    def evaluate(input_data):
+        stack = []
+        definitions = {}
+    
+        def get_value():
+            if not stack:
+                raise StackUnderflowError("Cannot perform operation because the stack is empty")
+            return stack.pop()
+    
+        def perform_operation(operator):
+            b = get_value()
+            a = get_value()
+            if operator == '+':
+                stack.append(a + b)
+            elif operator == '-':
+                stack.append(a - b)
+            elif operator == '*':
+                stack.append(a * b)
+            elif operator == '/':
+                if b == 0:
+                    raise ZeroDivisionError("Cannot divide by zero")
+                stack.append(a // b)
+    
+        for item in ' '.join(input_data).upper().split():
+            if item.isdigit():
+                stack.append(int(item))
+            elif item in definitions:
+                for word in definitions[item].split():
+                    if word.isdigit():
+                        stack.append(int(word))
+                    else:
+                        perform_operation(word)
+            elif item in '+-*/':
+                perform_operation(item)
+            elif item == 'DUP':
+                if not stack:
+                    raise StackUnderflowError("Cannot duplicate because the stack is empty")
+                stack.append(stack[-1])
+            elif item == 'DROP':
+                get_value()
+            elif item == 'SWAP':
+                b = get_value()
+                a = get_value()
+                stack.extend([b, a])
+            elif item == 'OVER':
+                if len(stack) < 2:
+                    raise StackUnderflowError("Cannot perform 'over' because there are not enough values in the stack")
+                stack.append(stack[-2])
+            elif item == ':':
+>               name = next(input_data).upper()
+E               TypeError: 'list' object is not an iterator
+
+exercises/practice/forth/forth.py:59: TypeError
+______________ ForthTest.test_division_errors_if_dividing_by_zero ______________
+
+self = <forth_test.ForthTest testMethod=test_division_errors_if_dividing_by_zero>
+
+    def test_division_errors_if_dividing_by_zero(self):
+        # divide by zero
+        with self.assertRaises(ZeroDivisionError) as err:
+            evaluate(["4 0 /"])
+        self.assertEqual(type(err.exception), ZeroDivisionError)
+>       self.assertEqual(str(err.exception.args[0]), "divide by zero")
+E       AssertionError: 'Cannot divide by zero' != 'divide by zero'
+E       - Cannot divide by zero
+E       ? -------
+E       + divide by zero
+
+exercises/practice/forth/forth_test.py:88: AssertionError
+_______ ForthTest.test_division_errors_if_there_is_nothing_on_the_stack ________
+
+self = <forth_test.ForthTest testMethod=test_division_errors_if_there_is_nothing_on_the_stack>
+
+    def test_division_errors_if_there_is_nothing_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["/"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: 'Cannot perform operation because the stack is empty' != 'Insufficient number of items in stack'
+E       - Cannot perform operation because the stack is empty
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:94: AssertionError
+____ ForthTest.test_division_errors_if_there_is_only_one_value_on_the_stack ____
+
+self = <forth_test.ForthTest testMethod=test_division_errors_if_there_is_only_one_value_on_the_stack>
+
+    def test_division_errors_if_there_is_only_one_value_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["1 /"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: 'Cannot perform operation because the stack is empty' != 'Insufficient number of items in stack'
+E       - Cannot perform operation because the stack is empty
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:102: AssertionError
+_________ ForthTest.test_drop_errors_if_there_is_nothing_on_the_stack __________
+
+self = <forth_test.ForthTest testMethod=test_drop_errors_if_there_is_nothing_on_the_stack>
+
+    def test_drop_errors_if_there_is_nothing_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["drop"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: 'Cannot perform operation because the stack is empty' != 'Insufficient number of items in stack'
+E       - Cannot perform operation because the stack is empty
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:136: AssertionError
+__________ ForthTest.test_dup_errors_if_there_is_nothing_on_the_stack __________
+
+self = <forth_test.ForthTest testMethod=test_dup_errors_if_there_is_nothing_on_the_stack>
+
+    def test_dup_errors_if_there_is_nothing_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["dup"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: 'Cannot duplicate because the stack is empty' != 'Insufficient number of items in stack'
+E       - Cannot duplicate because the stack is empty
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:122: AssertionError
+____ ForthTest.test_multiplication_errors_if_there_is_nothing_on_the_stack _____
+
+self = <forth_test.ForthTest testMethod=test_multiplication_errors_if_there_is_nothing_on_the_stack>
+
+    def test_multiplication_errors_if_there_is_nothing_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["*"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: 'Cannot perform operation because the stack is empty' != 'Insufficient number of items in stack'
+E       - Cannot perform operation because the stack is empty
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:65: AssertionError
+_ ForthTest.test_multiplication_errors_if_there_is_only_one_value_on_the_stack _
+
+self = <forth_test.ForthTest testMethod=test_multiplication_errors_if_there_is_only_one_value_on_the_stack>
+
+    def test_multiplication_errors_if_there_is_only_one_value_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["1 *"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: 'Cannot perform operation because the stack is empty' != 'Insufficient number of items in stack'
+E       - Cannot perform operation because the stack is empty
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:73: AssertionError
+_________ ForthTest.test_over_errors_if_there_is_nothing_on_the_stack __________
+
+self = <forth_test.ForthTest testMethod=test_over_errors_if_there_is_nothing_on_the_stack>
+
+    def test_over_errors_if_there_is_nothing_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["over"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: "Cannot perform 'over' because there are not enough values in the stack" != 'Insufficient number of items in stack'
+E       - Cannot perform 'over' because there are not enough values in the stack
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:174: AssertionError
+______ ForthTest.test_over_errors_if_there_is_only_one_value_on_the_stack ______
+
+self = <forth_test.ForthTest testMethod=test_over_errors_if_there_is_only_one_value_on_the_stack>
+
+    def test_over_errors_if_there_is_only_one_value_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["1 over"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: "Cannot perform 'over' because there are not enough values in the stack" != 'Insufficient number of items in stack'
+E       - Cannot perform 'over' because there are not enough values in the stack
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:182: AssertionError
+__ ForthTest.test_parsing_and_numbers_pushes_negative_numbers_onto_the_stack ___
+
+self = <forth_test.ForthTest testMethod=test_parsing_and_numbers_pushes_negative_numbers_onto_the_stack>
+
+    def test_parsing_and_numbers_pushes_negative_numbers_onto_the_stack(self):
+>       self.assertEqual(evaluate(["-1 -2 -3 -4 -5"]), [-1, -2, -3, -4, -5])
+
+exercises/practice/forth/forth_test.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = ['-1 -2 -3 -4 -5']
+
+    def evaluate(input_data):
+        stack = []
+        definitions = {}
+    
+        def get_value():
+            if not stack:
+                raise StackUnderflowError("Cannot perform operation because the stack is empty")
+            return stack.pop()
+    
+        def perform_operation(operator):
+            b = get_value()
+            a = get_value()
+            if operator == '+':
+                stack.append(a + b)
+            elif operator == '-':
+                stack.append(a - b)
+            elif operator == '*':
+                stack.append(a * b)
+            elif operator == '/':
+                if b == 0:
+                    raise ZeroDivisionError("Cannot divide by zero")
+                stack.append(a // b)
+    
+        for item in ' '.join(input_data).upper().split():
+            if item.isdigit():
+                stack.append(int(item))
+            elif item in definitions:
+                for word in definitions[item].split():
+                    if word.isdigit():
+                        stack.append(int(word))
+                    else:
+                        perform_operation(word)
+            elif item in '+-*/':
+                perform_operation(item)
+            elif item == 'DUP':
+                if not stack:
+                    raise StackUnderflowError("Cannot duplicate because the stack is empty")
+                stack.append(stack[-1])
+            elif item == 'DROP':
+                get_value()
+            elif item == 'SWAP':
+                b = get_value()
+                a = get_value()
+                stack.extend([b, a])
+            elif item == 'OVER':
+                if len(stack) < 2:
+                    raise StackUnderflowError("Cannot perform 'over' because there are not enough values in the stack")
+                stack.append(stack[-2])
+            elif item == ':':
+                name = next(input_data).upper()
+                definition = []
+                while True:
+                    word = next(input_data).upper()
+                    if word == ';':
+                        break
+                    definition.append(word)
+                definitions[name] = ' '.join(definition)
+            else:
+>               raise ValueError(f"Unknown command or value: {item}")
+E               ValueError: Unknown command or value: -1
+
+exercises/practice/forth/forth.py:68: ValueError
+______ ForthTest.test_subtraction_errors_if_there_is_nothing_on_the_stack ______
+
+self = <forth_test.ForthTest testMethod=test_subtraction_errors_if_there_is_nothing_on_the_stack>
+
+    def test_subtraction_errors_if_there_is_nothing_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["-"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: 'Cannot perform operation because the stack is empty' != 'Insufficient number of items in stack'
+E       - Cannot perform operation because the stack is empty
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:46: AssertionError
+__ ForthTest.test_subtraction_errors_if_there_is_only_one_value_on_the_stack ___
+
+self = <forth_test.ForthTest testMethod=test_subtraction_errors_if_there_is_only_one_value_on_the_stack>
+
+    def test_subtraction_errors_if_there_is_only_one_value_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["1 -"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: 'Cannot perform operation because the stack is empty' != 'Insufficient number of items in stack'
+E       - Cannot perform operation because the stack is empty
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:54: AssertionError
+_________ ForthTest.test_swap_errors_if_there_is_nothing_on_the_stack __________
+
+self = <forth_test.ForthTest testMethod=test_swap_errors_if_there_is_nothing_on_the_stack>
+
+    def test_swap_errors_if_there_is_nothing_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["swap"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: 'Cannot perform operation because the stack is empty' != 'Insufficient number of items in stack'
+E       - Cannot perform operation because the stack is empty
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:152: AssertionError
+______ ForthTest.test_swap_errors_if_there_is_only_one_value_on_the_stack ______
+
+self = <forth_test.ForthTest testMethod=test_swap_errors_if_there_is_only_one_value_on_the_stack>
+
+    def test_swap_errors_if_there_is_only_one_value_on_the_stack(self):
+        with self.assertRaises(StackUnderflowError) as err:
+            evaluate(["1 swap"])
+        self.assertEqual(type(err.exception), StackUnderflowError)
+>       self.assertEqual(
+            str(err.exception.args[0]), "Insufficient number of items in stack"
+        )
+E       AssertionError: 'Cannot perform operation because the stack is empty' != 'Insufficient number of items in stack'
+E       - Cannot perform operation because the stack is empty
+E       + Insufficient number of items in stack
+
+exercises/practice/forth/forth_test.py:160: AssertionError
+_______ ForthTest.test_user_defined_words_can_consist_of_built_in_words ________
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_consist_of_built_in_words>
+
+    def test_user_defined_words_can_consist_of_built_in_words(self):
+>       self.assertEqual(evaluate([": dup-twice dup dup ;", "1 dup-twice"]), [1, 1, 1])
+
+exercises/practice/forth/forth_test.py:187: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': dup-twice dup dup ;', '1 dup-twice']
+
+    def evaluate(input_data):
+        stack = []
+        definitions = {}
+    
+        def get_value():
+            if not stack:
+                raise StackUnderflowError("Cannot perform operation because the stack is empty")
+            return stack.pop()
+    
+        def perform_operation(operator):
+            b = get_value()
+            a = get_value()
+            if operator == '+':
+                stack.append(a + b)
+            elif operator == '-':
+                stack.append(a - b)
+            elif operator == '*':
+                stack.append(a * b)
+            elif operator == '/':
+                if b == 0:
+                    raise ZeroDivisionError("Cannot divide by zero")
+                stack.append(a // b)
+    
+        for item in ' '.join(input_data).upper().split():
+            if item.isdigit():
+                stack.append(int(item))
+            elif item in definitions:
+                for word in definitions[item].split():
+                    if word.isdigit():
+                        stack.append(int(word))
+                    else:
+                        perform_operation(word)
+            elif item in '+-*/':
+                perform_operation(item)
+            elif item == 'DUP':
+                if not stack:
+                    raise StackUnderflowError("Cannot duplicate because the stack is empty")
+                stack.append(stack[-1])
+            elif item == 'DROP':
+                get_value()
+            elif item == 'SWAP':
+                b = get_value()
+                a = get_value()
+                stack.extend([b, a])
+            elif item == 'OVER':
+                if len(stack) < 2:
+                    raise StackUnderflowError("Cannot perform 'over' because there are not enough values in the stack")
+                stack.append(stack[-2])
+            elif item == ':':
+>               name = next(input_data).upper()
+E               TypeError: 'list' object is not an iterator
+
+exercises/practice/forth/forth.py:59: TypeError
+_ ForthTest.test_user_defined_words_can_define_word_that_uses_word_with_the_same_name _
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_define_word_that_uses_word_with_the_same_name>
+
+    def test_user_defined_words_can_define_word_that_uses_word_with_the_same_name(self):
+>       self.assertEqual(evaluate([": foo 10 ;", ": foo foo 1 + ;", "foo"]), [11])
+
+exercises/practice/forth/forth_test.py:209: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': foo 10 ;', ': foo foo 1 + ;', 'foo']
+
+    def evaluate(input_data):
+        stack = []
+        definitions = {}
+    
+        def get_value():
+            if not stack:
+                raise StackUnderflowError("Cannot perform operation because the stack is empty")
+            return stack.pop()
+    
+        def perform_operation(operator):
+            b = get_value()
+            a = get_value()
+            if operator == '+':
+                stack.append(a + b)
+            elif operator == '-':
+                stack.append(a - b)
+            elif operator == '*':
+                stack.append(a * b)
+            elif operator == '/':
+                if b == 0:
+                    raise ZeroDivisionError("Cannot divide by zero")
+                stack.append(a // b)
+    
+        for item in ' '.join(input_data).upper().split():
+            if item.isdigit():
+                stack.append(int(item))
+            elif item in definitions:
+                for word in definitions[item].split():
+                    if word.isdigit():
+                        stack.append(int(word))
+                    else:
+                        perform_operation(word)
+            elif item in '+-*/':
+                perform_operation(item)
+            elif item == 'DUP':
+                if not stack:
+                    raise StackUnderflowError("Cannot duplicate because the stack is empty")
+                stack.append(stack[-1])
+            elif item == 'DROP':
+                get_value()
+            elif item == 'SWAP':
+                b = get_value()
+                a = get_value()
+                stack.extend([b, a])
+            elif item == 'OVER':
+                if len(stack) < 2:
+                    raise StackUnderflowError("Cannot perform 'over' because there are not enough values in the stack")
+                stack.append(stack[-2])
+            elif item == ':':
+>               name = next(input_data).upper()
+E               TypeError: 'list' object is not an iterator
+
+exercises/practice/forth/forth.py:59: TypeError
+______ ForthTest.test_user_defined_words_can_override_built_in_operators _______
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_override_built_in_operators>
+
+    def test_user_defined_words_can_override_built_in_operators(self):
+>       self.assertEqual(evaluate([": + * ;", "3 4 +"]), [12])
+
+exercises/practice/forth/forth_test.py:201: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': + * ;', '3 4 +']
+
+    def evaluate(input_data):
+        stack = []
+        definitions = {}
+    
+        def get_value():
+            if not stack:
+                raise StackUnderflowError("Cannot perform operation because the stack is empty")
+            return stack.pop()
+    
+        def perform_operation(operator):
+            b = get_value()
+            a = get_value()
+            if operator == '+':
+                stack.append(a + b)
+            elif operator == '-':
+                stack.append(a - b)
+            elif operator == '*':
+                stack.append(a * b)
+            elif operator == '/':
+                if b == 0:
+                    raise ZeroDivisionError("Cannot divide by zero")
+                stack.append(a // b)
+    
+        for item in ' '.join(input_data).upper().split():
+            if item.isdigit():
+                stack.append(int(item))
+            elif item in definitions:
+                for word in definitions[item].split():
+                    if word.isdigit():
+                        stack.append(int(word))
+                    else:
+                        perform_operation(word)
+            elif item in '+-*/':
+                perform_operation(item)
+            elif item == 'DUP':
+                if not stack:
+                    raise StackUnderflowError("Cannot duplicate because the stack is empty")
+                stack.append(stack[-1])
+            elif item == 'DROP':
+                get_value()
+            elif item == 'SWAP':
+                b = get_value()
+                a = get_value()
+                stack.extend([b, a])
+            elif item == 'OVER':
+                if len(stack) < 2:
+                    raise StackUnderflowError("Cannot perform 'over' because there are not enough values in the stack")
+                stack.append(stack[-2])
+            elif item == ':':
+>               name = next(input_data).upper()
+E               TypeError: 'list' object is not an iterator
+
+exercises/practice/forth/forth.py:59: TypeError
+________ ForthTest.test_user_defined_words_can_override_built_in_words _________
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_override_built_in_words>
+
+    def test_user_defined_words_can_override_built_in_words(self):
+>       self.assertEqual(evaluate([": swap dup ;", "1 swap"]), [1, 1])
+
+exercises/practice/forth/forth_test.py:198: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': swap dup ;', '1 swap']
+
+    def evaluate(input_data):
+        stack = []
+        definitions = {}
+    
+        def get_value():
+            if not stack:
+                raise StackUnderflowError("Cannot perform operation because the stack is empty")
+            return stack.pop()
+    
+        def perform_operation(operator):
+            b = get_value()
+            a = get_value()
+            if operator == '+':
+                stack.append(a + b)
+            elif operator == '-':
+                stack.append(a - b)
+            elif operator == '*':
+                stack.append(a * b)
+            elif operator == '/':
+                if b == 0:
+                    raise ZeroDivisionError("Cannot divide by zero")
+                stack.append(a // b)
+    
+        for item in ' '.join(input_data).upper().split():
+            if item.isdigit():
+                stack.append(int(item))
+            elif item in definitions:
+                for word in definitions[item].split():
+                    if word.isdigit():
+                        stack.append(int(word))
+                    else:
+                        perform_operation(word)
+            elif item in '+-*/':
+                perform_operation(item)
+            elif item == 'DUP':
+                if not stack:
+                    raise StackUnderflowError("Cannot duplicate because the stack is empty")
+                stack.append(stack[-1])
+            elif item == 'DROP':
+                get_value()
+            elif item == 'SWAP':
+                b = get_value()
+                a = get_value()
+                stack.extend([b, a])
+            elif item == 'OVER':
+                if len(stack) < 2:
+                    raise StackUnderflowError("Cannot perform 'over' because there are not enough values in the stack")
+                stack.append(stack[-2])
+            elif item == ':':
+>               name = next(input_data).upper()
+E               TypeError: 'list' object is not an iterator
+
+exercises/practice/forth/forth.py:59: TypeError
+___ ForthTest.test_user_defined_words_can_override_other_user_defined_words ____
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_override_other_user_defined_words>
+
+    def test_user_defined_words_can_override_other_user_defined_words(self):
+        self.assertEqual(
+>           evaluate([": foo dup ;", ": foo dup dup ;", "1 foo"]), [1, 1, 1]
+        )
+
+exercises/practice/forth/forth_test.py:194: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': foo dup ;', ': foo dup dup ;', '1 foo']
+
+    def evaluate(input_data):
+        stack = []
+        definitions = {}
+    
+        def get_value():
+            if not stack:
+                raise StackUnderflowError("Cannot perform operation because the stack is empty")
+            return stack.pop()
+    
+        def perform_operation(operator):
+            b = get_value()
+            a = get_value()
+            if operator == '+':
+                stack.append(a + b)
+            elif operator == '-':
+                stack.append(a - b)
+            elif operator == '*':
+                stack.append(a * b)
+            elif operator == '/':
+                if b == 0:
+                    raise ZeroDivisionError("Cannot divide by zero")
+                stack.append(a // b)
+    
+        for item in ' '.join(input_data).upper().split():
+            if item.isdigit():
+                stack.append(int(item))
+            elif item in definitions:
+                for word in definitions[item].split():
+                    if word.isdigit():
+                        stack.append(int(word))
+                    else:
+                        perform_operation(word)
+            elif item in '+-*/':
+                perform_operation(item)
+            elif item == 'DUP':
+                if not stack:
+                    raise StackUnderflowError("Cannot duplicate because the stack is empty")
+                stack.append(stack[-1])
+            elif item == 'DROP':
+                get_value()
+            elif item == 'SWAP':
+                b = get_value()
+                a = get_value()
+                stack.extend([b, a])
+            elif item == 'OVER':
+                if len(stack) < 2:
+                    raise StackUnderflowError("Cannot perform 'over' because there are not enough values in the stack")
+                stack.append(stack[-2])
+            elif item == ':':
+>               name = next(input_data).upper()
+E               TypeError: 'list' object is not an iterator
+
+exercises/practice/forth/forth.py:59: TypeError
+_ ForthTest.test_user_defined_words_can_use_different_words_with_the_same_name _
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_can_use_different_words_with_the_same_name>
+
+    def test_user_defined_words_can_use_different_words_with_the_same_name(self):
+        self.assertEqual(
+>           evaluate([": foo 5 ;", ": bar foo ;", ": foo 6 ;", "bar foo"]), [5, 6]
+        )
+
+exercises/practice/forth/forth_test.py:205: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': foo 5 ;', ': bar foo ;', ': foo 6 ;', 'bar foo']
+
+    def evaluate(input_data):
+        stack = []
+        definitions = {}
+    
+        def get_value():
+            if not stack:
+                raise StackUnderflowError("Cannot perform operation because the stack is empty")
+            return stack.pop()
+    
+        def perform_operation(operator):
+            b = get_value()
+            a = get_value()
+            if operator == '+':
+                stack.append(a + b)
+            elif operator == '-':
+                stack.append(a - b)
+            elif operator == '*':
+                stack.append(a * b)
+            elif operator == '/':
+                if b == 0:
+                    raise ZeroDivisionError("Cannot divide by zero")
+                stack.append(a // b)
+    
+        for item in ' '.join(input_data).upper().split():
+            if item.isdigit():
+                stack.append(int(item))
+            elif item in definitions:
+                for word in definitions[item].split():
+                    if word.isdigit():
+                        stack.append(int(word))
+                    else:
+                        perform_operation(word)
+            elif item in '+-*/':
+                perform_operation(item)
+            elif item == 'DUP':
+                if not stack:
+                    raise StackUnderflowError("Cannot duplicate because the stack is empty")
+                stack.append(stack[-1])
+            elif item == 'DROP':
+                get_value()
+            elif item == 'SWAP':
+                b = get_value()
+                a = get_value()
+                stack.extend([b, a])
+            elif item == 'OVER':
+                if len(stack) < 2:
+                    raise StackUnderflowError("Cannot perform 'over' because there are not enough values in the stack")
+                stack.append(stack[-2])
+            elif item == ':':
+>               name = next(input_data).upper()
+E               TypeError: 'list' object is not an iterator
+
+exercises/practice/forth/forth.py:59: TypeError
+______ ForthTest.test_user_defined_words_cannot_redefine_negative_numbers ______
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_cannot_redefine_negative_numbers>
+
+    def test_user_defined_words_cannot_redefine_negative_numbers(self):
+        with self.assertRaises(ValueError) as err:
+>           evaluate([": -1 2 ;"])
+
+exercises/practice/forth/forth_test.py:219: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def evaluate(input_data):
+        stack = []
+        definitions = {}
+    
+        def get_value():
+            if not stack:
+                raise StackUnderflowError("Cannot perform operation because the stack is empty")
+            return stack.pop()
+    
+        def perform_operation(operator):
+            b = get_value()
+            a = get_value()
+            if operator == '+':
+                stack.append(a + b)
+            elif operator == '-':
+                stack.append(a - b)
+            elif operator == '*':
+                stack.append(a * b)
+            elif operator == '/':
+                if b == 0:
+                    raise ZeroDivisionError("Cannot divide by zero")
+                stack.append(a // b)
+    
+        for item in ' '.join(input_data).upper().split():
+            if item.isdigit():
+                stack.append(int(item))
+            elif item in definitions:
+                for word in definitions[item].split():
+                    if word.isdigit():
+                        stack.append(int(word))
+                    else:
+                        perform_operation(word)
+            elif item in '+-*/':
+                perform_operation(item)
+            elif item == 'DUP':
+                if not stack:
+                    raise StackUnderflowError("Cannot duplicate because the stack is empty")
+                stack.append(stack[-1])
+            elif item == 'DROP':
+                get_value()
+            elif item == 'SWAP':
+                b = get_value()
+                a = get_value()
+                stack.extend([b, a])
+            elif item == 'OVER':
+                if len(stack) < 2:
+                    raise StackUnderflowError("Cannot perform 'over' because there are not enough values in the stack")
+                stack.append(stack[-2])
+            elif item == ':':
+>               name = next(input_data).upper()
+E               TypeError: 'list' object is not an iterator
+
+exercises/practice/forth/forth.py:59: TypeError
+____ ForthTest.test_user_defined_words_cannot_redefine_non_negative_numbers ____
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_cannot_redefine_non_negative_numbers>
+
+    def test_user_defined_words_cannot_redefine_non_negative_numbers(self):
+        with self.assertRaises(ValueError) as err:
+>           evaluate([": 1 2 ;"])
+
+exercises/practice/forth/forth_test.py:213: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def evaluate(input_data):
+        stack = []
+        definitions = {}
+    
+        def get_value():
+            if not stack:
+                raise StackUnderflowError("Cannot perform operation because the stack is empty")
+            return stack.pop()
+    
+        def perform_operation(operator):
+            b = get_value()
+            a = get_value()
+            if operator == '+':
+                stack.append(a + b)
+            elif operator == '-':
+                stack.append(a - b)
+            elif operator == '*':
+                stack.append(a * b)
+            elif operator == '/':
+                if b == 0:
+                    raise ZeroDivisionError("Cannot divide by zero")
+                stack.append(a // b)
+    
+        for item in ' '.join(input_data).upper().split():
+            if item.isdigit():
+                stack.append(int(item))
+            elif item in definitions:
+                for word in definitions[item].split():
+                    if word.isdigit():
+                        stack.append(int(word))
+                    else:
+                        perform_operation(word)
+            elif item in '+-*/':
+                perform_operation(item)
+            elif item == 'DUP':
+                if not stack:
+                    raise StackUnderflowError("Cannot duplicate because the stack is empty")
+                stack.append(stack[-1])
+            elif item == 'DROP':
+                get_value()
+            elif item == 'SWAP':
+                b = get_value()
+                a = get_value()
+                stack.extend([b, a])
+            elif item == 'OVER':
+                if len(stack) < 2:
+                    raise StackUnderflowError("Cannot perform 'over' because there are not enough values in the stack")
+                stack.append(stack[-2])
+            elif item == ':':
+>               name = next(input_data).upper()
+E               TypeError: 'list' object is not an iterator
+
+exercises/practice/forth/forth.py:59: TypeError
+__ ForthTest.test_user_defined_words_errors_if_executing_a_non_existent_word ___
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_errors_if_executing_a_non_existent_word>
+
+    def test_user_defined_words_errors_if_executing_a_non_existent_word(self):
+        with self.assertRaises(ValueError) as err:
+            evaluate(["foo"])
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(str(err.exception.args[0]), "undefined operation")
+E       AssertionError: 'Unknown command or value: FOO' != 'undefined operation'
+E       - Unknown command or value: FOO
+E       + undefined operation
+
+exercises/practice/forth/forth_test.py:227: AssertionError
+_________ ForthTest.test_user_defined_words_execute_in_the_right_order _________
+
+self = <forth_test.ForthTest testMethod=test_user_defined_words_execute_in_the_right_order>
+
+    def test_user_defined_words_execute_in_the_right_order(self):
+>       self.assertEqual(evaluate([": countup 1 2 3 ;", "countup"]), [1, 2, 3])
+
+exercises/practice/forth/forth_test.py:190: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+input_data = [': countup 1 2 3 ;', 'countup']
+
+    def evaluate(input_data):
+        stack = []
+        definitions = {}
+    
+        def get_value():
+            if not stack:
+                raise StackUnderflowError("Cannot perform operation because the stack is empty")
+            return stack.pop()
+    
+        def perform_operation(operator):
+            b = get_value()
+            a = get_value()
+            if operator == '+':
+                stack.append(a + b)
+            elif operator == '-':
+                stack.append(a - b)
+            elif operator == '*':
+                stack.append(a * b)
+            elif operator == '/':
+                if b == 0:
+                    raise ZeroDivisionError("Cannot divide by zero")
+                stack.append(a // b)
+    
+        for item in ' '.join(input_data).upper().split():
+            if item.isdigit():
+                stack.append(int(item))
+            elif item in definitions:
+                for word in definitions[item].split():
+                    if word.isdigit():
+                        stack.append(int(word))
+                    else:
+                        perform_operation(word)
+            elif item in '+-*/':
+                perform_operation(item)
+            elif item == 'DUP':
+                if not stack:
+                    raise StackUnderflowError("Cannot duplicate because the stack is empty")
+                stack.append(stack[-1])
+            elif item == 'DROP':
+                get_value()
+            elif item == 'SWAP':
+                b = get_value()
+                a = get_value()
+                stack.extend([b, a])
+            elif item == 'OVER':
+                if len(stack) < 2:
+                    raise StackUnderflowError("Cannot perform 'over' because there are not enough values in the stack")
+                stack.append(stack[-2])
+            elif item == ':':
+>               name = next(input_data).upper()
+E               TypeError: 'list' object is not an iterator
+
+exercises/practice/forth/forth.py:59: TypeError
+=========================== short test summary info ============================
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_addition_errors_if_there_is_nothing_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_addition_errors_if_there_is_only_one_value_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_case_insensitivity_definitions_are_case_insensitive
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_case_insensitivity_user_defined_words_are_case_insensitive
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_division_errors_if_dividing_by_zero
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_division_errors_if_there_is_nothing_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_division_errors_if_there_is_only_one_value_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_drop_errors_if_there_is_nothing_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_dup_errors_if_there_is_nothing_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_multiplication_errors_if_there_is_nothing_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_multiplication_errors_if_there_is_only_one_value_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_over_errors_if_there_is_nothing_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_over_errors_if_there_is_only_one_value_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_parsing_and_numbers_pushes_negative_numbers_onto_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_subtraction_errors_if_there_is_nothing_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_subtraction_errors_if_there_is_only_one_value_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_swap_errors_if_there_is_nothing_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_swap_errors_if_there_is_only_one_value_on_the_stack
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_consist_of_built_in_words
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_define_word_that_uses_word_with_the_same_name
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_override_built_in_operators
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_override_built_in_words
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_override_other_user_defined_words
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_can_use_different_words_with_the_same_name
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_cannot_redefine_negative_numbers
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_cannot_redefine_non_negative_numbers
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_errors_if_executing_a_non_existent_word
+FAILED exercises/practice/forth/forth_test.py::ForthTest::test_user_defined_words_execute_in_the_right_order
+======================== 28 failed, 20 passed in 0.39s =========================

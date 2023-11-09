@@ -1,30 +1,30 @@
 class CustomSet:
-    def __init__(self, elements=[]):
-        pass
+    def __init__(self, elements=None):
+        self._elements = set(elements) if elements is not None else set()
 
     def isempty(self):
-        pass
+        return len(self._elements) == 0
 
     def __contains__(self, element):
-        pass
+        return element in self._elements
 
     def issubset(self, other):
-        pass
+        return self._elements.issubset(other._elements)
 
     def isdisjoint(self, other):
-        pass
+        return self._elements.isdisjoint(other._elements)
 
     def __eq__(self, other):
-        pass
+        return self._elements == other._elements
 
     def add(self, element):
-        pass
+        self._elements.add(element)
 
     def intersection(self, other):
-        pass
+        return CustomSet(self._elements.intersection(other._elements))
 
     def __sub__(self, other):
-        pass
+        return CustomSet(self._elements - other._elements)
 
     def __add__(self, other):
-        pass
+        return CustomSet(self._elements.union(other._elements))

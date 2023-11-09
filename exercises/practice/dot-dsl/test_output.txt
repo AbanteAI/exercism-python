@@ -1,0 +1,314 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 12 items
+
+exercises/practice/dot-dsl/dot_dsl_test.py .F.F..FFFFFF                  [100%]
+
+=================================== FAILURES ===================================
+____________________ DotDslTest.test_graph_with_attributes _____________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_graph_with_attributes>
+
+    def test_graph_with_attributes(self):
+>       g = Graph([
+            (ATTR, "foo", "1"),
+            (ATTR, "title", "Testing Attrs"),
+            (NODE, "a", {"color": "green"}),
+            (NODE, "c", {}),
+            (NODE, "b", {"label": "Beta!"}),
+            (EDGE, "b", "c", {}),
+            (EDGE, "a", "b", {"color": "blue"}),
+            (ATTR, "bar", "true")
+        ])
+
+exercises/practice/dot-dsl/dot_dsl_test.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dot-dsl/dot_dsl.py:32: in __init__
+    self._parse_data(data)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <dot_dsl.Graph object at 0x7f4433cccd60>
+data = [(2, 'foo', '1'), (2, 'title', 'Testing Attrs'), (0, 'a', {'color': 'green'}), (0, 'c', {}), (0, 'b', {'label': 'Beta!'}), (1, 'b', 'c', {}), ...]
+
+    def _parse_data(self, data):
+        self.nodes = []
+        self.edges = []
+        self.attrs = {}
+        for item in data:
+            if not isinstance(item, tuple):
+                raise TypeError("Malformed graph component")
+            type_ = item[0]
+            if type_ == NODE and len(item) == 3:
+                _, name, attrs = item
+                if not isinstance(name, str) or not isinstance(attrs, dict):
+                    raise ValueError("Node must have a string name and a dict of attributes")
+                self.nodes.append(Node(name, attrs))
+            elif type_ == EDGE and len(item) == 4:
+>               _, nodes, attrs = item[0:3], item[3]
+E               ValueError: not enough values to unpack (expected 3, got 2)
+
+exercises/practice/dot-dsl/dot_dsl.py:50: ValueError
+_____________________ DotDslTest.test_graph_with_one_edge ______________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_graph_with_one_edge>
+
+    def test_graph_with_one_edge(self):
+>       g = Graph([
+            (EDGE, "a", "b", {})
+        ])
+
+exercises/practice/dot-dsl/dot_dsl_test.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dot-dsl/dot_dsl.py:32: in __init__
+    self._parse_data(data)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <dot_dsl.Graph object at 0x7f4433ccc550>, data = [(1, 'a', 'b', {})]
+
+    def _parse_data(self, data):
+        self.nodes = []
+        self.edges = []
+        self.attrs = {}
+        for item in data:
+            if not isinstance(item, tuple):
+                raise TypeError("Malformed graph component")
+            type_ = item[0]
+            if type_ == NODE and len(item) == 3:
+                _, name, attrs = item
+                if not isinstance(name, str) or not isinstance(attrs, dict):
+                    raise ValueError("Node must have a string name and a dict of attributes")
+                self.nodes.append(Node(name, attrs))
+            elif type_ == EDGE and len(item) == 4:
+>               _, nodes, attrs = item[0:3], item[3]
+E               ValueError: not enough values to unpack (expected 3, got 2)
+
+exercises/practice/dot-dsl/dot_dsl.py:50: ValueError
+________________________ DotDslTest.test_malformed_EDGE ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_EDGE>
+
+    def test_malformed_EDGE(self):
+        with self.assertRaises(ValueError) as err:
+>           Graph([(EDGE, 1, 2)])
+
+exercises/practice/dot-dsl/dot_dsl_test.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dot-dsl/dot_dsl.py:32: in __init__
+    self._parse_data(data)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _parse_data(self, data):
+        self.nodes = []
+        self.edges = []
+        self.attrs = {}
+        for item in data:
+            if not isinstance(item, tuple):
+                raise TypeError("Malformed graph component")
+            type_ = item[0]
+            if type_ == NODE and len(item) == 3:
+                _, name, attrs = item
+                if not isinstance(name, str) or not isinstance(attrs, dict):
+                    raise ValueError("Node must have a string name and a dict of attributes")
+                self.nodes.append(Node(name, attrs))
+            elif type_ == EDGE and len(item) == 4:
+                _, nodes, attrs = item[0:3], item[3]
+                if not (isinstance(nodes, tuple) and len(nodes) == 2 and all(isinstance(n, str) for n in nodes)):
+                    raise ValueError("Edge must have a tuple of two string node names")
+                if not isinstance(attrs, dict):
+                    raise ValueError("Edge attributes must be a dict")
+                self.edges.append(Edge(*nodes, attrs))
+            elif type_ == ATTR and len(item) == 3:
+                _, key, value = item
+                if not isinstance(key, str):
+                    raise ValueError("Attribute name must be a string")
+                self.attrs[key] = value
+            else:
+>               raise TypeError("Invalid graph component type")
+E               TypeError: Invalid graph component type
+
+exercises/practice/dot-dsl/dot_dsl.py:62: TypeError
+________________________ DotDslTest.test_malformed_attr ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_attr>
+
+    def test_malformed_attr(self):
+        with self.assertRaises(ValueError) as err:
+>           Graph([(ATTR, 1, 2, 3)])
+
+exercises/practice/dot-dsl/dot_dsl_test.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dot-dsl/dot_dsl.py:32: in __init__
+    self._parse_data(data)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _parse_data(self, data):
+        self.nodes = []
+        self.edges = []
+        self.attrs = {}
+        for item in data:
+            if not isinstance(item, tuple):
+                raise TypeError("Malformed graph component")
+            type_ = item[0]
+            if type_ == NODE and len(item) == 3:
+                _, name, attrs = item
+                if not isinstance(name, str) or not isinstance(attrs, dict):
+                    raise ValueError("Node must have a string name and a dict of attributes")
+                self.nodes.append(Node(name, attrs))
+            elif type_ == EDGE and len(item) == 4:
+                _, nodes, attrs = item[0:3], item[3]
+                if not (isinstance(nodes, tuple) and len(nodes) == 2 and all(isinstance(n, str) for n in nodes)):
+                    raise ValueError("Edge must have a tuple of two string node names")
+                if not isinstance(attrs, dict):
+                    raise ValueError("Edge attributes must be a dict")
+                self.edges.append(Edge(*nodes, attrs))
+            elif type_ == ATTR and len(item) == 3:
+                _, key, value = item
+                if not isinstance(key, str):
+                    raise ValueError("Attribute name must be a string")
+                self.attrs[key] = value
+            else:
+>               raise TypeError("Invalid graph component type")
+E               TypeError: Invalid graph component type
+
+exercises/practice/dot-dsl/dot_dsl.py:62: TypeError
+_______________________ DotDslTest.test_malformed_graph ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_graph>
+
+    def test_malformed_graph(self):
+        with self.assertRaises(TypeError) as err:
+            Graph(1)
+        self.assertEqual(type(err.exception), TypeError)
+>       self.assertEqual(err.exception.args[0], "Graph data malformed")
+E       AssertionError: 'Graph data must be a list' != 'Graph data malformed'
+E       - Graph data must be a list
+E       + Graph data malformed
+
+exercises/practice/dot-dsl/dot_dsl_test.py:77: AssertionError
+_____________________ DotDslTest.test_malformed_graph_item _____________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_graph_item>
+
+    def test_malformed_graph_item(self):
+        with self.assertRaises(TypeError) as err:
+>           Graph([()])
+
+exercises/practice/dot-dsl/dot_dsl_test.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dot-dsl/dot_dsl.py:32: in __init__
+    self._parse_data(data)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _parse_data(self, data):
+        self.nodes = []
+        self.edges = []
+        self.attrs = {}
+        for item in data:
+            if not isinstance(item, tuple):
+                raise TypeError("Malformed graph component")
+>           type_ = item[0]
+E           IndexError: tuple index out of range
+
+exercises/practice/dot-dsl/dot_dsl.py:43: IndexError
+________________________ DotDslTest.test_malformed_node ________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_malformed_node>
+
+    def test_malformed_node(self):
+        with self.assertRaises(ValueError) as err:
+>           Graph([(NODE, 1, 2, 3)])
+
+exercises/practice/dot-dsl/dot_dsl_test.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dot-dsl/dot_dsl.py:32: in __init__
+    self._parse_data(data)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _parse_data(self, data):
+        self.nodes = []
+        self.edges = []
+        self.attrs = {}
+        for item in data:
+            if not isinstance(item, tuple):
+                raise TypeError("Malformed graph component")
+            type_ = item[0]
+            if type_ == NODE and len(item) == 3:
+                _, name, attrs = item
+                if not isinstance(name, str) or not isinstance(attrs, dict):
+                    raise ValueError("Node must have a string name and a dict of attributes")
+                self.nodes.append(Node(name, attrs))
+            elif type_ == EDGE and len(item) == 4:
+                _, nodes, attrs = item[0:3], item[3]
+                if not (isinstance(nodes, tuple) and len(nodes) == 2 and all(isinstance(n, str) for n in nodes)):
+                    raise ValueError("Edge must have a tuple of two string node names")
+                if not isinstance(attrs, dict):
+                    raise ValueError("Edge attributes must be a dict")
+                self.edges.append(Edge(*nodes, attrs))
+            elif type_ == ATTR and len(item) == 3:
+                _, key, value = item
+                if not isinstance(key, str):
+                    raise ValueError("Attribute name must be a string")
+                self.attrs[key] = value
+            else:
+>               raise TypeError("Invalid graph component type")
+E               TypeError: Invalid graph component type
+
+exercises/practice/dot-dsl/dot_dsl.py:62: TypeError
+_________________________ DotDslTest.test_unknown_item _________________________
+
+self = <dot_dsl_test.DotDslTest testMethod=test_unknown_item>
+
+    def test_unknown_item(self):
+        with self.assertRaises(ValueError) as err:
+>           Graph([(99, 1, 2)])
+
+exercises/practice/dot-dsl/dot_dsl_test.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dot-dsl/dot_dsl.py:32: in __init__
+    self._parse_data(data)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _parse_data(self, data):
+        self.nodes = []
+        self.edges = []
+        self.attrs = {}
+        for item in data:
+            if not isinstance(item, tuple):
+                raise TypeError("Malformed graph component")
+            type_ = item[0]
+            if type_ == NODE and len(item) == 3:
+                _, name, attrs = item
+                if not isinstance(name, str) or not isinstance(attrs, dict):
+                    raise ValueError("Node must have a string name and a dict of attributes")
+                self.nodes.append(Node(name, attrs))
+            elif type_ == EDGE and len(item) == 4:
+                _, nodes, attrs = item[0:3], item[3]
+                if not (isinstance(nodes, tuple) and len(nodes) == 2 and all(isinstance(n, str) for n in nodes)):
+                    raise ValueError("Edge must have a tuple of two string node names")
+                if not isinstance(attrs, dict):
+                    raise ValueError("Edge attributes must be a dict")
+                self.edges.append(Edge(*nodes, attrs))
+            elif type_ == ATTR and len(item) == 3:
+                _, key, value = item
+                if not isinstance(key, str):
+                    raise ValueError("Attribute name must be a string")
+                self.attrs[key] = value
+            else:
+>               raise TypeError("Invalid graph component type")
+E               TypeError: Invalid graph component type
+
+exercises/practice/dot-dsl/dot_dsl.py:62: TypeError
+=========================== short test summary info ============================
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_graph_with_attributes
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_graph_with_one_edge
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_EDGE
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_attr
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_graph
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_graph_item
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_malformed_node
+FAILED exercises/practice/dot-dsl/dot_dsl_test.py::DotDslTest::test_unknown_item
+========================= 8 failed, 4 passed in 0.08s ==========================
