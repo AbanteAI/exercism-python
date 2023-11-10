@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 13 items
+
+exercises/practice/dominoes/dominoes_test.py .....F.......               [100%]
+
+=================================== FAILURES ===================================
+__________________ DominoesTest.test_empty_input_empty_output __________________
+
+self = <dominoes_test.DominoesTest testMethod=test_empty_input_empty_output>
+
+    def test_empty_input_empty_output(self):
+        input_dominoes = []
+        output_chain = can_chain(input_dominoes)
+>       self.assert_correct_chain(input_dominoes, output_chain)
+
+exercises/practice/dominoes/dominoes_test.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/dominoes/dominoes_test.py:123: in assert_correct_chain
+    self.assertIsNotNone(output_chain, msg)
+E   AssertionError: unexpectedly None : There should be a chain for []
+=========================== short test summary info ============================
+FAILED exercises/practice/dominoes/dominoes_test.py::DominoesTest::test_empty_input_empty_output
+========================= 1 failed, 12 passed in 0.05s =========================

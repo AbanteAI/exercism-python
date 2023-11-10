@@ -1,0 +1,51 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 17 items
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py .FF..............     [100%]
+
+=================================== FAILURES ===================================
+_ OcrNumbersTest.test_input_with_a_number_of_columns_that_is_not_a_multiple_of_three_raises_an_error _
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_input_with_a_number_of_columns_that_is_not_a_multiple_of_three_raises_an_error>
+
+    def test_input_with_a_number_of_columns_that_is_not_a_multiple_of_three_raises_an_error(
+        self,
+    ):
+        with self.assertRaises(ValueError) as err:
+            convert(["    ", "   |", "   |", "    "])
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0], "Number of input columns is not a multiple of three"
+        )
+E       AssertionError: 'Number of input lines is not a multiple of four or number[40 chars]hree' != 'Number of input columns is not a multiple of three'
+E       - Number of input lines is not a multiple of four or number of input columns is not a multiple of three
+E       + Number of input columns is not a multiple of three
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:38: AssertionError
+_ OcrNumbersTest.test_input_with_a_number_of_lines_that_is_not_a_multiple_of_four_raises_an_error _
+
+self = <ocr_numbers_test.OcrNumbersTest testMethod=test_input_with_a_number_of_lines_that_is_not_a_multiple_of_four_raises_an_error>
+
+    def test_input_with_a_number_of_lines_that_is_not_a_multiple_of_four_raises_an_error(
+        self,
+    ):
+        with self.assertRaises(ValueError) as err:
+            convert([" _ ", "| |", "   "])
+        self.assertEqual(type(err.exception), ValueError)
+>       self.assertEqual(
+            err.exception.args[0], "Number of input lines is not a multiple of four"
+        )
+E       AssertionError: 'Numb[35 chars] of four or number of input columns is not a multiple of three' != 'Numb[35 chars] of four'
+E       - Number of input lines is not a multiple of four or number of input columns is not a multiple of three
+E       + Number of input lines is not a multiple of four
+
+exercises/practice/ocr-numbers/ocr_numbers_test.py:28: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_input_with_a_number_of_columns_that_is_not_a_multiple_of_three_raises_an_error
+FAILED exercises/practice/ocr-numbers/ocr_numbers_test.py::OcrNumbersTest::test_input_with_a_number_of_lines_that_is_not_a_multiple_of_four_raises_an_error
+========================= 2 failed, 15 passed in 0.05s =========================

@@ -1,0 +1,78 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 25 items
+
+exercises/practice/grep/grep_test.py F..........F.F...F.......           [100%]
+
+=================================== FAILURES ===================================
+____________ GrepTest.test_multiple_files_no_matches_various_flags _____________
+
+self = <grep_test.GrepTest testMethod=test_multiple_files_no_matches_various_flags>
+mock_file = <MagicMock name='StringIO' id='139737250359728'>
+mock_open = <MagicMock name='open' id='139737250728304'>
+
+    def test_multiple_files_no_matches_various_flags(self, mock_file, mock_open):
+>       self.assertMultiLineEqual(
+            grep(
+                "Frodo",
+                "-n -l -x -i",
+                ["iliad.txt", "midsummer-night.txt", "paradise-lost.txt"],
+            ),
+            "",
+        )
+E       AssertionError: '\n' != ''
+E       -
+
+exercises/practice/grep/grep_test.py:241: AssertionError
+_______________ GrepTest.test_one_file_no_matches_various_flags ________________
+
+self = <grep_test.GrepTest testMethod=test_one_file_no_matches_various_flags>
+mock_file = <MagicMock name='StringIO' id='139737250918464'>
+mock_open = <MagicMock name='open' id='139737258699520'>
+
+    def test_one_file_no_matches_various_flags(self, mock_file, mock_open):
+>       self.assertMultiLineEqual(grep("Gandalf", "-n -l -x -i", ["iliad.txt"]), "")
+E       AssertionError: '\n' != ''
+E       -
+
+exercises/practice/grep/grep_test.py:131: AssertionError
+__ GrepTest.test_one_file_one_match_file_flag_takes_precedence_over_line_flag __
+
+self = <grep_test.GrepTest testMethod=test_one_file_one_match_file_flag_takes_precedence_over_line_flag>
+mock_file = <MagicMock name='StringIO' id='139737249070912'>
+mock_open = <MagicMock name='open' id='139737249140688'>
+
+    def test_one_file_one_match_file_flag_takes_precedence_over_line_flag(
+        self, mock_file, mock_open
+    ):
+>       self.assertMultiLineEqual(grep("ten", "-n -l", ["iliad.txt"]), "iliad.txt\n")
+E       AssertionError: '2\n' != 'iliad.txt\n'
+E       - 2
+E       + iliad.txt
+
+exercises/practice/grep/grep_test.py:136: AssertionError
+____________ GrepTest.test_one_file_one_match_print_file_names_flag ____________
+
+self = <grep_test.GrepTest testMethod=test_one_file_one_match_print_file_names_flag>
+mock_file = <MagicMock name='StringIO' id='139737249043248'>
+mock_open = <MagicMock name='open' id='139737249040992'>
+
+    def test_one_file_one_match_print_file_names_flag(self, mock_file, mock_open):
+>       self.assertMultiLineEqual(
+            grep("Forbidden", "-l", ["paradise-lost.txt"]), "paradise-lost.txt\n"
+        )
+E       AssertionError: 'Of that Forbidden Tree, whose mortal tast\n' != 'paradise-lost.txt\n'
+E       - Of that Forbidden Tree, whose mortal tast
+E       + paradise-lost.txt
+
+exercises/practice/grep/grep_test.py:72: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_multiple_files_no_matches_various_flags
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_no_matches_various_flags
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_one_match_file_flag_takes_precedence_over_line_flag
+FAILED exercises/practice/grep/grep_test.py::GrepTest::test_one_file_one_match_print_file_names_flag
+========================= 4 failed, 21 passed in 0.08s =========================

@@ -1,3 +1,9 @@
+WHITE = "W"
+BLACK = "B"
+NONE = ""
+# The above constants represent the state of a point on the Go board.
+# 'WHITE' for a point occupied by a white stone, 'BLACK' for a black stone,
+# and 'NONE' for an empty point.
 
 class Board:
     """Count territories of each player in a Go game
@@ -7,7 +13,9 @@ class Board:
     """
 
     def __init__(self, board):
-        pass
+        self.board = board
+        self.board_height = len(board)
+        self.board_width = len(board[0]) if board else 0
 
     def territory(self, x, y):
         """Find the owner and the territories given a coordinate on
@@ -23,7 +31,16 @@ class Board:
                         second being a set of coordinates, representing
                         the owner's territories.
         """
-        pass
+        if not (0 <= x < self.board_width and 0 <= y < self.board_height):
+            raise ValueError('Invalid coordinate')
+
+        # Implementation of territory method
+        # Placeholder for actual logic to determine the owner and territories
+        owner = ""
+        territories = set()
+        # TODO: Implement the logic to determine the owner and territories
+
+        return owner, territories
 
     def territories(self):
         """Find the owners and the territories of the whole board
@@ -36,4 +53,9 @@ class Board:
                         , i.e. "W", "B", "".  The value being a set
                         of coordinates owned by the owner.
         """
-        pass
+        # Implementation of territories method
+        # Placeholder for actual logic to find owners and territories
+        territories_info = {"W": set(), "B": set(), "": set()}
+        # TODO: Implement the logic to find owners and territories
+
+        return territories_info

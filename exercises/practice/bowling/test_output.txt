@@ -1,0 +1,285 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 31 items
+
+exercises/practice/bowling/bowling_test.py ...FF.F......FF.FF..FF....FFF [ 93%]
+FF                                                                       [100%]
+
+=================================== FAILURES ===================================
+___ BowlingTest.test_a_strike_earns_ten_points_in_a_frame_with_a_single_roll ___
+
+self = <bowling_test.BowlingTest testMethod=test_a_strike_earns_ten_points_in_a_frame_with_a_single_roll>
+
+    def test_a_strike_earns_ten_points_in_a_frame_with_a_single_roll(self):
+        rolls = [10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 10)
+
+exercises/practice/bowling/bowling_test.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7fcd7928d090>
+
+    def score(self):
+        if not self._is_game_over():
+>           raise IndexError("Score cannot be taken until the end of the game")
+E           IndexError: Score cannot be taken until the end of the game
+
+exercises/practice/bowling/bowling.py:24: IndexError
+_ BowlingTest.test_a_strike_in_the_last_frame_gets_a_two_roll_bonus_that_is_counted_once _
+
+self = <bowling_test.BowlingTest testMethod=test_a_strike_in_the_last_frame_gets_a_two_roll_bonus_that_is_counted_once>
+
+    def test_a_strike_in_the_last_frame_gets_a_two_roll_bonus_that_is_counted_once(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 7, 1]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 18)
+
+exercises/practice/bowling/bowling_test.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7fcd79ab6320>
+
+    def score(self):
+        if not self._is_game_over():
+>           raise IndexError("Score cannot be taken until the end of the game")
+E           IndexError: Score cannot be taken until the end of the game
+
+exercises/practice/bowling/bowling.py:24: IndexError
+________________ BowlingTest.test_all_strikes_is_a_perfect_game ________________
+
+self = <bowling_test.BowlingTest testMethod=test_all_strikes_is_a_perfect_game>
+
+    def test_all_strikes_is_a_perfect_game(self):
+        rolls = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 300)
+
+exercises/practice/bowling/bowling_test.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7fcd7928f7c0>
+
+    def score(self):
+        if not self._is_game_over():
+>           raise IndexError("Score cannot be taken until the end of the game")
+E           IndexError: Score cannot be taken until the end of the game
+
+exercises/practice/bowling/bowling.py:24: IndexError
+___________ BowlingTest.test_cannot_roll_after_bonus_roll_for_spare ____________
+
+self = <bowling_test.BowlingTest testMethod=test_cannot_roll_after_bonus_roll_for_spare>
+
+    def test_cannot_roll_after_bonus_roll_for_spare(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 3, 2]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+exercises/practice/bowling/bowling_test.py:202: AssertionError
+__________ BowlingTest.test_cannot_roll_after_bonus_rolls_for_strike ___________
+
+self = <bowling_test.BowlingTest testMethod=test_cannot_roll_after_bonus_rolls_for_strike>
+
+    def test_cannot_roll_after_bonus_rolls_for_strike(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 3, 2]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+exercises/practice/bowling/bowling_test.py:208: AssertionError
+________ BowlingTest.test_consecutive_spares_each_get_a_one_roll_bonus _________
+
+self = <bowling_test.BowlingTest testMethod=test_consecutive_spares_each_get_a_one_roll_bonus>
+
+    def test_consecutive_spares_each_get_a_one_roll_bonus(self):
+        rolls = [5, 5, 3, 7, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+>       game = self.roll_new_game(rolls)
+
+exercises/practice/bowling/bowling_test.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exercises/practice/bowling/bowling_test.py:16: in roll_new_game
+    game.roll(roll)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7fcd7928f070>, pins = 4
+
+    def roll(self, pins):
+        if pins < 0 or pins > 10:
+            raise ValueError("Pins must have a value from 0 to 10")
+        if self.current_roll >= 20 and not self._is_extra_roll():
+            raise IndexError("Cannot roll after game is over")
+        if self.current_roll == 20 and self.rolls[18] != 10 and sum(self.rolls[18:20]) < 10:
+            raise ValueError("No more rolls allowed after the 10th frame unless a strike or spare is scored")
+        if self.current_roll > 20 and (self.rolls[18] != 10 and sum(self.rolls[18:20]) != 10):
+            raise IndexError("Cannot roll after bonus roll for spare in the 10th frame")
+        if self.current_roll > 21:
+            raise IndexError("Cannot roll after bonus rolls for strike in the 10th frame")
+        if self.current_roll % 2 == 0 and self.current_roll < 18 and self.rolls and self.rolls[-1] != 10 and self.rolls[-1] + pins > 10:
+>           raise ValueError("Pin count exceeds pins on the lane")
+E           ValueError: Pin count exceeds pins on the lane
+
+exercises/practice/bowling/bowling.py:18: ValueError
+_______ BowlingTest.test_consecutive_strikes_each_get_the_two_roll_bonus _______
+
+self = <bowling_test.BowlingTest testMethod=test_consecutive_strikes_each_get_the_two_roll_bonus>
+
+    def test_consecutive_strikes_each_get_the_two_roll_bonus(self):
+        rolls = [10, 10, 10, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 81)
+
+exercises/practice/bowling/bowling_test.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7fcd79ab69e0>
+
+    def score(self):
+        if not self._is_game_over():
+>           raise IndexError("Score cannot be taken until the end of the game")
+E           IndexError: Score cannot be taken until the end of the game
+
+exercises/practice/bowling/bowling.py:24: IndexError
+_ BowlingTest.test_points_scored_in_the_two_rolls_after_a_strike_are_counted_twice_as_a_bonus _
+
+self = <bowling_test.BowlingTest testMethod=test_points_scored_in_the_two_rolls_after_a_strike_are_counted_twice_as_a_bonus>
+
+    def test_points_scored_in_the_two_rolls_after_a_strike_are_counted_twice_as_a_bonus(
+        self,
+    ):
+        rolls = [10, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 26)
+
+exercises/practice/bowling/bowling_test.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7fcd7928c310>
+
+    def score(self):
+        if not self._is_game_over():
+>           raise IndexError("Score cannot be taken until the end of the game")
+E           IndexError: Score cannot be taken until the end of the game
+
+exercises/practice/bowling/bowling.py:24: IndexError
+_ BowlingTest.test_rolling_a_spare_with_the_two_roll_bonus_does_not_get_a_bonus_roll _
+
+self = <bowling_test.BowlingTest testMethod=test_rolling_a_spare_with_the_two_roll_bonus_does_not_get_a_bonus_roll>
+
+    def test_rolling_a_spare_with_the_two_roll_bonus_does_not_get_a_bonus_roll(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 7, 3]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 20)
+
+exercises/practice/bowling/bowling_test.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7fcd793390c0>
+
+    def score(self):
+        if not self._is_game_over():
+>           raise IndexError("Score cannot be taken until the end of the game")
+E           IndexError: Score cannot be taken until the end of the game
+
+exercises/practice/bowling/bowling.py:24: IndexError
+___ BowlingTest.test_strikes_with_the_two_roll_bonus_do_not_get_bonus_rolls ____
+
+self = <bowling_test.BowlingTest testMethod=test_strikes_with_the_two_roll_bonus_do_not_get_bonus_rolls>
+
+    def test_strikes_with_the_two_roll_bonus_do_not_get_bonus_rolls(self):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 30)
+
+exercises/practice/bowling/bowling_test.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7fcd79337880>
+
+    def score(self):
+        if not self._is_game_over():
+>           raise IndexError("Score cannot be taken until the end of the game")
+E           IndexError: Score cannot be taken until the end of the game
+
+exercises/practice/bowling/bowling.py:24: IndexError
+_ BowlingTest.test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike _
+
+self = <bowling_test.BowlingTest testMethod=test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike>
+
+    def test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 6]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+exercises/practice/bowling/bowling_test.py:146: AssertionError
+_ BowlingTest.test_two_bonus_rolls_after_a_strike_in_the_last_frame_can_score_more_than_10_points_if_one_is_a_strike _
+
+self = <bowling_test.BowlingTest testMethod=test_two_bonus_rolls_after_a_strike_in_the_last_frame_can_score_more_than_10_points_if_one_is_a_strike>
+
+    def test_two_bonus_rolls_after_a_strike_in_the_last_frame_can_score_more_than_10_points_if_one_is_a_strike(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 6]
+        game = self.roll_new_game(rolls)
+>       self.assertEqual(game.score(), 26)
+
+exercises/practice/bowling/bowling_test.py:139: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <bowling.BowlingGame object at 0x7fcd79348610>
+
+    def score(self):
+        if not self._is_game_over():
+>           raise IndexError("Score cannot be taken until the end of the game")
+E           IndexError: Score cannot be taken until the end of the game
+
+exercises/practice/bowling/bowling.py:24: IndexError
+_ BowlingTest.test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points _
+
+self = <bowling_test.BowlingTest testMethod=test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points>
+
+    def test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points(
+        self,
+    ):
+        rolls = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 5]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+exercises/practice/bowling/bowling_test.py:131: AssertionError
+____ BowlingTest.test_two_rolls_in_a_frame_cannot_score_more_than_10_points ____
+
+self = <bowling_test.BowlingTest testMethod=test_two_rolls_in_a_frame_cannot_score_more_than_10_points>
+
+    def test_two_rolls_in_a_frame_cannot_score_more_than_10_points(self):
+        rolls = [5]
+        game = self.roll_new_game(rolls)
+>       with self.assertRaisesWithMessage(Exception):
+E       AssertionError: Exception not raised
+
+exercises/practice/bowling/bowling_test.py:115: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_a_strike_earns_ten_points_in_a_frame_with_a_single_roll
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_a_strike_in_the_last_frame_gets_a_two_roll_bonus_that_is_counted_once
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_all_strikes_is_a_perfect_game
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_cannot_roll_after_bonus_roll_for_spare
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_cannot_roll_after_bonus_rolls_for_strike
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_consecutive_spares_each_get_a_one_roll_bonus
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_consecutive_strikes_each_get_the_two_roll_bonus
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_points_scored_in_the_two_rolls_after_a_strike_are_counted_twice_as_a_bonus
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_rolling_a_spare_with_the_two_roll_bonus_does_not_get_a_bonus_roll
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_strikes_with_the_two_roll_bonus_do_not_get_bonus_rolls
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_the_second_bonus_rolls_after_a_strike_in_the_last_frame_cannot_be_a_strike_if_the_first_one_is_not_a_strike
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_two_bonus_rolls_after_a_strike_in_the_last_frame_can_score_more_than_10_points_if_one_is_a_strike
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_two_bonus_rolls_after_a_strike_in_the_last_frame_cannot_score_more_than_10_points
+FAILED exercises/practice/bowling/bowling_test.py::BowlingTest::test_two_rolls_in_a_frame_cannot_score_more_than_10_points
+======================== 14 failed, 17 passed in 0.15s =========================

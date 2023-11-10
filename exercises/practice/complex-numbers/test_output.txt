@@ -1,0 +1,142 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 43 items
+
+exercises/practice/complex-numbers/complex_numbers_test.py ............. [ 30%]
+....F.F.F.F......F...F...FFFFF                                           [100%]
+
+=================================== FAILURES ===================================
+_________ ComplexNumbersTest.test_divide_real_number_by_complex_number _________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_divide_real_number_by_complex_number>
+
+    def test_divide_real_number_by_complex_number(self):
+>       self.assertAlmostEqual(5 / ComplexNumber(1, 1), ComplexNumber(2.5, -2.5))
+E       TypeError: unsupported operand type(s) for /: 'int' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:181: TypeError
+_______________ ComplexNumbersTest.test_euler_s_identity_formula _______________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_euler_s_identity_formula>
+
+    def test_euler_s_identity_formula(self):
+>       self.assertAlmostEqual(ComplexNumber(0, math.pi).exp(), ComplexNumber(-1, 0))
+E       TypeError: unsupported operand type(s) for -: 'ComplexNumber' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:139: TypeError
+_ ComplexNumbersTest.test_exponential_of_a_number_with_real_and_imaginary_part _
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_exponential_of_a_number_with_real_and_imaginary_part>
+
+    def test_exponential_of_a_number_with_real_and_imaginary_part(self):
+>       self.assertAlmostEqual(
+            ComplexNumber(math.log(2), math.pi).exp(), ComplexNumber(-2, 0)
+        )
+E       TypeError: unsupported operand type(s) for -: 'ComplexNumber' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:148: TypeError
+_ ComplexNumbersTest.test_exponential_resulting_in_a_number_with_real_and_imaginary_part _
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_exponential_resulting_in_a_number_with_real_and_imaginary_part>
+
+    def test_exponential_resulting_in_a_number_with_real_and_imaginary_part(self):
+>       self.assertAlmostEqual(
+            ComplexNumber(math.log(2) / 2, math.pi / 4).exp(), ComplexNumber(1, 1)
+        )
+E       TypeError: unsupported operand type(s) for -: 'ComplexNumber' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:153: TypeError
+________ ComplexNumbersTest.test_multiply_complex_number_by_real_number ________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_multiply_complex_number_by_real_number>
+
+    def test_multiply_complex_number_by_real_number(self):
+>       self.assertEqual(ComplexNumber(2, 5) * 5, ComplexNumber(10, 25))
+
+exercises/practice/complex-numbers/complex_numbers_test.py:172: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <complex_numbers.ComplexNumber object at 0x7f38fa1864a0>, other = 5
+
+    def __mul__(self, other):
+>       real_part = self.real * other.real - self.imaginary * other.imaginary
+E       AttributeError: 'int' object has no attribute 'imaginary'
+
+exercises/practice/complex-numbers/complex_numbers.py:23: AttributeError
+________ ComplexNumbersTest.test_multiply_real_number_by_complex_number ________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_multiply_real_number_by_complex_number>
+
+    def test_multiply_real_number_by_complex_number(self):
+>       self.assertEqual(5 * ComplexNumber(2, 5), ComplexNumber(10, 25))
+E       TypeError: unsupported operand type(s) for *: 'int' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:175: TypeError
+_______ ComplexNumbersTest.test_subtract_complex_number_from_real_number _______
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_subtract_complex_number_from_real_number>
+
+    def test_subtract_complex_number_from_real_number(self):
+>       self.assertEqual(4 - ComplexNumber(5, 7), ComplexNumber(-1, -7))
+E       TypeError: unsupported operand type(s) for -: 'int' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:169: TypeError
+____ ComplexNumbersTest.test_subtract_numbers_with_real_and_imaginary_part _____
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_subtract_numbers_with_real_and_imaginary_part>
+
+    def test_subtract_numbers_with_real_and_imaginary_part(self):
+        self.assertEqual(
+>           ComplexNumber(1, 2) - ComplexNumber(3, 4), ComplexNumber(-2, -2)
+        )
+E       TypeError: unsupported operand type(s) for -: 'ComplexNumber' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:69: TypeError
+__________ ComplexNumbersTest.test_subtract_purely_imaginary_numbers ___________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_subtract_purely_imaginary_numbers>
+
+    def test_subtract_purely_imaginary_numbers(self):
+        self.assertEqual(
+>           ComplexNumber(0, 1) - ComplexNumber(0, 2), ComplexNumber(0, -1)
+        )
+E       TypeError: unsupported operand type(s) for -: 'ComplexNumber' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:64: TypeError
+_____________ ComplexNumbersTest.test_subtract_purely_real_numbers _____________
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_subtract_purely_real_numbers>
+
+    def test_subtract_purely_real_numbers(self):
+        self.assertEqual(
+>           ComplexNumber(1, 0) - ComplexNumber(2, 0), ComplexNumber(-1, 0)
+        )
+E       TypeError: unsupported operand type(s) for -: 'ComplexNumber' and 'ComplexNumber'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:59: TypeError
+_______ ComplexNumbersTest.test_subtract_real_number_from_complex_number _______
+
+self = <complex_numbers_test.ComplexNumbersTest testMethod=test_subtract_real_number_from_complex_number>
+
+    def test_subtract_real_number_from_complex_number(self):
+>       self.assertEqual(ComplexNumber(5, 7) - 4, ComplexNumber(1, 7))
+E       TypeError: unsupported operand type(s) for -: 'ComplexNumber' and 'int'
+
+exercises/practice/complex-numbers/complex_numbers_test.py:166: TypeError
+=========================== short test summary info ============================
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_divide_real_number_by_complex_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_euler_s_identity_formula
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_exponential_of_a_number_with_real_and_imaginary_part
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_exponential_resulting_in_a_number_with_real_and_imaginary_part
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_multiply_complex_number_by_real_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_multiply_real_number_by_complex_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_subtract_complex_number_from_real_number
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_subtract_numbers_with_real_and_imaginary_part
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_subtract_purely_imaginary_numbers
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_subtract_purely_real_numbers
+FAILED exercises/practice/complex-numbers/complex_numbers_test.py::ComplexNumbersTest::test_subtract_real_number_from_complex_number
+======================== 11 failed, 32 passed in 0.11s =========================

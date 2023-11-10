@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-7.4.0, pluggy-1.3.0
+rootdir: /home/jake/Development/mentat/tests/benchmarks/repos/exercism-python
+configfile: pytest.ini
+plugins: mock-3.11.1, reportlog-0.4.0, asyncio-0.21.1, xdist-3.3.1
+asyncio: mode=strict
+collected 9 items
+
+exercises/practice/acronym/acronym_test.py .F.......                     [100%]
+
+=================================== FAILURES ===================================
+_________________________ AcronymTest.test_apostrophes _________________________
+
+self = <acronym_test.AcronymTest testMethod=test_apostrophes>
+
+    def test_apostrophes(self):
+>       self.assertEqual(abbreviate("Halley's Comet"), "HC")
+E       AssertionError: 'HSC' != 'HC'
+E       - HSC
+E       ?  -
+E       + HC
+
+exercises/practice/acronym/acronym_test.py:40: AssertionError
+=========================== short test summary info ============================
+FAILED exercises/practice/acronym/acronym_test.py::AcronymTest::test_apostrophes
+========================= 1 failed, 8 passed in 0.04s ==========================
